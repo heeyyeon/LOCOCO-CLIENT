@@ -10,10 +10,10 @@ assignees: ''
 <!-- 이슈 제목은 `[Feature(작업범위)] ${제목}`과 같이 작성헤주세요 -->
 <!-- Labels와 Assignees을 등록해주세요 -->
 
-##  Description
+## Description
 <!-- 추가할 기능에 대해 설명해주세요 -->
 
-##  Tasks
+## Tasks
 <!-- 진행해야 하는 작업들을 적어주세요 -->
 - [ ]
 
