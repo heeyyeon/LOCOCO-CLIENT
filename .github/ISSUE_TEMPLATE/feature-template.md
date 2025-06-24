@@ -7,7 +7,7 @@ assignees: ''
 
 ---
 
-<!-- 이슈 제목은 `[Feature(작업범위)] ${제목}`과 같이 작성헤주세요 -->
+<!-- 이슈 제목은 `[Feature] ${제목}`과 같이 작성헤주세요 -->
 <!-- Labels와 Assignees을 등록해주세요 -->
 
 ## Description
