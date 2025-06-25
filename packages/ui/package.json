@@ -11,8 +11,8 @@
     "check-types": "tsc --noEmit"
   },
   "devDependencies": {
-    "lococo/eslint-config": "workspace:*",
-    "lococo/typescript-config": "workspace:*",
+    "@lococo/eslint-config": "workspace:*",
+    "@lococo/typescript-config": "workspace:*",
     "@turbo/gen": "^2.5.0",
     "@types/node": "^22.15.3",
     "@types/react": "19.1.0",
@@ -21,7 +21,10 @@
     "typescript": "5.8.2"
   },
   "dependencies": {
+    "@tailwindcss/postcss": "^4.1.10",
+    "postcss": "^8.5.6",
     "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "react-dom": "^19.1.0",
+    "tailwindcss": "^4.1.10"
   }
 }
