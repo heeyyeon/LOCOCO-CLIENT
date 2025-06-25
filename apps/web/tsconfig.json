@@ -1,5 +1,5 @@
 {
-  "extends": "@repo/typescript-config/nextjs.json",
+  "extends": "@lococo/typescript-config/nextjs.json",
   "compilerOptions": {
     "plugins": [
       {
@@ -7,8 +7,9 @@
       }
     ],
     "paths": {
-      "@repo/ui/*": ["../../packages/ui/src/*"]
-    }
+      "@lococo/ui/*": ["../../packages/ui/src/*"]
+    },
+    "jsx": "preserve"
   },
   "include": [
     "**/*.ts",

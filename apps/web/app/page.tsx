@@ -1,5 +1,5 @@
 import Image, { type ImageProps } from "next/image";
-import { Button } from "@repo/ui/button";
+import { Button } from "@lococo/ui/button";
 import styles from "./page.module.css";
 
 type Props = Omit<ImageProps, "src"> & {
@@ -64,7 +64,7 @@ export default function Home() {
           </a>
         </div>
         <Button appName="web" className={styles.secondary}>
-          Open alert
+          ui 컴포넌트 버튼
         </Button>
       </main>
       <footer className={styles.footer}>
