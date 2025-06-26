@@ -4,5 +4,8 @@
       "mode": "auto"
     }
   ],
-  "cSpell.words": ["lococo", "LOKOKO", "turbopack", "turborepo"]
+  "cSpell.words": ["lococo", "LOKOKO", "turbopack", "turborepo"],
+  "files.associations": {
+    "*.css": "tailwindcss"
+  }
 }
