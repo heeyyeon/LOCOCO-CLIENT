@@ -1,0 +1,3 @@
+@source "./";
+@import "tailwindcss";
+@import "./../tailwind-config/shared-styles.css";

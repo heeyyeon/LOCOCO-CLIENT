@@ -1,4 +1,4 @@
 @import "tailwindcss";
-/* 추후 alias import 적용 */
-/* @import "@lococo/packages/ui/src/theme.css"; */
-@import "./../../../packages/ui/src/theme.css";
+
+@import "@lococo/tailwind-config";
+@import "@lococo/ui/styles.css";
