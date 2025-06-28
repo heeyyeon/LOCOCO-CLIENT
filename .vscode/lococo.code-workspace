@@ -1,0 +1,13 @@
+// monorepo 프로젝트 폴더 구조
+{
+  "folders": [
+    {
+      "name": "web",
+      "path": "../apps/web",
+    },
+    {
+      "name": "ui",
+      "path": "../packages/ui",
+    },
+  ],
+}

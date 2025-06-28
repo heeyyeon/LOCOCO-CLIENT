@@ -1,0 +1,4 @@
+@import "tailwindcss";
+
+@import "@lococo/tailwind-config";
+@import "@lococo/ui/styles.css";

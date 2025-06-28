@@ -1,0 +1,46 @@
+@import "tailwindcss";
+
+@theme {
+  --color-*: initial;
+  /* White & Black */
+  --color-white: #ffffff;
+  --color-black: #000000;
+
+  /* Grayscale */
+  --color-gray-100: #ef4351;
+  --color-gray-200: #ebecef;
+  --color-gray-300: #dee0e6;
+  --color-gray-400: #c0c3c9;
+  --color-gray-500: #9b9ca1;
+  --color-gray-600: #5f5f67;
+  --color-gray-700: #3a3c40;
+  --color-gray-800: #151516;
+
+  /* Pink */
+  --color-pink-100: #fff1f6;
+  --color-pink-200: #ffdfec;
+  --color-pink-300: #ffb4d2;
+  --color-pink-400: #ff80b1;
+  --color-pink-500: #ff488f;
+  --color-pink-600: #380637;
+
+  /* Semantic */
+  --color-red: #ef4351;
+  --color-yellow: #fec341;
+  --color-green: #15c37e;
+  --color-blue: #3182f7;
+}
+
+@layer base {
+  html {
+    font-family: system-ui, sans-serif;
+  }
+}
+
+@layer components {
+  /* 공통 컴포넌트 스타일 */
+}
+
+@layer utilities {
+  /* 커스텀 유틸리티 클래스 */
+}
