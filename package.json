@@ -1,5 +1,5 @@
 {
-  "name": "LOKOKO-CLIENT",
+  "name": "LOCOCO-CLIENT",
   "private": true,
   "scripts": {
     "build": "turbo run build",
