@@ -6,9 +6,6 @@
         "name": "next"
       }
     ],
-    "paths": {
-      "@lococo/ui/*": ["../../packages/ui/src/*"]
-    },
     "jsx": "preserve"
   },
   "include": [
