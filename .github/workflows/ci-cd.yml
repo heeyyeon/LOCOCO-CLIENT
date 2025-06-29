@@ -15,7 +15,7 @@ jobs:
     if: github.event_name == 'pull_request' ||
         (github.event_name == 'push' && !contains(github.event.head_commit.message, '[skip ci]'))
     runs-on: ubuntu-latest
-    timeout-minutes: 15 
+    timeout-minutes: 15
 
     steps:
       - name: Checkout repository
@@ -25,15 +25,22 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'pnpm'
 
       - name: Install pnpm
-        run: npm install -g pnpm@9 
+        run: npm install -g pnpm@9
 
-      - name: Install dependencies (with pnpm and Turbo caching)
-        run: pnpm install --frozen-lockfile 
+      - name: Cache pnpm store
+        uses: actions/cache@v4
+        with:
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Install dependencies with pnpm
+        run: pnpm install --frozen-lockfile
         env:
-          NEXT_PUBLIC_VERCEL_ENV: development 
+          NEXT_PUBLIC_VERCEL_ENV: development
 
       - name: Cache Turborepo build outputs
         uses: actions/cache@v4
@@ -45,7 +52,7 @@ jobs:
 
       - name: Type Check (TypeScript)
         run: pnpm turbo run check-types --filter=...
-        continue-on-error: true 
+        continue-on-error: true
 
       - name: Lint
         run: pnpm turbo run lint --filter=...
@@ -85,7 +92,7 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: prNumber,
-              body: `###빌드 결과 🛠️\n${message}`
+              body: `### 🛠️ 빌드 결과\n${message}`
             });
 
       - name: Fail job if build failed
