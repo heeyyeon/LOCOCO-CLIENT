@@ -14,6 +14,7 @@ export const config = [
     eslintConfigPrettier,
     ...tseslint.configs.recommended,
     {
+        files: ['**/*.ts', '**/*.tsx'],
         languageOptions: {
             parser: tseslint.parser,
             parserOptions: {
