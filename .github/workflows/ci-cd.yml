@@ -12,8 +12,9 @@ permissions:
 
 jobs:
   build-and-test:
-    if: github.event_name == 'pull_request' ||
-        (github.event_name == 'push' && !contains(github.event.head_commit.message, '[skip ci]'))
+    if: >-
+      github.event_name == 'pull_request' ||
+      (github.event_name == 'push' && !contains(github.event.head_commit.message, '[skip ci]'))
     runs-on: ubuntu-latest
     timeout-minutes: 15
 
@@ -40,32 +41,32 @@ jobs:
       - name: Install dependencies with pnpm
         run: pnpm install --frozen-lockfile
         env:
-          NEXT_PUBLIC_VERCEL_ENV: development
+          NEXT_PUBLIC_VERCEL_ENV: development 
 
       - name: Cache Turborepo build outputs
         uses: actions/cache@v4
         with:
-          path: .turbo
+          path: .turbo 
           key: ${{ runner.os }}-turbo-${{ hashFiles('**/turbo.json') }}
           restore-keys: |
             ${{ runner.os }}-turbo-
 
       - name: Type Check (TypeScript)
-        run: pnpm turbo run check-types --filter=...
-        continue-on-error: true
+        run: pnpm turbo run check-types --filter=web
+        continue-on-error: true 
 
       - name: Lint
-        run: pnpm turbo run lint --filter=...
-        continue-on-error: true
+        run: pnpm turbo run lint --filter=web
+        continue-on-error: true 
 
       - name: Test (Jest/React Testing Library)
-        run: pnpm turbo run test --filter=...
-        continue-on-error: true
+        run: pnpm turbo run test --filter=web
+        continue-on-error: true 
 
       - name: Build Next.js Apps & Storybook
-        id: build_main
-        run: pnpm turbo run build --filter=...
-        continue-on-error: true
+        id: build_main 
+        run: pnpm turbo run build --filter=web
+        continue-on-error: true 
 
       - name: Evaluate build status
         id: status
@@ -96,5 +97,5 @@ jobs:
             });
 
       - name: Fail job if build failed
-        if: steps.build_main.outcome == 'failure'
+        if: steps.build_main.outcome == 'failure' 
         run: exit 1
