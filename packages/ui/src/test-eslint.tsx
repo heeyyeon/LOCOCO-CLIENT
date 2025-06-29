@@ -14,21 +14,21 @@ const user_name = 'john';
 const userName = 'john';
 
 type userInfo = {
-    name: string;
+  name: string;
 };
 
 type UserInfo = {
-    name: string;
+  name: string;
 };
 
 interface userProfile {
-    age: number;
+  age: number;
 }
 
 interface UserProfile {
-    age: number;
+  age: number;
 }
 
 export default function TestComponent() {
-    return <div>ESLint Test</div>;
+  return <div>ESLint Test</div>;
 }
