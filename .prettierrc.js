@@ -6,7 +6,6 @@ module.exports = {
   trailingComma: 'es5',
   printWidth: 80,
   endOfLine: 'lf',
-
   importOrder: ['^react', '^next', '^@lococo/(.*)$', '^@/(.*)$', '^[./]'],
 
   plugins: [
