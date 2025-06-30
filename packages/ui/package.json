@@ -51,5 +51,8 @@
     "tailwindcss": "^4.1.10",
     "typescript": "5.8.2",
     "vitest": "^3.2.4"
+  },
+  "dependencies": {
+    "@storybook/addon-essentials": "9.0.0-alpha.12"
   }
 }
