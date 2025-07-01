@@ -33,7 +33,6 @@ export default function Home() {
       <SvgHome />
       <SvgHome size={32} />
       <SvgHome stroke="#3b82f6" fill="none" />
-      <SvgHome className="text-blue-500" stroke="currentColor" size={32} />
     </div>
   );
 }
