@@ -1,4 +1,5 @@
 import { Button } from '@lococo/design-system';
+import SvgHome from '@lococo/design-system/icons/components/Home';
 
 export default function Home() {
   return (
@@ -29,6 +30,10 @@ export default function Home() {
           <p className="text-en-caption1 font-medium">caption1 m EN</p>
         </div>
       </div>
+      <SvgHome />
+      <SvgHome size={32} />
+      <SvgHome stroke="#3b82f6" fill="none" />
+      <SvgHome className="text-blue-500" stroke="currentColor" size={32} />
     </div>
   );
 }
