@@ -11,8 +11,9 @@
     "check-types": "tsc --noEmit"
   },
   "dependencies": {
-    "@lococo/ui": "workspace:*",
+    "@lococo/design-system": "workspace:*",
     "@tailwindcss/postcss": "^4.1.10",
+    "design-system:build": "link:@lococo/design-system:build",
     "@tanstack/react-query": "^5.81.5",
     "next": "^15.3.0",
     "postcss": "^8.5.6",
