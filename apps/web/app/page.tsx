@@ -1,4 +1,4 @@
-import { Button } from '@lococo/ui';
+import { Button } from "@lococo/design-system";
 
 export default function Home() {
   return (

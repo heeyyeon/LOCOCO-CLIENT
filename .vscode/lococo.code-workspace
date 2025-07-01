@@ -6,8 +6,8 @@
       "path": "../apps/web",
     },
     {
-      "name": "ui",
-      "path": "../packages/ui",
+      "name": "design-system",
+      "path": "../packages/design-system",
     },
   ],
 }
