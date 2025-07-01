@@ -18,7 +18,10 @@
     "dev:components": "tsc --watch",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "build": "pnpm build:styles && pnpm build:components"
+    "icons:build": "svgr src/icons/svg --out-dir src/icons/components --typescript --ext tsx --no-prettier",
+    "icons:watch": "svgr src/icons/svg --out-dir src/icons/components --typescript --ext tsx --no-prettier --watch",
+    "icons:clean": "rm -rf src/icons/components && mkdir -p src/icons/components",
+    "build": "pnpm icons:build && pnpm build:styles && pnpm build:components"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^4.0.1",
