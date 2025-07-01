@@ -17,7 +17,7 @@ const meta: Meta<typeof Select> = {
 };
 export default meta;
 
-export const Ddefault: StoryObj<typeof Select> = {
+export const Default: StoryObj<typeof Select> = {
   render: (args) => (
     <Select {...args}>
       <SelectTrigger>

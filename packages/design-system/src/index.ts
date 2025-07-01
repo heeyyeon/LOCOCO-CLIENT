@@ -1,5 +1,5 @@
 import '@lococo/tailwind-config';
 
-export * from './components/ui/index';
+export * from './components/index';
 
 export * from './lib/utils';
