@@ -13,11 +13,11 @@ interface Props extends SVGProps<SVGSVGElement> {
   fill?: string;
 }
 
-const ${variables.componentName} = (props: Props) => (
-  ${variables.jsx}
-);
-
-${variables.exports};
+export function ${variables.componentName}(props: Props) {
+  return (
+    ${variables.jsx}
+  );
+}
 `;
   },
 
@@ -39,7 +39,7 @@ ${variables.exports};
       const basename = filePath.replace(/\.[^/.]+$/, '');
       const componentName =
         basename.charAt(0).toUpperCase() + basename.slice(1);
-      return `export { default as ${componentName} } from './${basename}';`;
+      return `export { ${componentName} } from './${basename}';`;
     });
     return exportEntries.join('\n') + '\n';
   },
