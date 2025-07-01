@@ -1,10 +1,10 @@
-import { Button } from "@lococo/design-system";
+import { Button } from '@lococo/design-system';
 
 export default function Home() {
   return (
     <div>
       <Button size="small">ui 컴포넌트 핑크 버튼</Button>
-      <div className="flex space-x-14 mt-12">
+      <div className="mt-12 flex space-x-14">
         <div>
           <p className="text-jp-head1 font-bold">head1 JP</p>
           <p className="text-jp-head2 font-bold">head2 JP</p>

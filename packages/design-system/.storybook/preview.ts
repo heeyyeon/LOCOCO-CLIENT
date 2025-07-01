@@ -1,9 +1,9 @@
-import type { Preview } from "@storybook/react-vite";
-import "../styles.css";
+import type { Preview } from '@storybook/react-vite';
+import '../styles.css';
 
 const preview: Preview = {
   parameters: {
-    actions: { argTypesRegex: "^on[A-Z].*" },
+    actions: { argTypesRegex: '^on[A-Z].*' },
 
     controls: {
       matchers: {
@@ -12,7 +12,7 @@ const preview: Preview = {
       },
     },
 
-    tags: ["autodocs"],
+    tags: ['autodocs'],
   },
 };
 
