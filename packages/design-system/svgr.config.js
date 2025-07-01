@@ -1,3 +1,5 @@
+const path = require('path');
+
 module.exports = {
   typescript: true,
   ext: 'tsx',
@@ -36,10 +38,10 @@ export function ${variables.componentName}(props: Props) {
 
   indexTemplate: (filePaths) => {
     const exportEntries = filePaths.map(({ path: filePath }) => {
-      const basename = filePath.replace(/\.[^/.]+$/, '');
-      const componentName =
-        basename.charAt(0).toUpperCase() + basename.slice(1);
-      return `export { ${componentName} } from './${basename}';`;
+      const basename = path.basename(filePath, path.extname(filePath));
+      const actualComponentName =
+        'Svg' + basename.charAt(0).toUpperCase() + basename.slice(1);
+      return `export { ${actualComponentName} } from './${basename}';`;
     });
     return exportEntries.join('\n') + '\n';
   },
