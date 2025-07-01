@@ -1,5 +1,5 @@
 import { Button } from '@lococo/design-system';
-import SvgHome from '@lococo/design-system/icons/components/Home';
+import { SvgHome } from '@lococo/design-system/icons/components/Home';
 
 export default function Home() {
   return (

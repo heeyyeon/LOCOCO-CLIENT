@@ -1,1 +1,1 @@
-export { default as /Users/gojeseong/Desktop/sopt/appjam/lokoko/LOCOCO-CLIENT/packages/design-system/src/icons/components/Home } from './/Users/gojeseong/Desktop/sopt/appjam/lokoko/LOCOCO-CLIENT/packages/design-system/src/icons/components/Home';
+export { /Users/gojeseong/Desktop/sopt/appjam/lokoko/LOCOCO-CLIENT/packages/design-system/src/icons/components/Home } from './/Users/gojeseong/Desktop/sopt/appjam/lokoko/LOCOCO-CLIENT/packages/design-system/src/icons/components/Home';
