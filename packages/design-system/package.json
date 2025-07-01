@@ -59,6 +59,10 @@
     "eslint-plugin-storybook": "^9.0.14"
   },
   "dependencies": {
-    "@storybook/addon-essentials": "9.0.0-alpha.12"
+    "@radix-ui/react-select": "^2.2.5",
+    "@storybook/addon-essentials": "9.0.0-alpha.12",
+    "class-variance-authority": "^0.7.1",
+    "lucide-react": "^0.525.0",
+    "tw-animate-css": "^1.3.4"
   }
 }
