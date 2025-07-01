@@ -3,13 +3,14 @@ module.exports = {
   ext: 'tsx',
   prettier: false,
 
-  // 커스텀 템플릿으로 인터페이스 포함
   template: (variables, { tpl }) => {
     return tpl`
 ${variables.imports};
 
 interface Props extends SVGProps<SVGSVGElement> {
   size?: number;
+  stroke?: string;
+  fill?: string;
 }
 
 const ${variables.componentName} = (props: Props) => (
