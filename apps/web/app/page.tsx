@@ -1,10 +1,34 @@
-import { Button } from "@lococo/design-system";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectSeparator,
+  SelectTrigger,
+  SelectValue,
+} from '@lococo/design-system';
 
 export default function Home() {
   return (
     <div>
-      <Button size="small">ui 컴포넌트 핑크 버튼</Button>
-      <div className="flex space-x-14 mt-12">
+      <Select>
+        <SelectTrigger>
+          <SelectValue placeholder="Select a fruit" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectGroup>
+            <SelectLabel>Fruits</SelectLabel>
+            <SelectItem value="apple">Apple</SelectItem>
+            <SelectItem value="banana">Banana</SelectItem>
+            <SelectItem value="blueberry">Blueberry</SelectItem>
+            <SelectSeparator />
+            <SelectItem value="grapes">Grapes</SelectItem>
+            <SelectItem value="pineapple">Pineapple</SelectItem>
+          </SelectGroup>
+        </SelectContent>
+      </Select>
+      <div className="mt-12 flex space-x-14">
         <div>
           <p className="text-jp-head1 font-bold">head1 JP</p>
           <p className="text-jp-head2 font-bold">head2 JP</p>
