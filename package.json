@@ -7,12 +7,14 @@
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "check-types": "turbo run check-types",
-     "deploy:web": "turbo run deploy --scope='web'"
+    "deploy:web": "turbo run deploy --scope='web'",
+    "generate:api:web": "swagger-typescript-api generate -p https://52.79.208.129.nip.io/v3/api-docs/public-api -o ./apps/web/shared/api --name Api.ts"
   },
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "^5.2.2",
     "prettier": "^3.6.0",
     "prettier-plugin-tailwindcss": "^0.6.13",
+    "swagger-typescript-api": "^13.2.7",
     "turbo": "^2.5.4",
     "typescript": "5.8.2"
   },
