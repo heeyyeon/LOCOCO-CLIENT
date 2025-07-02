@@ -1,5 +1,5 @@
 import type { StorybookConfig } from '@storybook/react-vite';
-import { join, dirname, resolve } from 'path';
+import { dirname, resolve, join } from 'path';
 
 /**
  * This function is used to resolve the absolute path of a package.
