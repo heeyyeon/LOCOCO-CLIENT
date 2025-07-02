@@ -1,5 +1,10 @@
-import { Button } from '@lococo/design-system';
-import { SvgHome } from '@lococo/design-system/icons/components/Home';
+import {
+  Button,
+  SvgArrowUp,
+  SvgErrorFill,
+  SvgHome,
+  SvgLikeFill,
+} from '@lococo/design-system';
 
 export default function Home() {
   return (
@@ -31,8 +36,11 @@ export default function Home() {
         </div>
       </div>
       <SvgHome />
-      <SvgHome size={32} />
-      <SvgHome stroke="#3b82f6" fill="none" />
+      <SvgHome size={32} className="stroke-blue" />
+      <SvgHome className="stroke-blue" />
+      <SvgArrowUp className="fill-pink-400" />
+      <SvgErrorFill />
+      <SvgLikeFill className="fill-pink-400" />
     </div>
   );
 }
