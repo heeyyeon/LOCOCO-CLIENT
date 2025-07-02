@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Noto_Sans_JP } from 'next/font/google';
 import localFont from 'next/font/local';
-import { Providers } from '../shared/utils';
+import { Providers } from '../utils';
 import './globals.css';
 
 const notoSansJP = Noto_Sans_JP({
