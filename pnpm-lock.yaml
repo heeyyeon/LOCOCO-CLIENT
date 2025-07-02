@@ -202,6 +202,9 @@ importers:
       eslint-plugin-react-hooks:
         specifier: ^5.2.0
         version: 5.2.0(eslint@9.29.0(jiti@2.4.2))
+      eslint-plugin-storybook:
+        specifier: ^9.0.14
+        version: 9.0.14(eslint@9.29.0(jiti@2.4.2))(storybook@9.0.14(@testing-library/dom@10.4.0)(prettier@3.6.0))(typescript@5.8.2)
       eslint-plugin-turbo:
         specifier: ^2.5.0
         version: 2.5.0(eslint@9.29.0(jiti@2.4.2))(turbo@2.5.4)
