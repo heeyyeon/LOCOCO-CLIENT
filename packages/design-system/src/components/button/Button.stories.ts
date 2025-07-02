@@ -10,12 +10,6 @@ export default meta;
 
 type Story = StoryObj<typeof Button>;
 
-export const Small: Story = {
-  args: {
-    size: 'small',
-    children: 'small button',
-  },
-};
 export const Large: Story = {
   args: {
     size: 'large',
