@@ -14,7 +14,7 @@ export const Button = ({ children, className, appName }: ButtonProps) => {
   return (
     <button
       className={cn(
-        'text-blue hover:bg-color-pink-500 rounded-md bg-gray-500 px-4 py-2 font-bold text-white transition-colors',
+        'hover:bg-color-pink-500 rounded-md bg-gray-500 px-4 py-2 font-bold text-white transition-colors',
         className
       )}
       onClick={() => alert(`Hello from your ${appName} app!`)}
