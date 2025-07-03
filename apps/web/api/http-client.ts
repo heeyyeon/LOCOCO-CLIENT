@@ -10,66 +10,6 @@
  * ---------------------------------------------------------------
  */
 
-export interface ApiResponseVoid {
-  success?: boolean;
-  /** @format int32 */
-  status?: number;
-  message?: string;
-  data?: any;
-}
-
-export interface ApiResponseListVideoResponse {
-  success?: boolean;
-  /** @format int32 */
-  status?: number;
-  message?: string;
-  data?: VideoResponse[];
-}
-
-export interface VideoResponse {
-  /** @format int64 */
-  id?: number;
-  topic?: string;
-  title?: string;
-  url?: string;
-  /** @format int32 */
-  popularity?: number;
-  /** @format int64 */
-  viewCount?: number;
-  /** @format date-time */
-  uploadedAt?: string;
-}
-
-export interface ApiResponseLoginUrlResponse {
-  success?: boolean;
-  /** @format int32 */
-  status?: number;
-  message?: string;
-  data?: LoginUrlResponse;
-}
-
-export interface LoginUrlResponse {
-  authorizationUrl?: string;
-}
-
-export interface ApiResponseLineLoginResponse {
-  success?: boolean;
-  /** @format int32 */
-  status?: number;
-  message?: string;
-  data?: LineLoginResponse;
-}
-
-export interface LineLoginResponse {
-  tokens?: LoginDto;
-}
-
-export interface LoginDto {
-  accessToken?: string;
-  refreshToken?: string;
-  loginStatus?: "LOGIN" | "REGISTER";
-}
-
 export type QueryParamsType = Record<string | number, any>;
 export type ResponseFormat = keyof Omit<Body, "body" | "bodyUsed">;
 
@@ -123,7 +63,7 @@ export enum ContentType {
 }
 
 export class HttpClient<SecurityDataType = unknown> {
-  public baseUrl: string = "/";
+  public baseUrl: string = "http://52.79.208.129.nip.io";
   private securityData: SecurityDataType | null = null;
   private securityWorker?: ApiConfig<SecurityDataType>["securityWorker"];
   private abortControllers = new Map<CancelToken, AbortController>();
@@ -316,92 +256,5 @@ export class HttpClient<SecurityDataType = unknown> {
       if (!response.ok) throw data;
       return data;
     });
-  };
-}
-
-/**
- * @title LOCOCO
- * @version 1.1.0
- * @baseUrl /
- *
- * LOCOCO API 문서
- */
-export class Api<
-  SecurityDataType extends unknown,
-> extends HttpClient<SecurityDataType> {
-  api = {
-    /**
-     * No description
-     *
-     * @tags AUTH
-     * @name ReissueRefreshToken
-     * @summary RefreshToken 재발급
-     * @request POST:/api/auth/refresh
-     * @secure
-     */
-    reissueRefreshToken: (params: RequestParams = {}) =>
-      this.request<ApiResponseVoid, any>({
-        path: `/api/auth/refresh`,
-        method: "POST",
-        secure: true,
-        ...params,
-      }),
-
-    /**
-     * No description
-     *
-     * @tags YOUTUBE
-     * @name GetPopularTrends
-     * @summary 인기 뷰티 트렌드 영상 조회
-     * @request GET:/api/youtube/trends
-     * @secure
-     */
-    getPopularTrends: (params: RequestParams = {}) =>
-      this.request<ApiResponseListVideoResponse, any>({
-        path: `/api/youtube/trends`,
-        method: "GET",
-        secure: true,
-        ...params,
-      }),
-
-    /**
-     * No description
-     *
-     * @tags AUTH
-     * @name GetLoginUrl
-     * @summary 라인 로그인 URL 생성 (클라에서 호출)
-     * @request GET:/api/auth/url
-     * @secure
-     */
-    getLoginUrl: (params: RequestParams = {}) =>
-      this.request<ApiResponseLoginUrlResponse, any>({
-        path: `/api/auth/url`,
-        method: "GET",
-        secure: true,
-        ...params,
-      }),
-
-    /**
-     * No description
-     *
-     * @tags AUTH
-     * @name LineLogin
-     * @summary 라인 소셜 로그인, JWT 토큰 발급
-     * @request GET:/api/auth/line/login
-     * @secure
-     */
-    lineLogin: (
-      query: {
-        code: string;
-      },
-      params: RequestParams = {},
-    ) =>
-      this.request<ApiResponseLineLoginResponse, any>({
-        path: `/api/auth/line/login`,
-        method: "GET",
-        query: query,
-        secure: true,
-        ...params,
-      }),
   };
 }

@@ -8,7 +8,7 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "check-types": "turbo run check-types",
     "deploy:web": "turbo run deploy --scope='web'",
-    "generate:api:web": "swagger-typescript-api generate -p https://52.79.208.129.nip.io/v3/api-docs/public-api -o ./apps/web/api --name Api.ts"
+    "generate:api:web": "swagger-typescript-api generate -p https://52.79.208.129.nip.io/v3/api-docs/public-api -o ./apps/web/api --modular --clean-output --module-name-first-tag"
   },
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "^5.2.2",
