@@ -24,10 +24,16 @@ export default [
   },
   {
     files: [
+      // design-system 패키지 내 실제 경로
+      'packages/design-system/.storybook/*.ts',
+      'packages/design-system/vitest.config.ts',
+      'packages/design-system/turbo/generators/config.ts',
+      'packages/design-system/vitest.shims.d.ts',
+      // 여러 패키지에서 쓸 수 있도록 넓은 glob도 추가
       '**/.storybook/*.ts',
-      'vitest.config.ts',
-      'turbo/generators/config.ts',
-      'vitest.shims.d.ts',
+      '**/vitest.config.ts',
+      '**/turbo/generators/config.ts',
+      '**/vitest.shims.d.ts',
     ],
     languageOptions: {
       parserOptions: {
