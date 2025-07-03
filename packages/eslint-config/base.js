@@ -24,7 +24,7 @@ export default [
   },
   {
     files: [
-      '.storybook/*.ts',
+      '**/.storybook/*.ts',
       'vitest.config.ts',
       'turbo/generators/config.ts',
       'vitest.shims.d.ts',
