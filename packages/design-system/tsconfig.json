@@ -1,5 +1,5 @@
 {
-  "extends": "@lococo/typescript-config/react-library.json",
+  "extends": "@lococo/typescript-config/nextjs.json",
   "compilerOptions": {
     "outDir": "dist",
     "baseUrl": ".",
@@ -11,8 +11,10 @@
     "src",
     ".storybook",
     ".storybook/*.ts",
-    "turbo/generators/config.ts"
+    "turbo/generators/config.ts",
+    "vitest.config.ts",
+    "vitest.shims.d.ts"
   ],
 
-  "exclude": ["node_modules", "dist", "vitest.config.ts", "vitest.shims.d.ts"]
+  "exclude": ["node_modules", "dist"]
 }

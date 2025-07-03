@@ -11,19 +11,7 @@ import tseslint from 'typescript-eslint';
  * */
 export default [
   // parserOptions.project 예외 glob을 맨 앞에 위치
-  {
-    files: [
-      '.storybook/*.ts',
-      'vitest.config.ts',
-      'turbo/generators/config.ts',
-      'vitest.shims.d.ts',
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: undefined,
-      },
-    },
-  },
+
   js.configs.recommended,
   eslintConfigPrettier,
   ...tseslint.configs.recommended,
@@ -50,16 +38,7 @@ export default [
     },
   },
   {
-    ignores: [
-      'dist/**',
-      '**/node_modules/**',
-      'vitest.config.ts',
-      'vitest.shims.d.ts',
-      '**/*.config.js',
-      '.storybook/**',
-      'turbo/**',
-      'src/icons/svgr.*.js',
-    ],
+    ignores: ['dist/**', '**/node_modules/**'],
   },
   // 로코코 내부 컨벤션
   {
@@ -98,28 +77,6 @@ export default [
           format: ['PascalCase'],
         },
       ],
-    },
-  },
-  {
-    files: ['**/*.js', '**/svgr.*.js', 'src/icons/**/*.js'],
-    languageOptions: {
-      sourceType: 'commonjs',
-      globals: {
-        require: 'readonly',
-        module: 'readonly',
-        exports: 'readonly',
-      },
-    },
-    rules: {
-      '@typescript-eslint/no-require-imports': 'off',
-    },
-  },
-  {
-    files: ['**/*.stories.*'],
-    rules: {
-      '@typescript-eslint/naming-convention': 'off',
-      'import/no-anonymous-default-export': 'off',
-      'storybook/no-renderer-packages': 'off',
     },
   },
 ];
