@@ -11,8 +11,10 @@
     "check-types": "tsc --noEmit"
   },
   "dependencies": {
-    "@lococo/ui": "workspace:*",
+    "@lococo/design-system": "workspace:*",
     "@tailwindcss/postcss": "^4.1.10",
+    "@tanstack/react-query": "^5.81.5",
+    "design-system:build": "link:@lococo/design-system:build",
     "next": "^15.3.0",
     "postcss": "^8.5.6",
     "react": "^19.1.0",
@@ -21,8 +23,9 @@
   },
   "devDependencies": {
     "@lococo/eslint-config": "workspace:*",
-    "@lococo/typescript-config": "workspace:*",
     "@lococo/tailwind-config": "workspace:*",
+    "@lococo/typescript-config": "workspace:*",
+    "@tanstack/react-query-devtools": "^5.81.5",
     "@types/node": "^22.15.3",
     "@types/react": "19.1.0",
     "@types/react-dom": "19.1.1",
