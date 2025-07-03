@@ -9,7 +9,9 @@ import tseslint from 'typescript-eslint';
  *
  * @type {import("eslint").Linter.Config[]}
  * */
-export const config = [
+export default [
+  // parserOptions.project 예외 glob을 맨 앞에 위치
+
   js.configs.recommended,
   eslintConfigPrettier,
   ...tseslint.configs.recommended,
@@ -36,7 +38,7 @@ export const config = [
     },
   },
   {
-    ignores: ['dist/**'],
+    ignores: ['dist/**', '**/node_modules/**'],
   },
   // 로코코 내부 컨벤션
   {
