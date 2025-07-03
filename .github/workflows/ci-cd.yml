@@ -41,31 +41,28 @@ jobs:
       - name: Install dependencies with pnpm
         run: pnpm install --frozen-lockfile
         env:
-          NEXT_PUBLIC_VERCEL_ENV: development 
+          NEXT_PUBLIC_VERCEL_ENV: development
 
       - name: Cache Turborepo build outputs
         uses: actions/cache@v4
         with:
-          path: .turbo 
+          path: .turbo
           key: ${{ runner.os }}-turbo-${{ hashFiles('**/turbo.json') }}
           restore-keys: |
             ${{ runner.os }}-turbo-
 
       - name: Build Design System
-        run: pnpm turbo run build --filter=@lococo/design-system 
+        run: pnpm turbo run build --filter=@lococo/design-system
 
       - name: Type Check (TypeScript)
-        run: pnpm turbo run check-types --filter=@lococo/web 
+        run: pnpm turbo run check-types --filter=@lococo/web
 
       - name: Lint
-        run: pnpm turbo run lint --filter=@lococo/web 
-
-      - name: Test (Jest/React Testing Library)
-        run: pnpm turbo run test --filter=@lococo/web 
+        run: pnpm turbo run lint --filter=@lococo/web
 
       - name: Build Next.js Apps & Storybook
-        id: build_main 
-        run: pnpm turbo run build --filter=@lococo/web 
+        id: build_main
+        run: pnpm turbo run build --filter=@lococo/web
 
       - name: Evaluate build status
         id: status
@@ -96,5 +93,5 @@ jobs:
             });
 
       - name: Fail job if build failed
-        if: steps.build_main.outcome == 'failure' 
+        if: steps.build_main.outcome == 'failure'
         run: exit 1

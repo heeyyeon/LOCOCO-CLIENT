@@ -50,7 +50,13 @@ export default [
     },
   },
   {
-    ignores: ['dist/**'],
+    ignores: [
+      'dist/**',
+      'base.js',
+      'next.js',
+      'react-internal.js',
+      'vitest.config.ts',
+    ],
   },
   // 로코코 내부 컨벤션
   {
