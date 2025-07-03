@@ -1,5 +1,6 @@
 {
   "name": "@lococo/design-system",
+  "type": "module",
   "version": "0.0.0",
   "private": true,
   "main": "./src/index.ts",

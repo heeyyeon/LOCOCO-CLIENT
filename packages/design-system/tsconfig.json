@@ -1,5 +1,5 @@
 {
-  "extends": "@lococo/typescript-config/react-library.json",
+  "extends": "@lococo/typescript-config/nextjs.json",
   "compilerOptions": {
     "outDir": "dist",
     "baseUrl": ".",
@@ -15,6 +15,5 @@
     "vitest.config.ts",
     "vitest.shims.d.ts"
   ],
-
   "exclude": ["node_modules", "dist"]
 }
