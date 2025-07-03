@@ -51,22 +51,21 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-turbo-
 
+      - name: Build Design System
+        run: pnpm turbo run build --filter=@lococo/design-system 
+
       - name: Type Check (TypeScript)
-        run: pnpm turbo run check-types --filter=@lococo/web
-        continue-on-error: true 
+        run: pnpm turbo run check-types --filter=@lococo/web 
 
       - name: Lint
-        run: pnpm turbo run lint --filter=@lococo/web
-        continue-on-error: true 
+        run: pnpm turbo run lint --filter=@lococo/web 
 
       - name: Test (Jest/React Testing Library)
-        run: pnpm turbo run test --filter=@lococo/web
-        continue-on-error: true 
+        run: pnpm turbo run test --filter=@lococo/web 
 
       - name: Build Next.js Apps & Storybook
         id: build_main 
-        run: pnpm turbo run build --filter=@lococo/web
-        continue-on-error: true 
+        run: pnpm turbo run build --filter=@lococo/web 
 
       - name: Evaluate build status
         id: status
