@@ -10,6 +10,20 @@ import tseslint from 'typescript-eslint';
  * @type {import("eslint").Linter.Config[]}
  * */
 export default [
+  // parserOptions.project 예외 glob을 맨 앞에 위치
+  {
+    files: [
+      '.storybook/*.ts',
+      'vitest.config.ts',
+      'turbo/generators/config.ts',
+      'vitest.shims.d.ts',
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: undefined,
+      },
+    },
+  },
   js.configs.recommended,
   eslintConfigPrettier,
   ...tseslint.configs.recommended,
@@ -19,25 +33,6 @@ export default [
       parser: tseslint.parser,
       parserOptions: {
         project: true,
-      },
-    },
-  },
-  {
-    files: [
-      // design-system 패키지 내 실제 경로
-      'packages/design-system/.storybook/*.ts',
-      'packages/design-system/vitest.config.ts',
-      'packages/design-system/turbo/generators/config.ts',
-      'packages/design-system/vitest.shims.d.ts',
-      // 여러 패키지에서 쓸 수 있도록 넓은 glob도 추가
-      '**/.storybook/*.ts',
-      '**/vitest.config.ts',
-      '**/turbo/generators/config.ts',
-      '**/vitest.shims.d.ts',
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: undefined,
       },
     },
   },
