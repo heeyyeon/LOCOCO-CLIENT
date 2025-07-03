@@ -9,8 +9,9 @@
  * ## SOURCE: https://github.com/acacode/swagger-typescript-api ##
  * ---------------------------------------------------------------
  */
-import { ApiResponseListVideoResponse } from './data-contracts';
-import { HttpClient, RequestParams } from './http-client';
+
+import { ApiResponseListVideoResponse } from "./data-contracts";
+import { HttpClient, RequestParams } from "./http-client";
 
 export class Youtube<
   SecurityDataType = unknown,
@@ -27,7 +28,7 @@ export class Youtube<
   getPopularTrends = (params: RequestParams = {}) =>
     this.request<ApiResponseListVideoResponse, any>({
       path: `/api/youtube/trends`,
-      method: 'GET',
+      method: "GET",
       secure: true,
       ...params,
     });
