@@ -1,7 +1,7 @@
 import '@lococo/tailwind-config';
 
 // Components
-export * from './components/index';
+export * from './components/select/index';
 
 // icons
 export * from './icons';
