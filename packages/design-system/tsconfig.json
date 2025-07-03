@@ -11,9 +11,8 @@
     "src",
     ".storybook",
     ".storybook/*.ts",
-    "vitest.config.ts",
-    "turbo/generators/config.ts",
-    "vitest.shims.d.ts"
+    "turbo/generators/config.ts"
   ],
-  "exclude": ["node_modules", "dist", "vitest.config.ts"]
+
+  "exclude": ["node_modules", "dist", "vitest.config.ts", "vitest.shims.d.ts"]
 }
