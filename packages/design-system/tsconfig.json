@@ -1,5 +1,5 @@
 {
-  "extends": "@lococo/typescript-config/react-library.json",
+  "extends": "@lococo/typescript-config/nextjs.json",
   "compilerOptions": {
     "outDir": "dist",
     "baseUrl": ".",
