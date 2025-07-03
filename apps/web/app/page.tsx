@@ -5,11 +5,16 @@ import {
   SvgHome,
   SvgLikeFill,
 } from '@lococo/design-system';
+import Checkbox from '@lococo/design-system/components/checkbox/checkbox';
+import { cn } from '@/lib/utils';
 
 export default function Home() {
   return (
     <div>
       <Button size="small">ui 컴포넌트 핑크 버튼</Button>
+      <div className={cn('bg-pink-200', 'text-pink-400')}>
+        <p>test</p>
+      </div>
       <div className="mt-12 flex space-x-14">
         <div>
           <p className="text-jp-head1 font-bold">head1 JP</p>
@@ -41,6 +46,7 @@ export default function Home() {
       <SvgArrowUp className="fill-pink-400" />
       <SvgErrorFill />
       <SvgLikeFill className="fill-pink-400" />
+      <Checkbox></Checkbox>
     </div>
   );
 }
