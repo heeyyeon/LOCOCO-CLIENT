@@ -4,7 +4,7 @@
   "rsc": false,
   "tsx": true,
   "tailwind": {
-    "config": "./../tailwind-config/shared-styles.css",
+    "config": "",
     "css": "./styles.css",
     "baseColor": "neutral",
     "cssVariables": true,

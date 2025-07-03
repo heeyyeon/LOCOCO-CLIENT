@@ -1,0 +1,1 @@
+export { SvgHome } from './Home';
