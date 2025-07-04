@@ -1,15 +1,15 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import Bedge from './Bedge';
+import Badge from './Badge';
 
-const meta: Meta<typeof Bedge> = {
-  title: 'components/Bedge',
-  component: Bedge,
+const meta: Meta<typeof Badge> = {
+  title: 'components/Badge',
+  component: Badge,
   tags: ['autodocs'],
 };
 
 export default meta;
 
-type Story = StoryObj<typeof Bedge>;
+type Story = StoryObj<typeof Badge>;
 
 export const First: Story = {
   args: { rank: '1' },
