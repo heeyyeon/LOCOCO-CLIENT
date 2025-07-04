@@ -12,9 +12,9 @@ export default meta;
 type Story = StoryObj<typeof Badge>;
 
 export const First: Story = {
-  args: { rank: '1' },
+  args: { rank: 1 },
 };
 
 export const SecondThird: Story = {
-  args: { rank: '2' },
+  args: { rank: 2 },
 };
