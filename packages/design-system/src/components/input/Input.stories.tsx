@@ -16,7 +16,6 @@ const meta: Meta<typeof Input> = {
 export default meta;
 type Story = StoryObj<typeof Input>;
 
-// Default
 export const Default: Story = {
   args: {
     type: 'default',
@@ -36,7 +35,6 @@ export const Typing: Story = {
   args: { ...Default.args, value: 'Text' },
 };
 
-// Search
 export const SearchDefault: Story = {
   args: {
     type: 'search',
