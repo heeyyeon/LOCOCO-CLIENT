@@ -1,6 +1,7 @@
 import { Badge } from '../badge';
 
 interface CardReviewProps {
+  type?: 'video' | 'image';
   isShowRank?: boolean;
   rank?: number;
   brand: string;
@@ -16,6 +17,7 @@ interface CardReviewProps {
   onCardClick?: (reviewId: number) => void;
 }
 export default function CardReview({
+  type = 'image',
   isShowRank,
   rank,
   brand,
