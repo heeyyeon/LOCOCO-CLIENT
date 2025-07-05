@@ -10,15 +10,25 @@ interface CardReviewProps {
   brand: string;
   title: string;
   reviewId: number;
-  isLiked: boolean;
   rating?: number;
   reviewCount?: number;
   likeCount: number;
   imageUrl?: string;
   label?: string;
-  handleLikeToggle?: (reviewId: number, isLiked: boolean) => void;
   handleCardClick?: (reviewId: number) => void;
 }
+
+const imageWrapperVariant = cva(
+  'relative border-[0.0625rem] border-gray-200 flex items-center justify-center bg-gray-700',
+  {
+    variants: {
+      type: {
+        video: 'w-[16.5rem] h-[22rem]',
+        image: 'w-[16.5rem] h-[16.5rem]',
+      },
+    },
+  }
+);
 
 export default function CardReview({
   type = 'image',
@@ -27,30 +37,11 @@ export default function CardReview({
   brand,
   title,
   reviewId,
-  isLiked,
   likeCount,
   imageUrl,
   label,
-  handleLikeToggle,
   handleCardClick,
 }: CardReviewProps) {
-  const imageWrapperVariant = cva(
-    'relative border-[0.0625rem] border-gray-200 flex items-center justify-center',
-    {
-      variants: {
-        type: {
-          video: 'w-[16.5rem] h-[22rem]',
-          image: 'w-[16.5rem] h-[16.5rem]',
-        },
-      },
-    }
-  );
-
-  const handleLikeClick = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    handleLikeToggle?.(reviewId, !isLiked);
-  };
-
   return (
     <article
       className="group flex w-[16.5rem] cursor-pointer flex-col"
@@ -76,9 +67,7 @@ export default function CardReview({
           </div>
 
           <div className="flex items-center gap-[0.5rem]">
-            <button onClick={handleLikeClick}>
-              <SvgLikeFill size={24} fill={isLiked ? '#ff487f' : 'white'} />
-            </button>
+            <SvgLikeFill size={24} fill="white" />
             <p className="text-en-body1 font-[500] text-white">{likeCount}</p>
           </div>
         </div>

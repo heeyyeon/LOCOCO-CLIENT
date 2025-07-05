@@ -5,14 +5,14 @@ import { Badge } from '../badge';
 
 interface CardProductProps {
   isShowRank?: boolean;
-  rank?: number;
+  rank: number;
   brand: string;
   title: string;
   description: string;
   productId: number;
   isLiked: boolean;
-  rating?: number;
-  reviewCount?: number;
+  rating: number;
+  reviewCount: number;
   likeCount: number;
   imageUrl?: string;
   handleLikeToggle?: (productId: number, isLiked: boolean) => void;
@@ -40,7 +40,7 @@ export default function CardProduct({
 
   return (
     <article
-      className="flex w-[16.5rem] cursor-pointer flex-col"
+      className="flex w-[16.5rem] cursor-pointer flex-col bg-gray-700"
       onClick={() => handleCardClick?.(productId)}
     >
       <div className="relative border-[0.0625rem] border-gray-200">
@@ -61,9 +61,9 @@ export default function CardProduct({
         <p className="text-jp-body1 font-[700]">{brand}</p>
         <button onClick={handleLikeClick}>
           {isLiked ? (
-            <SvgLikeFill size={44} fill="#ff487f" />
+            <SvgLikeFill size={24} fill="#ff487f" />
           ) : (
-            <SvgLikeOutline size={44} fill="white" />
+            <SvgLikeOutline size={24} fill="white" />
           )}
         </button>
       </div>
