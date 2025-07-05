@@ -4,6 +4,7 @@ interface Props extends SVGProps<SVGSVGElement> {
   size?: number;
   fill?: string;
 }
+
 export function SvgLikeFill(props: Props) {
   return (
     <svg
