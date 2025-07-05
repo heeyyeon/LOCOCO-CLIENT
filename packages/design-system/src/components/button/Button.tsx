@@ -1,25 +1,104 @@
-import { ComponentProps } from 'react';
+import { cva, VariantProps } from 'class-variance-authority';
+import React, { ButtonHTMLAttributes, ReactNode } from 'react';
 import { cn } from '../../lib/utils';
 
-interface ButtonProps extends ComponentProps<'button'> {
-  size?: 'small' | 'large';
+interface ButtonProps
+  extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'color'>,
+    VariantProps<typeof buttonVariants> {
+  icon?: ReactNode;
+  iconPosition?: 'left' | 'right';
+  children: ReactNode;
 }
 
+const buttonVariants = cva(
+  'inline-flex items-center justify-center font-bold',
+  {
+    variants: {
+      variant: {
+        filled: '',
+        outline: 'bg-transparent',
+        text: 'bg-transparent',
+      },
+      color: {
+        primary: '',
+        secondary: '',
+      },
+      shape: {
+        default: '',
+        round: 'rounded-[0.5rem]',
+      },
+      size: {
+        large:
+          'h-[3.75rem] px-[2rem] py-[0.625rem] gap-[0.5rem] text-jp-title2',
+        medium:
+          'h-[3.25rem] px-[2rem] py-[0.625rem] gap-[0.5rem] text-jp-title3',
+        small: 'h-[2rem] px-[1rem] py-[0.625rem] gap-[0.5rem] text-jp-body2',
+      },
+    },
+    compoundVariants: [
+      {
+        variant: 'filled',
+        color: 'primary',
+        class: 'bg-pink-500 text-white',
+      },
+      {
+        variant: 'filled',
+        color: 'secondary',
+        class: 'bg-pink-100 text-pink-500',
+      },
+      {
+        variant: 'outline',
+        color: 'primary',
+        class: 'border-b border-pink-500 text-pink-500',
+      },
+      {
+        variant: 'outline',
+        color: 'secondary',
+        class: 'border-b border-pink-500 bg-pink-100 text-pink-500',
+      },
+      {
+        variant: 'text',
+        color: 'primary',
+        class: 'text-pink-500',
+      },
+      {
+        variant: 'text',
+        color: 'secondary',
+        class: 'text-gray-800',
+      },
+    ],
+    defaultVariants: {
+      variant: 'filled',
+      color: 'primary',
+      shape: 'default',
+      size: 'large',
+    },
+  }
+);
+
 export default function Button({
-  size = 'small',
-  disabled = false,
+  variant,
+  color,
+  shape,
+  size,
+  icon,
+  iconPosition,
   children,
-  ...rest
+  className,
+  ...props
 }: ButtonProps) {
-  const baseStyle =
-    'rounded-md font-medium bg-pink-200 transition-colors duration-200 disabled:cursor-not-allowed disabled:bg-gray-400 disabled:text-white';
-
-  const sizeStyle =
-    size === 'large' ? 'text-lg px-6 py-3' : 'text-sm px-4 py-2';
-
   return (
-    <button className={cn(baseStyle, sizeStyle)} disabled={disabled} {...rest}>
+    <button
+      className={cn(buttonVariants({ variant, color, shape, size }), className)}
+      {...props}
+    >
+      {icon && iconPosition === 'left' && (
+        <span className="flex items-center">{icon}</span>
+      )}
       {children}
+      {icon && iconPosition === 'right' && (
+        <span className="flex items-center">{icon}</span>
+      )}
     </button>
   );
 }
