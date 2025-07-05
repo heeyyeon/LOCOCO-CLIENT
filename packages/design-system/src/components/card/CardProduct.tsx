@@ -1,3 +1,6 @@
+import { SvgLikeFill } from '../../icons/fill/components/LikeFill';
+import { SvgLikeOutline } from '../../icons/fill/components/LikeOutline';
+import { SvgStar } from '../../icons/fill/components/Star';
 import { Badge } from '../badge';
 
 interface CardProductProps {
@@ -12,27 +15,63 @@ interface CardProductProps {
   reviewCount?: number;
   likeCount: number;
   imageUrl?: string;
-  onLikeToggle?: (productId: number, isLiked: boolean) => void;
-  onCardClick?: (productId: number) => void;
+  handleLikeToggle?: (productId: number) => void;
+  handleCardClick?: (productId: number) => void;
 }
 
-export default function CardProduct({ brand, title, description }) {
+export default function CardProduct({
+  isShowRank,
+  rank,
+  brand,
+  title,
+  description,
+  productId,
+  isLiked,
+  rating,
+  reviewCount,
+  imageUrl,
+  handleCardClick,
+  handleLikeToggle,
+}: CardProductProps) {
   return (
-    <article className="flex w-[26.4rem] cursor-pointer flex-col bg-gray-400">
+    <article
+      className="flex w-[26.4rem] cursor-pointer flex-col"
+      onClick={() => handleCardClick?.(productId)}
+    >
       <div className="relative border-[0.1rem] border-gray-200">
-        <img className="h-[26.4rem] w-[26.4rem]" />
-        <Badge rank={1} />
+        {imageUrl ? (
+          <img className="h-[26.4rem] w-[26.4rem]" src={imageUrl} />
+        ) : (
+          <div className="flex h-[26.4rem] w-[26.4rem] items-center justify-center">
+            상품 이미지 준비중
+          </div>
+        )}
+        {isShowRank && <Badge rank={rank} />}
       </div>
-      <div className="flex h-[4.4rem] items-center justify-between">
+      <div className="flex h-[4.4rem] items-center justify-between border-b-[0.1rem] border-dashed border-pink-500">
         <p className="text-jp-body1 font-[700]">{brand}</p>
-        <div>하트이미지</div>
+        {isLiked ? (
+          <SvgLikeFill size={44} fill="rgba(255, 72, 143, 1)" />
+        ) : (
+          <SvgLikeOutline
+            size={44}
+            fill="white"
+            onClick={() => handleLikeToggle?.(productId)}
+          />
+        )}
       </div>
-      <div className="flex h-[4.4rem] items-center">
+      <div className="flex h-[4.4rem] items-center border-b-[0.1rem] border-dashed border-pink-500">
         <p className="text-jp-body2 font-[500]">{title}</p>
       </div>
-      <div className="text-en-caption1 flex h-[4.4rem] items-center justify-between">
+      <div className="text-en-caption1 flex h-[4.4rem] items-center justify-between border-b-[0.1rem] border-pink-500 text-gray-600">
         <p>{description}</p>
-        <div>별점</div>
+        <div className="flex">
+          <SvgStar size={16} fill="rgba(254, 195, 65, 1)" />{' '}
+          <div className="flex">
+            <p>{rating}</p>
+            <p>({reviewCount})</p>
+          </div>
+        </div>
       </div>
     </article>
   );
