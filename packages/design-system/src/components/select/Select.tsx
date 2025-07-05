@@ -31,7 +31,8 @@ function SelectTrigger({
     <SelectPrimitive.Trigger
       data-slot="select-trigger"
       className={cn(
-        'flex h-[3.25rem] w-[25.5rem] items-center justify-between gap-[0.625rem] self-stretch border-b border-solid border-pink-500 bg-white pr-[0.75rem] focus:border-pink-500 focus:outline-none',
+        'flex h-[3.25rem] w-[25.5rem] items-center justify-between gap-[0.625rem] self-stretch border-b bg-white pr-[0.75rem] focus:border-pink-500 focus:outline-none',
+        open ? 'border-pink-500' : 'border-gray-400',
         className
       )}
       {...props}
