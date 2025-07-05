@@ -1,43 +1,54 @@
-// components/Tab.stories.tsx
 import type { Meta, StoryObj } from '@storybook/react';
-import Tab, { TabProps } from './Tab';
+import Tab from './Tab';
 
-const meta: Meta<TabProps> = {
+const meta: Meta<typeof Tab> = {
   title: 'Components/Tab',
   component: Tab,
   tags: ['autodocs'],
-  args: {
-    label: 'Label',
+  argTypes: {
+    variant: {
+      control: { type: 'select' },
+      options: ['primary', 'secondary'],
+    },
+    active: {
+      control: { type: 'boolean' },
+    },
+    onClick: { action: 'clicked' },
   },
 };
 
 export default meta;
-type Story = StoryObj<TabProps>;
 
-export const Default: Story = {
+type Story = StoryObj<typeof Tab>;
+
+export const PrimaryInactive: Story = {
   args: {
+    label: 'Primary Tab',
+    variant: 'primary',
     active: false,
-    size: 'base',
   },
 };
 
-export const ActiveBase: Story = {
+export const PrimaryActive: Story = {
   args: {
+    label: 'Primary Tab',
+    variant: 'primary',
     active: true,
-    size: 'base',
   },
 };
 
-export const InactiveLarge: Story = {
+export const SecondaryInactive: Story = {
   args: {
+    label: 'Secondary Tab',
+    variant: 'secondary',
     active: false,
-    size: 'large',
   },
 };
 
-export const ActiveLarge: Story = {
+export const SecondaryActive: Story = {
   args: {
+    label: 'Secondary Tab',
+    variant: 'secondary',
     active: true,
-    size: 'large',
   },
 };

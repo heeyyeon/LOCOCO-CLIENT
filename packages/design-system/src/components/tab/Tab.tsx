@@ -1,38 +1,43 @@
-import { cva, VariantProps } from 'class-variance-authority';
+import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '../../lib/utils';
 
 const tabVariants = cva(
-  'inline-flex w-auto items-center justify-center gap-2.5 bg-[color:var(--color-white)] px-5 py-2.5 font-bold',
+  'inline-flex w-auto items-center justify-center gap-2.5 bg-[color:var(--color-white)] px-5 py-2.5 font-bold cursor-pointer',
   {
     variants: {
+      variant: {
+        primary:
+          'h-11 text-base text-[color:var(--color-gray-500)] leading-normal',
+        secondary:
+          'h-14 text-lg text-[color:var(--color-gray-800)] leading-relaxed',
+      },
       active: {
         true: 'border-b-2 border-solid',
         false: 'border-b border-solid border-[color:var(--color-gray-300)]',
-      },
-      size: {
-        base: 'h-11 text-base text-[color:var(--color-gray-500)] leading-normal',
-        large:
-          'h-14 text-lg text-[color:var(--color-gray-800)] leading-relaxed',
       },
     },
     compoundVariants: [
       {
         active: true,
-        size: 'base',
+        variant: 'primary',
         className:
-          'text-[color:var(--color-pink-500)] border-[color:var(--color-pink-500)] border-solid',
+          'text-[color:var(--color-pink-500)] border-[color:var(--color-pink-500)]',
       },
       {
         active: true,
-        size: 'large',
+        variant: 'secondary',
         className:
-          'text-[color:var(--color-gray-800)] border-[color:var(--color-gray-800)] border-solid',
+          'text-[color:var(--color-gray-800)] border-[color:var(--color-gray-800)]',
       },
     ],
+    defaultVariants: {
+      variant: 'primary',
+      active: false,
+    },
   }
 );
 
-export interface TabProps extends VariantProps<typeof tabVariants> {
+interface TabProps extends VariantProps<typeof tabVariants> {
   label: string;
   className?: string;
   onClick?: () => void;
@@ -41,13 +46,13 @@ export interface TabProps extends VariantProps<typeof tabVariants> {
 export default function Tab({
   label,
   active,
-  size = 'base',
+  variant,
   className,
   onClick,
 }: TabProps) {
   return (
     <div
-      className={cn(tabVariants({ active, size }), className)}
+      className={cn(tabVariants({ active, variant }), className)}
       onClick={onClick}
     >
       {label}
