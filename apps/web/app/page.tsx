@@ -1,5 +1,5 @@
 import {
-  Button,
+  // Button,
   SvgArrowUp,
   SvgErrorFill,
   SvgHome,
@@ -9,7 +9,7 @@ import {
 export default function Home() {
   return (
     <div>
-      <Button size="small">ui 컴포넌트 핑크 버튼</Button>
+      {/* <Button size="small">ui 컴포넌트 핑크 버튼</Button> */}
       <div className="mt-12 flex space-x-14">
         <div>
           <p className="text-jp-head1 font-bold">head1 JP</p>
