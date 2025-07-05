@@ -59,7 +59,7 @@ const ReviewSelect = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <Select open={open} onOpenChange={() => setOpen(!open)}>
+    <Select open={open} onOpenChange={setOpen}>
       <SelectTrigger open={open}>
         <SelectValue placeholder="Select a fruit" />
       </SelectTrigger>
