@@ -9,10 +9,6 @@ const meta: Meta<typeof Progress> = {
     value: {
       control: { type: 'range', min: 0, max: 100, step: 1 },
     },
-    color: {
-      control: { type: 'text' },
-      description: 'CSS 변수 이름 (e.g. --color-pink-500)',
-    },
     width: {
       control: { type: 'text' },
       description: 'CSS width 값 (e.g. 100%, 300px)',
@@ -37,14 +33,12 @@ export const Default: Story = {
 export const CustomColor: Story = {
   args: {
     value: 50,
-    color: '--color-blue',
   },
 };
 
 export const FullProgress: Story = {
   args: {
     value: 100,
-    color: '--color-green',
     width: '400px',
     height: '1rem',
   },
@@ -53,7 +47,6 @@ export const FullProgress: Story = {
 export const ThinBar: Story = {
   args: {
     value: 30,
-    color: '--color-red',
     width: '300px',
     height: '4px',
   },
