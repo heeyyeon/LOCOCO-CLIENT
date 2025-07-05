@@ -1,8 +1,8 @@
 export { SvgArrowDown } from './ArrowDown';
+export { SvgArrowRight } from './ArrowRight';
 export { SvgArrowUp } from './ArrowUp';
 export { SvgCheck } from './Check';
 export { SvgErrorFill } from './ErrorFill';
-export { SvgLikeFill } from './LikeFill';
 export { SvgInstagramFill } from './InstagramFill';
+export { SvgLikeFill } from './LikeFill';
 export { SvgTwitterFill } from './TwitterFill';
-export { SvgArrowRight } from './ArrowRight';
