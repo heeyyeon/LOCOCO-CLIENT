@@ -1,3 +1,4 @@
+import { cva } from 'class-variance-authority';
 import { Badge } from '../badge';
 
 interface CardReviewProps {
@@ -32,15 +33,28 @@ export default function CardReview({
   onLikeToggle,
   onCardClick,
 }: CardReviewProps) {
+  const imageWrapperVariant = cva('relative bg-gray-300', {
+    variants: {
+      type: {
+        video: 'w-[16.5rem] h-[22rem]',
+        image: 'w-[16.5rem] h-[16.5rem]',
+      },
+    },
+  });
   return (
-    <article className="flex w-[26.4rem] cursor-pointer flex-col bg-gray-400">
-      <div className="relative">
+    <article className="flex w-[26.4rem] cursor-pointer flex-col">
+      <div className={imageWrapperVariant({ type })}>
         <img />
         <Badge rank={1} />
+        <div className="absolute bottom-0 px-[1.6rem] py-[1.2rem]">
+          <div className="flex flex-col justify-center">
+            <p className="text-en-title2 font-[700]">{brand}</p>
+            <p className="text-jp-body2 font-[500]">{title}</p>
+          </div>
+          <div></div>
+        </div>
       </div>
-      <div>brand</div>
-      <div>title</div>
-      <div>description</div>
+      <div>label</div>
     </article>
   );
 }
