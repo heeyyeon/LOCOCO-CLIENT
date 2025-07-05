@@ -1,33 +1,25 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import Input from './Input';
 
-interface InputProps {
-  variant?: 'default' | 'search';
-  error?: string;
-  placeholder?: string;
-  value?: string;
-}
-
-const meta: Meta<InputProps> = {
+const meta: Meta<typeof Input> = {
   title: 'components/Input',
   component: Input,
   tags: ['autodocs'],
   argTypes: {
-    variant: {
+    type: {
       control: { type: 'radio' },
       options: ['default', 'search'],
     },
     placeholder: { control: 'text' },
-    error: { control: 'text' },
   },
 };
 export default meta;
-type Story = StoryObj<InputProps>;
+type Story = StoryObj<typeof Input>;
 
 // Default
 export const Default: Story = {
   args: {
-    variant: 'default',
+    type: 'default',
     placeholder: 'Text',
   },
 };
@@ -44,14 +36,10 @@ export const Typing: Story = {
   args: { ...Default.args, value: 'Text' },
 };
 
-export const Error: Story = {
-  args: { ...Default.args, error: 'error text' },
-};
-
 // Search
 export const SearchDefault: Story = {
   args: {
-    variant: 'search',
+    type: 'search',
     placeholder: 'Text',
   },
 };
