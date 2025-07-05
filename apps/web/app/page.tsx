@@ -6,7 +6,6 @@ import {
   SvgLikeFill,
   Checkbox,
 } from '@lococo/design-system';
-import { cn } from '@/lib/utils';
 
 export default function Home() {
   return (
@@ -46,7 +45,6 @@ export default function Home() {
       <SvgArrowUp className="fill-pink-400" />
       <SvgErrorFill />
       <SvgLikeFill className="fill-pink-400" />
-      <Checkbox />
     </div>
   );
 }
