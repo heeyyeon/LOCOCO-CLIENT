@@ -38,17 +38,17 @@ export default function CardProduct({
       className="flex w-[26.4rem] cursor-pointer flex-col"
       onClick={() => handleCardClick?.(productId)}
     >
-      <div className="relative border-[0.1rem] border-gray-200">
+      <div className="relative border-[0.0625rem] border-gray-200">
         {imageUrl ? (
-          <img className="h-[26.4rem] w-[26.4rem]" src={imageUrl} />
+          <img className="h-[16.5rem] w-[16.5rem]" src={imageUrl} />
         ) : (
-          <div className="flex h-[26.4rem] w-[26.4rem] items-center justify-center">
+          <div className="flex h-[16.5rem] w-[16.5rem] items-center justify-center">
             상품 이미지 준비중
           </div>
         )}
         {isShowRank && <Badge rank={rank} />}
       </div>
-      <div className="flex h-[4.4rem] items-center justify-between border-b-[0.1rem] border-dashed border-pink-500">
+      <div className="flex h-[2.75rem] items-center justify-between border-b-[0.0625rem] border-dashed border-pink-500">
         <p className="text-jp-body1 font-[700]">{brand}</p>
         {isLiked ? (
           <SvgLikeFill size={44} fill="rgba(255, 72, 143, 1)" />
@@ -60,10 +60,10 @@ export default function CardProduct({
           />
         )}
       </div>
-      <div className="flex h-[4.4rem] items-center border-b-[0.1rem] border-dashed border-pink-500">
+      <div className="flex h-[2.75rem] items-center border-b-[0.0625rem] border-dashed border-pink-500">
         <p className="text-jp-body2 font-[500]">{title}</p>
       </div>
-      <div className="text-en-caption1 flex h-[4.4rem] items-center justify-between border-b-[0.1rem] border-pink-500 text-gray-600">
+      <div className="text-en-caption1 flex h-[2.75rem] items-center justify-between border-b-[0.0625rem] border-pink-500 text-gray-600">
         <p>{description}</p>
         <div className="flex">
           <SvgStar size={16} fill="rgba(254, 195, 65, 1)" />{' '}
