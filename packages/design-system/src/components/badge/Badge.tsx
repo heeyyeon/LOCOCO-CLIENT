@@ -2,7 +2,7 @@ import { cva } from 'class-variance-authority';
 import { cn } from '../../lib/utils';
 
 interface BadgeProps {
-  rank: 1 | 2 | 3;
+  rank?: number;
   className?: string;
 }
 
@@ -23,5 +23,8 @@ const badgeVariants = cva(
 );
 
 export default function Badge({ rank, className }: BadgeProps) {
+  if (!rank || (rank !== 1 && rank !== 2 && rank !== 3)) {
+    return null;
+  }
   return <div className={cn(badgeVariants({ rank }), className)}>{rank}</div>;
 }
