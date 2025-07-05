@@ -35,6 +35,7 @@ const tabVariants = cva(
 export interface TabProps extends VariantProps<typeof tabVariants> {
   label: string;
   className?: string;
+  onClick?: () => void;
 }
 
 export default function Tab({
@@ -42,8 +43,14 @@ export default function Tab({
   active,
   size = 'base',
   className,
+  onClick,
 }: TabProps) {
   return (
-    <div className={cn(tabVariants({ active, size }), className)}>{label}</div>
+    <div
+      className={cn(tabVariants({ active, size }), className)}
+      onClick={onClick}
+    >
+      {label}
+    </div>
   );
 }
