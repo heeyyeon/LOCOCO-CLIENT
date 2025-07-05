@@ -5,7 +5,7 @@ import {
   SvgHome,
   SvgLikeFill,
 } from '@lococo/design-system';
-import Footer from '@lococo/design-system/components/footer/Footer';
+import Footer from '../components/footer/Footer';
 
 export default function Home() {
   return (
