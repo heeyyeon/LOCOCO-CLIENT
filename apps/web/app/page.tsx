@@ -42,7 +42,7 @@ export default function Home() {
       <SvgArrowUp className="fill-pink-400" />
       <SvgErrorFill />
       <SvgLikeFill className="fill-pink-400" />
-      <Badge rank={1} />
+      <Badge rank={1} className="bg-pink-200" />
     </div>
   );
 }
