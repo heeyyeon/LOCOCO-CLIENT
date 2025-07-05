@@ -37,11 +37,9 @@ const OptionSelectOverflow = () => {
 };
 
 const OptionSelect = () => {
-  const [open, setOpen] = useState(false);
-
   return (
-    <Select open={open} onOpenChange={() => setOpen(!open)}>
-      <SelectTrigger open={open}>
+    <Select>
+      <SelectTrigger open>
         <SelectValue placeholder="Select a fruit" />
       </SelectTrigger>
       <SelectContent>
@@ -56,11 +54,9 @@ const OptionSelect = () => {
 };
 
 const ReviewSelect = () => {
-  const [open, setOpen] = useState(false);
-
   return (
-    <Select open={open} onOpenChange={setOpen}>
-      <SelectTrigger open={open}>
+    <Select>
+      <SelectTrigger open>
         <SelectValue placeholder="Select a fruit" />
       </SelectTrigger>
       <SelectContent>
