@@ -5,6 +5,7 @@ import {
   SvgHome,
   SvgLikeFill,
 } from '@lococo/design-system';
+import Footer from '@lococo/design-system/components/footer/Footer';
 
 export default function Home() {
   return (
@@ -41,6 +42,7 @@ export default function Home() {
       <SvgArrowUp className="fill-pink-400" />
       <SvgErrorFill />
       <SvgLikeFill className="fill-pink-400" />
+      <Footer />
     </div>
   );
 }
