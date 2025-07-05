@@ -35,7 +35,7 @@ export default function CardProduct({
 }: CardProductProps) {
   return (
     <article
-      className="flex w-[26.4rem] cursor-pointer flex-col"
+      className="flex w-[16.5rem] cursor-pointer flex-col"
       onClick={() => handleCardClick?.(productId)}
     >
       <div className="relative border-[0.0625rem] border-gray-200">
