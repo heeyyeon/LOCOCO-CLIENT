@@ -6,7 +6,6 @@ const meta: Meta<typeof CardProduct> = {
   component: CardProduct,
   tags: ['autodocs'],
   argTypes: {
-    isShowRank: { control: 'boolean' },
     rank: { control: { type: 'number', min: 1, max: 100 } },
     brand: { control: 'text' },
     title: { control: 'text' },
@@ -29,7 +28,6 @@ type Story = StoryObj<typeof CardProduct>;
 
 export const Default: Story = {
   args: {
-    isShowRank: true,
     rank: 1,
     brand: '브랜드명',
     title: '상품명',

@@ -4,7 +4,6 @@ import { SvgStar } from '../../icons/fill/components/Star';
 import { Badge } from '../badge';
 
 interface CardProductProps {
-  isShowRank?: boolean;
   rank: number;
   brand: string;
   title: string;
@@ -20,7 +19,6 @@ interface CardProductProps {
 }
 
 export default function CardProduct({
-  isShowRank,
   rank,
   brand,
   title,
@@ -40,7 +38,7 @@ export default function CardProduct({
 
   return (
     <article
-      className="flex w-[16.5rem] cursor-pointer flex-col bg-gray-700"
+      className="flex w-[16.5rem] cursor-pointer flex-col"
       onClick={() => handleCardClick?.(productId)}
     >
       <div className="relative border-[0.0625rem] border-gray-200">
@@ -55,7 +53,7 @@ export default function CardProduct({
             상품 이미지 준비중
           </div>
         )}
-        {isShowRank && <Badge rank={rank} />}
+        <Badge rank={rank} />
       </div>
       <div className="flex h-[2.75rem] items-center justify-between border-b-[0.0625rem] border-dashed border-pink-500">
         <p className="text-jp-body1 font-[700]">{brand}</p>

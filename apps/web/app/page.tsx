@@ -48,7 +48,6 @@ export default function Home() {
       <SvgLikeFill className="fill-pink-400" />
       <Badge rank={1} className="bg-pink-200" />
       <CardProduct
-        isShowRank={true}
         brand="브랜드명"
         title="상품명"
         description="50ml, 100ml"
@@ -60,7 +59,6 @@ export default function Home() {
         reviewCount={999}
       />
       <CardReview
-        isShowRank={true}
         type="video"
         brand="브랜드명"
         title="상품명"

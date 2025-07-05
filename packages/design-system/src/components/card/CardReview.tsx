@@ -5,7 +5,6 @@ import { Badge } from '../badge';
 
 interface CardReviewProps {
   type?: 'video' | 'image';
-  isShowRank?: boolean;
   rank?: number;
   brand: string;
   title: string;
@@ -19,7 +18,7 @@ interface CardReviewProps {
 }
 
 const imageWrapperVariant = cva(
-  'relative border-[0.0625rem] border-gray-200 flex items-center justify-center bg-gray-700',
+  'relative border-[0.0625rem] border-gray-200 flex items-center justify-center bg-gray-200',
   {
     variants: {
       type: {
@@ -32,7 +31,6 @@ const imageWrapperVariant = cva(
 
 export default function CardReview({
   type = 'image',
-  isShowRank,
   rank,
   brand,
   title,
@@ -58,7 +56,7 @@ export default function CardReview({
           <p className="text-sm text-gray-400">이미지 준비중</p>
         )}
 
-        {isShowRank && rank && <Badge rank={rank} />}
+        {rank && <Badge rank={rank} />}
 
         <div className="absolute bottom-0 left-0 right-0 flex flex-col gap-[0.5rem] p-[1.6rem_1.6rem_1.2rem]">
           <div>

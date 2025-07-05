@@ -6,7 +6,6 @@ const reviewMeta: Meta<typeof CardReview> = {
   component: CardReview,
   tags: ['autodocs'],
   argTypes: {
-    isShowRank: { control: 'boolean' },
     rank: { control: { type: 'number', min: 1, max: 100 } },
     brand: { control: 'text' },
     title: { control: 'text' },
@@ -29,7 +28,6 @@ type ReviewStory = StoryObj<typeof CardReview>;
 export const Image: ReviewStory = {
   args: {
     type: 'image',
-    isShowRank: true,
     rank: 1,
     brand: '브랜드명',
     title: '상품 이름',
@@ -45,7 +43,6 @@ export const Image: ReviewStory = {
 export const Video: ReviewStory = {
   args: {
     type: 'video',
-    isShowRank: true,
     rank: 1,
     brand: '브랜드명',
     title: '상품 이름',
