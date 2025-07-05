@@ -1,4 +1,5 @@
 import { cva, type VariantProps } from 'class-variance-authority';
+import { ReactNode } from 'react';
 import { cn } from '../../lib/utils';
 
 const tabVariants = cva(
@@ -56,6 +57,24 @@ export default function Tab({
       onClick={onClick}
     >
       {label}
+    </div>
+  );
+}
+
+interface TabContainerProps {
+  children: ReactNode;
+  className?: string;
+}
+
+export function TabContainer({ children, className }: TabContainerProps) {
+  return (
+    <div
+      className={cn(
+        'inline-flex items-center justify-start overflow-hidden',
+        className
+      )}
+    >
+      {children}
     </div>
   );
 }
