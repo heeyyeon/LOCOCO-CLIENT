@@ -16,8 +16,8 @@ interface CardReviewProps {
   likeCount: number;
   imageUrl?: string;
   label?: string;
-  onLikeToggle?: (reviewId: number, isLiked: boolean) => void;
-  onCardClick?: (reviewId: number) => void;
+  handleLikeToggle?: (reviewId: number, isLiked: boolean) => void;
+  handleCardClick?: (reviewId: number) => void;
 }
 export default function CardReview({
   type = 'image',
@@ -27,13 +27,11 @@ export default function CardReview({
   title,
   reviewId,
   isLiked,
-  rating,
-  reviewCount,
   likeCount,
   imageUrl,
   label,
-  onLikeToggle,
-  onCardClick,
+  handleLikeToggle,
+  handleCardClick,
 }: CardReviewProps) {
   const imageWrapperVariant = cva(
     'relative bg-gray-700 border-[0.0625rem] border-gray-200',
@@ -47,10 +45,13 @@ export default function CardReview({
     }
   );
   return (
-    <article className="flex w-[16.5rem] cursor-pointer flex-col">
+    <article
+      className="group flex w-[16.5rem] cursor-pointer flex-col"
+      onClick={() => handleCardClick?.(reviewId)}
+    >
       <div className={imageWrapperVariant({ type })}>
         <img />
-        <Badge rank={1} />
+        {isShowRank && <Badge rank={rank} />}
         <div className="absolute bottom-0 flex flex-col gap-[0.5rem] px-[1.6rem] py-[1.2rem]">
           <div className="flex flex-col justify-center">
             <p className="text-en-title2 font-[700] text-white">{brand}</p>
@@ -62,7 +63,7 @@ export default function CardReview({
           </div>
         </div>
       </div>
-      <div className="flex h-[3.25rem] items-center justify-center gap-[0.5rem] border-b-[0.0625rem] border-pink-500">
+      <div className="flex h-[3.25rem] items-center justify-center gap-[0.5rem] border-b-[0.0625rem] border-pink-500 group-hover:bg-pink-100">
         <SvgCheck size={24} fill="rgba(255, 72, 143, 1)" />
         <p className="text-jp-title3 font-[700] text-pink-500">{label}</p>
       </div>
