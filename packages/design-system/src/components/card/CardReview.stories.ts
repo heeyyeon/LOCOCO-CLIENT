@@ -35,7 +35,7 @@ export const Default: ReviewStory = {
     title: '상품 이름',
     reviewId: 1,
     isLiked: true,
-    rating: 4.9,
+    rating: 4,
     reviewCount: 450,
     likeCount: 234,
     imageUrl: undefined,

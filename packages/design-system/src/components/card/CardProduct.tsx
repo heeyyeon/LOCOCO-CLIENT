@@ -68,7 +68,7 @@ export default function CardProduct({
         <div className="flex">
           <SvgStar size={16} fill="rgba(254, 195, 65, 1)" />{' '}
           <div className="flex">
-            <p>{rating}</p>
+            <p>{rating}/5</p>
             <p>({reviewCount})</p>
           </div>
         </div>

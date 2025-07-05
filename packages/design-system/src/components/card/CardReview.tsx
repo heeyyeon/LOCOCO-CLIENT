@@ -15,7 +15,21 @@ interface CardReviewProps {
   onLikeToggle?: (reviewId: number, isLiked: boolean) => void;
   onCardClick?: (reviewId: number) => void;
 }
-export default function CardReview() {
+export default function CardReview({
+  isShowRank,
+  rank,
+  brand,
+  title,
+  reviewId,
+  isLiked,
+  rating,
+  reviewCount,
+  likeCount,
+  imageUrl,
+  label,
+  onLikeToggle,
+  onCardClick,
+}: CardReviewProps) {
   return (
     <article className="flex w-[26.4rem] cursor-pointer flex-col bg-gray-400">
       <div className="relative">

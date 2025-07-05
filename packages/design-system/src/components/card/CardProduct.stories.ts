@@ -36,7 +36,7 @@ export const Default: Story = {
     description: '상품 용량 관련 설명',
     productId: 1,
     isLiked: false,
-    rating: 4.8,
+    rating: 4,
     reviewCount: 1250,
     likeCount: 89,
     imageUrl: undefined,
