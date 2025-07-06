@@ -3,13 +3,13 @@
 import {
   Badge,
   Button,
-  CardProduct,
-  CardReview,
   SvgArrowUp,
   SvgErrorFill,
   SvgHome,
   SvgLikeFill,
 } from '@lococo/design-system';
+import CardProduct from '../components/card/CardProducts';
+import CardReview from '../components/card/CardReview';
 
 export default function Home() {
   return (

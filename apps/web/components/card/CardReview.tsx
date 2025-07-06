@@ -1,7 +1,6 @@
 import { cva } from 'class-variance-authority';
-import { SvgCheck } from '../../icons/fill/components//Check';
-import { SvgLikeFill } from '../../icons/fill/components/LikeFill';
-import { Badge } from '../badge';
+import Image from 'next/image';
+import { Badge, SvgCheck, SvgLikeFill } from '@lococo/design-system';
 
 interface CardReviewProps {
   type?: 'video' | 'image';
@@ -47,7 +46,7 @@ export default function CardReview({
     >
       <div className={imageWrapperVariant({ type })}>
         {imageUrl ? (
-          <img
+          <Image
             src={imageUrl}
             alt={title}
             className="h-full w-full object-cover"

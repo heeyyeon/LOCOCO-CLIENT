@@ -1,7 +1,10 @@
-import { SvgLikeFill } from '../../icons/fill/components/LikeFill';
-import { SvgLikeOutline } from '../../icons/fill/components/LikeOutline';
-import { SvgStar } from '../../icons/fill/components/Star';
-import { Badge } from '../badge';
+import Image from 'next/image';
+import {
+  Badge,
+  SvgLikeFill,
+  SvgLikeOutline,
+  SvgStar,
+} from '@lococo/design-system';
 
 interface CardProductProps {
   rank: number;
@@ -43,7 +46,7 @@ export default function CardProduct({
     >
       <div className="relative border-[0.0625rem] border-gray-200">
         {imageUrl ? (
-          <img
+          <Image
             className="h-[16.5rem] w-[16.5rem] object-cover"
             src={imageUrl}
             alt={title}
