@@ -1,34 +1,43 @@
 import { cva, type VariantProps } from 'class-variance-authority';
+import type { ComponentProps } from 'react';
 import { ReactNode } from 'react';
 import { cn } from '../../lib/utils';
 
+interface TabProps
+  extends ComponentProps<'button'>,
+    VariantProps<typeof tabVariants> {
+  label: string;
+  className?: string;
+}
+
+interface TabContainerProps {
+  children: ReactNode;
+  className?: string;
+}
+
 const tabVariants = cva(
-  'inline-flex w-auto items-center justify-center gap-2.5 bg-[color:var(--color-white)] px-5 py-2.5 font-bold cursor-pointer',
+  'inline-flex w-auto items-center justify-center gap-2.5 bg-white px-5 py-2.5 font-bold cursor-pointer',
   {
     variants: {
       variant: {
-        primary:
-          'h-11 text-base text-[color:var(--color-gray-500)] leading-normal',
-        secondary:
-          'h-14 text-lg text-[color:var(--color-gray-800)] leading-relaxed',
+        primary: 'h-11 text-jp-title3  text-gray-500 leading-normal',
+        secondary: 'h-14 text-jp-title2  text-gray-800 leading-relaxed',
       },
       active: {
         true: 'border-b-2 border-solid',
-        false: 'border-b border-solid border-[color:var(--color-gray-300)]',
+        false: 'border-b border-solid border-gray-300',
       },
     },
     compoundVariants: [
       {
         active: true,
         variant: 'primary',
-        className:
-          'text-[color:var(--color-pink-500)] border-[color:var(--color-pink-500)]',
+        className: 'text-pink-500 border-pink-500',
       },
       {
         active: true,
         variant: 'secondary',
-        className:
-          'text-[color:var(--color-gray-800)] border-[color:var(--color-gray-800)]',
+        className: 'text-gray-800 border-gray-800',
       },
     ],
     defaultVariants: {
@@ -38,32 +47,22 @@ const tabVariants = cva(
   }
 );
 
-interface TabProps extends VariantProps<typeof tabVariants> {
-  label: string;
-  className?: string;
-  onClick?: () => void;
-}
-
 export default function Tab({
   label,
   active,
   variant,
   className,
-  onClick,
+  ...props
 }: TabProps) {
   return (
-    <div
+    <button
+      type="button"
       className={cn(tabVariants({ active, variant }), className)}
-      onClick={onClick}
+      {...props}
     >
       {label}
-    </div>
+    </button>
   );
-}
-
-interface TabContainerProps {
-  children: ReactNode;
-  className?: string;
 }
 
 export function TabContainer({ children, className }: TabContainerProps) {
