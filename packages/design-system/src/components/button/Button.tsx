@@ -8,6 +8,7 @@ interface ButtonProps
   icon?: ReactNode;
   iconPosition?: 'left' | 'right';
   children: ReactNode;
+  fontClassName?: string;
 }
 
 const buttonVariants = cva(
@@ -28,11 +29,9 @@ const buttonVariants = cva(
         round: 'rounded-[0.5rem]',
       },
       size: {
-        large:
-          'h-[3.75rem] px-[2rem] py-[0.625rem] gap-[0.5rem] text-jp-title2',
-        medium:
-          'h-[3.25rem] px-[2rem] py-[0.625rem] gap-[0.5rem] text-jp-title3',
-        small: 'h-[2rem] px-[1rem] py-[0.625rem] gap-[0.5rem] text-jp-body2',
+        large: 'h-[3.75rem] px-[2rem] py-[0.625rem] gap-[0.5rem]',
+        medium: 'h-[3.25rem] px-[2rem] py-[0.625rem] gap-[0.5rem]',
+        small: 'h-[2rem] px-[1rem] py-[0.625rem] gap-[0.5rem]',
       },
     },
     compoundVariants: [
@@ -85,11 +84,16 @@ export default function Button({
   iconPosition,
   children,
   className,
+  fontClassName,
   ...props
 }: ButtonProps) {
   return (
     <button
-      className={cn(buttonVariants({ variant, color, shape, size }), className)}
+      className={cn(
+        buttonVariants({ variant, color, shape, size }),
+        className,
+        fontClassName
+      )}
       {...props}
     >
       {icon && iconPosition === 'left' && (
