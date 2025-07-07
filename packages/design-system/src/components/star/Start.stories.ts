@@ -9,7 +9,7 @@ const meta: Meta<typeof Star> = {
     docs: {
       description: {
         component:
-          '별점을 표시하는 컴포넌트입니다. small과 medium 두 가지 크기와 다양한 색상을 지원합니다.',
+          '별점을 표시하는 컴포넌트입니다. sm과 md 두 가지 크기와 다양한 색상을 지원합니다.',
       },
     },
   },
@@ -25,8 +25,8 @@ const meta: Meta<typeof Star> = {
     },
     size: {
       control: { type: 'select' },
-      options: ['small', 'medium'],
-      description: '별점 크기 (small: 24px, medium: 36px)',
+      options: ['sm', 'md'],
+      description: '별점 크기 (sm: 24px, md: 36px)',
     },
     color: {
       control: { type: 'text' },
@@ -42,36 +42,36 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     rating: 4.5,
-    size: 'small',
+    size: 'sm',
     color: 'yellow',
   },
 };
 
-export const SmallSize: Story = {
+export const smSize: Story = {
   args: {
     rating: 4.2,
-    size: 'small',
+    size: 'sm',
     color: 'yellow',
   },
   parameters: {
     docs: {
       description: {
-        story: 'Small 크기의 별점 표시입니다. (24px)',
+        story: 'sm 크기의 별점 표시입니다. (24px)',
       },
     },
   },
 };
 
-export const MediumSize: Story = {
+export const mdSize: Story = {
   args: {
     rating: 4.2,
-    size: 'medium',
+    size: 'md',
     color: 'yellow',
   },
   parameters: {
     docs: {
       description: {
-        story: 'Medium 크기의 별점 표시입니다. (36px)',
+        story: 'md 크기의 별점 표시입니다. (36px)',
       },
     },
   },
@@ -80,7 +80,7 @@ export const MediumSize: Story = {
 export const YellowStar: Story = {
   args: {
     rating: 4.5,
-    size: 'medium',
+    size: 'md',
     color: 'yellow',
   },
 };
@@ -88,7 +88,7 @@ export const YellowStar: Story = {
 export const BlackStar: Story = {
   args: {
     rating: 4.5,
-    size: 'medium',
+    size: 'md',
     color: 'black',
   },
 };
@@ -97,7 +97,7 @@ export const BlackStar: Story = {
 export const FullStars: Story = {
   args: {
     rating: 5.0,
-    size: 'medium',
+    size: 'md',
     color: 'yellow',
   },
   parameters: {
@@ -112,7 +112,7 @@ export const FullStars: Story = {
 export const HalfStar: Story = {
   args: {
     rating: 2.5,
-    size: 'medium',
+    size: 'md',
     color: 'yellow',
   },
   parameters: {
@@ -127,7 +127,7 @@ export const HalfStar: Story = {
 export const NoStars: Story = {
   args: {
     rating: 0,
-    size: 'medium',
+    size: 'md',
     color: 'yellow',
   },
   parameters: {

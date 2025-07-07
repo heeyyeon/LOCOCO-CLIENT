@@ -2,14 +2,14 @@ import { SvgStar } from '../../icons/fill/components/Star';
 
 interface StarProps {
   rating: number;
-  size?: 'small' | 'medium';
+  size?: 'sm' | 'md';
   color?: 'yellow' | 'black';
   className?: string;
 }
 
 const SIZE_CLASS = {
-  small: 'w-[2.4rem] h-[2.4rem]',
-  medium: 'w-[3.6rem] h-[3.6rem]',
+  sm: 'w-[2.4rem] h-[2.4rem]',
+  md: 'w-[3.6rem] h-[3.6rem]',
 };
 
 const COLOR_CLASS = {
@@ -24,7 +24,7 @@ const BASE_CLASS = {
 
 export default function Star({
   rating,
-  size = 'small',
+  size = 'sm',
   color = 'yellow',
   className,
 }: StarProps) {
