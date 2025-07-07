@@ -3,7 +3,7 @@ import * as React from 'react';
 import { SvgCheck } from '@/icons';
 import { cn } from '@/lib/utils';
 
-function Checkbox({
+export default function Checkbox({
   className,
   ...props
 }: React.ComponentProps<typeof CheckboxPrimitive.Root>) {
@@ -25,5 +25,3 @@ function Checkbox({
     </CheckboxPrimitive.Root>
   );
 }
-
-export { Checkbox };
