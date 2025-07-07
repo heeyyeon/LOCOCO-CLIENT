@@ -75,10 +75,9 @@ export default function CardProduct({
         <p>{description}</p>
         <div className="flex">
           <SvgStar size={16} className="fill-yellow" />
-          <div className="flex">
-            <p>{rating}/5</p>
-            <p>({reviewCount})</p>
-          </div>
+          <p>
+            {rating}/5({reviewCount})
+          </p>
         </div>
       </div>
     </article>
