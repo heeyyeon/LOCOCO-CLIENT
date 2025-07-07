@@ -7,7 +7,6 @@ interface ButtonProps
     VariantProps<typeof buttonVariants> {
   icon?: ReactNode;
   iconPosition?: 'left' | 'right';
-  children: ReactNode;
   color: 'primary' | 'secondary' | 'default';
   variant: 'filled' | 'outline' | 'text';
   shape: 'default' | 'round';
@@ -90,13 +89,9 @@ export default function Button({
       )}
       {...props}
     >
-      {icon && iconPosition === 'left' && (
-        <span className="flex items-center">{icon}</span>
-      )}
+      {iconPosition === 'left' && icon}
       {children}
-      {icon && iconPosition === 'right' && (
-        <span className="flex items-center">{icon}</span>
-      )}
+      {iconPosition === 'right' && icon}
     </button>
   );
 }
