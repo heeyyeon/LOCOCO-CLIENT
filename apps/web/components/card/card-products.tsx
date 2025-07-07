@@ -88,7 +88,7 @@ export default function CardProduct({
       </div>
       <div className="text-en-caption1 flex h-[4.4rem] items-center justify-between border-b-[0.1rem] border-pink-500 text-gray-600">
         <p>{description}</p>
-        <div className="flex">
+        <div className="flex items-center">
           <SvgStar size={26} className="fill-yellow" />
           <p>
             {rating}/5({reviewCount})
