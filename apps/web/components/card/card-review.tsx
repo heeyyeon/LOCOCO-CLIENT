@@ -27,6 +27,18 @@ const imageWrapperVariant = cva(
   }
 );
 
+/**
+ *
+ * @param type image와 video 리뷰의 사이즈가 다르기 때문에 구분하기 위한 type(default = 'image')
+ * @param rank (optional) Card에서 뱃지에 나타낼 순위를 나타내는 props, {...(inRange(rank, 1, 3) && { rank: rank })}와 같이 사용하여 불필요할 시 넣지 않으면 됨
+ * @param brand 리뷰 상품의 브랜드명
+ * @param title 리뷰 상품의 상품명
+ * @param reviewId 해당 리뷰의 고유한 ID
+ * @param likeCount 해당 리뷰의 좋아요 수
+ * @param imageUrl 해당 리뷰 대표 이미지(영상 썸네일)
+ * @param handleCardClick 리뷰 카드 클릭시 작동할 이벤트
+ * @returns
+ */
 export default function CardReview({
   type = 'image',
   rank,
