@@ -82,7 +82,7 @@ export default function Button({
   fontClassName,
   ...props
 }: ButtonProps) {
-  const outlineColor = variant === 'outline' && !color ? 'default' : color;
+  const outlineColor = variant === 'outline' ? 'default' : color;
 
   return (
     <button
