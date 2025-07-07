@@ -10,10 +10,10 @@ const meta: Meta<typeof Button> = {
     variant: { control: 'radio', options: ['filled', 'outline', 'text'] },
     color: {
       control: 'radio',
-      options: ['primary', 'secondary', 'default', 'hover'],
+      options: ['primary', 'secondary', 'default'],
     },
-    shape: { control: 'radio', options: ['default', 'round'] },
-    size: { control: 'radio', options: ['large', 'medium', 'small'] },
+    rounded: { control: 'boolean' },
+    size: { control: 'radio', options: ['lg', 'md', 'sm'] },
     iconPosition: { control: 'radio', options: ['left', 'right'] },
   },
 };
@@ -25,17 +25,17 @@ export const FilledPrimary: Story = {
     children: 'Label',
     variant: 'filled',
     color: 'primary',
-    size: 'large',
+    size: 'lg',
   },
 };
 
-export const FilledPrimaryRound: Story = {
+export const FilledPrimaryRounded: Story = {
   args: {
     children: 'Label',
     variant: 'filled',
     color: 'primary',
-    shape: 'round',
-    size: 'medium',
+    rounded: true,
+    size: 'md',
   },
 };
 
@@ -44,7 +44,7 @@ export const FilledPrimaryWithLeftIcon: Story = {
     children: 'Label',
     variant: 'filled',
     color: 'primary',
-    size: 'large',
+    size: 'lg',
     icon: <SvgErrorFill />,
     iconPosition: 'left',
   },
@@ -55,7 +55,7 @@ export const FilledPrimaryWithRightIcon: Story = {
     children: 'Label',
     variant: 'filled',
     color: 'primary',
-    size: 'large',
+    size: 'lg',
     icon: <SvgErrorFill />,
     iconPosition: 'right',
   },
@@ -66,7 +66,7 @@ export const OutlineDefault: Story = {
     children: 'Label',
     variant: 'outline',
     color: 'default',
-    size: 'large',
+    size: 'lg',
   },
 };
 
@@ -75,7 +75,7 @@ export const TextPrimary: Story = {
     children: 'Label',
     variant: 'text',
     color: 'primary',
-    size: 'large',
+    size: 'lg',
   },
 };
 
@@ -84,7 +84,7 @@ export const FilledSecondary: Story = {
     children: 'Label',
     variant: 'filled',
     color: 'secondary',
-    size: 'large',
+    size: 'lg',
   },
 };
 
@@ -93,7 +93,7 @@ export const LargeTextSecondary: Story = {
     children: 'Label',
     variant: 'text',
     color: 'secondary',
-    size: 'large',
+    size: 'lg',
   },
 };
 
@@ -102,7 +102,7 @@ export const MediumFilledPrimary: Story = {
     children: 'Label',
     variant: 'filled',
     color: 'primary',
-    size: 'medium',
+    size: 'md',
   },
 };
 
@@ -111,6 +111,6 @@ export const SmallTextPrimary: Story = {
     children: 'Label',
     variant: 'text',
     color: 'primary',
-    size: 'small',
+    size: 'sm',
   },
 };
