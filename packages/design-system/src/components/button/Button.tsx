@@ -13,6 +13,8 @@ interface ButtonProps
   size: 'lg' | 'md' | 'sm';
 }
 
+const baseButtonStyle = 'px-[2rem] py-[0.62rem] gap-[0.5rem]';
+
 const buttonVariants = cva(
   'inline-flex items-center justify-center font-bold',
   {
@@ -32,9 +34,9 @@ const buttonVariants = cva(
         false: '',
       },
       size: {
-        lg: 'h-[3.75rem] px-[2rem] py-[0.62rem] gap-[0.5rem]',
-        md: 'h-[3.25rem] px-[2rem] py-[0.62rem] gap-[0.5rem]',
-        sm: 'h-[2rem] px-[1rem] py-[0.62rem] gap-[0.5rem]',
+        lg: `h-[3.75rem] ${baseButtonStyle}`,
+        md: `h-[3.25rem] ${baseButtonStyle}`,
+        sm: `h-[2rem] px-[1rem] py-[0.62rem] gap-[0.5rem]`,
       },
     },
     compoundVariants: [
