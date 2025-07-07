@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import {
   SvgInstagramFill,
   SvgTwitterFill,
@@ -69,13 +70,12 @@ function FooterRight({ menu }: Pick<FooterProps, 'menu'>) {
           <p className="text-jp-body1 font-bold">{section.title}</p>
           <div className="flex flex-col items-start justify-start gap-[0.8rem] self-stretch">
             {section.option.map((item) => (
-              <div
-                key={item}
-                className="flex h-[3.2rem] items-center gap-[0.8rem] self-stretch py-[1rem]"
-              >
-                <p className="text-jp-body2 font-medium">{item}</p>
-                <SvgArrowRight />
-              </div>
+              <Link href="/" key={item}>
+                <div className="flex h-[3.2rem] items-center gap-[0.8rem] self-stretch py-[1rem]">
+                  <p className="text-jp-body2 font-medium">{item}</p>
+                  <SvgArrowRight />
+                </div>
+              </Link>
             ))}
           </div>
         </div>
