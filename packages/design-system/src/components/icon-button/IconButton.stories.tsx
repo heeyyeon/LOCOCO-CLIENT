@@ -68,9 +68,19 @@ export const AllSizes: Story = {
   ),
 };
 
+export const AllRoundedShadow: Story = {
+  render: () => (
+    <div className="flex items-center gap-4">
+      <IconButton size="lg" icon={SvgClose} rounded />
+      <IconButton size="md" icon={SvgClose} rounded />
+      <IconButton size="sm" icon={SvgClose} rounded />
+    </div>
+  ),
+};
+
 export const AllCombinations: Story = {
   render: () => (
-    <div className="grid grid-cols-3 gap-4">
+    <div className="grid grid-cols-4 gap-6">
       <div className="text-center">
         <div className="flex flex-col items-center gap-2">
           <IconButton color="primary" size="lg" icon={SvgClose} />
@@ -90,6 +100,13 @@ export const AllCombinations: Story = {
           <IconButton color="tertiary" size="lg" icon={SvgClose} />
           <IconButton color="tertiary" size="md" icon={SvgClose} />
           <IconButton color="tertiary" size="sm" icon={SvgClose} />
+        </div>
+      </div>
+      <div className="text-center">
+        <div className="flex flex-col items-center gap-2">
+          <IconButton size="lg" icon={SvgClose} rounded />
+          <IconButton size="md" icon={SvgClose} rounded />
+          <IconButton size="sm" icon={SvgClose} rounded />
         </div>
       </div>
     </div>

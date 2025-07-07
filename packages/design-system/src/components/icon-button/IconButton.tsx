@@ -7,6 +7,7 @@ interface IconButtonProps
   icon?: React.ElementType;
   color?: 'primary' | 'secondary' | 'tertiary';
   size?: 'sm' | 'md' | 'lg';
+  rounded?: boolean;
 }
 
 const iconButtonVariants = cva(
@@ -23,6 +24,9 @@ const iconButtonVariants = cva(
         md: 'p-[0.625rem] size-[2.75rem]',
         lg: 'p-[0.875rem] size-[4rem]',
       },
+      rounded: {
+        true: 'rounded-full shadow-button hover:text-pink-500 clicked:text-pink-500 transition-colors duration-300',
+      },
     },
     defaultVariants: {
       color: 'primary',
@@ -38,15 +42,16 @@ const iconSize = {
 };
 
 export function IconButton({
-  color = 'primary',
+  color = 'secondary',
   size = 'lg',
   icon: Icon,
   className,
+  rounded = false,
   ...props
 }: IconButtonProps) {
   return (
     <button
-      className={cn(iconButtonVariants({ color, size }), className)}
+      className={cn(iconButtonVariants({ color, size, rounded }), className)}
       {...props}
     >
       {Icon ? <Icon size={iconSize[size]} /> : null}
