@@ -23,7 +23,7 @@ const meta: Meta<typeof Star> = {
       },
       description: '0부터 5까지의 별점',
     },
-    type: {
+    size: {
       control: { type: 'select' },
       options: ['review', 'detail'],
       description: '별점 표시 타입',
@@ -38,14 +38,14 @@ type Story = StoryObj<typeof meta>;
 export const ReviewType: Story = {
   args: {
     rating: 4.5,
-    type: 'review',
+    size: 'small',
   },
 };
 
 export const DetailType: Story = {
   args: {
     rating: 4.2,
-    type: 'detail',
+    size: 'medium',
   },
   parameters: {
     docs: {

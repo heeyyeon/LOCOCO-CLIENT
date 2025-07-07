@@ -1,10 +1,35 @@
-import type { SVGProps } from "react";
+import type { SVGProps } from 'react';
+
 interface Props extends SVGProps<SVGSVGElement> {
   size?: number;
   fill?: string;
 }
 export function SvgStar(props: Props) {
-  return <svg width={props.size || 24} height={props.size || 24} viewBox="0 0 24 24" fill={props.fill || "currentColor"} xmlns="http://www.w3.org/2000/svg" {...props}><mask id="mask0_1285_20075" style={{
-      maskType: "alpha"
-    }} maskUnits="userSpaceOnUse" x={0} y={0} width={24} height={24}><rect width={24} height={24} fill="#D9D9D9" /></mask><g mask="url(#mask0_1285_20075)"><path d="M5.825 21L7.45 13.975L2 9.25L9.2 8.625L12 2L14.8 8.625L22 9.25L16.55 13.975L18.175 21L12 17.275L5.825 21Z" /></g></svg>;
+  return (
+    <svg
+      width={props.size || 24}
+      height={props.size || 24}
+      viewBox="0 0 24 24"
+      fill={props.fill || 'currentColor'}
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
+      <mask
+        id="mask0_1285_20075"
+        style={{
+          maskType: 'alpha',
+        }}
+        maskUnits="userSpaceOnUse"
+        x={0}
+        y={0}
+        width={24}
+        height={24}
+      >
+        <rect width={24} height={24} fill="#D9D9D9" />
+      </mask>
+      <g mask="url(#mask0_1285_20075)">
+        <path d="M5.825 21L7.45 13.975L2 9.25L9.2 8.625L12 2L14.8 8.625L22 9.25L16.55 13.975L18.175 21L12 17.275L5.825 21Z" />
+      </g>
+    </svg>
+  );
 }
