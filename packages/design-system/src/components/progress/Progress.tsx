@@ -2,8 +2,8 @@ import { cn } from '../../lib/utils';
 
 interface ProgressProps {
   value: number;
-  width?: string | number;
-  height?: string | number;
+  width?: string;
+  height?: string;
   className?: string;
 }
 
