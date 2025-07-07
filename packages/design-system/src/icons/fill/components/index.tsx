@@ -1,3 +1,4 @@
+export { SvgAvatar } from './Avatar';
 export { SvgArrowDown } from './ArrowDown';
 export { SvgArrowUp } from './ArrowUp';
 export { SvgClose } from './Close';
