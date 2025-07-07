@@ -6,3 +6,5 @@ export * from './tab';
 export * from './badge';
 export * from './input';
 export * from './badge';
+export * from './avatar';
+export * from './icon-button';
