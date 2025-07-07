@@ -49,31 +49,45 @@ export default function Home() {
       <SvgErrorFill />
       <SvgLikeFill className="fill-pink-400" />
       <Badge rank={1} className="bg-pink-200" />
-      {MOCK_CARD_PRODUCT.map((product) => (
-        <CardProduct
-          key={product.productId}
-          brand={product.brand}
-          title={product.title}
-          description={product.description}
-          productId={product.productId}
-          isLiked={product.isLiked}
-          likeCount={product.likeCount}
-          rating={product.rating}
-          reviewCount={product.reviewCount}
-          {...(inRange(product.rank, 1, 3) && { rank: product.rank })}
-        />
-      ))}
-      {MOCK_CARD_REVIEW.map((review) => (
-        <CardReview
-          key={review.reviewId}
-          type={review.type}
-          brand={review.brand}
-          title={review.title}
-          reviewId={review.reviewId}
-          likeCount={review.likeCount}
-          {...(inRange(review.rank, 1, 3) && { rank: review.rank })}
-        />
-      ))}
+      {MOCK_CARD_PRODUCT.map(
+        ({
+          productId,
+          brand,
+          title,
+          description,
+          isLiked,
+          likeCount,
+          rating,
+          rank,
+          reviewCount,
+        }) => (
+          <CardProduct
+            key={productId}
+            brand={brand}
+            title={title}
+            description={description}
+            productId={productId}
+            isLiked={isLiked}
+            likeCount={likeCount}
+            rating={rating}
+            reviewCount={reviewCount}
+            {...(inRange(rank, 1, 3) && { rank: rank })}
+          />
+        )
+      )}
+      {MOCK_CARD_REVIEW.map(
+        ({ type, brand, title, reviewId, likeCount, rank }) => (
+          <CardReview
+            key={reviewId}
+            type={type}
+            brand={brand}
+            title={title}
+            reviewId={reviewId}
+            likeCount={likeCount}
+            {...(inRange(rank, 1, 3) && { rank: rank })}
+          />
+        )
+      )}
     </div>
   );
 }
