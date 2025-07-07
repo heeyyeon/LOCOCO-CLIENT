@@ -1,7 +1,9 @@
-export { SvgArrowDown } from './ArrowDown';
 export { SvgLogo } from './Logo';
+export { SvgArrowDown } from './ArrowDown';
 export { SvgArrowUp } from './ArrowUp';
 export { SvgCheck } from './Check';
+export { SvgClose } from './Close';
+export { SvgDivider } from './Divider';
 export { SvgErrorFill } from './ErrorFill';
 export { SvgHistory } from './History';
 export { SvgLikeFill } from './LikeFill';
