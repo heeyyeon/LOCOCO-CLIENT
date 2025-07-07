@@ -5,12 +5,12 @@ import {
   SvgHome,
   SvgLikeFill,
 } from '@lococo/design-system';
-import Checkbox from '@lococo/design-system/components/checkbox/checkbox';
+import { Checkbox } from '@lococo/design-system';
 import { cn } from '@/lib/utils';
 
 export default function Home() {
   return (
-    <div>
+    <div className="m-10 pl-1">
       <Button size="small">ui 컴포넌트 핑크 버튼</Button>
       <div className={cn('bg-pink-200', 'text-pink-400')}>
         <p>test</p>
@@ -46,7 +46,15 @@ export default function Home() {
       <SvgArrowUp className="fill-pink-400" />
       <SvgErrorFill />
       <SvgLikeFill className="fill-pink-400" />
-      <Checkbox></Checkbox>
+      <Checkbox />
+
+      {/* size 등 유틸에 적용되지 않는 tailwind 클래스 확인 */}
+      <div className="bg-blue size-10"></div>
+      <div className="bg-red size-10"></div>
+      <div className="bg-red size-9"></div>
+      <div className="bg-red size-8"></div>
+      <div className="bg-red size-7"></div>
+      <div className="bg-red size-6"></div>
     </div>
   );
 }
