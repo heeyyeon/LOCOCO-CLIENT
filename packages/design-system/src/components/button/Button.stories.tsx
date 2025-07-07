@@ -8,7 +8,10 @@ const meta: Meta<typeof Button> = {
   component: Button,
   argTypes: {
     variant: { control: 'radio', options: ['filled', 'outline', 'text'] },
-    color: { control: 'radio', options: ['primary', 'secondary'] },
+    color: {
+      control: 'radio',
+      options: ['primary', 'secondary', 'default', 'hover'],
+    },
     shape: { control: 'radio', options: ['default', 'round'] },
     size: { control: 'radio', options: ['large', 'medium', 'small'] },
     iconPosition: { control: 'radio', options: ['left', 'right'] },
@@ -58,11 +61,11 @@ export const FilledPrimaryWithRightIcon: Story = {
   },
 };
 
-export const OutlinePrimary: Story = {
+export const OutlineDefault: Story = {
   args: {
     children: 'Label',
     variant: 'outline',
-    color: 'primary',
+    color: 'default',
     size: 'large',
   },
 };
@@ -80,15 +83,6 @@ export const FilledSecondary: Story = {
   args: {
     children: 'Label',
     variant: 'filled',
-    color: 'secondary',
-    size: 'large',
-  },
-};
-
-export const OutlineSecondary: Story = {
-  args: {
-    children: 'Label',
-    variant: 'outline',
     color: 'secondary',
     size: 'large',
   },

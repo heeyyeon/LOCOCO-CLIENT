@@ -9,6 +9,10 @@ interface ButtonProps
   iconPosition?: 'left' | 'right';
   children: ReactNode;
   fontClassName?: string;
+  color?: 'primary' | 'secondary' | 'default' | 'hover';
+  variant: 'filled' | 'outline' | 'text';
+  shape: 'default' | 'round';
+  size: 'large' | 'medium' | 'small';
 }
 
 const buttonVariants = cva(
@@ -23,6 +27,8 @@ const buttonVariants = cva(
       color: {
         primary: '',
         secondary: '',
+        default: '',
+        hover: '',
       },
       shape: {
         default: '',
@@ -47,13 +53,9 @@ const buttonVariants = cva(
       },
       {
         variant: 'outline',
-        color: 'primary',
-        class: 'border-b border-pink-500 text-pink-500',
-      },
-      {
-        variant: 'outline',
-        color: 'secondary',
-        class: 'border-b border-pink-500 bg-pink-100 text-pink-500',
+        color: 'default',
+        class:
+          'border-b border-pink-500 text-pink-500 hover:bg-pink-100 hover:text-pink-500 hover:border-pink-500',
       },
       {
         variant: 'text',
@@ -66,12 +68,6 @@ const buttonVariants = cva(
         class: 'text-gray-800',
       },
     ],
-    defaultVariants: {
-      variant: 'filled',
-      color: 'primary',
-      shape: 'default',
-      size: 'large',
-    },
   }
 );
 
@@ -87,12 +83,14 @@ export default function Button({
   fontClassName,
   ...props
 }: ButtonProps) {
+  const outlineColor = variant === 'outline' && !color ? 'default' : color;
+
   return (
     <button
       className={cn(
-        buttonVariants({ variant, color, shape, size }),
-        className,
-        fontClassName
+        buttonVariants({ variant, color: outlineColor, shape, size }),
+        fontClassName,
+        className
       )}
       {...props}
     >
