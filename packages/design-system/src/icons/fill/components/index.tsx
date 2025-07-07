@@ -1,3 +1,4 @@
+export { SvgArrowDown } from './ArrowDown';
 export { SvgArrowUp } from './ArrowUp';
 export { SvgCheck } from './Check';
 export { SvgErrorFill } from './ErrorFill';

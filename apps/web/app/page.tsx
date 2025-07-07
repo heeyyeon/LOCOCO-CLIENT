@@ -1,4 +1,5 @@
 import {
+  Badge,
   Button,
   SvgArrowUp,
   SvgErrorFill,
@@ -48,13 +49,7 @@ export default function Home() {
       <SvgLikeFill className="fill-pink-400" />
       <Checkbox />
 
-      {/* size 등 유틸에 적용되지 않는 tailwind 클래스 확인 */}
-      <div className="bg-blue size-10"></div>
-      <div className="bg-red size-10"></div>
-      <div className="bg-red size-9"></div>
-      <div className="bg-red size-8"></div>
-      <div className="bg-red size-7"></div>
-      <div className="bg-red size-6"></div>
+ 
     </div>
   );
 }
