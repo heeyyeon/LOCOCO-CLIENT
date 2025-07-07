@@ -29,8 +29,8 @@ const iconButtonVariants = cva(
       },
     },
     defaultVariants: {
-      color: 'primary',
-      size: 'lg',
+      color: 'secondary',
+      size: 'md',
     },
   }
 );
@@ -43,7 +43,7 @@ const iconSize = {
 
 export function IconButton({
   color = 'secondary',
-  size = 'lg',
+  size = 'md',
   icon: Icon,
   className,
   rounded = false,
