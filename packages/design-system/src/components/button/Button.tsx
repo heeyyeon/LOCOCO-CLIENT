@@ -21,7 +21,7 @@ const buttonVariants = cva(
     variants: {
       variant: {
         filled: '',
-        outline: 'bg-transparent',
+        outline: 'bg-transparent border-b',
         text: 'bg-transparent',
       },
       color: {
@@ -54,7 +54,7 @@ const buttonVariants = cva(
         variant: 'outline',
         color: 'primary',
         class:
-          'border-b border-pink-500 text-pink-500 hover:bg-pink-100 hover:text-pink-500 hover:border-pink-500',
+          'border-pink-500 text-pink-500 hover:bg-pink-100 hover:text-pink-500 hover:border-pink-500',
       },
       {
         variant: 'text',
