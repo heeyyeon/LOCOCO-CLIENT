@@ -1,5 +1,3 @@
-import '@lococo/tailwind-config';
-
 // Components
 export * from './components/index';
 

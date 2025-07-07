@@ -1,4 +1,2 @@
-@import 'tailwindcss';
-
-@import '@lococo/tailwind-config';
+@import '@lococo/tailwind-config/shared-styles.css';
 @import '@lococo/design-system/styles.css';
