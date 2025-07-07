@@ -7,9 +7,9 @@ interface ButtonProps
     VariantProps<typeof buttonVariants> {
   iconLeft?: ReactNode;
   iconRight?: ReactNode;
+  rounded?: boolean;
   color: 'primary' | 'secondary';
   variant: 'filled' | 'outline' | 'text';
-  rounded?: boolean;
   size: 'lg' | 'md' | 'sm';
 }
 
@@ -27,7 +27,6 @@ const buttonVariants = cva(
       color: {
         primary: '',
         secondary: '',
-        default: '',
       },
       rounded: {
         true: 'rounded-[0.5rem]',
@@ -87,12 +86,10 @@ export default function Button({
   rounded = false,
   ...props
 }: ButtonProps) {
-  const outlineColor = variant === 'outline' ? 'default' : color;
-
   return (
     <button
       className={cn(
-        buttonVariants({ variant, color: outlineColor, size, rounded }),
+        buttonVariants({ variant, color, size, rounded }),
         className
       )}
       {...props}
