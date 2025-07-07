@@ -1,12 +1,12 @@
 import * as CheckboxPrimitive from '@radix-ui/react-checkbox';
-import * as React from 'react';
+import { ComponentProps } from 'react';
 import { SvgCheck } from '@/icons';
 import { cn } from '@/lib/utils';
 
 export default function Checkbox({
   className,
   ...props
-}: React.ComponentProps<typeof CheckboxPrimitive.Root>) {
+}: ComponentProps<typeof CheckboxPrimitive.Root>) {
   return (
     <CheckboxPrimitive.Root
       data-slot="checkbox"
