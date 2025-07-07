@@ -28,13 +28,13 @@ const buttonVariants = cva(
         default: '',
       },
       rounded: {
-        true: 'rounded-[0.8rem]',
+        true: 'rounded-[0.5rem]',
         false: '',
       },
       size: {
-        lg: 'h-[6rem] px-[3.2rem] py-[1rem] gap-[0.8rem]',
-        md: 'h-[5.2rem] px-[3.2rem] py-[1rem] gap-[0.8rem]',
-        sm: 'h-[3.2rem] px-[1.6rem] py-[1rem] gap-[0.8rem]',
+        lg: 'h-[3.75rem] px-[2rem] py-[0.62rem] gap-[0.5rem]',
+        md: 'h-[3.25rem] px-[2rem] py-[0.62rem] gap-[0.5rem]',
+        sm: 'h-[2rem] px-[1rem] py-[0.62rem] gap-[0.5rem]',
       },
     },
     compoundVariants: [
