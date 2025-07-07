@@ -21,7 +21,6 @@ function SelectValue({
 
 function SelectTrigger({
   className,
-  open,
   children,
   ...props
 }: ComponentProps<typeof SelectPrimitive.Trigger> & {
@@ -31,15 +30,17 @@ function SelectTrigger({
     <SelectPrimitive.Trigger
       data-slot="select-trigger"
       className={cn(
-        'flex h-[3.25rem] w-[25.5rem] items-center justify-between gap-[0.625rem] self-stretch border-b bg-white pr-[0.75rem] focus:border-pink-500 focus:outline-none',
-        open ? 'border-pink-500' : 'border-gray-400',
+        'group flex h-[5.2rem] w-[40.8rem] items-center justify-between gap-[1rem] self-stretch border-b border-gray-400 bg-white pr-[1.2rem] focus:outline-none [&[data-state=open]]:border-pink-500',
         className
       )}
       {...props}
     >
       {children}
       <SelectPrimitive.Icon asChild>
-        {open ? <SvgArrowUp className="fill-pink-500" /> : <SvgArrowDown />}
+        <div className="relative">
+          <SvgArrowDown className="group-data-[state=open]:hidden" />
+          <SvgArrowUp className="inset-0 fill-pink-500 group-data-[state=closed]:hidden" />
+        </div>
       </SelectPrimitive.Icon>
     </SelectPrimitive.Trigger>
   );
@@ -56,12 +57,12 @@ function SelectContent({
       <SelectPrimitive.Content
         data-slot="select-content"
         className={cn(
-          'data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 relative z-50 overflow-y-auto overflow-x-hidden border-b border-pink-500 bg-pink-100',
+          'data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 relative z-50 w-[var(--radix-select-trigger-width)] overflow-y-auto overflow-x-hidden border-b border-pink-500 bg-pink-100',
           position === 'popper' && 'overflow-y-scroll',
           className
         )}
         style={{
-          maxHeight: '12rem',
+          maxHeight: '19.2rem',
         }}
         position={position}
         avoidCollisions={false}
@@ -69,8 +70,9 @@ function SelectContent({
       >
         <SelectPrimitive.Viewport
           className={cn(
+            'w-full',
             position === 'popper' &&
-              'h-[var(--radix-select-trigger-height)] min-w-[var(--radix-select-trigger-width)] scroll-my-1'
+              'h-[var(--radix-select-trigger-height)] scroll-my-1'
           )}
         >
           <SelectGroup>{children}</SelectGroup>
@@ -83,7 +85,6 @@ function SelectContent({
 function SelectItem({
   className,
   children,
-  hover = false,
   ...props
 }: ComponentProps<typeof SelectPrimitive.Item> & {
   hover?: boolean;
@@ -92,8 +93,7 @@ function SelectItem({
     <SelectPrimitive.Item
       data-slot="select-item"
       className={cn(
-        'flex h-[2.75rem] flex-shrink-0 items-center gap-1 self-stretch border-b border-dashed border-pink-500 bg-pink-100 px-[0.75rem] outline-none ring-0 last:border-none focus:outline-none focus:ring-0',
-        hover && 'hover:cursor-pointer hover:bg-pink-200',
+        'flex h-[4.4rem] w-full flex-shrink-0 items-center self-stretch border-b border-dashed border-pink-500 bg-pink-100 px-[1.2rem] outline-none ring-0 last:border-none hover:cursor-pointer hover:bg-pink-200 focus:outline-none focus:ring-0',
         className
       )}
       {...props}
