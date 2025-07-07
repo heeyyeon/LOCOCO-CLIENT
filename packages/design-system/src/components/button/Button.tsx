@@ -65,6 +65,12 @@ const buttonVariants = cva(
         class: 'text-gray-800',
       },
     ],
+    defaultVariants: {
+      variant: 'filled',
+      color: 'primary',
+      size: 'md',
+      rounded: false,
+    },
   }
 );
 
