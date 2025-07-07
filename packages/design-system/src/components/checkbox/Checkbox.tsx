@@ -18,7 +18,7 @@ export default function Checkbox({
     >
       <CheckboxPrimitive.Indicator
         data-slot="checkbox-indicator"
-        className="border-red flex size-6 items-center justify-center transition-none"
+        className="flex size-6 items-center justify-center transition-none"
       >
         <SvgCheck className="size-6 fill-white" />
       </CheckboxPrimitive.Indicator>
