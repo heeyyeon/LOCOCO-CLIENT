@@ -8,8 +8,8 @@ interface ButtonProps
   icon?: ReactNode;
   iconPosition?: 'left' | 'right';
   children: ReactNode;
-  fontClassName?: string;
-  color?: 'primary' | 'secondary' | 'default' | 'hover';
+  fontClassName: string;
+  color: 'primary' | 'secondary' | 'default';
   variant: 'filled' | 'outline' | 'text';
   shape: 'default' | 'round';
   size: 'large' | 'medium' | 'small';
@@ -28,7 +28,6 @@ const buttonVariants = cva(
         primary: '',
         secondary: '',
         default: '',
-        hover: '',
       },
       shape: {
         default: '',
