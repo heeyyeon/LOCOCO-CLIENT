@@ -1,19 +1,7 @@
 import { cva } from 'class-variance-authority';
+import { ReviewItems } from 'type/review';
 import Image from 'next/image';
 import { Badge, SvgLikeFill } from '@lococo/design-system';
-
-interface CardReviewProps {
-  type?: 'video' | 'image';
-  rank?: number;
-  brand: string;
-  title: string;
-  reviewId: number;
-  rating?: number;
-  reviewCount?: number;
-  likeCount: number;
-  imageUrl?: string;
-  handleCardClick?: (reviewId: number) => void;
-}
 
 const imageWrapperVariant = cva(
   'relative border-[0.1rem] border-gray-200 flex items-center justify-center bg-gray-200',
@@ -48,7 +36,7 @@ export default function CardReview({
   likeCount,
   imageUrl,
   handleCardClick,
-}: CardReviewProps) {
+}: ReviewItems) {
   return (
     <article
       className="flex w-[26.4rem] cursor-pointer flex-col"

@@ -1,3 +1,4 @@
+import { ProductItems } from 'type/product';
 import Image from 'next/image';
 import {
   Badge,
@@ -5,21 +6,6 @@ import {
   SvgLikeOutline,
   SvgStar,
 } from '@lococo/design-system';
-
-interface CardProductProps {
-  rank?: number;
-  brand: string;
-  title: string;
-  description: string;
-  productId: number;
-  isLiked: boolean;
-  rating: number;
-  reviewCount: number;
-  likeCount: number;
-  imageUrl?: string;
-  handleLikeToggle?: (productId: number, isLiked: boolean) => void;
-  handleCardClick?: (productId: number) => void;
-}
 
 /**
  *
@@ -48,7 +34,7 @@ export default function CardProduct({
   imageUrl,
   handleCardClick,
   handleLikeToggle,
-}: CardProductProps) {
+}: ProductItems) {
   const handleLikeClick = (e: React.MouseEvent) => {
     e.stopPropagation();
     handleLikeToggle?.(productId, isLiked);
