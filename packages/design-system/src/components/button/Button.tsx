@@ -10,7 +10,7 @@ interface ButtonProps
   color: 'primary' | 'secondary' | 'default';
   variant: 'filled' | 'outline' | 'text';
   shape: 'default' | 'round';
-  size: 'large' | 'medium' | 'small';
+  size: 'lg' | 'md' | 'sm';
 }
 
 const buttonVariants = cva(
@@ -32,9 +32,9 @@ const buttonVariants = cva(
         round: 'rounded-[0.8rem]',
       },
       size: {
-        large: 'h-[6rem] px-[3.2rem] py-[1rem] gap-[0.8rem]',
-        medium: 'h-[5.2rem] px-[3.2rem] py-[1rem] gap-[0.8rem]',
-        small: 'h-[3.2rem] px-[1.6rem] py-[1rem] gap-[0.8rem]',
+        lg: 'h-[6rem] px-[3.2rem] py-[1rem] gap-[0.8rem]',
+        md: 'h-[5.2rem] px-[3.2rem] py-[1rem] gap-[0.8rem]',
+        sm: 'h-[3.2rem] px-[1.6rem] py-[1rem] gap-[0.8rem]',
       },
     },
     compoundVariants: [
