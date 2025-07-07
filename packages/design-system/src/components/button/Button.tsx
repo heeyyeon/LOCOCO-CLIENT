@@ -31,12 +31,12 @@ const buttonVariants = cva(
       },
       shape: {
         default: '',
-        round: 'rounded-[0.5rem]',
+        round: 'rounded-[0.8rem]',
       },
       size: {
-        large: 'h-[3.75rem] px-[2rem] py-[0.625rem] gap-[0.5rem]',
-        medium: 'h-[3.25rem] px-[2rem] py-[0.625rem] gap-[0.5rem]',
-        small: 'h-[2rem] px-[1rem] py-[0.625rem] gap-[0.5rem]',
+        large: 'h-[6rem] px-[3.2rem] py-[1rem] gap-[0.8rem]',
+        medium: 'h-[5.2rem] px-[3.2rem] py-[1rem] gap-[0.8rem]',
+        small: 'h-[3.2rem] px-[1.6rem] py-[1rem] gap-[0.8rem]',
       },
     },
     compoundVariants: [
