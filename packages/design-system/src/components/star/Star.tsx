@@ -3,7 +3,8 @@ import { SvgStar } from '../../icons/fill/components/Star';
 interface StarProps {
   rating: number;
   size?: 'small' | 'medium';
-  color?: string;
+  color?: 'yellow' | 'black';
+  className?: string;
 }
 
 const SIZE_CLASS = {
@@ -11,48 +12,57 @@ const SIZE_CLASS = {
   medium: 'w-[3.6rem] h-[3.6rem]',
 };
 
+const COLOR_CLASS = {
+  yellow: 'fill-yellow',
+  black: 'fill-black',
+};
+
+const BASE_CLASS = {
+  yellow: 'fill-gray-300',
+  black: 'fill-gray-400',
+};
+
 export default function Star({
   rating,
   size = 'small',
   color = 'yellow',
+  className,
 }: StarProps) {
-  const fullStars = Math.floor(rating);
-  const partialPercent = Math.round((rating - fullStars) * 100);
-  const emptyStars = 5 - fullStars - (partialPercent > 0 ? 1 : 0);
+  const sizeClasses = SIZE_CLASS[size];
+  const fillClasses = COLOR_CLASS[color];
+  const baseClasses = BASE_CLASS[color];
+
+  const stars = Array.from({ length: 5 }, (_, index) => {
+    const fillPercentage = Math.min(Math.max((rating - index) * 100, 0), 100);
+
+    if (fillPercentage === 0) {
+      return (
+        <SvgStar key={index} className={`${sizeClasses} ${baseClasses}`} />
+      );
+    }
+
+    if (fillPercentage === 100) {
+      return (
+        <SvgStar key={index} className={`${fillClasses} ${sizeClasses}`} />
+      );
+    }
+
+    return (
+      <div key={index} className="relative">
+        <SvgStar className={`${sizeClasses} ${baseClasses}`} />
+        <div
+          className="absolute left-0 top-0 overflow-hidden"
+          style={{ width: `${fillPercentage}%` }}
+        >
+          <SvgStar className={`${fillClasses} ${sizeClasses}`} />
+        </div>
+      </div>
+    );
+  });
 
   return (
-    <div className="flex" role="img" aria-label={`별점 ${rating}점 중 5점`}>
-      <div className="flex">
-        {Array.from({ length: fullStars }, (_, index) => (
-          <SvgStar
-            key={index}
-            className={`fill-${color} ${SIZE_CLASS[size]}`}
-          />
-        ))}
-      </div>
-
-      {partialPercent > 0 && (
-        <div className="relative">
-          <SvgStar className={`fill-gray-300 ${SIZE_CLASS[size]}`} />
-          <div
-            className="absolute left-0 top-0 overflow-hidden"
-            style={{ width: `${partialPercent}%` }}
-          >
-            <SvgStar className={`fill-${color} ${SIZE_CLASS[size]}`} />
-          </div>
-        </div>
-      )}
-
-      {emptyStars > 0 && (
-        <div className="flex">
-          {Array.from({ length: emptyStars }, (_, index) => (
-            <SvgStar
-              key={`empty-${index}`}
-              className={`fill-gray-300 ${SIZE_CLASS[size]}`}
-            />
-          ))}
-        </div>
-      )}
+    <div className={`flex ${className}`} aria-label={`별점 5점 중 ${rating}점`}>
+      {stars}
     </div>
   );
 }

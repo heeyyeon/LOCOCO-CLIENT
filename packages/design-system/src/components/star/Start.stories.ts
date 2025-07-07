@@ -85,19 +85,11 @@ export const YellowStar: Story = {
   },
 };
 
-export const OrangeStar: Story = {
+export const BlackStar: Story = {
   args: {
-    rating: 3.7,
+    rating: 4.5,
     size: 'medium',
-    color: 'orange',
-  },
-};
-
-export const RedStar: Story = {
-  args: {
-    rating: 2.3,
-    size: 'medium',
-    color: 'red',
+    color: 'black',
   },
 };
 
