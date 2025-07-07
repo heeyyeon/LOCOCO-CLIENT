@@ -64,6 +64,7 @@
 
   /* EN body */
   --text-en-body1: 0.875rem;
+  --text-en-body2: 0.875rem;
 
   /* EN caption */
   --text-en-caption1: 0.75rem;
@@ -171,7 +172,12 @@
   .text-en-body1 {
     font-family: var(--font-pretendard);
     font-size: var(--text-en-body1);
-    line-height: 150%;
+    line-height: 100%;
+  }
+  .text-en-body2 {
+    font-family: var(--font-pretendard);
+    font-size: var(--text-en-body2);
+    line-height: 100%;
   }
 
   /* EN Caption */

@@ -2,21 +2,26 @@
 
 import { inRange } from 'es-toolkit';
 import {
-  Badge,
   Button,
   SvgArrowUp,
   SvgErrorFill,
   SvgHome,
   SvgLikeFill,
+  Checkbox,
+  Badge,
 } from '@lococo/design-system';
+import { cn } from '@/lib/utils';
 import CardProduct from '../components/card/card-products';
 import CardReview from '../components/card/card-review';
 import { MOCK_CARD_PRODUCT, MOCK_CARD_REVIEW } from '../mock/card-props-mock';
 
 export default function Home() {
   return (
-    <div>
+    <div className="m-10 pl-1">
       <Button size="small">ui 컴포넌트 핑크 버튼</Button>
+      <div className={cn('bg-pink-200', 'text-pink-400')}>
+        <p>test</p>
+      </div>
       <div className="mt-12 flex space-x-14">
         <div>
           <p className="text-jp-head1 font-bold">head1 JP</p>
@@ -48,6 +53,7 @@ export default function Home() {
       <SvgArrowUp className="fill-pink-400" />
       <SvgErrorFill />
       <SvgLikeFill className="fill-pink-400" />
+      <Checkbox />
       <Badge rank={1} className="bg-pink-200" />
       {MOCK_CARD_PRODUCT.map(
         ({
