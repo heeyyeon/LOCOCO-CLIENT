@@ -2,7 +2,6 @@
 
 import React, { useMemo, useState } from 'react';
 import {
-  Button,
   SvgClose,
   SvgHistory,
   SvgLikeFill,
@@ -11,6 +10,7 @@ import {
   SvgMy,
   SvgSearch,
 } from '@lococo/design-system';
+import Button from '@/components/button/Button';
 import Input from '@/components/input/Input';
 import { HEADER_MENUS } from '../../app/constants/header';
 
@@ -100,11 +100,44 @@ export default function Header() {
 
 function TopUtil() {
   return (
-    <div className="text-jp-body2 flex h-[7.2rem] w-full bg-white pb-[2rem] pl-[11.9rem] pr-[11.9rem] pt-[2rem] text-gray-600">
-      <SvgMy />
-      <SvgLikeFill />
-      <SvgHistory />
-      <SvgLogin />
+    <div className="flex items-center justify-end self-stretch px-[11.9rem] py-[2rem]">
+      <Button
+        iconLeft={<SvgMy className="text-gray-600" />}
+        color="secondary"
+        variant="text"
+        size="sm"
+        className="flex h-[3.2rem] cursor-pointer items-center justify-center gap-[0.8rem] whitespace-nowrap px-[1.6rem] py-[1rem]"
+      >
+        マイページ
+      </Button>
+      <Button
+        iconLeft={<SvgLikeFill className="text-gray-600" />}
+        color="secondary"
+        variant="text"
+        size="sm"
+        className="flex h-[3.2rem] cursor-pointer items-center justify-center gap-[0.8rem] whitespace-nowrap px-[1.6rem] py-[1rem]"
+      >
+        マイページ
+      </Button>
+
+      <Button
+        iconLeft={<SvgHistory className="text-gray-600" />}
+        color="secondary"
+        variant="text"
+        size="sm"
+        className="flex h-[3.2rem] cursor-pointer items-center justify-center gap-[0.8rem] whitespace-nowrap px-[1.6rem] py-[1rem]"
+      >
+        マイページ
+      </Button>
+      <Button
+        iconLeft={<SvgLogin className="text-gray-600" />}
+        color="secondary"
+        variant="text"
+        size="sm"
+        className="flex h-[3.2rem] cursor-pointer items-center justify-center gap-[0.8rem] whitespace-nowrap px-[1.6rem] py-[1rem]"
+      >
+        マイページ
+      </Button>
     </div>
   );
 }
@@ -164,6 +197,9 @@ function MegaMenu({ options, activeOption, onClick }: MegaMenuProps) {
         const isActive = option === activeOption;
         return (
           <Button
+            variant="text"
+            size="md"
+            color="primary"
             key={option}
             className={`text-jp-body2 whitespace-nowrap ${
               isActive ? 'font-bold text-pink-500' : 'text-gray-600'
@@ -188,7 +224,9 @@ function Search({ searchValue, handleSearchValue }: SearchProps) {
         placeholder="ラネージュ"
         className="text-jp-body2 w-full text-right font-bold leading-[3rem] text-gray-800"
       />
-      <SvgSearch className="cursor-pointer" />
+      <div className="flex h-[6.4rem] w-[6.4rem] shrink-0 cursor-pointer items-center justify-center p-[1.4rem]">
+        <SvgSearch className="cursor-pointer" />
+      </div>
     </div>
   );
 }
