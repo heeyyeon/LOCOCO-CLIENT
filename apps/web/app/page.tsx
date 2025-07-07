@@ -4,8 +4,8 @@ import {
   SvgErrorFill,
   SvgHome,
   SvgLikeFill,
+  Checkbox,
 } from '@lococo/design-system';
-import Checkbox from '@/components/checkbox/Checkbox';
 import { cn } from '@/lib/utils';
 
 export default function Home() {
