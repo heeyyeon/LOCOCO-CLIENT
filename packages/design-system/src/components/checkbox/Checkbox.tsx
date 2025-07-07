@@ -1,7 +1,7 @@
 import * as CheckboxPrimitive from '@radix-ui/react-checkbox';
 import { ComponentProps } from 'react';
-import { SvgCheck } from '@/icons';
-import { cn } from '@/lib/utils';
+import { SvgCheck } from './../../icons/fill/components/Check';
+import { cn } from './../../lib/utils';
 
 export default function Checkbox({
   className,
