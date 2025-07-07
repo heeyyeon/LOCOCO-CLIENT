@@ -9,7 +9,7 @@ interface ButtonProps
   iconPosition?: 'left' | 'right';
   color: 'primary' | 'secondary' | 'default';
   variant: 'filled' | 'outline' | 'text';
-  shape: 'default' | 'round';
+  rounded?: boolean;
   size: 'lg' | 'md' | 'sm';
 }
 
@@ -27,9 +27,9 @@ const buttonVariants = cva(
         secondary: '',
         default: '',
       },
-      shape: {
-        default: '',
-        round: 'rounded-[0.8rem]',
+      rounded: {
+        true: 'rounded-[0.8rem]',
+        false: '',
       },
       size: {
         lg: 'h-[6rem] px-[3.2rem] py-[1rem] gap-[0.8rem]',
@@ -71,12 +71,12 @@ const buttonVariants = cva(
 export default function Button({
   variant,
   color,
-  shape,
   size,
   icon,
   iconPosition,
   children,
   className,
+  rounded = false,
   ...props
 }: ButtonProps) {
   const outlineColor = variant === 'outline' ? 'default' : color;
@@ -84,7 +84,7 @@ export default function Button({
   return (
     <button
       className={cn(
-        buttonVariants({ variant, color: outlineColor, shape, size }),
+        buttonVariants({ variant, color: outlineColor, size, rounded }),
         className
       )}
       {...props}
