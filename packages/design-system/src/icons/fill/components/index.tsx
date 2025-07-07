@@ -1,6 +1,5 @@
 export { SvgArrowRight } from './ArrowRight';
 export { SvgArrowDown } from './ArrowDown';
-export { SvgArrowRight } from './ArrowRight';
 export { SvgArrowUp } from './ArrowUp';
 export { SvgCheck } from './Check';
 export { SvgErrorFill } from './ErrorFill';
