@@ -7,7 +7,7 @@ interface ButtonProps
     VariantProps<typeof buttonVariants> {
   icon?: ReactNode;
   iconPosition?: 'left' | 'right';
-  color: 'primary' | 'secondary' | 'default';
+  color: 'primary' | 'secondary';
   variant: 'filled' | 'outline' | 'text';
   rounded?: boolean;
   size: 'lg' | 'md' | 'sm';
@@ -50,7 +50,7 @@ const buttonVariants = cva(
       },
       {
         variant: 'outline',
-        color: 'default',
+        color: 'primary',
         class:
           'border-b border-pink-500 text-pink-500 hover:bg-pink-100 hover:text-pink-500 hover:border-pink-500',
       },

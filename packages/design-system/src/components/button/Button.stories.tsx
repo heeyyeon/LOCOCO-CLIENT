@@ -65,7 +65,7 @@ export const OutlineDefault: Story = {
   args: {
     children: 'Label',
     variant: 'outline',
-    color: 'default',
+    color: 'primary',
     size: 'lg',
   },
 };
