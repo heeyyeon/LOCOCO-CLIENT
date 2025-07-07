@@ -1,6 +1,6 @@
 import { cva } from 'class-variance-authority';
 import Image from 'next/image';
-import { Badge, SvgCheck, SvgLikeFill } from '@lococo/design-system';
+import { Badge, SvgLikeFill } from '@lococo/design-system';
 
 interface CardReviewProps {
   type?: 'video' | 'image';
@@ -12,7 +12,6 @@ interface CardReviewProps {
   reviewCount?: number;
   likeCount: number;
   imageUrl?: string;
-  label?: string;
   handleCardClick?: (reviewId: number) => void;
 }
 
@@ -36,12 +35,11 @@ export default function CardReview({
   reviewId,
   likeCount,
   imageUrl,
-  label,
   handleCardClick,
 }: CardReviewProps) {
   return (
     <article
-      className="group flex w-[16.5rem] cursor-pointer flex-col"
+      className="flex w-[16.5rem] cursor-pointer flex-col"
       onClick={() => handleCardClick?.(reviewId)}
     >
       <div className={imageWrapperVariant({ type })}>
@@ -54,24 +52,17 @@ export default function CardReview({
         ) : (
           <p className="text-sm text-gray-400">이미지 준비중</p>
         )}
-
         {rank && <Badge rank={rank} />}
-
         <div className="absolute bottom-0 left-0 right-0 flex flex-col gap-[0.5rem] p-[1.6rem_1.6rem_1.2rem]">
           <div>
             <p className="text-en-title2 font-[700] text-white">{brand}</p>
             <p className="text-jp-body2 font-[500] text-white">{title}</p>
           </div>
-
           <div className="flex items-center gap-[0.5rem]">
             <SvgLikeFill size={24} fill="white" />
             <p className="text-en-body1 font-[500] text-white">{likeCount}</p>
           </div>
         </div>
-      </div>
-      <div className="flex h-[3.25rem] items-center justify-center gap-[0.5rem] border-b-[0.0625rem] border-pink-500 transition-colors group-hover:bg-pink-100">
-        <SvgCheck size={24} fill="rgba(255, 72, 143, 1)" />
-        <p className="text-jp-title3 font-[700] text-pink-500">{label}</p>
       </div>
     </article>
   );

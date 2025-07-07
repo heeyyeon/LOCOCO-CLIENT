@@ -8,8 +8,8 @@ import {
   SvgHome,
   SvgLikeFill,
 } from '@lococo/design-system';
-import CardProduct from '../components/card/CardProducts';
-import CardReview from '../components/card/CardReview';
+import CardProduct from '../components/card/card-products';
+import CardReview from '../components/card/card-review';
 
 export default function Home() {
   return (
