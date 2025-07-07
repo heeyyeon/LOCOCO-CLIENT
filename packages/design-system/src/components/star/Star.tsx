@@ -19,6 +19,13 @@ interface StarProps {
   className?: string;
 }
 
+/**
+ *
+ * @param rating 별 이미지로 확인할 별점(소수점 첫째자리까지 표현)
+ * @param size 24px의 sm, 36px의 md
+ * @param color 채우는 별 이미지의 색을 yellow, black 중 선택(이에 따라 채워지지 않은 별의 색도 변경됨)
+ * @returns
+ */
 export default function Star({
   rating,
   size = 'sm',
