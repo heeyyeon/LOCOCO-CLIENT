@@ -59,7 +59,7 @@ export default function CardReview({
             <p className="text-jp-body2 font-[500] text-white">{title}</p>
           </div>
           <div className="flex items-center gap-[0.5rem]">
-            <SvgLikeFill size={24} fill="white" />
+            <SvgLikeFill size={24} className="fill-white" />
             <p className="text-en-body1 font-[500] text-white">{likeCount}</p>
           </div>
         </div>
