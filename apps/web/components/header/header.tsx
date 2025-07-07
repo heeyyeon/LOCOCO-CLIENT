@@ -1,5 +1,9 @@
-import React from 'react';
+'use client';
+
+import React, { useMemo, useState } from 'react';
 import {
+  Button,
+  SvgClose,
   SvgHistory,
   SvgLikeFill,
   SvgLogin,
@@ -7,20 +11,96 @@ import {
   SvgMy,
   SvgSearch,
 } from '@lococo/design-system';
+import Input from '@/components/input/Input';
 import { HEADER_MENUS } from '../../app/constants/header';
 
+type Menu = {
+  title: string;
+  options: string[];
+};
+
+interface HeaderProps {
+  menus: Menu[];
+}
+
+interface GnbProps extends HeaderProps {
+  activeTitle: string | null;
+  onToggle: (title: string) => void;
+  onSearchToggle: () => void;
+  isSearching: boolean;
+}
+
+interface MegaMenuProps {
+  options: string[];
+  activeOption: string | null;
+  onClick: (option: string) => void;
+}
+interface SearchProps {
+  searchValue: string;
+  handleSearchValue: (text: string) => void;
+}
+
 export default function Header() {
+  const [activeTitle, setActiveTitle] = useState<string | null>(null);
+  const [activeOption, setActiveOption] = useState<string | null>(null);
+  const [isSearching, setIsSearching] = useState<boolean>(false);
+  const [searchValue, setSearchValue] = useState('');
+
+  const handleMenuToggle = (title: string) => {
+    setActiveTitle(title);
+    setActiveOption(null);
+    setIsSearching(false);
+  };
+
+  const handleOptionClick = (option: string) => {
+    setActiveOption(option);
+  };
+
+  const handleSearchToggle = () => {
+    setIsSearching((prev) => !prev);
+    setActiveTitle(null);
+    setActiveOption(null);
+  };
+
+  const handleSearchValue = (text: string) => {
+    setSearchValue(text);
+  };
+
+  const activeMenu = useMemo(
+    () => HEADER_MENUS.find((menu) => menu.title === activeTitle),
+    [activeTitle]
+  );
+
   return (
-    <div className="sticky top-0 flex h-[13.6rem] w-[136.6rem] flex-col">
+    <div className="sticky top-0 z-50 flex w-full flex-col bg-white">
       <TopUtil />
-      <Gnb />
+      <Gnb
+        menus={HEADER_MENUS}
+        activeTitle={activeTitle}
+        onToggle={handleMenuToggle}
+        onSearchToggle={handleSearchToggle}
+        isSearching={isSearching}
+      />
+      {!isSearching && activeMenu && (
+        <MegaMenu
+          options={activeMenu.options}
+          activeOption={activeOption}
+          onClick={handleOptionClick}
+        />
+      )}
+      {isSearching && (
+        <Search
+          searchValue={searchValue}
+          handleSearchValue={handleSearchValue}
+        />
+      )}
     </div>
   );
 }
 
 function TopUtil() {
   return (
-    <div className="flex h-[7.2rem] w-full bg-white pb-[2rem] pl-[11.9rem] pr-[11.9rem] pt-[2rem] text-gray-600">
+    <div className="text-jp-body2 flex h-[7.2rem] w-full bg-white pb-[2rem] pl-[11.9rem] pr-[11.9rem] pt-[2rem] text-gray-600">
       <SvgMy />
       <SvgLikeFill />
       <SvgHistory />
@@ -29,20 +109,86 @@ function TopUtil() {
   );
 }
 
-function Gnb() {
+function Gnb({
+  menus,
+  activeTitle,
+  onToggle,
+  onSearchToggle,
+  isSearching,
+}: GnbProps) {
+  const borderClass =
+    activeTitle || isSearching
+      ? 'border-b border-dashed border-pink-500'
+      : 'border-b-[0.1rem] border-gray-500';
+
   return (
-    <div className="flex h-[6.4rem] w-[136.6rem] gap-[2rem] border-b border-b-[0.1rem] px-[11.9rem]">
-      <SvgLogo className="h-[2.7rem] w-[16rem]" />
-      <div className="flex h-[6rem] w-full">
-        {HEADER_MENUS.map((menu) => (
-          <div className="text-jp-title2 flex h-[6rem] w-[13.6rem] gap-[1rem] pb-[1rem] pl-[3.2rem] pr-[3.2rem] pt-[1rem] font-bold">
-            {menu.title}
-          </div>
-        ))}
+    <div
+      className={`flex h-[6.4rem] items-center gap-[2rem] px-[11.9rem] ${borderClass}`}
+    >
+      <SvgLogo className="h-[2.7rem] w-[16rem] shrink-0" />
+      <div className="flex h-[6rem] flex-grow items-center">
+        {menus.map((menu) => {
+          const isActive = menu.title === activeTitle;
+          return (
+            <div
+              key={menu.title}
+              className="h-[6rem] w-[13.6rem] shrink-0 cursor-pointer"
+              onMouseEnter={() => onToggle(menu.title)}
+              onClick={() => onToggle(menu.title)}
+            >
+              <p
+                className={`text-jp-title2 flex h-full cursor-pointer items-center gap-[1rem] whitespace-nowrap px-[3.2rem] pb-[1rem] pt-[1rem] font-bold ${
+                  isActive ? 'text-pink-500' : 'text-gray-800'
+                }`}
+              >
+                {menu.title}
+              </p>
+            </div>
+          );
+        })}
       </div>
-      <div className="h-[6.4rem] w-[6.4rem] p-[1.4rem]">
-        <SvgSearch />
+      <div
+        className="flex h-[6.4rem] w-[6.4rem] shrink-0 cursor-pointer items-center justify-center p-[1.4rem]"
+        onClick={onSearchToggle}
+      >
+        {isSearching ? <SvgClose /> : <SvgSearch />}
       </div>
+    </div>
+  );
+}
+
+function MegaMenu({ options, activeOption, onClick }: MegaMenuProps) {
+  return (
+    <div className="flex h-[5.2rem] w-full items-center gap-[1.6rem] border-b-[0.1rem] border-pink-500 bg-white px-[9.5rem]">
+      {options.map((option) => {
+        const isActive = option === activeOption;
+        return (
+          <Button
+            key={option}
+            className={`text-jp-body2 whitespace-nowrap ${
+              isActive ? 'font-bold text-pink-500' : 'text-gray-600'
+            } cursor-pointer`}
+            onClick={() => onClick(option)}
+          >
+            {option}
+          </Button>
+        );
+      })}
+    </div>
+  );
+}
+
+function Search({ searchValue, handleSearchValue }: SearchProps) {
+  return (
+    <div className="flex w-full items-center gap-[0.8rem] border-b border-pink-500 bg-white px-[11.9rem]">
+      <Input
+        type="search"
+        value={searchValue}
+        onChange={(e) => handleSearchValue(e.target.value)}
+        placeholder="ラネージュ"
+        className="text-jp-body2 w-full text-right font-bold leading-[3rem] text-gray-800"
+      />
+      <SvgSearch className="cursor-pointer" />
     </div>
   );
 }
