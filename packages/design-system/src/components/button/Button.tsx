@@ -36,7 +36,7 @@ const buttonVariants = cva(
       size: {
         lg: `h-[3.75rem] ${baseButtonStyle}`,
         md: `h-[3.25rem] ${baseButtonStyle}`,
-        sm: `h-[2rem] px-[1rem] py-[0.62rem] gap-[0.5rem]`,
+        sm: `h-[2rem] px-[1.5rem] py-[0.62rem] gap-[0.5rem]`,
       },
     },
     compoundVariants: [
