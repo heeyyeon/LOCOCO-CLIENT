@@ -20,7 +20,7 @@ interface FooterProps {
 export default function Footer() {
   return (
     <footer className="sticky bottom-0 flex w-full flex-col items-center justify-center overflow-hidden bg-pink-100">
-      <div className="flex w-full max-w-[1280px] items-center gap-[12rem] px-[11.9rem] py-16">
+      <div className="flex w-full items-center gap-[12rem] px-[11.9rem] py-16">
         <FooterLeft title={FOOTER.title} desc={FOOTER.desc} />
         <FooterRight menu={FOOTER.menu} />
       </div>
