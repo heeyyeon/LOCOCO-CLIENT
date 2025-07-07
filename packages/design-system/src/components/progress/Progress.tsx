@@ -18,13 +18,13 @@ export default function Progress({
   return (
     <div
       className={cn(
-        'relative overflow-hidden rounded-[10px] bg-[color:var(--color-gray-200)]',
+        'relative overflow-hidden rounded-[10px] bg-gray-200',
         className
       )}
       style={{ width, height }}
     >
       <div
-        className="absolute left-0 top-0 h-full bg-[color:var(--color-pink-500)]"
+        className="absolute left-0 top-0 h-full bg-pink-500"
         style={{ width: `${percent}%` }}
       />
     </div>
