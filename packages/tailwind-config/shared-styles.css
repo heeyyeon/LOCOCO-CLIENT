@@ -36,43 +36,44 @@
   --font-regular: 400;
 
   /* JP head */
-  --text-jp-head1: 2rem;
-  --text-jp-head2: 1.75rem;
-  --text-jp-head3: 1.5rem;
+  --text-jp-head1: 3.2rem;
+  --text-jp-head2: 2.8rem;
+  --text-jp-head3: 2.4rem;
 
   /* JP title */
-  --text-jp-title1: 1.25rem;
-  --text-jp-title2: 1.125rem;
-  --text-jp-title3: 1rem;
+  --text-jp-title1: 2rem;
+  --text-jp-title2: 1.8rem;
+  --text-jp-title3: 1.6rem;
 
   /* JP body */
-  --text-jp-body1: 0.875rem;
-  --text-jp-body2: 0.875rem;
+  --text-jp-body1: 1.4rem;
+  --text-jp-body2: 1.4rem;
 
   /* JP caption */
-  --text-jp-caption1: 0.75rem;
-  --text-jp-caption2: 0.75rem;
-  --text-jp-caption3: 0.75rem;
+  --text-jp-caption1: 1.2rem;
+  --text-jp-caption2: 1.2rem;
+  --text-jp-caption3: 1.2rem;
 
   /* EN head */
-  --text-en-head1: 1.5rem;
+  --text-en-head1: 2.4rem;
 
   /* EN title */
-  --text-en-title1: 1.25rem;
-  --text-en-title2: 1.125rem;
-  --text-en-title3: 1rem;
+  --text-en-title1: 2rem;
+  --text-en-title2: 1.8rem;
+  --text-en-title3: 1.6rem;
 
   /* EN body */
-  --text-en-body1: 0.875rem;
-  --text-en-body2: 0.875rem;
+  --text-en-body1: 1.4rem;
+  --text-en-body2: 1.4rem;
 
   /* EN caption */
-  --text-en-caption1: 0.75rem;
+  --text-en-caption1: 1.2rem;
 }
 
 @layer base {
   html {
     font-family: system-ui, sans-serif;
+    font-size: 62.5%;
   }
 }
 
