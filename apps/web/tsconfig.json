@@ -6,7 +6,11 @@
         "name": "next"
       }
     ],
-    "jsx": "preserve"
+    "jsx": "preserve",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["../../packages/design-system/src/*"]
+    }
   },
   "include": [
     "**/*.ts",
