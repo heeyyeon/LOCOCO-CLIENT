@@ -1,7 +1,7 @@
 import * as CheckboxPrimitive from '@radix-ui/react-checkbox';
 import { ComponentProps } from 'react';
-import { SvgCheck } from '@/icons';
-import { cn } from '@/lib/utils';
+import { SvgCheck } from './../../icons/fill/components/Check';
+import { cn } from './../../lib/utils';
 
 export default function Checkbox({
   className,
@@ -18,7 +18,7 @@ export default function Checkbox({
     >
       <CheckboxPrimitive.Indicator
         data-slot="checkbox-indicator"
-        className="border-red flex size-6 items-center justify-center transition-none"
+        className="flex size-6 items-center justify-center transition-none"
       >
         <SvgCheck className="size-6 fill-white" />
       </CheckboxPrimitive.Indicator>
