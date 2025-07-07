@@ -1,5 +1,4 @@
 import {
-  Badge,
   Button,
   SvgArrowUp,
   SvgErrorFill,
@@ -48,8 +47,6 @@ export default function Home() {
       <SvgErrorFill />
       <SvgLikeFill className="fill-pink-400" />
       <Checkbox />
-
- 
     </div>
   );
 }
