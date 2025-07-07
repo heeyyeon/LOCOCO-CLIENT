@@ -4,7 +4,6 @@ import {
   SvgErrorFill,
   SvgHome,
   SvgLikeFill,
-  Checkbox,
 } from '@lococo/design-system';
 import { cn } from '@/lib/utils';
 
