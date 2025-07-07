@@ -8,7 +8,6 @@ interface ButtonProps
   icon?: ReactNode;
   iconPosition?: 'left' | 'right';
   children: ReactNode;
-  fontClassName: string;
   color: 'primary' | 'secondary' | 'default';
   variant: 'filled' | 'outline' | 'text';
   shape: 'default' | 'round';
@@ -79,7 +78,6 @@ export default function Button({
   iconPosition,
   children,
   className,
-  fontClassName,
   ...props
 }: ButtonProps) {
   const outlineColor = variant === 'outline' ? 'default' : color;
@@ -88,7 +86,6 @@ export default function Button({
     <button
       className={cn(
         buttonVariants({ variant, color: outlineColor, shape, size }),
-        fontClassName,
         className
       )}
       {...props}
