@@ -7,7 +7,7 @@ import {
 } from '@lococo/design-system';
 
 interface CardProductProps {
-  rank: number;
+  rank?: number;
   brand: string;
   title: string;
   description: string;
@@ -56,7 +56,7 @@ export default function CardProduct({
             상품 이미지 준비중
           </div>
         )}
-        <Badge rank={rank} />
+        {rank && <Badge rank={rank} />}
       </div>
       <div className="flex h-[2.75rem] items-center justify-between border-b-[0.0625rem] border-dashed border-pink-500">
         <p className="text-jp-body1 font-[700]">{brand}</p>

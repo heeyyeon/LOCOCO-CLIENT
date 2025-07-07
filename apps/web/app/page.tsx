@@ -1,5 +1,6 @@
 'use client';
 
+import { inRange } from 'es-toolkit';
 import {
   Badge,
   Button,
@@ -10,6 +11,7 @@ import {
 } from '@lococo/design-system';
 import CardProduct from '../components/card/card-products';
 import CardReview from '../components/card/card-review';
+import { MOCK_CARD_PRODUCT, MOCK_CARD_REVIEW } from '../mock/card-props-mock';
 
 export default function Home() {
   return (
@@ -47,25 +49,31 @@ export default function Home() {
       <SvgErrorFill />
       <SvgLikeFill className="fill-pink-400" />
       <Badge rank={1} className="bg-pink-200" />
-      <CardProduct
-        brand="브랜드명"
-        title="상품명"
-        description="50ml, 100ml"
-        productId={1}
-        isLiked={true}
-        likeCount={123}
-        rank={1}
-        rating={4}
-        reviewCount={999}
-      />
-      <CardReview
-        type="video"
-        brand="브랜드명"
-        title="상품명"
-        reviewId={4}
-        likeCount={123}
-        rank={5}
-      />
+      {MOCK_CARD_PRODUCT.map((product) => (
+        <CardProduct
+          key={product.productId}
+          brand={product.brand}
+          title={product.title}
+          description={product.description}
+          productId={product.productId}
+          isLiked={product.isLiked}
+          likeCount={product.likeCount}
+          rating={product.rating}
+          reviewCount={product.reviewCount}
+          {...(inRange(product.rank, 1, 3) && { rank: product.rank })}
+        />
+      ))}
+      {MOCK_CARD_REVIEW.map((review) => (
+        <CardReview
+          key={review.reviewId}
+          type={review.type}
+          brand={review.brand}
+          title={review.title}
+          reviewId={review.reviewId}
+          likeCount={review.likeCount}
+          {...(inRange(review.rank, 1, 3) && { rank: review.rank })}
+        />
+      ))}
     </div>
   );
 }
