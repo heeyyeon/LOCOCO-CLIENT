@@ -85,6 +85,7 @@ function SelectContent({
 function SelectItem({
   className,
   children,
+  hover = false,
   ...props
 }: ComponentProps<typeof SelectPrimitive.Item> & {
   hover?: boolean;
@@ -93,7 +94,8 @@ function SelectItem({
     <SelectPrimitive.Item
       data-slot="select-item"
       className={cn(
-        'flex h-[4.4rem] w-full flex-shrink-0 items-center self-stretch border-b border-dashed border-pink-500 bg-pink-100 px-[1.2rem] outline-none ring-0 last:border-none hover:cursor-pointer hover:bg-pink-200 focus:outline-none focus:ring-0',
+        'flex h-[4.4rem] w-full flex-shrink-0 items-center self-stretch border-b border-dashed border-pink-500 bg-pink-100 px-[1.2rem] outline-none ring-0 last:border-none focus:outline-none focus:ring-0',
+        hover && 'hover:cursor-pointer hover:bg-pink-200',
         className
       )}
       {...props}
