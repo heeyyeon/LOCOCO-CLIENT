@@ -24,7 +24,8 @@ const imageWrapperVariant = cva(
  * @param reviewId 해당 리뷰의 고유한 ID
  * @param likeCount 해당 리뷰의 좋아요 수
  * @param imageUrl 해당 리뷰 대표 이미지(영상 썸네일)
- * @param handleCardClick 리뷰 카드 클릭시 작동할 이벤트
+ * @param handleCardClick 리뷰 카드 클릭시 작동할 이벤트(reviewId 필요)
+ * @param handleBtnClick (option)리뷰 카드 밑에 버튼 클릭 시 작동할 이벤트(product Id 필요)
  * @returns
  */
 export default function CardReview({

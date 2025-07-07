@@ -9,4 +9,5 @@ export interface ReviewItems {
   likeCount: number;
   imageUrl?: string;
   handleCardClick?: (reviewId: number) => void;
+  handleBtnClick?: (productId: number) => void;
 }
