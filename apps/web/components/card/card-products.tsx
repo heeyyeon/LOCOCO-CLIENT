@@ -77,9 +77,9 @@ export default function CardProduct({
         <p className="text-jp-body1 font-[700]">{brand}</p>
         <button onClick={handleLikeClick}>
           {isLiked ? (
-            <SvgLikeFill size={38} className="fill-pink-500" />
+            <SvgLikeFill size={24} className="fill-pink-500" />
           ) : (
-            <SvgLikeOutline size={38} className="fill-white" />
+            <SvgLikeOutline size={24} className="fill-white" />
           )}
         </button>
       </div>
