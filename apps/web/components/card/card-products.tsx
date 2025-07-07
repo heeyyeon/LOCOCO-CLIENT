@@ -56,40 +56,40 @@ export default function CardProduct({
 
   return (
     <article
-      className="flex w-[16.5rem] cursor-pointer flex-col"
+      className="flex w-[26.4rem] cursor-pointer flex-col"
       onClick={() => handleCardClick?.(productId)}
     >
-      <div className="relative border-[0.0625rem] border-gray-200">
+      <div className="relative border-[0.1rem] border-gray-200">
         {imageUrl ? (
           <Image
-            className="h-[16.5rem] w-[16.5rem] object-cover"
+            className="h-[26.4rem] w-[26.4rem] object-cover"
             src={imageUrl}
             alt={title}
           />
         ) : (
-          <div className="flex h-[16.5rem] w-[16.5rem] items-center justify-center">
+          <div className="flex h-[26.4rem] w-[26.4rem] items-center justify-center">
             상품 이미지 준비중
           </div>
         )}
         {rank && <Badge rank={rank} />}
       </div>
-      <div className="flex h-[2.75rem] items-center justify-between border-b-[0.0625rem] border-dashed border-pink-500">
+      <div className="flex h-[4.4rem] items-center justify-between border-b-[0.1rem] border-dashed border-pink-500">
         <p className="text-jp-body1 font-[700]">{brand}</p>
         <button onClick={handleLikeClick}>
           {isLiked ? (
-            <SvgLikeFill size={24} className="fill-pink-500" />
+            <SvgLikeFill size={38} className="fill-pink-500" />
           ) : (
-            <SvgLikeOutline size={24} className="fill-white" />
+            <SvgLikeOutline size={38} className="fill-white" />
           )}
         </button>
       </div>
-      <div className="flex h-[2.75rem] items-center border-b-[0.0625rem] border-dashed border-pink-500">
+      <div className="flex h-[4.4rem] items-center border-b-[0.1rem] border-dashed border-pink-500">
         <p className="text-jp-body2 font-[500]">{title}</p>
       </div>
-      <div className="text-en-caption1 flex h-[2.75rem] items-center justify-between border-b-[0.0625rem] border-pink-500 text-gray-600">
+      <div className="text-en-caption1 flex h-[4.4rem] items-center justify-between border-b-[0.1rem] border-pink-500 text-gray-600">
         <p>{description}</p>
         <div className="flex">
-          <SvgStar size={16} className="fill-yellow" />
+          <SvgStar size={26} className="fill-yellow" />
           <p>
             {rating}/5({reviewCount})
           </p>

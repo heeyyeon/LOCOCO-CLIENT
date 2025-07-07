@@ -16,12 +16,12 @@ interface CardReviewProps {
 }
 
 const imageWrapperVariant = cva(
-  'relative border-[0.0625rem] border-gray-200 flex items-center justify-center bg-gray-200',
+  'relative border-[0.1rem] border-gray-200 flex items-center justify-center bg-gray-200',
   {
     variants: {
       type: {
-        video: 'w-[16.5rem] h-[22rem]',
-        image: 'w-[16.5rem] h-[16.5rem]',
+        video: 'w-[26.4rem] h-[35.2rem]',
+        image: 'w-[26.4rem] h-[26.4rem]',
       },
     },
   }
@@ -51,7 +51,7 @@ export default function CardReview({
 }: CardReviewProps) {
   return (
     <article
-      className="flex w-[16.5rem] cursor-pointer flex-col"
+      className="flex w-[26.4rem] cursor-pointer flex-col"
       onClick={() => handleCardClick?.(reviewId)}
     >
       <div className={imageWrapperVariant({ type })}>
@@ -65,13 +65,13 @@ export default function CardReview({
           <p className="text-sm text-gray-400">이미지 준비중</p>
         )}
         {rank && <Badge rank={rank} />}
-        <div className="absolute bottom-0 left-0 right-0 flex flex-col gap-[0.5rem] p-[1.6rem_1.6rem_1.2rem]">
+        <div className="absolute bottom-0 left-0 right-0 flex flex-col gap-[0.8rem] p-[2.56rem_2.56rem_1.92rem]">
           <div>
             <p className="text-en-title2 font-[700] text-white">{brand}</p>
             <p className="text-jp-body2 font-[500] text-white">{title}</p>
           </div>
-          <div className="flex items-center gap-[0.5rem]">
-            <SvgLikeFill size={24} className="fill-white" />
+          <div className="flex items-center gap-[0.8rem]">
+            <SvgLikeFill size={38} className="fill-white" />
             <p className="text-en-body1 font-[500] text-white">{likeCount}</p>
           </div>
         </div>
