@@ -1,5 +1,6 @@
 export * from './select';
 export * from './button';
+export * from './checkbox';
 export * from './progress';
 export * from './tab';
 export * from './badge';
