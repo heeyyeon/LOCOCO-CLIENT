@@ -5,8 +5,8 @@ import { cn } from '../../lib/utils';
 interface ButtonProps
   extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'color'>,
     VariantProps<typeof buttonVariants> {
-  icon?: ReactNode;
-  iconPosition?: 'left' | 'right';
+  iconLeft?: ReactNode;
+  iconRight?: ReactNode;
   color: 'primary' | 'secondary';
   variant: 'filled' | 'outline' | 'text';
   rounded?: boolean;
@@ -78,8 +78,8 @@ export default function Button({
   variant,
   color,
   size,
-  icon,
-  iconPosition,
+  iconLeft,
+  iconRight,
   children,
   className,
   rounded = false,
@@ -95,9 +95,9 @@ export default function Button({
       )}
       {...props}
     >
-      {iconPosition === 'left' && icon}
+      {iconLeft}
       {children}
-      {iconPosition === 'right' && icon}
+      {iconRight}
     </button>
   );
 }

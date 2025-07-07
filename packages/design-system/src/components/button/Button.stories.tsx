@@ -10,11 +10,10 @@ const meta: Meta<typeof Button> = {
     variant: { control: 'radio', options: ['filled', 'outline', 'text'] },
     color: {
       control: 'radio',
-      options: ['primary', 'secondary', 'default'],
+      options: ['primary', 'secondary'],
     },
     rounded: { control: 'boolean' },
     size: { control: 'radio', options: ['lg', 'md', 'sm'] },
-    iconPosition: { control: 'radio', options: ['left', 'right'] },
   },
 };
 export default meta;
@@ -45,8 +44,7 @@ export const FilledPrimaryWithLeftIcon: Story = {
     variant: 'filled',
     color: 'primary',
     size: 'lg',
-    icon: <SvgErrorFill />,
-    iconPosition: 'left',
+    iconLeft: <SvgErrorFill />,
   },
 };
 
@@ -56,8 +54,7 @@ export const FilledPrimaryWithRightIcon: Story = {
     variant: 'filled',
     color: 'primary',
     size: 'lg',
-    icon: <SvgErrorFill />,
-    iconPosition: 'right',
+    iconRight: <SvgErrorFill />,
   },
 };
 
