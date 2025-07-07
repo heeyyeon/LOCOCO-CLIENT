@@ -1,25 +1,105 @@
-import { ComponentProps } from 'react';
+import { cva, VariantProps } from 'class-variance-authority';
+import { ButtonHTMLAttributes, ReactNode } from 'react';
 import { cn } from '../../lib/utils';
 
-interface ButtonProps extends ComponentProps<'button'> {
-  size?: 'small' | 'large';
+interface ButtonProps
+  extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'color'>,
+    VariantProps<typeof buttonVariants> {
+  iconLeft?: ReactNode;
+  iconRight?: ReactNode;
+  color: 'primary' | 'secondary';
+  variant: 'filled' | 'outline' | 'text';
+  rounded?: boolean;
+  size: 'lg' | 'md' | 'sm';
 }
 
-export default function Button({
-  size = 'small',
-  disabled = false,
-  children,
-  ...rest
-}: ButtonProps) {
-  const baseStyle =
-    'rounded-md font-medium bg-pink-200 transition-colors duration-200 disabled:cursor-not-allowed disabled:bg-gray-400 disabled:text-white';
+const baseButtonStyle = 'px-[2rem] py-[0.62rem] gap-[0.5rem]';
 
-  const sizeStyle =
-    size === 'large' ? 'text-lg px-6 py-3' : 'text-sm px-4 py-2';
+const buttonVariants = cva(
+  'inline-flex items-center justify-center font-bold',
+  {
+    variants: {
+      variant: {
+        filled: '',
+        outline: 'bg-transparent border-b',
+        text: 'bg-transparent',
+      },
+      color: {
+        primary: '',
+        secondary: '',
+        default: '',
+      },
+      rounded: {
+        true: 'rounded-[0.5rem]',
+        false: '',
+      },
+      size: {
+        lg: `h-[3.75rem] ${baseButtonStyle}`,
+        md: `h-[3.25rem] ${baseButtonStyle}`,
+        sm: `h-[2rem] px-[1.5rem] py-[0.62rem] gap-[0.5rem]`,
+      },
+    },
+    compoundVariants: [
+      {
+        variant: 'filled',
+        color: 'primary',
+        class: 'bg-pink-500 text-white',
+      },
+      {
+        variant: 'filled',
+        color: 'secondary',
+        class: 'bg-pink-100 text-pink-500',
+      },
+      {
+        variant: 'outline',
+        color: 'primary',
+        class:
+          'border-pink-500 text-pink-500 hover:bg-pink-100 hover:text-pink-500 hover:border-pink-500',
+      },
+      {
+        variant: 'text',
+        color: 'primary',
+        class: 'text-pink-500',
+      },
+      {
+        variant: 'text',
+        color: 'secondary',
+        class: 'text-gray-800',
+      },
+    ],
+    defaultVariants: {
+      variant: 'filled',
+      color: 'primary',
+      size: 'md',
+      rounded: false,
+    },
+  }
+);
+
+export default function Button({
+  variant,
+  color,
+  size,
+  iconLeft,
+  iconRight,
+  children,
+  className,
+  rounded = false,
+  ...props
+}: ButtonProps) {
+  const outlineColor = variant === 'outline' ? 'default' : color;
 
   return (
-    <button className={cn(baseStyle, sizeStyle)} disabled={disabled} {...rest}>
+    <button
+      className={cn(
+        buttonVariants({ variant, color: outlineColor, size, rounded }),
+        className
+      )}
+      {...props}
+    >
+      {iconLeft}
       {children}
+      {iconRight}
     </button>
   );
 }
