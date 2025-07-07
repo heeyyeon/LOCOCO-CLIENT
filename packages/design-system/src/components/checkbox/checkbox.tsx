@@ -11,7 +11,7 @@ export default function Checkbox({
     <CheckboxPrimitive.Root
       data-slot="checkbox"
       className={cn(
-        'flex size-6 items-center justify-center rounded-[4px] border border-gray-400 data-[state=checked]:border-none',
+        'flex size-6 items-center justify-center rounded-[0.25rem] border border-gray-400 data-[state=checked]:border-none',
         className
       )}
       {...props}
