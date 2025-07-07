@@ -1,4 +1,16 @@
+import { cva } from 'class-variance-authority';
 import { SvgStar } from '../../icons/fill/components/Star';
+
+const sizeColorVariant = cva('', {
+  variants: {
+    size: {
+      sm: 'w-[2.4rem] h-[2.4rem]',
+      md: 'w-[3.6rem] h-[3.6rem]',
+    },
+    fillColor: { yellow: 'fill-yellow', black: 'fill-black' },
+    emptyColor: { yellow: 'fill-gray-300', black: 'fill-gray-400' },
+  },
+});
 
 interface StarProps {
   rating: number;
@@ -7,54 +19,41 @@ interface StarProps {
   className?: string;
 }
 
-const SIZE_CLASS = {
-  sm: 'w-[2.4rem] h-[2.4rem]',
-  md: 'w-[3.6rem] h-[3.6rem]',
-};
-
-const COLOR_CLASS = {
-  yellow: 'fill-yellow',
-  black: 'fill-black',
-};
-
-const BASE_CLASS = {
-  yellow: 'fill-gray-300',
-  black: 'fill-gray-400',
-};
-
 export default function Star({
   rating,
   size = 'sm',
   color = 'yellow',
   className,
 }: StarProps) {
-  const sizeClasses = SIZE_CLASS[size];
-  const fillClasses = COLOR_CLASS[color];
-  const baseClasses = BASE_CLASS[color];
-
   const stars = Array.from({ length: 5 }, (_, index) => {
     const fillPercentage = Math.min(Math.max((rating - index) * 100, 0), 100);
 
     if (fillPercentage === 0) {
       return (
-        <SvgStar key={index} className={`${sizeClasses} ${baseClasses}`} />
+        <SvgStar
+          key={index}
+          className={sizeColorVariant({ size, emptyColor: color })}
+        />
       );
     }
 
     if (fillPercentage === 100) {
       return (
-        <SvgStar key={index} className={`${fillClasses} ${sizeClasses}`} />
+        <SvgStar
+          key={index}
+          className={sizeColorVariant({ size, fillColor: color })}
+        />
       );
     }
 
     return (
       <div key={index} className="relative">
-        <SvgStar className={`${sizeClasses} ${baseClasses}`} />
+        <SvgStar className={sizeColorVariant({ size, emptyColor: color })} />
         <div
           className="absolute left-0 top-0 overflow-hidden"
           style={{ width: `${fillPercentage}%` }}
         >
-          <SvgStar className={`${fillClasses} ${sizeClasses}`} />
+          <SvgStar className={sizeColorVariant({ size, fillColor: color })} />
         </div>
       </div>
     );
