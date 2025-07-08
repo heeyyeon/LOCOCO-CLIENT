@@ -3,12 +3,6 @@
   width: 46.8rem;
 }
 
-.mySwiper {
-  height: 10rem;
-  box-sizing: border-box;
-  padding: 1rem 0;
-}
-
 .mySwiper .swiper-slide {
   opacity: 0.4;
   cursor: pointer;

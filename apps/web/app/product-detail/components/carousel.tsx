@@ -12,6 +12,7 @@ import Image from 'next/image';
 import IconButton from '@/components/icon-button';
 import { SvgArrowUp } from '@/icons';
 import { SvgArrowDown } from '@/icons';
+import './swiper.css';
 
 interface CarouselProps {
   imageUrlList: string[];
