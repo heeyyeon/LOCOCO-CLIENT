@@ -13,31 +13,12 @@ import {
 } from '@lococo/design-system';
 import Input from '@lococo/design-system/components/input/Input';
 import { cn } from '@/lib/utils';
-import { useHeaderState } from './useHeaderState';
+import { useHeaderAction } from './useHeaderAction';
 
 type Menu = {
-  title: CategoryName;
+  category: CategoryName;
   options: CategoryOption[];
 };
-
-interface GnbProps {
-  menu: Menu[];
-  activeTitle: CategoryName | null;
-  onToggle: (title: CategoryName) => void;
-  onSearchToggle: () => void;
-  isSearching: boolean;
-}
-
-interface MegaMenuProps {
-  options: CategoryOption[];
-  activeOption: CategoryOption | null;
-  onClick: (option: CategoryOption) => void;
-}
-
-interface SearchProps {
-  searchValue: string;
-  handleSearchValue: (text: string) => void;
-}
 
 interface TopUtilItemProps {
   icon: React.ReactNode;
@@ -45,41 +26,60 @@ interface TopUtilItemProps {
   onClick?: () => void;
 }
 
+interface MegaMenuProps {
+  options: CategoryOption[];
+  selectedOption: CategoryOption | null;
+  handleSelectOption: (option: CategoryOption) => void;
+}
+
+interface GnbProps {
+  categories: Menu[];
+  selectedCategory: CategoryName | null;
+  handleSelectCategory: (title: CategoryName) => void;
+  handleOpenSearchBar: () => void;
+  isSearching: boolean;
+}
+
+interface SearchProps {
+  searchValue: string;
+  handleChangeSearch: (text: string) => void;
+}
+
 export default function Header() {
   const {
-    menu,
-    activeTitle,
-    activeOption,
+    categories,
+    selectedCategory,
+    selectedOption,
     isSearching,
     searchValue,
     activeMenu,
-    handleMenuToggle,
-    handleOptionClick,
-    handleSearchToggle,
-    handleSearchValue,
-  } = useHeaderState();
+    handleSelectCategory,
+    handleSelectOption,
+    handleOpenSearchBar,
+    handleChangeSearch,
+  } = useHeaderAction();
 
   return (
     <div className="sticky top-0 z-50 flex w-full flex-col bg-white">
       <TopUtil />
       <Gnb
-        menu={menu}
-        activeTitle={activeTitle}
-        onToggle={handleMenuToggle}
-        onSearchToggle={handleSearchToggle}
+        categories={categories}
+        selectedCategory={selectedCategory}
+        handleSelectCategory={handleSelectCategory}
+        handleOpenSearchBar={handleOpenSearchBar}
         isSearching={isSearching}
       />
       {!isSearching && activeMenu && (
         <MegaMenu
           options={activeMenu.options}
-          activeOption={activeOption}
-          onClick={handleOptionClick}
+          selectedOption={selectedOption}
+          handleSelectOption={handleSelectOption}
         />
       )}
       {isSearching && (
         <SearchBar
           searchValue={searchValue}
-          handleSearchValue={handleSearchValue}
+          handleChangeSearch={handleChangeSearch}
         />
       )}
     </div>
@@ -126,14 +126,14 @@ function TopUtil() {
 }
 
 function Gnb({
-  menu,
-  activeTitle,
-  onToggle,
-  onSearchToggle,
+  categories,
+  selectedCategory,
+  handleSelectCategory,
+  handleOpenSearchBar,
   isSearching,
 }: GnbProps) {
   const borderClass =
-    activeTitle || isSearching
+    selectedCategory || isSearching
       ? 'border-b border-dashed border-pink-500'
       : 'border-b-[0.1rem] border-gray-500';
 
@@ -146,14 +146,14 @@ function Gnb({
     >
       <SvgLogo className="h-[2.7rem] w-[16rem] shrink-0" />
       <div className="flex h-[6rem] flex-grow items-center">
-        {menu.map(({ title }) => {
-          const isActive = title === activeTitle;
+        {categories.map(({ category }) => {
+          const isActive = category === selectedCategory;
           return (
             <div
-              key={title}
+              key={category}
               className="h-[6rem] w-[13.6rem] shrink-0 cursor-pointer"
-              onMouseEnter={() => onToggle(title)}
-              onClick={() => onToggle(title)}
+              onMouseEnter={() => handleSelectCategory(category)}
+              onClick={() => handleSelectCategory(category)}
             >
               <p
                 className={cn(
@@ -161,7 +161,7 @@ function Gnb({
                   isActive ? 'text-pink-500' : 'text-gray-800'
                 )}
               >
-                {title}
+                {category}
               </p>
             </div>
           );
@@ -169,7 +169,7 @@ function Gnb({
       </div>
       <div
         className="flex h-[6.4rem] w-[6.4rem] shrink-0 cursor-pointer items-center justify-center p-[1.4rem]"
-        onClick={onSearchToggle}
+        onClick={handleOpenSearchBar}
       >
         {isSearching ? <SvgClose /> : <SvgSearch />}
       </div>
@@ -177,11 +177,15 @@ function Gnb({
   );
 }
 
-function MegaMenu({ options, activeOption, onClick }: MegaMenuProps) {
+function MegaMenu({
+  options,
+  selectedOption,
+  handleSelectOption,
+}: MegaMenuProps) {
   return (
     <div className="flex h-[5.2rem] w-full items-center border-b-[0.1rem] border-pink-500 bg-white px-[9.5rem]">
       {options.map((option, index) => {
-        const isActive = option === activeOption;
+        const isActive = option === selectedOption;
         const isLast = index === options.length - 1;
 
         return (
@@ -194,7 +198,7 @@ function MegaMenu({ options, activeOption, onClick }: MegaMenuProps) {
                 'text-jp-body2 cursor-pointer whitespace-nowrap px-[2.4rem] py-[1rem]',
                 isActive ? 'font-bold text-pink-500' : 'text-gray-600'
               )}
-              onClick={() => onClick(option)}
+              onClick={() => handleSelectOption(option)}
             >
               {option}
             </button>
@@ -206,13 +210,13 @@ function MegaMenu({ options, activeOption, onClick }: MegaMenuProps) {
   );
 }
 
-function SearchBar({ searchValue, handleSearchValue }: SearchProps) {
+function SearchBar({ searchValue, handleChangeSearch }: SearchProps) {
   return (
     <div className="flex w-full items-center gap-[0.8rem] border-b border-pink-500 bg-white px-[11.9rem]">
       <Input
         type="search"
         value={searchValue}
-        onChange={(e) => handleSearchValue(e.target.value)}
+        onChange={(e) => handleChangeSearch(e.target.value)}
         placeholder="ラネージュ"
         className="text-jp-body2 w-full text-right font-bold leading-[3rem] text-gray-800"
       />
