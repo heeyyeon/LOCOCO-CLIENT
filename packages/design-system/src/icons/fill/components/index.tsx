@@ -4,6 +4,8 @@ export { SvgArrowUp } from './ArrowUp';
 export { SvgCheck } from './Check';
 export { SvgClose } from './Close';
 export { SvgErrorFill } from './ErrorFill';
+export { SvgGoodFill } from './GoodFill';
 export { SvgHomeFill } from './HomeFill';
 export { SvgLikeFill } from './LikeFill';
+export { SvgLikeOutline } from './LikeOutline';
 export { SvgStar } from './Star';
