@@ -1,5 +1,6 @@
 'use client';
 
+import type { CategoryName, CategoryOption } from 'types/category';
 import {
   SvgClose,
   SvgDivider,
@@ -10,31 +11,27 @@ import {
   SvgMy,
   SvgSearch,
 } from '@lococo/design-system';
-import Button from '@/components/button/Button';
-import Input from '@/components/input/Input';
-import { HEADER_MENUS } from '../../app/constants/header';
+import Input from '@lococo/design-system/components/input/Input';
+import { cn } from '@/lib/utils';
 import { useHeaderState } from './useHeaderState';
 
 type Menu = {
-  title: string;
-  options: string[];
+  title: CategoryName;
+  options: CategoryOption[];
 };
 
-interface HeaderProps {
-  menus: Menu[];
-}
-
-interface GnbProps extends HeaderProps {
-  activeTitle: string | null;
-  onToggle: (title: string) => void;
+interface GnbProps {
+  menu: Menu[];
+  activeTitle: CategoryName | null;
+  onToggle: (title: CategoryName) => void;
   onSearchToggle: () => void;
   isSearching: boolean;
 }
 
 interface MegaMenuProps {
-  options: string[];
-  activeOption: string | null;
-  onClick: (option: string) => void;
+  options: CategoryOption[];
+  activeOption: CategoryOption | null;
+  onClick: (option: CategoryOption) => void;
 }
 
 interface SearchProps {
@@ -50,6 +47,7 @@ interface TopUtilItemProps {
 
 export default function Header() {
   const {
+    menu,
     activeTitle,
     activeOption,
     isSearching,
@@ -65,7 +63,7 @@ export default function Header() {
     <div className="sticky top-0 z-50 flex w-full flex-col bg-white">
       <TopUtil />
       <Gnb
-        menus={HEADER_MENUS}
+        menu={menu}
         activeTitle={activeTitle}
         onToggle={handleMenuToggle}
         onSearchToggle={handleSearchToggle}
@@ -79,7 +77,7 @@ export default function Header() {
         />
       )}
       {isSearching && (
-        <Search
+        <SearchBar
           searchValue={searchValue}
           handleSearchValue={handleSearchValue}
         />
@@ -128,7 +126,7 @@ function TopUtil() {
 }
 
 function Gnb({
-  menus,
+  menu,
   activeTitle,
   onToggle,
   onSearchToggle,
@@ -141,25 +139,29 @@ function Gnb({
 
   return (
     <div
-      className={`flex h-[6.4rem] items-center gap-[2rem] px-[11.9rem] ${borderClass}`}
+      className={cn(
+        'flex h-[6.4rem] items-center gap-[2rem] px-[11.9rem]',
+        borderClass
+      )}
     >
       <SvgLogo className="h-[2.7rem] w-[16rem] shrink-0" />
       <div className="flex h-[6rem] flex-grow items-center">
-        {menus.map((menu) => {
-          const isActive = menu.title === activeTitle;
+        {menu.map(({ title }) => {
+          const isActive = title === activeTitle;
           return (
             <div
-              key={menu.title}
+              key={title}
               className="h-[6rem] w-[13.6rem] shrink-0 cursor-pointer"
-              onMouseEnter={() => onToggle(menu.title)}
-              onClick={() => onToggle(menu.title)}
+              onMouseEnter={() => onToggle(title)}
+              onClick={() => onToggle(title)}
             >
               <p
-                className={`text-jp-title2 flex h-full cursor-pointer items-center gap-[1rem] whitespace-nowrap px-[3.2rem] pb-[1rem] pt-[1rem] font-bold ${
+                className={cn(
+                  'text-jp-title2 flex h-full items-center gap-[1rem] whitespace-nowrap px-[3.2rem] pb-[1rem] pt-[1rem] font-bold',
                   isActive ? 'text-pink-500' : 'text-gray-800'
-                }`}
+                )}
               >
-                {menu.title}
+                {title}
               </p>
             </div>
           );
@@ -178,22 +180,25 @@ function Gnb({
 function MegaMenu({ options, activeOption, onClick }: MegaMenuProps) {
   return (
     <div className="flex h-[5.2rem] w-full items-center border-b-[0.1rem] border-pink-500 bg-white px-[9.5rem]">
-      {options.map((option) => {
+      {options.map((option, index) => {
         const isActive = option === activeOption;
+        const isLast = index === options.length - 1;
+
         return (
           <div
-            key={option}
+            key={`option-${option}`}
             className="flex h-[3.2rem] items-center justify-center gap-[1rem]"
           >
             <button
-              className={`text-jp-body2 cursor-pointer whitespace-nowrap px-[2.4rem] py-[1rem] ${
+              className={cn(
+                'text-jp-body2 cursor-pointer whitespace-nowrap px-[2.4rem] py-[1rem]',
                 isActive ? 'font-bold text-pink-500' : 'text-gray-600'
-              }`}
+              )}
               onClick={() => onClick(option)}
             >
               {option}
             </button>
-            <SvgDivider />
+            {!isLast && <SvgDivider />}
           </div>
         );
       })}
@@ -201,7 +206,7 @@ function MegaMenu({ options, activeOption, onClick }: MegaMenuProps) {
   );
 }
 
-function Search({ searchValue, handleSearchValue }: SearchProps) {
+function SearchBar({ searchValue, handleSearchValue }: SearchProps) {
   return (
     <div className="flex w-full items-center gap-[0.8rem] border-b border-pink-500 bg-white px-[11.9rem]">
       <Input
