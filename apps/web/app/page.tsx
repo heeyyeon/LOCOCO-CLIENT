@@ -4,8 +4,7 @@ import CardProduct from 'components/card/card-products';
 import CardReview from 'components/card/card-review';
 import { inRange } from 'es-toolkit';
 import { MOCK_CARD_PRODUCT, MOCK_CARD_REVIEW } from 'mock/card-props-mock';
-
-// import Button from '@/components/button/Button';
+import Button from '@/components/button/Button';
 
 export default function Home() {
   return (
@@ -46,32 +45,13 @@ export default function Home() {
             reviewId={reviewId}
             likeCount={likeCount}
             {...(inRange(rank, 1, 3) && { rank: rank })}
-            handleBtnClick={() => console.log('dd')}
-          />
+          >
+            <Button size="lg" color="primary" variant="outline">
+              바로가기
+            </Button>
+          </CardReview>
         )
       )}
-      {/* <CardReview
-        {...reviewData}
-        actionButton={
-          <Button
-            size="sm"
-            variant="outline"
-            color="primary"
-            onClick={() => console.log('')}
-          >
-            보러가기
-          </Button>
-        }
-      />
-      <CardReview
-        {...reviewData}
-        buttonProps={{
-          variant: 'outline',
-          color: 'primary',
-          onClick: () => console.log(''),
-          children: '보러가기', // children을 prop으로?
-        }}
-      /> */}
     </div>
   );
 }

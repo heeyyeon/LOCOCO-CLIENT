@@ -37,6 +37,7 @@ export default function CardReview({
   likeCount,
   imageUrl,
   handleCardClick,
+  children,
 }: ReviewItems) {
   return (
     <article
@@ -65,6 +66,7 @@ export default function CardReview({
           </div>
         </div>
       </div>
+      {children}
     </article>
   );
 }

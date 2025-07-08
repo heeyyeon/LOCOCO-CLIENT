@@ -11,5 +11,5 @@ export interface ReviewItems {
   likeCount: number;
   imageUrl?: string;
   handleCardClick?: (reviewId: number) => void;
-  underElement?: ReactNode;
+  children?: ReactNode;
 }
