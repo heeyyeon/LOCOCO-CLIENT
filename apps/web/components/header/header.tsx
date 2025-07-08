@@ -2,6 +2,7 @@
 
 import {
   SvgClose,
+  SvgDivider,
   SvgHistory,
   SvgLikeFill,
   SvgLogin,
@@ -176,22 +177,24 @@ function Gnb({
 
 function MegaMenu({ options, activeOption, onClick }: MegaMenuProps) {
   return (
-    <div className="flex h-[5.2rem] w-full items-center gap-[1.6rem] border-b-[0.1rem] border-pink-500 bg-white px-[9.5rem]">
+    <div className="flex h-[5.2rem] w-full items-center border-b-[0.1rem] border-pink-500 bg-white px-[9.5rem]">
       {options.map((option) => {
         const isActive = option === activeOption;
         return (
-          <Button
-            variant="text"
-            size="md"
-            color="primary"
+          <div
             key={option}
-            className={`text-jp-body2 whitespace-nowrap ${
-              isActive ? 'font-bold text-pink-500' : 'text-gray-600'
-            } cursor-pointer`}
-            onClick={() => onClick(option)}
+            className="flex h-[3.2rem] items-center justify-center gap-[1rem]"
           >
-            {option}
-          </Button>
+            <button
+              className={`text-jp-body2 cursor-pointer whitespace-nowrap px-[2.4rem] py-[1rem] ${
+                isActive ? 'font-bold text-pink-500' : 'text-gray-600'
+              }`}
+              onClick={() => onClick(option)}
+            >
+              {option}
+            </button>
+            <SvgDivider />
+          </div>
         );
       })}
     </div>
