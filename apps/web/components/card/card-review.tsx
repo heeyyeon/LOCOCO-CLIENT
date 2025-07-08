@@ -1,7 +1,7 @@
 import { cva } from 'class-variance-authority';
 import { ReviewItems } from 'type/review';
 import Image from 'next/image';
-import { Badge, SvgLikeFill } from '@lococo/design-system';
+import { Badge, SvgGoodFill, SvgLikeFill } from '@lococo/design-system';
 
 const imageWrapperVariant = cva(
   'relative border-[0.1rem] border-gray-200 flex items-center justify-center',
@@ -47,6 +47,8 @@ export default function CardReview({
       <div className={imageWrapperVariant({ type })}>
         {imageUrl ? (
           <Image
+            width={264}
+            height={type === 'video' ? 352 : 264}
             src={imageUrl}
             alt={title}
             className="h-full w-full object-cover"
@@ -61,7 +63,7 @@ export default function CardReview({
             <p className="text-jp-body2 font-[500] text-white">{title}</p>
           </div>
           <div className="flex items-center gap-[0.8rem]">
-            <SvgLikeFill size={24} className="fill-white" />
+            <SvgGoodFill size={24} className="fill-white" />
             <p className="text-en-body1 font-[500] text-white">{likeCount}</p>
           </div>
         </div>
