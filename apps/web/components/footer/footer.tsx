@@ -1,4 +1,4 @@
-import { CATEGORYS } from 'constants/category';
+import { CATEGORY_NAME } from 'types/category';
 import Link from 'next/link';
 import {
   SvgInstagramFill,
@@ -12,7 +12,8 @@ const FOOTER = {
   menu: [
     {
       title: 'カテゴリー',
-      option: CATEGORYS.map(({ category }) => category),
+
+      option: Object.values(CATEGORY_NAME),
     },
     {
       title: 'サポート',
