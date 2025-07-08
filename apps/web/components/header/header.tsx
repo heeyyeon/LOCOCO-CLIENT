@@ -35,9 +35,16 @@ interface MegaMenuProps {
   activeOption: string | null;
   onClick: (option: string) => void;
 }
+
 interface SearchProps {
   searchValue: string;
   handleSearchValue: (text: string) => void;
+}
+
+interface TopUtilItemProps {
+  icon: React.ReactNode;
+  label: string;
+  onClick?: () => void;
 }
 
 export default function Header() {
@@ -98,46 +105,41 @@ export default function Header() {
   );
 }
 
+function TopUtilItem({ icon, label, onClick }: TopUtilItemProps) {
+  return (
+    <button
+      onClick={onClick}
+      className="flex h-[3.2rem] cursor-pointer items-center justify-center gap-[0.8rem] whitespace-nowrap px-[1.6rem] py-[1rem]"
+    >
+      {icon}
+      <p>{label}</p>
+    </button>
+  );
+}
+
 function TopUtil() {
   return (
     <div className="flex items-center justify-end self-stretch px-[11.9rem] py-[2rem]">
-      <Button
-        iconLeft={<SvgMy className="text-gray-600" />}
-        color="secondary"
-        variant="text"
-        size="sm"
-        className="flex h-[3.2rem] cursor-pointer items-center justify-center gap-[0.8rem] whitespace-nowrap px-[1.6rem] py-[1rem]"
-      >
-        マイページ
-      </Button>
-      <Button
-        iconLeft={<SvgLikeFill className="text-gray-600" />}
-        color="secondary"
-        variant="text"
-        size="sm"
-        className="flex h-[3.2rem] cursor-pointer items-center justify-center gap-[0.8rem] whitespace-nowrap px-[1.6rem] py-[1rem]"
-      >
-        マイページ
-      </Button>
-
-      <Button
-        iconLeft={<SvgHistory className="text-gray-600" />}
-        color="secondary"
-        variant="text"
-        size="sm"
-        className="flex h-[3.2rem] cursor-pointer items-center justify-center gap-[0.8rem] whitespace-nowrap px-[1.6rem] py-[1rem]"
-      >
-        マイページ
-      </Button>
-      <Button
-        iconLeft={<SvgLogin className="text-gray-600" />}
-        color="secondary"
-        variant="text"
-        size="sm"
-        className="flex h-[3.2rem] cursor-pointer items-center justify-center gap-[0.8rem] whitespace-nowrap px-[1.6rem] py-[1rem]"
-      >
-        マイページ
-      </Button>
+      <TopUtilItem
+        icon={<SvgMy className="text-gray-600" />}
+        label="マイページ"
+        onClick={() => console.log('마이페이지 클릭')}
+      />
+      <TopUtilItem
+        icon={<SvgLikeFill className="text-gray-600" />}
+        label="좋아요"
+        onClick={() => console.log('좋아요 클릭')}
+      />
+      <TopUtilItem
+        icon={<SvgHistory className="text-gray-600" />}
+        label="내역"
+        onClick={() => console.log('내역 클릭')}
+      />
+      <TopUtilItem
+        icon={<SvgLogin className="text-gray-600" />}
+        label="로그인"
+        onClick={() => console.log('로그인 클릭')}
+      />
     </div>
   );
 }
