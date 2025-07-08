@@ -1,19 +1,29 @@
-import { HEADER_MENUS } from 'app/constants/header';
+import { CATEGORY_OPTIONS, CATEGORY_NAME } from 'constants/category';
+import { CategoryName, CategoryOption } from 'types/category';
 import { useMemo, useState } from 'react';
 
 export function useHeaderState() {
-  const [activeTitle, setActiveTitle] = useState<string | null>(null);
-  const [activeOption, setActiveOption] = useState<string | null>(null);
+  const [activeTitle, setActiveTitle] = useState<CategoryName | null>(null);
+  const [activeOption, setActiveOption] = useState<CategoryOption | null>(null);
   const [isSearching, setIsSearching] = useState<boolean>(false);
   const [searchValue, setSearchValue] = useState('');
 
-  const handleMenuToggle = (title: string) => {
+  const menu = useMemo(
+    () =>
+      Object.entries(CATEGORY_OPTIONS).map(([key, option]) => ({
+        title: CATEGORY_NAME[key as keyof typeof CATEGORY_NAME],
+        options: Object.values(option) as CategoryOption[],
+      })),
+    []
+  );
+
+  const handleMenuToggle = (title: CategoryName) => {
     setActiveTitle(title);
     setActiveOption(null);
     setIsSearching(false);
   };
 
-  const handleOptionClick = (option: string) => {
+  const handleOptionClick = (option: CategoryOption) => {
     setActiveOption(option);
   };
 
@@ -28,11 +38,12 @@ export function useHeaderState() {
   };
 
   const activeMenu = useMemo(
-    () => HEADER_MENUS.find((menu) => menu.title === activeTitle),
-    [activeTitle]
+    () => menu.find((menu) => menu.title === activeTitle),
+    [menu, activeTitle]
   );
 
   return {
+    menu,
     activeTitle,
     activeOption,
     isSearching,
