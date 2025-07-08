@@ -6,37 +6,53 @@
  * - 아이: 아이브로우, 아이섀도우, 아이라이너 등 아이 메이크업 제품
  * - 립: 립스틱, 립 틴트 등 립 메이크업 제품
  */
-export const CATEGORYS = [
-  {
-    category: 'スキンケア',
-    options: [
-      'すべて',
-      'トナー',
-      'モイスチャライザー',
-      'エッセンス / セラム',
-      'クリーム',
-    ],
+export const FACIAL_CARE = {
+  name: 'スキンケア',
+  options: {
+    TONER: 'トナー',
+    MOISTURIZER: 'モイスチャライザー',
+    ESSENCE_SERUM: 'エッセンス / セラム',
+    CREAM: 'クリーム',
   },
-  {
-    category: 'フェイス',
-    options: [
-      'すべて',
-      'ファンデーション',
-      'フェイスパウダー / プレストパウダー',
-      'コンシーラー',
-      'チーク',
-    ],
-  },
-  {
-    category: 'アイ',
-    options: ['すべて', 'アイブロウ', 'アイシャドウ', 'アイライナー'],
-  },
-  {
-    category: 'リップ',
-    options: ['すべて', 'リップスティック', 'リップティント'],
-  },
-] as const;
+} as const;
 
-export type Category = (typeof CATEGORYS)[number];
-export type CategoryName = Category['category'];
-export type CategoryOption = Category['options'][number];
+export const FACE_MAKEUP = {
+  name: 'フェイス',
+  options: {
+    FOUNDATION: 'ファンデーション',
+    POWDER_COMPACT: 'パウダー / プレストパウダー',
+    CONCEALER: 'コンシーラー',
+    BLUSHER: 'チーク',
+  },
+} as const;
+
+export const EYE_MAKEUP = {
+  name: 'アイ',
+  options: {
+    EYEBROW: 'アイブロウ',
+    EYESHADOW: 'アイシャドウ',
+    EYELINER: 'アイライナー',
+  },
+} as const;
+
+export const LIP_MAKEUP = {
+  name: 'リップ',
+  options: {
+    LIPSTICK: 'リップスティック',
+    LIP_TINT: 'リップティント',
+  },
+} as const;
+
+export const CATEGORY = {
+  FACIAL_CARE,
+  FACE_MAKEUP,
+  EYE_MAKEUP,
+  LIP_MAKEUP,
+} as const;
+
+export const CATEGORY_NAME = {
+  FACIAL_CARE: FACIAL_CARE.name,
+  FACE_MAKEUP: FACE_MAKEUP.name,
+  EYE_MAKEUP: EYE_MAKEUP.name,
+  LIP_MAKEUP: LIP_MAKEUP.name,
+} as const;
