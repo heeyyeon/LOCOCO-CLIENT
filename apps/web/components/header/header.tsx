@@ -1,6 +1,5 @@
 'use client';
 
-import React, { useMemo, useState } from 'react';
 import {
   SvgClose,
   SvgHistory,
@@ -13,6 +12,7 @@ import {
 import Button from '@/components/button/Button';
 import Input from '@/components/input/Input';
 import { HEADER_MENUS } from '../../app/constants/header';
+import { useHeaderState } from './useHeaderState';
 
 type Menu = {
   title: string;
@@ -48,35 +48,17 @@ interface TopUtilItemProps {
 }
 
 export default function Header() {
-  const [activeTitle, setActiveTitle] = useState<string | null>(null);
-  const [activeOption, setActiveOption] = useState<string | null>(null);
-  const [isSearching, setIsSearching] = useState<boolean>(false);
-  const [searchValue, setSearchValue] = useState('');
-
-  const handleMenuToggle = (title: string) => {
-    setActiveTitle(title);
-    setActiveOption(null);
-    setIsSearching(false);
-  };
-
-  const handleOptionClick = (option: string) => {
-    setActiveOption(option);
-  };
-
-  const handleSearchToggle = () => {
-    setIsSearching((prev) => !prev);
-    setActiveTitle(null);
-    setActiveOption(null);
-  };
-
-  const handleSearchValue = (text: string) => {
-    setSearchValue(text);
-  };
-
-  const activeMenu = useMemo(
-    () => HEADER_MENUS.find((menu) => menu.title === activeTitle),
-    [activeTitle]
-  );
+  const {
+    activeTitle,
+    activeOption,
+    isSearching,
+    searchValue,
+    activeMenu,
+    handleMenuToggle,
+    handleOptionClick,
+    handleSearchToggle,
+    handleSearchValue,
+  } = useHeaderState();
 
   return (
     <div className="sticky top-0 z-50 flex w-full flex-col bg-white">
