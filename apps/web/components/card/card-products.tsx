@@ -1,4 +1,4 @@
-import { ProductItems } from 'type/product';
+import { ProductItems } from 'types/product';
 import Image from 'next/image';
 import {
   Badge,
