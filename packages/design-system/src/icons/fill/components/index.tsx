@@ -1,15 +1,12 @@
 export { SvgAvatar } from './Avatar';
 export { SvgLogo } from './Logo';
 export { SvgArrowDown } from './ArrowDown';
+export { SvgArrowRight } from './ArrowRight';
 export { SvgArrowUp } from './ArrowUp';
 export { SvgCheck } from './Check';
 export { SvgClose } from './Close';
 export { SvgDivider } from './Divider';
 export { SvgErrorFill } from './ErrorFill';
-export { SvgHistory } from './History';
 export { SvgHomeFill } from './HomeFill';
 export { SvgLikeFill } from './LikeFill';
-export { SvgLogin } from './Login';
-export { SvgMy } from './My';
-export { SvgSearch } from './Search';
 export { SvgStar } from './Star';
