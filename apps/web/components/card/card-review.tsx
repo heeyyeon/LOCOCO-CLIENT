@@ -1,7 +1,7 @@
 import { cva } from 'class-variance-authority';
 import { ReviewItems } from 'type/review';
 import Image from 'next/image';
-import { Badge, SvgGoodFill, SvgLikeFill } from '@lococo/design-system';
+import { Badge, SvgGoodFill } from '@lococo/design-system';
 
 const imageWrapperVariant = cva(
   'relative border-[0.1rem] border-gray-200 flex items-center justify-center',

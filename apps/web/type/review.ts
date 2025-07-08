@@ -1,7 +1,9 @@
 import { ReactNode } from 'react';
 
+type media = 'video' | 'image';
+
 export interface ReviewItems {
-  type?: 'video' | 'image';
+  type?: media;
   rank?: number;
   brand: string;
   title: string;
