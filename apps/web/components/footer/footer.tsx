@@ -6,7 +6,7 @@ import {
   SvgArrowRight,
 } from '@lococo/design-system';
 
-export const FOOTER = {
+const FOOTER = {
   title: 'Lococo',
   desc: '韓国コスメの信頼できるレビュー情報をお届け。韓国のビューティー知識を日本のユーザーに繋ぎます。',
   menu: [
@@ -60,12 +60,18 @@ function FooterLeft({ title, desc }: Pick<FooterProps, 'title' | 'desc'>) {
         <p className="text-jp-body2 font-medium text-zinc-600">{desc}</p>
       </div>
       <div className="flex items-center gap-[0.8rem]">
-        <div className="flex h-[4.4rem] w-[4.4rem] items-center justify-center p-4">
+        <Link
+          href="https://www.instagram.com/lococo.official/"
+          className="flex h-[4.4rem] w-[4.4rem] items-center justify-center p-4"
+        >
           <SvgInstagramFill />
-        </div>
-        <div className="flex h-[4.4rem] w-[4.4rem] items-center justify-center p-4">
+        </Link>
+        <Link
+          href="https://x.com/Lococo_official"
+          className="flex h-[4.4rem] w-[4.4rem] items-center justify-center p-4"
+        >
           <SvgTwitterFill />
-        </div>
+        </Link>
       </div>
     </div>
   );
