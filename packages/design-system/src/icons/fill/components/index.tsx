@@ -2,6 +2,7 @@ export { SvgAvatar } from './Avatar';
 export { SvgArrowDown } from './ArrowDown';
 export { SvgArrowUp } from './ArrowUp';
 export { SvgCheck } from './Check';
+export { SvgCheckNonBg } from './CheckNonBg';
 export { SvgClose } from './Close';
 export { SvgErrorFill } from './ErrorFill';
 export { SvgGoodFill } from './GoodFill';
