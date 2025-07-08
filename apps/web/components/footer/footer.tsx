@@ -63,16 +63,20 @@ function FooterLeft({ title, desc }: Pick<FooterProps, 'title' | 'desc'>) {
       <div className="flex items-center gap-[0.8rem]">
         <Link
           href="https://www.instagram.com/lococo.official/"
-          className="flex h-[4.4rem] w-[4.4rem] items-center justify-center p-4"
+          className="flex h-[4.4rem] w-[4.4rem] items-center justify-center p-1"
         >
-          <SvgInstagramFill />
+          <SvgInstagramFill fill="text-pink-500" />
         </Link>
         <Link
           href="https://x.com/Lococo_official"
-          className="flex h-[4.4rem] w-[4.4rem] items-center justify-center p-4"
+          className="flex h-[4.4rem] w-[4.4rem] items-center justify-center p-1"
         >
-          <SvgTwitterFill />
+          <SvgTwitterFill fill="text-pink-500" />
         </Link>
+        <Link
+          href="/"
+          className="flex h-[4.4rem] w-[4.4rem] items-center justify-center p-1"
+        ></Link>
       </div>
     </div>
   );
@@ -88,7 +92,7 @@ function FooterBottom({ copyright }: Pick<FooterProps, 'copyright'>) {
 
 function FooterRight({ menu }: Pick<FooterProps, 'menu'>) {
   return (
-    <div className="flex items-start gap-[2.4rem] bg-[color:var(--color-pink-100)]">
+    <div className="bg-pink-100)] flex items-start gap-[2.4rem]">
       {menu.map(({ title, option }) => (
         <div
           key={title}
