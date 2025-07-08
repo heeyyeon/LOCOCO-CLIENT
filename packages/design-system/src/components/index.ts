@@ -4,6 +4,7 @@ export * from './checkbox';
 export * from './progress';
 export * from './tab';
 export * from './input';
+export * from './error-notice';
 export * from './badge';
 export * from './breadcrumb';
 export * from './avatar';
