@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { Badge, SvgLikeFill } from '@lococo/design-system';
 
 const imageWrapperVariant = cva(
-  'relative border-[0.1rem] border-gray-200 flex items-center justify-center bg-gray-200',
+  'relative border-[0.1rem] border-gray-200 flex items-center justify-center',
   {
     variants: {
       type: {
@@ -25,7 +25,7 @@ const imageWrapperVariant = cva(
  * @param likeCount 해당 리뷰의 좋아요 수
  * @param imageUrl 해당 리뷰 대표 이미지(영상 썸네일)
  * @param handleCardClick 리뷰 카드 클릭시 작동할 이벤트(reviewId 필요)
- * @param handleBtnClick (option)리뷰 카드 밑에 버튼 클릭 시 작동할 이벤트(product Id 필요)
+ * @param handleBtnClick (option)리뷰 카드 밑에 버튼 클릭 시 작동할 이벤트(review Id 필요) -> 없을 시 카드 하단 버튼 렌더링되지 않음
  * @returns
  */
 export default function CardReview({
@@ -51,7 +51,7 @@ export default function CardReview({
             className="h-full w-full object-cover"
           />
         ) : (
-          <p className="text-sm text-gray-400">이미지 준비중</p>
+          <p className="text-sm">이미지 준비중</p>
         )}
         {rank && <Badge rank={rank} />}
         <div className="absolute bottom-0 left-0 right-0 flex flex-col gap-[0.8rem] p-[2.56rem_2.56rem_1.92rem]">

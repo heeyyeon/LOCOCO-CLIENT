@@ -1,3 +1,5 @@
+import { ReactNode } from 'react';
+
 export interface ReviewItems {
   type?: 'video' | 'image';
   rank?: number;
@@ -9,5 +11,5 @@ export interface ReviewItems {
   likeCount: number;
   imageUrl?: string;
   handleCardClick?: (reviewId: number) => void;
-  handleBtnClick?: (productId: number) => void;
+  underElement?: ReactNode;
 }
