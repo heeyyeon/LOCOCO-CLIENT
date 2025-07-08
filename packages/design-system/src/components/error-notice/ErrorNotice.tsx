@@ -17,7 +17,7 @@ export default function ErrorNotice({ message, className }: ErrorNoticeProps) {
       <SvgErrorFill
         width="1.3rem"
         height="1.3rem"
-        className="mr-[0.5rem] fill-[color:var(--color-red)]"
+        className="mr-[0.5rem] fill-color-red"
       />
       {message}
     </p>
