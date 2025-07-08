@@ -9,4 +9,6 @@ export { SvgInstagramFill } from './InstagramFill';
 export { SvgLikeFill } from './LikeFill';
 export { SvgTwitterFill } from './TwitterFill';
 export { SvgHomeFill } from './HomeFill';
+export { SvgGoodFill } from './GoodFill';
+export { SvgLikeOutline } from './LikeOutline';
 export { SvgStar } from './Star';
