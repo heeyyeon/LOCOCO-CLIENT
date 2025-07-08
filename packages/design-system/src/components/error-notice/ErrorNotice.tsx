@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { SvgErrorFill } from '../../icons/fill/components/ErrorFill';
 import { cn } from '../../lib/utils';
 
@@ -15,7 +14,11 @@ export default function ErrorNotice({ message, className }: ErrorNoticeProps) {
         className
       )}
     >
-      <SvgErrorFill className="mr-[0.5rem] h-[0.83rem] w-[0.83rem] fill-[color:var(--color-red)]" />
+      <SvgErrorFill
+        width="1.3rem"
+        height="1.3rem"
+        className="mr-[0.5rem] fill-[color:var(--color-red)]"
+      />
       {message}
     </p>
   );
