@@ -8,4 +8,4 @@ export * from './badge';
 export * from './breadcrumb';
 export * from './avatar';
 export * from './icon-button';
-export * from './input';
+export * from './tag';
