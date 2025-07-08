@@ -1,11 +1,14 @@
 export { SvgAvatar } from './Avatar';
 export { SvgArrowDown } from './ArrowDown';
+export { SvgArrowRight } from './ArrowRight';
 export { SvgArrowUp } from './ArrowUp';
 export { SvgCheck } from './Check';
 export { SvgClose } from './Close';
 export { SvgErrorFill } from './ErrorFill';
-export { SvgGoodFill } from './GoodFill';
-export { SvgHomeFill } from './HomeFill';
+export { SvgInstagramFill } from './InstagramFill';
 export { SvgLikeFill } from './LikeFill';
+export { SvgTwitterFill } from './TwitterFill';
+export { SvgHomeFill } from './HomeFill';
+export { SvgGoodFill } from './GoodFill';
 export { SvgLikeOutline } from './LikeOutline';
 export { SvgStar } from './Star';
