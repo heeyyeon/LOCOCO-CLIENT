@@ -1,5 +1,6 @@
 import { cva } from 'class-variance-authority';
-import { ReviewItems } from 'type/review';
+import { ReviewItem } from 'type/review';
+import { PropsWithChildren } from 'react';
 import Image from 'next/image';
 import { Badge, SvgGoodFill } from '@lococo/design-system';
 
@@ -14,6 +15,10 @@ const imageWrapperVariant = cva(
     },
   }
 );
+
+interface CardReviewProps extends ReviewItem, PropsWithChildren {
+  handleCardClick?: (reviewId: number) => void;
+}
 
 /**
  *
@@ -38,7 +43,7 @@ export default function CardReview({
   imageUrl,
   handleCardClick,
   children,
-}: ReviewItems) {
+}: CardReviewProps) {
   return (
     <article
       className="flex w-[26.4rem] cursor-pointer flex-col"

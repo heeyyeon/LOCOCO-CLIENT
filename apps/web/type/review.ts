@@ -1,9 +1,7 @@
-import { ReactNode } from 'react';
+type Media = 'video' | 'image';
 
-type media = 'video' | 'image';
-
-export interface ReviewItems {
-  type?: media;
+export interface ReviewItem {
+  type?: Media;
   rank?: number;
   brand: string;
   title: string;
@@ -12,6 +10,4 @@ export interface ReviewItems {
   reviewCount?: number;
   likeCount: number;
   imageUrl?: string;
-  handleCardClick?: (reviewId: number) => void;
-  children?: ReactNode;
 }
