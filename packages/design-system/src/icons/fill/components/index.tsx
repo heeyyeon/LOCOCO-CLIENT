@@ -3,6 +3,7 @@ export { SvgArrowDown } from './ArrowDown';
 export { SvgArrowRight } from './ArrowRight';
 export { SvgArrowUp } from './ArrowUp';
 export { SvgCheck } from './Check';
+export { SvgCheckNonBg } from './CheckNonBg';
 export { SvgClose } from './Close';
 export { SvgErrorFill } from './ErrorFill';
 export { SvgInstagramFill } from './InstagramFill';
