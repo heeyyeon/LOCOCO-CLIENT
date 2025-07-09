@@ -57,7 +57,6 @@ export default function CardReview({
               height={352}
               src={imageUrl}
               className="h-full w-full object-cover"
-              controls
               preload="metadata"
             />
           ) : (
