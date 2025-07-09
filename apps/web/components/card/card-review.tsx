@@ -1,5 +1,5 @@
 import { cva } from 'class-variance-authority';
-import { ReviewItem } from 'type/review';
+import { ReviewItem } from 'types/review';
 import { PropsWithChildren } from 'react';
 import Image from 'next/image';
 import { Badge, SvgGoodFill } from '@lococo/design-system';
