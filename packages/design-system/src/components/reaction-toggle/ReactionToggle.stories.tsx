@@ -4,11 +4,11 @@ import { SvgGoodFill } from '../../icons/fill/components/GoodFill';
 import { SvgGoodOutline } from '../../icons/fill/components/GoodOutline';
 import { SvgLikeFill } from '../../icons/fill/components/LikeFill';
 import { SvgLikeOutline } from '../../icons/fill/components/LikeOutline';
-import ReactionButton from './ReactionButton';
+import ReactionToggle from './ReactionToggle';
 
-const meta: Meta<typeof ReactionButton> = {
-  title: 'components/ReactionButton',
-  component: ReactionButton,
+const meta: Meta<typeof ReactionToggle> = {
+  title: 'components/ReactionToggle',
+  component: ReactionToggle,
   argTypes: {
     variant: {
       control: 'radio',
@@ -21,7 +21,7 @@ const meta: Meta<typeof ReactionButton> = {
 };
 export default meta;
 
-type Story = StoryObj<typeof ReactionButton>;
+type Story = StoryObj<typeof ReactionToggle>;
 
 export const Vertical: Story = {
   render: (args) => {
@@ -29,7 +29,7 @@ export const Vertical: Story = {
 
     return (
       <div className="bg-black p-5 text-white">
-        <ReactionButton
+        <ReactionToggle
           pressed={isPressed}
           onPressedChange={setIsPressed}
           {...args}
@@ -40,7 +40,7 @@ export const Vertical: Story = {
             <SvgLikeOutline className="size-[2.4rem]" />
           )}
           <span className="text-en-caption1">123</span>
-        </ReactionButton>
+        </ReactionToggle>
       </div>
     );
   },
@@ -54,7 +54,7 @@ export const Horizontal: Story = {
     const [isPressed, setIsPressed] = useState(false);
 
     return (
-      <ReactionButton
+      <ReactionToggle
         pressed={isPressed}
         onPressedChange={setIsPressed}
         className="text-en-body1"
@@ -66,7 +66,7 @@ export const Horizontal: Story = {
           <SvgGoodOutline className="size-[1.8rem]" />
         )}
         <span className="text-en-body1">123</span>
-      </ReactionButton>
+      </ReactionToggle>
     );
   },
   args: {

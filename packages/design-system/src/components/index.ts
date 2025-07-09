@@ -9,5 +9,5 @@ export * from './badge';
 export * from './breadcrumb';
 export * from './avatar';
 export * from './icon-button';
-export * from './reaction-button';
+export * from './reaction-toggle';
 export * from './tag';

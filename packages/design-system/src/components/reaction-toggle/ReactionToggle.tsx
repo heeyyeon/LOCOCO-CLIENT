@@ -3,13 +3,13 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import { ComponentProps } from 'react';
 import { cn } from '../../lib/utils';
 
-interface ReactionButtonProps
+interface ReactionToggleProps
   extends ComponentProps<typeof Toggle>,
-    VariantProps<typeof reactionButtonVariants> {
+    VariantProps<typeof reactionToggleVariants> {
   variant: 'vertical' | 'horizontal';
 }
 
-const reactionButtonVariants = cva(
+const reactionToggleVariants = cva(
   'transition-colors duration-300 hover:cursor-pointer',
   {
     variants: {
@@ -37,17 +37,17 @@ const reactionButtonVariants = cva(
   }
 );
 
-export default function ReactionButton({
+export default function ReactionToggle({
   variant = 'vertical',
   className,
   children,
   pressed,
   ...props
-}: ReactionButtonProps) {
+}: ReactionToggleProps) {
   return (
     <Toggle
       className={cn(
-        reactionButtonVariants({ active: pressed, variant }),
+        reactionToggleVariants({ active: pressed, variant }),
         className
       )}
       {...props}
@@ -56,5 +56,3 @@ export default function ReactionButton({
     </Toggle>
   );
 }
-
-export { reactionButtonVariants };
