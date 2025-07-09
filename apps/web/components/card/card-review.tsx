@@ -77,12 +77,12 @@ export default function CardReview({
         {ranking && <Badge rank={ranking} />}
         <div className="absolute bottom-0 left-0 right-0 flex flex-col gap-[0.8rem] p-[2.56rem_2.56rem_1.92rem]">
           <div>
-            <p className="text-en-title2 font-[700] text-white">{brandName}</p>
-            <p className="text-jp-body2 font-[500] text-white">{productName}</p>
+            <p className="en-title2 font-[700] text-white">{brandName}</p>
+            <p className="jp-body2 font-[500] text-white">{productName}</p>
           </div>
           <div className="flex items-center gap-[0.8rem]">
             <SvgGoodFill size={24} className="fill-white" />
-            <p className="text-en-body1 font-[500] text-white">{likeCount}</p>
+            <p className="en-body1 font-[500] text-white">{likeCount}</p>
           </div>
         </div>
       </div>
