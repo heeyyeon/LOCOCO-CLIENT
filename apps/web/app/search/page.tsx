@@ -35,7 +35,12 @@ export default function Page() {
     [SEARCH_OPTION.PRODUCT]: (
       <RenderProducts products={mockProductSearchResponse.products} />
     ),
-    [SEARCH_OPTION.REVIEW]: <RenderReviews />,
+    [SEARCH_OPTION.REVIEW]: (
+      <RenderReviews
+        reviewsVideo={mockVideoReviewSearchResponse.reviews}
+        reviewsImage={mockImageReviewSearchResponse.reviews}
+      />
+    ),
   };
 
   return (
