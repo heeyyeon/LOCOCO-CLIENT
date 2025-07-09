@@ -1,8 +1,8 @@
 export interface ProductItem {
-  rank?: number;
-  brand: string;
-  title: string;
-  description: string;
+  ranking?: number;
+  brandName: string;
+  productName: string;
+  unit: string;
   productId: number;
   isLiked: boolean;
   rating: number;
