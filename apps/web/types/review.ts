@@ -2,9 +2,9 @@ type Media = 'video' | 'image';
 
 export interface ReviewItem {
   type?: Media;
-  rank?: number;
-  brand: string;
-  title: string;
+  ranking?: number;
+  brandName: string;
+  productName: string;
   reviewId: number;
   rating?: number;
   reviewCount?: number;
