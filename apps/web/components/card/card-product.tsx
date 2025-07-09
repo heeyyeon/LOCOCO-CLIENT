@@ -58,7 +58,7 @@ export default function CardProduct({
         {ranking && <Badge rank={ranking} />}
       </div>
       <div className="flex h-[4.4rem] items-center justify-between border-b-[0.1rem] border-dashed border-pink-500">
-        <p className="text-jp-body1 font-[700]">{brandName}</p>
+        <p className="jp-body1 font-[700]">{brandName}</p>
         <div>
           {isLiked ? (
             <SvgLikeFill size={24} className="fill-pink-500" />
@@ -68,9 +68,9 @@ export default function CardProduct({
         </div>
       </div>
       <div className="flex h-[4.4rem] items-center border-b-[0.1rem] border-dashed border-pink-500">
-        <p className="text-jp-body2 font-[500]">{productName}</p>
+        <p className="jp-body2 font-[500]">{productName}</p>
       </div>
-      <div className="text-en-caption1 flex h-[4.4rem] items-center justify-between border-b-[0.1rem] border-pink-500 text-gray-600">
+      <div className="en-caption1 flex h-[4.4rem] items-center justify-between border-b-[0.1rem] border-pink-500 text-gray-600">
         <p>{unit}</p>
         <div className="flex items-center">
           <SvgStar size={16} className="fill-yellow" />
