@@ -30,7 +30,7 @@ function SelectTrigger({
     <SelectPrimitive.Trigger
       data-slot="select-trigger"
       className={cn(
-        'group flex h-[5.2rem] w-[40.8rem] items-center justify-between gap-[1rem] self-stretch border-b border-gray-400 bg-white pr-[1.2rem] focus:outline-none [&[data-state=open]]:border-pink-500',
+        'group flex h-[5.2rem] items-center justify-between gap-[1rem] self-stretch border-b border-gray-400 bg-white pr-[1.2rem] focus:outline-none [&[data-state=open]]:border-pink-500',
         className
       )}
       {...props}
@@ -57,7 +57,7 @@ function SelectContent({
       <SelectPrimitive.Content
         data-slot="select-content"
         className={cn(
-          'data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 relative z-50 w-[var(--radix-select-trigger-width)] overflow-y-auto overflow-x-hidden border-b border-pink-500 bg-pink-100',
+          'data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 box-shadow: 0px 8px 15px 6px rgba(0, 0, 0, 0.05), 0px 4px 5px 0px rgba(0, 0, 0, 0.08); relative z-50 w-[var(--radix-select-trigger-width)] overflow-y-auto overflow-x-hidden border-b border-pink-500 bg-pink-100',
           position === 'popper' && 'overflow-y-scroll',
           className
         )}
