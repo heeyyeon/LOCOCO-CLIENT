@@ -6,16 +6,10 @@ import { Button } from '@/components';
 
 interface TabsProps {
   selectedTab: (typeof SEARCH_OPTION)[keyof typeof SEARCH_OPTION];
-  productCount: number;
-  reviewCount: number;
   handleClickTab: (option: SearchOption) => void;
 }
-export const Tabs = ({
-  selectedTab,
-  productCount,
-  reviewCount,
-  handleClickTab,
-}: TabsProps) => {
+
+export const Tabs = ({ selectedTab, handleClickTab }: TabsProps) => {
   const baseStyle =
     'w-full flex h-[6rem] px-[2rem] py-[1rem] justify-center items-center font-bold border-b-2 bg-white';
   const selectedStyle = 'en-title2 border-gray-800';
@@ -26,8 +20,6 @@ export const Tabs = ({
       {Object.values(SEARCH_OPTION).map((value) => {
         const isSelected = selectedTab === value;
         const className = `${baseStyle} ${isSelected ? selectedStyle : unselectedStyle}`;
-        const count =
-          value === SEARCH_OPTION.PRODUCT ? productCount : reviewCount;
 
         return (
           <Button
@@ -38,8 +30,7 @@ export const Tabs = ({
             onClick={() => handleClickTab(value)}
             className={className}
           >
-            <p>{value}</p>
-            <p>({count})</p>
+            {value}
           </Button>
         );
       })}
