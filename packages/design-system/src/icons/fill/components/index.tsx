@@ -16,6 +16,7 @@ export { SvgLikeFill } from './LikeFill';
 export { SvgLikeOutline } from './LikeOutline';
 export { SvgLogin } from './Login';
 export { SvgMy } from './My';
+export { SvgPurchase } from './Purchase';
 export { SvgSearch } from './Search';
 export { SvgStar } from './Star';
 export { SvgTwitterFill } from './TwitterFill';

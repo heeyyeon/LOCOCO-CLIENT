@@ -1,5 +1,6 @@
+import { Slot } from '@radix-ui/react-slot';
 import { cva, VariantProps } from 'class-variance-authority';
-import { ButtonHTMLAttributes, ReactNode } from 'react';
+import { ButtonHTMLAttributes, ReactNode, forwardRef } from 'react';
 import { cn } from '../../lib/utils';
 
 interface ButtonProps
@@ -11,6 +12,7 @@ interface ButtonProps
   color: 'primary' | 'secondary';
   variant: 'filled' | 'outline' | 'text';
   size: 'lg' | 'md' | 'sm';
+  asChild?: boolean;
 }
 
 const baseButtonStyle = 'px-[3.2rem] py-[1rem] gap-[0.8rem]';
@@ -75,28 +77,48 @@ const buttonVariants = cva(
   }
 );
 
-export default function Button({
-  variant,
-  color,
-  size,
-  iconLeft,
-  iconRight,
-  children,
-  className,
-  rounded = false,
-  ...props
-}: ButtonProps) {
-  return (
-    <button
-      className={cn(
-        buttonVariants({ variant, color, size, rounded }),
-        className
-      )}
-      {...props}
-    >
-      {iconLeft}
-      {children}
-      {iconRight}
-    </button>
-  );
-}
+const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+  (
+    {
+      variant,
+      color,
+      size,
+      iconLeft,
+      iconRight,
+      children,
+      className,
+      rounded = false,
+      asChild = false,
+      ...props
+    },
+    ref
+  ) => {
+    const Comp = asChild ? Slot : 'button';
+    const buttonContent = asChild ? (
+      children
+    ) : (
+      <>
+        {iconLeft}
+        {children}
+        {iconRight}
+      </>
+    );
+
+    return (
+      <Comp
+        ref={ref}
+        className={cn(
+          buttonVariants({ variant, color, size, rounded }),
+          className
+        )}
+        {...props}
+      >
+        {buttonContent}
+      </Comp>
+    );
+  }
+);
+
+Button.displayName = 'Button';
+
+export default Button;
