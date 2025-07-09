@@ -1,6 +1,7 @@
 'use client';
 
 import HomeSection from 'components/home/home';
+import { SvgJapaneseReview, SvgKoreanReview } from '@/icons';
 
 export default function Main() {
   return (
@@ -12,20 +13,25 @@ export default function Main() {
           <span className="text-en-body1">30</span>日
         </div>
         <HomeSection className="mt-[6rem]">
-          <HomeSection.Header title="제목" />
+          <HomeSection.Header>レビュー数が多い商品</HomeSection.Header>
           <HomeSection.Product />
         </HomeSection>
         <HomeSection>
-          <HomeSection.Header title="제목2" />
+          <HomeSection.Header>新作アイテム</HomeSection.Header>
           <HomeSection.Product />
         </HomeSection>
         <HomeSection>
-          <HomeSection.Header title="좋아요가 많은 리뷰" />
+          <HomeSection.Header>
+            {<SvgJapaneseReview className="fill-red" />}いいね数が多いレビュー
+          </HomeSection.Header>
           <HomeSection.Review type="video" />
           <HomeSection.Review type="image" className="mt-[4.8rem]" />
         </HomeSection>
         <HomeSection>
-          <HomeSection.Header title="인기있는 K-뷰티 YouTube 영상" />
+          <HomeSection.Header>
+            {<SvgKoreanReview />}
+            人気のKビューティーYouTube動画
+          </HomeSection.Header>
           <HomeSection.YouTube />
         </HomeSection>
       </article>

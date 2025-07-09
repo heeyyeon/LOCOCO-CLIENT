@@ -5,7 +5,7 @@ import { inRange } from 'es-toolkit';
 import { productMock } from 'mocks/productMock';
 import { imageReviewMock } from 'mocks/reviewMock';
 import { CategoryName } from 'types/category';
-import React, { ReactNode, useState } from 'react';
+import React, { PropsWithChildren, ReactNode, useState } from 'react';
 import Link from 'next/link';
 import { Button } from '@/components';
 import Tab, { TabContainer } from '@/components/tab/Tab';
@@ -18,21 +18,24 @@ export default function HomeSection({
   className?: string;
 }) {
   return (
-    <section className={`flex w-full flex-col gap-8 mt-[12rem]${className}`}>
+    <section
+      className={`flex w-full flex-col gap-[3.2rem] mt-[12rem]${className}`}
+    >
       {children}
     </section>
   );
 }
 
-interface HomeSectionHeaderProps {
-  title: string;
+interface HomeSectionHeaderProps extends PropsWithChildren {
   moreInfoUrl?: string;
 }
 
-function HomeSectionHeader({ title, moreInfoUrl }: HomeSectionHeaderProps) {
+function HomeSectionHeader({ children, moreInfoUrl }: HomeSectionHeaderProps) {
   return (
     <section className="mt-[6rem] flex justify-between">
-      <h3 className="text-jp-head1 font-[700]">{title}</h3>
+      <h3 className="text-jp-head1 flex items-center gap-[1.2rem] font-[700]">
+        {children}
+      </h3>
       {moreInfoUrl && (
         <Link href={moreInfoUrl} className="text-jp-title2 font-[700]">
           더보기
@@ -104,8 +107,8 @@ function HomeSectionReview({ type, className }: HomeSectionReviewProps) {
   return (
     <div className={`mt-8 flex flex-col gap-8 ${className}`}>
       <p className="text-jp-head3 font-[700]">
-        {type === 'video' && '영상 리뷰'}
-        {type === 'image' && '사진 리뷰'}
+        {type === 'video' && '動画レビュー'}
+        {type === 'image' && '写真付きレビュー'}
       </p>
       <div className="flex gap-6">
         {imageReviewMock.map(
