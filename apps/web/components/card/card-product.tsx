@@ -27,10 +27,10 @@ interface CardProductProps extends ProductItem {
   handleCardClick?: (productId: number) => void;
 }
 export default function CardProduct({
-  rank,
-  brand,
-  title,
-  description,
+  raking,
+  brandName,
+  productName,
+  unit,
   productId,
   isLiked,
   rating,
@@ -46,19 +46,21 @@ export default function CardProduct({
       <div className="relative border-[0.1rem] border-gray-200">
         {imageUrl ? (
           <Image
+            width={264}
+            height={264}
             className="h-[26.4rem] w-[26.4rem] object-cover"
             src={imageUrl}
-            alt={title}
+            alt={productName}
           />
         ) : (
           <div className="flex h-[26.4rem] w-[26.4rem] items-center justify-center">
             상품 이미지 준비중
           </div>
         )}
-        {rank && <Badge rank={rank} />}
+        {raking && <Badge rank={raking} />}
       </div>
       <div className="flex h-[4.4rem] items-center justify-between border-b-[0.1rem] border-dashed border-pink-500">
-        <p className="text-jp-body1 font-[700]">{brand}</p>
+        <p className="text-jp-body1 font-[700]">{brandName}</p>
         <div>
           {isLiked ? (
             <SvgLikeFill size={24} className="fill-pink-500" />
@@ -68,10 +70,10 @@ export default function CardProduct({
         </div>
       </div>
       <div className="flex h-[4.4rem] items-center border-b-[0.1rem] border-dashed border-pink-500">
-        <p className="text-jp-body2 font-[500]">{title}</p>
+        <p className="text-jp-body2 font-[500]">{productName}</p>
       </div>
       <div className="text-en-caption1 flex h-[4.4rem] items-center justify-between border-b-[0.1rem] border-pink-500 text-gray-600">
-        <p>{description}</p>
+        <p>{unit}</p>
         <div className="flex items-center">
           <SvgStar size={16} className="fill-yellow" />
           <p>

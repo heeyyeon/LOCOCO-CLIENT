@@ -7,6 +7,5 @@ export interface ProductItem {
   isLiked: boolean;
   rating: number;
   reviewCount: number;
-  likeCount: number;
   imageUrl?: string;
 }
