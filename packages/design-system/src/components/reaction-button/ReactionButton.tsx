@@ -21,7 +21,6 @@ const reactionButtonVariants = cva(
       },
       active: {
         true: '!text-pink-500',
-        false: '',
       },
     },
     compoundVariants: [
@@ -29,21 +28,6 @@ const reactionButtonVariants = cva(
         variant: 'horizontal',
         active: true,
         class: 'border-pink-500 bg-pink-100',
-      },
-      {
-        variant: 'vertical',
-        active: true,
-        class: '',
-      },
-      {
-        variant: 'horizontal',
-        active: false,
-        class: 'text-gray-800 bg-white border-gray-300',
-      },
-      {
-        variant: 'vertical',
-        active: false,
-        class: 'text-white',
       },
     ],
     defaultVariants: {
