@@ -24,7 +24,6 @@ export const Default: Story = {
     return (
       <Textarea.Container>
         <Textarea
-          value={text}
           onChange={(e) => setText(e.target.value)}
           {...args}
         />
