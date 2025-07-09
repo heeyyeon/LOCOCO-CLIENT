@@ -8,26 +8,26 @@ import {
 } from '@lococo/design-system';
 
 /**
+ * 상품 카드 컴포넌트
  *
- * @param rank (optional) Card에서 뱃지에 나타낼 순위를 나타내는 props, {...(inRange(rank, 1, 3) && { rank: rank })}와 같이 사용하여 불필요할 시 넣지 않으면 됨
- * @param brand 브랜드명
- * @param title 상품명
- * @param description 상품 상세 설명 ex. 피그마 기준 용량 옵션
+ * @param ranking (optional) Card에서 뱃지에 나타낼 순위를 나타내는 props, {...(inRange(rank, 1, 3) && { rank: rank })}와 같이 사용하여 불필요할 시 넣지 않으면 됨
+ * @param brandName 브랜드명
+ * @param productName 상품명
+ * @param unit 상품 상세 설명 ex. 피그마 기준 용량 옵션
  * @param productId 서버에서 제공한 상품 고유 ID
  * @param isLiked 현재 사용자가 해당 상품에 대해 좋아요를 눌렀는지
  * @param rating 5점 만점 기준 평점
  * @param reviewCount 해당 상품에 대한 총 리뷰 수
  * @param imageUrl 대표 이미지 주소
  * @param handleCardClick 전체 카드 클릭 시에 작동할 이벤트
- * @param handleLickToggle 좋아요 버튼 눌렀을 때 작동할 이벤트
- * @returns
  */
 
 interface CardProductProps extends ProductItem {
-  handleCardClick?: (productId: number) => void;
+  handleCardClick: (productId: number) => void;
 }
+
 export default function CardProduct({
-  raking,
+  ranking,
   brandName,
   productName,
   unit,
@@ -46,8 +46,8 @@ export default function CardProduct({
       <div className="relative border-[0.1rem] border-gray-200">
         {imageUrl ? (
           <Image
-            width={264}
             height={264}
+            width={264}
             className="h-[26.4rem] w-[26.4rem] object-cover"
             src={imageUrl}
             alt={productName}
@@ -57,7 +57,7 @@ export default function CardProduct({
             상품 이미지 준비중
           </div>
         )}
-        {raking && <Badge rank={raking} />}
+        {ranking && <Badge rank={ranking} />}
       </div>
       <div className="flex h-[4.4rem] items-center justify-between border-b-[0.1rem] border-dashed border-pink-500">
         <p className="text-jp-body1 font-[700]">{brandName}</p>
