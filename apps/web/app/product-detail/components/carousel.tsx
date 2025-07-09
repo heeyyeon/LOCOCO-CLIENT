@@ -12,6 +12,7 @@ import Image from 'next/image';
 import IconButton from '@/components/icon-button';
 import { SvgArrowUp } from '@/icons';
 import { SvgArrowDown } from '@/icons';
+import { cn } from '@/lib/utils';
 import './swiper.css';
 
 interface CarouselProps {
@@ -21,6 +22,8 @@ interface CarouselProps {
 export default function Carousel({ imageUrlList }: CarouselProps) {
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);
   const mainSwiperRef = useRef<SwiperType | null>(null);
+  const [isBeginning, setIsBeginning] = useState(true);
+  const [isEnd, setIsEnd] = useState(false);
 
   return (
     <div className="flex gap-6 p-4">
@@ -49,11 +52,21 @@ export default function Carousel({ imageUrlList }: CarouselProps) {
         </Swiper>
         <div className="mt-4 flex flex-col gap-1">
           <IconButton
+            className={cn(
+              isBeginning
+                ? 'hover:cursor-default [&>svg]:fill-gray-500'
+                : '[&>svg]:fill-gray-800'
+            )}
             onClick={() => mainSwiperRef.current?.slidePrev()}
             aria-label="이전 이미지"
             icon={<SvgArrowUp />}
           />
           <IconButton
+            className={cn(
+              isEnd
+                ? 'hover:cursor-default [&>svg]:fill-gray-500'
+                : '[&>svg]:fill-gray-800'
+            )}
             onClick={() => mainSwiperRef.current?.slideNext()}
             aria-label="다음 이미지"
             icon={<SvgArrowDown />}
@@ -71,6 +84,12 @@ export default function Carousel({ imageUrlList }: CarouselProps) {
           className="mainCustomSwiper"
           onSwiper={(swiper) => {
             mainSwiperRef.current = swiper;
+            setIsBeginning(swiper.isBeginning);
+            setIsEnd(swiper.isEnd);
+          }}
+          onSlideChange={(swiper) => {
+            setIsBeginning(swiper.isBeginning);
+            setIsEnd(swiper.isEnd);
           }}
         >
           {imageUrlList.map((imageUrl) => (
