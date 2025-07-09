@@ -28,12 +28,12 @@ const reactionButtonVariants = cva(
       {
         variant: 'horizontal',
         active: true,
-        class: 'border-pink-500 bg-pink-100 text-pink-500',
+        class: 'border-pink-500 bg-pink-100',
       },
       {
         variant: 'vertical',
         active: true,
-        class: 'text-pink-500',
+        class: '',
       },
       {
         variant: 'horizontal',
