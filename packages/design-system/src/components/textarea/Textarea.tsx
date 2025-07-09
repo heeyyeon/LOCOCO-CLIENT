@@ -2,7 +2,7 @@ import { ComponentProps, PropsWithChildren, useId } from 'react';
 import { cn } from '../../lib/utils';
 
 interface TextareaProps extends ComponentProps<'textarea'> {
-  value?: string;
+  value: string;
   'aria-label'?: string;
   'aria-describedby'?: string;
 }
@@ -40,7 +40,7 @@ function Textarea({
           id={counterId}
           className={cn(
             'w-[8rem] px-2 text-sm',
-            value && value.length ? 'text-gray-800' : 'text-gray-500'
+            value?.length ? 'text-gray-800' : 'text-gray-500'
           )}
           aria-live="polite"
         >
