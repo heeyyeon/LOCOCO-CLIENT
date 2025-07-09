@@ -1,6 +1,7 @@
 'use client';
 
 import CardReview from 'components/card/card-review';
+import { inRange } from 'es-toolkit';
 import { imageReviewMock } from 'mocks/reviewMock';
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components';
@@ -26,6 +27,8 @@ export default function HomeSectionReview({
         {imageReviewMock.map((review) => (
           <CardReview
             key={review.reviewId}
+            {...(review.ranking &&
+              inRange(review.ranking, 1, 3) && { ranking: review.ranking })}
             type={type}
             brandName={review.brandName}
             productName={review.productName}

@@ -2,6 +2,7 @@
 
 import CardProduct from 'components/card/card-product';
 import { CATEGORY_NAME, FACIAL_CARE } from 'constants/category';
+import { inRange } from 'es-toolkit';
 import { productMock } from 'mocks/productMock';
 import { CategoryName } from 'types/category';
 import React, { useState } from 'react';
@@ -34,6 +35,8 @@ export default function HomeSectionProduct() {
         {productMock.map((product) => (
           <CardProduct
             key={product.productId}
+            {...(product.ranking &&
+              inRange(product.ranking, 1, 4) && { ranking: product.ranking })}
             handleCardClick={() =>
               router.push(`/product-detail/${product.productId}`)
             }
