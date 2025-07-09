@@ -1,11 +1,8 @@
 import { SvgLine } from '@lococo/design-system';
-import Footer from '../../components/footer/footer';
-import Header from '../../components/header/header';
 
 export default function LoginPage() {
   return (
     <>
-      <Header />
       <main className="flex items-center justify-center bg-gray-100">
         <section className="my-[6.9rem] flex w-[74.4rem] flex-col items-center border border-gray-400 bg-white px-[22.2rem] py-[12.7rem]">
           <h1 className="jp-head3 mb-[1.4rem] font-bold text-pink-500">
@@ -25,7 +22,6 @@ export default function LoginPage() {
           </button>
         </section>
       </main>
-      <Footer />
     </>
   );
 }
