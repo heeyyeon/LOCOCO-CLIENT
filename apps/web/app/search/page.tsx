@@ -2,12 +2,10 @@
 
 import RenderProducts from 'components/search/renderProducts';
 import RenderReviews from 'components/search/renderReviews';
-import { TabButton, Tabs } from 'components/search/tab';
+import { Tabs } from 'components/search/tab';
 import { SEARCH_OPTION } from 'constants/option';
 import { SearchOption } from 'types/option';
-import { ProductItems } from 'types/product';
 import { useState } from 'react';
-import { useSearchParams } from 'next/navigation';
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -34,7 +32,9 @@ export default function Page() {
   };
 
   const TAB_RENDER = {
-    [SEARCH_OPTION.PRODUCT]: <RenderProducts />,
+    [SEARCH_OPTION.PRODUCT]: (
+      <RenderProducts products={mockProductSearchResponse.products} />
+    ),
     [SEARCH_OPTION.REVIEW]: <RenderReviews />,
   };
 
