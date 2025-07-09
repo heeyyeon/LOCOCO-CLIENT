@@ -1,4 +1,4 @@
-import { CATEGORY_NAME } from 'types/category';
+import { CATEGORY_NAME } from 'constants/category';
 import Link from 'next/link';
 import {
   SvgInstagramFill,

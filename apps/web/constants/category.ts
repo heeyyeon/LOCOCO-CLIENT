@@ -43,11 +43,11 @@ export const LIP_MAKEUP = {
   },
 } as const;
 
-export const CATEGORY = {
-  FACIAL_CARE,
-  FACE_MAKEUP,
-  EYE_MAKEUP,
-  LIP_MAKEUP,
+export const CATEGORY_OPTIONS = {
+  FACIAL_CARE: FACIAL_CARE.options,
+  FACE_MAKEUP: FACE_MAKEUP.options,
+  EYE_MAKEUP: EYE_MAKEUP.options,
+  LIP_MAKEUP: LIP_MAKEUP.options,
 } as const;
 
 export const CATEGORY_NAME = {
