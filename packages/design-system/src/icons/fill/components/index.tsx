@@ -1,4 +1,5 @@
 export { SvgAvatar } from './Avatar';
+export { SvgLine } from './Line';
 export { SvgLogo } from './Logo';
 export { SvgArrowDown } from './ArrowDown';
 export { SvgArrowRight } from './ArrowRight';
