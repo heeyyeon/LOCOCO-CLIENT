@@ -1,9 +1,11 @@
 import CardProduct from 'components/card/card-products';
+import CardReview from 'components/card/card-review';
 import { CATEGORY_NAME, FACIAL_CARE } from 'constants/category';
 import { inRange } from 'es-toolkit';
 import { CategoryName } from 'types/category';
 import React, { ReactNode, useState } from 'react';
 import Link from 'next/link';
+import { Button } from '@/components';
 import Tab, { TabContainer } from '@/components/tab/Tab';
 
 export default function HomeSection({
@@ -14,7 +16,7 @@ export default function HomeSection({
   className?: string;
 }) {
   return (
-    <section className={`flex w-full flex-col ${className}`}>
+    <section className={`flex w-full flex-col gap-8 mt-[12rem]${className}`}>
       {children}
     </section>
   );
@@ -107,8 +109,65 @@ function HomeSectionProduct() {
   );
 }
 
-function HomeSectionReview() {
-  return <div></div>;
+interface HomeSectionReviewProps {
+  type: 'video' | 'image';
+  className?: string;
+}
+function HomeSectionReview({ type, className }: HomeSectionReviewProps) {
+  return (
+    <div className={`mt-8 flex flex-col gap-8 ${className}`}>
+      <p className="text-jp-head3 font-[700]">
+        {type === 'video' && '영상 리뷰'}
+        {type === 'image' && '사진 리뷰'}
+      </p>
+      <div className="flex gap-6">
+        <CardReview
+          type={type}
+          brand="브랜드명"
+          title="상품명"
+          reviewId={1}
+          likeCount={123}
+        >
+          <Button color="primary" variant="outline" size="lg">
+            보러가기
+          </Button>
+        </CardReview>
+        <CardReview
+          type={type}
+          brand="브랜드명"
+          title="상품명"
+          reviewId={1}
+          likeCount={123}
+        >
+          <Button color="primary" variant="outline" size="lg">
+            보러가기
+          </Button>
+        </CardReview>
+        <CardReview
+          type={type}
+          brand="브랜드명"
+          title="상품명"
+          reviewId={1}
+          likeCount={123}
+        >
+          <Button color="primary" variant="outline" size="lg">
+            보러가기
+          </Button>
+        </CardReview>
+        <CardReview
+          type={type}
+          brand="브랜드명"
+          title="상품명"
+          reviewId={1}
+          likeCount={123}
+        >
+          <Button color="primary" variant="outline" size="lg">
+            보러가기
+          </Button>
+        </CardReview>
+      </div>
+    </div>
+  );
 }
 HomeSection.Header = HomeSectionHeader;
 HomeSection.Product = HomeSectionProduct;
