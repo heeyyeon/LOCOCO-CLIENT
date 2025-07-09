@@ -35,12 +35,19 @@ export default function HomeSectionProduct() {
         {productMock.map((product) => (
           <CardProduct
             key={product.productId}
-            {...(product.ranking &&
-              inRange(product.ranking, 1, 4) && { ranking: product.ranking })}
+            brandName={product.brandName}
+            productName={product.productName}
+            unit={product.unit}
+            productId={product.productId}
+            isLiked={product.isLiked}
+            rating={product.rating}
+            reviewCount={product.reviewCount}
+            imageUrl={product.imageUrl}
             handleCardClick={() =>
               router.push(`/product-detail/${product.productId}`)
             }
-            {...product}
+            {...(product.ranking &&
+              inRange(product.ranking, 1, 4) && { ranking: product.ranking })}
           />
         ))}
       </div>

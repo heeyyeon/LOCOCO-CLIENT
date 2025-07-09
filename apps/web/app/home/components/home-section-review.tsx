@@ -28,7 +28,7 @@ export default function HomeSectionReview({
           <CardReview
             key={review.reviewId}
             {...(review.ranking &&
-              inRange(review.ranking, 1, 3) && { ranking: review.ranking })}
+              inRange(review.ranking, 1, 4) && { ranking: review.ranking })}
             type={type}
             brandName={review.brandName}
             productName={review.productName}
