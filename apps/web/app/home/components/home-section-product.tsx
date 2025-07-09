@@ -5,12 +5,14 @@ import { CATEGORY_NAME, FACIAL_CARE } from 'constants/category';
 import { productMock } from 'mocks/productMock';
 import { CategoryName } from 'types/category';
 import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import Tab, { TabContainer } from '@/components/tab/Tab';
 
 export default function HomeSectionProduct() {
   const [selectedTab, setSelectedTab] = useState<CategoryName>(
     FACIAL_CARE.name
   );
+  const router = useRouter();
 
   return (
     <div className="flex w-full flex-col gap-4">
@@ -32,8 +34,10 @@ export default function HomeSectionProduct() {
         {productMock.map((product) => (
           <CardProduct
             key={product.productId}
+            handleCardClick={() =>
+              router.push(`/product-detail/${product.productId}`)
+            }
             {...product}
-            handleCardClick={() => console.log(product.productId)}
           />
         ))}
       </div>

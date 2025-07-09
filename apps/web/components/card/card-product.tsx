@@ -1,3 +1,5 @@
+'use client';
+
 import { ProductItem } from 'types/product';
 import Image from 'next/image';
 import {

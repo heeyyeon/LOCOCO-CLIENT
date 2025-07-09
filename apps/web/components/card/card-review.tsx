@@ -1,3 +1,5 @@
+'use client';
+
 import { cva } from 'class-variance-authority';
 import { ReviewItem } from 'types/review';
 import { PropsWithChildren } from 'react';
