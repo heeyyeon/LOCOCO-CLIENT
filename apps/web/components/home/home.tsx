@@ -33,11 +33,11 @@ interface HomeSectionHeaderProps extends PropsWithChildren {
 function HomeSectionHeader({ children, moreInfoUrl }: HomeSectionHeaderProps) {
   return (
     <section className="mt-[6rem] flex justify-between">
-      <h3 className="text-jp-head1 flex items-center gap-[1.2rem] font-[700]">
+      <h3 className="jp-head1 flex items-center gap-[1.2rem] font-[700]">
         {children}
       </h3>
       {moreInfoUrl && (
-        <Link href={moreInfoUrl} className="text-jp-title2 font-[700]">
+        <Link href={moreInfoUrl} className="jp-title2 font-[700]">
           더보기
         </Link>
       )}
@@ -106,7 +106,7 @@ function HomeSectionReview({ type, className }: HomeSectionReviewProps) {
   // 여기서 type에 따른 리뷰들 get 해오기
   return (
     <div className={`mt-8 flex flex-col gap-8 ${className}`}>
-      <p className="text-jp-head3 font-[700]">
+      <p className="jp-head3 font-[700]">
         {type === 'video' && '動画レビュー'}
         {type === 'image' && '写真付きレビュー'}
       </p>
@@ -135,7 +135,7 @@ function HomeSectionReview({ type, className }: HomeSectionReviewProps) {
 
 function HomeSectionYouTube() {
   return (
-    <div className="grid grid-cols-3 gap-[2.4rem]">
+    <div className="mb-[12rem] grid grid-cols-3 gap-[2.4rem]">
       <article className="h-[20.3rem] w-full bg-gray-100"></article>
       <article className="h-[20.3rem] w-full bg-gray-100"></article>
       <article className="h-[20.3rem] w-full bg-gray-100"></article>
