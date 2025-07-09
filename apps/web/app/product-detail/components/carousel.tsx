@@ -92,7 +92,7 @@ export default function Carousel({ imageUrlList }: CarouselProps) {
             setIsEnd(swiper.isEnd);
           }}
         >
-          {imageUrlList.map((imageUrl) => (
+          {imageUrlList.map((imageUrl, idx) => (
             <SwiperSlide key={imageUrl}>
               <Image
                 src={imageUrl}
@@ -100,6 +100,7 @@ export default function Carousel({ imageUrlList }: CarouselProps) {
                 width={600}
                 height={400}
                 className="h-full w-full object-cover"
+                priority={idx === 0 ? true : false}
               />
             </SwiperSlide>
           ))}
