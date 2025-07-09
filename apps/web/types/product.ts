@@ -1,4 +1,4 @@
-export interface ProductItems {
+export interface ProductItem {
   rank?: number;
   brand: string;
   title: string;
@@ -9,6 +9,4 @@ export interface ProductItems {
   reviewCount: number;
   likeCount: number;
   imageUrl?: string;
-  handleLikeToggle?: (productId: number, isLiked: boolean) => void;
-  handleCardClick?: (productId: number) => void;
 }

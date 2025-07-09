@@ -1,4 +1,4 @@
-import { ProductItems } from 'types/product';
+import { ProductItem } from 'types/product';
 import Image from 'next/image';
 import {
   Badge,
@@ -22,6 +22,10 @@ import {
  * @param handleLickToggle 좋아요 버튼 눌렀을 때 작동할 이벤트
  * @returns
  */
+
+interface CardProductProps extends ProductItem {
+  handleCardClick?: (productId: number) => void;
+}
 export default function CardProduct({
   rank,
   brand,
@@ -33,13 +37,7 @@ export default function CardProduct({
   reviewCount,
   imageUrl,
   handleCardClick,
-  handleLikeToggle,
-}: ProductItems) {
-  const handleLikeClick = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    handleLikeToggle?.(productId, isLiked);
-  };
-
+}: CardProductProps) {
   return (
     <article
       className="flex w-[26.4rem] cursor-pointer flex-col"
@@ -61,13 +59,13 @@ export default function CardProduct({
       </div>
       <div className="flex h-[4.4rem] items-center justify-between border-b-[0.1rem] border-dashed border-pink-500">
         <p className="text-jp-body1 font-[700]">{brand}</p>
-        <button onClick={handleLikeClick}>
+        <div>
           {isLiked ? (
             <SvgLikeFill size={24} className="fill-pink-500" />
           ) : (
             <SvgLikeOutline size={24} className="fill-white" />
           )}
-        </button>
+        </div>
       </div>
       <div className="flex h-[4.4rem] items-center border-b-[0.1rem] border-dashed border-pink-500">
         <p className="text-jp-body2 font-[500]">{title}</p>

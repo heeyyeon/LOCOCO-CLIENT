@@ -1,4 +1,4 @@
-import CardProduct from 'components/card/card-products';
+import CardProduct from 'components/card/card-product';
 import CardReview from 'components/card/card-review';
 import { CATEGORY_NAME, FACIAL_CARE } from 'constants/category';
 import { inRange } from 'es-toolkit';
