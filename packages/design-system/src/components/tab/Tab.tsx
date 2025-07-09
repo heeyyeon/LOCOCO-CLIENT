@@ -20,8 +20,8 @@ const tabVariants = cva(
   {
     variants: {
       variant: {
-        primary: 'h-11 text-jp-title3  text-gray-500 leading-normal',
-        secondary: 'h-14 text-jp-title2  text-gray-800 leading-relaxed',
+        primary: 'h-11 jp-title3  text-gray-500 leading-normal',
+        secondary: 'h-14 jp-title2  text-gray-800 leading-relaxed',
       },
       active: {
         true: 'border-b-2 border-solid',

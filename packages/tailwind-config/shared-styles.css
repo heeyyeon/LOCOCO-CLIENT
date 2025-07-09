@@ -30,11 +30,6 @@
   --color-green: #15c37e;
   --color-blue: #3182f7;
 
-  /* font-weight */
-  --font-bold: 700;
-  --font-medium: 500;
-  --font-regular: 400;
-
   /* JP head */
   --text-jp-head1: 3.2rem;
   --text-jp-head2: 2.8rem;
@@ -83,106 +78,106 @@
 
 @layer utilities {
   /* 커스텀 유틸리티 클래스 */
-  .text-jp-head1 {
+  .jp-head1 {
     font-family: var(--font-noto-sans-jp);
     font-size: var(--text-jp-head1);
     line-height: 140%;
   }
-  .text-jp-head2 {
+  .jp-head2 {
     font-family: var(--font-noto-sans-jp);
     font-size: var(--text-jp-head2);
     line-height: 140%;
   }
-  .text-jp-head3 {
+  .jp-head3 {
     font-family: var(--font-noto-sans-jp);
     font-size: var(--text-jp-head3);
     line-height: 150%;
   }
 
   /* JP Title */
-  .text-jp-title1 {
+  .jp-title1 {
     font-family: var(--font-noto-sans-jp);
     font-size: var(--text-jp-title1);
     line-height: 150%;
   }
-  .text-jp-title2 {
+  .jp-title2 {
     font-family: var(--font-noto-sans-jp);
     font-size: var(--text-jp-title2);
     line-height: 150%;
   }
-  .text-jp-title3 {
+  .jp-title3 {
     font-family: var(--font-noto-sans-jp);
     font-size: var(--text-jp-title3);
     line-height: 150%;
   }
 
   /* JP Body */
-  .text-jp-body1 {
+  .jp-body1 {
     font-family: var(--font-noto-sans-jp);
     font-size: var(--text-jp-body1);
     line-height: 160%;
   }
-  .text-jp-body2 {
+  .jp-body2 {
     font-family: var(--font-noto-sans-jp);
     font-size: var(--text-jp-body2);
     line-height: 160%;
   }
 
   /* JP Caption */
-  .text-jp-caption1 {
+  .jp-caption1 {
     font-family: var(--font-noto-sans-jp);
     font-size: var(--text-jp-caption1);
     line-height: 160%;
   }
-  .text-jp-caption2 {
+  .jp-caption2 {
     font-family: var(--font-noto-sans-jp);
     font-size: var(--text-jp-caption2);
     line-height: 160%;
   }
-  .text-jp-caption3 {
+  .jp-caption3 {
     font-family: var(--font-noto-sans-jp);
     font-size: var(--text-jp-caption3);
     line-height: 160%;
   }
 
   /* EN Heading */
-  .text-en-head1 {
+  .en-head1 {
     font-family: var(--font-pretendard);
     font-size: var(--text-en-head1);
     line-height: 150%;
   }
 
   /* EN Title */
-  .text-en-title1 {
+  .en-title1 {
     font-family: var(--font-pretendard);
     font-size: var(--text-en-title1);
     line-height: 150%;
   }
-  .text-en-title2 {
+  .en-title2 {
     font-family: var(--font-pretendard);
     font-size: var(--text-en-title2);
     line-height: 150%;
   }
-  .text-en-title3 {
+  .en-title3 {
     font-family: var(--font-pretendard);
     font-size: var(--text-en-title3);
     line-height: 150%;
   }
 
   /* EN Body */
-  .text-en-body1 {
+  .en-body1 {
     font-family: var(--font-pretendard);
     font-size: var(--text-en-body1);
     line-height: 100%;
   }
-  .text-en-body2 {
+  .en-body2 {
     font-family: var(--font-pretendard);
     font-size: var(--text-en-body2);
     line-height: 100%;
   }
 
   /* EN Caption */
-  .text-en-caption1 {
+  .en-caption1 {
     font-family: var(--font-pretendard);
     font-size: var(--text-en-caption1);
     line-height: 150%;

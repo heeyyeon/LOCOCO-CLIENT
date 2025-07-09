@@ -10,7 +10,7 @@ export default function ErrorNotice({ message, className }: ErrorNoticeProps) {
   return (
     <p
       className={cn(
-        'text-jp-caption3 mt-[0.8rem] flex items-center text-[color:var(--color-red)]',
+        'jp-caption3 mt-[0.8rem] flex items-center text-[color:var(--color-red)]',
         className
       )}
     >
