@@ -16,8 +16,8 @@ const iconButtonVariants = cva(
     variants: {
       color: {
         primary: 'text-pink-500',
-        secondary: 'text-gray-500',
-        tertiary: 'text-gray-800',
+        secondary: 'text-gray-800',
+        tertiary: 'text-gray-500',
       },
       size: {
         sm: 'p-[0.8rem] [&>svg]:w-[1.6rem] [&>svg]:h-[1.6rem]',
