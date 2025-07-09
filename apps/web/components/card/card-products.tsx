@@ -24,33 +24,32 @@ import {
  */
 export default function CardProduct({
   rank,
-  brand,
-  title,
+  brandName,
+  productName,
   description,
-  productId,
   isLiked,
-  rating,
   reviewCount,
-  imageUrl,
-  handleCardClick,
-  handleLikeToggle,
+  imageUrls,
+  rating,
 }: ProductItems) {
   const handleLikeClick = (e: React.MouseEvent) => {
     e.stopPropagation();
-    handleLikeToggle?.(productId, isLiked);
+    // handleLikeToggle?.(productId, isLiked);
   };
 
   return (
     <article
       className="flex w-[26.4rem] cursor-pointer flex-col"
-      onClick={() => handleCardClick?.(productId)}
+      // onClick={() => handleCardClick?.(productId)}
     >
       <div className="relative border-[0.1rem] border-gray-200">
-        {imageUrl ? (
+        {imageUrls ? (
           <Image
+            width={264}
+            height={264}
             className="h-[26.4rem] w-[26.4rem] object-cover"
-            src={imageUrl}
-            alt={title}
+            src={imageUrls}
+            alt={productName}
           />
         ) : (
           <div className="flex h-[26.4rem] w-[26.4rem] items-center justify-center">
@@ -60,7 +59,7 @@ export default function CardProduct({
         {rank && <Badge rank={rank} />}
       </div>
       <div className="flex h-[4.4rem] items-center justify-between border-b-[0.1rem] border-dashed border-pink-500">
-        <p className="text-jp-body1 font-[700]">{brand}</p>
+        <p className="text-jp-body1 font-[700]">{brandName}</p>
         <button onClick={handleLikeClick}>
           {isLiked ? (
             <SvgLikeFill size={24} className="fill-pink-500" />
@@ -70,7 +69,7 @@ export default function CardProduct({
         </button>
       </div>
       <div className="flex h-[4.4rem] items-center border-b-[0.1rem] border-dashed border-pink-500">
-        <p className="text-jp-body2 font-[500]">{title}</p>
+        <p className="text-jp-body2 font-[500]">{productName}</p>
       </div>
       <div className="text-en-caption1 flex h-[4.4rem] items-center justify-between border-b-[0.1rem] border-pink-500 text-gray-600">
         <p>{description}</p>
