@@ -9,7 +9,11 @@ export default function Main() {
         <div>날짜</div>
         <HomeSection>
           <HomeSection.Header title="제목" />
-          <HomeSection.Content />
+          <HomeSection.Product />
+        </HomeSection>
+        <HomeSection className="mt-[12rem]">
+          <HomeSection.Header title="제목2" />
+          <HomeSection.Product />
         </HomeSection>
       </article>
     </main>

@@ -6,8 +6,18 @@ import React, { ReactNode, useState } from 'react';
 import Link from 'next/link';
 import Tab, { TabContainer } from '@/components/tab/Tab';
 
-export default function HomeSection({ children }: { children: ReactNode }) {
-  return <section className="flex w-full flex-col">{children}</section>;
+export default function HomeSection({
+  children,
+  className,
+}: {
+  children: ReactNode;
+  className?: string;
+}) {
+  return (
+    <section className={`flex w-full flex-col ${className}`}>
+      {children}
+    </section>
+  );
 }
 
 interface HomeSectionHeaderProps {
@@ -27,7 +37,7 @@ function HomeSectionHeader({ title, moreInfoUrl }: HomeSectionHeaderProps) {
   );
 }
 
-function HomeSectionContent() {
+function HomeSectionProduct() {
   const [selectedTab, setSelectedTab] = useState<CategoryName>(
     FACIAL_CARE.name
   );
@@ -96,5 +106,10 @@ function HomeSectionContent() {
     </div>
   );
 }
+
+function HomeSectionReview() {
+  return <div></div>;
+}
 HomeSection.Header = HomeSectionHeader;
-HomeSection.Content = HomeSectionContent;
+HomeSection.Product = HomeSectionProduct;
+HomeSection.Review = HomeSectionReview;
