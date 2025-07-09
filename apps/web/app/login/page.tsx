@@ -18,7 +18,9 @@ export default function LoginPage() {
             <span className="absolute left-[2.1rem] flex items-center">
               <SvgLine size={20} />
             </span>
-            <span className="w-[18.4rem] justify-center">LINEでログイン</span>
+            <span className="flex w-[18.4rem] justify-center">
+              LINEでログイン
+            </span>
           </button>
         </section>
       </main>
