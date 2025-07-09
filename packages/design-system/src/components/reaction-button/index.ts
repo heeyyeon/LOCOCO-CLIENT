@@ -1,1 +1,1 @@
-export * from './ReactionButton';
+export { default as ReactionButton } from './ReactionButton';
