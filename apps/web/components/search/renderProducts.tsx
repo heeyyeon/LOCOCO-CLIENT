@@ -10,11 +10,10 @@ export default function RenderProducts({
     console.log(`Card clicked: ${productId}`);
   };
   return (
-    <section className="flex w-[136.6rem] flex-col items-start self-stretch px-[11.9rem] pb-[12rem] pt-[3.2rem]">
-      <div className="flex h-[123.6rem] flex-wrap content-center items-center gap-[2.4rem] self-stretch">
+    <section className="flex flex-col self-stretch p-[11.9rem] pb-[12rem] pt-[3.2rem]">
+      <div className="mx-auto flex w-[112.8rem] flex-wrap content-center gap-[2.4rem]">
         {products.map(
           ({
-            ranking,
             brandName,
             productName,
             unit,
