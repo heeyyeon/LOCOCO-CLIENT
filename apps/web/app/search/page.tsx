@@ -1,19 +1,14 @@
 'use client';
 
+import OptionSelector from 'components/search/optionSelector';
+import RenderBreadCrumb from 'components/search/renderBreadCrumb';
 import RenderProducts from 'components/search/renderProducts';
 import RenderReviews from 'components/search/renderReviews';
-import { Tabs } from 'components/search/tab';
 import { SEARCH_OPTION } from 'constants/option';
+import { CategoryKey, CategoryOptionEng } from 'types/category';
 import { SearchOption } from 'types/option';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbList,
-  BreadcrumbSeparator,
-} from '@/components';
-import { SvgHomeFill } from '@/icons';
 import {
   mockImageReviewSearchResponse,
   mockProductSearchResponse,
@@ -22,8 +17,11 @@ import {
 
 export default function Page() {
   const searchParams = useSearchParams();
-  const middleCategory = searchParams.get('middleCategory');
-  const subCategory = searchParams.get('subCategory');
+  const rawMiddle = searchParams.get('middleCategory') || '';
+  const rawSub = searchParams.get('subCategory') || '';
+
+  const middleCategory = rawMiddle as CategoryKey | '';
+  const subCategory = rawSub as CategoryOptionEng | '';
   const [selectedTab, setSelectedTab] = useState<SearchOption>(
     SEARCH_OPTION.PRODUCT
   );
@@ -38,7 +36,7 @@ export default function Page() {
   const handleVideoButton = () => {};
   const handleImageButton = () => {};
 
-  const TAB_RENDER = {
+  const tabRender = {
     [SEARCH_OPTION.PRODUCT]: <RenderProducts products={productData.products} />,
     [SEARCH_OPTION.REVIEW]: (
       <RenderReviews
@@ -48,36 +46,21 @@ export default function Page() {
         handleImageButton={handleImageButton}
       />
     ),
-  };
+  }[selectedTab];
 
   return (
     <div className="flex w-full flex-col items-start">
       <div className="flex flex-col items-start self-stretch"></div>
-      {middleCategory && (
-        <Breadcrumb className="flex h-[5.2rem] items-center self-stretch bg-gray-100 px-[11.9rem] opacity-80">
-          <BreadcrumbList className="jp-body2 text-gray-600">
-            <BreadcrumbItem className="flex aspect-square h-[4.4rem] w-[4.4rem] items-center justify-center p-[1rem]">
-              <SvgHomeFill />
-            </BreadcrumbItem>
-            <BreadcrumbSeparator />
-            <BreadcrumbItem className="flex h-[3.2rem] items-center justify-center gap-[1rem] px-[1.6rem] py-[1rem]">
-              {middleCategory}
-            </BreadcrumbItem>
+      <RenderBreadCrumb
+        middleCategory={middleCategory}
+        subCategory={subCategory}
+      />
 
-            {subCategory && (
-              <>
-                <BreadcrumbSeparator />
-                <BreadcrumbItem className="flex h-[3.2rem] items-center justify-center gap-[1rem] px-[1.6rem] py-[1rem]">
-                  {subCategory}
-                </BreadcrumbItem>
-              </>
-            )}
-          </BreadcrumbList>
-        </Breadcrumb>
-      )}
-
-      <Tabs selectedTab={selectedTab} handleClickTab={handleClickTab} />
-      {TAB_RENDER[selectedTab]}
+      <OptionSelector
+        selectedTab={selectedTab}
+        handleClickTab={handleClickTab}
+      />
+      {tabRender}
     </div>
   );
 }

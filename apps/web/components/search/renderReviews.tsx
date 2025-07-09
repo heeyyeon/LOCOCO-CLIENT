@@ -17,7 +17,9 @@ export default function RenderReviews({
   handleVideoButton,
   handleImageButton,
 }: RenderReviewsProps) {
-  const handleCardClick = (reviewId: number) => {};
+  const handleCardClick = (reviewId: number) => {
+    console.log(reviewId);
+  };
 
   return (
     <section className="flex flex-col content-center self-stretch px-[11.9rem] pb-[12rem] pt-0">
