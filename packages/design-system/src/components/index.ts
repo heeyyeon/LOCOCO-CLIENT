@@ -11,3 +11,4 @@ export * from './avatar';
 export * from './icon-button';
 export * from './reaction-toggle';
 export * from './tag';
+export * from './textarea';
