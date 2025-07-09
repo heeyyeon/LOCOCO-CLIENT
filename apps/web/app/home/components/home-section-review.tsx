@@ -38,7 +38,10 @@ export default function HomeSectionReview({
               color="primary"
               variant="outline"
               size="lg"
-              onClick={() => router.push(`/product-detail/productId받아서줄것`)}
+              onClick={(e) => {
+                e.stopPropagation();
+                router.push(`/product-detail/productId받아서줄것`);
+              }}
             >
               <div className="jp-title3 flex items-center gap-[0.8rem] font-[700]">
                 <SvgArrowOutward />
