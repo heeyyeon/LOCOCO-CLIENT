@@ -23,6 +23,7 @@ export default function RenderReviews() {
           写真付きレビュー
         </p>
         <div className="flex flex-col items-start gap-[3.2rem] self-stretch pt-[4.8rem]"></div>
+        <MoreButton />
       </div>
     </section>
   );
