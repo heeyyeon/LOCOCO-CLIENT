@@ -28,7 +28,7 @@ export default function Carousel({ imageUrlList }: CarouselProps) {
   return (
     <div className="flex gap-6 p-4">
       {/* Thumbnail Swiper (Vertical) */}
-      <div className="flex-shrink-1 flex flex-col justify-between">
+      <div className="flex flex-col justify-between">
         <Swiper
           onSwiper={setThumbsSwiper}
           direction="vertical"
@@ -50,7 +50,7 @@ export default function Carousel({ imageUrlList }: CarouselProps) {
             </SwiperSlide>
           ))}
         </Swiper>
-        <div className="mt-4 flex flex-col gap-1">
+        <div className="flex flex-col gap-1">
           <IconButton
             className={cn(
               isBeginning
