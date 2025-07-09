@@ -57,8 +57,8 @@ function FooterLeft({ title, desc }: Pick<FooterProps, 'title' | 'desc'>) {
   return (
     <div className="flex w-[45.6rem] flex-col items-start gap-[5.6rem] bg-pink-100">
       <div className="flex flex-col items-start gap-[2.4rem] self-stretch">
-        <p className="text-en-title3 font-bold leading-loose">{title}</p>
-        <p className="text-jp-body2 font-medium text-zinc-600">{desc}</p>
+        <p className="en-title3 font-bold leading-loose">{title}</p>
+        <p className="jp-body2 font-medium text-gray-600">{desc}</p>
       </div>
       <div className="flex items-center gap-[0.8rem]">
         <Link
@@ -84,7 +84,7 @@ function FooterLeft({ title, desc }: Pick<FooterProps, 'title' | 'desc'>) {
 
 function FooterBottom({ copyright }: Pick<FooterProps, 'copyright'>) {
   return (
-    <p className="text-en-body1 bg-pink-100 font-medium text-pink-500">
+    <p className="en-body1 bg-pink-100 font-medium text-pink-500">
       {copyright}
     </p>
   );
@@ -98,7 +98,7 @@ function FooterRight({ menu }: Pick<FooterProps, 'menu'>) {
           key={title}
           className="flex w-[16.8rem] flex-col items-start gap-[2.4rem]"
         >
-          <p className="text-jp-body1 font-bold">{title}</p>
+          <p className="jp-body1 font-bold">{title}</p>
           <div className="flex flex-col items-start justify-start gap-[0.8rem] self-stretch">
             {option.map((item) => (
               <Link
@@ -106,7 +106,7 @@ function FooterRight({ menu }: Pick<FooterProps, 'menu'>) {
                 key={item}
                 className="flex h-[3.2rem] items-center gap-[0.8rem] self-stretch py-[1rem]"
               >
-                <p className="text-jp-body2 font-medium">{item}</p>
+                <p className="jp-body2 font-medium">{item}</p>
                 <SvgArrowRight />
               </Link>
             ))}

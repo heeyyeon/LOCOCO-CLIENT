@@ -157,7 +157,7 @@ function Gnb({
             >
               <p
                 className={cn(
-                  'text-jp-title2 flex h-full items-center gap-[1rem] whitespace-nowrap px-[3.2rem] pb-[1rem] pt-[1rem] font-bold',
+                  'jp-title2 flex h-full items-center gap-[1rem] whitespace-nowrap px-[3.2rem] pb-[1rem] pt-[1rem] font-bold',
                   isActive ? 'text-pink-500' : 'text-gray-800'
                 )}
               >
@@ -195,7 +195,7 @@ function MegaMenu({
           >
             <button
               className={cn(
-                'text-jp-body2 cursor-pointer whitespace-nowrap px-[2.4rem] py-[1rem]',
+                'jp-body2 cursor-pointer whitespace-nowrap px-[2.4rem] py-[1rem]',
                 isActive ? 'font-bold text-pink-500' : 'text-gray-600'
               )}
               onClick={() => handleSelectOption(option)}
@@ -218,7 +218,7 @@ function SearchBar({ searchValue, handleChangeSearch }: SearchProps) {
         value={searchValue}
         onChange={(e) => handleChangeSearch(e.target.value)}
         placeholder="ラネージュ"
-        className="text-jp-body2 w-full text-right font-bold leading-[3rem] text-gray-800"
+        className="jp-body2 w-full text-right font-bold leading-[3rem] text-gray-800"
       />
       <div className="flex h-[6.4rem] w-[6.4rem] shrink-0 cursor-pointer items-center justify-center p-[1.4rem]">
         <SvgSearch className="cursor-pointer" />
