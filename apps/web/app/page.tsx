@@ -22,6 +22,14 @@ export default function Main() {
         </HomeSection>
         <HomeSection>
           <HomeSection.Header title="인기있는 K-뷰티 YouTube 영상" />
+          <div className="grid grid-cols-3 gap-6">
+            <article className="h-[20.3rem] w-full bg-gray-100"></article>
+            <article className="h-[20.3rem] w-full bg-gray-100"></article>
+            <article className="h-[20.3rem] w-full bg-gray-100"></article>
+            <article className="h-[20.3rem] w-full bg-gray-100"></article>
+            <article className="h-[20.3rem] w-full bg-gray-100"></article>
+            <article className="h-[20.3rem] w-full bg-gray-100"></article>
+          </div>
         </HomeSection>
       </article>
     </main>

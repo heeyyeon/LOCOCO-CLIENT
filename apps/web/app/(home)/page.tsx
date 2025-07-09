@@ -1,6 +1,6 @@
 'use client';
 
-import CardProduct from 'components/card/card-products';
+import CardProduct from 'components/card/card-product';
 import { CATEGORY_NAME, FACIAL_CARE } from 'constants/category';
 import { inRange } from 'es-toolkit';
 import { CategoryName } from 'types/category';
