@@ -2,8 +2,9 @@ import { CATEGORY_NAME } from 'constants/category';
 import Link from 'next/link';
 import {
   SvgInstagramFill,
-  SvgTwitterFill,
+  SvgXTwitterFill,
   SvgArrowRight,
+  SvgMailFill,
 } from '@lococo/design-system';
 
 const FOOTER = {
@@ -65,18 +66,20 @@ function FooterLeft({ title, desc }: Pick<FooterProps, 'title' | 'desc'>) {
           href="https://www.instagram.com/lococo.official/"
           className="flex h-[4.4rem] w-[4.4rem] items-center justify-center p-1"
         >
-          <SvgInstagramFill fill="text-pink-500" />
+          <SvgInstagramFill className="text-pink-500" />
         </Link>
         <Link
           href="https://x.com/Lococo_official"
           className="flex h-[4.4rem] w-[4.4rem] items-center justify-center p-1"
         >
-          <SvgTwitterFill fill="text-pink-500" />
+          <SvgXTwitterFill className="text-pink-500" />
         </Link>
         <Link
-          href="/"
+          href="mailto:lococo.official@gmail.com"
           className="flex h-[4.4rem] w-[4.4rem] items-center justify-center p-1"
-        ></Link>
+        >
+          <SvgMailFill className="text-pink-500" />
+        </Link>
       </div>
     </div>
   );
