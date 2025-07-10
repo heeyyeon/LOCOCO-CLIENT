@@ -15,7 +15,7 @@ import {
 import Input from '@lococo/design-system/components/input/Input';
 import { cn } from '@/lib/utils';
 import { CategoryKey } from '../../types/category';
-import { useHeaderAction } from './useHeaderAction';
+import { useHeaderAction } from './use-header-action';
 
 type Menu = {
   key: CategoryKey;

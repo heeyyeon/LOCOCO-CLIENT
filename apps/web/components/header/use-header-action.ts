@@ -1,7 +1,7 @@
 import { CATEGORY_OPTIONS, CATEGORY_NAME } from 'constants/category';
 import { CategoryKey, CategoryName, CategoryOptionEng } from 'types/category';
 import { useMemo, useState } from 'react';
-import useCustomSearchParams from './useCustomSearchParams';
+import useCustomSearchParams from './use-custom-search-params';
 
 export function useHeaderAction() {
   const { setSearchParams, resetSearchParams } = useCustomSearchParams();
