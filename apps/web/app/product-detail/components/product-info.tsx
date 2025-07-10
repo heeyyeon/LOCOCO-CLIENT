@@ -9,9 +9,9 @@ import {
   SelectValue,
   SelectContent,
   SelectItem,
-} from '@/components';
-import { Button } from '@/components/button';
-import IconButton from '@/components/icon-button';
+} from '@lococo/design-system';
+import { Button } from '@lococo/design-system';
+import { IconButton } from '@lococo/design-system';
 import { SvgLikeFill } from '@/icons';
 import { SvgLikeOutline } from '@/icons';
 import { SvgStar } from '@/icons';

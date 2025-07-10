@@ -8,7 +8,7 @@ import { Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { convertToEmbedUrl } from 'utils/youtube';
 import { useState } from 'react';
-import IconButton from '@/components/icon-button';
+import { IconButton } from '@lococo/design-system';
 import { SvgArrowRight } from '@/icons';
 import { SvgKoreanReview } from '@/icons';
 import './youtube-carousel.css';

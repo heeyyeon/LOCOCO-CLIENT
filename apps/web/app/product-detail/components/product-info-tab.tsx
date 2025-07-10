@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { TabContainer, Tab } from '@/components';
+import { TabContainer, Tab } from '@lococo/design-system';
 
 interface ProductInfoTabProps {
   productDetail: string;
@@ -33,12 +33,12 @@ export default function ProductInfoTab({
         ></Tab>
       </TabContainer>
       {activeTab === 'productDetail' && (
-        <div className="text-jp-body1 py-[4rem] text-gray-700">
+        <div className="text-jp-body1 border-b-[0.1rem] border-gray-300 py-[4rem] text-gray-700">
           {productDetail}
         </div>
       )}
       {activeTab === 'ingredients' && (
-        <div className="text-jp-body1 py-[4rem] text-gray-700">
+        <div className="text-jp-body1 border-b-[0.1rem] border-gray-300 py-[4rem] text-gray-700">
           {ingredients}
         </div>
       )}

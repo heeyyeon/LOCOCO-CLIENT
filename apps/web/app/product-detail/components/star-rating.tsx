@@ -1,5 +1,6 @@
-import Progress from '@/components/progress/Progress';
-import Star from '@/components/star/Star';
+import { Progress } from '@lococo/design-system';
+import { Button } from '@lococo/design-system';
+import { Star } from '@lococo/design-system';
 import { SvgJapaneseReview } from '@/icons';
 
 export default function StarRating() {
@@ -51,6 +52,10 @@ export default function StarRating() {
           </div>
         </div>
       </div>
+
+      <Button color="primary" variant="filled" size="lg">
+        レビューを書く
+      </Button>
     </div>
   );
 }

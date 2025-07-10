@@ -9,7 +9,7 @@ import { Thumbs } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { useState, useRef } from 'react';
 import Image from 'next/image';
-import IconButton from '@/components/icon-button';
+import { IconButton } from '@lococo/design-system';
 import { SvgArrowUp } from '@/icons';
 import { SvgArrowDown } from '@/icons';
 import { cn } from '@/lib/utils';

@@ -35,7 +35,7 @@ const iconButtonVariants = cva(
   }
 );
 
-export function IconButton({
+export default function IconButton({
   color = 'secondary',
   size = 'md',
   icon,
