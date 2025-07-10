@@ -11,7 +11,7 @@ interface IconButtonProps
 }
 
 const iconButtonVariants = cva(
-  'flex items-center justify-center disabled:cursor-not-allowed hover:cursor-pointer',
+  'flex items-center justify-center hover:cursor-pointer',
   {
     variants: {
       color: {
@@ -25,7 +25,7 @@ const iconButtonVariants = cva(
         lg: 'p-[1.4rem] [&>svg]:w-[3.6rem] [&>svg]:h-[3.6rem]',
       },
       rounded: {
-        true: 'rounded-full shadow-button hover:text-pink-500 clicked:text-pink-500 transition-colors duration-300',
+        true: 'rounded-full shadow-button hover:text-pink-500 disabled:cursor-default disabled:text-gray-500 transition-colors duration-300',
       },
     },
     defaultVariants: {
