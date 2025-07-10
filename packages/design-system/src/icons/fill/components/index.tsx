@@ -1,4 +1,5 @@
 export { SvgAvatar } from './Avatar';
+export { SvgLine } from './Line';
 export { SvgLogo } from './Logo';
 export { SvgArrowDown } from './ArrowDown';
 export { SvgArrowOutward } from './ArrowOutward';
@@ -10,6 +11,7 @@ export { SvgClose } from './Close';
 export { SvgDivider } from './Divider';
 export { SvgErrorFill } from './ErrorFill';
 export { SvgGoodFill } from './GoodFill';
+export { SvgGoodOutline } from './GoodOutline';
 export { SvgHistory } from './History';
 export { SvgHomeFill } from './HomeFill';
 export { SvgInstagramFill } from './InstagramFill';
