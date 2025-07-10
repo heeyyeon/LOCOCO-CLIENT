@@ -27,19 +27,19 @@ interface TopUtilItemProps {
   onClick?: () => void;
 }
 
-interface MegaMenuProps {
-  options: CategoryOptionEng[];
-  selectedCategoryKey: CategoryKey;
-  selectedOption: CategoryOptionEng | null;
-  handleSelectOption: (option: CategoryOptionEng) => void;
-}
-
-interface GnbProps {
+interface CategoryBar {
   categories: Menu[];
   selectedCategory: CategoryName | null;
   handleSelectCategory: (key: CategoryKey) => void;
   handleOpenSearchBar: () => void;
   isSearching: boolean;
+}
+
+interface OptionBarProps {
+  options: CategoryOptionEng[];
+  selectedCategoryKey: CategoryKey;
+  selectedOption: CategoryOptionEng | null;
+  handleSelectOption: (option: CategoryOptionEng) => void;
 }
 
 interface SearchProps {
@@ -69,24 +69,24 @@ export function TopUtil() {
       />
       <TopUtilItem
         icon={<SvgLikeFill className="text-gray-600" />}
-        label="좋아요"
+        label="お気に入り"
         onClick={() => console.log('좋아요 클릭')}
       />
       <TopUtilItem
         icon={<SvgHistory className="text-gray-600" />}
-        label="내역"
+        label="最近見た商品"
         onClick={() => console.log('내역 클릭')}
       />
       <TopUtilItem
         icon={<SvgLogin className="text-gray-600" />}
-        label="로그인"
+        label="ログイン"
         onClick={() => console.log('로그인 클릭')}
       />
     </div>
   );
 }
 
-export function Gnb({
+export function CategoryBar({
   categories,
   selectedCategory,
   handleSelectCategory,
@@ -136,12 +136,12 @@ export function Gnb({
   );
 }
 
-export function MegaMenu({
+export function OptionBar({
   options,
   selectedOption,
   selectedCategoryKey,
   handleSelectOption,
-}: MegaMenuProps) {
+}: OptionBarProps) {
   return (
     <div className="flex h-[5.2rem] w-full items-center border-b-[0.1rem] border-pink-500 bg-white px-[9.5rem]">
       {options.map((option, index) => {

@@ -1,6 +1,6 @@
 'use client';
 
-import { Gnb, MegaMenu, SearchBar, TopUtil } from './header-content';
+import { CategoryBar, OptionBar, SearchBar, TopUtil } from './header-content';
 import { useHeaderAction } from './use-header-action';
 
 export default function Header() {
@@ -20,7 +20,7 @@ export default function Header() {
   return (
     <div className="z-55 sticky top-0 flex w-full flex-col bg-white">
       <TopUtil />
-      <Gnb
+      <CategoryBar
         categories={categories}
         selectedCategory={selectedCategory}
         handleSelectCategory={handleSelectCategory}
@@ -28,7 +28,7 @@ export default function Header() {
         isSearching={isSearching}
       />
       {!isSearching && activeMenu && (
-        <MegaMenu
+        <OptionBar
           options={activeMenu.options}
           selectedCategoryKey={activeMenu.key}
           selectedOption={selectedOption}
