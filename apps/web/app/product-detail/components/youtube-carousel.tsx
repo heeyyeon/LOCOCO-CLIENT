@@ -13,7 +13,7 @@ import { SvgArrowRight } from '@/icons';
 import { SvgKoreanReview } from '@/icons';
 import './youtube-carousel.css';
 
-export default function HorizontalCarousel() {
+export default function YoutubeCarousel() {
   const [swiperRef, setSwiperRef] = useState<SwiperType | null>(null);
   const [isNextButton, setIsNextButton] = useState(true);
   const [isPrevButton, setIsPrevButton] = useState(false);

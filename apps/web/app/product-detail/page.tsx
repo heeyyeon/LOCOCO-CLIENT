@@ -1,6 +1,6 @@
 'use client';
 
-import HorizontalCarousel from 'app/product-detail/components/youtube-carousel';
+import YoutubeCarousel from 'app/product-detail/components/youtube-carousel';
 import ProductDetailSection from './components/product-detail-section';
 import StarRating from './components/star-rating';
 
@@ -101,7 +101,7 @@ export default function Page() {
     <div className="flex min-w-max justify-center">
       <div className="relative flex w-[136.6rem] flex-col gap-[10rem] overflow-x-hidden pl-[11.9rem] pr-[11.9rem]">
         <ProductDetailSection {...data} />
-        <HorizontalCarousel />
+        <YoutubeCarousel />
         <StarRating />
       </div>
     </div>
