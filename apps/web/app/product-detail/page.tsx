@@ -2,6 +2,7 @@
 
 import HorizontalCarousel from 'app/product-detail/components/youtube-carousel';
 import ProductDetailSection from './components/product-detail-section';
+import StarRating from './components/star-rating';
 
 const data = {
   productId: 22,
@@ -101,6 +102,7 @@ export default function Page() {
       <div className="relative flex w-[136.6rem] flex-col gap-[10rem] overflow-x-hidden pl-[11.9rem] pr-[11.9rem]">
         <ProductDetailSection {...data} />
         <HorizontalCarousel />
+        <StarRating />
       </div>
     </div>
   );
