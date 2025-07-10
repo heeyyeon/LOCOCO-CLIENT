@@ -45,7 +45,14 @@ export function IconButton({
 }: IconButtonProps) {
   return (
     <button
-      className={cn(iconButtonVariants({ color, size, rounded }), className)}
+      className={cn(
+        iconButtonVariants({
+          color,
+          size,
+          rounded,
+        }),
+        className
+      )}
       {...props}
     >
       {icon}
