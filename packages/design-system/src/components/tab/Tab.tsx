@@ -46,14 +46,7 @@ const tabVariants = cva(
     },
   }
 );
-
-export default function Tab({
-  label,
-  active,
-  variant,
-  className,
-  ...props
-}: TabProps) {
+function Tab({ label, active, variant, className, ...props }: TabProps) {
   return (
     <button
       type="button"
@@ -65,7 +58,7 @@ export default function Tab({
   );
 }
 
-export function TabContainer({ children, className }: TabContainerProps) {
+function TabContainer({ children, className }: TabContainerProps) {
   return (
     <div
       className={cn(
@@ -77,3 +70,5 @@ export function TabContainer({ children, className }: TabContainerProps) {
     </div>
   );
 }
+
+export { Tab, TabContainer };
