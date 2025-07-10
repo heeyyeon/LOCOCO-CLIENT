@@ -12,7 +12,7 @@ type RenderBreadCrumbProps = {
   subCategory: CategoryOptionEng | '';
 };
 
-export default function RenderBreadCrumb({
+export default function SearchBreadCrumbSection({
   middleCategory,
   subCategory,
 }: RenderBreadCrumbProps) {
