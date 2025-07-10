@@ -6,6 +6,7 @@ import { imageReviewMock } from 'mocks/reviewMock';
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components';
 import { SvgArrowOutward } from '@/icons';
+import { cn } from '@/lib/utils';
 
 interface HomeSectionReviewProps {
   type: 'video' | 'image';
@@ -18,7 +19,7 @@ export default function HomeSectionReview({
 }: HomeSectionReviewProps) {
   const router = useRouter();
   return (
-    <div className={`mt-8 flex flex-col gap-8 ${className}`}>
+    <div className={cn(`mt-8 flex flex-col gap-8`, className)}>
       <p className="jp-head3 font-[700]">
         {type === 'video' && '動画レビュー'}
         {type === 'image' && '写真付きレビュー'}

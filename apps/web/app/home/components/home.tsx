@@ -1,5 +1,6 @@
 import { ReactNode, PropsWithChildren } from 'react';
 import Link from 'next/link';
+import { cn } from '@/lib/utils';
 import HomeSectionProduct from './home-section-product';
 import HomeSectionReview from './home-section-review';
 
@@ -12,7 +13,7 @@ export default function HomeSection({
 }) {
   return (
     <section
-      className={`flex w-full flex-col gap-[3.2rem] mt-[12rem]${className}`}
+      className={cn(`mt-[12rem] flex w-full flex-col gap-[3.2rem]`, className)}
     >
       {children}
     </section>
