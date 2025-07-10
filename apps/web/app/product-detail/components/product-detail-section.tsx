@@ -11,7 +11,10 @@ interface ProductDetailSectionProps {
   reviewCount: number;
   rating: number;
   isLiked: boolean;
-  productOptions: string[];
+  productOptions: {
+    id: number;
+    optionName: string;
+  }[];
   normalPrice: number;
   productDetail: string;
   ingredients: string;

@@ -29,7 +29,10 @@ interface ProductInfoProps {
   reviewCount: number;
   rating: number;
   isLiked: boolean;
-  productOptions: string[];
+  productOptions: {
+    id: number;
+    optionName: string;
+  }[];
   oliveYoungUrl: string | null;
   q10Url: string | null;
   middleCategory: string;
@@ -100,9 +103,9 @@ export default function ProductInfo({
             <SelectValue placeholder="オプション"></SelectValue>
           </SelectTrigger>
           <SelectContent>
-            {productOptions.map((option: string) => (
-              <SelectItem value={option} key={option} disabled>
-                {option}
+            {productOptions.map((option) => (
+              <SelectItem value={option.optionName} key={option.id} disabled>
+                {option.optionName}
               </SelectItem>
             ))}
           </SelectContent>
