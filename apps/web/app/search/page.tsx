@@ -1,19 +1,19 @@
 'use client';
 
-import OptionSelector from 'components/search/optionSelector';
-import RenderBreadCrumb from 'components/search/renderBreadCrumb';
-import RenderProducts from 'components/search/renderProducts';
-import RenderReviews from 'components/search/renderReviews';
+import OptionSelector from 'components/search/option-selector';
+import RenderBreadCrumb from 'components/search/search-breadCrumb-section';
+import RenderProducts from 'components/search/search-products-section';
+import RenderReviews from 'components/search/search-reviews-section';
 import { SEARCH_OPTION } from 'constants/option';
 import { CategoryKey, CategoryOptionEng } from 'types/category';
 import { SearchOption } from 'types/option';
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import {
   mockImageReviewSearchResponse,
   mockProductSearchResponse,
   mockVideoReviewSearchResponse,
-} from './mockupData';
+} from './mockup';
 
 export default function Page() {
   const searchParams = useSearchParams();

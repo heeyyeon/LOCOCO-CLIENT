@@ -2,7 +2,7 @@
 
 import CardReview from 'components/card/card-review';
 import { ReviewItem } from 'types/review';
-import MoreButton from './moreButton';
+import MoreButton from './more-button';
 
 interface RenderReviewsProps {
   reviewsVideo: ReviewItem[];
