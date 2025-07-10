@@ -41,7 +41,7 @@ const iconSize = {
   lg: '2.25rem',
 };
 
-export function IconButton({
+export default function IconButton({
   color = 'secondary',
   size = 'md',
   icon: Icon,
