@@ -20,7 +20,6 @@ export default function RenderReviews({
   const handleCardClick = (reviewId: number) => {
     console.log(reviewId);
   };
-
   return (
     <section className="flex flex-col content-center self-stretch px-[11.9rem] pb-[12rem] pt-0">
       <div className="mx-auto flex w-[112.8rem] flex-col items-start gap-[3.2rem] self-stretch pt-[3.2rem]">

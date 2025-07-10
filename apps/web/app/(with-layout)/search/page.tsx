@@ -1,19 +1,19 @@
 'use client';
 
-import OptionSelector from 'components/search/option-selector';
-import RenderBreadCrumb from 'components/search/search-bread-crumb-section';
-import RenderProducts from 'components/search/search-products-section';
-import RenderReviews from 'components/search/search-reviews-section';
+import {
+  mockImageReviewSearchResponse,
+  mockProductSearchResponse,
+  mockVideoReviewSearchResponse,
+} from 'app/search/mockup';
 import { SEARCH_OPTION } from 'constants/option';
 import { CategoryKey, CategoryOptionEng } from 'types/category';
 import { SearchOption } from 'types/option';
 import { Suspense, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
-import {
-  mockImageReviewSearchResponse,
-  mockProductSearchResponse,
-  mockVideoReviewSearchResponse,
-} from './mockup';
+import OptionSelector from './components/option-selector';
+import RenderBreadCrumb from './components/search-bread-crumb-section';
+import RenderProducts from './components/search-products-section';
+import RenderReviews from './components/search-reviews-section';
 
 export default function Page() {
   return (
@@ -63,7 +63,6 @@ function PageContent() {
         middleCategory={middleCategory}
         subCategory={subCategory}
       />
-
       <OptionSelector
         selectedTab={selectedTab}
         handleClickTab={handleClickTab}
