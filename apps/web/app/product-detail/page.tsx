@@ -1,5 +1,6 @@
 'use client';
 
+import HorizontalCarousel from 'components/horizontal-carousel';
 import ProductDetailMainCarousel from './components/product-detail-main-carousel';
 import ProductInfo from './components/product-info';
 import ProductInfoTab from './components/product-info-tab';
@@ -48,15 +49,18 @@ export default function Page() {
 
   return (
     <div className="flex min-w-max justify-center">
-      <div className="flex w-[136.6rem] flex-col pl-[11.9rem] pr-[11.9rem]">
-        <div className="flex justify-center gap-[8.4rem] overflow-x-auto pb-[6rem] pt-[3.2rem]">
-          <ProductDetailMainCarousel imageUrlList={data.imageUrls} />
-          <ProductInfo {...data} />
+      <div className="relative flex w-[136.6rem] flex-col gap-[10rem] overflow-x-hidden pl-[11.9rem] pr-[11.9rem]">
+        <div className="flex flex-col">
+          <div className="flex justify-center gap-[8.4rem] overflow-x-auto pb-[6rem] pt-[3.2rem]">
+            <ProductDetailMainCarousel imageUrlList={data.imageUrls} />
+            <ProductInfo {...data} />
+          </div>
+          <ProductInfoTab
+            productDetail={data.productDetail}
+            ingredients={data.ingredients}
+          />
         </div>
-        <ProductInfoTab
-          productDetail={data.productDetail}
-          ingredients={data.ingredients}
-        />
+        <HorizontalCarousel />
       </div>
     </div>
   );
