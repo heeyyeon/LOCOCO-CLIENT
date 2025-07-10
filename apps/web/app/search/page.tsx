@@ -7,7 +7,7 @@ import RenderReviews from 'components/search/search-reviews-section';
 import { SEARCH_OPTION } from 'constants/option';
 import { CategoryKey, CategoryOptionEng } from 'types/category';
 import { SearchOption } from 'types/option';
-import { useState } from 'react';
+import { Suspense, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import {
   mockImageReviewSearchResponse,
@@ -16,6 +16,14 @@ import {
 } from './mockup';
 
 export default function Page() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <PageContent />
+    </Suspense>
+  );
+}
+
+function PageContent() {
   const searchParams = useSearchParams();
   const rawMiddle = searchParams.get('middleCategory') || '';
   const rawSub = searchParams.get('subCategory') || '';
