@@ -60,7 +60,7 @@ export default function Header() {
   } = useHeaderAction();
 
   return (
-    <div className="sticky top-0 z-50 flex w-full flex-col bg-white">
+    <div className="z-55 sticky top-0 flex w-full flex-col bg-white">
       <TopUtil />
       <Gnb
         categories={categories}
