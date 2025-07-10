@@ -22,17 +22,14 @@ const MAX_RATING = 5;
 
 interface ProductInfoProps {
   productId: number;
-  imageUrls: string[];
   productName: string;
+  normalPrice: number;
   brandName: string;
   unit: string;
   reviewCount: number;
   rating: number;
   isLiked: boolean;
   productOptions: string[];
-  normalPrice: number;
-  productDetail: string;
-  ingredients: string;
   oliveYoungUrl: string | null;
   q10Url: string | null;
   middleCategory: string;

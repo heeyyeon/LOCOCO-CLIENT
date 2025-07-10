@@ -13,7 +13,7 @@ import IconButton from '@/components/icon-button';
 import { SvgArrowUp } from '@/icons';
 import { SvgArrowDown } from '@/icons';
 import { cn } from '@/lib/utils';
-import './swiper.css';
+import './main-carousel.css';
 
 interface CarouselProps {
   imageUrlList: string[];

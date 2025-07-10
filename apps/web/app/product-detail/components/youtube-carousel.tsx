@@ -10,7 +10,8 @@ import { convertToEmbedUrl } from 'utils/youtube';
 import { useState } from 'react';
 import IconButton from '@/components/icon-button';
 import { SvgArrowRight } from '@/icons';
-import './horizontal-swiper.css';
+import { SvgKoreanReview } from '@/icons';
+import './youtube-carousel.css';
 
 export default function HorizontalCarousel() {
   const [swiperRef, setSwiperRef] = useState<SwiperType | null>(null);
@@ -46,56 +47,61 @@ export default function HorizontalCarousel() {
   };
 
   return (
-    <div className="relative">
-      <Swiper
-        onSwiper={handleSwiper}
-        slidesPerView={2.5}
-        slidesPerGroup={1}
-        centeredSlides={true}
-        onSlideChange={handleSwiper}
-        spaceBetween={0}
-        pagination={{
-          type: 'fraction',
-          clickable: true,
-        }}
-        navigation={false}
-        modules={[Navigation]}
-        className="youtube-swiper"
-      >
-        {videoListData.map((video) => (
-          <SwiperSlide key={video}>
-            <iframe
-              width="552"
-              height="311"
-              src={convertToEmbedUrl(video)}
-              title="YouTube video player"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            ></iframe>
-          </SwiperSlide>
-        ))}
-      </Swiper>
+    <div className="flex flex-col gap-[3.2rem]">
+      <h3 className="text-jp-head2 inline-flex items-center gap-[1.2rem] font-bold text-gray-800">
+        <SvgKoreanReview size={24} /> 韓国ユーチューバーレビュー
+      </h3>
+      <div className="relative">
+        <Swiper
+          onSwiper={handleSwiper}
+          slidesPerView={2.5}
+          slidesPerGroup={1}
+          centeredSlides={true}
+          onSlideChange={handleSwiper}
+          spaceBetween={0}
+          pagination={{
+            type: 'fraction',
+            clickable: true,
+          }}
+          navigation={false}
+          modules={[Navigation]}
+          className="youtube-swiper"
+        >
+          {videoListData.map((video) => (
+            <SwiperSlide key={video}>
+              <iframe
+                width="552"
+                height="311"
+                src={convertToEmbedUrl(video)}
+                title="YouTube video player"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              ></iframe>
+            </SwiperSlide>
+          ))}
+        </Swiper>
 
-      {isPrevButton && (
-        <IconButton
-          className="absolute bottom-[1rem] left-4 top-1/2 z-10 size-[3.2rem] -translate-y-1/2 bg-white p-0"
-          onClick={() => swiperRef?.slidePrev()}
-          size="md"
-          icon={<SvgArrowRight className="rotate-180" />}
-          color="tertiary"
-          rounded
-        />
-      )}
+        {isPrevButton && (
+          <IconButton
+            className="absolute bottom-[1rem] left-4 top-1/2 z-10 size-[3.2rem] -translate-y-1/2 bg-white p-0"
+            onClick={() => swiperRef?.slidePrev()}
+            size="md"
+            icon={<SvgArrowRight className="rotate-180" />}
+            color="tertiary"
+            rounded
+          />
+        )}
 
-      {isNextButton && (
-        <IconButton
-          className="absolute right-4 top-1/2 z-10 size-[3.2rem] -translate-y-1/2 bg-white p-0"
-          onClick={() => swiperRef?.slideNext()}
-          size="md"
-          icon={<SvgArrowRight />}
-          rounded
-          color="tertiary"
-        />
-      )}
+        {isNextButton && (
+          <IconButton
+            className="absolute right-4 top-1/2 z-10 size-[3.2rem] -translate-y-1/2 bg-white p-0"
+            onClick={() => swiperRef?.slideNext()}
+            size="md"
+            icon={<SvgArrowRight />}
+            rounded
+            color="tertiary"
+          />
+        )}
+      </div>
     </div>
   );
 }
