@@ -1,7 +1,7 @@
 'use client';
 
 import OptionSelector from 'components/search/option-selector';
-import RenderBreadCrumb from 'components/search/search-breadCrumb-section';
+import RenderBreadCrumb from 'components/search/search-bread-crumb-section';
 import RenderProducts from 'components/search/search-products-section';
 import RenderReviews from 'components/search/search-reviews-section';
 import { SEARCH_OPTION } from 'constants/option';
