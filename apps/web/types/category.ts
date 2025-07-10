@@ -9,3 +9,9 @@ export type CategoryOption =
   | (typeof CATEGORY_OPTIONS)['FACE_MAKEUP'][keyof (typeof CATEGORY_OPTIONS)['FACE_MAKEUP']]
   | (typeof CATEGORY_OPTIONS)['EYE_MAKEUP'][keyof (typeof CATEGORY_OPTIONS)['EYE_MAKEUP']]
   | (typeof CATEGORY_OPTIONS)['LIP_MAKEUP'][keyof (typeof CATEGORY_OPTIONS)['LIP_MAKEUP']];
+
+export type CategoryOptionEng =
+  | keyof (typeof CATEGORY_OPTIONS)['FACIAL_CARE']
+  | keyof (typeof CATEGORY_OPTIONS)['FACE_MAKEUP']
+  | keyof (typeof CATEGORY_OPTIONS)['EYE_MAKEUP']
+  | keyof (typeof CATEGORY_OPTIONS)['LIP_MAKEUP'];
