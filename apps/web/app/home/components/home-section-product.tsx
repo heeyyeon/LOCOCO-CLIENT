@@ -7,7 +7,7 @@ import { productMock } from 'mocks/productMock';
 import { CategoryName } from 'types/category';
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import Tab, { TabContainer } from '@/components/tab/Tab';
+import { Tab, TabContainer } from '@/components/tab/Tab';
 
 export default function HomeSectionProduct() {
   const [selectedTab, setSelectedTab] = useState<CategoryName>(
