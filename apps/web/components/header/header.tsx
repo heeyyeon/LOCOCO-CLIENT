@@ -1,6 +1,7 @@
 'use client';
 
-import type { CategoryName, CategoryOption } from 'types/category';
+import type { CategoryName, CategoryOptionEng } from 'types/category';
+import { getOptionLabel } from 'utils/get-option-label';
 import {
   SvgClose,
   SvgDivider,
@@ -13,11 +14,13 @@ import {
 } from '@lococo/design-system';
 import Input from '@lococo/design-system/components/input/Input';
 import { cn } from '@/lib/utils';
+import { CategoryKey } from '../../types/category';
 import { useHeaderAction } from './useHeaderAction';
 
 type Menu = {
-  category: CategoryName;
-  options: CategoryOption[];
+  key: CategoryKey;
+  name: CategoryName;
+  options: CategoryOptionEng[];
 };
 
 interface TopUtilItemProps {
@@ -27,15 +30,16 @@ interface TopUtilItemProps {
 }
 
 interface MegaMenuProps {
-  options: CategoryOption[];
-  selectedOption: CategoryOption | null;
-  handleSelectOption: (option: CategoryOption) => void;
+  options: CategoryOptionEng[];
+  selectedCategoryKey: CategoryKey;
+  selectedOption: CategoryOptionEng | null;
+  handleSelectOption: (option: CategoryOptionEng) => void;
 }
 
 interface GnbProps {
   categories: Menu[];
   selectedCategory: CategoryName | null;
-  handleSelectCategory: (title: CategoryName) => void;
+  handleSelectCategory: (key: CategoryKey) => void;
   handleOpenSearchBar: () => void;
   isSearching: boolean;
 }
@@ -72,6 +76,7 @@ export default function Header() {
       {!isSearching && activeMenu && (
         <MegaMenu
           options={activeMenu.options}
+          selectedCategoryKey={activeMenu.key}
           selectedOption={selectedOption}
           handleSelectOption={handleSelectOption}
         />
@@ -132,28 +137,25 @@ function Gnb({
   handleOpenSearchBar,
   isSearching,
 }: GnbProps) {
-  const borderClass =
-    selectedCategory || isSearching
-      ? 'border-b border-dashed border-pink-500'
-      : 'border-b-[0.1rem] border-gray-500';
-
   return (
     <div
       className={cn(
         'flex h-[6.4rem] items-center gap-[2rem] px-[11.9rem]',
-        borderClass
+        selectedCategory || isSearching
+          ? 'border-b border-dashed border-pink-500'
+          : 'border-b-[0.1rem] border-gray-500'
       )}
     >
       <SvgLogo className="h-[2.7rem] w-[16rem] shrink-0" />
       <div className="flex h-[6rem] flex-grow items-center">
-        {categories.map(({ category }) => {
-          const isActive = category === selectedCategory;
+        {categories.map(({ key, name }) => {
+          const isActive = name === selectedCategory;
           return (
             <div
-              key={category}
+              key={key}
               className="h-[6rem] w-[13.6rem] shrink-0 cursor-pointer"
-              onMouseEnter={() => handleSelectCategory(category)}
-              onClick={() => handleSelectCategory(category)}
+              onMouseEnter={() => handleSelectCategory(key)}
+              onClick={() => handleSelectCategory(key)}
             >
               <p
                 className={cn(
@@ -161,7 +163,7 @@ function Gnb({
                   isActive ? 'text-pink-500' : 'text-gray-800'
                 )}
               >
-                {category}
+                {name}
               </p>
             </div>
           );
@@ -180,6 +182,7 @@ function Gnb({
 function MegaMenu({
   options,
   selectedOption,
+  selectedCategoryKey,
   handleSelectOption,
 }: MegaMenuProps) {
   return (
@@ -187,7 +190,7 @@ function MegaMenu({
       {options.map((option, index) => {
         const isActive = option === selectedOption;
         const isLast = index === options.length - 1;
-
+        const label = getOptionLabel(selectedCategoryKey, option);
         return (
           <div
             key={`option-${option}`}
@@ -200,7 +203,7 @@ function MegaMenu({
               )}
               onClick={() => handleSelectOption(option)}
             >
-              {option}
+              {label}
             </button>
             {!isLast && <SvgDivider />}
           </div>
