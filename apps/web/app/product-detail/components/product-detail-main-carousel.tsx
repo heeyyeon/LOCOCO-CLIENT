@@ -19,14 +19,16 @@ interface CarouselProps {
   imageUrlList: string[];
 }
 
-export default function Carousel({ imageUrlList }: CarouselProps) {
+export default function ProductDetailMainCarousel({
+  imageUrlList,
+}: CarouselProps) {
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);
   const mainSwiperRef = useRef<SwiperType | null>(null);
   const [isBeginning, setIsBeginning] = useState(true);
   const [isEnd, setIsEnd] = useState(false);
 
   return (
-    <div className="flex gap-6 p-4">
+    <div className="flex gap-6">
       {/* Thumbnail Swiper (Vertical) */}
       <div className="flex flex-col items-center justify-between">
         <Swiper
