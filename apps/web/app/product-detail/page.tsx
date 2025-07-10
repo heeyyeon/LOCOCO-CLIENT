@@ -1,6 +1,7 @@
 'use client';
 
 import HorizontalCarousel from 'components/horizontal-carousel';
+import { SvgKoreanReview } from '@/icons';
 import ProductDetailMainCarousel from './components/product-detail-main-carousel';
 import ProductInfo from './components/product-info';
 import ProductInfoTab from './components/product-info-tab';
@@ -60,7 +61,14 @@ export default function Page() {
             ingredients={data.ingredients}
           />
         </div>
-        <HorizontalCarousel />
+
+        <div className="flex flex-col gap-[3.2rem]">
+          <h3 className="text-jp-head2 inline-flex items-center gap-[1.2rem] font-bold text-gray-800">
+            <SvgKoreanReview size={24} /> 韓国ユーチューバーレビュー
+          </h3>
+
+          <HorizontalCarousel />
+        </div>
       </div>
     </div>
   );

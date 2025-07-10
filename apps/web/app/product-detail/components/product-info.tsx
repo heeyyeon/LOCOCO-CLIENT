@@ -65,8 +65,12 @@ export default function ProductInfo({
       <div className="flex w-[48rem] flex-col gap-[1.2rem]">
         <div className="flex justify-between gap-[0.4rem]">
           <div className="flex flex-col gap-[0.6rem]">
-            <h2 className="text-jp-title3 text-gray-700">{brandName}</h2>
-            <h1 className="text-jp-head3 text-gray-800">{productName}</h1>
+            <h2 className="text-jp-title3 font-bold text-gray-700">
+              {brandName}
+            </h2>
+            <h1 className="text-jp-head3 font-bold text-gray-800">
+              {productName}
+            </h1>
           </div>
           <IconButton
             onClick={() => setIsLiked(!isLiked)}

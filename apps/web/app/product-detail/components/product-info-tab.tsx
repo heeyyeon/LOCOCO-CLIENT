@@ -18,23 +18,19 @@ export default function ProductInfoTab({
     <div className="w-full">
       <TabContainer className="w-full">
         <Tab
-          label="123"
+          label="製品の特徴"
           variant={'secondary'}
           className="w-full"
           onClick={() => setActiveTab('productDetail')}
           active={activeTab === 'productDetail'}
-        >
-          製品の特徴
-        </Tab>
+        ></Tab>
         <Tab
-          label="234"
+          label="原材料・成分"
           variant={'secondary'}
           className="w-full"
           onClick={() => setActiveTab('ingredients')}
           active={activeTab === 'ingredients'}
-        >
-          原材料・成分
-        </Tab>
+        ></Tab>
       </TabContainer>
       {activeTab === 'productDetail' && (
         <div className="text-jp-body1 py-[4rem] text-gray-700">
