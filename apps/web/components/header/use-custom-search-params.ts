@@ -7,8 +7,8 @@ type NewParamsType = { [key: string]: string };
 export default function useCustomSearchParams() {
   const router = useRouter();
   const pathname = usePathname();
-  const _searchParams = useSearchParams();
-  let searchParams = new URLSearchParams(_searchParams.toString());
+  const searchParamsRaw = useSearchParams();
+  let searchParams = new URLSearchParams(searchParamsRaw.toString());
 
   const setNewParams = (newParams: NewParamsType) => {
     for (const [key, value] of Object.entries(newParams)) {
