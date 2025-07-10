@@ -1,3 +1,5 @@
+'use client';
+
 import { ProductItem } from 'types/product';
 import Image from 'next/image';
 import {
@@ -7,10 +9,13 @@ import {
   SvgStar,
 } from '@lococo/design-system';
 
+interface CardProductProps extends ProductItem {
+  handleCardClick: (productId: number) => void;
+}
 /**
  * 상품 카드 컴포넌트
  *
- * @param ranking (optional) Card에서 뱃지에 나타낼 순위를 나타내는 props, {...(inRange(rank, 1, 3) && { rank: rank })}와 같이 사용하여 불필요할 시 넣지 않으면 됨
+ * @param ranking (optional) Card에서 뱃지에 나타낼 순위를 나타내는 props, {...(ranking && inRange(ranking, 1, 4) && { ranking })}와 같이 사용하여 불필요할 시 넣지 않으면 됨
  * @param brandName 브랜드명
  * @param productName 상품명
  * @param unit 상품 상세 설명 ex. 피그마 기준 용량 옵션
@@ -21,11 +26,6 @@ import {
  * @param imageUrl 대표 이미지 주소
  * @param handleCardClick 전체 카드 클릭 시에 작동할 이벤트
  */
-
-interface CardProductProps extends ProductItem {
-  handleCardClick: (productId: number) => void;
-}
-
 export default function CardProduct({
   ranking,
   brandName,

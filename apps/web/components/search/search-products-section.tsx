@@ -1,5 +1,5 @@
-import CardProduct from 'components/card/card-products';
 import { ProductItem } from 'types/product';
+import CardProduct from '../card/card-product';
 
 export default function RenderProducts({
   products,

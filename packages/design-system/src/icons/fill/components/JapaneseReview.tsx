@@ -1,0 +1,8 @@
+import type { SVGProps } from "react";
+interface Props extends SVGProps<SVGSVGElement> {
+  size?: number;
+  fill?: string;
+}
+export function SvgJapaneseReview(props: Props) {
+  return <svg width={props.size || 24} height={props.size || 24} viewBox="0 0 40 30" fill={props.fill || "currentColor"} xmlns="http://www.w3.org/2000/svg" {...props}><g clipPath="url(#clip0_1505_57492)"><path d="M23.01 30H38.4233C39.2946 30 39.9999 29.28 39.9999 28.3905V12.6557C39.9999 11.7662 39.2946 11.0462 38.4233 11.0462H27.6236V7.92037C27.6236 7.03939 28.3165 6.32783 29.1794 6.31512H39.9999V0H27.6236C24.2048 0 21.4375 2.82931 21.4375 6.31512V11.0462V28.3905C21.4375 29.28 22.1428 30 23.0141 30H23.01Z" /><path d="M1.5766 30H16.9899C17.8612 30 18.5665 29.28 18.5665 28.3905V12.6557C18.5665 11.7662 17.8612 11.0462 16.9899 11.0462H6.18608V7.92037C6.18608 7.03939 6.87895 6.32783 7.74194 6.31512H18.5624V0H6.18608C2.7715 0 0 2.82931 0 6.31512V11.0462V28.3905C0 29.28 0.705321 30 1.5766 30Z" /></g><defs><clipPath id="clip0_1505_57492"><rect width={40} height={30} fill="white" /></clipPath></defs></svg>;
+}
