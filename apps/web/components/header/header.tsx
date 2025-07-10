@@ -2,6 +2,7 @@
 
 import type { CategoryName, CategoryOptionEng } from 'types/category';
 import { getOptionLabel } from 'utils/get-option-label';
+import Link from 'next/link';
 import {
   SvgClose,
   SvgDivider,
@@ -151,7 +152,8 @@ function Gnb({
         {categories.map(({ key, name }) => {
           const isActive = name === selectedCategory;
           return (
-            <div
+            <Link
+              href={`/search?middleCategory=${key}`}
               key={key}
               className="h-[6rem] w-[13.6rem] shrink-0 cursor-pointer"
               onMouseEnter={() => handleSelectCategory(key)}
@@ -165,7 +167,7 @@ function Gnb({
               >
                 {name}
               </p>
-            </div>
+            </Link>
           );
         })}
       </div>
@@ -196,7 +198,8 @@ function MegaMenu({
             key={`option-${option}`}
             className="flex h-[3.2rem] items-center justify-center gap-[1rem]"
           >
-            <button
+            <Link
+              href={`/search?middleCategory=${selectedCategoryKey}&subCategory=${option}`}
               className={cn(
                 'jp-body2 cursor-pointer whitespace-nowrap px-[2.4rem] py-[1rem]',
                 isActive ? 'font-bold text-pink-500' : 'text-gray-600'
@@ -204,7 +207,7 @@ function MegaMenu({
               onClick={() => handleSelectOption(option)}
             >
               {label}
-            </button>
+            </Link>
             {!isLast && <SvgDivider />}
           </div>
         );
