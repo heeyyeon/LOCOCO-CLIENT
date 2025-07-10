@@ -24,4 +24,5 @@ export { SvgMailFill } from './MailFill';
 export { SvgMy } from './My';
 export { SvgSearch } from './Search';
 export { SvgStar } from './Star';
+export { SvgWrite } from './Write';
 export { SvgXTwitterFill } from './XTwitterFill';
