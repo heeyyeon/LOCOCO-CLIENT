@@ -15,7 +15,7 @@ export default function MediaInfo({ user, date, likeCount }: MediaInfoProps) {
   const [isLiked, setIsLiked] = useState(false);
 
   return (
-    <div className="pointer-events-none absolute bottom-0 left-0 z-10 flex h-[16rem] w-full items-center justify-between rounded-b-xl bg-gradient-to-t from-black/60 to-transparent p-[1.6rem]">
+    <div className="pointer-events-none absolute bottom-0 left-0 z-10 flex h-[16rem] w-full items-center justify-between rounded-bl-xl bg-gradient-to-t from-black/60 to-transparent p-[1.6rem]">
       <div className="mt-auto flex flex-col">
         <div className="mb-[1.2rem] flex flex-row items-center gap-[1.2rem]">
           <Avatar src={user?.avatarUrl} width={90} />
