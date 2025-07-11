@@ -16,6 +16,7 @@ interface MediaViewerProps {
 
 export default function MediaViewer({ mediaList }: MediaViewerProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
+
   const [progress, setProgress] = useState(0);
   const [overlay, setOverlay] = useState<null | 'play' | 'pause'>(null);
   const swiperRef = useRef<SwiperType | null>(null);
@@ -67,7 +68,6 @@ export default function MediaViewer({ mediaList }: MediaViewerProps) {
                   ref={videoRef}
                   src={media.url}
                   controls={false}
-                  autoPlay
                   loop
                   playsInline
                   className="h-full w-full cursor-pointer object-cover"
