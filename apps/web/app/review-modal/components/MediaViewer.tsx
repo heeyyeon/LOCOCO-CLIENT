@@ -80,9 +80,9 @@ export default function MediaViewer({ mediaList }: MediaViewerProps) {
                   }`}
                 >
                   {overlay === 'play' ? (
-                    <SvgPlayArrow className="size-[7.2rem] fill-white" />
+                    <SvgPlayArrow className="size-[3.2rem] fill-white" />
                   ) : overlay === 'pause' ? (
-                    <SvgPause className="size-[7.2rem] fill-white" />
+                    <SvgPause className="size-[3.2rem] fill-white" />
                   ) : null}
                 </div>
 
