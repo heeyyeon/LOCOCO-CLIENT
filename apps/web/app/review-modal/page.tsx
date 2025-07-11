@@ -66,6 +66,18 @@ export default function Page() {
       slidesPerView={1.2}
       centeredSlides
       spaceBetween={-45}
+      onSlideChange={(swiper) => {
+        swiper.slides.forEach((slideEl, index) => {
+          const videos = slideEl.querySelectorAll<HTMLVideoElement>('video');
+          videos.forEach((video) => {
+            if (index === swiper.activeIndex) {
+              video.play();
+            } else {
+              video.pause();
+            }
+          });
+        });
+      }}
       className="inset-0 h-screen w-screen bg-black/70"
     >
       {mediaList.map((review, idx) => (
