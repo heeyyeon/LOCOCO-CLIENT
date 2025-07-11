@@ -8,7 +8,7 @@ export default function StarRating() {
   return (
     <div className="flex flex-col gap-[3.2rem]">
       <h3 className="text-jp-head2 inline-flex items-center gap-[1.2rem] font-bold">
-        <SvgJapaneseReview size={24} fill="#ef4351" /> 日本人レビュー
+        <SvgJapaneseReview size={24} className="fill-red" /> 日本人レビュー
       </h3>
 
       <div className="flex h-[25.6rem] w-full items-center justify-between rounded-[1.2rem] bg-gray-100 px-[8rem] py-[4rem]">
