@@ -4,7 +4,7 @@ import 'swiper/css';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import ReviewModalLayout from './components/ReviewModalLayout';
 
-const reviewList = [
+const mediaList = [
   {
     mediaList: [
       {
@@ -57,7 +57,7 @@ export default function Page() {
       spaceBetween={1}
       className="inset-0 h-screen w-screen bg-black/70"
     >
-      {reviewList.map((review, idx) => (
+      {mediaList.map((review, idx) => (
         <SwiperSlide
           key={idx}
           className="flex h-[55.2rem] items-center justify-center"
