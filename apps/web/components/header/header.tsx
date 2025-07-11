@@ -15,6 +15,7 @@ export default function Header() {
     handleSelectOption,
     handleOpenSearchBar,
     handleChangeSearchValue,
+    handleSearchIconClick,
   } = useHeaderAction();
 
   return (
@@ -39,6 +40,7 @@ export default function Header() {
         <SearchBar
           searchValue={searchValue}
           handleChangeSearchValue={handleChangeSearchValue}
+          handleSearchIconClick={handleSearchIconClick}
         />
       )}
     </div>

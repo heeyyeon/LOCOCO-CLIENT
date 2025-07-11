@@ -17,10 +17,6 @@ export default function SearchBreadCrumbSection({
   middleCategory,
   subCategory,
 }: RenderBreadCrumbProps) {
-  const getCategoryName = (categoryKey: CategoryNameEng) => {
-    return CATEGORY_NAME[categoryKey];
-  };
-
   const getSubCategoryName = (
     categoryKey: CategoryNameEng,
     subCategoryKey: CategoryOptionEng
@@ -39,7 +35,7 @@ export default function SearchBreadCrumbSection({
             </BreadcrumbItem>
             <BreadcrumbSeparator />
             <BreadcrumbItem className="flex h-[3.2rem] items-center justify-center gap-[1rem] px-[1.6rem] py-[1rem]">
-              {getCategoryName(middleCategory)}
+              {CATEGORY_NAME[middleCategory]}
             </BreadcrumbItem>
 
             {subCategory && (

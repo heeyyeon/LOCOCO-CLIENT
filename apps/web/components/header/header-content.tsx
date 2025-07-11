@@ -38,6 +38,7 @@ interface OptionBarProps {
 interface SearchBarProps {
   searchValue: string;
   handleChangeSearchValue: (text: string) => void;
+  handleSearchIconClick: () => void;
 }
 
 export function TopUtilItem({ icon, label, onClick }: TopUtilItemProps) {
@@ -167,6 +168,7 @@ export function OptionBar({
 export function SearchBar({
   searchValue,
   handleChangeSearchValue,
+  handleSearchIconClick,
 }: SearchBarProps) {
   return (
     <div className="flex w-full items-center gap-[0.8rem] border-b border-pink-500 bg-white px-[11.9rem]">
@@ -177,9 +179,19 @@ export function SearchBar({
         placeholder="ラネージュ"
         className="jp-body2 w-full text-right font-bold leading-[3rem] text-gray-800"
       />
-      <div className="flex h-[6.4rem] w-[6.4rem] shrink-0 cursor-pointer items-center justify-center p-[1.4rem]">
-        <SvgSearch className="cursor-pointer" />
-      </div>
+      {searchValue.trim() ? (
+        <Link
+          href={`/search?keyword=${encodeURIComponent(searchValue)}`}
+          className="flex h-[6.4rem] w-[6.4rem] shrink-0 cursor-pointer items-center justify-center p-[1.4rem]"
+          onClick={handleSearchIconClick}
+        >
+          <SvgSearch className="cursor-pointer" />
+        </Link>
+      ) : (
+        <div className="flex h-[6.4rem] w-[6.4rem] shrink-0 cursor-pointer items-center justify-center p-[1.4rem]">
+          <SvgSearch className="cursor-pointer" />
+        </div>
+      )}
     </div>
   );
 }
