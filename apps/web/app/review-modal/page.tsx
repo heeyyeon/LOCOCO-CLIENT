@@ -52,9 +52,9 @@ export default function Page() {
   return (
     <Swiper
       direction="vertical"
-      slidesPerView="auto"
+      slidesPerView={1.2}
       centeredSlides
-      spaceBetween={1}
+      spaceBetween={-45}
       className="inset-0 h-screen w-screen bg-black/70"
     >
       {mediaList.map((review, idx) => (
