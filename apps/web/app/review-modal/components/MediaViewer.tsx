@@ -5,6 +5,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { useRef, useState, useEffect } from 'react';
 import Image from 'next/image';
 import { Progress, SvgPlayArrow, SvgPause } from '@lococo/design-system';
+import IconButton from '@/components/icon-button';
 import { SvgArrowUp } from '@/icons';
 import { SvgArrowDown } from '@/icons';
 
@@ -21,6 +22,8 @@ export default function MediaViewer({ mediaList }: MediaViewerProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [progress, setProgress] = useState(0);
   const [overlay, setOverlay] = useState<null | 'play' | 'pause'>(null);
+  const swiperRef = useRef<any>(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   // 비디오 이벤트 리스너 등록
   useEffect(() => {
@@ -55,15 +58,20 @@ export default function MediaViewer({ mediaList }: MediaViewerProps) {
     }
   };
 
+  const isImageType = mediaList.every((m) => m.type === 'image');
+  const images = isImageType ? mediaList.slice(0, 5) : [];
+
   return (
     <div className="relative flex h-full w-full overflow-hidden rounded-l-xl bg-black">
       <Swiper
-        direction="vertical"
+        direction="horizontal"
         slidesPerView={1}
-        centeredSlides
-        spaceBetween={16}
+        onSwiper={(swiper) => (swiperRef.current = swiper)}
+        onSlideChange={(swiper) => {
+          setCurrentIndex(swiper.activeIndex);
+          onSlideChange();
+        }}
         className="h-full w-full"
-        onSlideChange={onSlideChange}
       >
         {mediaList.map((media, idx) => (
           <SwiperSlide
@@ -98,7 +106,7 @@ export default function MediaViewer({ mediaList }: MediaViewerProps) {
                 </div>
 
                 {/* Progress 컴포넌트 */}
-                <div className="absolute bottom-2 left-4 right-4 z-20 cursor-pointer">
+                <div className="absolute bottom-2 left-4 right-4 cursor-pointer">
                   <Progress
                     value={progress}
                     height="0.25rem"
@@ -119,6 +127,36 @@ export default function MediaViewer({ mediaList }: MediaViewerProps) {
           </SwiperSlide>
         ))}
       </Swiper>
+
+      {/* 좌측 화살표 */}
+      {isImageType && images.length > 1 && currentIndex > 0 && (
+        <div className="absolute left-[1.2rem] top-1/2 z-20 -translate-y-1/2">
+          <IconButton
+            icon={SvgArrowUp}
+            rounded
+            color="secondary"
+            size="lg"
+            aria-label="이전 이미지"
+            onClick={() => swiperRef.current?.slidePrev()}
+            className="border-1 -rotate-90 border-gray-200 bg-white"
+          />
+        </div>
+      )}
+
+      {/* 우측 화살표 */}
+      {isImageType && images.length > 1 && currentIndex < images.length - 1 && (
+        <div className="absolute right-[1.2rem] top-1/2 z-20 -translate-y-1/2">
+          <IconButton
+            icon={SvgArrowDown}
+            rounded
+            color="secondary"
+            size="lg"
+            aria-label="다음 이미지"
+            onClick={() => swiperRef.current?.slideNext()}
+            className="border-1 -rotate-90 border-gray-200 bg-white"
+          />
+        </div>
+      )}
     </div>
   );
 }
