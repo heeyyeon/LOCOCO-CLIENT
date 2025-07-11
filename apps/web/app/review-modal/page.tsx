@@ -23,6 +23,14 @@ const reviewList = [
         type: 'image' as const,
         url: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb',
       },
+      {
+        type: 'image' as const,
+        url: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb',
+      },
+      {
+        type: 'image' as const,
+        url: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb',
+      },
     ],
     user: { name: '권동희', avatarUrl: '' },
     date: '2025年07月01日',
