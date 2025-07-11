@@ -53,7 +53,6 @@ export default function MediaViewer({ mediaList }: MediaViewerProps) {
     <div className="relative flex h-full w-full overflow-hidden rounded-l-xl bg-black">
       <Swiper
         direction="horizontal"
-        slidesPerView={1}
         onSwiper={(swiper) => (swiperRef.current = swiper)}
         onSlideChange={(swiper) => {
           setCurrentIndex(swiper.activeIndex);
