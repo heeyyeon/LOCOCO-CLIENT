@@ -7,16 +7,12 @@ import { useRef, useState, useEffect } from 'react';
 import Image from 'next/image';
 import { Progress, SvgPlayArrow, SvgPause } from '@lococo/design-system';
 import IconButton from '@/components/icon-button';
-import { SvgArrowUp } from '@/icons';
-import { SvgArrowDown } from '@/icons';
+import { SvgArrowUp, SvgArrowDown } from '@/icons';
 
 type Media = { type: 'video' | 'image'; url: string };
 
 interface MediaViewerProps {
   mediaList: Media[];
-  user: { name: string; avatarUrl?: string };
-  date: string;
-  likeCount: number;
 }
 
 export default function MediaViewer({ mediaList }: MediaViewerProps) {
@@ -26,7 +22,6 @@ export default function MediaViewer({ mediaList }: MediaViewerProps) {
   const swiperRef = useRef<SwiperType | null>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  // 비디오 이벤트 리스너 등록
   useEffect(() => {
     const vid = videoRef.current;
     if (!vid) return;
@@ -37,15 +32,6 @@ export default function MediaViewer({ mediaList }: MediaViewerProps) {
     };
   }, [mediaList]);
 
-  // 슬라이드 전환 시 비디오 리셋
-  const onSlideChange = () => {
-    if (videoRef.current) {
-      videoRef.current.currentTime = 0;
-      setProgress(0);
-    }
-  };
-
-  // 비디오 클릭 시 재생/일시정지 및 오버레이 아이콘 표시
   const handleVideoClick = () => {
     const vid = videoRef.current;
     if (!vid) return;
@@ -70,15 +56,11 @@ export default function MediaViewer({ mediaList }: MediaViewerProps) {
         onSwiper={(swiper) => (swiperRef.current = swiper)}
         onSlideChange={(swiper) => {
           setCurrentIndex(swiper.activeIndex);
-          onSlideChange();
         }}
         className="h-full w-full"
       >
         {mediaList.map((media, idx) => (
-          <SwiperSlide
-            key={idx}
-            className="relative h-[calc(100%-4rem)] w-full"
-          >
+          <SwiperSlide key={idx}>
             {media.type === 'video' ? (
               <div className="relative h-full w-full">
                 <video
@@ -93,7 +75,6 @@ export default function MediaViewer({ mediaList }: MediaViewerProps) {
                   onClick={handleVideoClick}
                 />
 
-                {/* Overlay 아이콘 */}
                 <div
                   className={`pointer-events-none absolute inset-0 flex items-center justify-center bg-black/40 transition-opacity ${
                     overlay ? 'opacity-100' : 'opacity-0'
@@ -106,7 +87,6 @@ export default function MediaViewer({ mediaList }: MediaViewerProps) {
                   ) : null}
                 </div>
 
-                {/* Progress 컴포넌트 */}
                 <div className="absolute bottom-2 left-4 right-4 cursor-pointer">
                   <Progress
                     value={progress}
@@ -121,7 +101,7 @@ export default function MediaViewer({ mediaList }: MediaViewerProps) {
                   src={media.url}
                   alt="리뷰 이미지"
                   fill
-                  style={{ objectFit: 'cover' }}
+                  className="object-cover"
                 />
               </div>
             )}
@@ -129,7 +109,6 @@ export default function MediaViewer({ mediaList }: MediaViewerProps) {
         ))}
       </Swiper>
 
-      {/* 좌측 화살표 */}
       {isImageType && images.length > 1 && currentIndex > 0 && (
         <div className="absolute left-[1.2rem] top-1/2 z-20 -translate-y-1/2">
           <IconButton
@@ -144,7 +123,6 @@ export default function MediaViewer({ mediaList }: MediaViewerProps) {
         </div>
       )}
 
-      {/* 우측 화살표 */}
       {isImageType && images.length > 1 && currentIndex < images.length - 1 && (
         <div className="absolute right-[1.2rem] top-1/2 z-20 -translate-y-1/2">
           <IconButton

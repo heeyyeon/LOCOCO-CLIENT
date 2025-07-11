@@ -8,7 +8,6 @@ interface ReviewModalLayoutProps {
   date: string;
   likeCount: number;
   children: React.ReactNode;
-  onClose: () => void;
 }
 
 export default function ReviewModalLayout({
@@ -17,21 +16,15 @@ export default function ReviewModalLayout({
   date,
   likeCount,
   children,
-  onClose,
 }: ReviewModalLayoutProps) {
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center">
-      <div className="absolute" onClick={onClose} />
+    <div className="fixed inset-0 z-30 flex items-center justify-center">
+      <div />
       {/* 전체 모달 크기 */}
-      <div className="relative z-10 flex h-[55.2rem] w-[97.2rem] rounded-xl bg-white">
+      <div className="relative flex h-[55.2rem] w-[97.2rem] rounded-xl bg-white">
         {/* 좌측: 미디어 + 하단정보 */}
         <div className="relative flex w-[55.2rem] flex-col">
-          <MediaViewer
-            mediaList={mediaList}
-            user={user}
-            date={date}
-            likeCount={likeCount}
-          />
+          <MediaViewer mediaList={mediaList} />
           <MediaInfo user={user} date={date} likeCount={likeCount} />
         </div>
         {/* 우측: 리뷰 내용 (작업 예정) */}

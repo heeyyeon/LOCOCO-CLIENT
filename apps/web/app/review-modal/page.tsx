@@ -1,7 +1,6 @@
 'use client';
 
 import 'swiper/css';
-import { Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import ReviewModalLayout from './components/ReviewModalLayout';
 
@@ -56,7 +55,6 @@ export default function Page() {
       slidesPerView="auto"
       centeredSlides
       spaceBetween={1}
-      modules={[Pagination]}
       className="inset-0 h-screen w-screen bg-black/70"
     >
       {reviewList.map((review, idx) => (
@@ -69,7 +67,6 @@ export default function Page() {
             user={review.user}
             date={review.date}
             likeCount={review.likeCount}
-            onClose={() => {}}
           >
             {/* 우측 리뷰 내용 등 */}
             <div>리뷰 내용</div>
