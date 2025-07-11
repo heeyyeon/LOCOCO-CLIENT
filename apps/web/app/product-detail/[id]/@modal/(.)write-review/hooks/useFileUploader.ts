@@ -1,4 +1,4 @@
-import { REVIEW_MEDIA_ERROR_MESSAGE } from 'constants/review';
+import { REVIEW_MEDIA_ERROR_MESSAGE, REVIEW_MEDIA_MAX_COUNT } from 'constants/review';
 import z from 'zod';
 
 export const ALLOWED_IMAGE_TYPES = [
@@ -49,11 +49,11 @@ export const mediaFilesValidator = z
         return false;
       }
 
-      if (imageFiles.length > 5) {
+      if (imageFiles.length > REVIEW_MEDIA_MAX_COUNT.IMAGE) {
         return false;
       }
 
-      if (videoFiles.length > 1) {
+      if (videoFiles.length > REVIEW_MEDIA_MAX_COUNT.VIDEO) {
         return false;
       }
 
