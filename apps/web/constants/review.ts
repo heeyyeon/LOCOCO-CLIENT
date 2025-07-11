@@ -10,7 +10,7 @@ export const REVIEW_TEXT = {
 
 export const REVIEW_TEXT_ERROR_MESSAGE = {
   MIN: (min: number) => `${min}文字以上で入力してください。`,
-  MAX: (max: number) => `${max}使用して気になった点を教えてください。`,
+  MAX: (max: number) => `${max}文字以内で入力してください。`,
 } as const;
 
 export const REVIEW_MEDIA_MAX_COUNT = {
