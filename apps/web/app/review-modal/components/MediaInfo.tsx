@@ -1,8 +1,10 @@
 import { useState } from 'react';
-import { Avatar } from '@lococo/design-system';
-import { ReactionToggle } from '@lococo/design-system';
-import { SvgLikeFill } from '@lococo/design-system';
-import { SvgLikeOutline } from '@lococo/design-system';
+import {
+  Avatar,
+  ReactionToggle,
+  SvgLikeFill,
+  SvgLikeOutline,
+} from '@lococo/design-system';
 import { SvgSend } from '@lococo/design-system';
 
 interface MediaInfoProps {
