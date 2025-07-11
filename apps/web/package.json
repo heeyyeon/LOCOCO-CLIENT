@@ -21,17 +21,20 @@
     "postcss": "^8.5.6",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
+    "react-icons": "^5.5.0",
+    "swiper": "^11.2.10",
     "tailwindcss": "^4.1.10"
   },
   "devDependencies": {
+    "@lococo/design-system": "workspace:*",
     "@lococo/eslint-config": "workspace:*",
     "@lococo/tailwind-config": "workspace:*",
     "@lococo/typescript-config": "workspace:*",
-    "@lococo/design-system": "workspace:*",
     "@tanstack/react-query-devtools": "^5.81.5",
     "@types/node": "^22.15.3",
     "@types/react": "19.1.0",
     "@types/react-dom": "19.1.1",
+    "@types/swiper": "^6.0.0",
     "eslint": "^9.29.0",
     "typescript": "5.8.2"
   }
