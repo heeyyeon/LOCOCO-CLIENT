@@ -1,7 +1,9 @@
 'use client';
 
 import ProductDetailSection from './components/product-detail-section';
+import Review from './components/review';
 import StarRating from './components/star-rating';
+import YoutubeCarousel from './components/youtube-carousel';
 
 const data = {
   productId: 22,
@@ -97,12 +99,14 @@ const data = {
 
 export default function Page() {
   return (
-    <div className="flex w-[133.6rem] items-center">
-      <div className="flex w-full flex-col gap-[10rem] px-[11.9rem]">
-        <ProductDetailSection {...data} />
-        {/* <YoutubeCarousel /> */}
-        <StarRating />
-        {/* <Review /> */}
+    <div className="lg:flex lg:justify-center">
+      <div className="flex w-[133.6rem] items-center">
+        <div className="flex w-full flex-col gap-[10rem] px-[11.9rem]">
+          <ProductDetailSection {...data} />
+          <YoutubeCarousel />
+          <StarRating />
+          <Review />
+        </div>
       </div>
     </div>
   );

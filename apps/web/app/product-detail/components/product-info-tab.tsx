@@ -15,7 +15,7 @@ export default function ProductInfoTab({
   );
 
   return (
-    <div className="flex w-full min-w-[112.8rem] flex-col">
+    <div className="flex w-full flex-col">
       <TabContainer className="w-full">
         <Tab
           label="製品の特徴"
