@@ -2,8 +2,8 @@ import { useState } from 'react';
 import {
   Avatar,
   ReactionToggle,
-  SvgLikeFill,
-  SvgLikeOutline,
+  SvgGoodFill,
+  SvgGoodOutline,
 } from '@lococo/design-system';
 import { SvgSend } from '@lococo/design-system';
 
@@ -33,7 +33,7 @@ export default function MediaInfo({ user, date, likeCount }: MediaInfoProps) {
           onPressedChange={setIsLiked}
           className="text-white"
         >
-          {isLiked ? <SvgLikeFill /> : <SvgLikeOutline />}
+          {isLiked ? <SvgGoodFill /> : <SvgGoodOutline />}
           <span className="text-en-body1">{likeCount}</span>
         </ReactionToggle>
       </div>
