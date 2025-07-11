@@ -69,7 +69,6 @@ export default function MediaViewer({ mediaList }: MediaViewerProps) {
                   controls={false}
                   autoPlay
                   loop
-                  muted
                   playsInline
                   className="h-full w-full cursor-pointer object-cover"
                   onClick={handleVideoClick}
