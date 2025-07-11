@@ -29,7 +29,7 @@ export function useHeaderAction() {
     setSelectedOption(null);
   };
 
-  const handleChangeSearch = (text: string) => {
+  const handleChangeSearchValue = (text: string) => {
     setSearchValue(text);
   };
 
@@ -48,6 +48,6 @@ export function useHeaderAction() {
     handleSelectCategory,
     handleSelectOption,
     handleOpenSearchBar,
-    handleChangeSearch,
+    handleChangeSearchValue,
   };
 }

@@ -21,7 +21,7 @@ import { cn } from '@/lib/utils';
 interface TopUtilItemProps {
   icon: React.ReactNode;
   label: string;
-  onClick?: () => void;
+  onClick: () => void;
 }
 
 interface CategoryBarProps {
@@ -39,9 +39,9 @@ interface OptionBarProps {
   handleSelectOption: (option: CategoryOptionEng) => void;
 }
 
-interface SearchProps {
+interface SearchBarProps {
   searchValue: string;
-  handleChangeSearch: (text: string) => void;
+  handleChangeSearchValue: (text: string) => void;
 }
 
 export function TopUtilItem({ icon, label, onClick }: TopUtilItemProps) {
@@ -168,13 +168,16 @@ export function OptionBar({
   );
 }
 
-export function SearchBar({ searchValue, handleChangeSearch }: SearchProps) {
+export function SearchBar({
+  searchValue,
+  handleChangeSearchValue,
+}: SearchBarProps) {
   return (
     <div className="flex w-full items-center gap-[0.8rem] border-b border-pink-500 bg-white px-[11.9rem]">
       <Input
         type="search"
         value={searchValue}
-        onChange={(e) => handleChangeSearch(e.target.value)}
+        onChange={(e) => handleChangeSearchValue(e.target.value)}
         placeholder="ラネージュ"
         className="jp-body2 w-full text-right font-bold leading-[3rem] text-gray-800"
       />
