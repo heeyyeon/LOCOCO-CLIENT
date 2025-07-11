@@ -63,6 +63,9 @@
 
   /* EN caption */
   --text-en-caption1: 1.2rem;
+
+  /* 추후 커스텀 브레이크포인트 추가 */
+  /* --breakpoint-lg: 133.6rem; */
 }
 
 @layer base {
