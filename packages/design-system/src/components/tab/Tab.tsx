@@ -16,7 +16,7 @@ interface TabContainerProps {
 }
 
 const tabVariants = cva(
-  'inline-flex w-auto items-center justify-center gap-2.5 bg-white px-5 py-2.5 font-bold cursor-pointer',
+  'inline-flex w-auto items-center justify-center gap-2.5 bg-white px-[2rem] py-[1rem] font-bold cursor-pointer',
   {
     variants: {
       variant: {

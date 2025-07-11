@@ -16,6 +16,7 @@ import { SvgLikeFill } from '@/icons';
 import { SvgLikeOutline } from '@/icons';
 import { SvgStar } from '@/icons';
 import { SvgPurchase } from '@/icons';
+import { SvgWrite } from '@/icons';
 import { cn } from '@/lib/utils';
 
 const MAX_RATING = 5;
@@ -88,8 +89,10 @@ export default function ProductInfo({
           />
         </div>
         <div className="flex flex-col gap-[0.8rem]">
-          <p className="text-red text-en-head2">¥{formatJPY(normalPrice)}</p>
-          <p className="text-en-body1 text-gray-600"> {unit}</p>
+          <p className="text-red en-head2 font-bold">
+            ¥{formatJPY(normalPrice)}
+          </p>
+          <p className="jp-body2 text-gray-600"> {unit}</p>
           <div className="flex items-center gap-[0.4rem]">
             <SvgStar className="fill-yellow" />
             <span className="text-en-body1 text-gray-800">
@@ -99,10 +102,10 @@ export default function ProductInfo({
           </div>
         </div>
         <Select>
-          <SelectTrigger>
+          <SelectTrigger className="jp-body2 text-gray-800">
             <SelectValue placeholder="オプション"></SelectValue>
           </SelectTrigger>
-          <SelectContent>
+          <SelectContent className="jp-body2 text-gray-800">
             {productOptions.map((option) => (
               <SelectItem value={option.optionName} key={option.id} disabled>
                 {option.optionName}
@@ -114,32 +117,48 @@ export default function ProductInfo({
 
       {/* 버튼 레이어 */}
       <div className="flex flex-col gap-[1.2rem]">
-        <div className="flex gap-[1.2rem]">
-          <Button color="primary" variant="filled" rounded size="lg" asChild>
+        <div className="flex justify-between gap-[1.2rem]">
+          <Button
+            color="primary"
+            variant="filled"
+            rounded
+            size="lg"
+            asChild
+            className="flex-1"
+          >
             <Link
               href={oliveYoungUrl || '#'}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-[0.8rem]"
+              className="jp-title2 flex items-center gap-[0.8rem] font-bold"
             >
-              <SvgPurchase /> カートに入れる
+              <SvgPurchase /> Qoo10
             </Link>
           </Button>
 
-          <Button color="primary" variant="filled" rounded size="lg" asChild>
+          <Button
+            color="primary"
+            variant="filled"
+            rounded
+            size="lg"
+            asChild
+            className="flex-1"
+          >
             <Link
               href={q10Url || '#'}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-[0.8rem]"
+              className="jp-title2 flex items-center gap-[0.8rem] font-bold"
             >
-              <SvgPurchase /> カートに入れる
+              <SvgPurchase /> Olive Young
             </Link>
           </Button>
         </div>
         <Button color="secondary" variant="filled" rounded size="lg" asChild>
           {/* 추후 리뷰 작성 모달 URL 연결 */}
-          <Link href="/">カートに入れる</Link>
+          <Link href="/" className="jp-title2">
+            <SvgWrite /> カートに入れる
+          </Link>
         </Button>
       </div>
     </div>
