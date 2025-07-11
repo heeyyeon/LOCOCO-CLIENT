@@ -2,8 +2,7 @@
 
 import Modal from 'components/modal/modal';
 import { useRouter } from 'next/navigation';
-import { Button } from '@lococo/design-system';
-import IconButton from '@/components/icon-button';
+import { Button, IconButton } from '@lococo/design-system';
 import { SvgClose } from '@/icons';
 import {
   MediaUpload,
