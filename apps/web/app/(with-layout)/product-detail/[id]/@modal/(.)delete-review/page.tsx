@@ -4,7 +4,7 @@ import Modal from 'components/modal/modal';
 import React from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useParams } from 'next/navigation';
-import { Button } from '@/components';
+import { Button } from '@lococo/design-system';
 
 export default function DeleteReviewModal() {
   const router = useRouter();
