@@ -18,8 +18,8 @@ export default function DeleteReviewModal() {
 
   const handleDelete = async () => {
     try {
-      console.log('삭제 API 호출:', { productId: id, reviewId });
-      router.push(`/product-detail/${id}`);
+      console.log('삭제 API:', { productId: id, reviewId });
+      router.back();
     } catch (error) {
       console.error('', error);
     }
