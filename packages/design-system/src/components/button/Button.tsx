@@ -16,7 +16,7 @@ interface ButtonProps
 const baseButtonStyle = 'px-[3.2rem] py-[1rem] gap-[0.8rem]';
 
 const buttonVariants = cva(
-  'inline-flex items-center justify-center font-bold',
+  'inline-flex items-center transition-colors duration-300 justify-center font-bold disabled:bg-gray-200 disabled:text-gray-500 disabled:cursor-not-allowed',
   {
     variants: {
       variant: {
