@@ -17,11 +17,12 @@ import {
 import { useReviewInput } from './hooks';
 
 export default function WriteReviewModal() {
+  const router = useRouter();
+
   const {
     formData,
     errors,
-    isSubmitting,
-    hasErrors,
+    reset,
     updateProductOption,
     updateRating,
     updatePositiveComment,
@@ -30,23 +31,22 @@ export default function WriteReviewModal() {
     updateReceiptFile,
     handleSubmit,
     isFormValid,
-  } = useReviewInput();
-  const router = useRouter();
+  } = useReviewInput(() => {
+    alert('리뷰 제출에 성공했어요.');
+    reset();
+    router.back();
+  });
 
   const handleClose = () => {
     router.back();
   };
 
-  const onSubmit = async () => {
-    await handleSubmit();
-    if (isFormValid) {
-      router.back();
-      alert('삭제에 성공했어요.');
-    }
+  const onSubmit = () => {
+    handleSubmit();
   };
 
   return (
-    <Modal className="size-[70rem] rounded-[0.8rem]">
+    <Modal className="size-[70rem] rounded-[0.8rem]" onClose={handleClose}>
       <Modal.Header className="sticky top-0 flex justify-between">
         <h2 className="jp-body1 font-bold text-gray-800">レビューを書く</h2>
         <IconButton
@@ -75,12 +75,12 @@ export default function WriteReviewModal() {
             error={errors.rating}
           />
           <PositiveReview
-            value={{ positiveComment: formData.positiveComment }}
+            value={formData.positiveComment}
             onChange={updatePositiveComment}
             error={errors.positiveComment}
           />
           <NegativeReview
-            value={{ negativeComment: formData.negativeComment }}
+            value={formData.negativeComment}
             onChange={updateNegativeComment}
             error={errors.negativeComment}
           />
@@ -105,7 +105,7 @@ export default function WriteReviewModal() {
           className="jp-title2 w-full px-[1.6rem] py-[1.2rem]"
           rounded
           onClick={onSubmit}
-          disabled={!isFormValid || isSubmitting || hasErrors}
+          disabled={!isFormValid}
         >
           送信する
         </Button>

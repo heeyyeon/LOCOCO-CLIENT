@@ -1,3 +1,5 @@
+import { ContentWithLabel } from 'components/input/content-with-label';
+import type { ReviewFormData } from 'types/review';
 import {
   Select,
   SelectContent,
@@ -6,10 +8,9 @@ import {
   SelectValue,
 } from '@/components';
 import { ErrorNotice } from '@/components';
-import { ContentWithLabel } from './content-with-label';
 
 interface Props {
-  value: number | null;
+  value: ReviewFormData['productOptionId'];
   onChange: (value: number) => void;
   error?: string;
 }
@@ -29,9 +30,13 @@ export default function ProductOption({ value, onChange, error }: Props) {
     <ContentWithLabel
       label="オプションを選んでください"
       className="flex w-full flex-col"
+      required
     >
-        <Select value={String(value)} onValueChange={handleValueChange}  placeholder="オプション">
-          <SelectTrigger className="jp-body2">
+      <Select
+        value={value ? String(value) : ''}
+        onValueChange={handleValueChange}
+      >
+        <SelectTrigger className="jp-body2">
           <SelectValue placeholder="オプション" />
         </SelectTrigger>
         <SelectContent className="scrollbar-hide jp-body2">

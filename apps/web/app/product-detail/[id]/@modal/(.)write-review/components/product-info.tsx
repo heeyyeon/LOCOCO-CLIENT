@@ -1,16 +1,13 @@
 import { ProductItem } from 'types/product';
 import Image from 'next/image';
 
-interface ProductInfoProps
-  extends Pick<ProductItem, 'productName' | 'imageUrl' | 'brandName'> {}
-
 export default function ProductInfo({
   productName,
   imageUrl,
   brandName,
-}: ProductInfoProps) {
+}: Pick<ProductItem, 'productName' | 'imageUrl' | 'brandName'>) {
   return (
-    <div className="flex items-center gap-[1.2rem] self-stretch border-b border-dashed border-pink-500 bg-white py-[1.2rem]">
+    <div className="flex items-center gap-[1.2rem] border-b border-dashed border-pink-500 bg-white py-[1.2rem]">
       {imageUrl && (
         <Image
           src={imageUrl}
@@ -20,7 +17,7 @@ export default function ProductInfo({
           className="rounded-lg"
         />
       )}
-      <div className="flex flex-col items-start gap-[0.4rem] self-stretch">
+      <div className="flex flex-col items-start gap-[0.4rem]">
         <h3 className="jp-body1 font-bold text-gray-800">{productName}</h3>
         <p className="jp-body2 text-gray-800">{brandName}</p>
       </div>

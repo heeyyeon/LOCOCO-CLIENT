@@ -1,13 +1,13 @@
 'use client';
 
+import { ContentWithLabel } from 'components/input/content-with-label';
 import { REVIEW_TEXT, REVIEW_TEXT_PLACEHOLDER } from 'constants/review';
+import type { ReviewFormData } from 'types/review';
 import ErrorNotice from '@lococo/design-system/components/error-notice/ErrorNotice';
 import { Textarea } from '@/components';
-import { ReviewData } from '../hooks/useReviewInput';
-import { ContentWithLabel } from './content-with-label';
 
 interface Props {
-  value: Pick<ReviewData, 'positiveComment'>;
+  value: ReviewFormData['positiveComment'];
   onChange: (comment: string) => void;
   error?: string;
 }
@@ -18,14 +18,14 @@ export default function PositiveReview({ value, onChange, error }: Props) {
   };
 
   return (
-    <ContentWithLabel label="良かったです" className="h-full flex-col">
+    <ContentWithLabel label="良かったです" className="h-full flex-col" required>
       <Textarea.Container>
         <Textarea
-          value={value.positiveComment}
+          value={value}
           onChange={handleChange}
           placeholder={REVIEW_TEXT_PLACEHOLDER.POSITIVE}
           maxLength={REVIEW_TEXT.MAX_LENGTH}
-          minLength={REVIEW_TEXT.MIN_LENGTH}
+          className="h-[6.6rem]"
         />
         {error && <ErrorNotice message={error} />}
       </Textarea.Container>

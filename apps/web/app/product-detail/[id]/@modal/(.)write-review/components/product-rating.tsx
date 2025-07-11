@@ -1,12 +1,13 @@
 'use client';
 
+import { ContentWithLabel } from 'components/input/content-with-label';
+import type { ReviewFormData } from 'types/review';
 import { SvgStar } from '@lococo/design-system';
-import { cn } from '@/lib/utils';
-import { ContentWithLabel } from './content-with-label';
 import { ErrorNotice } from '@/components';
+import { cn } from '@/lib/utils';
 
 interface Props {
-  value: number;
+  value: ReviewFormData['rating'];
   onChange: (rating: number) => void;
   error?: string;
 }
@@ -16,6 +17,7 @@ export default function ProductRating({ value, onChange, error }: Props) {
     <ContentWithLabel
       label="商品はいかがでしたか？"
       className="justify-between border-b border-gray-400 pb-[2.8rem]"
+      required
     >
       <div className="flex flex-col gap-[0.8rem]">
         <div className="flex items-center gap-[0.8rem]">

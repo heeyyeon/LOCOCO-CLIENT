@@ -1,122 +1,41 @@
 'use client';
 
-import { useState, ChangeEvent, useEffect } from 'react';
+import { ContentWithLabel } from 'components/input/content-with-label';
+import { REVIEW_MEDIA_MAX_COUNT, REVIEW_MEDIA_TYPE } from 'constants/review';
+import { MediaType } from 'types/review';
+import { ChangeEvent } from 'react';
 import Image from 'next/image';
 import { ErrorNotice } from '@/components';
 import { SvgAdd, SvgClose } from '@/icons';
-import { ContentWithLabel } from './content-with-label';
+import {
+  ALLOWED_IMAGE_TYPES,
+  ALLOWED_MEDIA_TYPES,
+  ALLOWED_VIDEO_TYPES,
+  isImageFile,
+  isVideoFile,
+} from '../hooks/useFileUploader';
 
-interface FileWithPreview {
-  file: File;
-  previewUrl: string;
-  id: string;
-  type: 'image' | 'video';
-}
-
-interface Props {
+interface MediaUploadProps {
   files: File[];
   onChange: (files: File[]) => void;
   error?: string;
 }
 
-const getFileType = (file: File): 'image' | 'video' => {
-  if (file.type.startsWith('image/')) return 'image';
-  if (file.type.startsWith('video/')) return 'video';
-  return 'image'; // 기본값
+const getFileType = (file: File): MediaType | undefined => {
+  if (isImageFile(file)) return REVIEW_MEDIA_TYPE.IMAGE;
+  if (isVideoFile(file)) return REVIEW_MEDIA_TYPE.VIDEO;
+  return;
 };
 
-const canUploadFile = (
-  files: File[],
-  newFile: File
-): { canUpload: boolean; error?: string } => {
-  const newFileType = getFileType(newFile);
-
-  if (files.length === 0) {
-    return { canUpload: true };
-  }
-
-  const firstFile = files[0];
-  if (!firstFile) {
-    return { canUpload: true };
-  }
-
-  const existingFileType = getFileType(firstFile);
-
-  if (existingFileType !== newFileType) {
-    return {
-      canUpload: false,
-      error: '사진과 동영상은 동시에 업로드할 수 없습니다.',
-    };
-  }
-
-  if (newFileType === 'video' && files.length >= 1) {
-    return {
-      canUpload: false,
-      error: '동영상은 최대 1개까지 업로드 가능합니다.',
-    };
-  }
-
-  if (newFileType === 'image' && files.length >= 5) {
-    return {
-      canUpload: false,
-      error: '사진은 최대 5장까지 업로드 가능합니다.',
-    };
-  }
-
-  return { canUpload: true };
-};
-
-export default function MediaUpload({ files, onChange, error }: Props) {
-  const [filesWithPreview, setFilesWithPreview] = useState<FileWithPreview[]>(
-    []
-  );
-  const [uploadError, setUploadError] = useState<string>('');
-
-  useEffect(() => {
-    const createPreviews = async () => {
-      const previews = await Promise.all(
-        files.map(async (file, index) => {
-          return new Promise<FileWithPreview>((resolve) => {
-            const reader = new FileReader();
-            reader.onload = (e) => {
-              const previewUrl = e.target?.result as string;
-              resolve({
-                file: file,
-                previewUrl,
-                id: `${Date.now()}-${index}`,
-                type: getFileType(file),
-              });
-            };
-            reader.readAsDataURL(file);
-          });
-        })
-      );
-      setFilesWithPreview(previews);
-    };
-
-    if (files.length > 0) {
-      createPreviews();
-    } else {
-      setFilesWithPreview([]);
-    }
-
-    setUploadError('');
-  }, [files]);
-
+export default function MediaUpload({
+  files,
+  onChange,
+  error,
+}: MediaUploadProps) {
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
     const selectedFile = e.target.files?.[0];
     if (selectedFile) {
-      const { canUpload, error: uploadError } = canUploadFile(
-        files,
-        selectedFile
-      );
-
-      if (canUpload) {
-        onChange([...files, selectedFile]);
-        setUploadError('');
-      } else {
-        setUploadError(uploadError || '업로드할 수 없습니다.');
-      }
+      onChange([...files, selectedFile]);
     }
     e.target.value = '';
   };
@@ -124,12 +43,26 @@ export default function MediaUpload({ files, onChange, error }: Props) {
   const removeFile = (indexToRemove: number) => {
     const updatedFiles = files.filter((_, index) => index !== indexToRemove);
     onChange(updatedFiles);
-    setUploadError('');
   };
 
-  const currentFileType = files.length > 0 && files[0] ? getFileType(files[0]) : null;
-  const maxFiles = currentFileType === 'video' ? 1 : 5;
-  const canAddMore = files.length < maxFiles;
+  const currentFileType = files[0] && getFileType(files[0]);
+  const canAdd = currentFileType
+    ? files.length <
+      (currentFileType === REVIEW_MEDIA_TYPE.IMAGE
+        ? REVIEW_MEDIA_MAX_COUNT.IMAGE
+        : REVIEW_MEDIA_MAX_COUNT.VIDEO)
+    : true;
+
+  const getAcceptAttribute = () => {
+    switch (currentFileType) {
+      case REVIEW_MEDIA_TYPE.IMAGE:
+        return ALLOWED_IMAGE_TYPES.join(', ');
+      case REVIEW_MEDIA_TYPE.VIDEO:
+        return ALLOWED_VIDEO_TYPES.join(', ');
+      default:
+        return ALLOWED_MEDIA_TYPES.join(', ');
+    }
+  };
 
   return (
     <ContentWithLabel
@@ -137,19 +70,19 @@ export default function MediaUpload({ files, onChange, error }: Props) {
       className="flex-col gap-[2.4rem] border-b border-gray-400"
     >
       <div className="flex flex-wrap gap-4">
-        {filesWithPreview.map((fileItem, index) => (
-          <div key={fileItem.id} className="relative h-32 w-32">
-            {fileItem.type === 'image' ? (
+        {files.map((file, index) => (
+          <div key={index} className="relative h-32 w-32">
+            {getFileType(file) === REVIEW_MEDIA_TYPE.IMAGE ? (
               <Image
-                src={fileItem.previewUrl}
-                alt="업로드된 이미지"
+                src={URL.createObjectURL(file)}
+                alt={`${index} review image`}
                 className="h-full w-full rounded object-cover"
                 width={80}
                 height={80}
               />
             ) : (
               <video
-                src={fileItem.previewUrl}
+                src={URL.createObjectURL(file)}
                 className="h-full w-full rounded object-cover"
                 controls={false}
                 muted
@@ -165,11 +98,11 @@ export default function MediaUpload({ files, onChange, error }: Props) {
           </div>
         ))}
 
-        {canAddMore && (
+        {canAdd && (
           <div className="relative">
             <input
               type="file"
-              accept="image/jpeg, image/png, image/webp, video/mp4, video/avi, video/mkv, video/quicktime"
+              accept={getAcceptAttribute()}
               className="flex aspect-square w-32 cursor-pointer items-center justify-center bg-gray-800 p-[2.2rem] opacity-0"
               onChange={handleFileChange}
             />
@@ -179,8 +112,7 @@ export default function MediaUpload({ files, onChange, error }: Props) {
           </div>
         )}
       </div>
-      {/* 에러 메시지 */}
-      {(error || uploadError) && <ErrorNotice message={error || uploadError} />}
+      {error && <ErrorNotice message={error} />}
     </ContentWithLabel>
   );
 }

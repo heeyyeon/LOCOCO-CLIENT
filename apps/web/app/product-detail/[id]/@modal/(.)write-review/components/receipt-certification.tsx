@@ -1,25 +1,33 @@
 'use client';
 
+import { ContentWithLabel } from 'components/input/content-with-label';
+import type { ReviewFormData } from 'types/review';
 import { useState, ChangeEvent, useEffect } from 'react';
 import Image from 'next/image';
-import { SvgAdd, SvgClose } from '@/icons';
-import { ContentWithLabel } from './content-with-label';
 import { ErrorNotice } from '@/components';
+import { SvgAdd, SvgClose } from '@/icons';
 
 interface Props {
-  file: File | null;
-  onChange: (value: File | null) => void;
+  file: ReviewFormData['receiptFile'];
+  onChange: (value: ReviewFormData['receiptFile']) => void;
   error?: string;
 }
 
-export default function ReceiptCertification({
-  file,
-  onChange,
-  error,
-}: Props) {
+export default function ReceiptCertification({ file, onChange, error }: Props) {
   const [imageUrl, setImageUrl] = useState<string | null>(null);
 
-  // file이 변경될 때마다 미리보기 URL 생성
+  const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const selectedFile = e.target.files?.[0];
+    if (selectedFile) {
+      onChange(selectedFile);
+    }
+    e.target.value = '';
+  };
+
+  const handleRemoveFile = () => {
+    onChange(undefined);
+  };
+
   useEffect(() => {
     if (file) {
       const reader = new FileReader();
@@ -32,24 +40,12 @@ export default function ReceiptCertification({
     }
   }, [file]);
 
-  const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const selectedFile = e.target.files?.[0];
-    if (selectedFile) {
-      onChange(selectedFile);
-    }
-    e.target.value = '';
-  };
-
-  const handleRemoveFile = () => {
-    onChange(null);
-  };
-
   return (
     <ContentWithLabel
       label="購入証明写真をアップロードしてください"
       className="flex-col border-b border-gray-400"
     >
-      <p className="jp-caption3 text-blue pb-[2.4rem]">
+      <p className="jp-caption3 text-blue mt-[0.8rem] pb-[2.4rem]">
         レシート・オンライン購入のキャプチャなど。
       </p>
 
@@ -78,7 +74,7 @@ export default function ReceiptCertification({
           />
           <button
             onClick={handleRemoveFile}
-            className="rounded-[0.2px] absolute bottom-[0.4rem] right-[0.4rem] flex size-[1.8rem] items-center justify-center bg-black/30 p-[0.1rem]"
+            className="absolute bottom-[0.4rem] right-[0.4rem] flex size-[1.8rem] items-center justify-center rounded-[0.2px] bg-black/30 p-[0.1rem]"
             type="button"
           >
             <SvgClose className="size-[1.6rem] fill-white" />
