@@ -9,12 +9,22 @@ export const REVIEW_TEXT = {
 } as const;
 
 export const REVIEW_TEXT_ERROR_MESSAGE = {
-  MIN: (min:number)=>`${min}文字以上で入力してください。`,
-  MAX: (max:number)=>`${max}使用して気になった点を教えてください。`,
+  MIN: (min: number) => `${min}文字以上で入力してください。`,
+  MAX: (max: number) => `${max}使用して気になった点を教えてください。`,
 } as const;
 
 export const REVIEW_MEDIA_MAX_COUNT = {
-  PHOTO: 5,
+  IMAGE: 5,
   VIDEO: 1,
   RECEIPT: 1,
+} as const;
+
+export const REVIEW_MEDIA_ERROR_MESSAGE = {
+  NOT_ALLOWED_FILE_TYPE: 'not allowed file type',
+  CANNOT_UPLOAD_FILE: 'cannot upload file',
+} as const;
+
+export const REVIEW_MEDIA_TYPE = {
+  IMAGE: 'image',
+  VIDEO: 'video',
 } as const;
