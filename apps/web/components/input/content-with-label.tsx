@@ -7,14 +7,14 @@ interface ContentWithLabelProps extends HTMLAttributes<HTMLDivElement> {
   labelClassName?: string;
 }
 
-export const ContentWithLabel = ({
+export default function ContentWithLabel({
   label,
   required,
   children,
   labelClassName,
   className,
   ...props
-}: ContentWithLabelProps) => {
+}: ContentWithLabelProps) {
   return (
     <div
       className={cn('flex items-start self-stretch py-[1.6rem]', className)}
@@ -29,4 +29,4 @@ export const ContentWithLabel = ({
       {children}
     </div>
   );
-};
+}

@@ -1,4 +1,4 @@
-import { ContentWithLabel } from 'components/input/content-with-label';
+import ContentWithLabel from 'components/input/content-with-label';
 import type { ReviewFormData } from 'types/review';
 import {
   Select,

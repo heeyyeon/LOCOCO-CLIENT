@@ -1,6 +1,6 @@
 'use client';
 
-import { ContentWithLabel } from 'components/input/content-with-label';
+import ContentWithLabel from 'components/input/content-with-label';
 import { REVIEW_TEXT, REVIEW_TEXT_PLACEHOLDER } from 'constants/review';
 import type { ReviewFormData } from 'types/review';
 import ErrorNotice from '@lococo/design-system/components/error-notice/ErrorNotice';

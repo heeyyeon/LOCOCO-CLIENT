@@ -1,6 +1,6 @@
 'use client';
 
-import { ContentWithLabel } from 'components/input/content-with-label';
+import ContentWithLabel from 'components/input/content-with-label';
 import type { ReviewFormData } from 'types/review';
 import { useState, ChangeEvent, useEffect } from 'react';
 import Image from 'next/image';
