@@ -1,8 +1,4 @@
-import type {
-  CategoryName,
-  CategoryOptionEng,
-  CategoryNameEng,
-} from 'types/category';
+import type { CategoryOptionEng, CategoryNameEng } from 'types/category';
 import { CategoryMetadata, getOptionLabel } from 'utils/category';
 import Link from 'next/link';
 import {

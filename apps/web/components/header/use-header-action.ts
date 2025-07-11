@@ -1,4 +1,3 @@
-import { CATEGORY_NAME } from 'constants/category';
 import { CategoryNameEng, CategoryOptionEng } from 'types/category';
 import { getAllCategoryMetadata } from 'utils/category';
 import { useMemo, useState } from 'react';
