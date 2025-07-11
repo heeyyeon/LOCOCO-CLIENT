@@ -20,9 +20,9 @@ const iconButtonVariants = cva(
         tertiary: 'text-gray-800',
       },
       size: {
-        sm: 'p-[0.5rem] size-[2rem]',
-        md: 'p-[0.625rem] size-[2.75rem]',
-        lg: 'p-[0.875rem] size-[4rem]',
+        sm: 'p-[0.5rem] size-[3.2rem]',
+        md: 'p-[0.625rem] size-[4.4rem]',
+        lg: 'p-[0.875rem] size-[6.4rem]',
       },
       rounded: {
         true: 'rounded-full shadow-button hover:text-pink-500 clicked:text-pink-500 transition-colors duration-300',
@@ -36,9 +36,9 @@ const iconButtonVariants = cva(
 );
 
 const iconSize = {
-  sm: '1rem',
-  md: '1.5rem',
-  lg: '2.25rem',
+  sm: '1.6rem',
+  md: '2.4rem',
+  lg: '3.6rem',
 };
 
 export function IconButton({
