@@ -11,13 +11,13 @@ interface IconButtonProps
 }
 
 const iconButtonVariants = cva(
-  'flex items-center justify-center disabled:cursor-not-allowed hover:cursor-pointer',
+  'flex items-center justify-center hover:cursor-pointer',
   {
     variants: {
       color: {
         primary: 'text-pink-500',
-        secondary: 'text-gray-500',
-        tertiary: 'text-gray-800',
+        secondary: 'text-gray-800',
+        tertiary: 'text-gray-500',
       },
       size: {
         sm: 'p-[0.8rem] [&>svg]:w-[1.6rem] [&>svg]:h-[1.6rem]',
@@ -25,7 +25,7 @@ const iconButtonVariants = cva(
         lg: 'p-[1.4rem] [&>svg]:w-[3.6rem] [&>svg]:h-[3.6rem]',
       },
       rounded: {
-        true: 'rounded-full shadow-button hover:text-pink-500 clicked:text-pink-500 transition-colors duration-300',
+        true: 'rounded-full shadow-button hover:text-pink-500 disabled:cursor-default disabled:text-gray-500 transition-colors duration-300',
       },
     },
     defaultVariants: {
@@ -35,7 +35,7 @@ const iconButtonVariants = cva(
   }
 );
 
-export function IconButton({
+export default function IconButton({
   color = 'secondary',
   size = 'md',
   icon,
@@ -45,7 +45,14 @@ export function IconButton({
 }: IconButtonProps) {
   return (
     <button
-      className={cn(iconButtonVariants({ color, size, rounded }), className)}
+      className={cn(
+        iconButtonVariants({
+          color,
+          size,
+          rounded,
+        }),
+        className
+      )}
       {...props}
     >
       {icon}

@@ -9,24 +9,26 @@ import { Thumbs } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { useState, useRef } from 'react';
 import Image from 'next/image';
-import IconButton from '@/components/icon-button';
+import { IconButton } from '@lococo/design-system';
 import { SvgArrowUp } from '@/icons';
 import { SvgArrowDown } from '@/icons';
 import { cn } from '@/lib/utils';
-import './swiper.css';
+import './main-carousel.css';
 
 interface CarouselProps {
   imageUrlList: string[];
 }
 
-export default function Carousel({ imageUrlList }: CarouselProps) {
+export default function ProductDetailMainCarousel({
+  imageUrlList,
+}: CarouselProps) {
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);
   const mainSwiperRef = useRef<SwiperType | null>(null);
   const [isBeginning, setIsBeginning] = useState(true);
   const [isEnd, setIsEnd] = useState(false);
 
   return (
-    <div className="flex gap-6 p-4">
+    <div className="flex gap-6">
       {/* Thumbnail Swiper (Vertical) */}
       <div className="flex flex-col items-center justify-between">
         <Swiper
