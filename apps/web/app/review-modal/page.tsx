@@ -66,6 +66,15 @@ export default function Page() {
       slidesPerView={1.2}
       centeredSlides
       spaceBetween={-45}
+      onSwiper={(swiper) => {
+        const firstSlide = swiper.slides[0];
+        if (firstSlide) {
+          const videos = firstSlide.querySelectorAll<HTMLVideoElement>('video');
+          videos.forEach((video) => {
+            video.play();
+          });
+        }
+      }}
       onSlideChange={(swiper) => {
         swiper.slides.forEach((slideEl, index) => {
           const videos = slideEl.querySelectorAll<HTMLVideoElement>('video');
