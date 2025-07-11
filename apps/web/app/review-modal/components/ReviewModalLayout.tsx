@@ -20,7 +20,6 @@ export default function ReviewModalLayout({
   return (
     <div className="fixed inset-0 z-30 flex items-center justify-center">
       <div />
-      {/* 전체 모달 크기 */}
       <div className="relative flex h-[55.2rem] w-[97.2rem] rounded-xl bg-white">
         {/* 좌측: 미디어 + 하단정보 */}
         <div className="relative flex w-[55.2rem] flex-col">
