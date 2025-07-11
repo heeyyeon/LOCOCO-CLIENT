@@ -19,6 +19,17 @@ const mediaList = [
   {
     mediaList: [
       {
+        type: 'video' as const,
+        url: 'https://www.w3schools.com/html/mov_bbb.mp4',
+      },
+    ],
+    user: { name: '김정은', avatarUrl: '' },
+    date: '2025年07月01日',
+    likeCount: 123,
+  },
+  {
+    mediaList: [
+      {
         type: 'image' as const,
         url: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb',
       },
