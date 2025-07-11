@@ -3,7 +3,7 @@
 import ContentWithLabel from 'components/input/content-with-label';
 import { REVIEW_MEDIA_MAX_COUNT, REVIEW_MEDIA_TYPE } from 'constants/review';
 import { MediaType } from 'types/review';
-import { ChangeEvent } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
 import Image from 'next/image';
 import { ErrorNotice } from '@/components';
 import { SvgAdd, SvgClose } from '@/icons';
@@ -32,6 +32,8 @@ export default function MediaUpload({
   onChange,
   error,
 }: MediaUploadProps) {
+  const [objectUrls, setObjectUrls] = useState<string[]>([]);
+
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
     const selectedFile = e.target.files?.[0];
     if (selectedFile) {
@@ -64,6 +66,15 @@ export default function MediaUpload({
     }
   };
 
+  useEffect(() => {
+    const urls = files.map((file) => URL.createObjectURL(file));
+    setObjectUrls(urls);
+
+    return () => {
+      urls.forEach((url) => URL.revokeObjectURL(url));
+    };
+  }, [files]);
+
   return (
     <ContentWithLabel
       label="写真または動画をアップロードしてください"
@@ -72,22 +83,23 @@ export default function MediaUpload({
       <div className="flex flex-wrap gap-4">
         {files.map((file, index) => (
           <div key={index} className="relative h-32 w-32">
-            {getFileType(file) === REVIEW_MEDIA_TYPE.IMAGE ? (
-              <Image
-                src={URL.createObjectURL(file)}
-                alt={`${index} review image`}
-                className="h-full w-full rounded object-cover"
-                width={80}
-                height={80}
-              />
-            ) : (
-              <video
-                src={URL.createObjectURL(file)}
-                className="h-full w-full rounded object-cover"
-                controls={false}
-                muted
-              />
-            )}
+            {objectUrls[index] &&
+              (getFileType(file) === REVIEW_MEDIA_TYPE.IMAGE ? (
+                <Image
+                  src={objectUrls[index]}
+                  alt={`${index} review image`}
+                  className="h-full w-full rounded object-cover"
+                  width={80}
+                  height={80}
+                />
+              ) : (
+                <video
+                  src={objectUrls[index]}
+                  className="h-full w-full rounded object-cover"
+                  controls={false}
+                  muted
+                />
+              ))}
             <button
               onClick={() => removeFile(index)}
               className="absolute bottom-[0.4rem] right-[0.4rem] flex size-[1.8rem] items-center justify-center rounded-[0.2px] bg-black/30 p-[0.1rem]"
