@@ -6,14 +6,15 @@ import {
   mockVideoReviewSearchResponse,
 } from 'app/search/mockup';
 import { SEARCH_OPTION } from 'constants/option';
-import { CategoryKey, CategoryOptionEng } from 'types/category';
+import { CategoryNameEng, CategoryOptionEng } from 'types/category';
 import { SearchOption } from 'types/option';
-import { Suspense, useState } from 'react';
-import { useSearchParams } from 'next/navigation';
+import { isValidCategoryKey, isValidCategoryOption } from 'utils/category';
+import { Suspense, useMemo, useEffect, useState } from 'react';
+import { useSearchParams, useRouter } from 'next/navigation';
 import OptionSelector from './components/option-selector';
-import RenderBreadCrumb from './components/search-bread-crumb-section';
-import RenderProducts from './components/search-products-section';
-import RenderReviews from './components/search-reviews-section';
+import SearchBreadCrumbSection from './components/search-bread-crumb-section';
+import SearchProductsSection from './components/search-products-section';
+import SearchReviewSection from './components/search-reviews-section';
 
 export default function Page() {
   return (
@@ -25,29 +26,55 @@ export default function Page() {
 
 function PageContent() {
   const searchParams = useSearchParams();
+  const router = useRouter();
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
   const rawMiddle = searchParams.get('middleCategory') || '';
   const rawSub = searchParams.get('subCategory') || '';
+  const rawSearchType = searchParams.get('searchType') || '';
 
-  const middleCategory = rawMiddle as CategoryKey | '';
-  const subCategory = rawSub as CategoryOptionEng | '';
-  const [selectedTab, setSelectedTab] = useState<SearchOption>(
-    SEARCH_OPTION.PRODUCT
-  );
+  const middleCategory: CategoryNameEng | '' = isValidCategoryKey(rawMiddle)
+    ? rawMiddle
+    : '';
+  const subCategory: CategoryOptionEng | '' =
+    middleCategory && isValidCategoryOption(rawSub, middleCategory)
+      ? rawSub
+      : '';
+
+  const selectedTab: SearchOption = useMemo(() => {
+    if (rawSearchType === 'REVIEW') return SEARCH_OPTION.REVIEW;
+    return SEARCH_OPTION.PRODUCT;
+  }, [rawSearchType]);
 
   const productData = mockProductSearchResponse;
   const reviewVideoData = mockVideoReviewSearchResponse;
   const reviewImageData = mockImageReviewSearchResponse;
 
   const handleClickTab = (option: SearchOption) => {
-    setSelectedTab(option);
+    const params = new URLSearchParams(searchParams.toString());
+
+    if (option === SEARCH_OPTION.REVIEW) {
+      params.set('searchType', 'REVIEW');
+    } else {
+      params.set('searchType', 'PRODUCT');
+    }
+
+    router.push(`/search?${params.toString()}`);
   };
+
   const handleVideoButton = () => {};
   const handleImageButton = () => {};
 
   const tabRender = {
-    [SEARCH_OPTION.PRODUCT]: <RenderProducts products={productData.products} />,
+    [SEARCH_OPTION.PRODUCT]: (
+      <SearchProductsSection products={productData.products} />
+    ),
     [SEARCH_OPTION.REVIEW]: (
-      <RenderReviews
+      <SearchReviewSection
         reviewsVideo={reviewVideoData.reviews}
         reviewsImage={reviewImageData.reviews}
         handleVideoButton={handleVideoButton}
@@ -56,10 +83,14 @@ function PageContent() {
     ),
   }[selectedTab];
 
+  if (!isClient) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <div className="flex w-full flex-col items-start">
       <div className="flex flex-col items-start self-stretch"></div>
-      <RenderBreadCrumb
+      <SearchBreadCrumbSection
         middleCategory={middleCategory}
         subCategory={subCategory}
       />
