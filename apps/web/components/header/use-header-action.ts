@@ -1,10 +1,8 @@
 import { CategoryNameEng, CategoryOptionEng } from 'types/category';
 import { getAllCategoryMetadata } from 'utils/category';
 import { useMemo, useState } from 'react';
-import { useRouter } from 'next/navigation';
 
 export function useHeaderAction() {
-  const router = useRouter();
   const [selectedCategory, setSelectedCategory] =
     useState<CategoryNameEng | null>(null);
   const [selectedOption, setSelectedOption] =
