@@ -68,6 +68,7 @@ export default function MediaViewer({ mediaList }: MediaViewerProps) {
                   ref={videoRef}
                   src={media.url}
                   controls={false}
+                  muted
                   loop
                   playsInline
                   className="h-full w-full cursor-pointer object-cover"
