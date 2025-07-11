@@ -9,6 +9,7 @@
 export const FACIAL_CARE = {
   name: 'スキンケア',
   options: {
+    ALL: 'すべて',
     TONER: 'トナー',
     MOISTURIZER: 'モイスチャライザー',
     ESSENCE_SERUM: 'エッセンス / セラム',
@@ -19,6 +20,7 @@ export const FACIAL_CARE = {
 export const FACE_MAKEUP = {
   name: 'フェイス',
   options: {
+    ALL: 'すべて',
     FOUNDATION: 'ファンデーション',
     POWDER_COMPACT: 'パウダー / プレストパウダー',
     CONCEALER: 'コンシーラー',
@@ -29,6 +31,7 @@ export const FACE_MAKEUP = {
 export const EYE_MAKEUP = {
   name: 'アイ',
   options: {
+    ALL: 'すべて',
     EYEBROW: 'アイブロウ',
     EYESHADOW: 'アイシャドウ',
     EYELINER: 'アイライナー',
@@ -38,6 +41,7 @@ export const EYE_MAKEUP = {
 export const LIP_MAKEUP = {
   name: 'リップ',
   options: {
+    ALL: 'すべて',
     LIPSTICK: 'リップスティック',
     LIP_TINT: 'リップティント',
   },
