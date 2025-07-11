@@ -18,7 +18,7 @@ export default function MediaInfo({ user, date, likeCount }: MediaInfoProps) {
     <div className="absolute bottom-0 left-0 z-10 flex h-[16rem] w-full items-center justify-between rounded-bl-xl bg-gradient-to-t from-black/60 to-transparent p-[1.6rem]">
       <div className="mt-auto flex flex-col">
         <div className="mb-[1.2rem] flex flex-row items-center gap-[1.2rem]">
-          <Avatar src={user?.avatarUrl} width={90} />
+          <Avatar src={user?.avatarUrl} />
           <div className="en-body1 font-bold text-white">{user?.name}</div>
         </div>
         <div className="en-caption1 text-white">{date}</div>
