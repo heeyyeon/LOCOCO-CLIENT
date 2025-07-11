@@ -80,7 +80,7 @@ export default function ProductInfo({
                 <SvgLikeFill />
               ) : (
                 <SvgLikeOutline
-                  className={cn(isLiked ? 'text-pink-500' : 'text-white')}
+                  className={cn(isLiked ? 'text-pink-500' : 'text-gray-500')}
                 />
               )
             }

@@ -1,6 +1,5 @@
 'use client';
 
-import YoutubeCarousel from 'app/product-detail/components/youtube-carousel';
 import ProductDetailSection from './components/product-detail-section';
 import StarRating from './components/star-rating';
 
@@ -98,11 +97,12 @@ const data = {
 
 export default function Page() {
   return (
-    <div className="flex min-w-max justify-center">
-      <div className="relative flex w-[136.6rem] flex-col gap-[10rem] overflow-x-hidden pl-[11.9rem] pr-[11.9rem]">
+    <div className="flex w-[133.6rem] items-center">
+      <div className="flex w-full flex-col gap-[10rem] px-[11.9rem]">
         <ProductDetailSection {...data} />
-        <YoutubeCarousel />
+        {/* <YoutubeCarousel /> */}
         <StarRating />
+        {/* <Review /> */}
       </div>
     </div>
   );

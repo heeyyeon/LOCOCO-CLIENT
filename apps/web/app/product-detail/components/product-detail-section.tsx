@@ -43,8 +43,8 @@ export default function ProductDetailSection({
   subCategory,
 }: ProductDetailSectionProps) {
   return (
-    <div className="flex flex-col">
-      <div className="flex justify-center gap-[8.4rem] overflow-x-auto pb-[6rem] pt-[3.2rem]">
+    <div className="flex w-full flex-col">
+      <div className="flex justify-center gap-[8.4rem] pb-[6rem] pt-[3.2rem]">
         <ProductDetailMainCarousel imageUrlList={imageUrls} />
         <ProductInfo
           productId={productId}

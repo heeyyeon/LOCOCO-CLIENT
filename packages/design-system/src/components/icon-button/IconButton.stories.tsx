@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { SvgClose } from '../../icons/fill/components/Close';
-import { IconButton } from './IconButton';
+import IconButton from './IconButton';
 
 const meta: Meta<typeof IconButton> = {
   title: 'Components/IconButton',
