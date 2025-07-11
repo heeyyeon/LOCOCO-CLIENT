@@ -46,6 +46,8 @@ export default function MediaViewer({ mediaList }: MediaViewerProps) {
 
   const isImageType = mediaList.every((m) => m.type === 'image');
   const images = isImageType ? mediaList.slice(0, 5) : [];
+  const navigationButtonClass =
+    'border-1 size-[3.2rem] -rotate-90 border-gray-200 bg-white';
 
   return (
     <div className="relative flex h-full w-full overflow-hidden rounded-l-xl bg-black">
@@ -85,23 +87,19 @@ export default function MediaViewer({ mediaList }: MediaViewerProps) {
                   ) : null}
                 </div>
 
-                <div className="absolute bottom-2 left-4 right-4 cursor-pointer">
-                  <Progress
-                    value={progress}
-                    height="0.25rem"
-                    className="bg-gray-600"
-                  />
-                </div>
-              </div>
-            ) : (
-              <div className="relative h-full w-full">
-                <Image
-                  src={media.url}
-                  alt="리뷰 이미지"
-                  fill
-                  className="object-cover"
+                <Progress
+                  value={progress}
+                  height="0.25rem"
+                  className="absolute bottom-2 left-4 right-4 bg-gray-600"
                 />
               </div>
+            ) : (
+              <Image
+                src={media.url}
+                alt="리뷰 이미지"
+                fill
+                className="relative h-full w-full object-cover"
+              />
             )}
           </SwiperSlide>
         ))}
@@ -115,7 +113,7 @@ export default function MediaViewer({ mediaList }: MediaViewerProps) {
             color="secondary"
             aria-label="이전 이미지"
             onClick={() => swiperRef.current?.slidePrev()}
-            className="border-1 size-[3.2rem] -rotate-90 border-gray-200 bg-white"
+            className={navigationButtonClass}
           />
         </div>
       )}
@@ -128,7 +126,7 @@ export default function MediaViewer({ mediaList }: MediaViewerProps) {
             color="secondary"
             aria-label="다음 이미지"
             onClick={() => swiperRef.current?.slideNext()}
-            className="border-1 size-[3.2rem] -rotate-90 border-gray-200 bg-white"
+            className={navigationButtonClass}
           />
         </div>
       )}
