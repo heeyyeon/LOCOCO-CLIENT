@@ -10,7 +10,6 @@ import IconButton from '@/components/icon-button';
 import { SvgArrowUp, SvgArrowDown } from '@/icons';
 
 type Media = { type: 'video' | 'image'; url: string };
-
 interface MediaViewerProps {
   mediaList: Media[];
 }
@@ -114,10 +113,9 @@ export default function MediaViewer({ mediaList }: MediaViewerProps) {
             icon={SvgArrowUp}
             rounded
             color="secondary"
-            size="lg"
             aria-label="이전 이미지"
             onClick={() => swiperRef.current?.slidePrev()}
-            className="border-1 -rotate-90 border-gray-200 bg-white"
+            className="border-1 size-[3.2rem] -rotate-90 border-gray-200 bg-white"
           />
         </div>
       )}
@@ -128,10 +126,9 @@ export default function MediaViewer({ mediaList }: MediaViewerProps) {
             icon={SvgArrowDown}
             rounded
             color="secondary"
-            size="lg"
             aria-label="다음 이미지"
             onClick={() => swiperRef.current?.slideNext()}
-            className="border-1 -rotate-90 border-gray-200 bg-white"
+            className="border-1 size-[3.2rem] -rotate-90 border-gray-200 bg-white"
           />
         </div>
       )}
