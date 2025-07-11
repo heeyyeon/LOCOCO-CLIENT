@@ -1,5 +1,6 @@
 'use client';
 
+import type { Swiper as SwiperType } from 'swiper';
 import 'swiper/css';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { useRef, useState, useEffect } from 'react';
@@ -22,7 +23,7 @@ export default function MediaViewer({ mediaList }: MediaViewerProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [progress, setProgress] = useState(0);
   const [overlay, setOverlay] = useState<null | 'play' | 'pause'>(null);
-  const swiperRef = useRef<any>(null);
+  const swiperRef = useRef<SwiperType | null>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
 
   // 비디오 이벤트 리스너 등록
