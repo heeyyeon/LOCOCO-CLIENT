@@ -1,26 +1,20 @@
-import { CATEGORY_OPTIONS, CATEGORY_NAME } from 'constants/category';
-import { CategoryKey, CategoryName, CategoryOptionEng } from 'types/category';
+import { CATEGORY_NAME } from 'constants/category';
+import { CategoryNameEng, CategoryOptionEng } from 'types/category';
+import { getAllCategoryMetadata } from 'utils/category';
 import { useMemo, useState } from 'react';
 
 export function useHeaderAction() {
-  const [selectedCategory, setSelectedCategory] = useState<CategoryName | null>(
-    null
-  );
+  const [selectedCategory, setSelectedCategory] =
+    useState<CategoryNameEng | null>(null);
   const [selectedOption, setSelectedOption] =
     useState<CategoryOptionEng | null>(null);
   const [isSearching, setIsSearching] = useState(false);
   const [searchValue, setSearchValue] = useState('');
 
-  const categories = useMemo(() => {
-    return (Object.keys(CATEGORY_OPTIONS) as CategoryKey[]).map((key) => ({
-      key,
-      name: CATEGORY_NAME[key],
-      options: Object.keys(CATEGORY_OPTIONS[key]) as CategoryOptionEng[],
-    }));
-  }, []);
+  const categories = useMemo(() => getAllCategoryMetadata(), []);
 
-  const handleSelectCategory = (key: CategoryKey) => {
-    setSelectedCategory(CATEGORY_NAME[key]);
+  const handleSelectCategory = (category: CategoryNameEng) => {
+    setSelectedCategory(category);
     setSelectedOption(null);
     setIsSearching(false);
   };
@@ -40,7 +34,7 @@ export function useHeaderAction() {
   };
 
   const activeMenu = useMemo(
-    () => categories.find((category) => category.name === selectedCategory),
+    () => categories.find((category) => category.key === selectedCategory),
     [categories, selectedCategory]
   );
 

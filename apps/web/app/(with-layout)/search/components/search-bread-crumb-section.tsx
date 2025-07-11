@@ -1,4 +1,5 @@
-import { CategoryKey, CategoryOptionEng } from 'types/category';
+import { CATEGORY_NAME, CATEGORY_OPTIONS } from 'constants/category';
+import { CategoryNameEng, CategoryOptionEng } from 'types/category';
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -8,7 +9,7 @@ import {
 import { SvgHomeFill } from '@/icons';
 
 type RenderBreadCrumbProps = {
-  middleCategory: CategoryKey | '';
+  middleCategory: CategoryNameEng | '';
   subCategory: CategoryOptionEng | '';
 };
 
@@ -16,6 +17,18 @@ export default function SearchBreadCrumbSection({
   middleCategory,
   subCategory,
 }: RenderBreadCrumbProps) {
+  const getCategoryName = (categoryKey: CategoryNameEng) => {
+    return CATEGORY_NAME[categoryKey];
+  };
+
+  const getSubCategoryName = (
+    categoryKey: CategoryNameEng,
+    subCategoryKey: CategoryOptionEng
+  ) => {
+    const options = CATEGORY_OPTIONS[categoryKey];
+    return options[subCategoryKey as keyof typeof options];
+  };
+
   return (
     <>
       {middleCategory && (
@@ -26,14 +39,14 @@ export default function SearchBreadCrumbSection({
             </BreadcrumbItem>
             <BreadcrumbSeparator />
             <BreadcrumbItem className="flex h-[3.2rem] items-center justify-center gap-[1rem] px-[1.6rem] py-[1rem]">
-              {middleCategory}
+              {getCategoryName(middleCategory)}
             </BreadcrumbItem>
 
             {subCategory && (
               <>
                 <BreadcrumbSeparator />
                 <BreadcrumbItem className="flex h-[3.2rem] items-center justify-center gap-[1rem] px-[1.6rem] py-[1rem]">
-                  {subCategory}
+                  {getSubCategoryName(middleCategory, subCategory)}
                 </BreadcrumbItem>
               </>
             )}

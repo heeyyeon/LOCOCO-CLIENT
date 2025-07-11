@@ -1,5 +1,9 @@
-import type { CategoryName, CategoryOptionEng } from 'types/category';
-import { getOptionLabel } from 'utils/get-option-label';
+import type {
+  CategoryName,
+  CategoryOptionEng,
+  CategoryNameEng,
+} from 'types/category';
+import { CategoryMetadata, getOptionLabel } from 'utils/category';
 import Link from 'next/link';
 import {
   SvgClose,
@@ -13,13 +17,6 @@ import {
 } from '@lococo/design-system';
 import Input from '@lococo/design-system/components/input/Input';
 import { cn } from '@/lib/utils';
-import { CategoryKey } from '../../types/category';
-
-type Menu = {
-  key: CategoryKey;
-  name: CategoryName;
-  options: CategoryOptionEng[];
-};
 
 interface TopUtilItemProps {
   icon: React.ReactNode;
@@ -27,17 +24,17 @@ interface TopUtilItemProps {
   onClick?: () => void;
 }
 
-interface CategoryBar {
-  categories: Menu[];
-  selectedCategory: CategoryName | null;
-  handleSelectCategory: (key: CategoryKey) => void;
+interface CategoryBarProps {
+  categories: CategoryMetadata[];
+  selectedCategory: CategoryNameEng | null;
+  handleSelectCategory: (key: CategoryNameEng) => void;
   handleOpenSearchBar: () => void;
   isSearching: boolean;
 }
 
 interface OptionBarProps {
   options: CategoryOptionEng[];
-  selectedCategoryKey: CategoryKey;
+  selectedCategoryKey: CategoryNameEng;
   selectedOption: CategoryOptionEng | null;
   handleSelectOption: (option: CategoryOptionEng) => void;
 }
@@ -92,7 +89,7 @@ export function CategoryBar({
   handleSelectCategory,
   handleOpenSearchBar,
   isSearching,
-}: GnbProps) {
+}: CategoryBarProps) {
   return (
     <div
       className={cn(
@@ -105,10 +102,10 @@ export function CategoryBar({
       <SvgLogo className="h-[2.7rem] w-[16rem] shrink-0" />
       <div className="flex h-[6rem] flex-grow items-center">
         {categories.map(({ key, name }) => {
-          const isActive = name === selectedCategory;
+          const isActive = key === selectedCategory;
           return (
             <Link
-              href={`/search?middleCategory=${key}`}
+              href={`/search?middleCategory=${key}&searchType=PRODUCT`}
               key={key}
               className="h-[6rem] w-[13.6rem] shrink-0 cursor-pointer"
               onMouseEnter={() => handleSelectCategory(key)}
@@ -154,7 +151,7 @@ export function OptionBar({
             className="flex h-[3.2rem] items-center justify-center gap-[1rem]"
           >
             <Link
-              href={`/search?middleCategory=${selectedCategoryKey}&subCategory=${option}`}
+              href={`/search?middleCategory=${selectedCategoryKey}&subCategory=${option}&searchType=PRODUCT`}
               className={cn(
                 'jp-body2 cursor-pointer whitespace-nowrap px-[2.4rem] py-[1rem]',
                 isActive ? 'font-bold text-pink-500' : 'text-gray-600'
