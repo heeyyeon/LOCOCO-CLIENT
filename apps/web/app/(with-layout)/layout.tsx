@@ -8,9 +8,15 @@ export default function WithLayoutLayout({
 }) {
   return (
     <div className="flex flex-col">
-      <Header />
-      {children}
-      <Footer />
+      <div className="w-screen">
+        <Header />
+      </div>
+      <div className="flex w-full justify-center">
+        <div className="w-full max-w-[112.8rem]">{children}</div>
+      </div>
+      <div className="w-screen">
+        <Footer />
+      </div>
     </div>
   );
 }
