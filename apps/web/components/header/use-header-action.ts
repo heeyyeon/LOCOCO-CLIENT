@@ -18,13 +18,18 @@ export function useHeaderAction() {
     setIsSearching(false);
   };
 
+  const handleMouseLeaveCategory = () => {
+    setSelectedCategory(null);
+    setSelectedOption(null);
+  };
+
   const handleSelectOption = (option: CategoryOptionEng) => {
     setSelectedOption(option);
   };
 
   const handleOpenSearchBar = () => {
     setIsSearching(!isSearching);
-    // SearchBar가 펴질 때 카테고리 선택 초기화
+
     if (!isSearching) {
       setSelectedCategory(null);
       setSelectedOption(null);
@@ -36,16 +41,15 @@ export function useHeaderAction() {
   };
 
   const handleSearchIconClick = () => {
-    // 검색 아이콘 클릭 시 검색 페이지로 이동 (Link 태그로 처리되므로 여기서는 로그만)
     if (searchValue.trim()) {
       console.log('검색 페이지로 이동:', searchValue);
-      // 검색 후 검색바 닫기
       setIsSearching(false);
     }
   };
 
   const activeMenu = useMemo(
-    () => categories.find((category) => category.key === selectedCategory),
+    () =>
+      categories.find((category) => category.key === selectedCategory) || null,
     [categories, selectedCategory]
   );
 
@@ -57,6 +61,7 @@ export function useHeaderAction() {
     searchValue,
     activeMenu,
     handleSelectCategory,
+    handleMouseLeaveCategory,
     handleSelectOption,
     handleOpenSearchBar,
     handleChangeSearchValue,
