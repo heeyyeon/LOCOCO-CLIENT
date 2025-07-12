@@ -6,7 +6,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { useRef, useState, useEffect } from 'react';
 import Image from 'next/image';
 import { Progress, SvgPlayArrow, SvgPause } from '@lococo/design-system';
-import IconButton from '@/components/icon-button';
+import { IconButton } from '@lococo/design-system';
 import { SvgArrowUp, SvgArrowDown } from '@/icons';
 
 type Media = { type: 'video' | 'image'; url: string };
@@ -108,7 +108,7 @@ export default function MediaViewer({ mediaList }: MediaViewerProps) {
       {isImageType && images.length > 1 && currentIndex > 0 && (
         <div className="absolute left-[1.2rem] top-1/2 z-20 -translate-y-1/2">
           <IconButton
-            icon={SvgArrowUp}
+            icon={<SvgArrowUp />}
             rounded
             color="secondary"
             aria-label="이전 이미지"
@@ -121,7 +121,7 @@ export default function MediaViewer({ mediaList }: MediaViewerProps) {
       {isImageType && images.length > 1 && currentIndex < images.length - 1 && (
         <div className="absolute right-[1.2rem] top-1/2 z-20 -translate-y-1/2">
           <IconButton
-            icon={SvgArrowDown}
+            icon={<SvgArrowDown />}
             rounded
             color="secondary"
             aria-label="다음 이미지"
