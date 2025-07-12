@@ -1,16 +1,19 @@
 'use client';
 
-import {
-  mockImageReviewSearchResponse,
-  mockProductSearchResponse,
-  mockVideoReviewSearchResponse,
-} from 'app/search/mockup';
 import { SEARCH_OPTION } from 'constants/option';
 import { CategoryNameEng, CategoryOptionEng } from 'types/category';
 import { SearchOption } from 'types/option';
 import { isValidCategoryKey, isValidCategoryOption } from 'utils/category';
 import { Suspense, useMemo, useEffect, useState } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
+import {
+  useProductSearch,
+  useReviewVideoSearch,
+  useReviewImageSearch,
+  useCategoryProductSearch,
+  useCategoryReviewVideoSearch,
+  useCategoryReviewImageSearch,
+} from '../../../hooks/use-product-api';
 import OptionSelector from './components/option-selector';
 import SearchBreadCrumbSection from './components/search-bread-crumb-section';
 import SearchProductsSection from './components/search-products-section';
@@ -45,14 +48,75 @@ function PageContent() {
       ? rawSub
       : '';
 
+  const keyword = searchParams.get('keyword') || '';
+
   const selectedTab: SearchOption = useMemo(() => {
     if (rawSearchType === 'REVIEW') return SEARCH_OPTION.REVIEW;
     return SEARCH_OPTION.PRODUCT;
   }, [rawSearchType]);
 
-  const productData = mockProductSearchResponse;
-  const reviewVideoData = mockVideoReviewSearchResponse;
-  const reviewImageData = mockImageReviewSearchResponse;
+  // 검색바로 검색한 경우
+  const productSearchQuery = useProductSearch(
+    keyword,
+    0,
+    10,
+    !!keyword && selectedTab === SEARCH_OPTION.PRODUCT
+  );
+  const reviewVideoSearchQuery = useReviewVideoSearch(
+    keyword,
+    0,
+    10,
+    !!keyword && selectedTab === SEARCH_OPTION.REVIEW
+  );
+  const reviewImageSearchQuery = useReviewImageSearch(
+    keyword,
+    0,
+    10,
+    !!keyword && selectedTab === SEARCH_OPTION.REVIEW
+  );
+
+  // 카테고리로 검색한 경우
+  const categoryProductQuery = useCategoryProductSearch(
+    middleCategory,
+    subCategory,
+    0,
+    10,
+    !!middleCategory && selectedTab === SEARCH_OPTION.PRODUCT
+  );
+  const categoryReviewVideoQuery = useCategoryReviewVideoSearch(
+    middleCategory,
+    subCategory,
+    0,
+    10,
+    !!middleCategory && selectedTab === SEARCH_OPTION.REVIEW
+  );
+  const categoryReviewImageQuery = useCategoryReviewImageSearch(
+    middleCategory,
+    subCategory,
+    0,
+    10,
+    !!middleCategory && selectedTab === SEARCH_OPTION.REVIEW
+  );
+
+  const productData = keyword
+    ? productSearchQuery.data?.data
+    : categoryProductQuery.data?.data;
+  const reviewVideoData = keyword
+    ? reviewVideoSearchQuery.data?.data
+    : categoryReviewVideoQuery.data?.data;
+  const reviewImageData = keyword
+    ? reviewImageSearchQuery.data?.data
+    : categoryReviewImageQuery.data?.data;
+
+  const isLoading =
+    (keyword &&
+      (productSearchQuery.isLoading ||
+        reviewVideoSearchQuery.isLoading ||
+        reviewImageSearchQuery.isLoading)) ||
+    (!keyword &&
+      (categoryProductQuery.isLoading ||
+        categoryReviewVideoQuery.isLoading ||
+        categoryReviewImageQuery.isLoading));
 
   const handleClickTab = (option: SearchOption) => {
     const params = new URLSearchParams(searchParams.toString());
@@ -71,12 +135,12 @@ function PageContent() {
 
   const tabRender = {
     [SEARCH_OPTION.PRODUCT]: (
-      <SearchProductsSection products={productData.products} />
+      <SearchProductsSection products={(productData as any)?.products || []} />
     ),
     [SEARCH_OPTION.REVIEW]: (
       <SearchReviewSection
-        reviewsVideo={reviewVideoData.reviews}
-        reviewsImage={reviewImageData.reviews}
+        reviewsVideo={(reviewVideoData as any)?.reviews || []}
+        reviewsImage={(reviewImageData as any)?.reviews || []}
         handleVideoButton={handleVideoButton}
         handleImageButton={handleImageButton}
       />
@@ -85,6 +149,10 @@ function PageContent() {
 
   if (!isClient) {
     return <div>Loading...</div>;
+  }
+
+  if (isLoading) {
+    return <div>데이터를 불러오는 중...</div>;
   }
 
   return (
