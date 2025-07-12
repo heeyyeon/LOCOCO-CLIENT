@@ -49,7 +49,7 @@ export default function WriteReviewModal() {
       <Modal.Header className="sticky top-0 flex justify-between">
         <h2 className="jp-body1 font-bold text-gray-800">レビューを書く</h2>
         <IconButton
-          icon={SvgClose}
+          icon={<SvgClose />}
           size="sm"
           color="secondary"
           onClick={handleClose}
