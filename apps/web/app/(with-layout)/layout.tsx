@@ -7,10 +7,10 @@ export default function WithLayoutLayout({
   children: React.ReactNode;
 }) {
   return (
-    <>
+    <div className="flex flex-col">
       <Header />
       {children}
       <Footer />
-    </>
+    </div>
   );
 }

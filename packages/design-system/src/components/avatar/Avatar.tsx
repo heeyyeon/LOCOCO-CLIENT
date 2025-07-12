@@ -4,7 +4,7 @@ import { SvgAvatar } from '../../icons/fill/components/Avatar';
 export default function Avatar({ src, ...props }: ComponentProps<'img'>) {
   return src ? (
     <img
-      className="aspect-square h-[2.75rem] w-[2.75rem] rounded-[0.55rem] object-cover"
+      className="aspect-square h-[4.4rem] w-[4.4rem] rounded-[0.55rem] object-cover"
       src={src}
       alt="profile image"
       aria-label="profile image"
@@ -12,7 +12,7 @@ export default function Avatar({ src, ...props }: ComponentProps<'img'>) {
     />
   ) : (
     <SvgAvatar
-      className="aspect-square h-[2.75rem] w-[2.75rem]"
+      className="aspect-square h-[4.4rem] w-[4.4rem]"
       aria-label="default profile icon"
     />
   );
