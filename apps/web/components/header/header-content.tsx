@@ -99,7 +99,7 @@ export function CategoryBar({
   return (
     <div
       className={cn(
-        'relative w-full',
+        'relative',
         selectedCategory || isSearching
           ? 'border-b border-dashed border-pink-500'
           : 'border-b-[0.1rem] border-gray-500'
@@ -107,7 +107,10 @@ export function CategoryBar({
       onMouseLeave={handleMouseLeaveCategory}
     >
       <div className="mx-auto flex h-[6.4rem] w-full items-center gap-[2rem] px-[11.9rem]">
-        <SvgLogo className="h-[2.7rem] w-[16rem] shrink-0" />
+        <Link href="/">
+          <SvgLogo className="h-[2.7rem] w-[16rem] shrink-0" />
+        </Link>
+
         <div className="flex h-[6rem] flex-grow items-center">
           {categories.map(({ key, name }) => {
             const isActive = key === selectedCategory;
