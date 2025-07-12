@@ -26,6 +26,10 @@ interface CategoryBarProps {
   handleSelectCategory: (key: CategoryNameEng) => void;
   handleOpenSearchBar: () => void;
   isSearching: boolean;
+  handleMouseLeaveCategory: () => void;
+  activeMenu: CategoryMetadata | null;
+  selectedOption: CategoryOptionEng | null;
+  handleSelectOption: (option: CategoryOptionEng) => void;
 }
 
 interface OptionBarProps {
@@ -33,6 +37,7 @@ interface OptionBarProps {
   selectedCategoryKey: CategoryNameEng;
   selectedOption: CategoryOptionEng | null;
   handleSelectOption: (option: CategoryOptionEng) => void;
+  handleMouseLeaveCategory: () => void;
 }
 
 interface SearchBarProps {
@@ -86,46 +91,63 @@ export function CategoryBar({
   handleSelectCategory,
   handleOpenSearchBar,
   isSearching,
+  handleMouseLeaveCategory,
+  activeMenu,
+  selectedOption,
+  handleSelectOption,
 }: CategoryBarProps) {
   return (
-    <div
-      className={cn(
-        'flex h-[6.4rem] items-center gap-[2rem] px-[11.9rem]',
-        selectedCategory || isSearching
-          ? 'border-b border-dashed border-pink-500'
-          : 'border-b-[0.1rem] border-gray-500'
-      )}
-    >
-      <SvgLogo className="h-[2.7rem] w-[16rem] shrink-0" />
-      <div className="flex h-[6rem] flex-grow items-center">
-        {categories.map(({ key, name }) => {
-          const isActive = key === selectedCategory;
-          return (
-            <Link
-              href={`/search?middleCategory=${key}&searchType=PRODUCT`}
-              key={key}
-              className="h-[6rem] w-[13.6rem] shrink-0 cursor-pointer"
-              onMouseEnter={() => handleSelectCategory(key)}
-              onClick={() => handleSelectCategory(key)}
-            >
-              <p
-                className={cn(
-                  'jp-title2 flex h-full items-center gap-[1rem] whitespace-nowrap px-[3.2rem] pb-[1rem] pt-[1rem] font-bold',
-                  isActive ? 'text-pink-500' : 'text-gray-800'
-                )}
-              >
-                {name}
-              </p>
-            </Link>
-          );
-        })}
-      </div>
+    <div className="relative" onMouseLeave={handleMouseLeaveCategory}>
       <div
-        className="flex h-[6.4rem] w-[6.4rem] shrink-0 cursor-pointer items-center justify-center p-[1.4rem]"
-        onClick={handleOpenSearchBar}
+        className={cn(
+          'flex h-[6.4rem] items-center gap-[2rem] px-[11.9rem]',
+          selectedCategory || isSearching
+            ? 'border-b border-dashed border-pink-500'
+            : 'border-b-[0.1rem] border-gray-500'
+        )}
       >
-        {isSearching ? <SvgClose /> : <SvgSearch />}
+        <SvgLogo className="h-[2.7rem] w-[16rem] shrink-0" />
+        <div className="flex h-[6rem] flex-grow items-center">
+          {categories.map(({ key, name }) => {
+            const isActive = key === selectedCategory;
+            return (
+              <Link
+                href={`/search?middleCategory=${key}&searchType=PRODUCT`}
+                key={key}
+                className="h-[6rem] w-[13.6rem] shrink-0 cursor-pointer"
+                onMouseEnter={() => handleSelectCategory(key)}
+                onClick={() => handleSelectCategory(key)}
+              >
+                <p
+                  className={cn(
+                    'jp-title2 flex h-full items-center gap-[1rem] whitespace-nowrap px-[3.2rem] pb-[1rem] pt-[1rem] font-bold',
+                    isActive ? 'text-pink-500' : 'text-gray-800'
+                  )}
+                >
+                  {name}
+                </p>
+              </Link>
+            );
+          })}
+        </div>
+        <div
+          className="flex h-[6.4rem] w-[6.4rem] shrink-0 cursor-pointer items-center justify-center p-[1.4rem]"
+          onClick={handleOpenSearchBar}
+        >
+          {isSearching ? <SvgClose /> : <SvgSearch />}
+        </div>
       </div>
+      {!isSearching && activeMenu && (
+        <div className="absolute left-0 right-0 top-full z-50">
+          <OptionBar
+            options={activeMenu.options}
+            selectedCategoryKey={activeMenu.key}
+            selectedOption={selectedOption}
+            handleSelectOption={handleSelectOption}
+            handleMouseLeaveCategory={handleMouseLeaveCategory}
+          />
+        </div>
+      )}
     </div>
   );
 }
@@ -135,6 +157,7 @@ export function OptionBar({
   selectedOption,
   selectedCategoryKey,
   handleSelectOption,
+  handleMouseLeaveCategory,
 }: OptionBarProps) {
   return (
     <div className="flex h-[5.2rem] w-full items-center border-b-[0.1rem] border-pink-500 bg-white px-[9.5rem]">

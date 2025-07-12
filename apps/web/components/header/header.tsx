@@ -14,6 +14,7 @@ export default function Header() {
     handleSelectCategory,
     handleSelectOption,
     handleOpenSearchBar,
+    handleMouseLeaveCategory,
     handleChangeSearchValue,
     handleSearchIconClick,
   } = useHeaderAction();
@@ -27,15 +28,11 @@ export default function Header() {
         handleSelectCategory={handleSelectCategory}
         handleOpenSearchBar={handleOpenSearchBar}
         isSearching={isSearching}
+        handleMouseLeaveCategory={handleMouseLeaveCategory}
+        activeMenu={activeMenu}
+        selectedOption={selectedOption}
+        handleSelectOption={handleSelectOption}
       />
-      {!isSearching && activeMenu && (
-        <OptionBar
-          options={activeMenu.options}
-          selectedCategoryKey={activeMenu.key}
-          selectedOption={selectedOption}
-          handleSelectOption={handleSelectOption}
-        />
-      )}
       {isSearching && (
         <SearchBar
           searchValue={searchValue}
