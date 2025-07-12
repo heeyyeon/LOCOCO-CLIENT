@@ -184,7 +184,7 @@ export function OptionBar({
             >
               {label}
             </Link>
-            {!isLast && <SvgDivider />}
+            {!isLast && <SvgDivider className="h-[1.2rem] w-[0.1rem]" />}
           </div>
         );
       })}
