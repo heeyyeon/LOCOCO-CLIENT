@@ -138,21 +138,21 @@ export interface ProductDetailResponse {
   ingredients?: string;
   oliveYoungUrl?: string;
   q10Url?: string;
-  middleCategory?: "FACIAL_CARE" | "FACE_MAKEUP" | "EYE_MAKEUP" | "LIP_MAKEUP";
+  middleCategory?: 'FACIAL_CARE' | 'FACE_MAKEUP' | 'EYE_MAKEUP' | 'LIP_MAKEUP';
   subCategory?:
-    | "TONER"
-    | "MOISTURIZER"
-    | "ESSENCE_SERUM"
-    | "CREAM"
-    | "FOUNDATION"
-    | "POWDER_COMPACT"
-    | "CONCEALER"
-    | "BLUSHER"
-    | "EYEBROW"
-    | "EYESHADOW"
-    | "EYELINER"
-    | "LIPSTICK"
-    | "LIP_TINT";
+    | 'TONER'
+    | 'MOISTURIZER'
+    | 'ESSENCE_SERUM'
+    | 'CREAM'
+    | 'FOUNDATION'
+    | 'POWDER_COMPACT'
+    | 'CONCEALER'
+    | 'BLUSHER'
+    | 'EYEBROW'
+    | 'EYESHADOW'
+    | 'EYELINER'
+    | 'LIPSTICK'
+    | 'LIP_TINT';
 }
 
 export interface ProductOptionResponse {
@@ -248,5 +248,5 @@ export interface ApiResponseLineLoginResponse {
 export interface LineLoginResponse {
   accessToken?: string;
   refreshToken?: string;
-  loginStatus?: "LOGIN" | "REGISTER";
+  loginStatus?: 'LOGIN' | 'REGISTER';
 }
