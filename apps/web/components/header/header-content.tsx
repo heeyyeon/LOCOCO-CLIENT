@@ -53,7 +53,7 @@ export function TopUtilItem({ icon, label, onClick }: TopUtilItemProps) {
       className="flex h-[3.2rem] cursor-pointer items-center justify-center gap-[0.8rem] whitespace-nowrap px-[1.6rem] py-[1rem]"
     >
       {icon}
-      <p>{label}</p>
+      <p className="jp-body2 text-gray-600">{label}</p>
     </button>
   );
 }
@@ -62,22 +62,22 @@ export function TopUtil() {
   return (
     <div className="flex items-center justify-end self-stretch px-[11.9rem] py-[2rem]">
       <TopUtilItem
-        icon={<SvgMy className="text-gray-600" />}
+        icon={<SvgMy className="text-gray-600" size={16} />}
         label="マイページ"
         onClick={() => console.log('마이페이지 클릭')}
       />
       <TopUtilItem
-        icon={<SvgLikeFill className="text-gray-600" />}
+        icon={<SvgLikeFill className="text-gray-600" size={16} />}
         label="お気に入り"
         onClick={() => console.log('좋아요 클릭')}
       />
       <TopUtilItem
-        icon={<SvgHistory className="text-gray-600" />}
+        icon={<SvgHistory className="text-gray-600" size={16} />}
         label="最近見た商品"
         onClick={() => console.log('내역 클릭')}
       />
       <TopUtilItem
-        icon={<SvgLogin className="text-gray-600" />}
+        icon={<SvgLogin className="text-gray-600" size={16} />}
         label="ログイン"
         onClick={() => console.log('로그인 클릭')}
       />
@@ -200,7 +200,7 @@ export function SearchBar({
         value={searchValue}
         onChange={(e) => handleChangeSearchValue(e.target.value)}
         placeholder="ラネージュ"
-        className="jp-body2 w-full text-right font-bold leading-[3rem] text-gray-800"
+        className="jp-title2 w-full text-right font-bold leading-[3rem] text-gray-800"
       />
       {searchValue.trim() ? (
         <Link
