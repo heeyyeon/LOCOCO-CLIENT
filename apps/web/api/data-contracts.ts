@@ -138,21 +138,21 @@ export interface ProductDetailResponse {
   ingredients?: string;
   oliveYoungUrl?: string;
   q10Url?: string;
-  middleCategory?: "FACIAL_CARE" | "FACE_MAKEUP" | "EYE_MAKEUP" | "LIP_MAKEUP";
+  middleCategory?: 'FACIAL_CARE' | 'FACE_MAKEUP' | 'EYE_MAKEUP' | 'LIP_MAKEUP';
   subCategory?:
-    | "TONER"
-    | "MOISTURIZER"
-    | "ESSENCE_SERUM"
-    | "CREAM"
-    | "FOUNDATION"
-    | "POWDER_COMPACT"
-    | "CONCEALER"
-    | "BLUSHER"
-    | "EYEBROW"
-    | "EYESHADOW"
-    | "EYELINER"
-    | "LIPSTICK"
-    | "LIP_TINT";
+    | 'TONER'
+    | 'MOISTURIZER'
+    | 'ESSENCE_SERUM'
+    | 'CREAM'
+    | 'FOUNDATION'
+    | 'POWDER_COMPACT'
+    | 'CONCEALER'
+    | 'BLUSHER'
+    | 'EYEBROW'
+    | 'EYESHADOW'
+    | 'EYELINER'
+    | 'LIPSTICK'
+    | 'LIP_TINT';
 }
 
 export interface ProductOptionResponse {
@@ -211,6 +211,75 @@ export interface ProductResponse {
   isLiked?: boolean;
 }
 
+export interface ApiResponseProductDetailResponse {
+  success?: boolean;
+  /** @format int32 */
+  status?: number;
+  message?: string;
+  data?: ProductDetailResponse;
+}
+
+export interface ProductDetailResponse {
+  products?: ProductResponse[];
+  productOptions?: string[];
+  /** @format int64 */
+  normalPrice?: number;
+  productDetail?: string;
+  ingredients?: string;
+  shippingInfo?: string;
+  oliveYoungUrl?: string;
+  q10Url?: string;
+  middleCategory?: 'FACIAL_CARE' | 'FACE_MAKEUP' | 'EYE_MAKEUP' | 'LIP_MAKEUP';
+  subCategory?:
+    | 'TONER'
+    | 'MOISTURIZER'
+    | 'ESSENCE_SERUM'
+    | 'CREAM'
+    | 'FOUNDATION'
+    | 'POWDER_COMPACT'
+    | 'CONCEALER'
+    | 'BLUSHER'
+    | 'EYEBROW'
+    | 'EYESHADOW'
+    | 'EYELINER'
+    | 'LIPSTICK'
+    | 'LIP_TINT';
+}
+
+export interface ApiResponseProductDetailYoutubeResponse {
+  success?: boolean;
+  /** @format int32 */
+  status?: number;
+  message?: string;
+  data?: ProductDetailYoutubeResponse;
+}
+
+export interface ProductDetailYoutubeResponse {
+  youtubeUrls?: string[];
+}
+
+export interface ApiResponseObject {
+  success?: boolean;
+  /** @format int32 */
+  status?: number;
+  message?: string;
+  data?: any;
+}
+
+export interface ApiResponseCategoryPopularProductResponse {
+  success?: boolean;
+  /** @format int32 */
+  status?: number;
+  message?: string;
+  data?: CategoryPopularProductResponse;
+}
+
+export interface CategoryPopularProductResponse {
+  searchQuery?: string;
+  products?: ProductResponse[];
+  pageInfo?: PageableResponse;
+}
+
 export interface ApiResponseCategoryNewProductResponse {
   success?: boolean;
   /** @format int32 */
@@ -248,5 +317,5 @@ export interface ApiResponseLineLoginResponse {
 export interface LineLoginResponse {
   accessToken?: string;
   refreshToken?: string;
-  loginStatus?: "LOGIN" | "REGISTER";
+  loginStatus?: 'LOGIN' | 'REGISTER';
 }
