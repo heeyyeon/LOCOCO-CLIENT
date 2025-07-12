@@ -1,6 +1,6 @@
 'use client';
 
-import { CategoryBar, OptionBar, SearchBar, TopUtil } from './header-content';
+import { CategoryBar, SearchBar, TopUtil } from './header-content';
 import { useHeaderAction } from './use-header-action';
 
 export default function Header() {
@@ -21,24 +21,30 @@ export default function Header() {
 
   return (
     <div className="z-55 sticky top-0 flex w-full flex-col bg-white">
-      <TopUtil />
-      <CategoryBar
-        categories={categories}
-        selectedCategory={selectedCategory}
-        handleSelectCategory={handleSelectCategory}
-        handleOpenSearchBar={handleOpenSearchBar}
-        isSearching={isSearching}
-        handleMouseLeaveCategory={handleMouseLeaveCategory}
-        activeMenu={activeMenu}
-        selectedOption={selectedOption}
-        handleSelectOption={handleSelectOption}
-      />
-      {isSearching && (
-        <SearchBar
-          searchValue={searchValue}
-          handleChangeSearchValue={handleChangeSearchValue}
-          handleSearchIconClick={handleSearchIconClick}
+      <div className="w-full bg-white">
+        <TopUtil />
+      </div>
+      <div className="w-full bg-white">
+        <CategoryBar
+          categories={categories}
+          selectedCategory={selectedCategory}
+          handleSelectCategory={handleSelectCategory}
+          handleOpenSearchBar={handleOpenSearchBar}
+          isSearching={isSearching}
+          handleMouseLeaveCategory={handleMouseLeaveCategory}
+          activeMenu={activeMenu}
+          selectedOption={selectedOption}
+          handleSelectOption={handleSelectOption}
         />
+      </div>
+      {isSearching && (
+        <div className="w-full bg-white">
+          <SearchBar
+            searchValue={searchValue}
+            handleChangeSearchValue={handleChangeSearchValue}
+            handleSearchIconClick={handleSearchIconClick}
+          />
+        </div>
       )}
     </div>
   );

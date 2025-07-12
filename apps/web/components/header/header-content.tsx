@@ -60,7 +60,7 @@ export function TopUtilItem({ icon, label, onClick }: TopUtilItemProps) {
 
 export function TopUtil() {
   return (
-    <div className="flex items-center justify-end self-stretch px-[11.9rem] py-[2rem]">
+    <div className="flex w-full items-center justify-end self-stretch px-[11.9rem] py-[2rem]">
       <TopUtilItem
         icon={<SvgMy className="text-gray-600" size={16} />}
         label="マイページ"
@@ -97,15 +97,16 @@ export function CategoryBar({
   handleSelectOption,
 }: CategoryBarProps) {
   return (
-    <div className="relative" onMouseLeave={handleMouseLeaveCategory}>
-      <div
-        className={cn(
-          'flex h-[6.4rem] items-center gap-[2rem] px-[11.9rem]',
-          selectedCategory || isSearching
-            ? 'border-b border-dashed border-pink-500'
-            : 'border-b-[0.1rem] border-gray-500'
-        )}
-      >
+    <div
+      className={cn(
+        'relative w-full',
+        selectedCategory || isSearching
+          ? 'border-b border-dashed border-pink-500'
+          : 'border-b-[0.1rem] border-gray-500'
+      )}
+      onMouseLeave={handleMouseLeaveCategory}
+    >
+      <div className="mx-auto flex h-[6.4rem] w-full items-center gap-[2rem] px-[11.9rem]">
         <SvgLogo className="h-[2.7rem] w-[16rem] shrink-0" />
         <div className="flex h-[6rem] flex-grow items-center">
           {categories.map(({ key, name }) => {
@@ -138,7 +139,7 @@ export function CategoryBar({
         </div>
       </div>
       {!isSearching && activeMenu && (
-        <div className="absolute left-0 right-0 top-full z-50">
+        <div className="absolute left-0 right-0 top-[calc(100%+1px)] z-50">
           <OptionBar
             options={activeMenu.options}
             selectedCategoryKey={activeMenu.key}
@@ -160,7 +161,7 @@ export function OptionBar({
   handleMouseLeaveCategory,
 }: OptionBarProps) {
   return (
-    <div className="flex h-[5.2rem] w-full items-center border-b-[0.1rem] border-pink-500 bg-white px-[9.5rem]">
+    <div className="flex h-[5.2rem] w-full items-center border-b border-solid border-pink-500 bg-white px-[9.5rem]">
       {options.map((option, index) => {
         const isActive = option === selectedOption;
         const isLast = index === options.length - 1;
@@ -194,27 +195,29 @@ export function SearchBar({
   handleSearchIconClick,
 }: SearchBarProps) {
   return (
-    <div className="flex w-full items-center gap-[0.8rem] border-b border-pink-500 bg-white px-[11.9rem]">
-      <Input
-        type="search"
-        value={searchValue}
-        onChange={(e) => handleChangeSearchValue(e.target.value)}
-        placeholder="ラネージュ"
-        className="jp-title2 w-full text-right font-bold leading-[3rem] text-gray-800"
-      />
-      {searchValue.trim() ? (
-        <Link
-          href={`/search?keyword=${encodeURIComponent(searchValue)}&searchType=PRODUCT`}
-          className="flex h-[6.4rem] w-[6.4rem] shrink-0 cursor-pointer items-center justify-center p-[1.4rem]"
-          onClick={handleSearchIconClick}
-        >
-          <SvgSearch className="cursor-pointer" />
-        </Link>
-      ) : (
-        <div className="flex h-[6.4rem] w-[6.4rem] shrink-0 cursor-pointer items-center justify-center p-[1.4rem]">
-          <SvgSearch className="cursor-pointer" />
-        </div>
-      )}
+    <div className="flex w-full items-center gap-[0.8rem] border-b border-pink-500 bg-white">
+      <div className="mx-auto flex w-full items-center gap-[0.8rem] px-[11.9rem]">
+        <Input
+          type="search"
+          value={searchValue}
+          onChange={(e) => handleChangeSearchValue(e.target.value)}
+          placeholder="ラネージュ"
+          className="jp-title2 w-full text-right font-bold leading-[3rem] text-gray-800"
+        />
+        {searchValue.trim() ? (
+          <Link
+            href={`/search?keyword=${encodeURIComponent(searchValue)}&searchType=PRODUCT`}
+            className="flex h-[6.4rem] w-[6.4rem] shrink-0 cursor-pointer items-center justify-center p-[1.4rem]"
+            onClick={handleSearchIconClick}
+          >
+            <SvgSearch className="cursor-pointer" />
+          </Link>
+        ) : (
+          <div className="flex h-[6.4rem] w-[6.4rem] shrink-0 cursor-pointer items-center justify-center p-[1.4rem]">
+            <SvgSearch className="cursor-pointer" />
+          </div>
+        )}
+      </div>
     </div>
   );
 }
