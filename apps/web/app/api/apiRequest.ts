@@ -1,4 +1,4 @@
-import { getAccessToken } from './token';
+import { getAccessToken, setAccessToken } from './token';
 
 type RequestMethod = 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH';
 
@@ -38,13 +38,25 @@ export const apiRequest = async ({
     }
     requestInterceptor();
     const response = await fetch(requestUrl, fetchOptions);
-    responseInterceptor();
+    const interceptedResponse = await responseInterceptor(response, {
+      endPoint,
+      method,
+      data,
+      headers,
+    });
+
+    if (interceptedResponse) {
+      return interceptedResponse;
+    }
+
     if (!response.ok) {
       const error = await response.text();
-      console.error('에러 내용 :', error);
+      console.error('에러 :', error);
+      return error;
     }
 
     const responseData = await response.json();
+
     return {
       data: responseData,
       status: response.status,
@@ -61,14 +73,57 @@ const responseInterceptor = async (
   response: Response,
   originalRequest: ApiRequestProps
 ) => {
-  const BASE_URL = process.env.NEXT_PUBLIC_API_SERVER_URL;
-
   if (response.status === 401) {
-    const refreshResponse = fetch(
-      `${process.env.NEXT_PUBLIC_API_SERVER_URL}api/auth/refresh/`
+    const refreshResponse = await fetch(
+      `${process.env.NEXT_PUBLIC_API_SERVER_URL}api/auth/refresh`,
+      {
+        method: 'POST',
+        credentials: 'include',
+        headers: { 'Content-Type': 'application/json' },
+      }
     );
+    const refreshData = await refreshResponse.json();
+
+    if (refreshResponse.ok) {
+      setAccessToken(refreshData.accessToken); // 서버 형식에 맞추기
+      const retryHeader: Record<string, string> = {
+        'Content-Type': 'application/json',
+        ...originalRequest.headers,
+        Authorization: `Bearer ${getAccessToken()}`,
+      };
+
+      const fetchOptions: RequestInit = {
+        method: originalRequest.method,
+        headers: retryHeader,
+        credentials: 'include',
+      };
+
+      if (originalRequest.data && originalRequest.method !== 'GET') {
+        fetchOptions.body = JSON.stringify(originalRequest.data);
+      }
+
+      const retryResponse = await fetch(
+        `${BASE_URL}${originalRequest.endPoint}`,
+        fetchOptions
+      );
+
+      if (retryResponse.ok) {
+        const retryData = await retryResponse.json();
+        return {
+          data: retryData,
+          status: retryResponse.status,
+          ok: retryResponse.ok,
+        };
+      } else {
+        const retryError = await retryResponse.text();
+        console.error('재시도 에러 :', retryError);
+        return retryError;
+      }
+    }
+  } else if (response.status === 403) {
+    // refresh 형식 받고 수정
+    return null; // 로그아웃 처리
+  } else {
+    return null;
   }
-  //401 에러면
-  //'https://52.79.208.129.nip.io/api/auth/refresh'로 refresh 토큰 재발급
-  // 원래 하려고 했던 요청 이어서 다시 보내기
 };

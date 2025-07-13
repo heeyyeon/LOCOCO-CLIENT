@@ -1,9 +1,29 @@
+'use client';
+
+import { apiRequest } from 'app/api/apiRequest';
 import { SvgJapaneseReview, SvgKoreanReview } from '@/icons';
 import HomeSection from '../home/components/home';
 import HomeBanner from '../home/components/home-banner';
 import HomeUpdateDate from '../home/components/home-update-date';
 
 export default function Main() {
+  const apiTest = async () => {
+    return await apiRequest({
+      endPoint: 'api/youtube/trends',
+      method: 'GET',
+      headers: {
+        Authorization: 'Bearer invalid_token',
+      },
+    });
+  };
+  apiTest()
+    .then((result) => {
+      console.log('API 결과:', result);
+    })
+    .catch((error) => {
+      console.error('API 에러:', error);
+    });
+
   return (
     <main className="flex w-full flex-col">
       <HomeBanner />
