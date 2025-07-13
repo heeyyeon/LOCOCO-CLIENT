@@ -27,16 +27,16 @@ export default function MediaViewer({ mediaList }: MediaViewerProps) {
   const images = mediaList.filter((m) => m.type === 'image');
 
   useEffect(() => {
-    const videoEl = videoRef.current;
-    if (!videoEl) return;
+    const videoPlayer = videoRef.current;
+    if (!videoPlayer) return;
 
     const handleTimeUpdate = () => {
-      setProgress((videoEl.currentTime / videoEl.duration) * 100);
+      setProgress((videoPlayer.currentTime / videoPlayer.duration) * 100);
     };
 
-    videoEl.addEventListener('timeupdate', handleTimeUpdate);
+    videoPlayer.addEventListener('timeupdate', handleTimeUpdate);
     return () => {
-      videoEl.removeEventListener('timeupdate', handleTimeUpdate);
+      videoPlayer.removeEventListener('timeupdate', handleTimeUpdate);
     };
   }, [video?.url]);
 
