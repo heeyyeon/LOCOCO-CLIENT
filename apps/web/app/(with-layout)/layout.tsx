@@ -7,16 +7,10 @@ export default function WithLayoutLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex flex-col">
-      <div className="w-screen">
-        <Header />
-      </div>
-      <div className="flex w-full justify-center">
-        <div className="w-full max-w-[112.8rem]">{children}</div>
-      </div>
-      <div className="w-screen">
-        <Footer />
-      </div>
+    <div className="flex min-h-screen w-full flex-col">
+      <Header />
+      <div className="flex w-full flex-1 flex-col">{children}</div>
+      <Footer />
     </div>
   );
 }
