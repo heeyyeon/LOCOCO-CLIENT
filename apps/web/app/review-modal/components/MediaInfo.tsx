@@ -4,8 +4,8 @@ import {
   ReactionToggle,
   SvgGoodFill,
   SvgGoodOutline,
+  SvgSend,
 } from '@lococo/design-system';
-import { SvgSend } from '@lococo/design-system';
 
 interface MediaInfoProps {
   user: { name: string; avatarUrl?: string };
