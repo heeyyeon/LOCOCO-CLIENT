@@ -9,25 +9,26 @@
  * ## SOURCE: https://github.com/acacode/swagger-typescript-api ##
  * ---------------------------------------------------------------
  */
-import { ApiResponseToggleLikeResponse } from './data-contracts';
-import { HttpClient, RequestParams } from './http-client';
 
-export class ProductLike<
+import { ApiResponseReviewLikeResponse } from "./data-contracts";
+import { HttpClient, RequestParams } from "./http-client";
+
+export class ReviewLike<
   SecurityDataType = unknown,
 > extends HttpClient<SecurityDataType> {
   /**
    * No description
    *
-   * @tags PRODUCT LIKE
-   * @name ToggleLike1
-   * @summary 상품 좋아요 토글 (추가/취소)
-   * @request POST:/api/likes/products/{productId}
+   * @tags REVIEW LIKE
+   * @name ToggleLike
+   * @summary 리뷰 좋아요 토글 (추가/취소)
+   * @request POST:/api/likes/reviews/{reviewId}
    * @secure
    */
-  toggleLike1 = (productId: number, params: RequestParams = {}) =>
-    this.request<ApiResponseToggleLikeResponse, any>({
-      path: `/api/likes/products/${productId}`,
-      method: 'POST',
+  toggleLike = (reviewId: number, params: RequestParams = {}) =>
+    this.request<ApiResponseReviewLikeResponse, any>({
+      path: `/api/likes/reviews/${reviewId}`,
+      method: "POST",
       secure: true,
       ...params,
     });

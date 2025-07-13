@@ -9,16 +9,18 @@
  * ## SOURCE: https://github.com/acacode/swagger-typescript-api ##
  * ---------------------------------------------------------------
  */
-
 import {
+  ApiResponseImageReviewsProductDetailResponse,
+  ApiResponseMainImageReviewResponse,
+  ApiResponseMainVideoReviewResponse,
   ApiResponseReviewMediaResponse,
   ApiResponseReviewReceiptResponse,
   ApiResponseReviewResponse,
   ReviewMediaRequest,
   ReviewReceiptRequest,
   ReviewRequest,
-} from "./data-contracts";
-import { ContentType, HttpClient, RequestParams } from "./http-client";
+} from './data-contracts';
+import { ContentType, HttpClient, RequestParams } from './http-client';
 
 export class Review<
   SecurityDataType = unknown,
@@ -35,11 +37,11 @@ export class Review<
   createReview = (
     productId: number,
     data: ReviewRequest,
-    params: RequestParams = {},
+    params: RequestParams = {}
   ) =>
     this.request<ApiResponseReviewResponse, any>({
       path: `/api/reviews/${productId}`,
-      method: "POST",
+      method: 'POST',
       body: data,
       secure: true,
       type: ContentType.Json,
@@ -56,11 +58,11 @@ export class Review<
    */
   createReceiptPresignedUrl = (
     data: ReviewReceiptRequest,
-    params: RequestParams = {},
+    params: RequestParams = {}
   ) =>
     this.request<ApiResponseReviewReceiptResponse, any>({
       path: `/api/reviews/receipt`,
-      method: "POST",
+      method: 'POST',
       body: data,
       secure: true,
       type: ContentType.Json,
@@ -77,14 +79,79 @@ export class Review<
    */
   createMediaPresignedUrl = (
     data: ReviewMediaRequest,
-    params: RequestParams = {},
+    params: RequestParams = {}
   ) =>
     this.request<ApiResponseReviewMediaResponse, any>({
       path: `/api/reviews/media`,
-      method: "POST",
+      method: 'POST',
       body: data,
       secure: true,
       type: ContentType.Json,
+      ...params,
+    });
+  /**
+   * No description
+   *
+   * @tags REVIEW
+   * @name GetMainVideoReviews
+   * @summary 메인페이지에서 영상 리뷰 조회
+   * @request GET:/api/reviews/video
+   * @secure
+   */
+  getMainVideoReviews = (params: RequestParams = {}) =>
+    this.request<ApiResponseMainVideoReviewResponse, any>({
+      path: `/api/reviews/video`,
+      method: 'GET',
+      secure: true,
+      ...params,
+    });
+  /**
+   * No description
+   *
+   * @tags REVIEW
+   * @name GetMainImageReviews
+   * @summary 메인페이지에서 이미지 리뷰 조회
+   * @request GET:/api/reviews/image
+   * @secure
+   */
+  getMainImageReviews = (params: RequestParams = {}) =>
+    this.request<ApiResponseMainImageReviewResponse, any>({
+      path: `/api/reviews/image`,
+      method: 'GET',
+      secure: true,
+      ...params,
+    });
+  /**
+   * No description
+   *
+   * @tags REVIEW
+   * @name GetImageReviewsInProductDetail
+   * @summary 제품 상세 페에지에서 유저 리뷰 조회
+   * @request GET:/api/reviews/details/image
+   * @secure
+   */
+  getImageReviewsInProductDetail = (
+    query: {
+      /** @format int64 */
+      productId: number;
+      /**
+       * @format int32
+       * @default 0
+       */
+      page?: number;
+      /**
+       * @format int32
+       * @default 5
+       */
+      size?: number;
+    },
+    params: RequestParams = {}
+  ) =>
+    this.request<ApiResponseImageReviewsProductDetailResponse, any>({
+      path: `/api/reviews/details/image`,
+      method: 'GET',
+      query: query,
+      secure: true,
       ...params,
     });
 }

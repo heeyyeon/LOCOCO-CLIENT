@@ -161,7 +161,6 @@ export function OptionBar({
   selectedOption,
   selectedCategoryKey,
   handleSelectOption,
-  handleMouseLeaveCategory,
 }: OptionBarProps) {
   return (
     <div className="flex h-[5.2rem] w-full items-center border-b border-solid border-pink-500 bg-white px-[9.5rem]">
