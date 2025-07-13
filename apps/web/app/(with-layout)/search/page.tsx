@@ -59,19 +59,19 @@ function PageContent() {
   const productSearchQuery = useProductSearch(
     keyword,
     0,
-    10,
+    8,
     !!keyword && selectedTab === SEARCH_OPTION.PRODUCT
   );
   const reviewVideoSearchQuery = useReviewVideoSearch(
     keyword,
     0,
-    10,
+    8,
     !!keyword && selectedTab === SEARCH_OPTION.REVIEW
   );
   const reviewImageSearchQuery = useReviewImageSearch(
     keyword,
     0,
-    10,
+    8,
     !!keyword && selectedTab === SEARCH_OPTION.REVIEW
   );
 
@@ -80,21 +80,21 @@ function PageContent() {
     middleCategory,
     subCategory,
     0,
-    10,
+    8,
     !!middleCategory && selectedTab === SEARCH_OPTION.PRODUCT
   );
   const categoryReviewVideoQuery = useCategoryReviewVideoSearch(
     middleCategory,
     subCategory,
     0,
-    10,
+    8,
     !!middleCategory && selectedTab === SEARCH_OPTION.REVIEW
   );
   const categoryReviewImageQuery = useCategoryReviewImageSearch(
     middleCategory,
     subCategory,
     0,
-    10,
+    8,
     !!middleCategory && selectedTab === SEARCH_OPTION.REVIEW
   );
 

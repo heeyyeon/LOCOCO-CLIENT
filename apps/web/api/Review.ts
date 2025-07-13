@@ -1,0 +1,157 @@
+/* eslint-disable */
+/* tslint:disable */
+// @ts-nocheck
+/*
+ * ---------------------------------------------------------------
+ * ## THIS FILE WAS GENERATED VIA SWAGGER-TYPESCRIPT-API        ##
+ * ##                                                           ##
+ * ## AUTHOR: acacode                                           ##
+ * ## SOURCE: https://github.com/acacode/swagger-typescript-api ##
+ * ---------------------------------------------------------------
+ */
+import {
+  ApiResponseImageReviewsProductDetailResponse,
+  ApiResponseMainImageReviewResponse,
+  ApiResponseMainVideoReviewResponse,
+  ApiResponseReviewMediaResponse,
+  ApiResponseReviewReceiptResponse,
+  ApiResponseReviewResponse,
+  ReviewMediaRequest,
+  ReviewReceiptRequest,
+  ReviewRequest,
+} from './data-contracts';
+import { ContentType, HttpClient, RequestParams } from './http-client';
+
+export class Review<
+  SecurityDataType = unknown,
+> extends HttpClient<SecurityDataType> {
+  /**
+   * No description
+   *
+   * @tags REVIEW
+   * @name CreateReview
+   * @summary 리뷰 작성
+   * @request POST:/api/reviews/{productId}
+   * @secure
+   */
+  createReview = (
+    productId: number,
+    data: ReviewRequest,
+    params: RequestParams = {}
+  ) =>
+    this.request<ApiResponseReviewResponse, any>({
+      path: `/api/reviews/${productId}`,
+      method: 'POST',
+      body: data,
+      secure: true,
+      type: ContentType.Json,
+      ...params,
+    });
+  /**
+   * No description
+   *
+   * @tags REVIEW
+   * @name CreateReceiptPresignedUrl
+   * @summary 영수증 presignedUrl 발급
+   * @request POST:/api/reviews/receipt
+   * @secure
+   */
+  createReceiptPresignedUrl = (
+    data: ReviewReceiptRequest,
+    params: RequestParams = {}
+  ) =>
+    this.request<ApiResponseReviewReceiptResponse, any>({
+      path: `/api/reviews/receipt`,
+      method: 'POST',
+      body: data,
+      secure: true,
+      type: ContentType.Json,
+      ...params,
+    });
+  /**
+   * No description
+   *
+   * @tags REVIEW
+   * @name CreateMediaPresignedUrl
+   * @summary 사진 또는 영상 presignedUrl 발급
+   * @request POST:/api/reviews/media
+   * @secure
+   */
+  createMediaPresignedUrl = (
+    data: ReviewMediaRequest,
+    params: RequestParams = {}
+  ) =>
+    this.request<ApiResponseReviewMediaResponse, any>({
+      path: `/api/reviews/media`,
+      method: 'POST',
+      body: data,
+      secure: true,
+      type: ContentType.Json,
+      ...params,
+    });
+  /**
+   * No description
+   *
+   * @tags REVIEW
+   * @name GetMainVideoReviews
+   * @summary 메인페이지에서 영상 리뷰 조회
+   * @request GET:/api/reviews/video
+   * @secure
+   */
+  getMainVideoReviews = (params: RequestParams = {}) =>
+    this.request<ApiResponseMainVideoReviewResponse, any>({
+      path: `/api/reviews/video`,
+      method: 'GET',
+      secure: true,
+      ...params,
+    });
+  /**
+   * No description
+   *
+   * @tags REVIEW
+   * @name GetMainImageReviews
+   * @summary 메인페이지에서 이미지 리뷰 조회
+   * @request GET:/api/reviews/image
+   * @secure
+   */
+  getMainImageReviews = (params: RequestParams = {}) =>
+    this.request<ApiResponseMainImageReviewResponse, any>({
+      path: `/api/reviews/image`,
+      method: 'GET',
+      secure: true,
+      ...params,
+    });
+  /**
+   * No description
+   *
+   * @tags REVIEW
+   * @name GetImageReviewsInProductDetail
+   * @summary 제품 상세 페에지에서 유저 리뷰 조회
+   * @request GET:/api/reviews/details/image
+   * @secure
+   */
+  getImageReviewsInProductDetail = (
+    query: {
+      /** @format int64 */
+      productId: number;
+      /**
+       * @format int32
+       * @default 0
+       */
+      page?: number;
+      /**
+       * @format int32
+       * @default 5
+       */
+      size?: number;
+    },
+    params: RequestParams = {}
+  ) =>
+    this.request<ApiResponseImageReviewsProductDetailResponse, any>({
+      path: `/api/reviews/details/image`,
+      method: 'GET',
+      query: query,
+      secure: true,
+      ...params,
+    });
+}
