@@ -8,6 +8,7 @@ import Image from 'next/image';
 import { Progress, SvgPlayArrow, SvgPause } from '@lococo/design-system';
 import { IconButton } from '@lococo/design-system';
 import { SvgArrowUp, SvgArrowDown } from '@/icons';
+import { cn } from '@/lib/utils';
 
 type Media = { type: 'video' | 'image'; url: string };
 interface MediaViewerProps {
@@ -80,9 +81,10 @@ export default function MediaViewer({ mediaList }: MediaViewerProps) {
                   onClick={handleVideoClick}
                 />
                 <div
-                  className={`pointer-events-none absolute inset-0 flex items-center justify-center bg-black/40 transition-opacity ${
+                  className={cn(
+                    'pointer-events-none absolute inset-0 flex items-center justify-center bg-black/40 transition-opacity',
                     overlay ? 'opacity-100' : 'opacity-0'
-                  }`}
+                  )}
                 >
                   {overlay === 'play' ? (
                     <SvgPlayArrow className="size-[7.2rem] fill-white" />
