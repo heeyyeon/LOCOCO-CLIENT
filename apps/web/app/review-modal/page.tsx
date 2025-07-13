@@ -1,5 +1,6 @@
 'use client';
 
+import type { Swiper as SwiperType } from 'swiper';
 import 'swiper/css';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import ReviewModalLayout from './components/ReviewModalLayout';
@@ -60,33 +61,37 @@ const mediaList = [
 ];
 
 export default function Page() {
+  const handleSwiperInit = (swiper: SwiperType) => {
+    const firstSlide = swiper.slides[0];
+    if (firstSlide) {
+      const videos = firstSlide.querySelectorAll<HTMLVideoElement>('video');
+      videos.forEach((video) => {
+        video.play();
+      });
+    }
+  };
+
+  const handleSlideChange = (swiper: SwiperType) => {
+    swiper.slides.forEach((slideEl, index) => {
+      const videos = slideEl.querySelectorAll<HTMLVideoElement>('video');
+      videos.forEach((video) => {
+        if (index === swiper.activeIndex) {
+          video.play();
+        } else {
+          video.pause();
+        }
+      });
+    });
+  };
+
   return (
     <Swiper
       direction="vertical"
       slidesPerView={1.2}
       centeredSlides
       spaceBetween={-45}
-      onSwiper={(swiper) => {
-        const firstSlide = swiper.slides[0];
-        if (firstSlide) {
-          const videos = firstSlide.querySelectorAll<HTMLVideoElement>('video');
-          videos.forEach((video) => {
-            video.play();
-          });
-        }
-      }}
-      onSlideChange={(swiper) => {
-        swiper.slides.forEach((slideEl, index) => {
-          const videos = slideEl.querySelectorAll<HTMLVideoElement>('video');
-          videos.forEach((video) => {
-            if (index === swiper.activeIndex) {
-              video.play();
-            } else {
-              video.pause();
-            }
-          });
-        });
-      }}
+      onSwiper={handleSwiperInit}
+      onSlideChange={handleSlideChange}
       className="inset-0 h-screen w-screen bg-black/70"
     >
       {mediaList.map((review, idx) => (
