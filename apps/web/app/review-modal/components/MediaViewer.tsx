@@ -27,15 +27,17 @@ export default function MediaViewer({ mediaList }: MediaViewerProps) {
   const images = mediaList.filter((m) => m.type === 'image');
 
   useEffect(() => {
-    if (!videoRef.current) return;
+    const videoEl = videoRef.current;
+    if (!videoEl) return;
+
     const handleTimeUpdate = () => {
-      setProgress(
-        (videoRef.current!.currentTime / videoRef.current!.duration) * 100
-      );
+      setProgress((videoEl.currentTime / videoEl.duration) * 100);
     };
-    videoRef.current.addEventListener('timeupdate', handleTimeUpdate);
-    return () =>
-      videoRef.current?.removeEventListener('timeupdate', handleTimeUpdate);
+
+    videoEl.addEventListener('timeupdate', handleTimeUpdate);
+    return () => {
+      videoEl.removeEventListener('timeupdate', handleTimeUpdate);
+    };
   }, [video?.url]);
 
   const handleVideoClick = () => {
