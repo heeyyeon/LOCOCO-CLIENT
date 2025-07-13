@@ -86,11 +86,12 @@ export default function MediaViewer({ mediaList }: MediaViewerProps) {
                     overlay ? 'opacity-100' : 'opacity-0'
                   )}
                 >
-                  {overlay === 'play' ? (
+                  {overlay === 'play' && (
                     <SvgPlayArrow className="size-[7.2rem] fill-white" />
-                  ) : overlay === 'pause' ? (
+                  )}
+                  {overlay === 'pause' && (
                     <SvgPause className="size-[7.2rem] fill-white" />
-                  ) : null}
+                  )}
                 </div>
                 <Progress
                   value={progress}
