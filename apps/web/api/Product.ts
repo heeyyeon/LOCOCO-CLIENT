@@ -16,6 +16,7 @@ import {
   ApiResponseProductDetailResponse,
   ApiResponseProductDetailYoutubeResponse,
   ApiResponseString,
+  ProductSearchRequest,
 } from './data-contracts';
 import { HttpClient, RequestParams } from './http-client';
 
