@@ -16,10 +16,10 @@ interface MediaViewerProps {
 
 export default function MediaViewer({ mediaList }: MediaViewerProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const swiperRef = useRef<SwiperType | null>(null);
 
   const [progress, setProgress] = useState(0);
   const [overlay, setOverlay] = useState<null | 'play' | 'pause'>(null);
-  const swiperRef = useRef<SwiperType | null>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
@@ -50,7 +50,8 @@ export default function MediaViewer({ mediaList }: MediaViewerProps) {
   };
 
   const isImageType = mediaList.every((m) => m.type === 'image');
-  const images = isImageType ? mediaList.slice(0, 5) : [];
+  const imageList = isImageType ? mediaList : [];
+
   const navigationButtonClass =
     'border-1 size-[3.2rem] -rotate-90 border-gray-200 bg-white';
 
@@ -78,7 +79,6 @@ export default function MediaViewer({ mediaList }: MediaViewerProps) {
                   className="h-full w-full cursor-pointer object-cover"
                   onClick={handleVideoClick}
                 />
-
                 <div
                   className={`pointer-events-none absolute inset-0 flex items-center justify-center bg-black/40 transition-opacity ${
                     overlay ? 'opacity-100' : 'opacity-0'
@@ -90,7 +90,6 @@ export default function MediaViewer({ mediaList }: MediaViewerProps) {
                     <SvgPause className="size-[7.2rem] fill-white" />
                   ) : null}
                 </div>
-
                 <Progress
                   value={progress}
                   height="0.25rem"
@@ -109,7 +108,7 @@ export default function MediaViewer({ mediaList }: MediaViewerProps) {
         ))}
       </Swiper>
 
-      {isImageType && images.length > 1 && currentIndex > 0 && (
+      {isImageType && imageList.length > 1 && currentIndex > 0 && (
         <div className="absolute left-[1.2rem] top-1/2 z-20 -translate-y-1/2">
           <IconButton
             icon={<SvgArrowUp />}
@@ -121,19 +120,20 @@ export default function MediaViewer({ mediaList }: MediaViewerProps) {
           />
         </div>
       )}
-
-      {isImageType && images.length > 1 && currentIndex < images.length - 1 && (
-        <div className="absolute right-[1.2rem] top-1/2 z-20 -translate-y-1/2">
-          <IconButton
-            icon={<SvgArrowDown />}
-            rounded
-            color="secondary"
-            aria-label="다음 이미지"
-            onClick={() => swiperRef.current?.slideNext()}
-            className={navigationButtonClass}
-          />
-        </div>
-      )}
+      {isImageType &&
+        imageList.length > 1 &&
+        currentIndex < imageList.length - 1 && (
+          <div className="absolute right-[1.2rem] top-1/2 z-20 -translate-y-1/2">
+            <IconButton
+              icon={<SvgArrowDown />}
+              rounded
+              color="secondary"
+              aria-label="다음 이미지"
+              onClick={() => swiperRef.current?.slideNext()}
+              className={navigationButtonClass}
+            />
+          </div>
+        )}
     </div>
   );
 }
