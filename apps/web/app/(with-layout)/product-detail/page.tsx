@@ -99,7 +99,7 @@ const data = {
 
 export default function Page() {
   return (
-    <div className="flex justify-center">
+    <div className="flex-col lg:flex lg:justify-center">
       <div className="flex w-[133.6rem] items-center">
         <div className="flex w-full flex-col gap-[10rem] px-[11.9rem]">
           <ProductDetailSection {...data} />

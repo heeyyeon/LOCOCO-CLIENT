@@ -1,11 +1,11 @@
 'use client';
 
+import { SEARCH_OPTION } from 'constants/option';
 import {
-  mockImageReviewSearchResponse,
   mockProductSearchResponse,
   mockVideoReviewSearchResponse,
-} from 'app/search/mockup';
-import { SEARCH_OPTION } from 'constants/option';
+  mockImageReviewSearchResponse,
+} from 'mocks/searchMock';
 import { CategoryNameEng, CategoryOptionEng } from 'types/category';
 import { SearchOption } from 'types/option';
 import { isValidCategoryKey, isValidCategoryOption } from 'utils/category';

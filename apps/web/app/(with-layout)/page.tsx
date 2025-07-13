@@ -1,7 +1,7 @@
 import { SvgJapaneseReview, SvgKoreanReview } from '@/icons';
-import HomeSection from '../home/components/home';
-import HomeBanner from '../home/components/home-banner';
-import HomeUpdateDate from '../home/components/home-update-date';
+import HomeSection from './(home)/components/home';
+import HomeBanner from './(home)/components/home-banner';
+import HomeUpdateDate from './(home)/components/home-update-date';
 
 export default function Main() {
   return (
