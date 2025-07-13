@@ -1,15 +1,25 @@
-import { getAccessToken, setAccessToken } from './token';
+import { getAccessToken, removeAccessToken, setAccessToken } from './token';
 
 type RequestMethod = 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH';
 
 export interface ApiRequestProps {
   endPoint: string;
-  method: RequestMethod;
+  method?: RequestMethod;
   data?: unknown;
   headers?: Record<string, string>;
 }
 const BASE_URL = process.env.NEXT_PUBLIC_API_SERVER_URL;
 
+/**
+ * 
+ * @param endPoint 엔드포인트 작성 ex.'api/youtube/trends'
+ * @param method api의 method ex.'GET', 'POST', 'DELETE'...
+ * @param data api 호출 data field에 넣을 값
+ * @param headers api header field에 넣을 값 ex. headers: {
+          Authorization: `Bearer ${getAccessToken}`,
+        },
+ * @returns 
+ */
 export const apiRequest = async ({
   endPoint,
   method = 'GET',
@@ -36,7 +46,6 @@ export const apiRequest = async ({
     if (data) {
       fetchOptions.body = JSON.stringify(data);
     }
-    requestInterceptor();
     const response = await fetch(requestUrl, fetchOptions);
     const interceptedResponse = await responseInterceptor(response, {
       endPoint,
@@ -67,8 +76,6 @@ export const apiRequest = async ({
   }
 };
 
-const requestInterceptor = () => {};
-
 const responseInterceptor = async (
   response: Response,
   originalRequest: ApiRequestProps
@@ -85,7 +92,7 @@ const responseInterceptor = async (
     const refreshData = await refreshResponse.json();
 
     if (refreshResponse.ok) {
-      setAccessToken(refreshData.accessToken); // 서버 형식에 맞추기
+      setAccessToken(refreshData.accessToken);
       const retryHeader: Record<string, string> = {
         'Content-Type': 'application/json',
         ...originalRequest.headers,
@@ -121,8 +128,9 @@ const responseInterceptor = async (
       }
     }
   } else if (response.status === 403) {
-    // refresh 형식 받고 수정
-    return null; // 로그아웃 처리
+    removeAccessToken();
+    // logout api
+    return null;
   } else {
     return null;
   }
