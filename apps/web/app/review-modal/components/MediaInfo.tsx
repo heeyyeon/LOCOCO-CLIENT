@@ -27,7 +27,7 @@ export default function MediaInfo({ user, date, likeCount }: MediaInfoProps) {
           <Avatar src={user?.avatarUrl} />
           <div className="en-body1 font-bold text-white">{user?.name}</div>
         </div>
-        <div className="en-caption1 text-white">{date}</div>
+        <text className="en-caption1 text-white">{date}</text>
       </div>
       <div className="flex flex-col items-center gap-4">
         <SvgSend className="h-[6.4rem] cursor-pointer fill-white transition-colors hover:fill-gray-400" />
