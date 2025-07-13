@@ -74,7 +74,11 @@ export const useReviewInput = (onSuccess?: () => void) => {
     setValue('mediaFiles', files, { shouldValidate: true });
   };
 
-  const updateReceiptFile = (file: File) => {
+  const updateReceiptFile = (file: File | undefined) => {
+    if (!file) {
+      setValue('receiptFile', undefined);
+      return;
+    }
     setValue('receiptFile', file, { shouldValidate: true });
   };
 
