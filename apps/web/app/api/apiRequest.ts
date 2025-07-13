@@ -1,5 +1,3 @@
-import { getAccessToken, removeAccessToken, setAccessToken } from './token';
-
 type RequestMethod = 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH';
 
 export interface ApiRequestProps {
@@ -28,15 +26,10 @@ export const apiRequest = async <T = unknown>({
 }: ApiRequestProps): Promise<T> => {
   try {
     const requestUrl = `${SERVER_API_BASE_URL}${endPoint}`;
-    const accessToken = getAccessToken();
     const defaultHeaders: Record<string, string> = {
       'Content-Type': 'application/json',
       ...headers,
     };
-
-    if (accessToken) {
-      defaultHeaders['Authorization'] = `Bearer ${accessToken}`;
-    }
 
     const fetchOptions: RequestInit = {
       method,
@@ -84,14 +77,11 @@ const responseInterceptor = async <T>(
         headers: { 'Content-Type': 'application/json' },
       }
     );
-    const refreshData = await refreshResponse.json();
 
     if (refreshResponse.ok) {
-      setAccessToken(refreshData.accessToken);
       const retryHeader: Record<string, string> = {
         'Content-Type': 'application/json',
         ...originalRequest.headers,
-        Authorization: `Bearer ${getAccessToken()}`,
       };
 
       const fetchOptions: RequestInit = {
@@ -119,8 +109,7 @@ const responseInterceptor = async <T>(
       }
     }
   } else if (response.status === 403) {
-    removeAccessToken();
-    // logout api
+    //TODO 서버측 api 연결되면 logout api 호출
     throw new Error('토큰이 만료됨');
   } else {
     return null;
