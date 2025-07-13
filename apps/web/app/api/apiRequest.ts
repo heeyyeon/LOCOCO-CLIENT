@@ -16,7 +16,7 @@ const SERVER_API_BASE_URL = process.env.NEXT_PUBLIC_API_SERVER_URL;
  * @param method api의 method ex.'GET', 'POST', 'DELETE'...
  * @param data api 호출 data field에 넣을 값
  * @param headers api header field에 넣을 값 ex. headers: {
-          Authorization: `Bearer ${getAccessToken}`,
+          Authorization: `Bearer ${getAccessToken()}`,
         },
  * @returns Promise<T>로 지정된 타입의 응답 데이터
  */

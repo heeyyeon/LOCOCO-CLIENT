@@ -17,7 +17,7 @@ export default function Main() {
         endPoint: 'api/youtube/trends',
         method: 'GET',
         headers: {
-          Authorization: `Bearer ${getAccessToken}`,
+          Authorization: `Bearer ${getAccessToken()}`,
         },
       });
     },
