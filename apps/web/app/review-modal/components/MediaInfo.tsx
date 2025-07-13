@@ -7,8 +7,12 @@ import {
   SvgSend,
 } from '@lococo/design-system';
 
+type UserInfo = {
+  name: string;
+  avatarUrl?: string;
+};
 interface MediaInfoProps {
-  user: { name: string; avatarUrl?: string };
+  user: UserInfo;
   date: string;
   likeCount: number;
 }
