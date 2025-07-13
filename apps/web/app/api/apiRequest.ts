@@ -18,14 +18,14 @@ const BASE_URL = process.env.NEXT_PUBLIC_API_SERVER_URL;
  * @param headers api header field에 넣을 값 ex. headers: {
           Authorization: `Bearer ${getAccessToken}`,
         },
- * @returns 
+ * @returns Promise<T>로 지정된 타입의 응답 데이터
  */
-export const apiRequest = async ({
+export const apiRequest = async <T = unknown>({
   endPoint,
   method = 'GET',
   data,
   headers,
-}: ApiRequestProps) => {
+}: ApiRequestProps): Promise<T> => {
   try {
     const requestUrl = `${BASE_URL}${endPoint}`;
     const accessToken = getAccessToken();
@@ -47,7 +47,7 @@ export const apiRequest = async ({
       fetchOptions.body = JSON.stringify(data);
     }
     const response = await fetch(requestUrl, fetchOptions);
-    const interceptedResponse = await responseInterceptor(response, {
+    const interceptedResponse = await responseInterceptor<T>(response, {
       endPoint,
       method,
       data,
@@ -55,31 +55,26 @@ export const apiRequest = async ({
     });
 
     if (interceptedResponse) {
-      return interceptedResponse;
+      return interceptedResponse as T;
     }
 
     if (!response.ok) {
       const error = await response.text();
       console.error('에러 :', error);
-      return error;
+      throw error;
     }
-
     const responseData = await response.json();
-
-    return {
-      data: responseData,
-      status: response.status,
-      ok: response.ok,
-    };
+    return responseData;
   } catch (error) {
     console.error(error);
+    throw error;
   }
 };
 
-const responseInterceptor = async (
+const responseInterceptor = async <T>(
   response: Response,
   originalRequest: ApiRequestProps
-) => {
+): Promise<T | null> => {
   if (response.status === 401) {
     const refreshResponse = await fetch(
       `${process.env.NEXT_PUBLIC_API_SERVER_URL}api/auth/refresh`,
@@ -116,22 +111,19 @@ const responseInterceptor = async (
 
       if (retryResponse.ok) {
         const retryData = await retryResponse.json();
-        return {
-          data: retryData,
-          status: retryResponse.status,
-          ok: retryResponse.ok,
-        };
+        return retryData;
       } else {
         const retryError = await retryResponse.text();
         console.error('재시도 에러 :', retryError);
-        return retryError;
+        throw retryError;
       }
     }
   } else if (response.status === 403) {
     removeAccessToken();
     // logout api
-    return null;
+    throw new Error('토큰이 만료됨');
   } else {
     return null;
   }
+  return null;
 };
