@@ -3,6 +3,7 @@
 import type { Swiper as SwiperType } from 'swiper';
 import 'swiper/css';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { useRef } from 'react';
 import ReviewModalLayout from './components/ReviewModalLayout';
 
 const mediaList = [
@@ -61,27 +62,35 @@ const mediaList = [
 ];
 
 export default function Page() {
+  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
+
   const handleSwiperInit = (swiper: SwiperType) => {
-    const firstSlide = swiper.slides[0];
-    if (firstSlide) {
-      const videos = firstSlide.querySelectorAll<HTMLVideoElement>('video');
+    videoRefs.current = [];
+    swiper.slides.forEach((slideEl) => {
+      const videos = slideEl.querySelectorAll<HTMLVideoElement>('video');
       videos.forEach((video) => {
-        video.play();
+        videoRefs.current.push(video);
       });
+    });
+
+    if (videoRefs.current[0]) {
+      videoRefs.current[0].play();
     }
   };
 
   const handleSlideChange = (swiper: SwiperType) => {
-    swiper.slides.forEach((slideEl, index) => {
-      const videos = slideEl.querySelectorAll<HTMLVideoElement>('video');
-      videos.forEach((video) => {
-        if (index === swiper.activeIndex) {
-          video.play();
-        } else {
-          video.pause();
-        }
-      });
+    videoRefs.current.forEach((video: HTMLVideoElement | null) => {
+      if (video) video.pause();
     });
+
+    const currentSlide = swiper.slides[swiper.activeIndex];
+    if (currentSlide) {
+      const currentVideos =
+        currentSlide.querySelectorAll<HTMLVideoElement>('video');
+      currentVideos.forEach((video) => {
+        video.play();
+      });
+    }
   };
 
   return (
