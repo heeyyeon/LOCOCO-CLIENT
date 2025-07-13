@@ -1,6 +1,7 @@
 'use client';
 
 import { useQuery } from '@tanstack/react-query';
+import { ApiResponseListVideoResponse } from 'api/data-contracts';
 import { apiRequest } from 'app/api/apiRequest';
 import { getAccessToken } from 'app/api/token';
 import { SvgJapaneseReview, SvgKoreanReview } from '@/icons';
@@ -12,7 +13,7 @@ export default function Main() {
   const { data, error, isLoading, isError, refetch } = useQuery({
     queryKey: ['youtube-trends'],
     queryFn: async () => {
-      return await apiRequest({
+      return await apiRequest<ApiResponseListVideoResponse>({
         endPoint: 'api/youtube/trends',
         method: 'GET',
         headers: {
@@ -24,7 +25,7 @@ export default function Main() {
     staleTime: 5 * 60 * 1000,
     gcTime: 10 * 60 * 1000,
   });
-  console.log(data.data.data);
+  console.log(data?.data);
   if (isLoading) {
     return <div>로딩 중</div>;
   }
