@@ -25,9 +25,9 @@ export default function MediaInfo({ user, date, likeCount }: MediaInfoProps) {
       <div className="mt-auto flex flex-col">
         <div className="mb-[1.2rem] flex flex-row items-center gap-[1.2rem]">
           <Avatar src={user?.avatarUrl} />
-          <text className="en-body1 font-bold text-white">{user?.name}</text>
+          <p className="en-body1 font-bold text-white">{user?.name}</p>
         </div>
-        <text className="en-caption1 text-white">{date}</text>
+        <p className="en-caption1 text-white">{date}</p>
       </div>
       <div className="flex flex-col items-center gap-4">
         <SvgSend className="h-[6.4rem] cursor-pointer fill-white transition-colors hover:fill-gray-400" />
