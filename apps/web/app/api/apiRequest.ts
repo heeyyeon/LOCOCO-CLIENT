@@ -64,19 +64,24 @@ export const apiRequest = async <T = unknown>({
   }
 };
 
+const refreshApi = async () => {
+  const refreshResponse = await fetch(
+    `${SERVER_API_BASE_URL}api/auth/refresh`,
+    {
+      method: 'POST',
+      credentials: 'include',
+      headers: { 'Content-Type': 'application/json' },
+    }
+  );
+  return refreshResponse;
+};
+
 const responseInterceptor = async <T>(
   response: Response,
   originalRequest: ApiRequestProps
 ): Promise<T | null> => {
   if (response.status === 401) {
-    const refreshResponse = await fetch(
-      `${SERVER_API_BASE_URL}api/auth/refresh`,
-      {
-        method: 'POST',
-        credentials: 'include',
-        headers: { 'Content-Type': 'application/json' },
-      }
-    );
+    const refreshResponse = await refreshApi();
 
     if (refreshResponse.ok) {
       const retryHeader: Record<string, string> = {
