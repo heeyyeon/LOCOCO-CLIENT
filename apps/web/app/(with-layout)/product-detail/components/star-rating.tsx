@@ -3,6 +3,7 @@ import { Button } from '@lococo/design-system';
 import { Star } from '@lococo/design-system';
 import { SvgJapaneseReview } from '@/icons';
 import { SvgWrite } from '@/icons';
+import Link from 'next/link';
 
 export default function StarRating() {
   return (
@@ -54,11 +55,13 @@ export default function StarRating() {
         </div>
       </div>
 
-      <Button color="primary" variant="filled" size="lg" rounded>
-        <span className="jp-title2 inline-flex items-center gap-[0.8rem]">
-          <SvgWrite />
-          レビューを書く
-        </span>
+      <Button color="primary" variant="filled" size="lg" rounded asChild>
+        <Link href="/product-detail/write-review">
+          <span className="jp-title2 inline-flex items-center gap-[0.8rem]">
+            <SvgWrite />
+            レビューを書く
+          </span>
+        </Link>
       </Button>
     </div>
   );
