@@ -1,5 +1,3 @@
-import { HttpClient } from 'api/http-client';
-
 type RequestMethod = 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH';
 
 export interface ApiRequestProps {
