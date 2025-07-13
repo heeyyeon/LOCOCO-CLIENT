@@ -2,9 +2,17 @@ import React from 'react';
 import MediaInfo from './MediaInfo';
 import MediaViewer from './MediaViewer';
 
-interface ReviewModalLayoutProps {
-  mediaList: { type: 'video' | 'image'; url: string }[];
-  user: { name: string; avatarUrl?: string };
+export interface Media {
+  type: 'video' | 'image';
+  url: string;
+}
+export interface User {
+  name: string;
+  avatarUrl?: string;
+}
+export interface ReviewModalLayoutProps {
+  mediaList: Media[];
+  user: User;
   date: string;
   likeCount: number;
   children: React.ReactNode;
