@@ -23,12 +23,16 @@ export default function MediaViewer({ mediaList }: MediaViewerProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
-    const vid = videoRef.current;
-    if (!vid) return;
-    const onTime = () => setProgress((vid.currentTime / vid.duration) * 100);
-    vid.addEventListener('timeupdate', onTime);
+    const videoElement = videoRef.current;
+    if (!videoElement) return;
+    const handleTimeUpdate = () => {
+      const progressPercent =
+        (videoElement.currentTime / videoElement.duration) * 100;
+      setProgress(progressPercent);
+    };
+    videoElement.addEventListener('timeupdate', handleTimeUpdate);
     return () => {
-      vid.removeEventListener('timeupdate', onTime);
+      videoElement.removeEventListener('timeupdate', handleTimeUpdate);
     };
   }, [mediaList]);
 
