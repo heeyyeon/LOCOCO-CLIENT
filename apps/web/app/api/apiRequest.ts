@@ -8,7 +8,7 @@ export interface ApiRequestProps {
   data?: unknown;
   headers?: Record<string, string>;
 }
-const BASE_URL = process.env.NEXT_PUBLIC_API_SERVER_URL;
+const SERVER_API_BASE_URL = process.env.NEXT_PUBLIC_API_SERVER_URL;
 
 /**
  * 
@@ -27,7 +27,7 @@ export const apiRequest = async <T = unknown>({
   headers,
 }: ApiRequestProps): Promise<T> => {
   try {
-    const requestUrl = `${BASE_URL}${endPoint}`;
+    const requestUrl = `${SERVER_API_BASE_URL}${endPoint}`;
     const accessToken = getAccessToken();
     const defaultHeaders: Record<string, string> = {
       'Content-Type': 'application/json',
@@ -77,7 +77,7 @@ const responseInterceptor = async <T>(
 ): Promise<T | null> => {
   if (response.status === 401) {
     const refreshResponse = await fetch(
-      `${process.env.NEXT_PUBLIC_API_SERVER_URL}api/auth/refresh`,
+      `${SERVER_API_BASE_URL}api/auth/refresh`,
       {
         method: 'POST',
         credentials: 'include',
@@ -105,7 +105,7 @@ const responseInterceptor = async <T>(
       }
 
       const retryResponse = await fetch(
-        `${BASE_URL}${originalRequest.endPoint}`,
+        `${SERVER_API_BASE_URL}${originalRequest.endPoint}`,
         fetchOptions
       );
 
