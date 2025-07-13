@@ -1,3 +1,5 @@
+import { HttpClient } from 'api/http-client';
+
 type RequestMethod = 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH';
 
 export interface ApiRequestProps {
@@ -65,6 +67,7 @@ export const apiRequest = async <T = unknown>({
 };
 
 const refreshApi = async () => {
+  // TODO HttpClient 인스턴스 활용하는 방식으로 수정
   const refreshResponse = await fetch(
     `${SERVER_API_BASE_URL}api/auth/refresh`,
     {
