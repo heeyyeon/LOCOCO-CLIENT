@@ -109,7 +109,7 @@ export default function MediaViewer({ mediaList }: MediaViewerProps) {
             ))}
           </Swiper>
 
-          {images.length > 1 && currentIndex > 0 && (
+          {currentIndex > 0 && (
             <div className="absolute left-[1.2rem] top-1/2 z-20 -translate-y-1/2">
               <IconButton
                 icon={<SvgArrowUp />}
@@ -121,7 +121,7 @@ export default function MediaViewer({ mediaList }: MediaViewerProps) {
               />
             </div>
           )}
-          {images.length > 1 && currentIndex < images.length - 1 && (
+          {currentIndex < images.length - 1 && (
             <div className="absolute right-[1.2rem] top-1/2 z-20 -translate-y-1/2">
               <IconButton
                 icon={<SvgArrowDown />}
