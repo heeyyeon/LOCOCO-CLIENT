@@ -9,13 +9,15 @@
  * ## SOURCE: https://github.com/acacode/swagger-typescript-api ##
  * ---------------------------------------------------------------
  */
-
 import {
+  ApiResponseJwtLoginResponse,
   ApiResponseLineLoginResponse,
   ApiResponseLoginUrlResponse,
+  ApiResponseLoginUrlResponse,
   ApiResponseVoid,
-} from "./data-contracts";
-import { HttpClient, RequestParams } from "./http-client";
+  TestLoginRequest,
+} from './data-contracts';
+import { ContentType, HttpClient, RequestParams } from './http-client';
 
 export class Auth<
   SecurityDataType = unknown,
@@ -32,7 +34,7 @@ export class Auth<
   reissueRefreshToken = (params: RequestParams = {}) =>
     this.request<ApiResponseVoid, any>({
       path: `/api/auth/refresh`,
-      method: "POST",
+      method: 'POST',
       secure: true,
       ...params,
     });
@@ -48,8 +50,26 @@ export class Auth<
   getLoginUrl = (params: RequestParams = {}) =>
     this.request<ApiResponseLoginUrlResponse, any>({
       path: `/api/auth/url`,
-      method: "GET",
+      method: 'GET',
       secure: true,
+      ...params,
+    });
+  /**
+   * No description
+   *
+   * @tags AUTH
+   * @name Login
+   * @summary 테스트용 JWT 토큰 발급
+   * @request POST:/api/auth/login
+   * @secure
+   */
+  login = (data: TestLoginRequest, params: RequestParams = {}) =>
+    this.request<ApiResponseJwtLoginResponse, any>({
+      path: `/api/auth/login`,
+      method: 'POST',
+      body: data,
+      secure: true,
+      type: ContentType.Json,
       ...params,
     });
   /**
@@ -64,7 +84,7 @@ export class Auth<
   redirectToLineAuth = (params: RequestParams = {}) =>
     this.request<void, any>({
       path: `/api/auth/line/redirect`,
-      method: "GET",
+      method: 'GET',
       secure: true,
       ...params,
     });
@@ -82,11 +102,11 @@ export class Auth<
       code: string;
       state: string;
     },
-    params: RequestParams = {},
+    params: RequestParams = {}
   ) =>
     this.request<ApiResponseLineLoginResponse, any>({
       path: `/api/auth/line/login`,
-      method: "GET",
+      method: 'GET',
       query: query,
       secure: true,
       ...params,

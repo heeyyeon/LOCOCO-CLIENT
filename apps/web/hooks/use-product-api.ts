@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { productApi } from '../api/client';
+import { PRODUCT_KEYS, REVIEW_KEYS } from '../constants/query-key';
 
 // 검색바로 검색할 때 사용하는 쿼리
 export const useProductSearch = (
@@ -9,7 +10,7 @@ export const useProductSearch = (
   enabled: boolean = true
 ) => {
   return useQuery({
-    queryKey: ['product-search', keyword, page, size],
+    queryKey: PRODUCT_KEYS.PRODUCT_LIST({ page, size }),
     queryFn: () =>
       productApi.search({
         keyword,
@@ -19,6 +20,8 @@ export const useProductSearch = (
       }),
     enabled: enabled && !!keyword.trim(),
     staleTime: 5 * 60 * 1000,
+    retry: 1, // 재시도 횟수를 1회로 제한
+    retryDelay: 1000, // 재시도 간격 1초
   });
 };
 
@@ -30,7 +33,7 @@ export const useReviewVideoSearch = (
   enabled: boolean = true
 ) => {
   return useQuery({
-    queryKey: ['review-video-search', keyword, page, size],
+    queryKey: REVIEW_KEYS.VIDEO_LIST({ page, size }),
     queryFn: () =>
       productApi.search({
         keyword,
@@ -41,6 +44,8 @@ export const useReviewVideoSearch = (
       }),
     enabled: enabled && !!keyword.trim(),
     staleTime: 5 * 60 * 1000,
+    retry: 1,
+    retryDelay: 1000,
   });
 };
 
@@ -52,7 +57,7 @@ export const useReviewImageSearch = (
   enabled: boolean = true
 ) => {
   return useQuery({
-    queryKey: ['review-image-search', keyword, page, size],
+    queryKey: REVIEW_KEYS.IMAGE_LIST({ page, size }),
     queryFn: () =>
       productApi.search({
         keyword,
@@ -63,6 +68,8 @@ export const useReviewImageSearch = (
       }),
     enabled: enabled && !!keyword.trim(),
     staleTime: 5 * 60 * 1000,
+    retry: 1,
+    retryDelay: 1000,
   });
 };
 
@@ -75,13 +82,7 @@ export const useCategoryProductSearch = (
   enabled: boolean = true
 ) => {
   return useQuery({
-    queryKey: [
-      'category-product-search',
-      middleCategory,
-      subCategory,
-      page,
-      size,
-    ],
+    queryKey: PRODUCT_KEYS.PRODUCT_LIST({ page, size }),
     queryFn: () =>
       productApi.searchProductsByCategory({
         middleCategory: middleCategory as any,
@@ -92,6 +93,8 @@ export const useCategoryProductSearch = (
       }),
     enabled: enabled && !!middleCategory,
     staleTime: 5 * 60 * 1000,
+    retry: 1,
+    retryDelay: 1000,
   });
 };
 
@@ -104,13 +107,7 @@ export const useCategoryReviewVideoSearch = (
   enabled: boolean = true
 ) => {
   return useQuery({
-    queryKey: [
-      'category-review-video-search',
-      middleCategory,
-      subCategory,
-      page,
-      size,
-    ],
+    queryKey: REVIEW_KEYS.VIDEO_LIST({ page, size }),
     queryFn: () =>
       productApi.searchProductsByCategory({
         middleCategory: middleCategory as any,
@@ -122,6 +119,8 @@ export const useCategoryReviewVideoSearch = (
       }),
     enabled: enabled && !!middleCategory,
     staleTime: 5 * 60 * 1000,
+    retry: 1,
+    retryDelay: 1000,
   });
 };
 
@@ -134,13 +133,7 @@ export const useCategoryReviewImageSearch = (
   enabled: boolean = true
 ) => {
   return useQuery({
-    queryKey: [
-      'category-review-image-search',
-      middleCategory,
-      subCategory,
-      page,
-      size,
-    ],
+    queryKey: REVIEW_KEYS.IMAGE_LIST({ page, size }),
     queryFn: () =>
       productApi.searchProductsByCategory({
         middleCategory: middleCategory as any,
@@ -152,5 +145,7 @@ export const useCategoryReviewImageSearch = (
       }),
     enabled: enabled && !!middleCategory,
     staleTime: 5 * 60 * 1000,
+    retry: 1,
+    retryDelay: 1000,
   });
 };

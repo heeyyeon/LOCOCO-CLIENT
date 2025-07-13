@@ -9,32 +9,26 @@
  * ## SOURCE: https://github.com/acacode/swagger-typescript-api ##
  * ---------------------------------------------------------------
  */
-import { ApiResponseVoid } from './data-contracts';
-import { HttpClient, RequestParams } from './http-client';
 
-export class Admin<
+import { ApiResponseReviewLikeResponse } from "./data-contracts";
+import { HttpClient, RequestParams } from "./http-client";
+
+export class ReviewLike<
   SecurityDataType = unknown,
 > extends HttpClient<SecurityDataType> {
   /**
    * No description
    *
-   * @tags ADMIN
-   * @name DeleteReviewByAdmin
-   * @request DELETE:/api/admin/reviews/{reviewId}
+   * @tags REVIEW LIKE
+   * @name ToggleLike
+   * @summary 리뷰 좋아요 토글 (추가/취소)
+   * @request POST:/api/likes/reviews/{reviewId}
    * @secure
    */
-  deleteReviewByAdmin = (
-    reviewId: number,
-    query: {
-      /** @format int64 */
-      userId: number;
-    },
-    params: RequestParams = {}
-  ) =>
-    this.request<ApiResponseVoid, any>({
-      path: `/api/admin/reviews/${reviewId}`,
-      method: 'DELETE',
-      query: query,
+  toggleLike = (reviewId: number, params: RequestParams = {}) =>
+    this.request<ApiResponseReviewLikeResponse, any>({
+      path: `/api/likes/reviews/${reviewId}`,
+      method: "POST",
       secure: true,
       ...params,
     });

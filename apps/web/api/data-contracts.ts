@@ -74,12 +74,63 @@ export interface ReviewMediaResponse {
   mediaUrl?: string[];
 }
 
+export interface ApiResponseString {
+  success?: boolean;
+  /** @format int32 */
+  status?: number;
+  message?: string;
+  data?: string;
+}
+
+export interface ApiResponseReviewLikeResponse {
+  success?: boolean;
+  /** @format int32 */
+  status?: number;
+  message?: string;
+  data?: ReviewLikeResponse;
+}
+
+export interface ReviewLikeResponse {
+  /** @format int64 */
+  likeCount?: number;
+}
+
+export interface ApiResponseToggleLikeResponse {
+  success?: boolean;
+  /** @format int32 */
+  status?: number;
+  message?: string;
+  data?: ToggleLikeResponse;
+}
+
+export interface ToggleLikeResponse {
+  isLiked?: boolean;
+}
+
 export interface ApiResponseVoid {
   success?: boolean;
   /** @format int32 */
   status?: number;
   message?: string;
   data?: any;
+}
+
+export interface TestLoginRequest {
+  /** @format int64 */
+  userId: number;
+}
+
+export interface ApiResponseJwtLoginResponse {
+  success?: boolean;
+  /** @format int32 */
+  status?: number;
+  message?: string;
+  data?: JwtLoginResponse;
+}
+
+export interface JwtLoginResponse {
+  accessToken?: string;
+  refreshToken?: string;
 }
 
 export interface ApiResponseListVideoResponse {
@@ -104,12 +155,114 @@ export interface VideoResponse {
   uploadedAt?: string;
 }
 
+export interface ApiResponseMainVideoReviewResponse {
+  success?: boolean;
+  /** @format int32 */
+  status?: number;
+  message?: string;
+  data?: MainVideoReviewResponse;
+}
+
+export interface MainVideoReview {
+  /** @format int64 */
+  reviewId?: number;
+  brandName?: string;
+  productName?: string;
+  /** @format int32 */
+  likeCount?: number;
+  /** @format int32 */
+  rank?: number;
+  reviewVideo?: string;
+}
+
+export interface MainVideoReviewResponse {
+  videoReviews?: MainVideoReview[];
+}
+
+export interface ApiResponseMainImageReviewResponse {
+  success?: boolean;
+  /** @format int32 */
+  status?: number;
+  message?: string;
+  data?: MainImageReviewResponse;
+}
+
+export interface MainImageReview {
+  /** @format int64 */
+  reviewId?: number;
+  brandName?: string;
+  productName?: string;
+  /** @format int32 */
+  likeCount?: number;
+  /** @format int32 */
+  rank?: number;
+  reviewImage?: string;
+}
+
+export interface MainImageReviewResponse {
+  imageReviews?: MainImageReview[];
+}
+
+export interface ApiResponseImageReviewsProductDetailResponse {
+  success?: boolean;
+  /** @format int32 */
+  status?: number;
+  message?: string;
+  data?: ImageReviewsProductDetailResponse;
+}
+
+export interface ImageReviewProductDetailResponse {
+  /** @format int64 */
+  reviewId?: number;
+  /** @format date-time */
+  writtenTime?: string;
+  receiptUploaded?: boolean;
+  positiveComment?: string;
+  negativeComment?: string;
+  authorName?: string;
+  /** @format double */
+  rating?: number;
+  option?: string;
+  /** @format int32 */
+  likeCount?: number;
+  images?: string[];
+}
+
+export interface ImageReviewsProductDetailResponse {
+  imageReviews?: ImageReviewProductDetailResponse[];
+  pageInfo?: PageableResponse;
+}
+
+export interface PageableResponse {
+  /** @format int32 */
+  pageNumber?: number;
+  /** @format int32 */
+  pageSize?: number;
+  /** @format int32 */
+  numberOfElements?: number;
+  isLast?: boolean;
+}
+
 export interface ApiResponseObject {
   success?: boolean;
   /** @format int32 */
   status?: number;
   message?: string;
   data?: any;
+}
+
+export interface ApiResponseNameBrandProductResponse {
+  success?: boolean;
+  /** @format int32 */
+  status?: number;
+  message?: string;
+  data?: NameBrandProductResponse;
+}
+
+export interface NameBrandProductResponse {
+  searchQuery?: string;
+  products?: ProductResponse[];
+  pageInfo?: PageableResponse;
 }
 
 export interface ApiResponseProductDetailResponse {
@@ -132,6 +285,8 @@ export interface ProductDetailResponse {
   reviewCount?: number;
   /** @format double */
   rating?: number;
+  starPercent?: ScorePercent[];
+  isLiked?: boolean;
   /** @format int64 */
   normalPrice?: number;
   productDetail?: string;
@@ -161,6 +316,13 @@ export interface ProductOptionResponse {
   optionName?: string;
 }
 
+export interface ScorePercent {
+  /** @format int32 */
+  score?: number;
+  /** @format double */
+  percent?: number;
+}
+
 export interface ApiResponseProductDetailYoutubeResponse {
   success?: boolean;
   /** @format int32 */
@@ -185,16 +347,6 @@ export interface CategoryPopularProductResponse {
   searchQuery?: string;
   products?: ProductResponse[];
   pageInfo?: PageableResponse;
-}
-
-export interface PageableResponse {
-  /** @format int32 */
-  pageNumber?: number;
-  /** @format int32 */
-  pageSize?: number;
-  /** @format int32 */
-  numberOfElements?: number;
-  isLast?: boolean;
 }
 
 export interface ProductResponse {
