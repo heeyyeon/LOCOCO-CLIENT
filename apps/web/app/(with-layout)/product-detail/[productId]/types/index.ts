@@ -1,10 +1,11 @@
-export interface ProductDetailResponse {
-  data: ProductDetailData;
+export interface APIResponse<T> {
+  data: T;
   message: string;
   status: number;
   success: boolean;
 }
 
+export type ProductDetailResponse = APIResponse<ProductDetailData>;
 export interface ProductDetailData {
   /** @format int64 */
   productId: number;
@@ -53,4 +54,10 @@ export interface ScorePercent {
   score: number;
   /** @format double */
   percent: number;
+}
+
+export type YoutubeListResponse = APIResponse<YoutubeListData>;
+
+export interface YoutubeListData {
+  youtubeUrls?: string[];
 }

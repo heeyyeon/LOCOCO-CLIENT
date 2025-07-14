@@ -4,13 +4,17 @@ import ProductDetailSection from './components/product-detail-section';
 import Review from './components/review';
 import StarRating from './components/star-rating';
 import YoutubeCarousel from './components/youtube-carousel';
-import { ProductDetailData } from './types';
+import { ProductDetailData, YoutubeListData } from './types';
 
 interface ClientPageProps {
   productData: ProductDetailData;
+  youtubeListData: YoutubeListData;
 }
 
-export default function ClientPage({ productData }: ClientPageProps) {
+export default function ClientPage({
+  productData,
+  youtubeListData,
+}: ClientPageProps) {
   return (
     <div className="flex-col lg:flex lg:justify-center">
       <div className="flex w-[133.6rem] items-center">
@@ -34,7 +38,7 @@ export default function ClientPage({ productData }: ClientPageProps) {
             />
           )}
 
-          <YoutubeCarousel />
+          <YoutubeCarousel youtubeListData={youtubeListData} />
           <StarRating />
           <Review />
         </div>

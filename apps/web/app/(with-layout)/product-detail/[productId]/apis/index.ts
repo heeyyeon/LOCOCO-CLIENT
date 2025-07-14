@@ -1,6 +1,8 @@
 import { apiRequest } from 'app/api/apiRequest';
 import { ProductDetailResponse } from '../types';
 import { ProductDetailData } from '../types';
+import { YoutubeListResponse } from '../types';
+import { YoutubeListData } from '../types';
 
 // 상품 상세 정보 응답 타입 정의
 
@@ -16,6 +18,20 @@ export const getProductDetail = async (
 
   const response = await apiRequest<ProductDetailResponse>({
     endPoint: `/api/products/details/${productId}`,
+    method: 'GET',
+    headers,
+  });
+
+  return response.data;
+};
+
+export const getYoutubeList = async (
+  productId: number
+): Promise<YoutubeListData> => {
+  const headers: Record<string, string> = {};
+
+  const response = await apiRequest<YoutubeListResponse>({
+    endPoint: `/api/products/details/${productId}/youtube`,
     method: 'GET',
     headers,
   });
