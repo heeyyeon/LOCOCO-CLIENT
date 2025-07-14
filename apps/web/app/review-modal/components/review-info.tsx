@@ -20,6 +20,7 @@ interface ReviewInfoProps {
   productName: string;
   imageUrl: string;
   brandName: string;
+  isReceipt?: boolean;
 }
 
 export default function ReviewInfo({
@@ -32,6 +33,7 @@ export default function ReviewInfo({
   productName,
   imageUrl,
   brandName,
+  isReceipt = false,
 }: ReviewInfoProps) {
   const router = useRouter();
   const handleProductClick = () => {
@@ -62,9 +64,11 @@ export default function ReviewInfo({
           <span>オプション :</span>
           <span>{productOption}</span>
         </div>
-        <div className="mt-[1.2rem]">
-          <Tag text="レシート" />
-        </div>
+        {isReceipt && (
+          <div className="mt-[1.2rem]">
+            <Tag text="レシート" />
+          </div>
+        )}
 
         {/* 긍정/부정 리뷰 */}
         <div className="mt-[1.6rem]">
