@@ -124,12 +124,15 @@ function PageContent() {
     8,
     !!middleCategory && selectedTab === SEARCH_OPTION.REVIEW
   );
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const productData = keyword
     ? (productSearchData as any)?.data?.products || []
     : (categoryProductData as any)?.data?.products || [];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const reviewVideoData = keyword
     ? (reviewVideoSearchData as any)?.data?.reviews || []
     : (categoryReviewVideoData as any)?.data?.reviews || [];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const reviewImageData = keyword
     ? (reviewImageSearchData as any)?.data?.reviews || []
     : (categoryReviewImageData as any)?.data?.reviews || [];
