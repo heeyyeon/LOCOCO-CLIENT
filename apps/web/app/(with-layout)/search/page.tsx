@@ -124,16 +124,15 @@ function PageContent() {
     8,
     !!middleCategory && selectedTab === SEARCH_OPTION.REVIEW
   );
-
   const productData = keyword
-    ? productSearchData?.data
-    : categoryProductData?.data;
+    ? productSearchData?.data?.products || []
+    : categoryProductData?.data?.products || [];
   const reviewVideoData = keyword
-    ? reviewVideoSearchData?.data
-    : categoryReviewVideoData?.data;
+    ? reviewVideoSearchData?.data?.reviews || []
+    : categoryReviewVideoData?.data?.reviews || [];
   const reviewImageData = keyword
-    ? reviewImageSearchData?.data
-    : categoryReviewImageData?.data;
+    ? reviewImageSearchData?.data?.reviews || []
+    : categoryReviewImageData?.data?.reviews || [];
 
   const isLoading =
     (keyword &&
@@ -168,13 +167,11 @@ function PageContent() {
   };
 
   const tabRender = {
-    [SEARCH_OPTION.PRODUCT]: (
-      <SearchProductsSection products={productData?.products || []} />
-    ),
+    [SEARCH_OPTION.PRODUCT]: <SearchProductsSection products={productData} />,
     [SEARCH_OPTION.REVIEW]: (
       <SearchReviewSection
-        reviewsVideo={reviewVideoData?.reviews || []}
-        reviewsImage={reviewImageData?.reviews || []}
+        reviewsVideo={reviewVideoData}
+        reviewsImage={reviewImageData}
       />
     ),
   }[selectedTab];

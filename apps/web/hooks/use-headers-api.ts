@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { apiRequest } from '../app/api/apiRequest';
+import { apiRequest } from 'app/api/apiRequest';
 import { PRODUCT_KEYS, REVIEW_KEYS } from '../constants/query-key';
 
 // 검색바로 검색할 때 사용하는 쿼리
@@ -15,8 +15,8 @@ export const useProductSearch = (
       apiRequest({
         endPoint: '/api/products/search',
         method: 'GET',
-        headers: {
-          keyword,
+        params: {
+          keyword: keyword,
           searchType: 'PRODUCT',
           page: page.toString(),
           size: size.toString(),
@@ -40,9 +40,9 @@ export const useReviewVideoSearch = (
     queryKey: [...REVIEW_KEYS.VIDEO_LIST({ page, size }), 'search', keyword],
     queryFn: () =>
       apiRequest({
-        endPoint: '/api/reviews/search',
+        endPoint: '/api/products/search',
         method: 'GET',
-        headers: {
+        params: {
           keyword,
           searchType: 'REVIEW',
           mediaType: 'VIDEO',
@@ -68,9 +68,9 @@ export const useReviewImageSearch = (
     queryKey: [...REVIEW_KEYS.IMAGE_LIST({ page, size }), 'search', keyword],
     queryFn: () =>
       apiRequest({
-        endPoint: '/api/reviews/search',
+        endPoint: '/api/products/search',
         method: 'GET',
-        headers: {
+        params: {
           keyword,
           searchType: 'REVIEW',
           mediaType: 'IMAGE',
@@ -102,9 +102,9 @@ export const useCategoryProductSearch = (
     ],
     queryFn: () =>
       apiRequest({
-        endPoint: '/api/products/search/category',
+        endPoint: '/api/products/categories/search',
         method: 'GET',
-        headers: {
+        params: {
           middleCategory,
           ...(subCategory && { subCategory }),
           searchType: 'PRODUCT',
@@ -136,9 +136,9 @@ export const useCategoryReviewVideoSearch = (
     ],
     queryFn: () =>
       apiRequest({
-        endPoint: '/api/reviews/search/category',
+        endPoint: '/api/products/categories/search',
         method: 'GET',
-        headers: {
+        params: {
           middleCategory,
           ...(subCategory && { subCategory }),
           searchType: 'REVIEW',
@@ -171,9 +171,9 @@ export const useCategoryReviewImageSearch = (
     ],
     queryFn: () =>
       apiRequest({
-        endPoint: '/api/reviews/search/category',
+        endPoint: '/api/products/categories/search',
         method: 'GET',
-        headers: {
+        params: {
           middleCategory,
           ...(subCategory && { subCategory }),
           searchType: 'REVIEW',

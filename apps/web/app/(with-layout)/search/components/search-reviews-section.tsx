@@ -1,12 +1,15 @@
 'use client';
 
 import CardReview from 'components/card/card-review';
-import { ReviewItem } from 'types/review';
+import {
+  ImageReviewResponse,
+  VideoReviewResponse,
+} from '../../../api/review-respone';
 import NotFoundReviewSection from './not-found-review-section';
 
 interface SearchReviewSectionProps {
-  reviewsVideo: ReviewItem[];
-  reviewsImage: ReviewItem[];
+  reviewsVideo: VideoReviewResponse[];
+  reviewsImage: ImageReviewResponse[];
 }
 
 export default function SearchReviewSection({
@@ -26,7 +29,13 @@ export default function SearchReviewSection({
         ) : (
           <div className="flex flex-wrap content-center items-center gap-[2.4rem] self-stretch">
             {reviewsVideo.map(
-              ({ reviewId, brandName, productName, likeCount, imageUrl }) => (
+              ({
+                reviewId = 0,
+                brandName = '',
+                productName,
+                likeCount,
+                url = '',
+              }) => (
                 <CardReview
                   key={reviewId}
                   type="video"
@@ -34,7 +43,7 @@ export default function SearchReviewSection({
                   productName={productName}
                   reviewId={reviewId}
                   likeCount={likeCount}
-                  imageUrl={imageUrl}
+                  imageUrl={url}
                   handleCardClick={handleCardClick}
                 />
               )
@@ -50,7 +59,7 @@ export default function SearchReviewSection({
         ) : (
           <div className="flex flex-wrap content-center items-center gap-[2.4rem] self-stretch">
             {reviewsImage.map(
-              ({ reviewId, brandName, productName, likeCount, imageUrl }) => (
+              ({ reviewId, brandName, productName, likeCount, url }) => (
                 <CardReview
                   key={reviewId}
                   type="image"
@@ -58,7 +67,7 @@ export default function SearchReviewSection({
                   productName={productName}
                   reviewId={reviewId}
                   likeCount={likeCount}
-                  imageUrl={imageUrl}
+                  imageUrl={url}
                   handleCardClick={handleCardClick}
                 />
               )

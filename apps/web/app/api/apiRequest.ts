@@ -5,9 +5,13 @@ export interface ApiRequestProps {
   method?: RequestMethod;
   data?: unknown;
   headers?: Record<string, string>;
+  params?: Record<string, string>;
 }
 const SERVER_API_BASE_URL = process.env.NEXT_PUBLIC_API_SERVER_URL;
+console.log(SERVER_API_BASE_URL);
 
+// 마스터 토큰
+const MASTER_TOKEN = process.env.NEXT_PUBLIC_MASTER_TOKEN;
 /**
  * 
  * @param endPoint 엔드포인트 작성 ex.'api/youtube/trends'
@@ -23,11 +27,28 @@ export const apiRequest = async <T = unknown>({
   method = 'GET',
   data,
   headers,
+  params,
 }: ApiRequestProps): Promise<T> => {
   try {
-    const requestUrl = `${SERVER_API_BASE_URL}${endPoint}`;
+    // 쿼리 파라미터가 있으면 URL에 추가
+    let requestUrl = `${SERVER_API_BASE_URL}${endPoint}`;
+    if (params && Object.keys(params).length > 0) {
+      const searchParams = new URLSearchParams();
+      Object.entries(params).forEach(([key, value]) => {
+        if (value !== undefined && value !== null) {
+          searchParams.append(key, value);
+        }
+      });
+      requestUrl += `?${searchParams.toString()}`;
+    }
+
+    console.log('API Request URL:', requestUrl);
+    console.log('API Request Method:', method);
+    console.log('API Request Params:', params);
+
     const defaultHeaders: Record<string, string> = {
       'Content-Type': 'application/json',
+      Authorization: `Bearer ${MASTER_TOKEN}`,
       ...headers,
     };
 
@@ -45,6 +66,7 @@ export const apiRequest = async <T = unknown>({
       method,
       data,
       headers,
+      params,
     });
 
     if (interceptedResponse) {
@@ -53,7 +75,12 @@ export const apiRequest = async <T = unknown>({
 
     if (!response.ok) {
       const error = await response.text();
-      console.error('에러 :', error);
+      console.error('API Response Error:', {
+        status: response.status,
+        statusText: response.statusText,
+        url: requestUrl,
+        error: error,
+      });
       throw error;
     }
     const responseData = await response.json();

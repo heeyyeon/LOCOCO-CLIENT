@@ -1,7 +1,7 @@
 'use client';
 
-import { ProductResponse } from 'api/data-contracts';
 import CardProduct from 'components/card/card-product';
+import { ProductResponse } from '../../../api/product-response';
 import NotFoundProductSection from './not-found-product-section';
 
 export default function SearchProductsSection({
@@ -28,7 +28,7 @@ export default function SearchProductsSection({
               isLiked = false,
               rating = 0,
               reviewCount = 0,
-              imageUrls = [],
+              url = '',
             }) => {
               return (
                 <CardProduct
@@ -40,7 +40,7 @@ export default function SearchProductsSection({
                   isLiked={isLiked}
                   rating={rating}
                   reviewCount={reviewCount}
-                  imageUrl={imageUrls[0] || ''}
+                  imageUrl={url}
                   handleCardClick={handleCardClick}
                 />
               );
