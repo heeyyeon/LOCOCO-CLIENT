@@ -10,16 +10,23 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Tab, TabContainer } from '@/components/tab/Tab';
 
-export default function HomeSectionProduct() {
+type ProductSortType = 'new' | 'popular';
+
+interface HomeSectionProductProps {
+  productSortType: ProductSortType;
+}
+export default function HomeSectionProduct({
+  productSortType = 'new',
+}: HomeSectionProductProps) {
   const [selectedTab, setSelectedTab] =
     useState<CategoryNameEng>('FACIAL_CARE');
   const router = useRouter();
 
   const { data, isLoading, isError } = useQuery({
-    queryKey: ['categoryNewProducts', selectedTab],
+    queryKey: [`category-${productSortType}-Products`, selectedTab],
     queryFn: () =>
       apiRequest<ApiResponseCategoryNewProductResponse>({
-        endPoint: `/api/products/categories/new?middleCategory=${selectedTab}&page=0&size=4`,
+        endPoint: `/api/products/categories/${productSortType}?middleCategory=${selectedTab}&page=0&size=4`,
         headers: {
           Authorization: `Bearer `,
         },
