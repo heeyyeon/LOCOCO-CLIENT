@@ -1,4 +1,9 @@
-import { REVIEW_MEDIA_ERROR_MESSAGE, REVIEW_MEDIA_MAX_COUNT } from 'constants/review';
+'use client';
+
+import {
+  REVIEW_MEDIA_ERROR_MESSAGE,
+  REVIEW_MEDIA_MAX_COUNT,
+} from 'constants/review';
 import z from 'zod';
 
 export const ALLOWED_IMAGE_TYPES = [
