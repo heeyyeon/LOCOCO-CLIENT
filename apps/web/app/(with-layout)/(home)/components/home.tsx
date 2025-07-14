@@ -1,5 +1,5 @@
 import { apiRequest } from 'app/api/apiRequest';
-import { convertToEmbedUrl } from 'utils/youtube';
+import { convertToEmbedUrl, validateYoutubeVideos } from 'utils/youtube';
 import { ReactNode, PropsWithChildren } from 'react';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
@@ -48,13 +48,14 @@ async function HomeSectionYouTube() {
       endPoint: 'api/youtube/trends',
       headers: { Authorization: `Bearer ${process.env.NEXT_TMP_ACCESS_TOKEN}` },
     });
-    const videos = response.data;
-    const showVideos = videos?.slice(0, 6);
-    console.log(videos);
 
-    if (videos?.length === 0) {
+    const videos = response.data;
+
+    if (!videos || videos.length === 0) {
       return <div>로딩중</div>;
     }
+    const validatedVideos = await validateYoutubeVideos(videos, 25);
+    const showVideos = validatedVideos?.slice(0, 6);
     return (
       <div className="mb-[12rem] grid grid-cols-3 gap-[2.4rem]">
         {showVideos?.map((video) => (
