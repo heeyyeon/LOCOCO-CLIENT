@@ -9,7 +9,10 @@
  * ## SOURCE: https://github.com/acacode/swagger-typescript-api ##
  * ---------------------------------------------------------------
  */
+<<<<<<< HEAD
 
+=======
+>>>>>>> f5dd48a448c113142320359834c38a8796bcc8f9
 import {
   ApiResponseImageReviewsProductDetailResponse,
   ApiResponseMainImageReviewResponse,
@@ -17,6 +20,7 @@ import {
   ApiResponseReviewMediaResponse,
   ApiResponseReviewReceiptResponse,
   ApiResponseReviewResponse,
+<<<<<<< HEAD
   ApiResponseVideoReviewDetailResponse,
   ApiResponseVideoReviewProductDetailResponse,
   ApiResponseVoid,
@@ -26,6 +30,13 @@ import {
   ReviewRequest,
 } from "./data-contracts";
 import { ContentType, HttpClient, RequestParams } from "./http-client";
+=======
+  ReviewMediaRequest,
+  ReviewReceiptRequest,
+  ReviewRequest,
+} from './data-contracts';
+import { ContentType, HttpClient, RequestParams } from './http-client';
+>>>>>>> f5dd48a448c113142320359834c38a8796bcc8f9
 
 export class Review<
   SecurityDataType = unknown,
@@ -42,6 +53,7 @@ export class Review<
   createReview = (
     productId: number,
     data: ReviewRequest,
+<<<<<<< HEAD
     params: RequestParams = {},
   ) =>
     this.request<ApiResponseReviewResponse, any>({
@@ -70,6 +82,13 @@ export class Review<
     this.request<ApiResponseVoid, any>({
       path: `/api/reviews/${productId}/${userId}`,
       method: "POST",
+=======
+    params: RequestParams = {}
+  ) =>
+    this.request<ApiResponseReviewResponse, any>({
+      path: `/api/reviews/${productId}`,
+      method: 'POST',
+>>>>>>> f5dd48a448c113142320359834c38a8796bcc8f9
       body: data,
       secure: true,
       type: ContentType.Json,
@@ -86,11 +105,19 @@ export class Review<
    */
   createReceiptPresignedUrl = (
     data: ReviewReceiptRequest,
+<<<<<<< HEAD
     params: RequestParams = {},
   ) =>
     this.request<ApiResponseReviewReceiptResponse, any>({
       path: `/api/reviews/receipt`,
       method: "POST",
+=======
+    params: RequestParams = {}
+  ) =>
+    this.request<ApiResponseReviewReceiptResponse, any>({
+      path: `/api/reviews/receipt`,
+      method: 'POST',
+>>>>>>> f5dd48a448c113142320359834c38a8796bcc8f9
       body: data,
       secure: true,
       type: ContentType.Json,
@@ -107,11 +134,19 @@ export class Review<
    */
   createMediaPresignedUrl = (
     data: ReviewMediaRequest,
+<<<<<<< HEAD
     params: RequestParams = {},
   ) =>
     this.request<ApiResponseReviewMediaResponse, any>({
       path: `/api/reviews/media`,
       method: "POST",
+=======
+    params: RequestParams = {}
+  ) =>
+    this.request<ApiResponseReviewMediaResponse, any>({
+      path: `/api/reviews/media`,
+      method: 'POST',
+>>>>>>> f5dd48a448c113142320359834c38a8796bcc8f9
       body: data,
       secure: true,
       type: ContentType.Json,
@@ -129,7 +164,11 @@ export class Review<
   getMainVideoReviews = (params: RequestParams = {}) =>
     this.request<ApiResponseMainVideoReviewResponse, any>({
       path: `/api/reviews/video`,
+<<<<<<< HEAD
       method: "GET",
+=======
+      method: 'GET',
+>>>>>>> f5dd48a448c113142320359834c38a8796bcc8f9
       secure: true,
       ...params,
     });
@@ -145,6 +184,7 @@ export class Review<
   getMainImageReviews = (params: RequestParams = {}) =>
     this.request<ApiResponseMainImageReviewResponse, any>({
       path: `/api/reviews/image`,
+<<<<<<< HEAD
       method: "GET",
       secure: true,
       ...params,
@@ -185,6 +225,9 @@ export class Review<
       path: `/api/reviews/details/video`,
       method: "GET",
       query: query,
+=======
+      method: 'GET',
+>>>>>>> f5dd48a448c113142320359834c38a8796bcc8f9
       secure: true,
       ...params,
     });
@@ -193,7 +236,11 @@ export class Review<
    *
    * @tags REVIEW
    * @name GetImageReviewsInProductDetail
+<<<<<<< HEAD
    * @summary 제품 상세 페이지에서 유저 리뷰 조회
+=======
+   * @summary 제품 상세 페에지에서 유저 리뷰 조회
+>>>>>>> f5dd48a448c113142320359834c38a8796bcc8f9
    * @request GET:/api/reviews/details/image
    * @secure
    */
@@ -212,11 +259,19 @@ export class Review<
        */
       size?: number;
     },
+<<<<<<< HEAD
     params: RequestParams = {},
   ) =>
     this.request<ApiResponseImageReviewsProductDetailResponse, any>({
       path: `/api/reviews/details/image`,
       method: "GET",
+=======
+    params: RequestParams = {}
+  ) =>
+    this.request<ApiResponseImageReviewsProductDetailResponse, any>({
+      path: `/api/reviews/details/image`,
+      method: 'GET',
+>>>>>>> f5dd48a448c113142320359834c38a8796bcc8f9
       query: query,
       secure: true,
       ...params,
