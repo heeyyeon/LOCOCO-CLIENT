@@ -1,5 +1,3 @@
-'use client';
-
 import { SvgJapaneseReview, SvgKoreanReview } from '@/icons';
 import HomeSection from './(home)/components/home';
 import HomeBanner from './(home)/components/home-banner';

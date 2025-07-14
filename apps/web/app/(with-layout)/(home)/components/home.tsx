@@ -1,6 +1,9 @@
+import { apiRequest } from 'app/api/apiRequest';
+import { convertToEmbedUrl } from 'utils/youtube';
 import { ReactNode, PropsWithChildren } from 'react';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
+import { ApiResponseListVideoResponse } from '../../../../api/data-contracts';
 import HomeSectionProduct from './home-section-product';
 import HomeSectionReview from './home-section-review';
 
@@ -39,17 +42,38 @@ function HomeSectionHeader({ children, moreInfoUrl }: HomeSectionHeaderProps) {
   );
 }
 
-function HomeSectionYouTube() {
-  return (
-    <div className="mb-[12rem] grid grid-cols-3 gap-[2.4rem]">
-      <article className="h-[20.3rem] w-full bg-gray-100"></article>
-      <article className="h-[20.3rem] w-full bg-gray-100"></article>
-      <article className="h-[20.3rem] w-full bg-gray-100"></article>
-      <article className="h-[20.3rem] w-full bg-gray-100"></article>
-      <article className="h-[20.3rem] w-full bg-gray-100"></article>
-      <article className="h-[20.3rem] w-full bg-gray-100"></article>
-    </div>
-  );
+async function HomeSectionYouTube() {
+  try {
+    const response = await apiRequest<ApiResponseListVideoResponse>({
+      endPoint: 'api/youtube/trends',
+      headers: { Authorization: `Bearer ${process.env.NEXT_TMP_ACCESS_TOKEN}` },
+    });
+    const videos = response.data;
+    const showVideos = videos?.slice(0, 6);
+    console.log(videos);
+
+    if (videos?.length === 0) {
+      return <div>로딩중</div>;
+    }
+    return (
+      <div className="mb-[12rem] grid grid-cols-3 gap-[2.4rem]">
+        {showVideos?.map((video) => (
+          <article className="h-[20.3rem] w-full bg-gray-100" key={video.id}>
+            <iframe
+              width="100%"
+              height="100%"
+              src={convertToEmbedUrl(video.url || '')}
+              title={video.title}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+            ></iframe>
+          </article>
+        ))}
+      </div>
+    );
+  } catch (error) {
+    return <div>{error}</div>;
+  }
 }
 
 HomeSection.Header = HomeSectionHeader;
