@@ -11,7 +11,8 @@ interface VideoLayoutProps {
 export default function VideoLayout({ url }: VideoLayoutProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [progress, setProgress] = useState(0);
-  const [overlay, setOverlay] = useState<null | 'play' | 'pause'>(null);
+  const [overlay, setOverlay] = useState<'play' | 'pause' | null>('play');
+  const [hasStarted, setHasStarted] = useState(false);
 
   useEffect(() => {
     const videoPlayer = videoRef.current;
@@ -29,7 +30,13 @@ export default function VideoLayout({ url }: VideoLayoutProps) {
 
   const handleVideoClick = () => {
     if (!videoRef.current) return;
-    if (videoRef.current.paused) {
+
+    if (!hasStarted) {
+      videoRef.current.play();
+      setHasStarted(true);
+      setOverlay('play');
+      setTimeout(() => setOverlay(null), 300);
+    } else if (videoRef.current.paused) {
       videoRef.current.play();
       setOverlay('play');
       setTimeout(() => setOverlay(null), 300);
@@ -45,7 +52,6 @@ export default function VideoLayout({ url }: VideoLayoutProps) {
         ref={videoRef}
         src={url}
         controls={false}
-        muted
         loop
         playsInline
         className="h-full w-full cursor-pointer object-cover"
