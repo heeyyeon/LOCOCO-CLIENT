@@ -97,15 +97,7 @@ export function CategoryBar({
   handleSelectOption,
 }: CategoryBarProps) {
   return (
-    <div
-      className={cn(
-        'relative',
-        selectedCategory || isSearching
-          ? 'border-b border-dashed border-pink-500'
-          : 'border-b-[0.1rem] border-gray-500'
-      )}
-      onMouseLeave={handleMouseLeaveCategory}
-    >
+    <div className="relative w-full" onMouseLeave={handleMouseLeaveCategory}>
       <div className="mx-auto flex h-[6.4rem] w-full items-center gap-[2rem] px-[11.9rem]">
         <Link href="/">
           <SvgLogo className="h-[2.7rem] w-[16rem] shrink-0" />
@@ -161,7 +153,6 @@ export function OptionBar({
   selectedOption,
   selectedCategoryKey,
   handleSelectOption,
-  handleMouseLeaveCategory,
 }: OptionBarProps) {
   return (
     <div className="flex h-[5.2rem] w-full items-center border-b border-solid border-pink-500 bg-white px-[9.5rem]">
@@ -177,7 +168,7 @@ export function OptionBar({
             <Link
               href={`/search?middleCategory=${selectedCategoryKey}&subCategory=${option}&searchType=PRODUCT`}
               className={cn(
-                'jp-body2 cursor-pointer whitespace-nowrap px-[2.4rem] py-[1rem]',
+                'jp-body2 hover: cursor-pointer whitespace-nowrap px-[2.4rem] py-[1rem]',
                 isActive ? 'font-bold text-pink-500' : 'text-gray-600'
               )}
               onClick={() => handleSelectOption(option)}
