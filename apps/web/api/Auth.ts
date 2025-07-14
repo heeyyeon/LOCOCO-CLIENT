@@ -13,7 +13,6 @@ import {
   ApiResponseJwtLoginResponse,
   ApiResponseLineLoginResponse,
   ApiResponseLoginUrlResponse,
-  ApiResponseLoginUrlResponse,
   ApiResponseVoid,
   TestLoginRequest,
 } from './data-contracts';
@@ -35,22 +34,6 @@ export class Auth<
     this.request<ApiResponseVoid, any>({
       path: `/api/auth/refresh`,
       method: 'POST',
-      secure: true,
-      ...params,
-    });
-  /**
-   * No description
-   *
-   * @tags AUTH
-   * @name GetLoginUrl
-   * @summary 라인 로그인 URL 생성 (클라에서 호출)
-   * @request GET:/api/auth/url
-   * @secure
-   */
-  getLoginUrl = (params: RequestParams = {}) =>
-    this.request<ApiResponseLoginUrlResponse, any>({
-      path: `/api/auth/url`,
-      method: 'GET',
       secure: true,
       ...params,
     });

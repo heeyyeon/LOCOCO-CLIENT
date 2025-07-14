@@ -10,6 +10,7 @@
  * ---------------------------------------------------------------
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 import { ApiResponseVoid } from "./data-contracts";
 import { HttpClient, RequestParams } from "./http-client";
@@ -17,6 +18,11 @@ import { HttpClient, RequestParams } from "./http-client";
 import { ApiResponseToggleLikeResponse } from './data-contracts';
 import { HttpClient, RequestParams } from './http-client';
 >>>>>>> f5dd48a (feat: api 연결)
+=======
+
+import { ApiResponseToggleLikeResponse } from "./data-contracts";
+import { HttpClient, RequestParams } from "./http-client";
+>>>>>>> 55da300 (feat: api 연결)
 
 export class ProductLike<
   SecurityDataType = unknown,
@@ -43,8 +49,12 @@ export class ProductLike<
   toggleLike1 = (productId: number, params: RequestParams = {}) =>
     this.request<ApiResponseToggleLikeResponse, any>({
       path: `/api/likes/products/${productId}`,
+<<<<<<< HEAD
       method: 'POST',
 >>>>>>> f5dd48a (feat: api 연결)
+=======
+      method: "POST",
+>>>>>>> 55da300 (feat: api 연결)
       secure: true,
       ...params,
     });
