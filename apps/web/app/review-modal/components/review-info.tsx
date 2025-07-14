@@ -11,7 +11,6 @@ import { cn } from '@/lib/utils';
 import Comment from './comment';
 
 interface ReviewInfoProps {
-  onClose?: () => void;
   rating: number;
   id: number | string;
   productOption: string;
@@ -24,7 +23,6 @@ interface ReviewInfoProps {
 }
 
 export default function ReviewInfo({
-  onClose,
   id,
   rating,
   productOption,
@@ -53,11 +51,11 @@ export default function ReviewInfo({
           icon={<SvgClose />}
           color="tertiary"
           size="sm"
-          onClick={onClose}
+          onClick={() => router.back()}
         />
       </header>
 
-      {/* 바디: 스크롤 영역 */}
+      {/* 바디*/}
       <div className="flex-1 overflow-y-auto p-[1.6rem] pb-[11rem]">
         <Star rating={rating} size="sm" color="yellow" />
         <div className="text-jp-caption1 mt-[1.2rem] flex items-center gap-[0.6rem] font-medium text-gray-600">
@@ -69,8 +67,6 @@ export default function ReviewInfo({
             <Tag text="レシート" />
           </div>
         )}
-
-        {/* 긍정/부정 리뷰 */}
         <div className="mt-[1.6rem]">
           <Comment type="positive">{positiveComment}</Comment>
         </div>
@@ -80,7 +76,7 @@ export default function ReviewInfo({
         </div>
       </div>
 
-      {/* 푸터: 항상 하단 고정 */}
+      {/* 푸터 */}
       <footer className="absolute inset-x-0 bottom-0 flex items-center gap-[1.2rem] border-t border-pink-500 bg-white py-[1.2rem] pb-[1.6rem] pl-[1.6rem] pr-[0.8rem]">
         <div
           className="relative h-[6rem] w-[6rem] cursor-pointer overflow-hidden rounded-lg"
