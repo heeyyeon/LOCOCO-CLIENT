@@ -2,7 +2,6 @@
 
 import { ProductResponse } from 'api/data-contracts';
 import CardProduct from 'components/card/card-product';
-import { ProductItem } from 'types/product';
 
 export default function SearchProductsSection({
   products,

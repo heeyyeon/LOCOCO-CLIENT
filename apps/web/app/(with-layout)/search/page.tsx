@@ -47,58 +47,41 @@ function PageContent() {
     middleCategory && isValidCategoryOption(rawSub, middleCategory)
       ? rawSub
       : '';
-<<<<<<< HEAD
-  const keyword = searchParams.get('keyword') || '';
-=======
 
   const keyword = searchParams.get('keyword') || '';
-
->>>>>>> f5dd48a448c113142320359834c38a8796bcc8f9
   const selectedTab: SearchOption = useMemo(() => {
     if (rawSearchType === 'REVIEW') return SEARCH_OPTION.REVIEW;
     return SEARCH_OPTION.PRODUCT;
   }, [rawSearchType]);
 
   // 검색바로 검색한 경우
-<<<<<<< HEAD
   const {
     data: productSearchData,
     isLoading: isProductSearchLoading,
     isError: isProductSearchError,
   } = useProductSearch(
-=======
-  const productSearchQuery = useProductSearch(
->>>>>>> f5dd48a448c113142320359834c38a8796bcc8f9
     keyword,
     0,
     8,
     !!keyword && selectedTab === SEARCH_OPTION.PRODUCT
   );
-<<<<<<< HEAD
 
   const {
     data: reviewVideoSearchData,
     isLoading: isReviewVideoSearchLoading,
     isError: isReviewVideoSearchError,
   } = useReviewVideoSearch(
-=======
-  const reviewVideoSearchQuery = useReviewVideoSearch(
->>>>>>> f5dd48a448c113142320359834c38a8796bcc8f9
     keyword,
     0,
     8,
     !!keyword && selectedTab === SEARCH_OPTION.REVIEW
   );
-<<<<<<< HEAD
 
   const {
     data: reviewImageSearchData,
     isLoading: isReviewImageSearchLoading,
     isError: isReviewImageSearchError,
   } = useReviewImageSearch(
-=======
-  const reviewImageSearchQuery = useReviewImageSearch(
->>>>>>> f5dd48a448c113142320359834c38a8796bcc8f9
     keyword,
     0,
     8,
@@ -106,47 +89,35 @@ function PageContent() {
   );
 
   // 카테고리로 검색한 경우
-<<<<<<< HEAD
   const {
     data: categoryProductData,
     isLoading: isCategoryProductLoading,
     isError: isCategoryProductError,
   } = useCategoryProductSearch(
-=======
-  const categoryProductQuery = useCategoryProductSearch(
->>>>>>> f5dd48a448c113142320359834c38a8796bcc8f9
     middleCategory,
     subCategory,
     0,
     8,
     !!middleCategory && selectedTab === SEARCH_OPTION.PRODUCT
   );
-<<<<<<< HEAD
 
   const {
     data: categoryReviewVideoData,
     isLoading: isCategoryReviewVideoLoading,
     isError: isCategoryReviewVideoError,
   } = useCategoryReviewVideoSearch(
-=======
-  const categoryReviewVideoQuery = useCategoryReviewVideoSearch(
->>>>>>> f5dd48a448c113142320359834c38a8796bcc8f9
     middleCategory,
     subCategory,
     0,
     8,
     !!middleCategory && selectedTab === SEARCH_OPTION.REVIEW
   );
-<<<<<<< HEAD
 
   const {
     data: categoryReviewImageData,
     isLoading: isCategoryReviewImageLoading,
     isError: isCategoryReviewImageError,
   } = useCategoryReviewImageSearch(
-=======
-  const categoryReviewImageQuery = useCategoryReviewImageSearch(
->>>>>>> f5dd48a448c113142320359834c38a8796bcc8f9
     middleCategory,
     subCategory,
     0,
@@ -155,7 +126,6 @@ function PageContent() {
   );
 
   const productData = keyword
-<<<<<<< HEAD
     ? productSearchData?.data
     : categoryProductData?.data;
   const reviewVideoData = keyword
@@ -184,26 +154,6 @@ function PageContent() {
       (isCategoryProductError ||
         isCategoryReviewVideoError ||
         isCategoryReviewImageError));
-=======
-    ? productSearchQuery.data?.data
-    : categoryProductQuery.data?.data;
-  const reviewVideoData = keyword
-    ? reviewVideoSearchQuery.data?.data
-    : categoryReviewVideoQuery.data?.data;
-  const reviewImageData = keyword
-    ? reviewImageSearchQuery.data?.data
-    : categoryReviewImageQuery.data?.data;
-
-  const isLoading =
-    (keyword &&
-      (productSearchQuery.isLoading ||
-        reviewVideoSearchQuery.isLoading ||
-        reviewImageSearchQuery.isLoading)) ||
-    (!keyword &&
-      (categoryProductQuery.isLoading ||
-        categoryReviewVideoQuery.isLoading ||
-        categoryReviewImageQuery.isLoading));
->>>>>>> f5dd48a448c113142320359834c38a8796bcc8f9
 
   const handleClickTab = (option: SearchOption) => {
     const params = new URLSearchParams(searchParams.toString());
@@ -225,11 +175,6 @@ function PageContent() {
       <SearchReviewSection
         reviewsVideo={(reviewVideoData as any)?.reviews || []}
         reviewsImage={(reviewImageData as any)?.reviews || []}
-<<<<<<< HEAD
-=======
-        handleVideoButton={handleVideoButton}
-        handleImageButton={handleImageButton}
->>>>>>> f5dd48a448c113142320359834c38a8796bcc8f9
       />
     ),
   }[selectedTab];
@@ -242,13 +187,9 @@ function PageContent() {
     return <div>데이터를 불러오는 중...</div>;
   }
 
-<<<<<<< HEAD
   if (hasError) {
     return <div>데이터를 불러오는 중 오류가 발생했습니다.</div>;
   }
-
-=======
->>>>>>> f5dd48a448c113142320359834c38a8796bcc8f9
   return (
     <div className="flex w-full flex-col items-start">
       <div className="flex flex-col items-start self-stretch"></div>

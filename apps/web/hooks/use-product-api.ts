@@ -1,10 +1,5 @@
-<<<<<<< HEAD
-import { useQuery, useSuspenseQuery } from '@tanstack/react-query';
-import { productApi } from 'api/client';
-=======
 import { useQuery } from '@tanstack/react-query';
 import { productApi } from '../api/client';
->>>>>>> f5dd48a448c113142320359834c38a8796bcc8f9
 import { PRODUCT_KEYS, REVIEW_KEYS } from '../constants/query-key';
 
 // 검색바로 검색할 때 사용하는 쿼리
@@ -17,7 +12,6 @@ export const useProductSearch = (
   return useQuery({
     queryKey: PRODUCT_KEYS.PRODUCT_LIST({ page, size }),
     queryFn: () =>
-<<<<<<< HEAD
       productApi
         .search({
           keyword,
@@ -28,14 +22,6 @@ export const useProductSearch = (
         .then((res) => {
           return res.json();
         }),
-=======
-      productApi.search({
-        keyword,
-        searchType: 'PRODUCT',
-        page,
-        size,
-      }),
->>>>>>> f5dd48a448c113142320359834c38a8796bcc8f9
     enabled: enabled && !!keyword.trim(),
     staleTime: 5 * 60 * 1000,
     retry: 1, // 재시도 횟수를 1회로 제한
@@ -53,7 +39,6 @@ export const useReviewVideoSearch = (
   return useQuery({
     queryKey: REVIEW_KEYS.VIDEO_LIST({ page, size }),
     queryFn: () =>
-<<<<<<< HEAD
       productApi
         .search({
           keyword,
@@ -65,16 +50,6 @@ export const useReviewVideoSearch = (
         .then((res) => {
           return res.json();
         }),
-
-=======
-      productApi.search({
-        keyword,
-        searchType: 'REVIEW',
-        mediaType: 'VIDEO',
-        page,
-        size,
-      }),
->>>>>>> f5dd48a448c113142320359834c38a8796bcc8f9
     enabled: enabled && !!keyword.trim(),
     staleTime: 5 * 60 * 1000,
     retry: 1,
@@ -92,7 +67,6 @@ export const useReviewImageSearch = (
   return useQuery({
     queryKey: REVIEW_KEYS.IMAGE_LIST({ page, size }),
     queryFn: () =>
-<<<<<<< HEAD
       productApi
         .search({
           keyword,
@@ -104,15 +78,6 @@ export const useReviewImageSearch = (
         .then((res) => {
           return res.json();
         }),
-=======
-      productApi.search({
-        keyword,
-        searchType: 'REVIEW',
-        mediaType: 'IMAGE',
-        page,
-        size,
-      }),
->>>>>>> f5dd48a448c113142320359834c38a8796bcc8f9
     enabled: enabled && !!keyword.trim(),
     staleTime: 5 * 60 * 1000,
     retry: 1,
@@ -131,7 +96,6 @@ export const useCategoryProductSearch = (
   return useQuery({
     queryKey: PRODUCT_KEYS.PRODUCT_LIST({ page, size }),
     queryFn: () =>
-<<<<<<< HEAD
       productApi
         .searchProductsByCategory({
           middleCategory: middleCategory as any,
@@ -143,15 +107,6 @@ export const useCategoryProductSearch = (
         .then((res) => {
           return res.json();
         }),
-=======
-      productApi.searchProductsByCategory({
-        middleCategory: middleCategory as any,
-        subCategory: subCategory as any,
-        searchType: 'PRODUCT',
-        page,
-        size,
-      }),
->>>>>>> f5dd48a448c113142320359834c38a8796bcc8f9
     enabled: enabled && !!middleCategory,
     staleTime: 5 * 60 * 1000,
     retry: 1,
@@ -170,7 +125,6 @@ export const useCategoryReviewVideoSearch = (
   return useQuery({
     queryKey: REVIEW_KEYS.VIDEO_LIST({ page, size }),
     queryFn: () =>
-<<<<<<< HEAD
       productApi
         .searchProductsByCategory({
           middleCategory: middleCategory as any,
@@ -183,16 +137,6 @@ export const useCategoryReviewVideoSearch = (
         .then((res) => {
           return res.json();
         }),
-=======
-      productApi.searchProductsByCategory({
-        middleCategory: middleCategory as any,
-        subCategory: subCategory as any,
-        searchType: 'REVIEW',
-        mediaType: 'VIDEO',
-        page,
-        size,
-      }),
->>>>>>> f5dd48a448c113142320359834c38a8796bcc8f9
     enabled: enabled && !!middleCategory,
     staleTime: 5 * 60 * 1000,
     retry: 1,
@@ -211,7 +155,6 @@ export const useCategoryReviewImageSearch = (
   return useQuery({
     queryKey: REVIEW_KEYS.IMAGE_LIST({ page, size }),
     queryFn: () =>
-<<<<<<< HEAD
       productApi
         .searchProductsByCategory({
           middleCategory: middleCategory as any,
@@ -224,16 +167,6 @@ export const useCategoryReviewImageSearch = (
         .then((res) => {
           return res.json();
         }),
-=======
-      productApi.searchProductsByCategory({
-        middleCategory: middleCategory as any,
-        subCategory: subCategory as any,
-        searchType: 'REVIEW',
-        mediaType: 'IMAGE',
-        page,
-        size,
-      }),
->>>>>>> f5dd48a448c113142320359834c38a8796bcc8f9
     enabled: enabled && !!middleCategory,
     staleTime: 5 * 60 * 1000,
     retry: 1,

@@ -25,7 +25,7 @@ const API_CONFIG = {
 // 마스터 토큰 (환경변수에서 가져옴)
 const MASTER_TOKEN =
   process.env.NEXT_PUBLIC_MASTER_TOKEN ||
-  'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMyIsImlhdCI6MTc1MjQxNDk1NiwiZXhwIjoxNzUyNDE4NTU2LCJpZCI6MTMsInJvbGUiOiJST0xFX1VTRVIiLCJsaW5lSWQiOiIxMyJ9.plUrgmnPE2Sj1JtxC17UpMIx0sQodDwtSXMY1XiJxFY';
+  'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMyIsImlhdCI6MTc1MjQ3MTI2NCwiZXhwIjoxNzUyNDc0ODY0LCJpZCI6MTMsInJvbGUiOiJST0xFX1VTRVIiLCJsaW5lSWQiOiIxMyJ9.yNPKEoCYDXy3klEWWX3J2xY3XotzPLxB20b2-1C4vb8';
 
 // API 클라이언트 인스턴스 생성
 export const productApi = new Product({

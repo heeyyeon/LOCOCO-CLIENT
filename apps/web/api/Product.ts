@@ -16,13 +16,8 @@ import {
   ApiResponseProductDetailResponse,
   ApiResponseProductDetailYoutubeResponse,
   ApiResponseString,
-<<<<<<< HEAD
-} from "./data-contracts";
-import { HttpClient, RequestParams } from "./http-client";
-=======
 } from './data-contracts';
 import { HttpClient, RequestParams } from './http-client';
->>>>>>> f5dd48a448c113142320359834c38a8796bcc8f9
 
 export class Product<
   SecurityDataType = unknown,
@@ -39,11 +34,7 @@ export class Product<
   updateSearchFields = (params: RequestParams = {}) =>
     this.request<ApiResponseString, any>({
       path: `/api/products/search-fields/migrate`,
-<<<<<<< HEAD
-      method: "POST",
-=======
       method: 'POST',
->>>>>>> f5dd48a448c113142320359834c38a8796bcc8f9
       secure: true,
       ...params,
     });
@@ -60,13 +51,8 @@ export class Product<
     query: {
       keyword: string;
       /** @default "false" */
-<<<<<<< HEAD
-      searchType?: "PRODUCT" | "REVIEW";
-      mediaType?: "IMAGE" | "VIDEO";
-=======
       searchType?: 'PRODUCT' | 'REVIEW';
       mediaType?: 'IMAGE' | 'VIDEO';
->>>>>>> f5dd48a448c113142320359834c38a8796bcc8f9
       /**
        * @format int32
        * @default 0
