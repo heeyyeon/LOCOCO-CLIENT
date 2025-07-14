@@ -6,7 +6,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import { Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { convertToEmbedUrl } from 'utils/youtube';
+import { convertToEmbedUrl, validateYoutubeVideos } from 'utils/youtube';
 import { useState } from 'react';
 import { IconButton } from '@lococo/design-system';
 import { SvgArrowRight } from '@/icons';
@@ -31,6 +31,8 @@ export default function YoutubeCarousel() {
     'https://www.youtube.com/watch?v=Q-wQw9Euqo8&pp=ygVG7L2U7Iqk7JWM7JeR7IqkIOyYpOydvO2UhOumrCDrqqjsnbTsiqTsspjrnbzsnbTsp5Ug66Gc7IWYIDEwMG1sIOumrOu3sA%3D%3D,https://www.youtube.com/watch?v=PPlGiuJaJ08&pp=ygVG7L2U7Iqk7JWM7JeR7IqkIOyYpOydvO2UhOumrCDrqqjsnbTsiqTsspjrnbzsnbTsp5Ug66Gc7IWYIDEwMG1sIOumrOu3sA%3D%3D,https://www.youtube.com/watch?v=HeU8qT0G6PM&pp=ygVG7L2U7Iqk7JWM7JeR7IqkIOyYpOydvO2UhOumrCDrqqjsnbTsiqTsspjrnbzsnbTsp5Ug66Gc7IWYIDEwMG1sIOumrOu3sNIHCQnDCQGHKiGM7w%3D%3D,https://www.youtube.com/watch?v=go4iRix-lMw&pp=ygVG7L2U7Iqk7JWM7JeR7IqkIOyYpOydvO2UhOumrCDrqqjsnbTsiqTsspjrnbzsnbTsp5Ug66Gc7IWYIDEwMG1sIOumrOu3sA%3D%3D,https://www.youtube.com/watch?v=eVze7OEZT6M&pp=ygVG7L2U7Iqk7JWM7JeR7IqkIOyYpOydvO2UhOumrCDrqqjsnbTsiqTsspjrnbzsnbTsp5Ug66Gc7IWYIDEwMG1sIOumrOu3sA%3D%3D',
     'https://www.youtube.com/watch?v=xID95ItMuSE&pp=ygU07JWE64iE7JWEIOyWtOyEsey0iCA3MCDrjbDsnbzrpqwg66Gc7IWYIDIwMG1sIOumrOu3sA%3D%3D,https://www.youtube.com/watch?v=3UQnHdyG-pU&pp=ygU07JWE64iE7JWEIOyWtOyEsey0iCA3MCDrjbDsnbzrpqwg66Gc7IWYIDIwMG1sIOumrOu3sA%3D%3D,https://www.youtube.com/watch?v=Y7VPr20rEtw&pp=ygU07JWE64iE7JWEIOyWtOyEsey0iCA3MCDrjbDsnbzrpqwg66Gc7IWYIDIwMG1sIOumrOu3sA%3D%3D,https://www.youtube.com/watch?v=DYatThusJfA&pp=ygU07JWE64iE7JWEIOyWtOyEsey0iCA3MCDrjbDsnbzrpqwg66Gc7IWYIDIwMG1sIOumrOu3sNIHCQnDCQGHKiGM7w%3D%3D,https://www.youtube.com/watch?v=9ms8Ef-BHq8&pp=ygU07JWE64iE7JWEIOyWtOyEsey0iCA3MCDrjbDsnbzrpqwg66Gc7IWYIDIwMG1sIOumrOu3sNIHCQnDCQGHKiGM7w%3D%3D',
   ];
+
+  const validatedVideoListData = validateYoutubeVideos(videoListData);
 
   const handleSwiper = (swiper: SwiperType) => {
     setSwiperRef(swiper);
@@ -67,7 +69,7 @@ export default function YoutubeCarousel() {
           modules={[Navigation]}
           className="youtube-swiper"
         >
-          {videoListData.map((video) => (
+          {validatedVideoListData.map((video) => (
             <SwiperSlide key={video}>
               <iframe
                 width="552"

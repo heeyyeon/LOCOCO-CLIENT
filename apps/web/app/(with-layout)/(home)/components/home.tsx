@@ -57,9 +57,16 @@ async function HomeSectionYouTube() {
       return <div>로딩중</div>;
     }
 
-    const validatedVideos = await validateYoutubeVideos(videos, 25);
-    const showVideos = validatedVideos?.slice(0, 6);
-
+    const videoUrls = videos
+      .map((video) => video.url || '')
+      .filter((url) => url);
+    const validatedVideoUrls = await validateYoutubeVideos(videoUrls, 25);
+    const showVideos = videos
+      .map((video, index) => ({
+        ...video,
+        url: validatedVideoUrls[index] || video.url,
+      }))
+      .slice(0, 6);
     return (
       <div className="mb-[12rem] grid grid-cols-3 gap-[2.4rem]">
         {showVideos?.map((video) => (

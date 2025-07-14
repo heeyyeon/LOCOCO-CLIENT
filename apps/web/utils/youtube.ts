@@ -1,5 +1,3 @@
-import { VideoResponse } from 'api/data-contracts';
-
 const YOUTUBE_PATTERNS = [
   /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([a-zA-Z0-9_-]+)/,
   /youtube\.com\/v\/([a-zA-Z0-9_-]+)/,
@@ -55,15 +53,15 @@ async function validateYoutubeVideo(videoId: string): Promise<boolean> {
  * @returns 검증된(존재하는) 영상 VideoResponse타입으로 반환
  */
 export async function validateYoutubeVideos(
-  videos: VideoResponse[],
+  videos: string[],
   batchSize: number = 25
 ) {
-  const validatedVideos: VideoResponse[] = [];
+  const validatedVideos: string[] = [];
 
   for (let i = 0; i < videos.length; i += batchSize) {
     const batch = videos.slice(i, i + batchSize);
     const validationPromises = batch.map(async (video) => {
-      const videoId = extractYoutubeVideoId(video.url || '');
+      const videoId = extractYoutubeVideoId(video || '');
       if (!videoId) return { video, isValid: false };
 
       const isValid = await validateYoutubeVideo(videoId);
