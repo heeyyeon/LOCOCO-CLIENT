@@ -5,7 +5,7 @@ import {
   ImageReviewResponse,
   VideoReviewResponse,
 } from '../../../api/review-respone';
-import NotFoundReviewSection from './not-found-review-section';
+import NotFoundSection from './not-found-section';
 
 interface SearchReviewSectionProps {
   reviewsVideo: VideoReviewResponse[];
@@ -25,7 +25,7 @@ export default function SearchReviewSection({
       <div className="mx-auto flex w-[112.8rem] flex-col items-start gap-[3.2rem] self-stretch pt-[3.2rem]">
         <p className="jp-head3 font-bold text-gray-700">動画レビュー</p>
         {reviewsVideo.length === 0 ? (
-          <NotFoundReviewSection />
+          <NotFoundSection variant="review" />
         ) : (
           <div className="flex flex-wrap content-center items-center gap-[2.4rem] self-stretch">
             {reviewsVideo.map(
@@ -55,7 +55,7 @@ export default function SearchReviewSection({
       <div className="mx-auto flex w-[112.8rem] flex-col gap-[3.2rem] self-stretch pt-[3.2rem]">
         <p className="jp-head3 font-bold text-gray-700">写真付きレビュー</p>
         {reviewsImage.length === 0 ? (
-          <NotFoundReviewSection />
+          <NotFoundSection variant="review" />
         ) : (
           <div className="flex flex-wrap content-center items-center gap-[2.4rem] self-stretch">
             {reviewsImage.map(

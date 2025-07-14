@@ -125,14 +125,14 @@ function PageContent() {
     !!middleCategory && selectedTab === SEARCH_OPTION.REVIEW
   );
   const productData = keyword
-    ? productSearchData?.data?.products || []
-    : categoryProductData?.data?.products || [];
+    ? (productSearchData as any)?.data?.products || []
+    : (categoryProductData as any)?.data?.products || [];
   const reviewVideoData = keyword
-    ? reviewVideoSearchData?.data?.reviews || []
-    : categoryReviewVideoData?.data?.reviews || [];
+    ? (reviewVideoSearchData as any)?.data?.reviews || []
+    : (categoryReviewVideoData as any)?.data?.reviews || [];
   const reviewImageData = keyword
-    ? reviewImageSearchData?.data?.reviews || []
-    : categoryReviewImageData?.data?.reviews || [];
+    ? (reviewImageSearchData as any)?.data?.reviews || []
+    : (categoryReviewImageData as any)?.data?.reviews || [];
 
   const isLoading =
     (keyword &&
