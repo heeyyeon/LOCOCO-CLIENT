@@ -8,7 +8,6 @@ interface CommentProps {
 export default function Comment({ children, type }: CommentProps) {
   return (
     <div className="flex w-fit flex-col gap-[1.2rem]">
-      {/* 긍정 부정 리뷰 */}
       <div className="flex items-center gap-[1rem]">
         {type === 'positive' ? (
           <SvgGoodFill className="text-pink-500" />
@@ -19,8 +18,6 @@ export default function Comment({ children, type }: CommentProps) {
           {type === 'positive' ? '良かったです' : '気になる点'}
         </span>
       </div>
-
-      {/* 리뷰 내용 */}
       <div className="jp-body2 text-gray-800">{children}</div>
     </div>
   );
