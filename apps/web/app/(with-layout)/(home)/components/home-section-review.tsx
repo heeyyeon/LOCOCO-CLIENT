@@ -24,7 +24,7 @@ export default function HomeSectionReview({
         {type === 'video' && '動画レビュー'}
         {type === 'image' && '写真付きレビュー'}
       </p>
-      <div className="flex gap-6">
+      <div className="grid grid-cols-2 gap-[2.4rem] md:grid-cols-3 lg:grid-cols-4">
         {imageReviewMock.map((review) => (
           <CardReview
             key={review.reviewId}
@@ -47,7 +47,7 @@ export default function HomeSectionReview({
                 router.push(`/product-detail/productId받아서줄것`);
               }}
             >
-              <div className="jp-title3 flex items-center gap-[0.8rem] font-[700]">
+              <div className="jp-title3 flex items-center gap-[0.8rem] font-bold">
                 <SvgArrowOutward />
                 見に行く
               </div>
