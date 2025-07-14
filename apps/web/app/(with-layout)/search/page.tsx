@@ -89,7 +89,6 @@ function PageContent() {
 
   return (
     <div className="flex w-full flex-col items-start">
-      <div className="flex flex-col items-start self-stretch"></div>
       <SearchBreadCrumbSection
         middleCategory={middleCategory}
         subCategory={subCategory}

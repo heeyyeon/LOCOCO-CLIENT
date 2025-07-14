@@ -4,6 +4,10 @@ import { cn } from '@/lib/utils';
 import HomeSectionProduct from './home-section-product';
 import HomeSectionReview from './home-section-review';
 
+interface HomeSectionHeaderProps extends PropsWithChildren {
+  moreInfoUrl?: string;
+}
+
 export default function HomeSection({
   children,
   className,
@@ -18,10 +22,6 @@ export default function HomeSection({
       {children}
     </section>
   );
-}
-
-interface HomeSectionHeaderProps extends PropsWithChildren {
-  moreInfoUrl?: string;
 }
 
 function HomeSectionHeader({ children, moreInfoUrl }: HomeSectionHeaderProps) {
