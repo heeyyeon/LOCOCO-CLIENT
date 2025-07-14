@@ -1,6 +1,6 @@
 'use client';
 
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { apiRequest } from 'app/api/apiRequest';
 import { ProductItem } from 'types/product';
 import { useState } from 'react';
@@ -29,6 +29,7 @@ export default function CardProduct({
   handleCardClick,
 }: CardProductProps) {
   const [isLiked, setIsLiked] = useState(initialIsLiked);
+  const queryClient = useQueryClient();
 
   const likeMutation = useMutation({
     mutationFn: (productId: number) => {
@@ -40,15 +41,28 @@ export default function CardProduct({
         },
       });
     },
-    onError: (error) => {
+
+    onMutate: async () => {
+      setIsLiked(!isLiked);
+      return { originalState: isLiked };
+    },
+
+    onError: (error, _variables, context) => {
+      setIsLiked(context?.originalState || false);
       console.error(error);
-      setIsLiked(initialIsLiked);
+    },
+    onSettled: () => {
+      queryClient.invalidateQueries({
+        queryKey: ['category-new-Products'],
+      });
+      queryClient.invalidateQueries({
+        queryKey: ['category-popular-Products'],
+      });
     },
   });
 
   const handleLikeClick = async (e: React.MouseEvent, productId: number) => {
     e.stopPropagation();
-    setIsLiked(!isLiked);
     likeMutation.mutate(productId);
   };
 
