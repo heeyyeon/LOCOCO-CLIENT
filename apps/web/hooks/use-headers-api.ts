@@ -1,31 +1,31 @@
 import { useQuery } from '@tanstack/react-query';
-import { productApi } from '../api/client';
+import { apiRequest } from '../app/api/apiRequest';
 import { PRODUCT_KEYS, REVIEW_KEYS } from '../constants/query-key';
 
 // 검색바로 검색할 때 사용하는 쿼리
 export const useProductSearch = (
   keyword: string,
   page: number = 0,
-  size: number = 10,
+  size: number = 8,
   enabled: boolean = true
 ) => {
   return useQuery({
-    queryKey: PRODUCT_KEYS.PRODUCT_LIST({ page, size }),
+    queryKey: [...PRODUCT_KEYS.PRODUCT_LIST({ page, size }), 'search', keyword],
     queryFn: () =>
-      productApi
-        .search({
+      apiRequest({
+        endPoint: '/api/products/search',
+        method: 'GET',
+        headers: {
           keyword,
           searchType: 'PRODUCT',
-          page,
-          size,
-        })
-        .then((res) => {
-          return res.json();
-        }),
+          page: page.toString(),
+          size: size.toString(),
+        },
+      }),
     enabled: enabled && !!keyword.trim(),
     staleTime: 5 * 60 * 1000,
-    retry: 1, // 재시도 횟수를 1회로 제한
-    retryDelay: 1000, // 재시도 간격 1초
+    retry: 1,
+    retryDelay: 1000,
   });
 };
 
@@ -33,23 +33,23 @@ export const useProductSearch = (
 export const useReviewVideoSearch = (
   keyword: string,
   page: number = 0,
-  size: number = 10,
+  size: number = 8,
   enabled: boolean = true
 ) => {
   return useQuery({
-    queryKey: REVIEW_KEYS.VIDEO_LIST({ page, size }),
+    queryKey: [...REVIEW_KEYS.VIDEO_LIST({ page, size }), 'search', keyword],
     queryFn: () =>
-      productApi
-        .search({
+      apiRequest({
+        endPoint: '/api/reviews/search',
+        method: 'GET',
+        headers: {
           keyword,
           searchType: 'REVIEW',
           mediaType: 'VIDEO',
-          page,
-          size,
-        })
-        .then((res) => {
-          return res.json();
-        }),
+          page: page.toString(),
+          size: size.toString(),
+        },
+      }),
     enabled: enabled && !!keyword.trim(),
     staleTime: 5 * 60 * 1000,
     retry: 1,
@@ -61,23 +61,23 @@ export const useReviewVideoSearch = (
 export const useReviewImageSearch = (
   keyword: string,
   page: number = 0,
-  size: number = 10,
+  size: number = 8,
   enabled: boolean = true
 ) => {
   return useQuery({
-    queryKey: REVIEW_KEYS.IMAGE_LIST({ page, size }),
+    queryKey: [...REVIEW_KEYS.IMAGE_LIST({ page, size }), 'search', keyword],
     queryFn: () =>
-      productApi
-        .search({
+      apiRequest({
+        endPoint: '/api/reviews/search',
+        method: 'GET',
+        headers: {
           keyword,
           searchType: 'REVIEW',
           mediaType: 'IMAGE',
-          page,
-          size,
-        })
-        .then((res) => {
-          return res.json();
-        }),
+          page: page.toString(),
+          size: size.toString(),
+        },
+      }),
     enabled: enabled && !!keyword.trim(),
     staleTime: 5 * 60 * 1000,
     retry: 1,
@@ -90,23 +90,28 @@ export const useCategoryProductSearch = (
   middleCategory: string,
   subCategory?: string,
   page: number = 0,
-  size: number = 10,
+  size: number = 8,
   enabled: boolean = true
 ) => {
   return useQuery({
-    queryKey: PRODUCT_KEYS.PRODUCT_LIST({ page, size }),
+    queryKey: [
+      ...PRODUCT_KEYS.PRODUCT_LIST({ page, size }),
+      'category',
+      middleCategory,
+      subCategory,
+    ],
     queryFn: () =>
-      productApi
-        .searchProductsByCategory({
-          middleCategory: middleCategory as any,
-          subCategory: subCategory as any,
+      apiRequest({
+        endPoint: '/api/products/search/category',
+        method: 'GET',
+        headers: {
+          middleCategory,
+          ...(subCategory && { subCategory }),
           searchType: 'PRODUCT',
-          page,
-          size,
-        })
-        .then((res) => {
-          return res.json();
-        }),
+          page: page.toString(),
+          size: size.toString(),
+        },
+      }),
     enabled: enabled && !!middleCategory,
     staleTime: 5 * 60 * 1000,
     retry: 1,
@@ -119,24 +124,29 @@ export const useCategoryReviewVideoSearch = (
   middleCategory: string,
   subCategory?: string,
   page: number = 0,
-  size: number = 10,
+  size: number = 8,
   enabled: boolean = true
 ) => {
   return useQuery({
-    queryKey: REVIEW_KEYS.VIDEO_LIST({ page, size }),
+    queryKey: [
+      ...REVIEW_KEYS.VIDEO_LIST({ page, size }),
+      'category',
+      middleCategory,
+      subCategory,
+    ],
     queryFn: () =>
-      productApi
-        .searchProductsByCategory({
-          middleCategory: middleCategory as any,
-          subCategory: subCategory as any,
+      apiRequest({
+        endPoint: '/api/reviews/search/category',
+        method: 'GET',
+        headers: {
+          middleCategory,
+          ...(subCategory && { subCategory }),
           searchType: 'REVIEW',
           mediaType: 'VIDEO',
-          page,
-          size,
-        })
-        .then((res) => {
-          return res.json();
-        }),
+          page: page.toString(),
+          size: size.toString(),
+        },
+      }),
     enabled: enabled && !!middleCategory,
     staleTime: 5 * 60 * 1000,
     retry: 1,
@@ -149,24 +159,29 @@ export const useCategoryReviewImageSearch = (
   middleCategory: string,
   subCategory?: string,
   page: number = 0,
-  size: number = 10,
+  size: number = 8,
   enabled: boolean = true
 ) => {
   return useQuery({
-    queryKey: REVIEW_KEYS.IMAGE_LIST({ page, size }),
+    queryKey: [
+      ...REVIEW_KEYS.IMAGE_LIST({ page, size }),
+      'category',
+      middleCategory,
+      subCategory,
+    ],
     queryFn: () =>
-      productApi
-        .searchProductsByCategory({
-          middleCategory: middleCategory as any,
-          subCategory: subCategory as any,
+      apiRequest({
+        endPoint: '/api/reviews/search/category',
+        method: 'GET',
+        headers: {
+          middleCategory,
+          ...(subCategory && { subCategory }),
           searchType: 'REVIEW',
           mediaType: 'IMAGE',
-          page,
-          size,
-        })
-        .then((res) => {
-          return res.json();
-        }),
+          page: page.toString(),
+          size: size.toString(),
+        },
+      }),
     enabled: enabled && !!middleCategory,
     staleTime: 5 * 60 * 1000,
     retry: 1,

@@ -13,7 +13,7 @@ import {
   useCategoryProductSearch,
   useCategoryReviewVideoSearch,
   useCategoryReviewImageSearch,
-} from '../../../hooks/use-product-api';
+} from '../../../hooks/use-headers-api';
 import OptionSelector from './components/option-selector';
 import SearchBreadCrumbSection from './components/search-bread-crumb-section';
 import SearchProductsSection from './components/search-products-section';
@@ -169,12 +169,12 @@ function PageContent() {
 
   const tabRender = {
     [SEARCH_OPTION.PRODUCT]: (
-      <SearchProductsSection products={(productData as any)?.products || []} />
+      <SearchProductsSection products={productData?.products || []} />
     ),
     [SEARCH_OPTION.REVIEW]: (
       <SearchReviewSection
-        reviewsVideo={(reviewVideoData as any)?.reviews || []}
-        reviewsImage={(reviewImageData as any)?.reviews || []}
+        reviewsVideo={reviewVideoData?.reviews || []}
+        reviewsImage={reviewImageData?.reviews || []}
       />
     ),
   }[selectedTab];
