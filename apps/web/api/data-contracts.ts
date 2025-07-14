@@ -10,12 +10,127 @@
  * ---------------------------------------------------------------
  */
 
+export interface ReviewRequest {
+  /** @format int64 */
+  productOptionId: number;
+  /** @format int32 */
+  rating: number;
+  /**
+   * @minLength 15
+   * @maxLength 1500
+   */
+  positiveComment: string;
+  /**
+   * @minLength 15
+   * @maxLength 1500
+   */
+  negativeComment: string;
+  mediaUrl?: string[];
+  receiptUrl?: string[];
+}
+
+export interface ApiResponseReviewResponse {
+  success?: boolean;
+  /** @format int32 */
+  status?: number;
+  message?: string;
+  data?: ReviewResponse;
+}
+
+export interface ReviewResponse {
+  /** @format int64 */
+  reviewId?: number;
+}
+
+export interface ReviewReceiptRequest {
+  mediaType: string;
+}
+
+export interface ApiResponseReviewReceiptResponse {
+  success?: boolean;
+  /** @format int32 */
+  status?: number;
+  message?: string;
+  data?: ReviewReceiptResponse;
+}
+
+export interface ReviewReceiptResponse {
+  receiptUrl?: string[];
+}
+
+export interface ReviewMediaRequest {
+  mediaType: string[];
+}
+
+export interface ApiResponseReviewMediaResponse {
+  success?: boolean;
+  /** @format int32 */
+  status?: number;
+  message?: string;
+  data?: ReviewMediaResponse;
+}
+
+export interface ReviewMediaResponse {
+  mediaUrl?: string[];
+}
+
+export interface ApiResponseString {
+  success?: boolean;
+  /** @format int32 */
+  status?: number;
+  message?: string;
+  data?: string;
+}
+
+export interface ApiResponseReviewLikeResponse {
+  success?: boolean;
+  /** @format int32 */
+  status?: number;
+  message?: string;
+  data?: ReviewLikeResponse;
+}
+
+export interface ReviewLikeResponse {
+  /** @format int64 */
+  likeCount?: number;
+}
+
+export interface ApiResponseToggleLikeResponse {
+  success?: boolean;
+  /** @format int32 */
+  status?: number;
+  message?: string;
+  data?: ToggleLikeResponse;
+}
+
+export interface ToggleLikeResponse {
+  isLiked?: boolean;
+}
+
 export interface ApiResponseVoid {
   success?: boolean;
   /** @format int32 */
   status?: number;
   message?: string;
   data?: any;
+}
+
+export interface TestLoginRequest {
+  /** @format int64 */
+  userId: number;
+}
+
+export interface ApiResponseJwtLoginResponse {
+  success?: boolean;
+  /** @format int32 */
+  status?: number;
+  message?: string;
+  data?: JwtLoginResponse;
+}
+
+export interface JwtLoginResponse {
+  accessToken?: string;
+  refreshToken?: string;
 }
 
 export interface ApiResponseListVideoResponse {
@@ -40,25 +155,81 @@ export interface VideoResponse {
   uploadedAt?: string;
 }
 
-export interface ProductSearchRequest {
-  /**
-   * @minLength 0
-   * @maxLength 20
-   */
-  keyword: string;
-}
-
-export interface ApiResponseNameBrandProductResponse {
+export interface ApiResponseMainVideoReviewResponse {
   success?: boolean;
   /** @format int32 */
   status?: number;
   message?: string;
-  data?: NameBrandProductResponse;
+  data?: MainVideoReviewResponse;
 }
 
-export interface NameBrandProductResponse {
-  searchQuery?: string;
-  products?: ProductResponse[];
+export interface MainVideoReview {
+  /** @format int64 */
+  reviewId?: number;
+  brandName?: string;
+  productName?: string;
+  /** @format int32 */
+  likeCount?: number;
+  /** @format int32 */
+  rank?: number;
+  reviewVideo?: string;
+}
+
+export interface MainVideoReviewResponse {
+  videoReviews?: MainVideoReview[];
+}
+
+export interface ApiResponseMainImageReviewResponse {
+  success?: boolean;
+  /** @format int32 */
+  status?: number;
+  message?: string;
+  data?: MainImageReviewResponse;
+}
+
+export interface MainImageReview {
+  /** @format int64 */
+  reviewId?: number;
+  brandName?: string;
+  productName?: string;
+  /** @format int32 */
+  likeCount?: number;
+  /** @format int32 */
+  rank?: number;
+  reviewImage?: string;
+}
+
+export interface MainImageReviewResponse {
+  imageReviews?: MainImageReview[];
+}
+
+export interface ApiResponseImageReviewsProductDetailResponse {
+  success?: boolean;
+  /** @format int32 */
+  status?: number;
+  message?: string;
+  data?: ImageReviewsProductDetailResponse;
+}
+
+export interface ImageReviewProductDetailResponse {
+  /** @format int64 */
+  reviewId?: number;
+  /** @format date-time */
+  writtenTime?: string;
+  receiptUploaded?: boolean;
+  positiveComment?: string;
+  negativeComment?: string;
+  authorName?: string;
+  /** @format double */
+  rating?: number;
+  option?: string;
+  /** @format int32 */
+  likeCount?: number;
+  images?: string[];
+}
+
+export interface ImageReviewsProductDetailResponse {
+  imageReviews?: ImageReviewProductDetailResponse[];
   pageInfo?: PageableResponse;
 }
 
@@ -72,17 +243,12 @@ export interface PageableResponse {
   isLast?: boolean;
 }
 
-export interface ProductResponse {
-  /** @format int64 */
-  productId?: number;
-  imageUrls?: string[];
-  productName?: string;
-  brandName?: string;
-  unit?: string;
-  /** @format int64 */
-  reviewCount?: number;
-  /** @format double */
-  rating?: number;
+export interface ApiResponseObject {
+  success?: boolean;
+  /** @format int32 */
+  status?: number;
+  message?: string;
+  data?: any;
 }
 
 export interface ApiResponseProductDetailResponse {
@@ -94,13 +260,23 @@ export interface ApiResponseProductDetailResponse {
 }
 
 export interface ProductDetailResponse {
-  products?: ProductResponse[];
-  productOptions?: string[];
+  /** @format int64 */
+  productId?: number;
+  imageUrls?: string[];
+  productOptions?: ProductOptionResponse[];
+  productName?: string;
+  brandName?: string;
+  unit?: string;
+  /** @format int64 */
+  reviewCount?: number;
+  /** @format double */
+  rating?: number;
+  starPercent?: ScorePercent[];
+  isLiked?: boolean;
   /** @format int64 */
   normalPrice?: number;
   productDetail?: string;
   ingredients?: string;
-  shippingInfo?: string;
   oliveYoungUrl?: string;
   q10Url?: string;
   middleCategory?: 'FACIAL_CARE' | 'FACE_MAKEUP' | 'EYE_MAKEUP' | 'LIP_MAKEUP';
@@ -120,6 +296,19 @@ export interface ProductDetailResponse {
     | 'LIP_TINT';
 }
 
+export interface ProductOptionResponse {
+  /** @format int64 */
+  id?: number;
+  optionName?: string;
+}
+
+export interface ScorePercent {
+  /** @format int32 */
+  score?: number;
+  /** @format double */
+  percent?: number;
+}
+
 export interface ApiResponseProductDetailYoutubeResponse {
   success?: boolean;
   /** @format int32 */
@@ -130,14 +319,6 @@ export interface ApiResponseProductDetailYoutubeResponse {
 
 export interface ProductDetailYoutubeResponse {
   youtubeUrls?: string[];
-}
-
-export interface ApiResponseObject {
-  success?: boolean;
-  /** @format int32 */
-  status?: number;
-  message?: string;
-  data?: any;
 }
 
 export interface ApiResponseCategoryPopularProductResponse {
@@ -154,6 +335,20 @@ export interface CategoryPopularProductResponse {
   pageInfo?: PageableResponse;
 }
 
+export interface ProductResponse {
+  /** @format int64 */
+  productId?: number;
+  imageUrls?: string[];
+  productName?: string;
+  brandName?: string;
+  unit?: string;
+  /** @format int64 */
+  reviewCount?: number;
+  /** @format double */
+  rating?: number;
+  isLiked?: boolean;
+}
+
 export interface ApiResponseCategoryNewProductResponse {
   success?: boolean;
   /** @format int32 */
@@ -166,6 +361,18 @@ export interface CategoryNewProductResponse {
   searchQuery?: string;
   products?: ProductResponse[];
   pageInfo?: PageableResponse;
+}
+
+export interface ApiResponseLoginUrlResponse {
+  success?: boolean;
+  /** @format int32 */
+  status?: number;
+  message?: string;
+  data?: LoginUrlResponse;
+}
+
+export interface LoginUrlResponse {
+  authorizationUrl?: string;
 }
 
 export interface ApiResponseLineLoginResponse {
