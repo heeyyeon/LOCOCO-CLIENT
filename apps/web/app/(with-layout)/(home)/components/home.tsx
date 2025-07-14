@@ -46,8 +46,6 @@ async function HomeSectionYouTube() {
   try {
     const response = await apiRequest<ApiResponseListVideoResponse>({
       endPoint: 'api/youtube/trends',
-      // TODO 쿠키로 헤더 전송 로직 완료되면 지우기
-      headers: { Authorization: `Bearer ${process.env.NEXT_TMP_ACCESS_TOKEN}` },
     });
 
     const videos = response.data;

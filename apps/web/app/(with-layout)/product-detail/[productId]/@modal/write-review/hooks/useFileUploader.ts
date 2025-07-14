@@ -1,5 +1,3 @@
-'use client';
-
 import {
   REVIEW_MEDIA_ERROR_MESSAGE,
   REVIEW_MEDIA_MAX_COUNT,
