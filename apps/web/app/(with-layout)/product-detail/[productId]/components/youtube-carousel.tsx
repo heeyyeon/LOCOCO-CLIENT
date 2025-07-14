@@ -1,3 +1,5 @@
+'use client';
+
 // Import Swiper React components
 import type { Swiper as SwiperType } from 'swiper';
 import 'swiper/css';
