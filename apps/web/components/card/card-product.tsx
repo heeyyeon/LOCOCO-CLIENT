@@ -3,7 +3,7 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { apiRequest } from 'app/api/apiRequest';
 import { ProductItem } from 'types/product';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import {
   Badge,
@@ -31,6 +31,10 @@ export default function CardProduct({
   const [isLiked, setIsLiked] = useState(initialIsLiked);
   const queryClient = useQueryClient();
 
+  useEffect(() => {
+    setIsLiked(initialIsLiked);
+  }, [initialIsLiked]);
+
   const likeMutation = useMutation({
     mutationFn: (productId: number) => {
       return apiRequest({
@@ -53,10 +57,12 @@ export default function CardProduct({
     },
     onSettled: () => {
       queryClient.invalidateQueries({
-        queryKey: ['category-new-Products'],
-      });
-      queryClient.invalidateQueries({
-        queryKey: ['category-popular-Products'],
+        predicate: (query) => {
+          const firstKey = query.queryKey[0] as string;
+          const shouldInvalidate =
+            firstKey?.includes('category-') && firstKey?.includes('-products');
+          return shouldInvalidate;
+        },
       });
     },
   });

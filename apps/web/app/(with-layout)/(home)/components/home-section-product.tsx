@@ -23,7 +23,7 @@ export default function HomeSectionProduct({
   const router = useRouter();
 
   const { data, isLoading, isError } = useQuery({
-    queryKey: [`category-${productSortType}-Products`, selectedTab],
+    queryKey: [`category-${productSortType}-products`, selectedTab],
     queryFn: () =>
       apiRequest<ApiResponseCategoryNewProductResponse>({
         endPoint: `/api/products/categories/${productSortType}?middleCategory=${selectedTab}&page=0&size=4`,
