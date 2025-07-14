@@ -21,9 +21,7 @@ export default function Comment({ children, type }: CommentProps) {
       </div>
 
       {/* 리뷰 내용 */}
-      <div className="jp-body2 line-clamp-3 max-h-[6.6rem] overflow-hidden text-gray-800">
-        {children}
-      </div>
+      <div className="jp-body2 text-gray-800">{children}</div>
     </div>
   );
 }
