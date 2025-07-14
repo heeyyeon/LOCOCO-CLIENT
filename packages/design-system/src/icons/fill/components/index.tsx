@@ -30,5 +30,5 @@ export { SvgPurchase } from './Purchase';
 export { SvgSearch } from './Search';
 export { SvgSend } from './Send';
 export { SvgStar } from './Star';
-export { SvgXTwitterFill } from './XTwitterFill';
 export { SvgWrite } from './Write';
+export { SvgXTwitterFill } from './XTwitterFill';
