@@ -157,7 +157,7 @@ export default function ProductInfo({
         <Button color="secondary" variant="filled" rounded size="lg" asChild>
           {/* 추후 리뷰 작성 모달 URL 연결 */}
           <Link href="/product-detail/write-review" className="jp-title2">
-            <SvgWrite /> カートに入れる
+            <SvgWrite /> レビューを書く
           </Link>
         </Button>
       </div>
