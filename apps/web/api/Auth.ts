@@ -41,8 +41,6 @@ export class Auth<
    * No description
    *
    * @tags AUTH
-<<<<<<< HEAD
-=======
    * @name GetLoginUrl
    * @summary 라인 로그인 URL 생성 (클라에서 호출)
    * @request GET:/api/auth/url
@@ -59,7 +57,6 @@ export class Auth<
    * No description
    *
    * @tags AUTH
->>>>>>> f5dd48a448c113142320359834c38a8796bcc8f9
    * @name Login
    * @summary 테스트용 JWT 토큰 발급
    * @request POST:/api/auth/login
