@@ -1,40 +1,36 @@
+import type { MediaItem } from 'app/review-modal/types';
 import React from 'react';
 import MediaInfo from './media-info';
 import MediaViewer from './media-viewer';
 import ReviewInfo from './review-info';
 
-export interface Media {
-  type: 'video' | 'image';
-  url: string;
-}
+export type Media = MediaItem;
 export interface User {
   name: string;
   avatarUrl?: string;
+  uploadAt: string;
 }
 export interface ReviewModallayoutProps {
-  //좌측
+  id: number;
   mediaList: Media[];
   user: User;
-  date: string;
   likeCount: number;
-  // 우측
   brandName: string;
   productName: string;
   productOption: string;
-  rating: number;
+  rating: 'ONE' | 'TWO' | 'THREE' | 'FOUR' | 'FIVE';
   isReceipt?: boolean;
   positiveComment: string;
   negativeComment: string;
-  imageUrl: string;
-  authorName: string;
-  uploadAt: string;
+  productImageUrl: string;
+  onClose?: () => void;
   children?: React.ReactNode;
 }
 
 export default function ReviewModallayout({
+  id,
   mediaList,
   user,
-  date,
   likeCount,
   brandName,
   productName,
@@ -42,7 +38,9 @@ export default function ReviewModallayout({
   rating,
   positiveComment,
   negativeComment,
-  imageUrl,
+  productImageUrl,
+  isReceipt,
+  onClose,
 }: ReviewModallayoutProps) {
   return (
     <div className="relative flex h-full w-full items-center justify-center">
@@ -50,18 +48,21 @@ export default function ReviewModallayout({
         {/* 좌측: 미디어 + 하단정보 */}
         <div className="relative flex w-[55.2rem] flex-col">
           <MediaViewer mediaList={mediaList} />
-          <MediaInfo user={user} date={date} likeCount={likeCount} />
+          <MediaInfo user={user} date={user.uploadAt} likeCount={likeCount} />
         </div>
         {/* 우측: 리뷰 상세 */}
         <div className="relative flex w-[38.4rem] flex-col">
           <ReviewInfo
+            reviewId={id}
             brandName={brandName}
             productName={productName}
-            productOption={productOption}
+            option={productOption}
             rating={rating}
             positiveComment={positiveComment}
             negativeComment={negativeComment}
-            imageUrl={imageUrl}
+            productImageUrl={productImageUrl}
+            receiptUploaded={isReceipt || false}
+            onClose={onClose}
           />
         </div>
       </div>

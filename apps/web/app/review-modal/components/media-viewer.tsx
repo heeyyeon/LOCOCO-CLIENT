@@ -1,22 +1,22 @@
 'use client';
 
+import type { MediaItem } from 'app/review-modal/types';
 import ImageCarousel from './image-carousel';
 import VideoPlayer from './video-player';
 
-type Media = { type: 'video' | 'image'; url: string };
 interface MediaViewerProps {
-  mediaList: Media[];
+  mediaList: MediaItem[];
 }
 
 export default function MediaViewer({ mediaList }: MediaViewerProps) {
-  const video = mediaList.find((m) => m.type === 'video');
-  const images = mediaList.filter((m) => m.type === 'image');
+  const videoItem = mediaList.find((m) => m.type === 'video');
+  const imageItems = mediaList.filter((m) => m.type === 'image');
 
   return (
     <div className="relative flex h-full w-full overflow-hidden rounded-l-xl">
-      {video && <VideoPlayer url={video.url} />}
-      {images.length > 0 && (
-        <ImageCarousel images={images.map((img) => img.url)} />
+      {videoItem && <VideoPlayer url={videoItem.url} />}
+      {imageItems.length > 0 && (
+        <ImageCarousel images={imageItems.map((img) => img.url)} />
       )}
     </div>
   );
