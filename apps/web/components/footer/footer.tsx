@@ -43,11 +43,11 @@ interface FooterProps {
 export default function Footer() {
   return (
     <footer className="bottom-0 flex w-full flex-col items-center justify-center overflow-hidden bg-pink-100">
-      <div className="mx-auto flex w-full items-stretch gap-[12rem] px-[11.9rem] py-16">
+      <div className="mx-auto flex gap-[12rem] px-[11.9rem] py-16">
         <FooterLeft title={FOOTER.title} desc={FOOTER.desc} />
         <FooterRight menu={FOOTER.menu} />
       </div>
-      <div className="flex h-[5.2rem] w-full items-center justify-center gap-4 border-t border-dashed border-pink-500 bg-pink-100">
+      <div className="flex h-[5.2rem] items-center justify-center gap-4 border-t border-dashed border-pink-500 bg-pink-100">
         <FooterBottom copyright={FOOTER.copyright} />
       </div>
     </footer>
