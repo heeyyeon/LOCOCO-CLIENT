@@ -75,7 +75,10 @@ export default function CardProduct({
       </div>
       <div className="flex h-[4.4rem] items-center justify-between border-b-[0.1rem] border-dashed border-pink-500">
         <p className="jp-body1 font-[700]">{brandName}</p>
-        <button onClick={(e) => handleLikeClick(e, productId)}>
+        <button
+          onClick={(e) => handleLikeClick(e, productId)}
+          className="cursor-pointer"
+        >
           {isLiked ? (
             <SvgLikeFill size={24} className="fill-pink-500" />
           ) : (
