@@ -10,7 +10,7 @@
  * ---------------------------------------------------------------
  */
 
-import { ApiResponseVoid } from "./data-contracts";
+import { ApiResponseToggleLikeResponse } from "./data-contracts";
 import { HttpClient, RequestParams } from "./http-client";
 
 export class ProductLike<
@@ -20,13 +20,13 @@ export class ProductLike<
    * No description
    *
    * @tags PRODUCT LIKE
-   * @name ToggleLike
+   * @name ToggleLike1
    * @summary 상품 좋아요 토글 (추가/취소)
    * @request POST:/api/likes/products/{productId}
    * @secure
    */
-  toggleLike = (productId: number, params: RequestParams = {}) =>
-    this.request<ApiResponseVoid, any>({
+  toggleLike1 = (productId: number, params: RequestParams = {}) =>
+    this.request<ApiResponseToggleLikeResponse, any>({
       path: `/api/likes/products/${productId}`,
       method: "POST",
       secure: true,
