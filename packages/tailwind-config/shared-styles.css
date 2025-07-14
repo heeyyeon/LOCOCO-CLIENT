@@ -50,8 +50,8 @@
   --text-jp-caption3: 1.2rem;
 
   /* EN head */
-  --text-en-head1: 2.4rem;
-
+  --text-en-head1: 4rem;
+  --text-en-head2: 2.4rem;
   /* EN title */
   --text-en-title1: 2rem;
   --text-en-title2: 1.8rem;
@@ -63,6 +63,9 @@
 
   /* EN caption */
   --text-en-caption1: 1.2rem;
+
+  /* 추후 커스텀 브레이크포인트 추가 */
+  /* --breakpoint-lg: 133.6rem; */
 }
 
 @layer base {
@@ -146,6 +149,11 @@
     font-size: var(--text-en-head1);
     line-height: 150%;
   }
+  .en-head2 {
+    font-family: var(--font-pretendard);
+    font-size: var(--text-en-head2);
+    line-height: 150%;
+  }
 
   /* EN Title */
   .en-title1 {
@@ -187,5 +195,18 @@
     box-shadow:
       0px 8px 15px 6px rgba(0, 0, 0, 0.05),
       0px 4px 5px 0px rgba(0, 0, 0, 0.08);
+  }
+
+  /* Hide scrollbar for Chrome, Safari, and Opera */
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hide scrollbar for IE, Edge, and Firefox */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
   }
 }

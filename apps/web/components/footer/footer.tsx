@@ -2,8 +2,9 @@ import { CATEGORY_NAME } from 'constants/category';
 import Link from 'next/link';
 import {
   SvgInstagramFill,
-  SvgTwitterFill,
+  SvgXTwitterFill,
   SvgArrowRight,
+  SvgMailFill,
 } from '@lococo/design-system';
 
 const FOOTER = {
@@ -41,7 +42,7 @@ interface FooterProps {
 
 export default function Footer() {
   return (
-    <footer className="sticky bottom-0 flex w-full flex-col items-center justify-center overflow-hidden bg-pink-100">
+    <footer className="bottom-0 flex w-full flex-col items-center justify-center overflow-hidden bg-pink-100">
       <div className="flex w-full items-center gap-[12rem] px-[11.9rem] py-16">
         <FooterLeft title={FOOTER.title} desc={FOOTER.desc} />
         <FooterRight menu={FOOTER.menu} />
@@ -65,18 +66,20 @@ function FooterLeft({ title, desc }: Pick<FooterProps, 'title' | 'desc'>) {
           href="https://www.instagram.com/lococo.official/"
           className="flex h-[4.4rem] w-[4.4rem] items-center justify-center p-1"
         >
-          <SvgInstagramFill fill="text-pink-500" />
+          <SvgInstagramFill className="text-pink-500" />
         </Link>
         <Link
           href="https://x.com/Lococo_official"
           className="flex h-[4.4rem] w-[4.4rem] items-center justify-center p-1"
         >
-          <SvgTwitterFill fill="text-pink-500" />
+          <SvgXTwitterFill className="text-pink-500" />
         </Link>
         <Link
-          href="/"
+          href="mailto:lococo.official@gmail.com"
           className="flex h-[4.4rem] w-[4.4rem] items-center justify-center p-1"
-        ></Link>
+        >
+          <SvgMailFill className="text-pink-500" />
+        </Link>
       </div>
     </div>
   );
