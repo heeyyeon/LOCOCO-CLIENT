@@ -1,3 +1,5 @@
+import { validateYoutubeVideo } from 'app/api/youtubeValidate';
+
 const YOUTUBE_PATTERNS = [
   /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([a-zA-Z0-9_-]+)/,
   /youtube\.com\/v\/([a-zA-Z0-9_-]+)/,
@@ -32,18 +34,6 @@ function extractYoutubeVideoId(url: string): string | null {
     if (match?.[1]) return match[1];
   }
   return null;
-}
-
-// oembed api를 통해서 존재하는 영상인지 확인
-async function validateYoutubeVideo(videoId: string): Promise<boolean> {
-  try {
-    const response = await fetch(
-      `https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${videoId}&format=json`
-    );
-    return response.ok;
-  } catch {
-    return false;
-  }
 }
 
 /**
