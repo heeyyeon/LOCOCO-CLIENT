@@ -1,5 +1,8 @@
 import { useQuery } from '@tanstack/react-query';
+import { ApiResponse } from 'app/api/api-response';
 import { apiRequest } from 'app/api/apiRequest';
+import { ProductSearchResponse } from 'app/api/product-response';
+import { ApiReviewSearchResponse } from 'app/api/review-response';
 import { PRODUCT_KEYS, REVIEW_KEYS } from '../constants/query-key';
 
 // 검색바로 검색할 때 사용하는 쿼리
@@ -9,10 +12,10 @@ export const useProductSearch = (
   size: number = 8,
   enabled: boolean = true
 ) => {
-  return useQuery({
+  return useQuery<ApiResponse<ProductSearchResponse>>({
     queryKey: [...PRODUCT_KEYS.PRODUCT_LIST({ page, size }), 'search', keyword],
     queryFn: () =>
-      apiRequest({
+      apiRequest<ApiResponse<ProductSearchResponse>>({
         endPoint: '/api/products/search',
         method: 'GET',
         params: {
@@ -36,10 +39,10 @@ export const useReviewVideoSearch = (
   size: number = 8,
   enabled: boolean = true
 ) => {
-  return useQuery({
+  return useQuery<ApiResponse<ApiReviewSearchResponse>>({
     queryKey: [...REVIEW_KEYS.VIDEO_LIST({ page, size }), 'search', keyword],
     queryFn: () =>
-      apiRequest({
+      apiRequest<ApiResponse<ApiReviewSearchResponse>>({
         endPoint: '/api/products/search',
         method: 'GET',
         params: {
@@ -64,10 +67,10 @@ export const useReviewImageSearch = (
   size: number = 8,
   enabled: boolean = true
 ) => {
-  return useQuery({
+  return useQuery<ApiResponse<ApiReviewSearchResponse>>({
     queryKey: [...REVIEW_KEYS.IMAGE_LIST({ page, size }), 'search', keyword],
     queryFn: () =>
-      apiRequest({
+      apiRequest<ApiResponse<ApiReviewSearchResponse>>({
         endPoint: '/api/products/search',
         method: 'GET',
         params: {
@@ -93,7 +96,7 @@ export const useCategoryProductSearch = (
   size: number = 8,
   enabled: boolean = true
 ) => {
-  return useQuery({
+  return useQuery<ApiResponse<ProductSearchResponse>>({
     queryKey: [
       ...PRODUCT_KEYS.PRODUCT_LIST({ page, size }),
       'category',
@@ -101,7 +104,7 @@ export const useCategoryProductSearch = (
       subCategory,
     ],
     queryFn: () =>
-      apiRequest({
+      apiRequest<ApiResponse<ProductSearchResponse>>({
         endPoint: '/api/products/categories/search',
         method: 'GET',
         params: {
@@ -127,7 +130,7 @@ export const useCategoryReviewVideoSearch = (
   size: number = 8,
   enabled: boolean = true
 ) => {
-  return useQuery({
+  return useQuery<ApiResponse<ApiReviewSearchResponse>>({
     queryKey: [
       ...REVIEW_KEYS.VIDEO_LIST({ page, size }),
       'category',
@@ -135,7 +138,7 @@ export const useCategoryReviewVideoSearch = (
       subCategory,
     ],
     queryFn: () =>
-      apiRequest({
+      apiRequest<ApiResponse<ApiReviewSearchResponse>>({
         endPoint: '/api/products/categories/search',
         method: 'GET',
         params: {
@@ -162,7 +165,7 @@ export const useCategoryReviewImageSearch = (
   size: number = 8,
   enabled: boolean = true
 ) => {
-  return useQuery({
+  return useQuery<ApiResponse<ApiReviewSearchResponse>>({
     queryKey: [
       ...REVIEW_KEYS.IMAGE_LIST({ page, size }),
       'category',
@@ -170,7 +173,7 @@ export const useCategoryReviewImageSearch = (
       subCategory,
     ],
     queryFn: () =>
-      apiRequest({
+      apiRequest<ApiResponse<ApiReviewSearchResponse>>({
         endPoint: '/api/products/categories/search',
         method: 'GET',
         params: {

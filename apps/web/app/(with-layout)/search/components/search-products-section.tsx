@@ -1,13 +1,13 @@
 'use client';
 
 import CardProduct from 'components/card/card-product';
-import { ProductResponse } from '../../../api/product-response';
+import { ProductItem } from '../../../api/product-response';
 import NotFoundSection from './not-found-section';
 
 export default function SearchProductsSection({
   products,
 }: {
-  products: ProductResponse[];
+  products: ProductItem[];
 }) {
   const handleCardClick = (productId: number) => {
     console.log(`Card clicked: ${productId}`);

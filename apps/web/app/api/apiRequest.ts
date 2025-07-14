@@ -42,10 +42,6 @@ export const apiRequest = async <T = unknown>({
       requestUrl += `?${searchParams.toString()}`;
     }
 
-    console.log('API Request URL:', requestUrl);
-    console.log('API Request Method:', method);
-    console.log('API Request Params:', params);
-
     const defaultHeaders: Record<string, string> = {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${MASTER_TOKEN}`,

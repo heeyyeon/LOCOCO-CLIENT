@@ -4,7 +4,7 @@ import CardReview from 'components/card/card-review';
 import {
   ImageReviewResponse,
   VideoReviewResponse,
-} from '../../../api/review-respone';
+} from '../../../api/review-response';
 import NotFoundSection from './not-found-section';
 
 interface SearchReviewSectionProps {

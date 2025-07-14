@@ -1,5 +1,12 @@
 'use client';
 
+import { ApiResponse } from 'app/api/api-response';
+import { ProductSearchResponse } from 'app/api/product-response';
+import {
+  ApiReviewSearchResponse,
+  VideoReviewResponse,
+  ImageReviewResponse,
+} from 'app/api/review-response';
 import { SEARCH_OPTION } from 'constants/option';
 import { CategoryNameEng, CategoryOptionEng } from 'types/category';
 import { SearchOption } from 'types/option';
@@ -124,18 +131,39 @@ function PageContent() {
     8,
     !!middleCategory && selectedTab === SEARCH_OPTION.REVIEW
   );
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const productData = keyword
-    ? (productSearchData as any)?.data?.products || []
-    : (categoryProductData as any)?.data?.products || [];
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    ? (productSearchData as ApiResponse<ProductSearchResponse>)?.data
+        ?.products || []
+    : (categoryProductData as ApiResponse<ProductSearchResponse>)?.data
+        ?.products || [];
   const reviewVideoData = keyword
-    ? (reviewVideoSearchData as any)?.data?.reviews || []
-    : (categoryReviewVideoData as any)?.data?.reviews || [];
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    ? (reviewVideoSearchData as ApiResponse<ApiReviewSearchResponse>)?.data
+        ?.reviews || []
+    : (categoryReviewVideoData as ApiResponse<ApiReviewSearchResponse>)?.data
+        ?.reviews || [];
   const reviewImageData = keyword
-    ? (reviewImageSearchData as any)?.data?.reviews || []
-    : (categoryReviewImageData as any)?.data?.reviews || [];
+    ? (reviewImageSearchData as ApiResponse<ApiReviewSearchResponse>)?.data
+        ?.reviews || []
+    : (categoryReviewImageData as ApiResponse<ApiReviewSearchResponse>)?.data
+        ?.reviews || [];
+
+  // ApiReviewItem을 VideoReviewResponse로 변환
+  const videoReviews: VideoReviewResponse[] = reviewVideoData.map((review) => ({
+    reviewId: review.reviewId,
+    brandName: review.brandName,
+    productName: review.productName,
+    likeCount: review.likeCount,
+    url: review.url || review.videoUrl || '',
+  }));
+
+  // ApiReviewItem을 ImageReviewResponse로 변환
+  const imageReviews: ImageReviewResponse[] = reviewImageData.map((review) => ({
+    reviewId: review.reviewId,
+    brandName: review.brandName,
+    productName: review.productName,
+    likeCount: review.likeCount,
+    url: review.url || (review.images && review.images[0]) || '',
+  }));
 
   const isLoading =
     (keyword &&
@@ -173,8 +201,8 @@ function PageContent() {
     [SEARCH_OPTION.PRODUCT]: <SearchProductsSection products={productData} />,
     [SEARCH_OPTION.REVIEW]: (
       <SearchReviewSection
-        reviewsVideo={reviewVideoData}
-        reviewsImage={reviewImageData}
+        reviewsVideo={videoReviews}
+        reviewsImage={imageReviews}
       />
     ),
   }[selectedTab];
