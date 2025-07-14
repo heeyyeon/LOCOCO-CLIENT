@@ -9,7 +9,10 @@ export default function middleware(req: NextRequest) {
   const isLoggedIn = accessTokenCookie !== undefined;
 
   // 로그인이 필요한 페이지 (인증이 필요한 페이지)
+  // TODO: 추후 constants 로 관리
   const AUTH_REQUIRED_PAGES = ['/product-detail/:productId/write-review'];
+
+  // 로그인 후 접근 불가능한 페이지
   const LOGIN_RESTRICTED_PAGES = ['/login', '/api/auth/line/login'];
 
   if (AUTH_REQUIRED_PAGES.includes(pathname)) {
