@@ -39,7 +39,11 @@ export default function ClientPage({
           )}
 
           <YoutubeCarousel youtubeListData={youtubeListData} />
-          <StarRating />
+          <StarRating
+            reviewCount={productData.reviewCount}
+            rating={productData.rating}
+            starPercent={productData.starPercent}
+          />
           <Review />
         </div>
       </div>
