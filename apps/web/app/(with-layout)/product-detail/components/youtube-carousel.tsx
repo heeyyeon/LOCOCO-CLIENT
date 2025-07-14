@@ -1,4 +1,5 @@
 // Import Swiper React components
+import { useQuery } from '@tanstack/react-query';
 import type { Swiper as SwiperType } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -7,7 +8,7 @@ import 'swiper/css/scrollbar';
 import { Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { convertToEmbedUrl, validateYoutubeVideos } from 'utils/youtube';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { IconButton } from '@lococo/design-system';
 import { SvgArrowRight } from '@/icons';
 import { SvgKoreanReview } from '@/icons';
@@ -32,7 +33,15 @@ export default function YoutubeCarousel() {
     'https://www.youtube.com/watch?v=xID95ItMuSE&pp=ygU07JWE64iE7JWEIOyWtOyEsey0iCA3MCDrjbDsnbzrpqwg66Gc7IWYIDIwMG1sIOumrOu3sA%3D%3D,https://www.youtube.com/watch?v=3UQnHdyG-pU&pp=ygU07JWE64iE7JWEIOyWtOyEsey0iCA3MCDrjbDsnbzrpqwg66Gc7IWYIDIwMG1sIOumrOu3sA%3D%3D,https://www.youtube.com/watch?v=Y7VPr20rEtw&pp=ygU07JWE64iE7JWEIOyWtOyEsey0iCA3MCDrjbDsnbzrpqwg66Gc7IWYIDIwMG1sIOumrOu3sA%3D%3D,https://www.youtube.com/watch?v=DYatThusJfA&pp=ygU07JWE64iE7JWEIOyWtOyEsey0iCA3MCDrjbDsnbzrpqwg66Gc7IWYIDIwMG1sIOumrOu3sNIHCQnDCQGHKiGM7w%3D%3D,https://www.youtube.com/watch?v=9ms8Ef-BHq8&pp=ygU07JWE64iE7JWEIOyWtOyEsey0iCA3MCDrjbDsnbzrpqwg66Gc7IWYIDIwMG1sIOumrOu3sNIHCQnDCQGHKiGM7w%3D%3D',
   ];
 
-  const validatedVideoListData = validateYoutubeVideos(videoListData);
+  const {
+    data: validatedVideoListData = [],
+    isLoading,
+    isError,
+  } = useQuery({
+    queryKey: ['validateYoutubeVideos', videoListData],
+    queryFn: () => validateYoutubeVideos(videoListData),
+    staleTime: 5 * 60 * 1000, // 5분간 캐시
+  });
 
   const handleSwiper = (swiper: SwiperType) => {
     setSwiperRef(swiper);
@@ -69,7 +78,8 @@ export default function YoutubeCarousel() {
           modules={[Navigation]}
           className="youtube-swiper"
         >
-          {validatedVideoListData.map((video) => (
+          {isLoading && <div>로딩중</div>}
+          {validatedVideoListData?.map((video) => (
             <SwiperSlide key={video}>
               <iframe
                 width="552"
@@ -81,6 +91,7 @@ export default function YoutubeCarousel() {
             </SwiperSlide>
           ))}
         </Swiper>
+        {isError && <div>youtube api 에러 발생</div>}
 
         {isPrevButton && (
           <IconButton
