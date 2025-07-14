@@ -4,12 +4,12 @@ import { Button } from '@lococo/design-system';
 import { Star } from '@lococo/design-system';
 import { SvgJapaneseReview } from '@/icons';
 import { SvgWrite } from '@/icons';
-import { ScorePercent } from '../types';
+import { ScorePercentData } from '../types';
 
 interface StarRatingProps {
   reviewCount: number;
   rating: number;
-  starPercent: ScorePercent[];
+  starPercent: ScorePercentData[];
 }
 
 export default function StarRating({

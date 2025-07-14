@@ -3,6 +3,8 @@ import { ProductDetailResponse } from '../types';
 import { ProductDetailData } from '../types';
 import { YoutubeListResponse } from '../types';
 import { YoutubeListData } from '../types';
+import { ImageReviewDetailData } from '../types';
+import { ImageReviewListResponse } from '../types';
 
 // 상품 상세 정보 응답 타입 정의
 
@@ -14,12 +16,9 @@ import { YoutubeListData } from '../types';
 export const getProductDetail = async (
   productId: number
 ): Promise<ProductDetailData> => {
-  const headers: Record<string, string> = {};
-
   const response = await apiRequest<ProductDetailResponse>({
     endPoint: `/api/products/details/${productId}`,
     method: 'GET',
-    headers,
   });
 
   return response.data;
@@ -28,12 +27,20 @@ export const getProductDetail = async (
 export const getYoutubeList = async (
   productId: number
 ): Promise<YoutubeListData> => {
-  const headers: Record<string, string> = {};
-
   const response = await apiRequest<YoutubeListResponse>({
     endPoint: `/api/products/details/${productId}/youtube`,
     method: 'GET',
-    headers,
+  });
+
+  return response.data;
+};
+
+export const getReviewList = async (
+  productId: number
+): Promise<ImageReviewDetailData> => {
+  const response = await apiRequest<ImageReviewListResponse>({
+    endPoint: `/api/reviews/details/image?productId=${productId}&page=0&size=10`,
+    method: 'GET',
   });
 
   return response.data;

@@ -10,7 +10,7 @@ export interface ProductDetailData {
   /** @format int64 */
   productId: number;
   imageUrls: string[];
-  productOptions: ProductOptionResponse[];
+  productOptions: ProductOptionData[];
   productName: string;
   brandName: string;
   unit: string;
@@ -18,7 +18,7 @@ export interface ProductDetailData {
   reviewCount: number;
   /** @format double */
   rating: number;
-  starPercent: ScorePercent[];
+  starPercent: ScorePercentData[];
   isLiked: boolean;
   /** @format int64 */
   normalPrice: number;
@@ -43,13 +43,13 @@ export interface ProductDetailData {
     | 'LIP_TINT';
 }
 
-export interface ProductOptionResponse {
+export interface ProductOptionData {
   /** @format int64 */
   id: number;
   optionName: string;
 }
 
-export interface ScorePercent {
+export interface ScorePercentData {
   /** @format int32 */
   score: number;
   /** @format double */
@@ -60,4 +60,24 @@ export type YoutubeListResponse = APIResponse<YoutubeListData>;
 
 export interface YoutubeListData {
   youtubeUrls?: string[];
+}
+
+export type ImageReviewListResponse = APIResponse<ImageReviewDetailData>;
+export interface ImageReviewDetailData {
+  /** @format int64 */
+  reviewId: number;
+  /** @format date-time */
+  writtenTime: string;
+  receiptUploaded: boolean;
+  positiveComment: string;
+  negativeComment: string;
+  authorName: string;
+  profileImageUrl: string;
+  rating: string;
+  option: string;
+  /** @format int64 */
+  likeCount: number;
+  images?: string[];
+  brandName: string;
+  productName: string;
 }
