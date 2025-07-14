@@ -67,7 +67,7 @@ export const apiRequest = async <T = unknown>({
 const refreshApi = async () => {
   // TODO HttpClient 인스턴스 활용하는 방식으로 수정
   const refreshResponse = await fetch(
-    `${SERVER_API_BASE_URL}api/auth/refresh`,
+    `${SERVER_API_BASE_URL}/api/auth/refresh`,
     {
       method: 'POST',
       credentials: 'include',
@@ -101,7 +101,7 @@ const responseInterceptor = async <T>(
       }
 
       const retryResponse = await fetch(
-        `${SERVER_API_BASE_URL}${originalRequest.endPoint}`,
+        `${SERVER_API_BASE_URL}/${originalRequest.endPoint}`,
         fetchOptions
       );
 

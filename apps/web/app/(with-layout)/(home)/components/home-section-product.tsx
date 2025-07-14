@@ -1,53 +1,70 @@
 'use client';
 
+import { useQuery } from '@tanstack/react-query';
+import { ApiResponseCategoryNewProductResponse } from 'api/data-contracts';
+import { apiRequest } from 'app/api/apiRequest';
 import CardProduct from 'components/card/card-product';
-import { CATEGORY_NAME, FACIAL_CARE } from 'constants/category';
-import { inRange } from 'es-toolkit';
-import { productMock } from 'mocks/productMock';
-import { CategoryName } from 'types/category';
+import { CATEGORY_NAME } from 'constants/category';
+import { CategoryNameEng } from 'types/category';
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Tab, TabContainer } from '@/components/tab/Tab';
 
 export default function HomeSectionProduct() {
-  const [selectedTab, setSelectedTab] = useState<CategoryName>(
-    FACIAL_CARE.name
-  );
+  const [selectedTab, setSelectedTab] =
+    useState<CategoryNameEng>('FACIAL_CARE');
   const router = useRouter();
+
+  const { data, isLoading, isError } = useQuery({
+    queryKey: ['categoryNewProducts', selectedTab],
+    queryFn: () =>
+      apiRequest<ApiResponseCategoryNewProductResponse>({
+        endPoint: `/api/products/categories/new?middleCategory=${selectedTab}&page=0&size=4`,
+        headers: {
+          Authorization: `Bearer `,
+        },
+      }),
+  });
+
+  const products = data?.data?.products;
+  console.log(products);
 
   return (
     <div className="flex w-full flex-col gap-4">
       <TabContainer className="flex w-full items-end">
-        {Object.values(CATEGORY_NAME).map((item) => {
+        {Object.entries(CATEGORY_NAME).map(([key, name]) => {
           return (
             <Tab
-              onClick={() => setSelectedTab(item)}
-              key={item}
-              label={item}
+              onClick={() => setSelectedTab(key as CategoryNameEng)}
+              key={key}
+              label={name}
               variant="primary"
-              active={item === selectedTab}
+              active={key === selectedTab}
             />
           );
         })}
         <div className="h-full flex-1 border-b" />
       </TabContainer>
+
+      {isLoading && <div>Loading...</div>}
+      {isError && <div>Error occurred</div>}
+
       <div className="flex justify-between">
-        {productMock.map((product) => (
+        {products?.map((product, index) => (
           <CardProduct
             key={product.productId}
-            brandName={product.brandName}
-            productName={product.productName}
-            unit={product.unit}
-            productId={product.productId}
-            isLiked={product.isLiked}
-            rating={product.rating}
-            reviewCount={product.reviewCount}
-            imageUrl={product.imageUrl}
+            brandName={product.brandName || ''}
+            productName={product.productName || ''}
+            unit={product.unit || ''}
+            productId={product.productId || 0}
+            isLiked={product.isLiked || false}
+            rating={product.rating || 0}
+            reviewCount={product.reviewCount || 0}
+            imageUrl={product.imageUrls?.[0]}
             handleCardClick={() =>
               router.push(`/product-detail/${product.productId}`)
             }
-            {...(product.ranking &&
-              inRange(product.ranking, 1, 4) && { ranking: product.ranking })}
+            {...(index >= 0 && index < 3 && { ranking: index + 1 })}
           />
         ))}
       </div>
