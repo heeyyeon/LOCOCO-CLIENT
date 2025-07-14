@@ -46,16 +46,20 @@ async function HomeSectionYouTube() {
   try {
     const response = await apiRequest<ApiResponseListVideoResponse>({
       endPoint: 'api/youtube/trends',
+      // TODO 쿠키로 헤더 전송 로직 완료되면 지우기
       headers: { Authorization: `Bearer ${process.env.NEXT_TMP_ACCESS_TOKEN}` },
     });
 
     const videos = response.data;
 
+    // videos 로딩이 완료되지 않으면
     if (!videos || videos.length === 0) {
       return <div>로딩중</div>;
     }
+
     const validatedVideos = await validateYoutubeVideos(videos, 25);
     const showVideos = validatedVideos?.slice(0, 6);
+
     return (
       <div className="mb-[12rem] grid grid-cols-3 gap-[2.4rem]">
         {showVideos?.map((video) => (
@@ -72,8 +76,8 @@ async function HomeSectionYouTube() {
         ))}
       </div>
     );
-  } catch (error) {
-    return <div>{error}</div>;
+  } catch {
+    return <div>영상 불러오는 중 오류 발생</div>;
   }
 }
 
