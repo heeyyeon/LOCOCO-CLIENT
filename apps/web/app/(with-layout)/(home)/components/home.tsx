@@ -1,5 +1,5 @@
 import { apiRequest } from 'app/api/apiRequest';
-import { convertToEmbedUrl, validateYoutubeVideos } from 'utils/youtube';
+import { convertToEmbedUrl, validateYoutubeVideoList } from 'utils/youtube';
 import { ReactNode, PropsWithChildren } from 'react';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
@@ -60,7 +60,7 @@ async function HomeSectionYouTube() {
     const videoUrls = videos
       .map((video) => video.url || '')
       .filter((url) => url);
-    const validatedVideoUrls = await validateYoutubeVideos(videoUrls, 25);
+    const validatedVideoUrls = await validateYoutubeVideoList(videoUrls, 25);
     const showVideos = videos
       .map((video, index) => ({
         ...video,

@@ -7,8 +7,8 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import { Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { convertToEmbedUrl, validateYoutubeVideos } from 'utils/youtube';
-import { useEffect, useState } from 'react';
+import { convertToEmbedUrl, validateYoutubeVideoList } from 'utils/youtube';
+import { useState } from 'react';
 import { IconButton } from '@lococo/design-system';
 import { SvgArrowRight } from '@/icons';
 import { SvgKoreanReview } from '@/icons';
@@ -39,8 +39,8 @@ export default function YoutubeCarousel() {
     isError,
   } = useQuery({
     queryKey: ['validateYoutubeVideos', videoListData],
-    queryFn: () => validateYoutubeVideos(videoListData),
-    staleTime: 5 * 60 * 1000, // 5분간 캐시
+    queryFn: () => validateYoutubeVideoList(videoListData),
+    staleTime: 5 * 60 * 1000,
   });
 
   const handleSwiper = (swiper: SwiperType) => {

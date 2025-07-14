@@ -52,7 +52,7 @@ async function validateYoutubeVideo(videoId: string): Promise<boolean> {
  * @param batchSize 병렬로 검증할 수
  * @returns 검증된(존재하는) 영상 VideoResponse타입으로 반환
  */
-export async function validateYoutubeVideos(
+export async function validateYoutubeVideoList(
   videos: string[],
   batchSize: number = 25
 ) {
