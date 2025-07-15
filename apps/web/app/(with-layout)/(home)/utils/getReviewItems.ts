@@ -5,9 +5,6 @@ export const getVideoReviews = async () => {};
 export const getImagesReviews = async () => {
   const reviewImageResponse = await apiRequest<ApiResponseReviewImageResponse>({
     endPoint: '/api/reviews/image',
-    headers: {
-      Authorization: 'Bearer ',
-    },
   });
   return reviewImageResponse;
 };

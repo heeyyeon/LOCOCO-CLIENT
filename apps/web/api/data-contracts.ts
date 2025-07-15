@@ -179,6 +179,7 @@ export interface ReviewImageItemResponse {
   productName: string;
   likeCount: number;
   rank: number;
+  productId: number;
   reviewImage: string;
   reviewVideo?: string;
 }
@@ -201,6 +202,7 @@ export interface ReviewVideoItemResponse {
   productName: string;
   likeCount: number;
   rank: number;
+  productId: number;
   reviewVideo: string;
   reviewImage?: string;
 }

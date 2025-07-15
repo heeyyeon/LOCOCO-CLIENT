@@ -23,6 +23,7 @@ export default function HomeSectionReview({
     'imageReviews' in reviewCardList
       ? reviewCardList.imageReviews
       : reviewCardList.videoReviews;
+  console.log(reviews);
   return (
     <div className={cn(`mt-8 flex flex-col gap-8`, className)}>
       <p className="jp-head3 font-[700]">
@@ -42,7 +43,9 @@ export default function HomeSectionReview({
             imageUrl={
               type === 'image' ? review.reviewImage : review.reviewVideo
             }
-            handleCardClick={() => router.push(`/review/${review.reviewId}`)}
+            handleCardClick={() =>
+              router.push(`/review-modal/${review.reviewId}/${type}`)
+            }
           >
             <Button
               color="primary"
@@ -50,7 +53,7 @@ export default function HomeSectionReview({
               size="lg"
               onClick={(e) => {
                 e.stopPropagation();
-                router.push(`/product-detail/productId받아서줄것`);
+                router.push(`/product-detail/${review.productId}`);
               }}
             >
               <div className="jp-title3 flex items-center gap-[0.8rem] font-bold">
