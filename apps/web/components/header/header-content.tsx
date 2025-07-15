@@ -181,7 +181,7 @@ export function SearchBar({
       />
       {searchValue.trim() ? (
         <Link
-          href={`/search?keyword=${encodeURIComponent(searchValue)}`}
+          href={`/search?keyword=${encodeURIComponent(searchValue)}&searchType=PRODUCT`}
           className="flex h-[6.4rem] w-[6.4rem] shrink-0 cursor-pointer items-center justify-center p-[1.4rem]"
           onClick={handleSearchIconClick}
         >
