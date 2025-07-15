@@ -1,5 +1,5 @@
-import type { MediaItem } from 'app/review-modal/types';
 import React from 'react';
+import { MediaItem } from '../types';
 import MediaInfo from './media-info';
 import MediaViewer from './media-viewer';
 import ReviewInfo from './review-info';

@@ -11,6 +11,7 @@
  */
 
 import {
+  ApiResponseImageReviewDetailResponse,
   ApiResponseImageReviewsProductDetailResponse,
   ApiResponseMainImageReviewResponse,
   ApiResponseMainVideoReviewResponse,
@@ -161,6 +162,22 @@ export class Review<
   getVideoReviewDetails = (reviewId: number, params: RequestParams = {}) =>
     this.request<ApiResponseVideoReviewDetailResponse, any>({
       path: `/api/reviews/details/${reviewId}/video`,
+      method: "GET",
+      secure: true,
+      ...params,
+    });
+  /**
+   * No description
+   *
+   * @tags REVIEW
+   * @name GetImageReviewDetails
+   * @summary 사진 리뷰 상세 조회 (가장 마지막 뎁스
+   * @request GET:/api/reviews/details/{reviewId}/image
+   * @secure
+   */
+  getImageReviewDetails = (reviewId: number, params: RequestParams = {}) =>
+    this.request<ApiResponseImageReviewDetailResponse, any>({
+      path: `/api/reviews/details/${reviewId}/image`,
       method: "GET",
       secure: true,
       ...params,

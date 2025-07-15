@@ -1,4 +1,3 @@
-import type { ReviewDetail } from 'app/review-modal/types';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import {
@@ -8,6 +7,7 @@ import {
   IconButton,
   SvgClose,
 } from '@lococo/design-system';
+import { ReviewDetail } from '../types';
 import Comment from './comment';
 
 type ReviewInfoProps = Pick<

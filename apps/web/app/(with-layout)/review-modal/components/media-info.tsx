@@ -1,6 +1,5 @@
 'use client';
 
-import type { ReviewDetail } from 'app/review-modal/types';
 import { useState } from 'react';
 import {
   Avatar,
@@ -9,6 +8,7 @@ import {
   SvgGoodOutline,
   SvgSend,
 } from '@lococo/design-system';
+import { ReviewDetail } from '../types';
 
 type ModalInfo = Pick<
   ReviewDetail,
