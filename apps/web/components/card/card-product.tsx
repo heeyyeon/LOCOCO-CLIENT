@@ -4,7 +4,6 @@ import { ProductItem } from 'types/product';
 import Image from 'next/image';
 import {
   Badge,
-  Button,
   IconButton,
   SvgLikeFill,
   SvgLikeOutline,
