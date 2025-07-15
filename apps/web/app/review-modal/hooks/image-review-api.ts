@@ -1,7 +1,22 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { apiRequest } from 'app/api/apiRequest';
-import { ApiResponseImageReviewDetailResponse } from '../../../api/data-contracts';
+import {
+  ApiResponseImageReviewDetailResponse,
+  ApiResponseMainImageReviewResponse,
+} from '../../../api/data-contracts';
 import { REVIEW_KEYS } from '../../../constants/query-key';
+
+export const useImageReviews = () => {
+  return useQuery({
+    queryKey: REVIEW_KEYS.IMAGE_LISTS(),
+    queryFn: async (): Promise<ApiResponseMainImageReviewResponse> => {
+      return apiRequest({
+        endPoint: '/api/reviews/image',
+        method: 'GET',
+      });
+    },
+  });
+};
 
 // 특정 이미지 리뷰 상세 조회
 export const useImageReviewDetail = (reviewId: number) => {

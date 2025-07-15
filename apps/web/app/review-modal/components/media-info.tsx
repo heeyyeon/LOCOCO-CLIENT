@@ -8,23 +8,26 @@ import {
   SvgGoodOutline,
   SvgSend,
 } from '@lococo/design-system';
-import { ReviewDetail } from '../types';
+import { useReviewLikeToggle } from '../hooks/image-review-api';
 
-type ModalInfo = Pick<
-  ReviewDetail,
-  'authorName' | 'profileImageUrl' | 'writtenTime' | 'likeCount'
->;
 interface MediaInfoProps {
+  reviewId: number;
   user: {
-    name: ModalInfo['authorName'];
-    avatarUrl: ModalInfo['profileImageUrl'];
+    name: string;
+    avatarUrl: string | null;
   };
-  date: ModalInfo['writtenTime'];
-  likeCount: ModalInfo['likeCount'];
+  date: string;
+  likeCount: number;
 }
 
-export default function MediaInfo({ user, date, likeCount }: MediaInfoProps) {
+export default function MediaInfo({
+  reviewId,
+  user,
+  date,
+  likeCount,
+}: MediaInfoProps) {
   const [isLiked, setIsLiked] = useState(false);
+  const likeToggle = useReviewLikeToggle();
 
   return (
     <div className="absolute bottom-0 left-0 z-10 flex h-[16rem] w-full items-center justify-between rounded-bl-xl bg-gradient-to-t from-black/60 to-transparent p-[1.6rem]">
@@ -40,8 +43,12 @@ export default function MediaInfo({ user, date, likeCount }: MediaInfoProps) {
         <ReactionToggle
           variant="vertical"
           pressed={isLiked}
-          onPressedChange={setIsLiked}
+          onPressedChange={(pressed) => {
+            setIsLiked(pressed);
+            likeToggle.mutate(reviewId);
+          }}
           className="text-white"
+          disabled={likeToggle.isPending}
         >
           {isLiked ? <SvgGoodFill /> : <SvgGoodOutline />}
           <span className="text-en-body1">{likeCount}</span>
