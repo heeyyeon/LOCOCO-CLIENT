@@ -77,7 +77,7 @@ export default function CardReview({
           </p>
         )}
         {ranking && <Badge rank={ranking} />}
-        <div className="absolute bottom-0 left-0 right-0 flex flex-col gap-[0.8rem] bg-gradient-to-t from-black/60 to-transparent px-[1.6rem] py-[1.2rem]">
+        <div className="absolute bottom-0 left-0 right-0 flex flex-col gap-[1rem] bg-gradient-to-t from-black/60 to-transparent px-[1.6rem] py-[1.2rem]">
           <div className="flex-1">
             <p
               className="en-title2 truncate font-bold text-white"

@@ -24,7 +24,7 @@ export default function HomeSectionReview({
       ? reviewCardList.imageReviews
       : reviewCardList.videoReviews;
   return (
-    <div className={cn(`mt-8 flex flex-col gap-8`, className)}>
+    <div className={cn(`mt-[3.2rem] flex flex-col gap-[3.2rem]`, className)}>
       <p className="jp-head3 font-[700]">
         {type === 'video' && '動画レビュー'}
         {type === 'image' && '写真付きレビュー'}
