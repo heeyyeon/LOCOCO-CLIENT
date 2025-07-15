@@ -10,6 +10,12 @@ const nextConfig = {
         protocol: 'http',
         hostname: '**',
       },
+      {
+        protocol: 'https',
+        hostname: 'www.w3schools.com',
+        port: '',
+        pathname: '/**',
+      },
     ],
   },
 };
