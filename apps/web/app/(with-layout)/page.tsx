@@ -2,10 +2,14 @@ import { SvgJapaneseReview, SvgKoreanReview } from '@/icons';
 import HomeBanner from './(home)/components/home-banner';
 import HomeSection from './(home)/components/home-section';
 import HomeUpdateDate from './(home)/components/home-update-date';
-import { getImageReviews } from './(home)/utils/getReviewItems';
+import {
+  emptyReviewData,
+  getImageReviews,
+} from './(home)/utils/getReviewItems';
 
 export default async function Main() {
   const reviewImageData = await getImageReviews();
+
   return (
     <main className="flex w-screen flex-col">
       <HomeBanner />
@@ -26,7 +30,7 @@ export default async function Main() {
           </HomeSection.Header>
           {/* <HomeSection.Review type="video" /> */}
           <HomeSection.Review
-            reviewCardList={reviewImageData.data}
+            reviewCardList={reviewImageData?.data || emptyReviewData}
             type="image"
             className="mt-[4.8rem]"
           />
