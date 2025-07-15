@@ -1,6 +1,6 @@
 'use client';
 
-import type { MediaItem } from 'app/review-modal/types';
+import { MediaItem } from '../types';
 import ImageCarousel from './image-carousel';
 import VideoPlayer from './video-player';
 
