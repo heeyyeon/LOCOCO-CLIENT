@@ -37,7 +37,7 @@ export default function SearchReviewSection({
                   productName={productName}
                   reviewId={reviewId}
                   likeCount={likeCount}
-                  imageUrl={url}
+                  mediaUrl={url}
                   handleCardClick={handleCardClick}
                 />
               )
@@ -61,7 +61,7 @@ export default function SearchReviewSection({
                   productName={productName}
                   reviewId={reviewId}
                   likeCount={likeCount}
-                  imageUrl={url}
+                  mediaUrl={url}
                   handleCardClick={handleCardClick}
                 />
               )
