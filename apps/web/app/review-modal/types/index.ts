@@ -6,7 +6,7 @@ export interface ReviewDetailBase {
   negativeComment: string;
   authorName: string;
   profileImageUrl: string | null;
-  rating: 1 | 2 | 3 | 4 | 5;
+  rating: number;
   option: string;
   likeCount: number;
   brandName: string;
