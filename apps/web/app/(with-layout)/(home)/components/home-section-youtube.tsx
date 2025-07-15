@@ -1,48 +1,8 @@
+import { ApiResponseListVideoResponse } from 'api/data-contracts';
 import { apiRequest } from 'app/api/apiRequest';
 import { convertToEmbedUrl, validateYoutubeVideoList } from 'utils/youtube';
-import { ReactNode, PropsWithChildren } from 'react';
-import Link from 'next/link';
-import { cn } from '@/lib/utils';
-import { ApiResponseListVideoResponse } from '../../../../api/data-contracts';
-import HomeSectionProduct from './home-section-product';
-import HomeSectionReview from './home-section-review';
 
-export default function HomeSection({
-  children,
-  className,
-}: {
-  children: ReactNode;
-  className?: string;
-}) {
-  return (
-    <section
-      className={cn(`mt-[12rem] flex w-full flex-col gap-[3.2rem]`, className)}
-    >
-      {children}
-    </section>
-  );
-}
-
-interface HomeSectionHeaderProps extends PropsWithChildren {
-  moreInfoUrl?: string;
-}
-
-function HomeSectionHeader({ children, moreInfoUrl }: HomeSectionHeaderProps) {
-  return (
-    <section className="mt-[6rem] flex justify-between">
-      <h3 className="jp-head1 flex items-center gap-[1.2rem] font-[700]">
-        {children}
-      </h3>
-      {moreInfoUrl && (
-        <Link href={moreInfoUrl} className="jp-title2 font-[700]">
-          더보기
-        </Link>
-      )}
-    </section>
-  );
-}
-
-async function HomeSectionYouTube() {
+export default async function HomeSectionYouTube() {
   try {
     const response = await apiRequest<ApiResponseListVideoResponse>({
       endPoint: 'api/youtube/trends',
@@ -51,7 +11,7 @@ async function HomeSectionYouTube() {
     const videos = response.data;
 
     // videos 로딩이 완료되지 않으면
-    if (!videos || videos.length === 0) {
+    if (!videos) {
       return <div>로딩중</div>;
     }
 
@@ -85,8 +45,3 @@ async function HomeSectionYouTube() {
     return <div>영상 불러오는 중 오류 발생</div>;
   }
 }
-
-HomeSection.Header = HomeSectionHeader;
-HomeSection.Product = HomeSectionProduct;
-HomeSection.Review = HomeSectionReview;
-HomeSection.YouTube = HomeSectionYouTube;
