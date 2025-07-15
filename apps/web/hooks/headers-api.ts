@@ -26,7 +26,6 @@ export const useProductSearch = (
         },
       }),
     enabled: enabled && !!keyword.trim(),
-    staleTime: 5 * 60 * 1000,
   });
 };
 
@@ -57,7 +56,6 @@ export const useReviewSearch = (
         },
       }),
     enabled: enabled && !!keyword.trim(),
-    staleTime: 5 * 60 * 1000,
   });
 };
 
@@ -89,7 +87,6 @@ export const useCategoryProductSearch = (
         },
       }),
     enabled: enabled && !!middleCategory,
-    staleTime: 5 * 60 * 1000,
   });
 };
 
@@ -127,6 +124,5 @@ export const useCategoryReviewSearch = (
         },
       }),
     enabled: enabled && !!middleCategory,
-    staleTime: 5 * 60 * 1000,
   });
 };

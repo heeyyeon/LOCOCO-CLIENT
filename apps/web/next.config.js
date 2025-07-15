@@ -21,8 +21,14 @@ const nextConfig = {
         pathname: '/**',
       },
       {
-        protocol:"https",
+        protocol: 'https',
         hostname: 'www.w3schools.com',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'http',
+        hostname: 'localhost',
         port: '',
         pathname: '/**',
       },
