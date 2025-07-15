@@ -15,6 +15,25 @@ type ProductSortType = 'new' | 'popular';
 interface HomeSectionProductProps {
   productSortType: ProductSortType;
 }
+
+export const productQueries = {
+  ALL: ['product'],
+  LISTS: () => [...productQueries.ALL, 'list'],
+  SEARCH_TYPE: (category: CategoryNameEng, sortType: ProductSortType) => [
+    ...productQueries.ALL,
+    'search',
+    sortType,
+    category,
+  ],
+  CATEGORIES: (category: CategoryNameEng, sortType: ProductSortType) => [
+    ...productQueries.ALL,
+    'categories',
+    category,
+    sortType,
+  ],
+  DETAILS: (detailId: number) => [...productQueries.ALL, 'detail', detailId],
+} as const;
+
 export default function HomeSectionProduct({
   productSortType = 'new',
 }: HomeSectionProductProps) {
@@ -23,12 +42,12 @@ export default function HomeSectionProduct({
   const router = useRouter();
 
   const { data, isLoading, isError } = useQuery({
-    queryKey: [`category-${productSortType}-products`, selectedTab],
+    queryKey: [productQueries.CATEGORIES(selectedTab, productSortType)],
     queryFn: () =>
       apiRequest<ApiResponseCategoryNewProductResponse>({
         endPoint: `/api/products/categories/${productSortType}?middleCategory=${selectedTab}&page=0&size=4`,
         headers: {
-          Authorization: `Bearer `,
+          Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMyIsImlhdCI6MTc1MjUxNzc3OSwiZXhwIjoxNzUzMTIyNTc5LCJpZCI6MTMsInJvbGUiOiJST0xFX1VTRVIiLCJsaW5lSWQiOiIxMyJ9.of-F1I4NjdyaHpTVrq1t_Bj-n9yjVWopZ_gaSPJfx2k`,
         },
       }),
   });
@@ -42,7 +61,7 @@ export default function HomeSectionProduct({
         {Object.entries(CATEGORY_NAME).map(([key, name]) => {
           return (
             <Tab
-              onClick={() => setSelectedTab(key as CategoryNameEng)}
+              onClick={() => setSelectedTab(key)}
               key={key}
               label={name}
               variant="primary"
