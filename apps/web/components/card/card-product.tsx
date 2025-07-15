@@ -72,7 +72,9 @@ export default function CardProduct({
         />
       </div>
       <div className="flex h-[4.4rem] items-center border-b-[0.1rem] border-dashed border-pink-500">
-        <p className="jp-body2 font-[500]">{productName}</p>
+        <p className="jp-body2 w-full truncate font-[500]" title={productName}>
+          {productName}
+        </p>
       </div>
       <div className="en-caption1 flex h-[4.4rem] items-center justify-between border-b-[0.1rem] border-pink-500 text-gray-600">
         <p>{unit}</p>
