@@ -7,7 +7,7 @@ import ReviewInfo from './review-info';
 export type Media = MediaItem;
 export interface User {
   name: string;
-  avatarUrl?: string;
+  avatarUrl: string | null;
   uploadAt: string;
 }
 export interface ReviewModallayoutProps {

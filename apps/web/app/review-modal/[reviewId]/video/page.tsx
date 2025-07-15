@@ -27,7 +27,7 @@ export default function Page() {
             mediaList={review.mediaList}
             user={{
               name: review.authorName,
-              avatarUrl: review.profileImageUrl || undefined,
+              avatarUrl: review.profileImageUrl,
               uploadAt: review.writtenTime,
             }}
             likeCount={review.likeCount}

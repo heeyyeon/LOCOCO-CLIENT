@@ -17,7 +17,7 @@ type ModalInfo = Pick<
 interface MediaInfoProps {
   user: {
     name: ModalInfo['authorName'];
-    avatarUrl?: ModalInfo['profileImageUrl'];
+    avatarUrl: ModalInfo['profileImageUrl'];
   };
   date: ModalInfo['writtenTime'];
   likeCount: ModalInfo['likeCount'];
