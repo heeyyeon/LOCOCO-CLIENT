@@ -14,38 +14,40 @@ export default function SearchProductsSection({
   };
 
   return (
-    <section className="mx-auto grid w-[1366px] grid-cols-4 gap-[2.4rem] px-[11.9rem] pb-[12rem] pt-[3.2rem]">
+    <>
       {products.length === 0 ? (
         <NotFoundSection variant="product" />
       ) : (
-        <div className="flex w-[112.8rem] flex-wrap content-center gap-[2.4rem]">
-          {products.map(
-            ({
-              productId,
-              brandName,
-              productName,
-              unit,
-              isLiked,
-              rating,
-              reviewCount,
-              url,
-            }) => (
-              <CardProduct
-                key={productId}
-                brandName={brandName}
-                productName={productName}
-                unit={unit}
-                productId={productId || 0}
-                isLiked={isLiked}
-                rating={rating}
-                reviewCount={reviewCount}
-                imageUrl={url}
-                handleCardClick={handleCardClick}
-              />
-            )
-          )}
-        </div>
+        <section className="mx-auto grid w-[1366px] grid-cols-4 gap-[2.4rem] px-[11.9rem] pb-[12rem] pt-[3.2rem]">
+          <div className="flex w-[112.8rem] flex-wrap content-center gap-[2.4rem]">
+            {products.map(
+              ({
+                productId,
+                brandName,
+                productName,
+                unit,
+                isLiked,
+                rating,
+                reviewCount,
+                url,
+              }) => (
+                <CardProduct
+                  key={productId}
+                  brandName={brandName}
+                  productName={productName}
+                  unit={unit}
+                  productId={productId || 0}
+                  isLiked={isLiked}
+                  rating={rating}
+                  reviewCount={reviewCount}
+                  imageUrl={url}
+                  handleCardClick={handleCardClick}
+                />
+              )
+            )}
+          </div>
+        </section>
       )}
-    </section>
+    </>
   );
 }
