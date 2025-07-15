@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { useParams } from 'next/navigation';
-import { Avatar } from '@lococo/design-system';
+import { Avatar, SvgImgPhoto } from '@lococo/design-system';
 import { Star } from '@lococo/design-system';
 import { Tag } from '@lococo/design-system';
 import { ReactionToggle } from '@lococo/design-system';
@@ -72,7 +72,17 @@ export default function Review() {
           </div>
         ))
       ) : (
-        <div>리뷰가 없습니다.</div>
+        <>
+          <h3 className="jp-head3 font-[700]">
+            登録された写真レビューはありません。
+          </h3>
+          <div className="flex h-[31.1rem] flex-col items-center justify-center gap-[2.4rem]">
+            <SvgImgPhoto size={100} className="fill-pink-300" />
+            <p className="jp-body1 font-[700]">
+              登録された動画レビューはありません。
+            </p>
+          </div>
+        </>
       )}
     </>
   );

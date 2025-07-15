@@ -1,13 +1,17 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { PRODUCT_QUERIES } from 'app/(with-layout)/(home)/components/home-section-product';
 import { apiRequest } from 'app/api/apiRequest';
+import { getCookie } from 'utils/client-cookie';
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 
 interface UseProductLikeProps {
   initialIsLiked: boolean;
 }
 
 export function useProductLike({ initialIsLiked }: UseProductLikeProps) {
+  const router = useRouter();
+  const userToken = getCookie('AccessToken');
   const [isLiked, setIsLiked] = useState(initialIsLiked);
   const queryClient = useQueryClient();
 
@@ -36,13 +40,22 @@ export function useProductLike({ initialIsLiked }: UseProductLikeProps) {
     },
   });
 
-  const handleLikeClick = async (e: React.MouseEvent, productId: number) => {
+  const handleLikeClick = async (
+    e: React.MouseEvent,
+    productId: number,
+    userToken?: string | null | undefined
+  ) => {
     e.stopPropagation();
+    if (!userToken) {
+      router.push('/login');
+      return;
+    }
     likeMutation.mutate(productId);
   };
 
   return {
     isLiked,
     handleLikeClick,
+    userToken,
   };
 }
