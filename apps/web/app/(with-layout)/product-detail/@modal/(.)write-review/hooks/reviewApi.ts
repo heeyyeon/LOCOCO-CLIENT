@@ -3,7 +3,7 @@ import {
   ReviewRequest,
   ApiResponseReviewResponse,
 } from '../../../../../../api/data-contracts';
-import { apiRequest } from '../../../../../../app/api/apiRequest';
+import { apiRequest } from '../../../../../api/apiRequest';
 
 export const usePostReview = (onSuccess?: () => void) => {
   return useMutation({
