@@ -196,6 +196,16 @@ export function SearchBar({
   handleChangeSearchValue,
   handleSearchIconClick,
 }: SearchBarProps) {
+  const router = useRouter();
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter' && searchValue.trim()) {
+      router.push(
+        `/search?keyword=${encodeURIComponent(searchValue)}&searchType=PRODUCT`
+      );
+      handleSearchIconClick();
+    }
+  };
   return (
     <div className="flex w-full items-center gap-[0.8rem] border-b border-pink-500 bg-white">
       <div className="mx-auto flex w-full items-center gap-[0.8rem] px-[11.9rem]">
@@ -203,6 +213,7 @@ export function SearchBar({
           type="search"
           value={searchValue}
           onChange={(e) => handleChangeSearchValue(e.target.value)}
+          onKeyDown={handleKeyDown}
           placeholder="ラネージュ"
           className="jp-title2 w-full text-right font-bold leading-[3rem] text-gray-800"
         />
