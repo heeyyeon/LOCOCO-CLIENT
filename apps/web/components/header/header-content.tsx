@@ -30,6 +30,9 @@ interface CategoryBarProps {
   activeMenu: CategoryMetadata | null;
   selectedOption: CategoryOptionEng | null;
   handleSelectOption: (option: CategoryOptionEng) => void;
+  searchValue: string;
+  handleChangeSearchValue: (text: string) => void;
+  handleSearchIconClick: () => void;
 }
 
 interface OptionBarProps {
@@ -95,6 +98,9 @@ export function CategoryBar({
   activeMenu,
   selectedOption,
   handleSelectOption,
+  searchValue,
+  handleChangeSearchValue,
+  handleSearchIconClick,
 }: CategoryBarProps) {
   return (
     <div
@@ -136,6 +142,13 @@ export function CategoryBar({
           {isSearching ? <SvgClose /> : <SvgSearch />}
         </div>
       </div>
+      {isSearching && (
+        <SearchBar
+          searchValue={searchValue}
+          handleChangeSearchValue={handleChangeSearchValue}
+          handleSearchIconClick={handleSearchIconClick}
+        />
+      )}
       {!isSearching && activeMenu && (
         <OptionBar
           options={activeMenu.options}
@@ -192,28 +205,30 @@ export function SearchBar({
   handleSearchIconClick,
 }: SearchBarProps) {
   return (
-    <div className="flex h-[5.2rem] w-full items-center gap-[0.8rem] border-b border-pink-500 bg-white">
-      <div className="mx-auto flex w-full items-center gap-[0.8rem] px-[11.9rem]">
-        <Input
-          type="search"
-          value={searchValue}
-          onChange={(e) => handleChangeSearchValue(e.target.value)}
-          placeholder="ラネージュ"
-          className="jp-title2 w-full text-right font-bold leading-[3rem] text-gray-800"
-        />
-        {searchValue.trim() ? (
-          <Link
-            href={`/search?keyword=${encodeURIComponent(searchValue)}&searchType=PRODUCT`}
-            className="flex h-[6.4rem] w-[6.4rem] shrink-0 cursor-pointer items-center justify-center p-[1.4rem]"
-            onClick={handleSearchIconClick}
-          >
-            <SvgSearch className="cursor-pointer" />
-          </Link>
-        ) : (
-          <div className="flex h-[6.4rem] w-[6.4rem] shrink-0 cursor-pointer items-center justify-center p-[1.4rem]">
-            <SvgSearch className="cursor-pointer" />
-          </div>
-        )}
+    <div className="absolute left-0 right-0 top-[calc(100%+1px)] z-50 mx-auto flex h-[5.2rem] w-full min-w-[1366px] items-center border-b border-solid border-pink-500 bg-white">
+      <div className="mx-auto flex h-[6.4rem] w-[1366px] items-center">
+        <div className="flex h-[6.4rem] w-[1366px] items-center gap-[2rem] px-[11.9rem]">
+          <Input
+            type="search"
+            value={searchValue}
+            onChange={(e) => handleChangeSearchValue(e.target.value)}
+            placeholder="ラネージュ"
+            className="jp-title2 w-full text-right font-bold leading-[3rem] text-gray-800"
+          />
+          {searchValue.trim() ? (
+            <Link
+              href={`/search?keyword=${encodeURIComponent(searchValue)}&searchType=PRODUCT`}
+              className="flex h-[6.4rem] w-[6.4rem] shrink-0 cursor-pointer items-center justify-center p-[1.4rem]"
+              onClick={handleSearchIconClick}
+            >
+              <SvgSearch className="cursor-pointer" />
+            </Link>
+          ) : (
+            <div className="flex h-[6.4rem] w-[6.4rem] shrink-0 cursor-pointer items-center justify-center p-[1.4rem]">
+              <SvgSearch className="cursor-pointer" />
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

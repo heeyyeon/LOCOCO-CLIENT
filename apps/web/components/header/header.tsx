@@ -24,7 +24,8 @@ export default function Header() {
     <div
       className={cn(
         'z-55 sticky mx-auto flex w-full min-w-[1366px] flex-col bg-white',
-        selectedCategory && 'border-b border-dashed border-pink-500',
+        (isSearching || selectedCategory) &&
+          'border-b border-dashed border-pink-500',
         !selectedCategory && !isSearching && 'border-b-[0.1rem] border-gray-500'
       )}
     >
@@ -39,21 +40,10 @@ export default function Header() {
         activeMenu={activeMenu}
         selectedOption={selectedOption}
         handleSelectOption={handleSelectOption}
+        searchValue={searchValue}
+        handleChangeSearchValue={handleChangeSearchValue}
+        handleSearchIconClick={handleSearchIconClick}
       />
-      {isSearching && (
-        <div
-          className={
-            (cn('w-full bg-white'),
-            isSearching && 'border-t border-dashed border-pink-500')
-          }
-        >
-          <SearchBar
-            searchValue={searchValue}
-            handleChangeSearchValue={handleChangeSearchValue}
-            handleSearchIconClick={handleSearchIconClick}
-          />
-        </div>
-      )}
     </div>
   );
 }
