@@ -8,7 +8,6 @@ import {
   IconButton,
   SvgClose,
 } from '@lococo/design-system';
-import { cn } from '@/lib/utils';
 import Comment from './comment';
 
 type ReviewInfoProps = Pick<
