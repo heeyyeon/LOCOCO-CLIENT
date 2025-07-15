@@ -10,7 +10,7 @@ export default function SearchProductsSection({
     console.log(`Card clicked: ${productId}`);
   };
   return (
-    <section className="mx-auto grid grid-cols-4 gap-[2.4rem] px-[11.9rem] pb-[12rem] pt-[3.2rem]">
+    <section className="mx-auto grid w-[1366px] grid-cols-4 gap-[2.4rem] px-[11.9rem] pb-[12rem] pt-[3.2rem]">
       {products.map((product) => (
         <CardProduct
           key={product.productId}

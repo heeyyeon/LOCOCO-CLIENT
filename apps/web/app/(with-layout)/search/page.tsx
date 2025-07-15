@@ -88,7 +88,7 @@ function PageContent() {
   }
 
   return (
-    <div className="flex w-full flex-col items-start">
+    <div className="flex w-screen flex-col items-start">
       <SearchBreadCrumbSection
         middleCategory={middleCategory}
         subCategory={subCategory}
