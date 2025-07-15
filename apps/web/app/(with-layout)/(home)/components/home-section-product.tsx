@@ -1,39 +1,74 @@
 'use client';
 
+import { useQuery } from '@tanstack/react-query';
+import { ApiResponseCategoryNewProductResponse } from 'api/data-contracts';
+import { apiRequest } from 'app/api/apiRequest';
 import CardProduct from 'components/card/card-product';
-import { CATEGORY_NAME, FACIAL_CARE } from 'constants/category';
-import { inRange } from 'es-toolkit';
-import { productMock } from 'mocks/productMock';
-import { CategoryName } from 'types/category';
+import { CATEGORY_NAME } from 'constants/category';
+import { CategoryNameEng } from 'types/category';
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Tab, TabContainer } from '@/components/tab/Tab';
 
-export default function HomeSectionProduct() {
-  const [selectedTab, setSelectedTab] = useState<CategoryName>(
-    FACIAL_CARE.name
-  );
+type ProductSortType = 'new' | 'popular';
+
+interface HomeSectionProductProps {
+  productSortType: ProductSortType;
+}
+
+export const PRODUCT_QUERIES = {
+  // TODO 다른 PR에서 생성한 QUERY KEY들과 병합 예정
+  ALL: ['product'] as const,
+  LISTS: () => [...PRODUCT_QUERIES.ALL, 'list'] as const,
+  SEARCH_TYPE: (category: CategoryNameEng, sortType: ProductSortType) =>
+    [...PRODUCT_QUERIES.ALL, 'search', category, sortType] as const,
+  CATEGORY: (category: CategoryNameEng, sortType: ProductSortType) =>
+    [...PRODUCT_QUERIES.ALL, 'category', category, sortType] as const,
+  DETAILS: (detailId: number) =>
+    [...PRODUCT_QUERIES.ALL, 'detail', detailId] as const,
+} as const;
+
+export default function HomeSectionProduct({
+  productSortType = 'new',
+}: HomeSectionProductProps) {
+  const [selectedTab, setSelectedTab] =
+    useState<CategoryNameEng>('FACIAL_CARE');
   const router = useRouter();
+
+  const { data, isLoading, isError } = useQuery({
+    queryKey: PRODUCT_QUERIES.CATEGORY(selectedTab, productSortType),
+    queryFn: () =>
+      apiRequest<ApiResponseCategoryNewProductResponse>({
+        endPoint: `/api/products/categories/${productSortType}?middleCategory=${selectedTab}&page=0&size=4`,
+      }),
+  });
+
+  const products = data?.data?.products;
 
   return (
     <div className="flex w-full flex-col gap-4">
       <TabContainer className="flex w-full items-end">
-        {Object.values(CATEGORY_NAME).map((item) => {
+        {Object.keys(CATEGORY_NAME).map((key) => {
+          const categoryKey = key as keyof typeof CATEGORY_NAME;
+          const name = CATEGORY_NAME[categoryKey];
           return (
             <Tab
-              onClick={() => setSelectedTab(item)}
-              key={item}
-              label={item}
+              onClick={() => setSelectedTab(categoryKey)}
+              key={key}
+              label={name}
               variant="primary"
-              active={item === selectedTab}
+              active={categoryKey === selectedTab}
               className="jp-title3"
             />
           );
         })}
         <div className="h-full flex-1 border-b" />
       </TabContainer>
+      {isLoading && <div>Loading...</div>}
+      {isError && <div>Error occurred</div>}
+
       <div className="grid grid-cols-4 gap-[2.4rem]">
-        {productMock.map((product) => (
+        {products?.map((product, index) => (
           <CardProduct
             key={product.productId}
             brandName={product.brandName}
@@ -43,12 +78,11 @@ export default function HomeSectionProduct() {
             isLiked={product.isLiked}
             rating={product.rating}
             reviewCount={product.reviewCount}
-            imageUrl={product.imageUrl}
+            imageUrl={product.imageUrls?.[0]}
             handleCardClick={() =>
               router.push(`/product-detail/${product.productId}`)
             }
-            {...(product.ranking &&
-              inRange(product.ranking, 1, 4) && { ranking: product.ranking })}
+            {...(index >= 0 && index < 3 && { ranking: index + 1 })}
           />
         ))}
       </div>
