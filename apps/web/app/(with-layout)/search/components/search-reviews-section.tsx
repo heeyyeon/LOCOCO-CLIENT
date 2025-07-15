@@ -21,10 +21,10 @@ export default function SearchReviewSection({
     console.log(reviewId);
   };
   return (
-    <section className="mx-auto flex w-full flex-col content-center px-[11.9rem] pb-[12rem] pt-0">
-      <div className="mx-auto flex w-[1366px] flex-col gap-[3.2rem] pt-[3.2rem]">
+    <section className="mx-auto flex w-[1366px] flex-col content-center px-[11.9rem] pb-[12rem] pt-0">
+      <div className="mx-auto flex max-w-[1366px] flex-col gap-[3.2rem] pt-[3.2rem]">
         <p className="jp-head3 font-bold text-gray-700">動画レビュー</p>
-        <div className="grid grid-cols-4 gap-[2.4rem]">
+        <div className="grid max-w-[1366px] grid-cols-4 gap-[2.4rem]">
           {reviewsVideo.map((review) => (
             <CardReview
               key={review.reviewId}
@@ -41,9 +41,9 @@ export default function SearchReviewSection({
         <MoreButton onClick={handleVideoButton} />
       </div>
 
-      <div className="mx-auto flex w-[1366px] flex-col gap-[3.2rem] pt-[3.2rem]">
+      <div className="mx-auto flex max-w-[1366px] flex-col gap-[3.2rem] pt-[3.2rem]">
         <p className="jp-head3 font-bold text-gray-700"> 写真付きレビュー</p>
-        <div className="grid grid-cols-4 gap-[2.4rem]">
+        <div className="grid max-w-[1366px] grid-cols-4 gap-[2.4rem]">
           {reviewsImage.map((review) => (
             <CardReview
               key={review.reviewId}
