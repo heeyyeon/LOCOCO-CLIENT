@@ -32,7 +32,7 @@ interface CardReviewProps extends ReviewItem, PropsWithChildren {
  * @param productName 리뷰 상품의 상품명
  * @param reviewId 해당 리뷰의 고유한 ID
  * @param likeCount 해당 리뷰의 좋아요 수
- * @param imageUrl 해당 리뷰 대표 이미지(영상 썸네일)
+ * @param mediaUrl 해당 리뷰 대표 이미지(영상 썸네일)
  * @param handleCardClick 리뷰 카드 클릭시 작동할 이벤트(reviewId 필요)
  * @param children (optional) 리뷰 카드 밑에 렌더링할 요소들(ex. 바로가기 버튼)
  */
@@ -43,7 +43,7 @@ export default function CardReview({
   productName,
   reviewId,
   likeCount,
-  imageUrl,
+  mediaUrl,
   handleCardClick,
   children,
 }: CardReviewProps) {
@@ -53,12 +53,12 @@ export default function CardReview({
       onClick={() => handleCardClick?.(reviewId)}
     >
       <div className={cn(imageWrapperVariant({ type }), `bg-gray-500`)}>
-        {imageUrl ? (
+        {mediaUrl ? (
           type === 'video' ? (
             <video
               width={264}
               height={352}
-              src={imageUrl}
+              src={mediaUrl}
               className="h-full w-full object-cover"
               preload="metadata"
             />
@@ -66,7 +66,7 @@ export default function CardReview({
             <Image
               width={264}
               height={264}
-              src={imageUrl}
+              src={mediaUrl}
               alt={productName}
               className="h-full w-full object-cover"
             />

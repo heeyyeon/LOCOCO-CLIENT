@@ -39,7 +39,7 @@ export default function HomeSectionReview({
             productName={review.productName}
             reviewId={review.reviewId}
             likeCount={review.likeCount}
-            imageUrl={
+            mediaUrl={
               type === 'image' ? review.reviewImage : review.reviewVideo
             }
             handleCardClick={() =>
