@@ -3,6 +3,7 @@ export { SvgLine } from './Line';
 export { SvgLogo } from './Logo';
 export { SvgAdd } from './Add';
 export { SvgArrowDown } from './ArrowDown';
+export { SvgArrowLeft } from './ArrowLeft';
 export { SvgArrowOutward } from './ArrowOutward';
 export { SvgArrowRight } from './ArrowRight';
 export { SvgArrowUp } from './ArrowUp';
