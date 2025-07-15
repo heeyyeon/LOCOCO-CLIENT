@@ -1,10 +1,6 @@
 'use client';
 
-import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { PRODUCT_QUERIES } from 'app/(with-layout)/(home)/components/home-section-product';
-import { apiRequest } from 'app/api/apiRequest';
 import { ProductItem } from 'types/product';
-import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import {
   Badge,
@@ -12,6 +8,7 @@ import {
   SvgLikeOutline,
   SvgStar,
 } from '@lococo/design-system';
+import { useProductLike } from './hooks/use-product-like';
 
 interface CardProductProps extends ProductItem {
   handleCardClick: (productId: number) => void;
@@ -29,42 +26,9 @@ export default function CardProduct({
   imageUrl,
   handleCardClick,
 }: CardProductProps) {
-  const [isLiked, setIsLiked] = useState(initialIsLiked);
-  const queryClient = useQueryClient();
-
-  useEffect(() => {
-    setIsLiked(initialIsLiked);
-  }, [initialIsLiked]);
-
-  const likeMutation = useMutation({
-    mutationFn: (productId: number) => {
-      return apiRequest({
-        endPoint: `/api/likes/products/${productId}`,
-        method: 'POST',
-        headers: {
-          Authorization: `Bearer `,
-        },
-      });
-    },
-
-    onMutate: async () => {
-      setIsLiked(!isLiked);
-      return { originalState: isLiked };
-    },
-
-    onError: (error, _variables, context) => {
-      setIsLiked(context?.originalState || false);
-      console.error(error);
-    },
-    onSettled: () => {
-      queryClient.invalidateQueries({ queryKey: PRODUCT_QUERIES.ALL });
-    },
+  const { isLiked, handleLikeClick } = useProductLike({
+    initialIsLiked,
   });
-
-  const handleLikeClick = async (e: React.MouseEvent, productId: number) => {
-    e.stopPropagation();
-    likeMutation.mutate(productId);
-  };
 
   return (
     <article
