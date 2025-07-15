@@ -14,11 +14,11 @@ export default function SearchProductsSection({
   };
 
   return (
-    <section className="flex flex-col p-[11.9rem] pb-[12rem] pt-[3.2rem]">
+    <section className="mx-auto grid w-[1366px] grid-cols-4 gap-[2.4rem] px-[11.9rem] pb-[12rem] pt-[3.2rem]">
       {products.length === 0 ? (
         <NotFoundSection variant="product" />
       ) : (
-        <div className="mx-auto flex w-[112.8rem] flex-wrap content-center gap-[2.4rem]">
+        <div className="flex w-[112.8rem] flex-wrap content-center gap-[2.4rem]">
           {products.map(
             ({
               productId,

@@ -248,7 +248,7 @@ export default function SearchPageClient() {
   }
 
   return (
-    <div className="flex w-full flex-col items-start">
+    <div className="flex w-screen flex-col items-start">
       <div className="flex flex-col items-start self-stretch"></div>
       <SearchBreadCrumbSection
         middleCategory={middleCategory}

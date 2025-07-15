@@ -58,6 +58,7 @@ export default function HomeSectionProduct({
               label={name}
               variant="primary"
               active={categoryKey === selectedTab}
+              className="jp-title3"
             />
           );
         })}
@@ -66,7 +67,7 @@ export default function HomeSectionProduct({
       {isLoading && <div>Loading...</div>}
       {isError && <div>Error occurred</div>}
 
-      <div className="flex justify-between">
+      <div className="grid grid-cols-4 gap-[2.4rem]">
         {products?.map((product, index) => (
           <CardProduct
             key={product.productId}

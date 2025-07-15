@@ -11,7 +11,7 @@ export default function NotFoundSection({
     <div
       className={cn(
         variant == 'review' && 'gap-[1.2rem] self-stretch',
-        'flex flex-col items-center py-[6rem]'
+        'flex w-full flex-col items-center py-[6rem]'
       )}
     >
       <p className="jp-body1 font-bold text-gray-800">検索結果がありません。</p>
