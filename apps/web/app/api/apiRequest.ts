@@ -8,10 +8,7 @@ export interface ApiRequestProps {
   params?: Record<string, string>;
 }
 const SERVER_API_BASE_URL = process.env.NEXT_PUBLIC_API_SERVER_URL;
-console.log(SERVER_API_BASE_URL);
 
-// 마스터 토큰
-const MASTER_TOKEN = process.env.NEXT_PUBLIC_MASTER_TOKEN;
 /**
  * 
  * @param endPoint 엔드포인트 작성 ex.'api/youtube/trends'
@@ -44,7 +41,6 @@ export const apiRequest = async <T = unknown>({
 
     const defaultHeaders: Record<string, string> = {
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${MASTER_TOKEN}`,
       ...headers,
     };
 
