@@ -44,11 +44,7 @@ export default function ReviewInfo({
 
   return (
     <div className="relative flex h-full flex-col overflow-hidden rounded-r-xl">
-      <header
-        className={cn(
-          'text-jp-body1 sticky top-0 z-10 flex h-[4.8rem] items-center justify-between border-b border-pink-500 bg-white pl-[1.6rem] font-bold'
-        )}
-      >
+      <header className="text-jp-body1 sticky top-0 z-10 flex h-[4.8rem] items-center justify-between border-b border-pink-500 bg-white pl-[1.6rem] font-bold">
         <span>レビュー</span>
         <IconButton
           icon={<SvgClose />}
