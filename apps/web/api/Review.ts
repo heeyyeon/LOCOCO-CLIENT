@@ -9,6 +9,7 @@
  * ## SOURCE: https://github.com/acacode/swagger-typescript-api ##
  * ---------------------------------------------------------------
  */
+
 import {
   ApiResponseImageReviewDetailResponse,
   ApiResponseImageReviewsProductDetailResponse,
@@ -24,8 +25,8 @@ import {
   ReviewMediaRequest,
   ReviewReceiptRequest,
   ReviewRequest,
-} from './data-contracts';
-import { ContentType, HttpClient, RequestParams } from './http-client';
+} from "./data-contracts";
+import { ContentType, HttpClient, RequestParams } from "./http-client";
 
 export class Review<
   SecurityDataType = unknown,
@@ -42,7 +43,7 @@ export class Review<
   createReview = (
     productId: number,
     data: ReviewRequest,
-    params: RequestParams = {}
+    params: RequestParams = {},
   ) =>
     this.request<ApiResponseReviewResponse, any>({
       path: `/api/reviews/${productId}`,
@@ -86,11 +87,11 @@ export class Review<
    */
   createReceiptPresignedUrl = (
     data: ReviewReceiptRequest,
-    params: RequestParams = {}
+    params: RequestParams = {},
   ) =>
     this.request<ApiResponseReviewReceiptResponse, any>({
       path: `/api/reviews/receipt`,
-      method: 'POST',
+      method: "POST",
       body: data,
       secure: true,
       type: ContentType.Json,
@@ -107,11 +108,11 @@ export class Review<
    */
   createMediaPresignedUrl = (
     data: ReviewMediaRequest,
-    params: RequestParams = {}
+    params: RequestParams = {},
   ) =>
     this.request<ApiResponseReviewMediaResponse, any>({
       path: `/api/reviews/media`,
-      method: 'POST',
+      method: "POST",
       body: data,
       secure: true,
       type: ContentType.Json,

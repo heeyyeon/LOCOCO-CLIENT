@@ -28,7 +28,7 @@ export class ProductLike<
   toggleLike1 = (productId: number, params: RequestParams = {}) =>
     this.request<ApiResponseToggleLikeResponse, any>({
       path: `/api/likes/products/${productId}`,
-      method: 'POST',
+      method: "POST",
       secure: true,
       ...params,
     });
