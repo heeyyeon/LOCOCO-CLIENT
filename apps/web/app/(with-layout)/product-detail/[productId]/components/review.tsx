@@ -20,7 +20,7 @@ export default function Review() {
 
   const reviewListData = reviewList?.imageReviews;
   return (
-    <div>
+    <>
       {reviewListData && reviewListData.length > 0 ? (
         reviewListData.map((review) => (
           <div
@@ -53,7 +53,7 @@ export default function Review() {
 
             <div className="flex w-[26.4rem] flex-col items-stretch gap-[1.2rem]">
               <div className="flex items-center gap-[1.2rem]">
-                <Avatar src={review.profileImageUrl}></Avatar>
+                <Avatar src={review.profileImageUrl} />
                 <p className="en-title2 text-gray-800">{review.authorName}</p>
               </div>
 
@@ -74,6 +74,6 @@ export default function Review() {
       ) : (
         <div>리뷰가 없습니다.</div>
       )}
-    </div>
+    </>
   );
 }

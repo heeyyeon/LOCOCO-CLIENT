@@ -38,7 +38,7 @@ export default function StarRating({
             </div>
           </div>
         </div>
-        <div className="gap flex flex-col gap-[1.4rem]">
+        <div className="flex flex-col gap-[1.4rem]">
           {starPercent.map(({ percent, score }, index) => (
             <div className="flex items-center gap-[1.6rem]" key={index}>
               <span className="en-title3 font-bold text-gray-600">{score}</span>
