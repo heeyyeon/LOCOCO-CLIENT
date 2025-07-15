@@ -1,7 +1,7 @@
 'use client';
 
 import { cn } from '@/lib/utils';
-import { CategoryBar, SearchBar, TopUtil } from './header-content';
+import { CategoryBar, TopUtil } from './header-content';
 import { useHeaderAction } from './use-header-action';
 
 export default function Header() {
