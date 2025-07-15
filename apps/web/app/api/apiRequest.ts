@@ -7,6 +7,7 @@ export interface ApiRequestProps {
   method?: RequestMethod;
   data?: unknown;
   headers?: Record<string, string>;
+  params?: Record<string, string>;
 }
 const SERVER_API_BASE_URL = process.env.NEXT_PUBLIC_API_SERVER_URL;
 
@@ -25,10 +26,22 @@ export const apiRequest = async <T = unknown>({
   method = 'GET',
   data,
   headers,
+  params,
 }: ApiRequestProps): Promise<T> => {
   const accessToken = await getCookie('AccessToken');
   try {
-    const requestUrl = `${SERVER_API_BASE_URL}${endPoint}`;
+    // 쿼리 파라미터가 있으면 URL에 추가
+    let requestUrl = `${SERVER_API_BASE_URL}${endPoint}`;
+    if (params && Object.keys(params).length > 0) {
+      const searchParams = new URLSearchParams();
+      Object.entries(params).forEach(([key, value]) => {
+        if (value !== undefined && value !== null) {
+          searchParams.append(key, value);
+        }
+      });
+      requestUrl += `?${searchParams.toString()}`;
+    }
+
     const defaultHeaders: Record<string, string> = {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${accessToken}`,
@@ -49,6 +62,7 @@ export const apiRequest = async <T = unknown>({
       method,
       data,
       headers,
+      params,
     });
 
     if (interceptedResponse) {
@@ -57,7 +71,12 @@ export const apiRequest = async <T = unknown>({
 
     if (!response.ok) {
       const error = await response.text();
-      console.error('에러 :', error);
+      console.error('API Response Error:', {
+        status: response.status,
+        statusText: response.statusText,
+        url: requestUrl,
+        error: error,
+      });
       throw error;
     }
     const responseData = await response.json();

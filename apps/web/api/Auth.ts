@@ -41,6 +41,22 @@ export class Auth<
    * No description
    *
    * @tags AUTH
+   * @name Logout
+   * @summary 로그아웃
+   * @request POST:/api/auth/logout
+   * @secure
+   */
+  logout = (params: RequestParams = {}) =>
+    this.request<ApiResponseVoid, any>({
+      path: `/api/auth/logout`,
+      method: "POST",
+      secure: true,
+      ...params,
+    });
+  /**
+   * No description
+   *
+   * @tags AUTH
    * @name Login
    * @summary 테스트용 JWT 토큰 발급
    * @request POST:/api/auth/login

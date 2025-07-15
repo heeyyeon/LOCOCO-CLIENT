@@ -59,7 +59,7 @@ export interface ScorePercentData {
 export type YoutubeListResponse = APIResponse<YoutubeListData>;
 
 export interface YoutubeListData {
-  youtubeUrls?: string[];
+  youtubeUrls: string[];
 }
 
 export type ImageReviewListResponse = APIResponse<ImageReviewDetailData>;
