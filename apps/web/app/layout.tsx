@@ -30,7 +30,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja" suppressHydrationWarning>
-      <body className={`${notoSansJP.variable} ${pretendard.variable}`}>
+      <body
+        className={`${notoSansJP.variable} ${pretendard.variable} min-h-screen lg:flex lg:justify-center`}
+      >
         <Providers>{children}</Providers>
       </body>
     </html>

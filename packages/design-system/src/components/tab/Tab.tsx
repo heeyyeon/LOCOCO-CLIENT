@@ -16,12 +16,12 @@ interface TabContainerProps {
 }
 
 const tabVariants = cva(
-  'inline-flex w-auto items-center justify-center gap-2.5 bg-white px-5 py-2.5 font-bold cursor-pointer',
+  'inline-flex w-auto items-center justify-center gap-2.5 bg-white px-[2rem] py-[1rem] font-bold cursor-pointer',
   {
     variants: {
       variant: {
-        primary: 'h-11 text-jp-title3  text-gray-500 leading-normal',
-        secondary: 'h-14 text-jp-title2  text-gray-800 leading-relaxed',
+        primary: 'h-11 jp-title3  text-gray-500 leading-normal',
+        secondary: 'h-14 jp-title2  text-gray-800 leading-relaxed',
       },
       active: {
         true: 'border-b-2 border-solid',
@@ -46,14 +46,7 @@ const tabVariants = cva(
     },
   }
 );
-
-export default function Tab({
-  label,
-  active,
-  variant,
-  className,
-  ...props
-}: TabProps) {
+function Tab({ label, active, variant, className, ...props }: TabProps) {
   return (
     <button
       type="button"
@@ -65,7 +58,7 @@ export default function Tab({
   );
 }
 
-export function TabContainer({ children, className }: TabContainerProps) {
+function TabContainer({ children, className }: TabContainerProps) {
   return (
     <div
       className={cn(
@@ -77,3 +70,5 @@ export function TabContainer({ children, className }: TabContainerProps) {
     </div>
   );
 }
+
+export { Tab, TabContainer };
