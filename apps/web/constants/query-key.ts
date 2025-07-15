@@ -13,16 +13,17 @@ export const REVIEW_KEYS = {
   VIDEO_LISTS: () => [...REVIEW_KEYS.VIDEO(), 'list'],
   VIDEO_LIST: ({ page, size }: { page?: number; size?: number }) => [
     ...REVIEW_KEYS.VIDEO_LISTS(),
-    'list',
     page,
     size,
   ],
 
+  IMAGE: () => [...REVIEW_KEYS.ALL, 'image'],
   IMAGE_LISTS: () => [...REVIEW_KEYS.ALL, 'list'],
   IMAGE_LIST: ({ page, size }: { page?: number; size?: number }) => [
     ...REVIEW_KEYS.IMAGE_LISTS(),
-    'list',
     page,
     size,
   ],
+  IMAGE_DETAILS: () => [...REVIEW_KEYS.IMAGE(), 'detail'],
+  IMAGE_DETAIL: (id: number) => [...REVIEW_KEYS.IMAGE_DETAILS(), id],
 } as const;
