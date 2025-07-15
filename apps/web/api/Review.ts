@@ -210,7 +210,7 @@ export class Review<
    *
    * @tags REVIEW
    * @name GetImageReviewsInProductDetail
-   * @summary 제품 상세 페이지에서 유저 리뷰 조회
+   * @summary 제품 상세 페이지에서 사진 리뷰 조회
    * @request GET:/api/reviews/details/image
    * @secure
    */
