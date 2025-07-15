@@ -58,20 +58,21 @@ export default function HomeSectionProduct({
   return (
     <div className="flex w-full flex-col gap-4">
       <TabContainer className="flex w-full items-end">
-        {Object.entries(CATEGORY_NAME).map(([key, name]) => {
+        {Object.keys(CATEGORY_NAME).map((key) => {
+          const categoryKey = key as keyof typeof CATEGORY_NAME;
+          const name = CATEGORY_NAME[categoryKey];
           return (
             <Tab
-              onClick={() => setSelectedTab(key)}
+              onClick={() => setSelectedTab(categoryKey)}
               key={key}
               label={name}
               variant="primary"
-              active={key === selectedTab}
+              active={categoryKey === selectedTab}
             />
           );
         })}
         <div className="h-full flex-1 border-b" />
       </TabContainer>
-
       {isLoading && <div>Loading...</div>}
       {isError && <div>Error occurred</div>}
 
