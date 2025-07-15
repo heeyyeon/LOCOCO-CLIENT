@@ -1,6 +1,9 @@
+'use client';
+
 import type { CategoryOptionEng, CategoryNameEng } from 'types/category';
 import { CategoryMetadata, getOptionLabel } from 'utils/category';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import {
   SvgClose,
   SvgDivider,
@@ -59,6 +62,8 @@ export function TopUtilItem({ icon, label, onClick }: TopUtilItemProps) {
 }
 
 export function TopUtil() {
+  const router = useRouter();
+
   return (
     <div className="flex w-full items-center justify-end self-stretch px-[11.9rem] py-[2rem]">
       <TopUtilItem
@@ -79,7 +84,7 @@ export function TopUtil() {
       <TopUtilItem
         icon={<SvgLogin className="text-gray-600" size={16} />}
         label="ログイン"
-        onClick={() => console.log('로그인 클릭')}
+        onClick={() => router.push('/login')}
       />
     </div>
   );
