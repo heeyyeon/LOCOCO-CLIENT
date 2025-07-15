@@ -37,9 +37,12 @@ export default function ReviewOnboarding() {
               </div>
             </div>
           </div>
-          <p className="text-center text-lg font-medium text-white">
-            タッチパッドをスワイプするか、マウスをスクロールしてより多くのビデオレビューをご覧ください
-          </p>
+          <div className="text-center text-lg font-medium text-white">
+            タッチパッドを<p className="inline text-pink-500">スワイプ</p>
+            するか、マウスを
+            <p className="inline text-pink-500"> スクロール</p>
+            してより多くのビデオレビューをご覧ください
+          </div>
         </div>
       </div>
 
