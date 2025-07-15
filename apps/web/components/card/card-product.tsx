@@ -28,7 +28,7 @@ export default function CardProduct({
   imageUrl,
   handleCardClick,
 }: CardProductProps) {
-  const { isLiked, handleLikeClick } = useProductLike({
+  const { isLiked, handleLikeClick, userToken } = useProductLike({
     initialIsLiked,
   });
 
@@ -56,7 +56,7 @@ export default function CardProduct({
       <div className="flex h-[4.4rem] items-center justify-between border-b-[0.1rem] border-dashed border-pink-500">
         <p className="jp-body1 font-[700]">{brandName}</p>
         <IconButton
-          onClick={(e) => handleLikeClick(e, productId)}
+          onClick={(e) => handleLikeClick(e, productId, userToken)}
           size="md"
           icon={
             isLiked ? (
