@@ -48,7 +48,12 @@ export default function ReviewModallayout({
         {/* 좌측: 미디어 + 하단정보 */}
         <div className="relative flex w-[55.2rem] flex-col">
           <MediaViewer mediaList={mediaList} />
-          <MediaInfo user={user} date={user.uploadAt} likeCount={likeCount} />
+          <MediaInfo
+            reviewId={id}
+            user={user}
+            date={user.uploadAt}
+            likeCount={likeCount}
+          />
         </div>
         {/* 우측: 리뷰 상세 */}
         <div className="relative flex w-[38.4rem] flex-col">
