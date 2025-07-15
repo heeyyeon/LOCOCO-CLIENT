@@ -1,13 +1,15 @@
+'use client';
+
 import { SvgJapaneseReview, SvgKoreanReview } from '@/icons';
-import HomeSection from '../home/components/home';
-import HomeBanner from '../home/components/home-banner';
-import HomeUpdateDate from '../home/components/home-update-date';
+import HomeSection from './(home)/components/home';
+import HomeBanner from './(home)/components/home-banner';
+import HomeUpdateDate from './(home)/components/home-update-date';
 
 export default function Main() {
   return (
-    <main className="flex min-h-screen w-full flex-col items-center">
+    <main className="flex w-full flex-col">
       <HomeBanner />
-      <div className="flex w-[112.8rem] flex-col">
+      <div className="mx-auto flex w-[112.8rem] flex-col">
         <HomeUpdateDate />
         <HomeSection className="mt-[6rem]">
           <HomeSection.Header>レビュー数が多い商品</HomeSection.Header>

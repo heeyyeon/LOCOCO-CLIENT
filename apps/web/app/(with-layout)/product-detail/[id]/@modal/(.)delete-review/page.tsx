@@ -2,23 +2,20 @@
 
 import Modal from 'components/modal/modal';
 import React from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';
-import { useParams } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { Button } from '@lococo/design-system';
 
 export default function DeleteReviewModal() {
   const router = useRouter();
-  const searchParams = useSearchParams();
-  const params = useParams();
-
-  const id = params.id as string;
-  const reviewId = searchParams.get('reviewId');
-
-  console.log(id, reviewId); // 추후에 없는 id나 reviewId로 접근했을 때 헨들링
+  // TODO api 연동 시에 import해서 id 가져오기
+  // const searchParams = useSearchParams();
+  // const params = useParams();
+  // const id = params.id;
+  // const reviewId = searchParams.get('reviewId');
 
   const handleDelete = async () => {
     try {
-      console.log('삭제 API:', { productId: id, reviewId });
+      // TODO 삭제 api 연동
       router.back();
     } catch (error) {
       console.error('', error);

@@ -16,7 +16,7 @@ interface TabContainerProps {
 }
 
 const tabVariants = cva(
-  'inline-flex w-auto items-center justify-center gap-2.5 bg-white px-5 py-2.5 font-bold cursor-pointer',
+  'inline-flex w-auto items-center justify-center gap-2.5 bg-white px-[2rem] py-[1rem] font-bold cursor-pointer',
   {
     variants: {
       variant: {
@@ -46,14 +46,7 @@ const tabVariants = cva(
     },
   }
 );
-
-export default function Tab({
-  label,
-  active,
-  variant,
-  className,
-  ...props
-}: TabProps) {
+function Tab({ label, active, variant, className, ...props }: TabProps) {
   return (
     <button
       type="button"
@@ -65,7 +58,7 @@ export default function Tab({
   );
 }
 
-export function TabContainer({ children, className }: TabContainerProps) {
+function TabContainer({ children, className }: TabContainerProps) {
   return (
     <div
       className={cn(
@@ -77,3 +70,5 @@ export function TabContainer({ children, className }: TabContainerProps) {
     </div>
   );
 }
+
+export { Tab, TabContainer };
