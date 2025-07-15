@@ -192,7 +192,7 @@ export function SearchBar({
   handleSearchIconClick,
 }: SearchBarProps) {
   return (
-    <div className="flex w-full items-center gap-[0.8rem] border-b border-pink-500 bg-white">
+    <div className="flex h-[5.2rem] w-full items-center gap-[0.8rem] border-b border-pink-500 bg-white">
       <div className="mx-auto flex w-full items-center gap-[0.8rem] px-[11.9rem]">
         <Input
           type="search"

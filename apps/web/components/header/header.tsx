@@ -41,7 +41,12 @@ export default function Header() {
         handleSelectOption={handleSelectOption}
       />
       {isSearching && (
-        <div className="w-full bg-white">
+        <div
+          className={
+            (cn('w-full bg-white'),
+            isSearching && 'border-t border-dashed border-pink-500')
+          }
+        >
           <SearchBar
             searchValue={searchValue}
             handleChangeSearchValue={handleChangeSearchValue}
