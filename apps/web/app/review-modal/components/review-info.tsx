@@ -54,7 +54,7 @@ export default function ReviewInfo({
           icon={<SvgClose />}
           color="tertiary"
           size="sm"
-          onClick={onClose || (() => router.back())}
+          onClick={onClose}
         />
       </header>
 
@@ -64,15 +64,11 @@ export default function ReviewInfo({
           <span>オプション :</span>
           <span>{productOption}</span>
         </div>
-        {isReceipt && (
-          <div className="mt-[1.2rem]">
-            <Tag text="レシート" />
-          </div>
-        )}
+        {isReceipt && <Tag text="レシート" className="mt-[1.2rem]" />}
         <div className="mt-[1.6rem]">
           <Comment type="positive">{positiveComment}</Comment>
         </div>
-        <div className="-mx-[1.6rem] my-[1.6rem] h-[0.1rem] w-[calc(100%+3.2rem)] border-t border-dashed border-pink-500" />
+        <hr className="-mx-[1.6rem] my-[1.6rem] h-[0.1rem] w-[calc(100%+3.2rem)] border-t border-dashed border-pink-500" />
         <div>
           <Comment type="negative">{negativeComment}</Comment>
         </div>

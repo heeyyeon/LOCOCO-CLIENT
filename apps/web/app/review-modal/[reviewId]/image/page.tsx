@@ -17,13 +17,13 @@ export default function Page() {
       spaceBetween={-45}
       className="inset-0 h-screen w-screen bg-black/70"
     >
-      {imageReviewMocks.map((review, idx) => (
+      {imageReviewMocks.map((review) => (
         <SwiperSlide
-          key={idx}
+          key={review.reviewId}
           className="flex h-[55.2rem] items-center justify-center"
         >
           <ReviewModalLayout
-            id={idx}
+            id={review.reviewId}
             mediaList={review.mediaList}
             user={{
               name: review.authorName,
