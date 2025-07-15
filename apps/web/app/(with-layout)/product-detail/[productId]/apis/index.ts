@@ -21,6 +21,10 @@ export const getProductDetail = async (
     method: 'GET',
   });
 
+  if (!response.data) {
+    throw new Error('상품 정보를 가져올 수 없습니다.');
+  }
+
   return response.data;
 };
 
@@ -32,6 +36,10 @@ export const getYoutubeList = async (
     method: 'GET',
   });
 
+  if (!response.data) {
+    throw new Error('유튜브 정보를 가져올 수 없습니다.');
+  }
+
   return response.data;
 };
 
@@ -42,6 +50,10 @@ export const getReviewList = async (
     endPoint: `/api/reviews/details/image?productId=${productId}&page=0&size=10`,
     method: 'GET',
   });
+
+  if (!response.data) {
+    throw new Error('상품 상세 정보를 가져올 수 없습니다.');
+  }
 
   return response.data;
 };
