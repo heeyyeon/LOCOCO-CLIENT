@@ -23,11 +23,9 @@ export default function Header() {
   return (
     <div
       className={cn(
-        'z-55 sticky top-0 mx-auto flex w-full flex-col bg-white',
-        'relative',
-        selectedCategory || isSearching
-          ? 'border-b border-dashed border-pink-500'
-          : 'border-b-[0.1rem] border-gray-500'
+        'z-55 sticky mx-auto flex w-full min-w-[1366px] flex-col bg-white',
+        selectedCategory && 'border-b border-dashed border-pink-500',
+        !selectedCategory && !isSearching && 'border-b-[0.1rem] border-gray-500'
       )}
     >
       <TopUtil />

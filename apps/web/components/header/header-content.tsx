@@ -97,8 +97,11 @@ export function CategoryBar({
   handleSelectOption,
 }: CategoryBarProps) {
   return (
-    <div className="relative w-full" onMouseLeave={handleMouseLeaveCategory}>
-      <div className="mx-auto flex h-[6.4rem] w-full items-center gap-[2rem] px-[11.9rem]">
+    <div
+      className="relative mx-auto w-full"
+      onMouseLeave={handleMouseLeaveCategory}
+    >
+      <div className="mx-auto flex h-[6.4rem] w-[1366px] items-center gap-[2rem] px-[11.9rem]">
         <Link href="/">
           <SvgLogo className="h-[2.7rem] w-[16rem] shrink-0" />
         </Link>
@@ -134,15 +137,13 @@ export function CategoryBar({
         </div>
       </div>
       {!isSearching && activeMenu && (
-        <div className="absolute left-0 right-0 top-[calc(100%+1px)] z-50">
-          <OptionBar
-            options={activeMenu.options}
-            selectedCategoryKey={activeMenu.key}
-            selectedOption={selectedOption}
-            handleSelectOption={handleSelectOption}
-            handleMouseLeaveCategory={handleMouseLeaveCategory}
-          />
-        </div>
+        <OptionBar
+          options={activeMenu.options}
+          selectedCategoryKey={activeMenu.key}
+          selectedOption={selectedOption}
+          handleSelectOption={handleSelectOption}
+          handleMouseLeaveCategory={handleMouseLeaveCategory}
+        />
       )}
     </div>
   );
@@ -155,30 +156,32 @@ export function OptionBar({
   handleSelectOption,
 }: OptionBarProps) {
   return (
-    <div className="flex h-[5.2rem] w-full items-center border-b border-solid border-pink-500 bg-white px-[9.5rem]">
-      {options.map((option, index) => {
-        const isActive = option === selectedOption;
-        const isLast = index === options.length - 1;
-        const label = getOptionLabel(selectedCategoryKey, option);
-        return (
-          <div
-            key={`option-${option}`}
-            className="flex h-[3.2rem] items-center justify-center gap-[1rem]"
-          >
-            <Link
-              href={`/search?middleCategory=${selectedCategoryKey}&subCategory=${option}&searchType=PRODUCT`}
-              className={cn(
-                'jp-body2 hover: cursor-pointer whitespace-nowrap px-[2.4rem] py-[1rem]',
-                isActive ? 'font-bold text-pink-500' : 'text-gray-600'
-              )}
-              onClick={() => handleSelectOption(option)}
+    <div className="absolute left-0 right-0 top-[calc(100%+1px)] z-50 mx-auto flex h-[5.2rem] w-full min-w-[1366px] items-center border-b border-solid border-pink-500 bg-white">
+      <div className="mx-auto flex h-[6.4rem] w-[1366px] items-center gap-[2rem] px-[11.9rem]">
+        {options.map((option, index) => {
+          const isActive = option === selectedOption;
+          const isLast = index === options.length - 1;
+          const label = getOptionLabel(selectedCategoryKey, option);
+          return (
+            <div
+              key={`option-${option}`}
+              className="flex h-[3.2rem] items-center justify-center gap-[1rem]"
             >
-              {label}
-            </Link>
-            {!isLast && <SvgDivider className="h-[1.2rem] w-[0.1rem]" />}
-          </div>
-        );
-      })}
+              <Link
+                href={`/search?middleCategory=${selectedCategoryKey}&subCategory=${option}&searchType=PRODUCT`}
+                className={cn(
+                  'jp-body2 cursor-pointer whitespace-nowrap px-[2.4rem] py-[1rem] hover:text-pink-500',
+                  isActive ? 'font-bold text-pink-500' : 'text-gray-600'
+                )}
+                onClick={() => handleSelectOption(option)}
+              >
+                {label}
+              </Link>
+              {!isLast && <SvgDivider className="h-[1.2rem] w-[0.1rem]" />}
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }
