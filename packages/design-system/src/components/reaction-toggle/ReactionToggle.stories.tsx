@@ -26,13 +26,14 @@ type Story = StoryObj<typeof ReactionToggle>;
 export const Vertical: Story = {
   render: (args) => {
     const [isPressed, setIsPressed] = useState(false);
+    const { pressed, ...restArgs } = args;
 
     return (
       <div className="bg-black p-5 text-white">
         <ReactionToggle
           pressed={isPressed}
           onPressedChange={setIsPressed}
-          {...args}
+          {...restArgs}
         >
           {isPressed ? (
             <SvgLikeFill className="size-[2.4rem]" />
@@ -52,13 +53,14 @@ export const Vertical: Story = {
 export const Horizontal: Story = {
   render: (args) => {
     const [isPressed, setIsPressed] = useState(false);
+    const { pressed, ...restArgs } = args;
 
     return (
       <ReactionToggle
         pressed={isPressed}
         onPressedChange={setIsPressed}
         className="text-en-body1"
-        {...args}
+        {...restArgs}
       >
         {isPressed ? (
           <SvgGoodFill className="size-[1.8rem]" />

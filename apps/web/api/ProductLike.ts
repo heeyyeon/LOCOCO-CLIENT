@@ -9,8 +9,9 @@
  * ## SOURCE: https://github.com/acacode/swagger-typescript-api ##
  * ---------------------------------------------------------------
  */
-import { ApiResponseToggleLikeResponse } from './data-contracts';
-import { HttpClient, RequestParams } from './http-client';
+
+import { ApiResponseToggleLikeResponse } from "./data-contracts";
+import { HttpClient, RequestParams } from "./http-client";
 
 export class ProductLike<
   SecurityDataType = unknown,

@@ -42,7 +42,6 @@ export function useHeaderAction() {
 
   const handleSearchIconClick = () => {
     if (searchValue.trim()) {
-      console.log('검색 페이지로 이동:', searchValue);
       setIsSearching(false);
     }
   };

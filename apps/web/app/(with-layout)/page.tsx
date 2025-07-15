@@ -1,8 +1,6 @@
-'use client';
-
 import { SvgJapaneseReview, SvgKoreanReview } from '@/icons';
-import HomeSection from './(home)/components/home';
 import HomeBanner from './(home)/components/home-banner';
+import HomeSection from './(home)/components/home-section';
 import HomeUpdateDate from './(home)/components/home-update-date';
 
 export default function Main() {
@@ -21,7 +19,7 @@ export default function Main() {
         </HomeSection>
         <HomeSection>
           <HomeSection.Header>
-            {<SvgJapaneseReview className="fill-red w-[4rem]" />}
+            {<SvgJapaneseReview className="fill-red" width={40} height={29} />}
             いいね数が多いレビュー
           </HomeSection.Header>
           <HomeSection.Review type="video" />
@@ -29,7 +27,7 @@ export default function Main() {
         </HomeSection>
         <HomeSection>
           <HomeSection.Header>
-            {<SvgKoreanReview className="w-[4rem]" />}
+            {<SvgKoreanReview width={40} height={29} />}
             人気のKビューティーYouTube動画
           </HomeSection.Header>
           <HomeSection.YouTube />

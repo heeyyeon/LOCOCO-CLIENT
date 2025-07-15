@@ -16,9 +16,8 @@ import {
   ApiResponseProductDetailResponse,
   ApiResponseProductDetailYoutubeResponse,
   ApiResponseString,
-  ProductSearchRequest,
-} from './data-contracts';
-import { HttpClient, RequestParams } from './http-client';
+} from "./data-contracts";
+import { HttpClient, RequestParams } from "./http-client";
 
 export class Product<
   SecurityDataType = unknown,
@@ -35,7 +34,7 @@ export class Product<
   updateSearchFields = (params: RequestParams = {}) =>
     this.request<ApiResponseString, any>({
       path: `/api/products/search-fields/migrate`,
-      method: 'POST',
+      method: "POST",
       secure: true,
       ...params,
     });

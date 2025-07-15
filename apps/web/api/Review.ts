@@ -10,12 +10,17 @@
  * ---------------------------------------------------------------
  */
 import {
+  ApiResponseImageReviewDetailResponse,
   ApiResponseImageReviewsProductDetailResponse,
   ApiResponseMainImageReviewResponse,
   ApiResponseMainVideoReviewResponse,
   ApiResponseReviewMediaResponse,
   ApiResponseReviewReceiptResponse,
   ApiResponseReviewResponse,
+  ApiResponseVideoReviewDetailResponse,
+  ApiResponseVideoReviewProductDetailResponse,
+  ApiResponseVoid,
+  ReviewAdminRequest,
   ReviewMediaRequest,
   ReviewReceiptRequest,
   ReviewRequest,
@@ -41,7 +46,30 @@ export class Review<
   ) =>
     this.request<ApiResponseReviewResponse, any>({
       path: `/api/reviews/${productId}`,
-      method: 'POST',
+      method: "POST",
+      body: data,
+      secure: true,
+      type: ContentType.Json,
+      ...params,
+    });
+  /**
+   * No description
+   *
+   * @tags REVIEW
+   * @name CreateAdminReview
+   * @summary 어드민용 리뷰 작성 (기획 전용)
+   * @request POST:/api/reviews/{productId}/{userId}
+   * @secure
+   */
+  createAdminReview = (
+    productId: number,
+    userId: number,
+    data: ReviewAdminRequest,
+    params: RequestParams = {},
+  ) =>
+    this.request<ApiResponseVoid, any>({
+      path: `/api/reviews/${productId}/${userId}`,
+      method: "POST",
       body: data,
       secure: true,
       type: ContentType.Json,
@@ -101,7 +129,7 @@ export class Review<
   getMainVideoReviews = (params: RequestParams = {}) =>
     this.request<ApiResponseMainVideoReviewResponse, any>({
       path: `/api/reviews/video`,
-      method: 'GET',
+      method: "GET",
       secure: true,
       ...params,
     });
@@ -117,7 +145,62 @@ export class Review<
   getMainImageReviews = (params: RequestParams = {}) =>
     this.request<ApiResponseMainImageReviewResponse, any>({
       path: `/api/reviews/image`,
-      method: 'GET',
+      method: "GET",
+      secure: true,
+      ...params,
+    });
+  /**
+   * No description
+   *
+   * @tags REVIEW
+   * @name GetVideoReviewDetails
+   * @summary 영상 리뷰 상세 조회 (가장 마지막 뎁스)
+   * @request GET:/api/reviews/details/{reviewId}/video
+   * @secure
+   */
+  getVideoReviewDetails = (reviewId: number, params: RequestParams = {}) =>
+    this.request<ApiResponseVideoReviewDetailResponse, any>({
+      path: `/api/reviews/details/${reviewId}/video`,
+      method: "GET",
+      secure: true,
+      ...params,
+    });
+  /**
+   * No description
+   *
+   * @tags REVIEW
+   * @name GetImageReviewDetails
+   * @summary 사진 리뷰 상세 조회 (가장 마지막 뎁스
+   * @request GET:/api/reviews/details/{reviewId}/image
+   * @secure
+   */
+  getImageReviewDetails = (reviewId: number, params: RequestParams = {}) =>
+    this.request<ApiResponseImageReviewDetailResponse, any>({
+      path: `/api/reviews/details/${reviewId}/image`,
+      method: "GET",
+      secure: true,
+      ...params,
+    });
+  /**
+   * No description
+   *
+   * @tags REVIEW
+   * @name GetVideoReviewsInProductDetail
+   * @summary 제품 상세 페이지에서 영상 리뷰 조회
+   * @request GET:/api/reviews/details/video
+   * @secure
+   */
+  getVideoReviewsInProductDetail = (
+    query: {
+      /** @format int64 */
+      productId: number;
+    },
+    params: RequestParams = {},
+  ) =>
+    this.request<ApiResponseVideoReviewProductDetailResponse, any>({
+      path: `/api/reviews/details/video`,
+      method: "GET",
+      query: query,
       secure: true,
       ...params,
     });
@@ -126,7 +209,7 @@ export class Review<
    *
    * @tags REVIEW
    * @name GetImageReviewsInProductDetail
-   * @summary 제품 상세 페에지에서 유저 리뷰 조회
+   * @summary 제품 상세 페이지에서 유저 리뷰 조회
    * @request GET:/api/reviews/details/image
    * @secure
    */
@@ -145,11 +228,11 @@ export class Review<
        */
       size?: number;
     },
-    params: RequestParams = {}
+    params: RequestParams = {},
   ) =>
     this.request<ApiResponseImageReviewsProductDetailResponse, any>({
       path: `/api/reviews/details/image`,
-      method: 'GET',
+      method: "GET",
       query: query,
       secure: true,
       ...params,
