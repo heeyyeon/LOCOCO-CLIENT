@@ -10,17 +10,17 @@ import {
   SvgSend,
 } from '@lococo/design-system';
 
-type Picked = Pick<
+type ModalInfo = Pick<
   ReviewDetail,
   'authorName' | 'profileImageUrl' | 'writtenTime' | 'likeCount'
 >;
 interface MediaInfoProps {
   user: {
-    name: Picked['authorName'];
-    avatarUrl?: Picked['profileImageUrl'];
+    name: ModalInfo['authorName'];
+    avatarUrl?: ModalInfo['profileImageUrl'];
   };
-  date: Picked['writtenTime'];
-  likeCount: Picked['likeCount'];
+  date: ModalInfo['writtenTime'];
+  likeCount: ModalInfo['likeCount'];
 }
 
 export default function MediaInfo({ user, date, likeCount }: MediaInfoProps) {
