@@ -18,7 +18,7 @@ export interface ReviewModallayoutProps {
   brandName: string;
   productName: string;
   productOption: string;
-  rating: 'ONE' | 'TWO' | 'THREE' | 'FOUR' | 'FIVE';
+  rating: 1 | 2 | 3 | 4 | 5;
   isReceipt?: boolean;
   positiveComment: string;
   negativeComment: string;
@@ -35,7 +35,6 @@ export default function ReviewModallayout({
   brandName,
   productName,
   productOption,
-  rating,
   positiveComment,
   negativeComment,
   productImageUrl,
@@ -57,7 +56,7 @@ export default function ReviewModallayout({
             brandName={brandName}
             productName={productName}
             option={productOption}
-            rating={rating}
+            rating={3}
             positiveComment={positiveComment}
             negativeComment={negativeComment}
             productImageUrl={productImageUrl}
