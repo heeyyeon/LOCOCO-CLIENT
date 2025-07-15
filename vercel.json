@@ -1,6 +1,6 @@
 {
   "installCommand": "pnpm install",
-  "buildCommand": "pnpm turbo run build --filter=@lococo/web",
+  "buildCommand": "pnpm turbo run build",
   "outputDirectory": "apps/web/.next",
   "rewrites": [
     {
