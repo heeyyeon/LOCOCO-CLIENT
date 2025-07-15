@@ -29,7 +29,7 @@ export const uploadFiles = async (
   fileType: string
 ) => {
   const uploadPromises = presignedUrls.map(async (presignedUrl, index) => {
-    const file = files[index] || files[0]; // 영수증의 경우 files[0] 사용
+    const file = files[index];
     if (!presignedUrl || !file) return;
 
     try {
