@@ -1,6 +1,9 @@
+'use client';
+
 import type { CategoryOptionEng, CategoryNameEng } from 'types/category';
 import { CategoryMetadata, getOptionLabel } from 'utils/category';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import {
   SvgClose,
   SvgDivider,
@@ -59,6 +62,8 @@ export function TopUtilItem({ icon, label, onClick }: TopUtilItemProps) {
 }
 
 export function TopUtil() {
+  const router = useRouter();
+
   return (
     <div className="flex w-full items-center justify-end self-stretch px-[11.9rem] py-[2rem]">
       <TopUtilItem
@@ -79,7 +84,7 @@ export function TopUtil() {
       <TopUtilItem
         icon={<SvgLogin className="text-gray-600" size={16} />}
         label="ログイン"
-        onClick={() => console.log('로그인 클릭')}
+        onClick={() => router.push('/login')}
       />
     </div>
   );
@@ -162,13 +167,19 @@ export function OptionBar({
           const isActive = option === selectedOption;
           const isLast = index === options.length - 1;
           const label = getOptionLabel(selectedCategoryKey, option);
+          let url = '';
+          if (option === 'ALL') {
+            url = `/search?middleCategory=${selectedCategoryKey}&searchType=PRODUCT`;
+          } else {
+            url = `/search?middleCategory=${selectedCategoryKey}&subCategory=${option}&searchType=PRODUCT`;
+          }
           return (
             <div
               key={`option-${option}`}
               className="flex h-[3.2rem] items-center justify-center gap-[1rem]"
             >
               <Link
-                href={`/search?middleCategory=${selectedCategoryKey}&subCategory=${option}&searchType=PRODUCT`}
+                href={url}
                 className={cn(
                   'jp-body2 cursor-pointer whitespace-nowrap px-[2.4rem] py-[1rem] hover:text-pink-500',
                   isActive ? 'font-bold text-pink-500' : 'text-gray-600'
@@ -191,6 +202,16 @@ export function SearchBar({
   handleChangeSearchValue,
   handleSearchIconClick,
 }: SearchBarProps) {
+  const router = useRouter();
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter' && searchValue.trim()) {
+      router.push(
+        `/search?keyword=${encodeURIComponent(searchValue)}&searchType=PRODUCT`
+      );
+      handleSearchIconClick();
+    }
+  };
   return (
     <div className="flex w-full items-center gap-[0.8rem] border-b border-pink-500 bg-white">
       <div className="mx-auto flex w-full items-center gap-[0.8rem] px-[11.9rem]">
@@ -198,6 +219,7 @@ export function SearchBar({
           type="search"
           value={searchValue}
           onChange={(e) => handleChangeSearchValue(e.target.value)}
+          onKeyDown={handleKeyDown}
           placeholder="ラネージュ"
           className="jp-title2 w-full text-right font-bold leading-[3rem] text-gray-800"
         />
