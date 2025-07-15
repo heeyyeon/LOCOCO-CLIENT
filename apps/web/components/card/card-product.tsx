@@ -4,10 +4,13 @@ import { ProductItem } from 'types/product';
 import Image from 'next/image';
 import {
   Badge,
+  Button,
+  IconButton,
   SvgLikeFill,
   SvgLikeOutline,
   SvgStar,
 } from '@lococo/design-system';
+import { cn } from '@/lib/utils';
 import { useProductLike } from './hooks/use-product-like';
 
 interface CardProductProps extends ProductItem {
@@ -53,16 +56,20 @@ export default function CardProduct({
       </div>
       <div className="flex h-[4.4rem] items-center justify-between border-b-[0.1rem] border-dashed border-pink-500">
         <p className="jp-body1 font-[700]">{brandName}</p>
-        <button
+        <IconButton
           onClick={(e) => handleLikeClick(e, productId)}
-          className="cursor-pointer"
-        >
-          {isLiked ? (
-            <SvgLikeFill size={24} className="fill-pink-500" />
-          ) : (
-            <SvgLikeOutline size={24} className="fill-gray-500" />
-          )}
-        </button>
+          size="md"
+          icon={
+            isLiked ? (
+              <SvgLikeFill />
+            ) : (
+              <SvgLikeOutline
+                className={cn(isLiked ? 'text-pink-500' : 'text-gray-500')}
+              />
+            )
+          }
+          color={isLiked ? 'primary' : 'tertiary'}
+        />
       </div>
       <div className="flex h-[4.4rem] items-center border-b-[0.1rem] border-dashed border-pink-500">
         <p className="jp-body2 font-[500]">{productName}</p>

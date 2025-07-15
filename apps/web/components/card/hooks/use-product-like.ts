@@ -20,9 +20,6 @@ export function useProductLike({ initialIsLiked }: UseProductLikeProps) {
       return apiRequest({
         endPoint: `/api/likes/products/${productId}`,
         method: 'POST',
-        headers: {
-          Authorization: `Bearer `,
-        },
       });
     },
 
