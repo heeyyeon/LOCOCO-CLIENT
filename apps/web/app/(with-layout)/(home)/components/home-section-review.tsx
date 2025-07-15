@@ -23,7 +23,6 @@ export default function HomeSectionReview({
     'imageReviews' in reviewCardList
       ? reviewCardList.imageReviews
       : reviewCardList.videoReviews;
-  console.log(reviews);
   return (
     <div className={cn(`mt-8 flex flex-col gap-8`, className)}>
       <p className="jp-head3 font-[700]">
