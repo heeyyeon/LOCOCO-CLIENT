@@ -18,7 +18,7 @@ export interface ReviewModallayoutProps {
   brandName: string;
   productName: string;
   productOption: string;
-  rating: 1 | 2 | 3 | 4 | 5;
+  rating: number;
   isReceipt?: boolean;
   positiveComment: string;
   negativeComment: string;
