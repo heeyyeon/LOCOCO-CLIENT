@@ -3,7 +3,6 @@
 import { formatJPY } from 'utils/formatJPY';
 import { useState } from 'react';
 import Link from 'next/link';
-import { useParams } from 'next/navigation';
 import {
   Select,
   SelectTrigger,
@@ -52,7 +51,6 @@ export default function ProductInfo({
   q10Url,
 }: ProductInfoProps) {
   const [isLiked, setIsLiked] = useState(initialIsLiked);
-  const params = useParams();
   return (
     <div className="flex flex-col justify-between">
       {/* 상품 정보 */}
