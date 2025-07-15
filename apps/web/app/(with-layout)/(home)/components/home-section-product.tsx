@@ -16,22 +16,16 @@ interface HomeSectionProductProps {
   productSortType: ProductSortType;
 }
 
-export const productQueries = {
-  ALL: ['product'],
-  LISTS: () => [...productQueries.ALL, 'list'],
-  SEARCH_TYPE: (category: CategoryNameEng, sortType: ProductSortType) => [
-    ...productQueries.ALL,
-    'search',
-    sortType,
-    category,
-  ],
-  CATEGORIES: (category: CategoryNameEng, sortType: ProductSortType) => [
-    ...productQueries.ALL,
-    'categories',
-    category,
-    sortType,
-  ],
-  DETAILS: (detailId: number) => [...productQueries.ALL, 'detail', detailId],
+export const PRODUCT_QUERIES = {
+  // TODO 다른 PR에서 생성한 QUERY KEY들과 병합 예정
+  ALL: ['product'] as const,
+  LISTS: () => [...PRODUCT_QUERIES.ALL, 'list'] as const,
+  SEARCH_TYPE: (category: CategoryNameEng, sortType: ProductSortType) =>
+    [...PRODUCT_QUERIES.ALL, 'search', sortType, category] as const,
+  CATEGORIES: (category: CategoryNameEng, sortType: ProductSortType) =>
+    [...PRODUCT_QUERIES.ALL, 'categories', category, sortType] as const,
+  DETAILS: (detailId: number) =>
+    [...PRODUCT_QUERIES.ALL, 'detail', detailId] as const,
 } as const;
 
 export default function HomeSectionProduct({
@@ -42,12 +36,12 @@ export default function HomeSectionProduct({
   const router = useRouter();
 
   const { data, isLoading, isError } = useQuery({
-    queryKey: [productQueries.CATEGORIES(selectedTab, productSortType)],
+    queryKey: PRODUCT_QUERIES.CATEGORIES(selectedTab, productSortType),
     queryFn: () =>
       apiRequest<ApiResponseCategoryNewProductResponse>({
         endPoint: `/api/products/categories/${productSortType}?middleCategory=${selectedTab}&page=0&size=4`,
         headers: {
-          Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMyIsImlhdCI6MTc1MjUxNzc3OSwiZXhwIjoxNzUzMTIyNTc5LCJpZCI6MTMsInJvbGUiOiJST0xFX1VTRVIiLCJsaW5lSWQiOiIxMyJ9.of-F1I4NjdyaHpTVrq1t_Bj-n9yjVWopZ_gaSPJfx2k`,
+          Authorization: `Bearer `,
         },
       }),
   });

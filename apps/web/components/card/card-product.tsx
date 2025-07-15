@@ -1,7 +1,7 @@
 'use client';
 
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { productQueries } from 'app/(with-layout)/(home)/components/home-section-product';
+import { PRODUCT_QUERIES } from 'app/(with-layout)/(home)/components/home-section-product';
 import { apiRequest } from 'app/api/apiRequest';
 import { ProductItem } from 'types/product';
 import { useEffect, useState } from 'react';
@@ -42,7 +42,7 @@ export default function CardProduct({
         endPoint: `/api/likes/products/${productId}`,
         method: 'POST',
         headers: {
-          Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMyIsImlhdCI6MTc1MjUxNzc3OSwiZXhwIjoxNzUzMTIyNTc5LCJpZCI6MTMsInJvbGUiOiJST0xFX1VTRVIiLCJsaW5lSWQiOiIxMyJ9.of-F1I4NjdyaHpTVrq1t_Bj-n9yjVWopZ_gaSPJfx2k`,
+          Authorization: `Bearer `,
         },
       });
     },
@@ -57,7 +57,7 @@ export default function CardProduct({
       console.error(error);
     },
     onSettled: () => {
-      queryClient.invalidateQueries(productQueries.LISTS());
+      queryClient.invalidateQueries({ queryKey: PRODUCT_QUERIES.ALL });
     },
   });
 
