@@ -31,7 +31,7 @@ export default function HomeSectionProduct() {
         })}
         <div className="h-full flex-1 border-b" />
       </TabContainer>
-      <div className="grid grid-cols-2 gap-[2.4rem] md:grid-cols-3 lg:grid-cols-4">
+      <div className="grid grid-cols-4 gap-[2.4rem]">
         {productMock.map((product) => (
           <CardProduct
             key={product.productId}

@@ -7,7 +7,7 @@ import HomeUpdateDate from './(home)/components/home-update-date';
 
 export default function Main() {
   return (
-    <main className="mx-auto flex w-full flex-col">
+    <main className="flex w-screen flex-col">
       <HomeBanner />
       <div className="mx-auto flex flex-col">
         <HomeUpdateDate />

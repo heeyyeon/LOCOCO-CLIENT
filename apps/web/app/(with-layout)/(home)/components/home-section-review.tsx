@@ -24,7 +24,7 @@ export default function HomeSectionReview({
         {type === 'video' && '動画レビュー'}
         {type === 'image' && '写真付きレビュー'}
       </p>
-      <div className="grid grid-cols-2 gap-[2.4rem] md:grid-cols-3 lg:grid-cols-4">
+      <div className="grid grid-cols-4 gap-[2.4rem]">
         {imageReviewMock.map((review) => (
           <CardReview
             key={review.reviewId}
