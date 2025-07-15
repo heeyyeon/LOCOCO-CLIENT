@@ -21,6 +21,7 @@ export class Admin<
    *
    * @tags ADMIN
    * @name DeleteReviewByAdmin
+   * @summary 어드민 리뷰 삭제
    * @request DELETE:/api/admin/reviews/{reviewId}
    * @secure
    */

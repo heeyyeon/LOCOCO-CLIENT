@@ -34,10 +34,8 @@ interface ProductInfoProps {
     id: number;
     optionName: string;
   }[];
-  oliveYoungUrl: string | null;
-  q10Url: string | null;
-  middleCategory: string;
-  subCategory: string;
+  oliveYoungUrl: string;
+  q10Url: string;
 }
 
 export default function ProductInfo({
@@ -51,15 +49,8 @@ export default function ProductInfo({
   normalPrice,
   oliveYoungUrl,
   q10Url,
-  // productDetail,
-  // ingredients,
-  // productId,
-  // imageUrls,
-  // middleCategory,
-  // subCategory,
 }: ProductInfoProps) {
   const [isLiked, setIsLiked] = useState(initialIsLiked);
-
   return (
     <div className="flex flex-col justify-between">
       {/* 상품 정보 */}
@@ -127,7 +118,7 @@ export default function ProductInfo({
             className="flex-1"
           >
             <Link
-              href={oliveYoungUrl || '#'}
+              href={q10Url}
               target="_blank"
               rel="noopener noreferrer"
               className="jp-title2 flex items-center gap-[0.8rem] font-bold"
@@ -145,7 +136,7 @@ export default function ProductInfo({
             className="flex-1"
           >
             <Link
-              href={q10Url || '#'}
+              href={oliveYoungUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="jp-title2 flex items-center gap-[0.8rem] font-bold"
@@ -156,7 +147,11 @@ export default function ProductInfo({
         </div>
         <Button color="secondary" variant="filled" rounded size="lg" asChild>
           {/* 추후 리뷰 작성 모달 URL 연결 */}
-          <Link href="/product-detail/write-review" className="jp-title2">
+          <Link
+            // href={`/product-detail/${params.productId}/write-review`}
+            href=""
+            className="jp-title2"
+          >
             <SvgWrite /> カートに入れる
           </Link>
         </Button>

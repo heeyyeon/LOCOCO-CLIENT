@@ -11,11 +11,12 @@
  */
 
 import {
+  ApiResponseJwtLoginResponse,
   ApiResponseLineLoginResponse,
-  ApiResponseLoginUrlResponse,
   ApiResponseVoid,
+  TestLoginRequest,
 } from "./data-contracts";
-import { HttpClient, RequestParams } from "./http-client";
+import { ContentType, HttpClient, RequestParams } from "./http-client";
 
 export class Auth<
   SecurityDataType = unknown,
@@ -40,16 +41,34 @@ export class Auth<
    * No description
    *
    * @tags AUTH
-   * @name GetLoginUrl
-   * @summary 라인 로그인 URL 생성 (클라에서 호출)
-   * @request GET:/api/auth/url
+   * @name Logout
+   * @summary 로그아웃
+   * @request POST:/api/auth/logout
    * @secure
    */
-  getLoginUrl = (params: RequestParams = {}) =>
-    this.request<ApiResponseLoginUrlResponse, any>({
-      path: `/api/auth/url`,
-      method: "GET",
+  logout = (params: RequestParams = {}) =>
+    this.request<ApiResponseVoid, any>({
+      path: `/api/auth/logout`,
+      method: "POST",
       secure: true,
+      ...params,
+    });
+  /**
+   * No description
+   *
+   * @tags AUTH
+   * @name Login
+   * @summary 테스트용 JWT 토큰 발급
+   * @request POST:/api/auth/login
+   * @secure
+   */
+  login = (data: TestLoginRequest, params: RequestParams = {}) =>
+    this.request<ApiResponseJwtLoginResponse, any>({
+      path: `/api/auth/login`,
+      method: "POST",
+      body: data,
+      secure: true,
+      type: ContentType.Json,
       ...params,
     });
   /**

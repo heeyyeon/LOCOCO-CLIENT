@@ -5,7 +5,7 @@ import { convertToEmbedUrl, validateYoutubeVideoList } from 'utils/youtube';
 export default async function HomeSectionYouTube() {
   try {
     const response = await apiRequest<ApiResponseListVideoResponse>({
-      endPoint: 'api/youtube/trends',
+      endPoint: '/api/youtube/trends',
     });
 
     const videos = response.data;
