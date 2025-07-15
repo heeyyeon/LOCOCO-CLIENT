@@ -8,6 +8,15 @@ import {
 } from '../../hooks/image-review-api';
 import type { ReviewDetail } from '../../types';
 
+const formatDateToJapanese = (dateString: string): string => {
+  const date = new Date(dateString);
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+
+  return `${year}年${month}月${day}日`;
+};
+
 export default function Page() {
   const router = useRouter();
   const params = useParams();
@@ -51,13 +60,13 @@ export default function Page() {
     const detailData = detailResponse.data;
     const singleReview: ReviewDetail = {
       reviewId: detailData.reviewId,
-      writtenTime: detailData.writtenTime,
+      writtenTime: formatDateToJapanese(detailData.writtenTime),
       receiptUploaded: detailData.receiptUploaded,
       positiveComment: detailData.positiveComment,
       negativeComment: detailData.negativeComment,
       authorName: detailData.authorName,
       profileImageUrl: detailData.profileImageUrl || null,
-      rating: 5,
+      rating: Number(detailData.rating),
       option: detailData.option,
       likeCount: detailData.likeCount,
       brandName: detailData.brandName,
@@ -88,7 +97,7 @@ export default function Page() {
       negativeComment: '',
       authorName: '',
       profileImageUrl: null,
-      rating: 5, // 목록 API에는 rating이 없으므로 기본값 사용
+      rating: 5,
       option: '',
       likeCount: review.likeCount,
       brandName: review.brandName,
@@ -113,7 +122,7 @@ export default function Page() {
     const detailData = detailResponse.data;
     allReviews[currentReviewIndex] = {
       reviewId: detailData.reviewId,
-      writtenTime: detailData.writtenTime,
+      writtenTime: formatDateToJapanese(detailData.writtenTime),
       receiptUploaded: detailData.receiptUploaded,
       positiveComment: detailData.positiveComment,
       negativeComment: detailData.negativeComment,
