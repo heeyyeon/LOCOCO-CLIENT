@@ -29,13 +29,7 @@ export default function SearchReviewSection({
         ) : (
           <div className="flex flex-wrap content-center items-center gap-[2.4rem] self-stretch">
             {reviewsVideo.map(
-              ({
-                reviewId = 0,
-                brandName = '',
-                productName,
-                likeCount,
-                url = '',
-              }) => (
+              ({ reviewId, brandName, productName, likeCount, url }) => (
                 <CardReview
                   key={reviewId}
                   type="video"

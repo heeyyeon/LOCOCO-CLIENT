@@ -22,13 +22,13 @@ export default function SearchProductsSection({
           {products.map(
             ({
               productId,
-              brandName = '',
-              productName = '',
-              unit = '',
-              isLiked = false,
-              rating = 0,
-              reviewCount = 0,
-              url = '',
+              brandName,
+              productName,
+              unit,
+              isLiked,
+              rating,
+              reviewCount,
+              url,
             }) => (
               <CardProduct
                 key={productId}

@@ -5,6 +5,18 @@ import { ProductSearchResponse } from 'app/api/product-response';
 import { ApiReviewSearchResponse } from 'app/api/review-response';
 import { PRODUCT_KEYS, REVIEW_KEYS } from '../constants/query-key';
 
+// 환경 변수에서 토큰 가져오기
+const getAuthToken = () => {
+  if (typeof window !== 'undefined') {
+    // 클라이언트 사이드에서는 localStorage에서 가져오기
+    return (
+      localStorage.getItem('authToken') || process.env.NEXT_PUBLIC_AUTH_TOKEN
+    );
+  }
+  // 서버 사이드에서는 환경 변수에서 가져오기
+  return process.env.NEXT_PUBLIC_AUTH_TOKEN;
+};
+
 // 검색바로 검색할 때 사용하는 쿼리
 export const useProductSearch = (
   keyword: string,
@@ -23,6 +35,9 @@ export const useProductSearch = (
           searchType: 'PRODUCT',
           page: page.toString(),
           size: size.toString(),
+        },
+        headers: {
+          Authorization: `Bearer ${getAuthToken()}`,
         },
       }),
     enabled: enabled && !!keyword.trim(),
@@ -55,6 +70,9 @@ export const useReviewSearch = (
           page: page.toString(),
           size: size.toString(),
         },
+        headers: {
+          Authorization: `Bearer ${getAuthToken()}`,
+        },
       }),
     enabled: enabled && !!keyword.trim(),
     staleTime: 5 * 60 * 1000,
@@ -86,6 +104,9 @@ export const useCategoryProductSearch = (
           searchType: 'PRODUCT',
           page: page.toString(),
           size: size.toString(),
+        },
+        headers: {
+          Authorization: `Bearer ${getAuthToken()}`,
         },
       }),
     enabled: enabled && !!middleCategory,
@@ -124,6 +145,9 @@ export const useCategoryReviewSearch = (
           mediaType,
           page: page.toString(),
           size: size.toString(),
+        },
+        headers: {
+          Authorization: `Bearer ${getAuthToken()}`,
         },
       }),
     enabled: enabled && !!middleCategory,
