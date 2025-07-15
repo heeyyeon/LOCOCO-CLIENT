@@ -17,6 +17,7 @@ export { SvgGoodFill } from './GoodFill';
 export { SvgGoodOutline } from './GoodOutline';
 export { SvgHistory } from './History';
 export { SvgHomeFill } from './HomeFill';
+export { SvgImgVideo } from './ImgVideo';
 export { SvgInstagramFill } from './InstagramFill';
 export { SvgJapaneseReview } from './JapaneseReview';
 export { SvgKoreanReview } from './KoreanReview';
