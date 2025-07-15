@@ -14,7 +14,7 @@ import CommentBox from './comment-box';
 export default function Review() {
   const { productId } = useParams();
   const { data: reviewList } = useQuery({
-    queryKey: PRODUCT_DETAIL_QUERY_KEYS.REVIEW(Number(productId)),
+    queryKey: PRODUCT_DETAIL_QUERY_KEYS.REVIEW_LIST(Number(productId)),
     queryFn: () => getReviewList(Number(productId)),
   });
 
