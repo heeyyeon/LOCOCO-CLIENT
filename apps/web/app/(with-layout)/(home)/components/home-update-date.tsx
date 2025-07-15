@@ -9,7 +9,7 @@ export default function HomeUpdateDate() {
   const [year, month, day] = japanDate.split('/');
 
   return (
-    <div className="text-jp-body2 mt-[4rem] flex w-full items-baseline justify-end font-[500] text-gray-600">
+    <div className="text-jp-body2 mt-[4rem] flex justify-end font-medium text-gray-600">
       更新日時 :<span className="text-en-body1">{year}</span>年
       <span className="text-en-body1">{month}</span>月
       <span className="text-en-body1">{day}</span>日

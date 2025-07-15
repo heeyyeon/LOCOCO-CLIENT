@@ -1,63 +1,73 @@
 'use client';
 
 import CardReview from 'components/card/card-review';
-import { ReviewItem } from 'types/review';
-import MoreButton from './more-button';
+import {
+  ImageReviewResponse,
+  VideoReviewResponse,
+} from '../../../api/review-response';
+import NotFoundSection from './not-found-section';
 
 interface SearchReviewSectionProps {
-  reviewsVideo: ReviewItem[];
-  reviewsImage: ReviewItem[];
-  handleVideoButton: () => void;
-  handleImageButton: () => void;
+  reviewsVideo: VideoReviewResponse[];
+  reviewsImage: ImageReviewResponse[];
 }
 
 export default function SearchReviewSection({
   reviewsVideo,
   reviewsImage,
-  handleVideoButton,
-  handleImageButton,
 }: SearchReviewSectionProps) {
   const handleCardClick = (reviewId: number) => {
     console.log(reviewId);
   };
+
   return (
-    <section className="flex flex-col content-center self-stretch px-[11.9rem] pb-[12rem] pt-0">
-      <div className="mx-auto flex w-[112.8rem] flex-col items-start gap-[3.2rem] self-stretch pt-[3.2rem]">
+    <section className="mx-auto flex w-[1366px] flex-col content-center px-[11.9rem] pb-[12rem] pt-0">
+      <div className="flex max-w-[1366px] flex-col gap-[3.2rem] pt-[3.2rem]">
         <p className="jp-head3 font-bold text-gray-700">動画レビュー</p>
-        <div className="flex flex-wrap content-center items-center gap-[2.4rem] self-stretch">
-          {reviewsVideo.map((review) => (
-            <CardReview
-              key={review.reviewId}
-              type="video"
-              brandName={review.brandName}
-              productName={review.productName}
-              reviewId={review.reviewId}
-              likeCount={review.likeCount}
-              imageUrl={review.imageUrl}
-              handleCardClick={handleCardClick}
-            />
-          ))}
-        </div>
-        <MoreButton onClick={handleVideoButton} />
+        {reviewsVideo.length === 0 ? (
+          <NotFoundSection variant="review" />
+        ) : (
+          <div className="grid max-w-[1366px] grid-cols-4 gap-[2.4rem]">
+            {reviewsVideo.map(
+              ({ reviewId, brandName, productName, likeCount, url }) => (
+                <CardReview
+                  key={reviewId}
+                  type="video"
+                  brandName={brandName}
+                  productName={productName}
+                  reviewId={reviewId}
+                  likeCount={likeCount}
+                  imageUrl={url}
+                  handleCardClick={handleCardClick}
+                />
+              )
+            )}
+          </div>
+        )}
       </div>
 
-      <div className="mx-auto flex w-[112.8rem] flex-col gap-[3.2rem] self-stretch pt-[3.2rem]">
-        <p className="jp-head3 font-bold text-gray-700"> 写真付きレビュー</p>
-        <div className="flex flex-wrap content-center items-center gap-[2.4rem] self-stretch">
-          {reviewsImage.map((review) => (
-            <CardReview
-              key={review.reviewId}
-              type="image"
-              brandName={review.brandName}
-              productName={review.productName}
-              reviewId={review.reviewId}
-              likeCount={review.likeCount}
-              imageUrl={review.imageUrl}
-              handleCardClick={handleCardClick}
-            />
-          ))}
-        </div>
-        <MoreButton onClick={handleImageButton} />
+      <div className="flex max-w-[1366px] flex-col gap-[3.2rem] pt-[3.2rem]">
+        <p className="jp-head3 font-bold text-gray-700">写真付きレビュー</p>
+        {reviewsImage.length === 0 ? (
+          <NotFoundSection variant="review" />
+        ) : (
+          <div className="grid max-w-[1366px] grid-cols-4 gap-[2.4rem]">
+            {reviewsImage.map(
+              ({ reviewId, brandName, productName, likeCount, url }) => (
+                <CardReview
+                  key={reviewId}
+                  type="image"
+                  brandName={brandName}
+                  productName={productName}
+                  reviewId={reviewId}
+                  likeCount={likeCount}
+                  imageUrl={url}
+                  handleCardClick={handleCardClick}
+                />
+              )
+            )}
+          </div>
+        )}
       </div>
     </section>
   );

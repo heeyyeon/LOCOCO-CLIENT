@@ -42,26 +42,24 @@ interface FooterProps {
 
 export default function Footer() {
   return (
-    <footer className="bottom-0 flex w-full flex-col items-center justify-center overflow-hidden bg-pink-100">
-      <div className="flex w-full items-center gap-[12rem] px-[11.9rem] py-16">
+    <footer className="px-auto bottom-0 flex w-full min-w-[1366px] flex-col items-center justify-center bg-pink-100">
+      <div className="mx-auto flex w-[1366px] gap-4 px-4 py-16 md:gap-8 lg:gap-[12rem]">
         <FooterLeft title={FOOTER.title} desc={FOOTER.desc} />
         <FooterRight menu={FOOTER.menu} />
       </div>
-      <div className="flex h-[5.2rem] w-full items-center justify-center gap-4 border-t border-dashed border-pink-500 p-4">
-        <FooterBottom copyright={FOOTER.copyright} />
-      </div>
+      <FooterBottom copyright={FOOTER.copyright} />
     </footer>
   );
 }
 
 function FooterLeft({ title, desc }: Pick<FooterProps, 'title' | 'desc'>) {
   return (
-    <div className="flex w-[45.6rem] flex-col items-start gap-[5.6rem] bg-pink-100">
-      <div className="flex flex-col items-start gap-[2.4rem] self-stretch">
+    <div className="flex flex-1 flex-col items-start gap-8 bg-pink-100 md:gap-12 lg:gap-[5.6rem]">
+      <div className="flex w-full flex-col items-start gap-4 md:gap-6 lg:gap-[2.4rem]">
         <p className="en-title3 font-bold leading-loose">{title}</p>
         <p className="jp-body2 font-medium text-gray-600">{desc}</p>
       </div>
-      <div className="flex items-center gap-[0.8rem]">
+      <div className="flex items-center gap-2 md:gap-[0.8rem]">
         <Link
           href="https://www.instagram.com/lococo.official/"
           className="flex h-[4.4rem] w-[4.4rem] items-center justify-center p-1"
@@ -87,29 +85,31 @@ function FooterLeft({ title, desc }: Pick<FooterProps, 'title' | 'desc'>) {
 
 function FooterBottom({ copyright }: Pick<FooterProps, 'copyright'>) {
   return (
-    <p className="en-body1 bg-pink-100 font-medium text-pink-500">
-      {copyright}
-    </p>
+    <div className="flex min-h-[5.2rem] w-full items-center justify-center gap-4 border-t border-dashed border-pink-500 bg-pink-100 px-4 py-4">
+      <p className="en-body1 bg-pink-100 text-center font-medium text-pink-500">
+        {copyright}
+      </p>
+    </div>
   );
 }
 
 function FooterRight({ menu }: Pick<FooterProps, 'menu'>) {
   return (
-    <div className="bg-pink-100)] flex items-start gap-[2.4rem]">
+    <div className="flex flex-1 items-start gap-4 bg-pink-100 md:gap-6 lg:gap-[2.4rem]">
       {menu.map(({ title, option }) => (
         <div
           key={title}
-          className="flex w-[16.8rem] flex-col items-start gap-[2.4rem]"
+          className="flex min-w-0 flex-1 flex-col items-start gap-4 md:gap-6 lg:w-[16.8rem] lg:gap-[2.4rem]"
         >
           <p className="jp-body1 font-bold">{title}</p>
-          <div className="flex flex-col items-start justify-start gap-[0.8rem] self-stretch">
+          <div className="flex w-full flex-col items-start justify-start gap-2 md:gap-[0.8rem]">
             {option.map((item) => (
               <Link
                 href="/"
                 key={item}
-                className="flex h-[3.2rem] items-center gap-[0.8rem] self-stretch py-[1rem]"
+                className="flex h-[3.2rem] w-full items-center gap-2 py-[1rem] md:gap-[0.8rem]"
               >
-                <p className="jp-body2 font-medium">{item}</p>
+                <p className="jp-body2 whitespace-nowrap font-medium">{item}</p>
                 <SvgArrowRight />
               </Link>
             ))}
