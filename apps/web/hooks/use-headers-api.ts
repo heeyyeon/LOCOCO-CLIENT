@@ -27,20 +27,23 @@ export const useProductSearch = (
       }),
     enabled: enabled && !!keyword.trim(),
     staleTime: 5 * 60 * 1000,
-    retry: 1,
-    retryDelay: 1000,
   });
 };
 
-// 리뷰 검색 (비디오)
-export const useReviewVideoSearch = (
+export const useReviewSearch = (
   keyword: string,
+  mediaType: 'VIDEO' | 'IMAGE',
   page: number = 0,
   size: number = 8,
   enabled: boolean = true
 ) => {
+  const queryKey =
+    mediaType === 'VIDEO'
+      ? REVIEW_KEYS.VIDEO_LIST({ page, size })
+      : REVIEW_KEYS.IMAGE_LIST({ page, size });
+
   return useQuery<ApiResponse<ApiReviewSearchResponse>>({
-    queryKey: [...REVIEW_KEYS.VIDEO_LIST({ page, size }), 'search', keyword],
+    queryKey: [...queryKey, 'search', keyword],
     queryFn: () =>
       apiRequest<ApiResponse<ApiReviewSearchResponse>>({
         endPoint: '/api/products/search',
@@ -48,43 +51,13 @@ export const useReviewVideoSearch = (
         params: {
           keyword,
           searchType: 'REVIEW',
-          mediaType: 'VIDEO',
+          mediaType,
           page: page.toString(),
           size: size.toString(),
         },
       }),
     enabled: enabled && !!keyword.trim(),
     staleTime: 5 * 60 * 1000,
-    retry: 1,
-    retryDelay: 1000,
-  });
-};
-
-// 리뷰 검색 (이미지)
-export const useReviewImageSearch = (
-  keyword: string,
-  page: number = 0,
-  size: number = 8,
-  enabled: boolean = true
-) => {
-  return useQuery<ApiResponse<ApiReviewSearchResponse>>({
-    queryKey: [...REVIEW_KEYS.IMAGE_LIST({ page, size }), 'search', keyword],
-    queryFn: () =>
-      apiRequest<ApiResponse<ApiReviewSearchResponse>>({
-        endPoint: '/api/products/search',
-        method: 'GET',
-        params: {
-          keyword,
-          searchType: 'REVIEW',
-          mediaType: 'IMAGE',
-          page: page.toString(),
-          size: size.toString(),
-        },
-      }),
-    enabled: enabled && !!keyword.trim(),
-    staleTime: 5 * 60 * 1000,
-    retry: 1,
-    retryDelay: 1000,
   });
 };
 
@@ -117,8 +90,6 @@ export const useCategoryProductSearch = (
       }),
     enabled: enabled && !!middleCategory,
     staleTime: 5 * 60 * 1000,
-    retry: 1,
-    retryDelay: 1000,
   });
 };
 
@@ -152,8 +123,6 @@ export const useCategoryReviewVideoSearch = (
       }),
     enabled: enabled && !!middleCategory,
     staleTime: 5 * 60 * 1000,
-    retry: 1,
-    retryDelay: 1000,
   });
 };
 
@@ -187,7 +156,5 @@ export const useCategoryReviewImageSearch = (
       }),
     enabled: enabled && !!middleCategory,
     staleTime: 5 * 60 * 1000,
-    retry: 1,
-    retryDelay: 1000,
   });
 };

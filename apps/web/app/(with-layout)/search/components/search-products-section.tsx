@@ -29,22 +29,20 @@ export default function SearchProductsSection({
               rating = 0,
               reviewCount = 0,
               url = '',
-            }) => {
-              return (
-                <CardProduct
-                  key={productId}
-                  brandName={brandName}
-                  productName={productName}
-                  unit={unit}
-                  productId={productId || 0}
-                  isLiked={isLiked}
-                  rating={rating}
-                  reviewCount={reviewCount}
-                  imageUrl={url}
-                  handleCardClick={handleCardClick}
-                />
-              );
-            }
+            }) => (
+              <CardProduct
+                key={productId}
+                brandName={brandName}
+                productName={productName}
+                unit={unit}
+                productId={productId || 0}
+                isLiked={isLiked}
+                rating={rating}
+                reviewCount={reviewCount}
+                imageUrl={url}
+                handleCardClick={handleCardClick}
+              />
+            )
           )}
         </div>
       )}

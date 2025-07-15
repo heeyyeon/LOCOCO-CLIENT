@@ -14,9 +14,8 @@ import { isValidCategoryKey, isValidCategoryOption } from 'utils/category';
 import { Suspense, useMemo, useEffect, useState } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import {
+  useReviewSearch,
   useProductSearch,
-  useReviewVideoSearch,
-  useReviewImageSearch,
   useCategoryProductSearch,
   useCategoryReviewVideoSearch,
   useCategoryReviewImageSearch,
@@ -38,6 +37,8 @@ function PageContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const [isClient, setIsClient] = useState(false);
+  const PAGE_SIZE = 8;
+  const PAGE_NUMBER = 0;
 
   useEffect(() => {
     setIsClient(true);
@@ -68,8 +69,8 @@ function PageContent() {
     isError: isProductSearchError,
   } = useProductSearch(
     keyword,
-    0,
-    8,
+    PAGE_NUMBER,
+    PAGE_SIZE,
     !!keyword && selectedTab === SEARCH_OPTION.PRODUCT
   );
 
@@ -77,10 +78,11 @@ function PageContent() {
     data: reviewVideoSearchData,
     isLoading: isReviewVideoSearchLoading,
     isError: isReviewVideoSearchError,
-  } = useReviewVideoSearch(
+  } = useReviewSearch(
     keyword,
-    0,
-    8,
+    'VIDEO',
+    PAGE_NUMBER,
+    PAGE_SIZE,
     !!keyword && selectedTab === SEARCH_OPTION.REVIEW
   );
 
@@ -88,10 +90,11 @@ function PageContent() {
     data: reviewImageSearchData,
     isLoading: isReviewImageSearchLoading,
     isError: isReviewImageSearchError,
-  } = useReviewImageSearch(
+  } = useReviewSearch(
     keyword,
-    0,
-    8,
+    'IMAGE',
+    PAGE_NUMBER,
+    PAGE_SIZE,
     !!keyword && selectedTab === SEARCH_OPTION.REVIEW
   );
 
@@ -103,8 +106,8 @@ function PageContent() {
   } = useCategoryProductSearch(
     middleCategory,
     subCategory,
-    0,
-    8,
+    PAGE_NUMBER,
+    PAGE_SIZE,
     !!middleCategory && selectedTab === SEARCH_OPTION.PRODUCT
   );
 
@@ -115,8 +118,8 @@ function PageContent() {
   } = useCategoryReviewVideoSearch(
     middleCategory,
     subCategory,
-    0,
-    8,
+    PAGE_NUMBER,
+    PAGE_SIZE,
     !!middleCategory && selectedTab === SEARCH_OPTION.REVIEW
   );
 
@@ -127,8 +130,8 @@ function PageContent() {
   } = useCategoryReviewImageSearch(
     middleCategory,
     subCategory,
-    0,
-    8,
+    PAGE_NUMBER,
+    PAGE_SIZE,
     !!middleCategory && selectedTab === SEARCH_OPTION.REVIEW
   );
   const productData = keyword
@@ -153,7 +156,7 @@ function PageContent() {
     brandName: review.brandName,
     productName: review.productName,
     likeCount: review.likeCount,
-    url: review.url || review.videoUrl || '',
+    url: review.url || '',
   }));
 
   // ApiReviewItem을 ImageReviewResponse로 변환
