@@ -4,11 +4,19 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { REVIEW_TEXT, REVIEW_TEXT_ERROR_MESSAGE } from 'constants/review';
 import { z } from 'zod';
 import { useForm } from 'react-hook-form';
+import { ReviewRequest } from '../../../../../../api/data-contracts';
 import {
   ALLOWED_IMAGE_TYPES,
   createFileTypeValidator,
   mediaFilesValidator,
 } from './useFileUploader';
+import {
+  getMediaPresignedUrl,
+  getReceiptPresignedUrl,
+} from './usePresignedUrlApi';
+import { usePostReview } from './useReviewApi';
+
+// 경로는 실제 위치에 맞게 조정
 
 const textCommentSchema = z
   .string()
@@ -33,6 +41,8 @@ const reviewSchema = z.object({
 type ReviewFormData = z.infer<typeof reviewSchema>;
 
 export const useReviewInput = (onSuccess?: () => void) => {
+  const postReviewMutation = usePostReview(onSuccess);
+
   const {
     handleSubmit,
     setValue,
@@ -82,12 +92,49 @@ export const useReviewInput = (onSuccess?: () => void) => {
     setValue('receiptFile', file, { shouldValidate: true });
   };
 
-  const onSubmit = async (data: ReviewFormData) => {
+  const onSubmit = async (formData: ReviewFormData) => {
     try {
-      console.log('submit:', data);
-      onSuccess?.();
+      //TODO: 실제 productId로 교체 필요
+      const productId = 17;
+
+      // 1. 미디어 파일 presigned URL 요청
+      let mediaUrls: string[] = [];
+      if (formData.mediaFiles && formData.mediaFiles.length > 0) {
+        const mediaTypes = formData.mediaFiles.map((file) => file.type);
+        const mediaResponse = await getMediaPresignedUrl({
+          mediaType: mediaTypes,
+        });
+        mediaUrls = mediaResponse.data?.mediaUrl || [];
+        console.log('미디어 presigned URLs:', mediaUrls);
+      }
+
+      // 2. 영수증 파일 presigned URL 요청
+      let receiptUrls: string[] = [];
+      if (formData.receiptFile) {
+        const receiptResponse = await getReceiptPresignedUrl({
+          mediaType: formData.receiptFile.type,
+        });
+        receiptUrls = receiptResponse.data?.receiptUrl || [];
+        console.log('영수증 presigned URLs:', receiptUrls);
+      }
+
+      // 3. 리뷰 제출
+      const reviewRequest: ReviewRequest = {
+        //TODO: 실제 producOptiontId로 교체 필요
+        productOptionId: 1,
+        rating: formData.rating,
+        positiveComment: formData.positiveComment,
+        negativeComment: formData.negativeComment,
+        mediaUrl: mediaUrls,
+        receiptUrl: receiptUrls,
+      };
+
+      postReviewMutation.mutate({
+        productId,
+        review: reviewRequest,
+      });
     } catch (error) {
-      console.error('failed:', error);
+      console.error('리뷰 작성 실패:', error);
     }
   };
 
