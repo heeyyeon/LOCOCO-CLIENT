@@ -2,6 +2,8 @@
 
 import type { CategoryOptionEng, CategoryNameEng } from 'types/category';
 import { CategoryMetadata, getOptionLabel } from 'utils/category';
+import { deleteCookie, getCookie } from 'utils/client-cookie';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import {
@@ -63,9 +65,27 @@ export function TopUtilItem({ icon, label, onClick }: TopUtilItemProps) {
     </button>
   );
 }
-
 export function TopUtil() {
   const router = useRouter();
+  const [userToken, setUserToken] = useState(getCookie('AccessToken'));
+  const [loginLabel, setLoginLabel] = useState('ログイン');
+
+  useEffect(() => {
+    if (userToken) {
+      setLoginLabel('ログアウト');
+    } else {
+      setLoginLabel('ログイン');
+    }
+  }, [userToken]);
+
+  const handleAuthClick = () => {
+    if (userToken) {
+      deleteCookie('AccessToken');
+      setUserToken(null);
+    } else {
+      router.push('/login');
+    }
+  };
 
   return (
     <div className="flex w-full items-center justify-end self-stretch px-[11.9rem] py-[2rem]">
@@ -81,13 +101,13 @@ export function TopUtil() {
       />
       <TopUtilItem
         icon={<SvgHistory className="text-gray-600" size={16} />}
-        label="最近見た商品"
+        label="最近見た商품"
         onClick={() => console.log('내역 클릭')}
       />
       <TopUtilItem
         icon={<SvgLogin className="text-gray-600" size={16} />}
-        label="ログイン"
-        onClick={() => router.push('/login')}
+        label={loginLabel}
+        onClick={handleAuthClick}
       />
     </div>
   );
