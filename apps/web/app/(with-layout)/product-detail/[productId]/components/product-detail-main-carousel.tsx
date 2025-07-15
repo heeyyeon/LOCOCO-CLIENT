@@ -101,7 +101,7 @@ export default function ProductDetailMainCarousel({
                 alt="swiper main"
                 width={600}
                 height={400}
-                className="h-full w-full object-cover"
+                className="h-auto w-full object-cover"
                 priority={idx === 0 ? true : false}
               />
             </SwiperSlide>

@@ -10,7 +10,7 @@ function ModalHeader({ children, className }: ModalProps) {
   return (
     <header
       className={cn(
-        'fixed flex h-[4.8rem] shrink-0 items-center gap-[1rem] self-stretch border-b border-pink-500 p-[0.8rem] pl-[1.6rem]',
+        'flex h-[4.8rem] shrink-0 items-center gap-[1rem] self-stretch border-b border-pink-500 p-[0.8rem] pl-[1.6rem]',
         className
       )}
     >
@@ -54,7 +54,7 @@ function Modal({ children, className, onClose }: ModalProps) {
     >
       <dialog
         className={cn(
-          'relative z-50 flex flex-col overflow-hidden rounded-[0.8rem] bg-white',
+          'relative flex flex-col overflow-hidden rounded-[0.8rem] bg-white',
           className
         )}
         onClick={(e) => e.stopPropagation()}
