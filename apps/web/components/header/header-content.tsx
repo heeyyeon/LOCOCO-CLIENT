@@ -167,13 +167,19 @@ export function OptionBar({
           const isActive = option === selectedOption;
           const isLast = index === options.length - 1;
           const label = getOptionLabel(selectedCategoryKey, option);
+          let url = '';
+          if (option === 'ALL') {
+            url = `/search?middleCategory=${selectedCategoryKey}&searchType=PRODUCT`;
+          } else {
+            url = `/search?middleCategory=${selectedCategoryKey}&subCategory=${option}&searchType=PRODUCT`;
+          }
           return (
             <div
               key={`option-${option}`}
               className="flex h-[3.2rem] items-center justify-center gap-[1rem]"
             >
               <Link
-                href={`/search?middleCategory=${selectedCategoryKey}&subCategory=${option}&searchType=PRODUCT`}
+                href={url}
                 className={cn(
                   'jp-body2 cursor-pointer whitespace-nowrap px-[2.4rem] py-[1rem] hover:text-pink-500',
                   isActive ? 'font-bold text-pink-500' : 'text-gray-600'
