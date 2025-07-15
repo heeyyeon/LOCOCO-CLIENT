@@ -14,6 +14,7 @@ export interface ReviewItem {
   likeCount: number;
   imageUrl?: string;
 }
+
 export interface ReviewFormData {
   productOptionId: number;
   rating: number;

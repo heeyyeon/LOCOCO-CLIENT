@@ -161,16 +161,48 @@ export interface ReviewMediaRequest {
   mediaType: string[];
 }
 
-export interface ApiResponseReviewMediaResponse {
+export interface ApiResponseReviewImageResponse {
   success?: boolean;
   /** @format int32 */
   status?: number;
   message?: string;
-  data?: ReviewMediaResponse;
+  data: ReviewImageResponse;
 }
 
-export interface ReviewMediaResponse {
-  mediaUrl: string[];
+export interface ReviewImageResponse {
+  imageReviews: ReviewImageItemResponse[];
+}
+
+export interface ReviewImageItemResponse {
+  reviewId: number;
+  brandName: string;
+  productName: string;
+  likeCount: number;
+  rank: number;
+  reviewImage: string;
+  reviewVideo?: string;
+}
+
+export interface ApiResponseReviewVideoResponse {
+  success?: boolean;
+  /** @format int32 */
+  status?: number;
+  message?: string;
+  data: ReviewVideoResponse;
+}
+
+export interface ReviewVideoResponse {
+  videoReviews: ReviewVideoItemResponse[];
+}
+
+export interface ReviewVideoItemResponse {
+  reviewId: number;
+  brandName: string;
+  productName: string;
+  likeCount: number;
+  rank: number;
+  reviewVideo: string;
+  reviewImage?: string;
 }
 
 export interface ApiResponseString {
