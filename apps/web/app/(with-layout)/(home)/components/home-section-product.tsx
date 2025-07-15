@@ -40,9 +40,6 @@ export default function HomeSectionProduct({
     queryFn: () =>
       apiRequest<ApiResponseCategoryNewProductResponse>({
         endPoint: `/api/products/categories/${productSortType}?middleCategory=${selectedTab}&page=0&size=4`,
-        headers: {
-          Authorization: `Bearer `,
-        },
       }),
   });
 
