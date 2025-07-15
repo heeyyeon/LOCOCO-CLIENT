@@ -7,6 +7,9 @@ interface ReactionToggleProps
   extends ComponentProps<typeof Toggle>,
     VariantProps<typeof reactionToggleVariants> {
   variant: 'vertical' | 'horizontal';
+  children: React.ReactNode;
+  pressed: boolean;
+  className?: string;
 }
 
 const reactionToggleVariants = cva(

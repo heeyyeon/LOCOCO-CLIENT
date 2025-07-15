@@ -1,3 +1,5 @@
+import { getCookie } from 'utils/cookie';
+
 type RequestMethod = 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH';
 
 export interface ApiRequestProps {
@@ -24,10 +26,12 @@ export const apiRequest = async <T = unknown>({
   data,
   headers,
 }: ApiRequestProps): Promise<T> => {
+  const accessToken = await getCookie('AccessToken');
   try {
     const requestUrl = `${SERVER_API_BASE_URL}${endPoint}`;
     const defaultHeaders: Record<string, string> = {
       'Content-Type': 'application/json',
+      Authorization: `Bearer ${accessToken}`,
       ...headers,
     };
 
@@ -67,7 +71,7 @@ export const apiRequest = async <T = unknown>({
 const refreshApi = async () => {
   // TODO HttpClient 인스턴스 활용하는 방식으로 수정
   const refreshResponse = await fetch(
-    `${SERVER_API_BASE_URL}api/auth/refresh`,
+    `${SERVER_API_BASE_URL}/api/auth/refresh`,
     {
       method: 'POST',
       credentials: 'include',

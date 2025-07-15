@@ -3,25 +3,20 @@ import ProductInfo from './product-info';
 import ProductInfoTab from './product-info-tab';
 
 interface ProductDetailSectionProps {
-  productId: number;
   imageUrls: string[];
+  productDetail: string;
+  ingredients: string;
+  productId: number;
   productName: string;
   brandName: string;
   unit: string;
   reviewCount: number;
   rating: number;
   isLiked: boolean;
-  productOptions: {
-    id: number;
-    optionName: string;
-  }[];
+  productOptions: { id: number; optionName: string }[];
   normalPrice: number;
-  productDetail: string;
-  ingredients: string;
-  oliveYoungUrl: string | null;
-  q10Url: string | null;
-  middleCategory: string;
-  subCategory: string;
+  oliveYoungUrl: string;
+  q10Url: string;
 }
 
 export default function ProductDetailSection({
@@ -39,15 +34,13 @@ export default function ProductDetailSection({
   normalPrice,
   oliveYoungUrl,
   q10Url,
-  middleCategory,
-  subCategory,
 }: ProductDetailSectionProps) {
   return (
     <div className="flex w-full flex-col">
       <div className="flex justify-center gap-[8.4rem] pb-[6rem] pt-[3.2rem]">
         <ProductDetailMainCarousel imageUrlList={imageUrls} />
         <ProductInfo
-          productId={productId}
+          productId={Number(productId)}
           productName={productName}
           brandName={brandName}
           unit={unit}
@@ -58,8 +51,6 @@ export default function ProductDetailSection({
           normalPrice={normalPrice}
           oliveYoungUrl={oliveYoungUrl}
           q10Url={q10Url}
-          middleCategory={middleCategory}
-          subCategory={subCategory}
         />
       </div>
       <ProductInfoTab productDetail={productDetail} ingredients={ingredients} />
