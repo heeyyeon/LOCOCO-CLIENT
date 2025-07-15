@@ -47,7 +47,6 @@ export default function HomeSectionProduct({
   });
 
   const products = data?.data?.products;
-  console.log(products);
 
   return (
     <div className="flex w-full flex-col gap-4">

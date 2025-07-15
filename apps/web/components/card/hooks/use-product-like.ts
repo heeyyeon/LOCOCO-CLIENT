@@ -33,7 +33,6 @@ export function useProductLike({ initialIsLiked }: UseProductLikeProps) {
 
     onError: (error, _variables, context) => {
       setIsLiked(context?.originalState || false);
-      console.error(error);
     },
     onSettled: () => {
       queryClient.invalidateQueries({ queryKey: PRODUCT_QUERIES.ALL });
