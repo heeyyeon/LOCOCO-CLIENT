@@ -17,8 +17,7 @@ import {
   useReviewSearch,
   useProductSearch,
   useCategoryProductSearch,
-  useCategoryReviewVideoSearch,
-  useCategoryReviewImageSearch,
+  useCategoryReviewSearch,
 } from '../../../hooks/use-headers-api';
 import OptionSelector from './components/option-selector';
 import SearchBreadCrumbSection from './components/search-bread-crumb-section';
@@ -115,8 +114,9 @@ function PageContent() {
     data: categoryReviewVideoData,
     isLoading: isCategoryReviewVideoLoading,
     isError: isCategoryReviewVideoError,
-  } = useCategoryReviewVideoSearch(
+  } = useCategoryReviewSearch(
     middleCategory,
+    'VIDEO',
     subCategory,
     PAGE_NUMBER,
     PAGE_SIZE,
@@ -127,8 +127,9 @@ function PageContent() {
     data: categoryReviewImageData,
     isLoading: isCategoryReviewImageLoading,
     isError: isCategoryReviewImageError,
-  } = useCategoryReviewImageSearch(
+  } = useCategoryReviewSearch(
     middleCategory,
+    'IMAGE',
     subCategory,
     PAGE_NUMBER,
     PAGE_SIZE,

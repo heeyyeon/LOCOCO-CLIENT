@@ -14,7 +14,7 @@ export default function SearchProductsSection({
   };
 
   return (
-    <section className="flex flex-col self-stretch p-[11.9rem] pb-[12rem] pt-[3.2rem]">
+    <section className="flex flex-col p-[11.9rem] pb-[12rem] pt-[3.2rem]">
       {products.length === 0 ? (
         <NotFoundSection variant="product" />
       ) : (

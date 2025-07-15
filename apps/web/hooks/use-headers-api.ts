@@ -93,9 +93,10 @@ export const useCategoryProductSearch = (
   });
 };
 
-// 카테고리별 리뷰 검색 (비디오)
-export const useCategoryReviewVideoSearch = (
+// 카테고리별 리뷰 검색
+export const useCategoryReviewSearch = (
   middleCategory: string,
+  mediaType: 'VIDEO' | 'IMAGE',
   subCategory?: string,
   page: number = 0,
   size: number = 8,
@@ -103,43 +104,14 @@ export const useCategoryReviewVideoSearch = (
 ) => {
   return useQuery<ApiResponse<ApiReviewSearchResponse>>({
     queryKey: [
-      ...REVIEW_KEYS.VIDEO_LIST({ page, size }),
-      'category',
-      middleCategory,
-      subCategory,
-    ],
-    queryFn: () =>
-      apiRequest<ApiResponse<ApiReviewSearchResponse>>({
-        endPoint: '/api/products/categories/search',
-        method: 'GET',
-        params: {
-          middleCategory,
-          ...(subCategory && { subCategory }),
-          searchType: 'REVIEW',
-          mediaType: 'VIDEO',
-          page: page.toString(),
-          size: size.toString(),
-        },
+      ...REVIEW_KEYS[mediaType === 'VIDEO' ? 'VIDEO_LIST' : 'IMAGE_LIST']({
+        page,
+        size,
       }),
-    enabled: enabled && !!middleCategory,
-    staleTime: 5 * 60 * 1000,
-  });
-};
-
-// 카테고리별 리뷰 검색 (이미지)
-export const useCategoryReviewImageSearch = (
-  middleCategory: string,
-  subCategory?: string,
-  page: number = 0,
-  size: number = 8,
-  enabled: boolean = true
-) => {
-  return useQuery<ApiResponse<ApiReviewSearchResponse>>({
-    queryKey: [
-      ...REVIEW_KEYS.IMAGE_LIST({ page, size }),
       'category',
       middleCategory,
       subCategory,
+      mediaType,
     ],
     queryFn: () =>
       apiRequest<ApiResponse<ApiReviewSearchResponse>>({
@@ -149,7 +121,7 @@ export const useCategoryReviewImageSearch = (
           middleCategory,
           ...(subCategory && { subCategory }),
           searchType: 'REVIEW',
-          mediaType: 'IMAGE',
+          mediaType,
           page: page.toString(),
           size: size.toString(),
         },
