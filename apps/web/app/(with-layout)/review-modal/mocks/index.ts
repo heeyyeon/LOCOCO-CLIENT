@@ -1,4 +1,4 @@
-import type { ReviewDetail } from 'app/review-modal/types';
+import { ReviewDetail } from '../types';
 
 export const videoReviewMocks: ReviewDetail[] = [
   {
