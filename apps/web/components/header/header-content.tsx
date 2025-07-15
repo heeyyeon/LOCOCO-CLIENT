@@ -233,6 +233,7 @@ export function SearchBar({
             type="search"
             value={searchValue}
             onChange={(e) => handleChangeSearchValue(e.target.value)}
+            onKeyDown={handleKeyDown}
             placeholder="ラネージュ"
             className="jp-title2 w-full text-right font-bold leading-[3rem] text-gray-800"
           />
