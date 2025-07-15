@@ -124,7 +124,7 @@ const responseInterceptor = async <T>(
       }
 
       const retryResponse = await fetch(
-        `${SERVER_API_BASE_URL}${originalRequest.endPoint}`,
+        `${SERVER_API_BASE_URL}/${originalRequest.endPoint}`,
         fetchOptions
       );
 

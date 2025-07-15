@@ -1,6 +1,7 @@
 'use client';
 
-import { CategoryBar, OptionBar, SearchBar, TopUtil } from './header-content';
+import { cn } from '@/lib/utils';
+import { CategoryBar, TopUtil } from './header-content';
 import { useHeaderAction } from './use-header-action';
 
 export default function Header() {
@@ -14,12 +15,20 @@ export default function Header() {
     handleSelectCategory,
     handleSelectOption,
     handleOpenSearchBar,
+    handleMouseLeaveCategory,
     handleChangeSearchValue,
     handleSearchIconClick,
   } = useHeaderAction();
 
   return (
-    <div className="z-55 sticky top-0 flex w-full flex-col bg-white">
+    <div
+      className={cn(
+        'z-55 sticky mx-auto flex w-full min-w-[1366px] flex-col bg-white',
+        (isSearching || selectedCategory) &&
+          'border-b border-dashed border-pink-500',
+        !selectedCategory && !isSearching && 'border-b-[0.1rem] border-gray-500'
+      )}
+    >
       <TopUtil />
       <CategoryBar
         categories={categories}
@@ -27,22 +36,14 @@ export default function Header() {
         handleSelectCategory={handleSelectCategory}
         handleOpenSearchBar={handleOpenSearchBar}
         isSearching={isSearching}
+        handleMouseLeaveCategory={handleMouseLeaveCategory}
+        activeMenu={activeMenu}
+        selectedOption={selectedOption}
+        handleSelectOption={handleSelectOption}
+        searchValue={searchValue}
+        handleChangeSearchValue={handleChangeSearchValue}
+        handleSearchIconClick={handleSearchIconClick}
       />
-      {!isSearching && activeMenu && (
-        <OptionBar
-          options={activeMenu.options}
-          selectedCategoryKey={activeMenu.key}
-          selectedOption={selectedOption}
-          handleSelectOption={handleSelectOption}
-        />
-      )}
-      {isSearching && (
-        <SearchBar
-          searchValue={searchValue}
-          handleChangeSearchValue={handleChangeSearchValue}
-          handleSearchIconClick={handleSearchIconClick}
-        />
-      )}
     </div>
   );
 }

@@ -21,13 +21,13 @@ export default function SearchReviewSection({
   };
 
   return (
-    <section className="flex flex-col content-center self-stretch px-[11.9rem] pb-[12rem] pt-0">
-      <div className="mx-auto flex w-[112.8rem] flex-col items-start gap-[3.2rem] self-stretch pt-[3.2rem]">
+    <section className="mx-auto flex w-[1366px] flex-col content-center px-[11.9rem] pb-[12rem] pt-0">
+      <div className="flex max-w-[1366px] flex-col gap-[3.2rem] pt-[3.2rem]">
         <p className="jp-head3 font-bold text-gray-700">動画レビュー</p>
         {reviewsVideo.length === 0 ? (
           <NotFoundSection variant="review" />
         ) : (
-          <div className="flex flex-wrap content-center items-center gap-[2.4rem] self-stretch">
+          <div className="grid max-w-[1366px] grid-cols-4 gap-[2.4rem]">
             {reviewsVideo.map(
               ({ reviewId, brandName, productName, likeCount, url }) => (
                 <CardReview
@@ -37,7 +37,7 @@ export default function SearchReviewSection({
                   productName={productName}
                   reviewId={reviewId}
                   likeCount={likeCount}
-                  imageUrl={url}
+                  mediaUrl={url}
                   handleCardClick={handleCardClick}
                 />
               )
@@ -46,12 +46,12 @@ export default function SearchReviewSection({
         )}
       </div>
 
-      <div className="mx-auto flex w-[112.8rem] flex-col gap-[3.2rem] self-stretch pt-[3.2rem]">
+      <div className="flex max-w-[1366px] flex-col gap-[3.2rem] pt-[3.2rem]">
         <p className="jp-head3 font-bold text-gray-700">写真付きレビュー</p>
         {reviewsImage.length === 0 ? (
           <NotFoundSection variant="review" />
         ) : (
-          <div className="flex flex-wrap content-center items-center gap-[2.4rem] self-stretch">
+          <div className="grid max-w-[1366px] grid-cols-4 gap-[2.4rem]">
             {reviewsImage.map(
               ({ reviewId, brandName, productName, likeCount, url }) => (
                 <CardReview
@@ -61,7 +61,7 @@ export default function SearchReviewSection({
                   productName={productName}
                   reviewId={reviewId}
                   likeCount={likeCount}
-                  imageUrl={url}
+                  mediaUrl={url}
                   handleCardClick={handleCardClick}
                 />
               )

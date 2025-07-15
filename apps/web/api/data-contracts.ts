@@ -57,7 +57,7 @@ export interface ReviewAdminRequest {
    * @maxLength 1500
    */
   negativeComment: string;
-  mediaType: "IMAGE" | "VIDEO";
+  mediaType: 'IMAGE' | 'VIDEO';
   videoUrl?: string;
   /**
    * @maxItems 2147483647
@@ -90,7 +90,40 @@ export interface ReviewAdminRequest {
    * @maxLength 1500
    */
   negativeComment: string;
-  mediaType: "IMAGE" | "VIDEO";
+  mediaType: 'IMAGE' | 'VIDEO';
+  videoUrl?: string;
+  /**
+   * @maxItems 2147483647
+   * @minItems 1
+   */
+  imageUrl?: string[];
+  receiptUrl?: string;
+}
+
+export interface ApiResponseVoid {
+  success?: boolean;
+  /** @format int32 */
+  status?: number;
+  message?: string;
+  data?: any;
+}
+
+export interface ReviewAdminRequest {
+  /** @format int64 */
+  productOptionId: number;
+  /** @format int32 */
+  rating: number;
+  /**
+   * @minLength 15
+   * @maxLength 1500
+   */
+  positiveComment: string;
+  /**
+   * @minLength 15
+   * @maxLength 1500
+   */
+  negativeComment: string;
+  mediaType: 'IMAGE' | 'VIDEO';
   videoUrl?: string;
   /**
    * @maxItems 2147483647
@@ -128,16 +161,50 @@ export interface ReviewMediaRequest {
   mediaType: string[];
 }
 
-export interface ApiResponseReviewMediaResponse {
+export interface ApiResponseReviewImageResponse {
   success?: boolean;
   /** @format int32 */
   status?: number;
   message?: string;
-  data?: ReviewMediaResponse;
+  data: ReviewImageResponse;
 }
 
-export interface ReviewMediaResponse {
-  mediaUrl: string[];
+export interface ReviewImageResponse {
+  imageReviews: ReviewImageItemResponse[];
+}
+
+export interface ReviewImageItemResponse {
+  reviewId: number;
+  brandName: string;
+  productName: string;
+  likeCount: number;
+  rank: number;
+  productId: number;
+  reviewImage: string;
+  reviewVideo?: string;
+}
+
+export interface ApiResponseReviewVideoResponse {
+  success?: boolean;
+  /** @format int32 */
+  status?: number;
+  message?: string;
+  data: ReviewVideoResponse;
+}
+
+export interface ReviewVideoResponse {
+  videoReviews: ReviewVideoItemResponse[];
+}
+
+export interface ReviewVideoItemResponse {
+  reviewId: number;
+  brandName: string;
+  productName: string;
+  likeCount: number;
+  rank: number;
+  productId: number;
+  reviewVideo: string;
+  reviewImage?: string;
 }
 
 export interface ApiResponseString {
@@ -548,21 +615,21 @@ export interface ProductDetailResponse {
   ingredients: string;
   oliveYoungUrl: string;
   q10Url: string;
-  middleCategory: "FACIAL_CARE" | "FACE_MAKEUP" | "EYE_MAKEUP" | "LIP_MAKEUP";
+  middleCategory: 'FACIAL_CARE' | 'FACE_MAKEUP' | 'EYE_MAKEUP' | 'LIP_MAKEUP';
   subCategory:
-    | "TONER"
-    | "MOISTURIZER"
-    | "ESSENCE_SERUM"
-    | "CREAM"
-    | "FOUNDATION"
-    | "POWDER_COMPACT"
-    | "CONCEALER"
-    | "BLUSHER"
-    | "EYEBROW"
-    | "EYESHADOW"
-    | "EYELINER"
-    | "LIPSTICK"
-    | "LIP_TINT";
+    | 'TONER'
+    | 'MOISTURIZER'
+    | 'ESSENCE_SERUM'
+    | 'CREAM'
+    | 'FOUNDATION'
+    | 'POWDER_COMPACT'
+    | 'CONCEALER'
+    | 'BLUSHER'
+    | 'EYEBROW'
+    | 'EYESHADOW'
+    | 'EYELINER'
+    | 'LIPSTICK'
+    | 'LIP_TINT';
 }
 
 export interface ProductOptionResponse {
@@ -648,5 +715,5 @@ export interface ApiResponseLineLoginResponse {
 }
 
 export interface LineLoginResponse {
-  loginStatus: "LOGIN" | "REGISTER";
+  loginStatus: 'LOGIN' | 'REGISTER';
 }

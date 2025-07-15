@@ -1,5 +1,6 @@
 'use client';
 
+import { useQuery } from '@tanstack/react-query';
 import type { Swiper as SwiperType } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -7,7 +8,8 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import { Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { convertToEmbedUrl } from 'utils/youtube';
+//TODO validYoutube 적용
+import { convertToEmbedUrl, validateYoutubeVideoList } from 'utils/youtube';
 import { useState } from 'react';
 import { IconButton } from '@lococo/design-system';
 import { SvgArrowRight } from '@/icons';
@@ -26,11 +28,17 @@ export default function YoutubeCarousel({
   const [isNextButton, setIsNextButton] = useState(true);
   const [isPrevButton, setIsPrevButton] = useState(false);
 
+  const { data: validatedYoutubeListData } = useQuery({
+    queryKey: ['validateYoutubeVideos', youtubeListData.youtubeUrls],
+    queryFn: () => validateYoutubeVideoList(youtubeListData.youtubeUrls, 25),
+    enabled: !!youtubeListData.youtubeUrls?.length,
+  });
+
   const handleSwiper = (swiper: SwiperType) => {
     setSwiperRef(swiper);
     if (
-      youtubeListData.youtubeUrls &&
-      youtubeListData.youtubeUrls.length - 2 === swiper.activeIndex
+      validatedYoutubeListData &&
+      validatedYoutubeListData.length - 2 === swiper.activeIndex
     ) {
       setIsNextButton(false);
     } else {
@@ -49,8 +57,7 @@ export default function YoutubeCarousel({
         <SvgKoreanReview size={24} /> 韓国ユーチューバーレビュー
       </h3>
       <div className="relative">
-        {youtubeListData.youtubeUrls &&
-        youtubeListData.youtubeUrls.length > 0 ? (
+        {validatedYoutubeListData && validatedYoutubeListData.length > 0 ? (
           <>
             <Swiper
               onSwiper={handleSwiper}
