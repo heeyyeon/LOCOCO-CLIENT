@@ -1,6 +1,6 @@
+import { notFound } from 'next/navigation';
 import { getProductDetail, getYoutubeList } from './apis';
 import ClientPage from './page.client';
-import { ProductDetailData, YoutubeListData } from './types';
 
 export default async function Page({
   params,
@@ -9,8 +9,8 @@ export default async function Page({
 }) {
   const { productId } = await params;
 
-  let productDetailData = {} as ProductDetailData;
-  let youtubeListData = {} as YoutubeListData;
+  let productDetailData;
+  let youtubeListData;
   try {
     const productDetailResponse = await getProductDetail(Number(productId));
     const youtubeListResponse = await getYoutubeList(Number(productId));
@@ -18,7 +18,8 @@ export default async function Page({
     youtubeListData = youtubeListResponse;
   } catch (error) {
     // TODO: 에러 핸들링 로직 추가
-    console.error('API 호출 에러:', error);
+    console.error(error);
+    notFound();
   }
 
   if (!productDetailData) {
