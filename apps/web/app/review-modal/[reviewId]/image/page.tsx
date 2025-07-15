@@ -14,6 +14,23 @@ const formatDateToJapanese = (dateString: string): string => {
   return `${year}年${month}月${day}日`;
 };
 
+const convertRating = (rating: string): number => {
+  switch (rating) {
+    case 'FIVE':
+      return 5;
+    case 'FOUR':
+      return 4;
+    case 'THREE':
+      return 3;
+    case 'TWO':
+      return 2;
+    case 'ONE':
+      return 1;
+    default:
+      return Number(rating) || 5;
+  }
+};
+
 export default function Page() {
   const router = useRouter();
   const params = useParams();
@@ -45,7 +62,7 @@ export default function Page() {
     negativeComment: detailData.negativeComment,
     authorName: detailData.authorName,
     profileImageUrl: detailData.profileImageUrl || null,
-    rating: Number(detailData.rating),
+    rating: convertRating(detailData.rating),
     option: detailData.option,
     likeCount: detailData.likeCount,
     brandName: detailData.brandName,
