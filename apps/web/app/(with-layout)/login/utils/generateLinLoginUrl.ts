@@ -5,6 +5,7 @@ const LINE_OAUTH_CONFIG = {
     'http://localhost:3000/api/auth/line/login',
   SCOPE: 'profile openid',
   AUTH_URL: 'https://access.line.me/oauth2/v2.1/authorize',
+  LOCALE: 'ja',
 } as const;
 
 export const generateLineLoginUrl = (state: string): string => {
@@ -14,6 +15,7 @@ export const generateLineLoginUrl = (state: string): string => {
     redirect_uri: LINE_OAUTH_CONFIG.REDIRECT_URI,
     state,
     scope: LINE_OAUTH_CONFIG.SCOPE,
+    ui_locales: LINE_OAUTH_CONFIG.LOCALE,
   });
 
   return `${LINE_OAUTH_CONFIG.AUTH_URL}?${params.toString()}`;
