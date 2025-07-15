@@ -4,40 +4,34 @@ import { ProductItem } from 'types/product';
 import Image from 'next/image';
 import {
   Badge,
+  IconButton,
   SvgLikeFill,
   SvgLikeOutline,
   SvgStar,
 } from '@lococo/design-system';
+import { cn } from '@/lib/utils';
+import { useProductLike } from './hooks/use-product-like';
 
 interface CardProductProps extends ProductItem {
   handleCardClick: (productId: number) => void;
 }
-/**
- * 상품 카드 컴포넌트
- *
- * @param ranking (optional) Card에서 뱃지에 나타낼 순위를 나타내는 props, {...(ranking && inRange(ranking, 1, 4) && { ranking })}와 같이 사용하여 불필요할 시 넣지 않으면 됨
- * @param brandName 브랜드명
- * @param productName 상품명
- * @param unit 상품 상세 설명 ex. 피그마 기준 용량 옵션
- * @param productId 서버에서 제공한 상품 고유 ID
- * @param isLiked 현재 사용자가 해당 상품에 대해 좋아요를 눌렀는지
- * @param rating 5점 만점 기준 평점
- * @param reviewCount 해당 상품에 대한 총 리뷰 수
- * @param imageUrl 대표 이미지 주소
- * @param handleCardClick 전체 카드 클릭 시에 작동할 이벤트
- */
+
 export default function CardProduct({
   ranking,
   brandName,
   productName,
   unit,
   productId,
-  isLiked,
+  isLiked: initialIsLiked,
   rating,
   reviewCount,
   imageUrl,
   handleCardClick,
 }: CardProductProps) {
+  const { isLiked, handleLikeClick } = useProductLike({
+    initialIsLiked,
+  });
+
   return (
     <article
       className="flex w-[26.4rem] cursor-pointer flex-col"
@@ -61,16 +55,25 @@ export default function CardProduct({
       </div>
       <div className="flex h-[4.4rem] items-center justify-between border-b-[0.1rem] border-dashed border-pink-500">
         <p className="jp-body1 font-[700]">{brandName}</p>
-        <div>
-          {isLiked ? (
-            <SvgLikeFill size={24} className="fill-pink-500" />
-          ) : (
-            <SvgLikeOutline size={24} className="fill-white" />
-          )}
-        </div>
+        <IconButton
+          onClick={(e) => handleLikeClick(e, productId)}
+          size="md"
+          icon={
+            isLiked ? (
+              <SvgLikeFill />
+            ) : (
+              <SvgLikeOutline
+                className={cn(isLiked ? 'text-pink-500' : 'text-gray-500')}
+              />
+            )
+          }
+          color={isLiked ? 'primary' : 'tertiary'}
+        />
       </div>
       <div className="flex h-[4.4rem] items-center border-b-[0.1rem] border-dashed border-pink-500">
-        <p className="jp-body2 font-[500]">{productName}</p>
+        <p className="jp-body2 w-full truncate font-[500]" title={productName}>
+          {productName}
+        </p>
       </div>
       <div className="en-caption1 flex h-[4.4rem] items-center justify-between border-b-[0.1rem] border-pink-500 text-gray-600">
         <p>{unit}</p>
