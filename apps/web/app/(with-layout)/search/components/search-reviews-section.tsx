@@ -22,7 +22,7 @@ export default function SearchReviewSection({
 
   return (
     <section className="mx-auto flex w-[1366px] flex-col content-center px-[11.9rem] pb-[12rem] pt-0">
-      <div className="mx-auto flex max-w-[1366px] flex-col gap-[3.2rem] pt-[3.2rem]">
+      <div className="flex max-w-[1366px] flex-col gap-[3.2rem] pt-[3.2rem]">
         <p className="jp-head3 font-bold text-gray-700">動画レビュー</p>
         {reviewsVideo.length === 0 ? (
           <NotFoundSection variant="review" />
@@ -46,7 +46,7 @@ export default function SearchReviewSection({
         )}
       </div>
 
-      <div className="mx-auto flex max-w-[1366px] flex-col gap-[3.2rem] pt-[3.2rem]">
+      <div className="flex max-w-[1366px] flex-col gap-[3.2rem] pt-[3.2rem]">
         <p className="jp-head3 font-bold text-gray-700">写真付きレビュー</p>
         {reviewsImage.length === 0 ? (
           <NotFoundSection variant="review" />

@@ -18,7 +18,7 @@ export default function SearchProductsSection({
       {products.length === 0 ? (
         <NotFoundSection variant="product" />
       ) : (
-        <div className="mx-auto flex w-[112.8rem] flex-wrap content-center gap-[2.4rem]">
+        <div className="flex w-[112.8rem] flex-wrap content-center gap-[2.4rem]">
           {products.map(
             ({
               productId,
