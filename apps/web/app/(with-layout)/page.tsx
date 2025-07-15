@@ -21,14 +21,15 @@ export default function Main() {
         </HomeSection>
         <HomeSection>
           <HomeSection.Header>
-            {<SvgJapaneseReview className="fill-red" />}いいね数が多いレビュー
+            {<SvgJapaneseReview className="fill-red w-[4rem]" />}
+            いいね数が多いレビュー
           </HomeSection.Header>
           <HomeSection.Review type="video" />
           <HomeSection.Review type="image" className="mt-[4.8rem]" />
         </HomeSection>
         <HomeSection>
           <HomeSection.Header>
-            {<SvgKoreanReview />}
+            {<SvgKoreanReview className="w-[4rem]" />}
             人気のKビューティーYouTube動画
           </HomeSection.Header>
           <HomeSection.YouTube />

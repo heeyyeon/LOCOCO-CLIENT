@@ -26,6 +26,7 @@ export default function HomeSectionProduct() {
               label={item}
               variant="primary"
               active={item === selectedTab}
+              className="jp-title3"
             />
           );
         })}
