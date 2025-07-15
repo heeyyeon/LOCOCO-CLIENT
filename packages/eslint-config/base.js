@@ -46,6 +46,9 @@ export default [
       // any 사용 제한
       '@typescript-eslint/no-explicit-any': 'error',
 
+      // 사용되지 않는 변수 경고
+      '@typescript-eslint/no-unused-vars': 'error',
+
       // 네이밍 컨벤션
       '@typescript-eslint/naming-convention': [
         'error',
