@@ -35,6 +35,7 @@ export default function ReviewModallayout({
   brandName,
   productName,
   productOption,
+  rating,
   positiveComment,
   negativeComment,
   productImageUrl,
@@ -56,7 +57,7 @@ export default function ReviewModallayout({
             brandName={brandName}
             productName={productName}
             option={productOption}
-            rating={3}
+            rating={rating}
             positiveComment={positiveComment}
             negativeComment={negativeComment}
             productImageUrl={productImageUrl}
