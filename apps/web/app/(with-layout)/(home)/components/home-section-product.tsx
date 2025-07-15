@@ -74,13 +74,13 @@ export default function HomeSectionProduct({
         {products?.map((product, index) => (
           <CardProduct
             key={product.productId}
-            brandName={product.brandName || ''}
-            productName={product.productName || ''}
-            unit={product.unit || ''}
-            productId={product.productId || 0}
-            isLiked={product.isLiked || false}
-            rating={product.rating || 0}
-            reviewCount={product.reviewCount || 0}
+            brandName={product.brandName}
+            productName={product.productName}
+            unit={product.unit}
+            productId={product.productId}
+            isLiked={product.isLiked}
+            rating={product.rating}
+            reviewCount={product.reviewCount}
             imageUrl={product.imageUrls?.[0]}
             handleCardClick={() =>
               router.push(`/product-detail/${product.productId}`)

@@ -138,21 +138,21 @@ export interface ProductDetailResponse {
   ingredients?: string;
   oliveYoungUrl?: string;
   q10Url?: string;
-  middleCategory?: "FACIAL_CARE" | "FACE_MAKEUP" | "EYE_MAKEUP" | "LIP_MAKEUP";
+  middleCategory?: 'FACIAL_CARE' | 'FACE_MAKEUP' | 'EYE_MAKEUP' | 'LIP_MAKEUP';
   subCategory?:
-    | "TONER"
-    | "MOISTURIZER"
-    | "ESSENCE_SERUM"
-    | "CREAM"
-    | "FOUNDATION"
-    | "POWDER_COMPACT"
-    | "CONCEALER"
-    | "BLUSHER"
-    | "EYEBROW"
-    | "EYESHADOW"
-    | "EYELINER"
-    | "LIPSTICK"
-    | "LIP_TINT";
+    | 'TONER'
+    | 'MOISTURIZER'
+    | 'ESSENCE_SERUM'
+    | 'CREAM'
+    | 'FOUNDATION'
+    | 'POWDER_COMPACT'
+    | 'CONCEALER'
+    | 'BLUSHER'
+    | 'EYEBROW'
+    | 'EYESHADOW'
+    | 'EYELINER'
+    | 'LIPSTICK'
+    | 'LIP_TINT';
 }
 
 export interface ProductOptionResponse {
@@ -199,16 +199,16 @@ export interface PageableResponse {
 
 export interface ProductResponse {
   /** @format int64 */
-  productId?: number;
-  imageUrls?: string[];
-  productName?: string;
-  brandName?: string;
-  unit?: string;
+  productId: number;
+  imageUrls: string[];
+  productName: string;
+  brandName: string;
+  unit: string;
   /** @format int64 */
-  reviewCount?: number;
+  reviewCount: number;
   /** @format double */
-  rating?: number;
-  isLiked?: boolean;
+  rating: number;
+  isLiked: boolean;
 }
 
 export interface ApiResponseCategoryNewProductResponse {
@@ -220,9 +220,9 @@ export interface ApiResponseCategoryNewProductResponse {
 }
 
 export interface CategoryNewProductResponse {
-  searchQuery?: string;
-  products?: ProductResponse[];
-  pageInfo?: PageableResponse;
+  searchQuery: string;
+  products: ProductResponse[];
+  pageInfo: PageableResponse;
 }
 
 export interface ApiResponseLoginUrlResponse {
@@ -248,5 +248,5 @@ export interface ApiResponseLineLoginResponse {
 export interface LineLoginResponse {
   accessToken?: string;
   refreshToken?: string;
-  loginStatus?: "LOGIN" | "REGISTER";
+  loginStatus?: 'LOGIN' | 'REGISTER';
 }
