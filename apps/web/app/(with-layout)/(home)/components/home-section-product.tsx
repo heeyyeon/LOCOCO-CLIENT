@@ -21,9 +21,9 @@ export const PRODUCT_QUERIES = {
   ALL: ['product'] as const,
   LISTS: () => [...PRODUCT_QUERIES.ALL, 'list'] as const,
   SEARCH_TYPE: (category: CategoryNameEng, sortType: ProductSortType) =>
-    [...PRODUCT_QUERIES.ALL, 'search', sortType, category] as const,
-  CATEGORIES: (category: CategoryNameEng, sortType: ProductSortType) =>
-    [...PRODUCT_QUERIES.ALL, 'categories', category, sortType] as const,
+    [...PRODUCT_QUERIES.ALL, 'search', category, sortType] as const,
+  CATEGORY: (category: CategoryNameEng, sortType: ProductSortType) =>
+    [...PRODUCT_QUERIES.ALL, 'category', category, sortType] as const,
   DETAILS: (detailId: number) =>
     [...PRODUCT_QUERIES.ALL, 'detail', detailId] as const,
 } as const;
@@ -36,7 +36,7 @@ export default function HomeSectionProduct({
   const router = useRouter();
 
   const { data, isLoading, isError } = useQuery({
-    queryKey: PRODUCT_QUERIES.CATEGORIES(selectedTab, productSortType),
+    queryKey: PRODUCT_QUERIES.CATEGORY(selectedTab, productSortType),
     queryFn: () =>
       apiRequest<ApiResponseCategoryNewProductResponse>({
         endPoint: `/api/products/categories/${productSortType}?middleCategory=${selectedTab}&page=0&size=4`,
