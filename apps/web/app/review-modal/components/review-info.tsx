@@ -27,7 +27,7 @@ type ReviewInfoProps = Pick<
 };
 
 export default function ReviewInfo({
-  reviewId: id,
+  reviewId: productId,
   option: productOption,
   positiveComment,
   negativeComment,
@@ -39,7 +39,7 @@ export default function ReviewInfo({
 }: ReviewInfoProps) {
   const router = useRouter();
   const handleProductClick = () => {
-    router.push(`/product-detail/${id}`);
+    router.push(`/product-detail/${productId}`);
   };
 
   return (
