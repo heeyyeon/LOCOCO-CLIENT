@@ -13,6 +13,7 @@ import {
 import {
   getMediaPresignedUrl,
   getReceiptPresignedUrl,
+  uploadFiles,
 } from './usePresignedUrlApi';
 import { usePostReview } from './useReviewApi';
 
@@ -118,7 +119,18 @@ export const useReviewInput = (onSuccess?: () => void) => {
         console.log('영수증 presigned URLs:', receiptUrls);
       }
 
-      // 3. 리뷰 제출
+      // 3. Presigned URL로 파일 업로드
+      if (mediaUrls.length > 0 && formData.mediaFiles) {
+        await uploadFiles(mediaUrls, formData.mediaFiles, '미디어');
+      }
+
+      if (receiptUrls.length > 0 && formData.receiptFile) {
+        await uploadFiles(receiptUrls, [formData.receiptFile], '영수증');
+      }
+
+      console.log('모든 파일 업로드 완료');
+
+      // 4. 리뷰 제출
       const reviewRequest: ReviewRequest = {
         //TODO: 실제 producOptiontId로 교체 필요
         productOptionId: 1,
