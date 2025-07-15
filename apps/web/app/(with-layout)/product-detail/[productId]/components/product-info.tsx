@@ -147,17 +147,12 @@ export default function ProductInfo({
         </div>
         <Button color="secondary" variant="filled" rounded size="lg" asChild>
           {/* 추후 리뷰 작성 모달 URL 연결 */}
-<<<<<<< HEAD:apps/web/app/(with-layout)/product-detail/components/product-info.tsx
-          <Link href="/product-detail/write-review" className="jp-title2">
-            <SvgWrite /> レビューを書く
-=======
           <Link
             // href={`/product-detail/${params.productId}/write-review`}
             href=""
             className="jp-title2"
           >
             <SvgWrite /> カートに入れる
->>>>>>> develop:apps/web/app/(with-layout)/product-detail/[productId]/components/product-info.tsx
           </Link>
         </Button>
       </div>
