@@ -1,6 +1,7 @@
 'use client';
 
 import CardProduct from 'components/card/card-product';
+import { useRouter } from 'next/navigation';
 import { ProductItem } from '../../../api/product-response';
 import NotFoundSection from './not-found-section';
 
@@ -9,8 +10,9 @@ export default function SearchProductsSection({
 }: {
   products: ProductItem[];
 }) {
+  const router = useRouter();
   const handleCardClick = (productId: number) => {
-    console.log(`Card clicked: ${productId}`);
+    router.push(`/product-detail/${productId}`);
   };
 
   return (
