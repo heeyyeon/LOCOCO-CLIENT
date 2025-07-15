@@ -11,10 +11,12 @@
  */
 
 import {
+  ApiResponseJwtLoginResponse,
   ApiResponseLineLoginResponse,
   ApiResponseVoid,
+  TestLoginRequest,
 } from "./data-contracts";
-import { HttpClient, RequestParams } from "./http-client";
+import { ContentType, HttpClient, RequestParams } from "./http-client";
 
 export class Auth<
   SecurityDataType = unknown,
@@ -39,6 +41,40 @@ export class Auth<
    * No description
    *
    * @tags AUTH
+   * @name Logout
+   * @summary 로그아웃
+   * @request POST:/api/auth/logout
+   * @secure
+   */
+  logout = (params: RequestParams = {}) =>
+    this.request<ApiResponseVoid, any>({
+      path: `/api/auth/logout`,
+      method: "POST",
+      secure: true,
+      ...params,
+    });
+  /**
+   * No description
+   *
+   * @tags AUTH
+   * @name Login
+   * @summary 테스트용 JWT 토큰 발급
+   * @request POST:/api/auth/login
+   * @secure
+   */
+  login = (data: TestLoginRequest, params: RequestParams = {}) =>
+    this.request<ApiResponseJwtLoginResponse, any>({
+      path: `/api/auth/login`,
+      method: "POST",
+      body: data,
+      secure: true,
+      type: ContentType.Json,
+      ...params,
+    });
+  /**
+   * No description
+   *
+   * @tags AUTH
    * @name RedirectToLineAuth
    * @summary 라인 소셜 로그인, 리다이렉션
    * @request GET:/api/auth/line/redirect
@@ -56,7 +92,7 @@ export class Auth<
    *
    * @tags AUTH
    * @name LineLogin
-   * @summary 라인 소셜 로그인, JWT 토큰 발급
+   * @summary 라인 소셜 로그인, JWT 토큰 발급 후 저장
    * @request GET:/api/auth/line/login
    * @secure
    */

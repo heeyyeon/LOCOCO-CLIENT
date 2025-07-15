@@ -13,11 +13,10 @@
 import {
   ApiResponseCategoryNewProductResponse,
   ApiResponseCategoryPopularProductResponse,
-  ApiResponseNameBrandProductResponse,
   ApiResponseObject,
   ApiResponseProductDetailResponse,
   ApiResponseProductDetailYoutubeResponse,
-  ProductSearchRequest,
+  ApiResponseString,
 } from "./data-contracts";
 import { HttpClient, RequestParams } from "./http-client";
 
@@ -25,17 +24,36 @@ export class Product<
   SecurityDataType = unknown,
 > extends HttpClient<SecurityDataType> {
   /**
+   * @description 서버 전용 API 입니다. PRODUCT 테이블의 search_token 필드를 업데이트 하는 기능
+   *
+   * @tags PRODUCT
+   * @name UpdateSearchFields
+   * @summary 상품 엔티티의 search_token 필드 갱신
+   * @request POST:/api/products/search-fields/migrate
+   * @secure
+   */
+  updateSearchFields = (params: RequestParams = {}) =>
+    this.request<ApiResponseString, any>({
+      path: `/api/products/search-fields/migrate`,
+      method: "POST",
+      secure: true,
+      ...params,
+    });
+  /**
    * No description
    *
    * @tags PRODUCT
    * @name Search
-   * @summary 상품명 또는 브랜드명 상품 검색
+   * @summary 상품명 또는 브랜드명 상품 및 리뷰 검색
    * @request GET:/api/products/search
    * @secure
    */
   search = (
     query: {
-      request: ProductSearchRequest;
+      keyword: string;
+      /** @default "false" */
+      searchType?: "PRODUCT" | "REVIEW";
+      mediaType?: "IMAGE" | "VIDEO";
       /**
        * @format int32
        * @default 0
@@ -49,7 +67,7 @@ export class Product<
     },
     params: RequestParams = {},
   ) =>
-    this.request<ApiResponseNameBrandProductResponse, any>({
+    this.request<ApiResponseObject, any>({
       path: `/api/products/search`,
       method: "GET",
       query: query,
@@ -61,7 +79,7 @@ export class Product<
    *
    * @tags PRODUCT
    * @name GetProductDetail
-   * @summary 상세조회 제품(별점 포함) 조회
+   * @summary 상세조회 제품(별점 포함) 조회 (상세 조회)
    * @request GET:/api/products/details/{productId}
    * @secure
    */
@@ -77,7 +95,7 @@ export class Product<
    *
    * @tags PRODUCT
    * @name GetProductDetailYoutube
-   * @summary 상세조회 유튜브 리뷰 조회
+   * @summary 상세조회 유튜브 리뷰 조회 (상세 조회)
    * @request GET:/api/products/details/{productId}/youtube
    * @secure
    */
@@ -146,7 +164,7 @@ export class Product<
    *
    * @tags PRODUCT
    * @name SearchPopularProductsByCategory
-   * @summary 인기상품 카테고리별 조회
+   * @summary 인기상품 카테고리별 조회 (메인 페이지)
    * @request GET:/api/products/categories/popular
    * @secure
    */
@@ -182,7 +200,7 @@ export class Product<
    *
    * @tags PRODUCT
    * @name SearchNewProductsByCategory
-   * @summary 신상품 카테고리별 조회
+   * @summary 신상품 카테고리별 조회 (메인 페이지)
    * @request GET:/api/products/categories/new
    * @secure
    */
