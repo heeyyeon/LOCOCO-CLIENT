@@ -158,7 +158,7 @@ export interface ApiResponseReviewLikeResponse {
 
 export interface ReviewLikeResponse {
   /** @format int64 */
-  likeCount?: number;
+  likeCount: number;
 }
 
 export interface ApiResponseToggleLikeResponse {
@@ -170,7 +170,7 @@ export interface ApiResponseToggleLikeResponse {
 }
 
 export interface ToggleLikeResponse {
-  isLiked?: boolean;
+  isLiked: boolean;
 }
 
 export interface TestLoginRequest {
@@ -539,17 +539,17 @@ export interface ProductDetailResponse {
   /** @format int64 */
   reviewCount: number;
   /** @format double */
-  rating?: number;
-  starPercent?: ScorePercent[];
-  isLiked?: boolean;
+  rating: number;
+  starPercent: ScorePercent[];
+  isLiked: boolean;
   /** @format int64 */
-  normalPrice?: number;
-  productDetail?: string;
-  ingredients?: string;
-  oliveYoungUrl?: string;
-  q10Url?: string;
-  middleCategory?: "FACIAL_CARE" | "FACE_MAKEUP" | "EYE_MAKEUP" | "LIP_MAKEUP";
-  subCategory?:
+  normalPrice: number;
+  productDetail: string;
+  ingredients: string;
+  oliveYoungUrl: string;
+  q10Url: string;
+  middleCategory: "FACIAL_CARE" | "FACE_MAKEUP" | "EYE_MAKEUP" | "LIP_MAKEUP";
+  subCategory:
     | "TONER"
     | "MOISTURIZER"
     | "ESSENCE_SERUM"
@@ -606,9 +606,9 @@ export interface ApiResponseCategoryPopularProductResponse {
 }
 
 export interface CategoryPopularProductResponse {
-  searchQuery?: string;
-  products?: ProductResponse[];
-  pageInfo?: PageableResponse;
+  searchQuery: string;
+  products: ProductResponse[];
+  pageInfo: PageableResponse;
 }
 
 export interface ProductResponse {
@@ -634,9 +634,9 @@ export interface ApiResponseCategoryNewProductResponse {
 }
 
 export interface CategoryNewProductResponse {
-  searchQuery?: string;
-  products?: ProductResponse[];
-  pageInfo?: PageableResponse;
+  searchQuery: string;
+  products: ProductResponse[];
+  pageInfo: PageableResponse;
 }
 
 export interface ApiResponseLineLoginResponse {
@@ -648,5 +648,5 @@ export interface ApiResponseLineLoginResponse {
 }
 
 export interface LineLoginResponse {
-  loginStatus?: "LOGIN" | "REGISTER";
+  loginStatus: "LOGIN" | "REGISTER";
 }
