@@ -44,7 +44,7 @@ export interface ReviewResponse {
 
 export interface ReviewAdminRequest {
   /** @format int64 */
-  productOptionId: number;
+  productOptionId?: number;
   /** @format int32 */
   rating: number;
   /**
@@ -57,7 +57,7 @@ export interface ReviewAdminRequest {
    * @maxLength 1500
    */
   negativeComment: string;
-  mediaType: "IMAGE" | "VIDEO";
+  mediaType?: 'IMAGE' | 'VIDEO';
   videoUrl?: string;
   /**
    * @maxItems 2147483647
@@ -191,6 +191,8 @@ export interface ApiResponseMainVideoReviewResponse {
 export interface MainVideoReview {
   /** @format int64 */
   reviewId: number;
+  /** @format int64 */
+  productId: number;
   brandName: string;
   productName: string;
   /** @format int32 */
@@ -215,6 +217,8 @@ export interface ApiResponseMainImageReviewResponse {
 export interface MainImageReview {
   /** @format int64 */
   reviewId: number;
+  /** @format int64 */
+  productId: number;
   brandName: string;
   productName: string;
   /** @format int32 */
@@ -248,7 +252,8 @@ export interface VideoReviewDetailResponse {
   videoUrl: string;
   profileImageUrl?: string;
   authorName: string;
-  rating: string;
+  /** @format double */
+  rating: number;
   /** @format date-time */
   uploadAt: string;
   productImageUrl: string;
@@ -274,8 +279,9 @@ export interface ImageReviewDetailResponse {
   negativeComment: string;
   authorName: string;
   profileImageUrl?: string;
-  rating: string;
-  option: string;
+  /** @format double */
+  rating: number;
+  option?: string;
   /** @format int64 */
   likeCount: number;
   images: string[];
@@ -388,21 +394,21 @@ export interface ProductDetailResponse {
   ingredients: string;
   oliveYoungUrl: string;
   q10Url: string;
-  middleCategory: "FACIAL_CARE" | "FACE_MAKEUP" | "EYE_MAKEUP" | "LIP_MAKEUP";
+  middleCategory: 'FACIAL_CARE' | 'FACE_MAKEUP' | 'EYE_MAKEUP' | 'LIP_MAKEUP';
   subCategory:
-    | "TONER"
-    | "MOISTURIZER"
-    | "ESSENCE_SERUM"
-    | "CREAM"
-    | "FOUNDATION"
-    | "POWDER_COMPACT"
-    | "CONCEALER"
-    | "BLUSHER"
-    | "EYEBROW"
-    | "EYESHADOW"
-    | "EYELINER"
-    | "LIPSTICK"
-    | "LIP_TINT";
+    | 'TONER'
+    | 'MOISTURIZER'
+    | 'ESSENCE_SERUM'
+    | 'CREAM'
+    | 'FOUNDATION'
+    | 'POWDER_COMPACT'
+    | 'CONCEALER'
+    | 'BLUSHER'
+    | 'EYEBROW'
+    | 'EYESHADOW'
+    | 'EYELINER'
+    | 'LIPSTICK'
+    | 'LIP_TINT';
 }
 
 export interface ProductOptionResponse {
@@ -481,5 +487,5 @@ export interface ApiResponseLineLoginResponse {
 }
 
 export interface LineLoginResponse {
-  loginStatus: "LOGIN" | "REGISTER";
+  loginStatus: 'LOGIN' | 'REGISTER';
 }
