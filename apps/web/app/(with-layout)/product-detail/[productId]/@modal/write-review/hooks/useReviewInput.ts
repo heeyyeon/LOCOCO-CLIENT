@@ -5,6 +5,7 @@ import { ReviewRequest } from 'api/data-contracts';
 import { REVIEW_TEXT, REVIEW_TEXT_ERROR_MESSAGE } from 'constants/review';
 import { z } from 'zod';
 import { useForm } from 'react-hook-form';
+import { useParams } from 'next/navigation';
 import {
   getMediaPresignedUrl,
   getReceiptPresignedUrl,
@@ -42,6 +43,7 @@ const reviewSchema = z.object({
 type ReviewFormData = z.infer<typeof reviewSchema>;
 
 export const useReviewInput = (onSuccess?: () => void) => {
+  const params = useParams();
   const postReviewMutation = usePostReview(onSuccess);
 
   const {
@@ -95,8 +97,7 @@ export const useReviewInput = (onSuccess?: () => void) => {
 
   const onSubmit = async (formData: ReviewFormData) => {
     try {
-      //TODO: 실제 productId로 교체 필요
-      const productId = 17;
+      const productId = Number(params.productId);
 
       // 1. 미디어 파일 presigned URL 요청
       let mediaUrls: string[] = [];
@@ -132,8 +133,7 @@ export const useReviewInput = (onSuccess?: () => void) => {
 
       // 4. 리뷰 제출
       const reviewRequest: ReviewRequest = {
-        //TODO: 실제 producOptiontId로 교체 필요
-        productOptionId: 1,
+        productOptionId: formData.productOptionId,
         rating: formData.rating,
         positiveComment: formData.positiveComment,
         negativeComment: formData.negativeComment,
