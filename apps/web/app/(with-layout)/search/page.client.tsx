@@ -235,6 +235,22 @@ export default function SearchPageClient() {
     ),
   }[selectedTab];
 
+  if (!isClient) {
+    return <div className="h-[90rem] w-screen bg-white" />;
+  }
+
+  if (isLoading) {
+    return <div className="h-[90rem] w-screen bg-white" />;
+  }
+
+  if (hasError) {
+    return (
+      <div className="h-[90rem] w-screen bg-white">
+        데이터를 불러오는 중 오류가 발생했습니다.
+      </div>
+    );
+  }
+
   return (
     <div className="flex w-screen flex-col items-start">
       <div className="flex flex-col items-start self-stretch"></div>
