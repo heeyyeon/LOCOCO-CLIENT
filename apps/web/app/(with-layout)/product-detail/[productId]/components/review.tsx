@@ -1,4 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
+import dayjs from 'dayjs';
+import Image from 'next/image';
 import { useParams } from 'next/navigation';
 import { Avatar, SvgImgPhoto } from '@lococo/design-system';
 import { Star } from '@lococo/design-system';
@@ -20,7 +22,7 @@ export default function Review() {
 
   const reviewListData = reviewList?.imageReviews;
   return (
-    <>
+    <div className="flex flex-col">
       {reviewListData && reviewListData.length > 0 ? (
         reviewListData.map((review) => (
           <div
@@ -31,8 +33,18 @@ export default function Review() {
               <CommentBox type="positive">{review.positiveComment}</CommentBox>
               <div className="h-[0.1rem] w-full border-t border-dashed border-pink-500" />
               <CommentBox type="negative">{review.negativeComment}</CommentBox>
-
-              <div className="h-[0.1rem] w-full border-t border-dashed border-pink-500" />
+              <div className="flex gap-[1.26em]">
+                {review.images?.map((image) => (
+                  <Image
+                    key={image}
+                    src={image}
+                    alt="reviewImage"
+                    width={100}
+                    height={100}
+                    className="h-[10rem] w-[10rem] object-cover"
+                  />
+                ))}
+              </div>
               <div className="flex items-center justify-end">
                 <div className="flex items-center gap-[1.2rem]">
                   <p className="jp-title3 font-bold text-gray-800">
@@ -66,7 +78,7 @@ export default function Review() {
               </div>
 
               <p className="en-caption1 self-end text-gray-600">
-                {review.writtenTime}
+                {dayjs(review.writtenTime).format('YYYY年MM月DD日')}
               </p>
             </div>
           </div>
@@ -84,6 +96,6 @@ export default function Review() {
           </div>
         </>
       )}
-    </>
+    </div>
   );
 }
