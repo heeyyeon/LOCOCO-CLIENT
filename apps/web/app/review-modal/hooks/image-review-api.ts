@@ -64,12 +64,11 @@ export const useReviewLikeToggle = () => {
       });
     },
     onSuccess: (_, reviewId) => {
-      queryClient.invalidateQueries({
-        queryKey: REVIEW_KEYS.IMAGE_DETAIL(reviewId),
-      });
-      queryClient.invalidateQueries({
-        queryKey: REVIEW_KEYS.IMAGE_LISTS(),
-      });
+      if (typeof reviewId === 'number') {
+        queryClient.invalidateQueries({
+          queryKey: REVIEW_KEYS.IMAGE_DETAIL(reviewId),
+        });
+      }
     },
   });
 };
