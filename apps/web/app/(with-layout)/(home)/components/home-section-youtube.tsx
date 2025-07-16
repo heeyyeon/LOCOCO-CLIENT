@@ -12,7 +12,7 @@ export default async function HomeSectionYouTube() {
 
     // videos 로딩이 완료되지 않으면
     if (!videos) {
-      return <div>로딩중</div>;
+      return <div className="h-[43rem] w-[112.8rem] bg-white" />;
     }
 
     const videoUrls = videos

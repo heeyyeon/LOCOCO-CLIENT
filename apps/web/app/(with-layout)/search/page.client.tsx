@@ -235,8 +235,24 @@ export default function SearchPageClient() {
     ),
   }[selectedTab];
 
+  if (!isClient) {
+    return <div className="h-[90rem] w-screen bg-white" />;
+  }
+
+  if (isLoading) {
+    return <div className="h-[90rem] w-screen bg-white" />;
+  }
+
+  if (hasError) {
+    return (
+      <div className="h-[90rem] w-screen bg-white">
+        데이터를 불러오는 중 오류가 발생했습니다.
+      </div>
+    );
+  }
+
   return (
-    <div className="flex w-screen flex-col items-start">
+    <div className="flex min-h-screen w-full flex-col items-start">
       <div className="flex flex-col items-start self-stretch"></div>
       <SearchBreadCrumbSection
         middleCategory={middleCategory}
@@ -246,10 +262,20 @@ export default function SearchPageClient() {
         selectedTab={selectedTab}
         handleClickTab={handleClickTab}
       />
-      {!isClient && <div>Loading...</div>}
-      {isClient && isLoading && <div>데이터를 불러오는 중...</div>}
+      {!isClient && (
+        <div className="mx-auto flex h-screen w-[1366px] items-center justify-center">
+          Loading...
+        </div>
+      )}
+      {isClient && isLoading && (
+        <div className="mx-auto flex h-screen w-[1366px] items-center justify-center">
+          데이터를 불러오는 중...
+        </div>
+      )}
       {isClient && hasError && (
-        <div>데이터를 불러오는 중 오류가 발생했습니다.</div>
+        <div className="mx-auto flex h-screen w-[1366px] items-center justify-center">
+          데이터를 불러오는 중 오류가 발생했습니다.
+        </div>
       )}
       {isClient && !isLoading && !hasError && <>{tabRender}</>}
     </div>
