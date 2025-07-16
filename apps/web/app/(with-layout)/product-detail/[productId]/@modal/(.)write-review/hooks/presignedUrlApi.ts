@@ -4,7 +4,7 @@ import {
   ReviewMediaRequest,
   ReviewReceiptRequest,
 } from 'api/data-contracts';
-import { apiRequest } from '../../../../../../api/apiRequest';
+import { apiRequest } from 'app/api/apiRequest';
 
 export const getMediaPresignedUrl = async (request: ReviewMediaRequest) => {
   return await apiRequest<ApiResponseReviewMediaResponse>({
