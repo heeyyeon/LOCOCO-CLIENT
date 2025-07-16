@@ -236,7 +236,7 @@ export default function SearchPageClient() {
   }[selectedTab];
 
   return (
-    <div className="flex w-full flex-col items-start">
+    <div className="flex min-h-screen w-full flex-col items-start">
       <div className="flex flex-col items-start self-stretch"></div>
       <SearchBreadCrumbSection
         middleCategory={middleCategory}

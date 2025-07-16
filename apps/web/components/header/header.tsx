@@ -1,11 +1,12 @@
 'use client';
 
+import React from 'react';
 import { cn } from '@/lib/utils';
 import { CategoryBar, TopUtil } from './header-content';
 import { useHeaderAction } from './use-header-action';
-import { useIntersect } from './useIntersect';
+import { useIntersect } from './use-intersect';
 
-export default function Header() {
+const Header = React.memo(function Header() {
   const {
     categories,
     selectedCategory,
@@ -20,7 +21,7 @@ export default function Header() {
     handleChangeSearchValue,
     handleSearchIconClick,
   } = useHeaderAction();
-  const [observerRef, isVisible] = useIntersect(true);
+  const [observerRef, isVisible] = useIntersect(false);
 
   return (
     <>
@@ -56,4 +57,6 @@ export default function Header() {
       </div>
     </>
   );
-}
+});
+
+export default Header;
