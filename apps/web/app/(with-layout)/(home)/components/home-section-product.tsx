@@ -35,7 +35,7 @@ export default function HomeSectionProduct({
     useState<CategoryNameEng>('FACIAL_CARE');
   const router = useRouter();
 
-  const { data, isLoading, isError } = useQuery({
+  const { data, isLoading } = useQuery({
     queryKey: PRODUCT_QUERIES.CATEGORY(selectedTab, productSortType),
     queryFn: () =>
       apiRequest<ApiResponseCategoryNewProductResponse>({
@@ -64,9 +64,7 @@ export default function HomeSectionProduct({
         })}
         <div className="h-full flex-1 border-b" />
       </TabContainer>
-      {isLoading && <div>Loading...</div>}
-      {isError && <div>Error occurred</div>}
-
+      {isLoading && <div className="h-[39.8rem] w-full bg-white" />}
       <div className="grid grid-cols-4 gap-[2.4rem]">
         {products?.map((product, index) => (
           <CardProduct

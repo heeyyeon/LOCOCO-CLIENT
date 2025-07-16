@@ -28,8 +28,8 @@ const textCommentSchema = z
   .max(
     REVIEW_TEXT.MAX_LENGTH,
     REVIEW_TEXT_ERROR_MESSAGE.MAX(REVIEW_TEXT.MAX_LENGTH)
-  );
-
+  )
+  .or(z.literal(''));
 const reviewSchema = z.object({
   productOptionId: z.number().min(1, 'product option is required'),
   rating: z.number().min(1, 'rating is required').max(5),

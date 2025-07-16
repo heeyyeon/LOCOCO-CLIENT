@@ -65,7 +65,7 @@ export function TopUtilItem({ icon, label, onClick }: TopUtilItemProps) {
     </button>
   );
 }
-export function TopUtil() {
+export function TopUtil({ visible }: { visible: boolean }) {
   const router = useRouter();
   const [userToken, setUserToken] = useState(getCookie('AccessToken'));
   const [loginLabel, setLoginLabel] = useState('ログイン');
@@ -88,7 +88,12 @@ export function TopUtil() {
   };
 
   return (
-    <div className="flex w-full items-center justify-end self-stretch px-[11.9rem] py-[2rem]">
+    <div
+      className={cn(
+        'ease flex w-full items-center justify-end self-stretch overflow-hidden px-[11.9rem] py-[2rem] transition-all duration-300',
+        !visible ? 'max-h-0 py-0 opacity-0' : 'max-h-20 opacity-100'
+      )}
+    >
       <TopUtilItem
         icon={<SvgMy className="text-gray-600" size={16} />}
         label="マイページ"
@@ -144,18 +149,14 @@ export function CategoryBar({
               <Link
                 href={`/search?middleCategory=${key}&searchType=PRODUCT`}
                 key={key}
-                className="h-[6rem] w-[13.6rem] shrink-0 cursor-pointer"
+                className={cn(
+                  'jp-title2 flex h-[6rem] cursor-pointer items-center whitespace-nowrap px-[3.2rem] pb-[1rem] pt-[1rem] font-bold',
+                  isActive ? 'text-pink-500' : 'text-gray-800'
+                )}
                 onMouseEnter={() => handleSelectCategory(key)}
                 onClick={() => handleSelectCategory(key)}
               >
-                <p
-                  className={cn(
-                    'jp-title2 flex h-full items-center gap-[1rem] whitespace-nowrap px-[3.2rem] pb-[1rem] pt-[1rem] font-bold',
-                    isActive ? 'text-pink-500' : 'text-gray-800'
-                  )}
-                >
-                  {name}
-                </p>
+                {name}
               </Link>
             );
           })}

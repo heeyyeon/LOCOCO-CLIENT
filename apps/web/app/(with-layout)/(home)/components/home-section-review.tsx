@@ -43,9 +43,9 @@ export default function HomeSectionReview({
             mediaUrl={
               type === 'image' ? review.reviewImage : review.reviewVideo
             }
-            handleCardClick={() =>
-              router.push(`/review-modal/${review.reviewId}/${type}`)
-            }
+            handleCardClick={() => {
+              // router.push(`/review-modal/${review.reviewId}/${type}`)
+            }}
           >
             <Button
               color="primary"
@@ -53,7 +53,7 @@ export default function HomeSectionReview({
               size="lg"
               onClick={(e) => {
                 e.stopPropagation();
-                // router.push(`/product-detail/${review.productId}`);
+                router.push(`/product-detail/${review.productId}`);
               }}
             >
               <div className="jp-title3 flex items-center gap-[0.8rem] font-bold">
