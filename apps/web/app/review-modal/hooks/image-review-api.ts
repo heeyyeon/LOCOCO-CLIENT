@@ -23,7 +23,9 @@ export const useImageReviews = () => {
   });
 };
 
-export const useAllImageReviewDetails = (reviews: any[] | undefined) => {
+export const useAllImageReviewDetails = (
+  reviews: { reviewId: number }[] | undefined
+) => {
   return useQueries({
     queries: (reviews || []).map((review) => ({
       queryKey: REVIEW_KEYS.IMAGE_DETAIL(review.reviewId),
