@@ -1,9 +1,6 @@
 import { useMutation } from '@tanstack/react-query';
-import {
-  ReviewRequest,
-  ApiResponseReviewResponse,
-} from '../../../../../../api/data-contracts';
-import { apiRequest } from '../../../../../api/apiRequest';
+import { ApiResponseReviewResponse, ReviewRequest } from 'api/data-contracts';
+import { apiRequest } from 'app/api/apiRequest';
 
 export const usePostReview = (onSuccess?: () => void) => {
   return useMutation({
