@@ -1,5 +1,6 @@
 'use client';
 
+import ProductBreadCrumbSection from './components/product-bread-crumb-section';
 import ProductDetailSection from './components/product-detail-section';
 import Review from './components/review';
 import StarRating from './components/star-rating';
@@ -16,9 +17,14 @@ export default function ClientPage({
   youtubeListData,
 }: ClientPageProps) {
   return (
-    <div className="flex-col lg:flex lg:justify-center">
-      <div className="flex w-[133.6rem] items-center">
-        <div className="flex w-full flex-col gap-[10rem] px-[11.9rem]">
+    <div className="flex w-screen flex-col lg:flex lg:justify-center">
+      <ProductBreadCrumbSection
+        middleCategory={productData.middleCategory}
+        subCategory={productData.subCategory}
+        productName={productData.productName}
+      />
+      <div className="mx-auto flex w-[133.6rem] items-center">
+        <div className="flex w-full flex-col gap-[10rem] px-[11.9rem] pb-[12rem] pt-[3.2rem]">
           <ProductDetailSection
             imageUrls={productData.imageUrls}
             productDetail={productData.productDetail}
