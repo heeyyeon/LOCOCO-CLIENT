@@ -153,7 +153,7 @@ export default function ProductInfo({
             href={`/product-detail/${params.productId}/write-review`}
             className="jp-title2"
           >
-            <SvgWrite /> カートに入れる
+            <SvgWrite /> レビューを書く
           </Link>
         </Button>
       </div>
