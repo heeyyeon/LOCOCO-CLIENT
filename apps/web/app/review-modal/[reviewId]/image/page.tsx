@@ -82,6 +82,10 @@ export default function Page() {
 
   // 슬라이더에 넘길 리뷰 데이터 구성
   const allReviews: ReviewDetail[] = reorderedReviews.map((review) => {
+    if (!review) {
+      throw new Error('리뷰 데이터가 없습니다.');
+    }
+
     const detail = detailMap.get(review.reviewId);
 
     if (!detail) {
