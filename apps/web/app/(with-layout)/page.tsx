@@ -11,7 +11,7 @@ export default async function Main() {
   const reviewImageData = await getImageReviews();
 
   return (
-    <main className="flex w-full flex-col">
+    <div className="flex w-full flex-col">
       <HomeBanner />
       <div className="mx-auto flex w-[112.8rem] flex-col">
         <HomeUpdateDate />
@@ -43,6 +43,6 @@ export default async function Main() {
           <HomeSection.YouTube />
         </HomeSection>
       </div>
-    </main>
+    </div>
   );
 }

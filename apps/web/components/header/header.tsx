@@ -6,7 +6,7 @@ import { CategoryBar, TopUtil } from './header-content';
 import { useHeaderAction } from './use-header-action';
 import { useIntersect } from './use-intersect';
 
-const Header = React.memo(function Header() {
+const header = React.memo(function Header() {
   const {
     categories,
     selectedCategory,
@@ -59,4 +59,4 @@ const Header = React.memo(function Header() {
   );
 });
 
-export default Header;
+export default header;

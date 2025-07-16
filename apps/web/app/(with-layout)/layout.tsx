@@ -7,7 +7,7 @@ export default function WithLayoutLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="mx-auto flex min-h-screen w-screen min-w-[1366px] flex-col">
+    <div className="mx-auto flex min-h-screen w-screen flex-col">
       <Header />
       <div className="flex w-full flex-col">{children}</div>
       <Footer />
