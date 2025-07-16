@@ -54,6 +54,11 @@ export default function Page() {
     return <div>리뷰를 찾을 수 없습니다.</div>;
   }
 
+  // 모든 상세 정보가 로딩 완료될 때까지 대기
+  if (detailQueries.some((q) => q.isLoading)) {
+    return <div>상세 정보 로딩 중...</div>;
+  }
+
   // 상세 정보를 ID로 매핑
   const detailMap = new Map<number, ImageReviewDetailResponse>();
   reviews.forEach((review, index) => {
@@ -70,47 +75,33 @@ export default function Page() {
   const allReviews: ReviewDetail[] = reviews.map((review) => {
     const detail = detailMap.get(review.reviewId);
 
-    if (detail) {
-      // 상세 정보가 있는 경우
-      return {
-        reviewId: detail.reviewId,
-        writtenTime: formatDateToJapanese(detail.writtenTime),
-        receiptUploaded: detail.receiptUploaded,
-        positiveComment: detail.positiveComment,
-        negativeComment: detail.negativeComment,
-        authorName: detail.authorName,
-        profileImageUrl: detail.profileImageUrl ?? null,
-        rating: detail.rating,
-        option: detail.option || '',
-        likeCount: detail.likeCount,
-        brandName: detail.brandName,
-        productName: detail.productName,
-        productImageUrl: detail.productImageUrl,
-        mediaList: detail.images.map((url: string, index: number) => ({
-          id: index,
-          type: 'image' as const,
-          url,
-        })),
-      };
-    } else {
-      // 상세 정보가 아직 로딩 중이거나 실패한 경우 (캐싱된 기본 정보 사용)
-      return {
-        reviewId: review.reviewId,
-        writtenTime: formatDateToJapanese(new Date().toISOString()),
-        receiptUploaded: false,
-        positiveComment: '',
-        negativeComment: '',
-        authorName: '',
-        profileImageUrl: null,
-        rating: 0,
-        option: '',
-        likeCount: review.likeCount,
-        brandName: review.brandName,
-        productName: review.productName,
-        productImageUrl: review.reviewImage,
-        mediaList: [{ id: 0, type: 'image' as const, url: review.reviewImage }],
-      };
+    if (!detail) {
+      throw new Error(
+        `리뷰 ${review.reviewId}의 상세 정보를 찾을 수 없습니다.`
+      );
     }
+
+    // 상세 정보가 있는 경우
+    return {
+      reviewId: detail.reviewId,
+      writtenTime: formatDateToJapanese(detail.writtenTime),
+      receiptUploaded: detail.receiptUploaded,
+      positiveComment: detail.positiveComment,
+      negativeComment: detail.negativeComment,
+      authorName: detail.authorName,
+      profileImageUrl: detail.profileImageUrl ?? null,
+      rating: detail.rating,
+      option: detail.option || '',
+      likeCount: detail.likeCount,
+      brandName: detail.brandName,
+      productName: detail.productName,
+      productImageUrl: detail.productImageUrl,
+      mediaList: detail.images.map((url: string, index: number) => ({
+        id: index,
+        type: 'image' as const,
+        url,
+      })),
+    };
   });
 
   return (
