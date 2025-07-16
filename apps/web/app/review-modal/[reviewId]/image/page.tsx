@@ -54,6 +54,15 @@ export default function Page() {
     return <div>리뷰를 찾을 수 없습니다.</div>;
   }
 
+  // 클릭한 리뷰를 첫 번째로, 나머지는 순서대로 배치
+  const reorderedReviews = [];
+  reorderedReviews.push(reviews[currentIndex]);
+  for (let i = 0; i < reviews.length; i++) {
+    if (i !== currentIndex) {
+      reorderedReviews.push(reviews[i]);
+    }
+  }
+
   // 모든 상세 정보가 로딩 완료될 때까지 대기
   if (detailQueries.some((q) => q.isLoading)) {
     return <div>상세 정보 로딩 중...</div>;
@@ -72,7 +81,7 @@ export default function Page() {
   });
 
   // 슬라이더에 넘길 리뷰 데이터 구성
-  const allReviews: ReviewDetail[] = reviews.map((review) => {
+  const allReviews: ReviewDetail[] = reorderedReviews.map((review) => {
     const detail = detailMap.get(review.reviewId);
 
     if (!detail) {
@@ -81,7 +90,6 @@ export default function Page() {
       );
     }
 
-    // 상세 정보가 있는 경우
     return {
       reviewId: detail.reviewId,
       writtenTime: formatDateToJapanese(detail.writtenTime),
