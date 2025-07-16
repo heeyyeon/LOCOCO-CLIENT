@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
   Avatar,
   ReactionToggle,
@@ -18,6 +18,7 @@ interface MediaInfoProps {
   };
   date: string;
   likeCount: number;
+  isLiked?: boolean; // 좋아요 상태 추가
 }
 
 export default function MediaInfo({
@@ -25,9 +26,15 @@ export default function MediaInfo({
   user,
   date,
   likeCount,
+  isLiked: initialIsLiked = false,
 }: MediaInfoProps) {
-  const [isLiked, setIsLiked] = useState(false);
+  const [isLiked, setIsLiked] = useState(initialIsLiked);
   const likeToggle = useReviewLikeToggle();
+
+  // 초기값 동기화
+  useEffect(() => {
+    setIsLiked(initialIsLiked);
+  }, [initialIsLiked]);
 
   return (
     <div className="absolute bottom-0 left-0 z-10 flex h-[16rem] w-full items-center justify-between rounded-bl-xl bg-gradient-to-t from-black/60 to-transparent p-[1.6rem]">
