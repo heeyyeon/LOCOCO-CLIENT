@@ -19,7 +19,6 @@ export default function ReviewModalSwiper({
       direction="vertical"
       slidesPerView={1.2}
       centeredSlides
-      spaceBetween={-45}
       className="inset-0 h-screen w-screen bg-black/70"
     >
       {reviews.map((review) => (
