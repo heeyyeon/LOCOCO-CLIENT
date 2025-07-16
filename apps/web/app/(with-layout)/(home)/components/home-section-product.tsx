@@ -14,7 +14,7 @@ type ProductSortType = 'new' | 'popular';
 
 interface HomeSectionProductProps {
   productSortType: ProductSortType;
-  authStatus?: string;
+  authStatus?: boolean;
 }
 
 export const PRODUCT_QUERIES = {
