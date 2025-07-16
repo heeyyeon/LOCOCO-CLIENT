@@ -90,8 +90,8 @@ export function TopUtil({ visible }: { visible: boolean }) {
   return (
     <div
       className={cn(
-        'flex w-full items-center justify-end self-stretch px-[11.9rem] py-[2rem]',
-        !visible && 'hidden'
+        'ease flex w-full items-center justify-end self-stretch overflow-hidden px-[11.9rem] py-[2rem] transition-all duration-300',
+        !visible ? 'max-h-0 py-0 opacity-0' : 'max-h-20 opacity-100'
       )}
     >
       <TopUtilItem
