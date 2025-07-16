@@ -36,6 +36,15 @@ export const metadata: Metadata = {
     'Lips',
     '@cosme',
   ],
+  openGraph: {
+    type: 'website',
+    title: 'Lococo',
+    description: 'Kコスメと出会う 一番の近道',
+    images: '/images/home-banner.png',
+    url: 'https://lococo.beauty',
+    siteName: 'Lococo',
+    locale: 'ja_JP',
+  },
 };
 
 export default function RootLayout({
