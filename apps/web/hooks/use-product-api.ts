@@ -1,6 +1,8 @@
 import { useQuery } from '@tanstack/react-query';
-import { productApi } from '../api/client';
+import { apiRequest } from 'app/api/apiRequest';
 import { PRODUCT_KEYS, REVIEW_KEYS } from '../constants/query-key';
+import { ProductItem } from '../types/product';
+import { ReviewItem } from '../types/review';
 
 // 검색바로 검색할 때 사용하는 쿼리
 export const useProductSearch = (
@@ -12,16 +14,17 @@ export const useProductSearch = (
   return useQuery({
     queryKey: PRODUCT_KEYS.PRODUCT_LIST({ page, size }),
     queryFn: () =>
-      productApi.search({
-        keyword,
-        searchType: 'PRODUCT',
-        page,
-        size,
+      apiRequest<ProductItem[]>({
+        endPoint: '/api/products/search',
+        method: 'GET',
+        params: {
+          keyword,
+          searchType: 'PRODUCT',
+          page: page.toString(),
+          size: size.toString(),
+        },
       }),
     enabled: enabled && !!keyword.trim(),
-    staleTime: 5 * 60 * 1000,
-    retry: 1, // 재시도 횟수를 1회로 제한
-    retryDelay: 1000, // 재시도 간격 1초
   });
 };
 
@@ -35,12 +38,16 @@ export const useReviewVideoSearch = (
   return useQuery({
     queryKey: REVIEW_KEYS.VIDEO_LIST({ page, size }),
     queryFn: () =>
-      productApi.search({
-        keyword,
-        searchType: 'REVIEW',
-        mediaType: 'VIDEO',
-        page,
-        size,
+      apiRequest<ReviewItem[]>({
+        endPoint: '/api/products/search',
+        method: 'GET',
+        params: {
+          keyword,
+          searchType: 'REVIEW',
+          mediaType: 'VIDEO',
+          page: page.toString(),
+          size: size.toString(),
+        },
       }),
     enabled: enabled && !!keyword.trim(),
     staleTime: 5 * 60 * 1000,
@@ -59,12 +66,16 @@ export const useReviewImageSearch = (
   return useQuery({
     queryKey: REVIEW_KEYS.IMAGE_LIST({ page, size }),
     queryFn: () =>
-      productApi.search({
-        keyword,
-        searchType: 'REVIEW',
-        mediaType: 'IMAGE',
-        page,
-        size,
+      apiRequest<ReviewItem[]>({
+        endPoint: '/api/products/search',
+        method: 'GET',
+        params: {
+          keyword,
+          searchType: 'REVIEW',
+          mediaType: 'IMAGE',
+          page: page.toString(),
+          size: size.toString(),
+        },
       }),
     enabled: enabled && !!keyword.trim(),
     staleTime: 5 * 60 * 1000,
@@ -84,12 +95,16 @@ export const useCategoryProductSearch = (
   return useQuery({
     queryKey: PRODUCT_KEYS.PRODUCT_LIST({ page, size }),
     queryFn: () =>
-      productApi.searchProductsByCategory({
-        middleCategory: middleCategory as any,
-        subCategory: subCategory as any,
-        searchType: 'PRODUCT',
-        page,
-        size,
+      apiRequest<ProductItem[]>({
+        endPoint: '/api/products/categories/search',
+        method: 'GET',
+        params: {
+          middleCategory,
+          ...(subCategory && { subCategory }),
+          searchType: 'PRODUCT',
+          page: page.toString(),
+          size: size.toString(),
+        },
       }),
     enabled: enabled && !!middleCategory,
     staleTime: 5 * 60 * 1000,
@@ -109,13 +124,17 @@ export const useCategoryReviewVideoSearch = (
   return useQuery({
     queryKey: REVIEW_KEYS.VIDEO_LIST({ page, size }),
     queryFn: () =>
-      productApi.searchProductsByCategory({
-        middleCategory: middleCategory as any,
-        subCategory: subCategory as any,
-        searchType: 'REVIEW',
-        mediaType: 'VIDEO',
-        page,
-        size,
+      apiRequest<ReviewItem[]>({
+        endPoint: '/api/products/categories/search',
+        method: 'GET',
+        params: {
+          middleCategory,
+          ...(subCategory && { subCategory }),
+          searchType: 'REVIEW',
+          mediaType: 'VIDEO',
+          page: page.toString(),
+          size: size.toString(),
+        },
       }),
     enabled: enabled && !!middleCategory,
     staleTime: 5 * 60 * 1000,
@@ -135,13 +154,17 @@ export const useCategoryReviewImageSearch = (
   return useQuery({
     queryKey: REVIEW_KEYS.IMAGE_LIST({ page, size }),
     queryFn: () =>
-      productApi.searchProductsByCategory({
-        middleCategory: middleCategory as any,
-        subCategory: subCategory as any,
-        searchType: 'REVIEW',
-        mediaType: 'IMAGE',
-        page,
-        size,
+      apiRequest<ReviewItem[]>({
+        endPoint: '/api/products/categories/search',
+        method: 'GET',
+        params: {
+          middleCategory,
+          ...(subCategory && { subCategory }),
+          searchType: 'REVIEW',
+          mediaType: 'IMAGE',
+          page: page.toString(),
+          size: size.toString(),
+        },
       }),
     enabled: enabled && !!middleCategory,
     staleTime: 5 * 60 * 1000,
