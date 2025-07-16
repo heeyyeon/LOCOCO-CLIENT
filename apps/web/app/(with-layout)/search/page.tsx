@@ -3,7 +3,7 @@ import SearchPageClient from './page.client';
 
 export default function Page() {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<div className="h-full w-full bg-white" />}>
       <SearchPageClient />
     </Suspense>
   );

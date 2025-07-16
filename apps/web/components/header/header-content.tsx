@@ -149,18 +149,14 @@ export function CategoryBar({
               <Link
                 href={`/search?middleCategory=${key}&searchType=PRODUCT`}
                 key={key}
-                className="h-[6rem] w-[13.6rem] shrink-0 cursor-pointer"
+                className={cn(
+                  'jp-title2 flex h-[6rem] cursor-pointer items-center whitespace-nowrap px-[3.2rem] pb-[1rem] pt-[1rem] font-bold',
+                  isActive ? 'text-pink-500' : 'text-gray-800'
+                )}
                 onMouseEnter={() => handleSelectCategory(key)}
                 onClick={() => handleSelectCategory(key)}
               >
-                <p
-                  className={cn(
-                    'jp-title2 flex h-full items-center gap-[1rem] whitespace-nowrap px-[3.2rem] pb-[1rem] pt-[1rem] font-bold',
-                    isActive ? 'text-pink-500' : 'text-gray-800'
-                  )}
-                >
-                  {name}
-                </p>
+                {name}
               </Link>
             );
           })}

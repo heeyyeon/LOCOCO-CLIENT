@@ -1,3 +1,4 @@
+import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google';
 import type { Metadata } from 'next';
 import { Noto_Sans_JP } from 'next/font/google';
 import localFont from 'next/font/local';
@@ -34,6 +35,8 @@ export default function RootLayout({
         className={`${notoSansJP.variable} ${pretendard.variable} min-h-screen lg:flex lg:justify-center`}
       >
         <Providers>{children}</Providers>
+        <GoogleAnalytics gaId="G-GT92YY193R" />
+        <GoogleTagManager gtmId="GTM-5QMBC6SP" />
       </body>
     </html>
   );
