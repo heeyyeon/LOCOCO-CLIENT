@@ -31,9 +31,9 @@ export default function Review() {
             className="flex h-fit w-full justify-between gap-[2.4rem] border-b-2 border-pink-500 py-[2.4rem]"
           >
             <div className="flex w-[84rem] flex-col gap-[2.4rem]">
-              <CommentBox type="positive">{review.positiveComment}</CommentBox>
+              <CommentBox type="positive" text={review.positiveComment} />
               <div className="h-[0.1rem] w-full border-t border-dashed border-pink-500" />
-              <CommentBox type="negative">{review.negativeComment}</CommentBox>
+              <CommentBox type="negative" text={review.negativeComment} />
               <div className="flex gap-[1.26em]">
                 {review.images?.map((image) => (
                   <Image
