@@ -99,9 +99,9 @@ export default function ProductDetailMainCarousel({
               <Image
                 src={imageUrl}
                 alt="swiper main"
-                width={600}
-                height={400}
-                className="h-auto w-full object-cover"
+                width={468}
+                height={468}
+                className="h-full w-full object-contain"
                 priority={idx === 0 ? true : false}
               />
             </SwiperSlide>
