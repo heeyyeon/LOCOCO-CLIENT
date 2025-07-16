@@ -12,7 +12,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { convertToEmbedUrl, validateYoutubeVideoList } from 'utils/youtube';
 import { useState } from 'react';
 import { IconButton } from '@lococo/design-system';
-import { SvgArrowRight } from '@/icons';
+import { SvgArrowRight, SvgImgVideo } from '@/icons';
 import { SvgKoreanReview } from '@/icons';
 import { YoutubeListData } from '../types';
 import './youtube-carousel.css';
@@ -110,7 +110,12 @@ export default function YoutubeCarousel({
             )}
           </>
         ) : (
-          <div> Empty</div>
+          <div className="flex h-[31.1rem] w-full flex-col items-center justify-center gap-[2.4rem]">
+            <SvgImgVideo size={100} className="fill-pink-300" />
+            <p className="jp-body1 font-[700]">
+              登録された韓国ユーチューバーレビューはありません。
+            </p>
+          </div>
         )}
       </div>
     </div>

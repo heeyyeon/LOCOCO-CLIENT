@@ -1,6 +1,11 @@
+'use client';
+
 import type { CategoryOptionEng, CategoryNameEng } from 'types/category';
 import { CategoryMetadata, getOptionLabel } from 'utils/category';
+import { deleteCookie, getCookie } from 'utils/client-cookie';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import {
   SvgClose,
   SvgDivider,
@@ -30,6 +35,9 @@ interface CategoryBarProps {
   activeMenu: CategoryMetadata | null;
   selectedOption: CategoryOptionEng | null;
   handleSelectOption: (option: CategoryOptionEng) => void;
+  searchValue: string;
+  handleChangeSearchValue: (text: string) => void;
+  handleSearchIconClick: () => void;
 }
 
 interface OptionBarProps {
@@ -57,10 +65,35 @@ export function TopUtilItem({ icon, label, onClick }: TopUtilItemProps) {
     </button>
   );
 }
+export function TopUtil({ visible }: { visible: boolean }) {
+  const router = useRouter();
+  const [userToken, setUserToken] = useState(getCookie('AccessToken'));
+  const [loginLabel, setLoginLabel] = useState('ログイン');
 
-export function TopUtil() {
+  useEffect(() => {
+    if (userToken) {
+      setLoginLabel('ログアウト');
+    } else {
+      setLoginLabel('ログイン');
+    }
+  }, [userToken]);
+
+  const handleAuthClick = () => {
+    if (userToken) {
+      deleteCookie('AccessToken');
+      setUserToken(null);
+    } else {
+      router.push('/login');
+    }
+  };
+
   return (
-    <div className="flex w-full items-center justify-end self-stretch px-[11.9rem] py-[2rem]">
+    <div
+      className={cn(
+        'ease flex w-full items-center justify-end self-stretch overflow-hidden px-[11.9rem] py-[2rem] transition-all duration-300',
+        !visible ? 'max-h-0 py-0 opacity-0' : 'max-h-20 opacity-100'
+      )}
+    >
       <TopUtilItem
         icon={<SvgMy className="text-gray-600" size={16} />}
         label="マイページ"
@@ -73,13 +106,13 @@ export function TopUtil() {
       />
       <TopUtilItem
         icon={<SvgHistory className="text-gray-600" size={16} />}
-        label="最近見た商品"
+        label="最近見た商품"
         onClick={() => console.log('내역 클릭')}
       />
       <TopUtilItem
         icon={<SvgLogin className="text-gray-600" size={16} />}
-        label="ログイン"
-        onClick={() => console.log('로그인 클릭')}
+        label={loginLabel}
+        onClick={handleAuthClick}
       />
     </div>
   );
@@ -95,6 +128,9 @@ export function CategoryBar({
   activeMenu,
   selectedOption,
   handleSelectOption,
+  searchValue,
+  handleChangeSearchValue,
+  handleSearchIconClick,
 }: CategoryBarProps) {
   return (
     <div
@@ -113,18 +149,14 @@ export function CategoryBar({
               <Link
                 href={`/search?middleCategory=${key}&searchType=PRODUCT`}
                 key={key}
-                className="h-[6rem] w-[13.6rem] shrink-0 cursor-pointer"
+                className={cn(
+                  'jp-title2 flex h-[6rem] cursor-pointer items-center whitespace-nowrap px-[3.2rem] pb-[1rem] pt-[1rem] font-bold',
+                  isActive ? 'text-pink-500' : 'text-gray-800'
+                )}
                 onMouseEnter={() => handleSelectCategory(key)}
                 onClick={() => handleSelectCategory(key)}
               >
-                <p
-                  className={cn(
-                    'jp-title2 flex h-full items-center gap-[1rem] whitespace-nowrap px-[3.2rem] pb-[1rem] pt-[1rem] font-bold',
-                    isActive ? 'text-pink-500' : 'text-gray-800'
-                  )}
-                >
-                  {name}
-                </p>
+                {name}
               </Link>
             );
           })}
@@ -136,6 +168,13 @@ export function CategoryBar({
           {isSearching ? <SvgClose /> : <SvgSearch />}
         </div>
       </div>
+      {isSearching && (
+        <SearchBar
+          searchValue={searchValue}
+          handleChangeSearchValue={handleChangeSearchValue}
+          handleSearchIconClick={handleSearchIconClick}
+        />
+      )}
       {!isSearching && activeMenu && (
         <OptionBar
           options={activeMenu.options}
@@ -162,13 +201,19 @@ export function OptionBar({
           const isActive = option === selectedOption;
           const isLast = index === options.length - 1;
           const label = getOptionLabel(selectedCategoryKey, option);
+          let url = '';
+          if (option === 'ALL') {
+            url = `/search?middleCategory=${selectedCategoryKey}&searchType=PRODUCT`;
+          } else {
+            url = `/search?middleCategory=${selectedCategoryKey}&subCategory=${option}&searchType=PRODUCT`;
+          }
           return (
             <div
               key={`option-${option}`}
               className="flex h-[3.2rem] items-center justify-center gap-[1rem]"
             >
               <Link
-                href={`/search?middleCategory=${selectedCategoryKey}&subCategory=${option}&searchType=PRODUCT`}
+                href={url}
                 className={cn(
                   'jp-body2 cursor-pointer whitespace-nowrap px-[2.4rem] py-[1rem] hover:text-pink-500',
                   isActive ? 'font-bold text-pink-500' : 'text-gray-600'
@@ -191,29 +236,42 @@ export function SearchBar({
   handleChangeSearchValue,
   handleSearchIconClick,
 }: SearchBarProps) {
+  const router = useRouter();
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter' && searchValue.trim()) {
+      router.push(
+        `/search?keyword=${encodeURIComponent(searchValue)}&searchType=PRODUCT`
+      );
+      handleSearchIconClick();
+    }
+  };
   return (
-    <div className="flex w-full items-center gap-[0.8rem] border-b border-pink-500 bg-white">
-      <div className="mx-auto flex w-full items-center gap-[0.8rem] px-[11.9rem]">
-        <Input
-          type="search"
-          value={searchValue}
-          onChange={(e) => handleChangeSearchValue(e.target.value)}
-          placeholder="ラネージュ"
-          className="jp-title2 w-full text-right font-bold leading-[3rem] text-gray-800"
-        />
-        {searchValue.trim() ? (
-          <Link
-            href={`/search?keyword=${encodeURIComponent(searchValue)}&searchType=PRODUCT`}
-            className="flex h-[6.4rem] w-[6.4rem] shrink-0 cursor-pointer items-center justify-center p-[1.4rem]"
-            onClick={handleSearchIconClick}
-          >
-            <SvgSearch className="cursor-pointer" />
-          </Link>
-        ) : (
-          <div className="flex h-[6.4rem] w-[6.4rem] shrink-0 cursor-pointer items-center justify-center p-[1.4rem]">
-            <SvgSearch className="cursor-pointer" />
-          </div>
-        )}
+    <div className="absolute left-0 right-0 top-[calc(100%+1px)] z-50 mx-auto flex h-[5.2rem] w-full min-w-[1366px] items-center border-b border-solid border-pink-500 bg-white">
+      <div className="mx-auto flex h-[6.4rem] w-[1366px] items-center">
+        <div className="flex h-[6.4rem] w-[1366px] items-center gap-[2rem] px-[11.9rem]">
+          <Input
+            type="search"
+            value={searchValue}
+            onChange={(e) => handleChangeSearchValue(e.target.value)}
+            onKeyDown={handleKeyDown}
+            placeholder="ラネージュ"
+            className="jp-title2 w-full text-right font-bold leading-[3rem] text-gray-800"
+          />
+          {searchValue.trim() ? (
+            <Link
+              href={`/search?keyword=${encodeURIComponent(searchValue)}&searchType=PRODUCT`}
+              className="flex h-[6.4rem] w-[6.4rem] shrink-0 cursor-pointer items-center justify-center p-[1.4rem]"
+              onClick={handleSearchIconClick}
+            >
+              <SvgSearch className="cursor-pointer" />
+            </Link>
+          ) : (
+            <div className="flex h-[6.4rem] w-[6.4rem] shrink-0 cursor-pointer items-center justify-center p-[1.4rem]">
+              <SvgSearch className="cursor-pointer" />
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
