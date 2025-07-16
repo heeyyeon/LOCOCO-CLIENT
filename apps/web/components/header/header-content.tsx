@@ -65,7 +65,7 @@ export function TopUtilItem({ icon, label, onClick }: TopUtilItemProps) {
     </button>
   );
 }
-export function TopUtil() {
+export function TopUtil({ visible }: { visible: boolean }) {
   const router = useRouter();
   const [userToken, setUserToken] = useState(getCookie('AccessToken'));
   const [loginLabel, setLoginLabel] = useState('ログイン');
@@ -88,7 +88,12 @@ export function TopUtil() {
   };
 
   return (
-    <div className="flex w-full items-center justify-end self-stretch px-[11.9rem] py-[2rem]">
+    <div
+      className={cn(
+        'ease flex w-full items-center justify-end self-stretch overflow-hidden px-[11.9rem] py-[2rem] transition-all duration-300',
+        !visible ? 'max-h-0 py-0 opacity-0' : 'max-h-20 opacity-100'
+      )}
+    >
       <TopUtilItem
         icon={<SvgMy className="text-gray-600" size={16} />}
         label="マイページ"
