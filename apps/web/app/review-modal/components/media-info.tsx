@@ -18,7 +18,7 @@ interface MediaInfoProps {
   };
   date: string;
   likeCount: number;
-  isLiked?: boolean; // 좋아요 상태 추가
+  isLiked?: boolean;
 }
 
 export default function MediaInfo({
@@ -31,7 +31,6 @@ export default function MediaInfo({
   const [isLiked, setIsLiked] = useState(initialIsLiked);
   const likeToggle = useReviewLikeToggle();
 
-  // 초기값 동기화
   useEffect(() => {
     setIsLiked(initialIsLiked);
   }, [initialIsLiked]);

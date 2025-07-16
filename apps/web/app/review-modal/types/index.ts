@@ -9,6 +9,7 @@ export interface ReviewDetailBase {
   rating: number;
   option: string;
   likeCount: number;
+  isLiked: boolean;
   brandName: string;
   productName: string;
   productImageUrl: string;

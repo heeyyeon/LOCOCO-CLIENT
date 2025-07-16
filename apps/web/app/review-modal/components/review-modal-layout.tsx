@@ -15,6 +15,7 @@ export interface ReviewModallayoutProps {
   mediaList: Media[];
   user: User;
   likeCount: number;
+  isLiked: boolean;
   brandName: string;
   productName: string;
   productOption: string;
@@ -32,6 +33,7 @@ export default function ReviewModallayout({
   mediaList,
   user,
   likeCount,
+  isLiked,
   brandName,
   productName,
   productOption,
@@ -53,6 +55,7 @@ export default function ReviewModallayout({
             user={user}
             date={user.uploadAt}
             likeCount={likeCount}
+            isLiked={isLiked}
           />
         </div>
         {/* 우측: 리뷰 상세 */}
