@@ -18,7 +18,6 @@ export const useImageReviews = () => {
   });
 };
 
-// 특정 이미지 리뷰 상세 조회
 export const useImageReviewDetail = (reviewId: number) => {
   return useQuery({
     queryKey: REVIEW_KEYS.IMAGE_DETAIL(reviewId),
@@ -32,7 +31,6 @@ export const useImageReviewDetail = (reviewId: number) => {
   });
 };
 
-// 리뷰 좋아요 토글
 export const useReviewLikeToggle = () => {
   const queryClient = useQueryClient();
 
