@@ -12,5 +12,6 @@ export interface ProductItem {
   rating: number;
   reviewCount: number;
   imageUrl?: string;
+  authStatus?: string;
   productOptions?: ProductOption[];
 }

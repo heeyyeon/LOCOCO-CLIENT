@@ -2,6 +2,7 @@ import { SvgJapaneseReview, SvgKoreanReview } from '@/icons';
 import HomeBanner from './(home)/components/home-banner';
 import HomeSection from './(home)/components/home-section';
 import HomeUpdateDate from './(home)/components/home-update-date';
+import { getAuthStatus } from './(home)/utils/getAuthStatus';
 import {
   emptyReviewData,
   getImageReviews,
@@ -9,7 +10,7 @@ import {
 
 export default async function Main() {
   const reviewImageData = await getImageReviews();
-
+  const authStatus = await getAuthStatus();
   return (
     <div className="flex w-full flex-col">
       <HomeBanner />
@@ -17,11 +18,17 @@ export default async function Main() {
         <HomeUpdateDate />
         <HomeSection className="mt-[6rem]">
           <HomeSection.Header>レビュー数が多い商品</HomeSection.Header>
-          <HomeSection.Product productSortType="new" />
+          <HomeSection.Product
+            productSortType="new"
+            authStatus={authStatus?.userToken}
+          />
         </HomeSection>
         <HomeSection>
           <HomeSection.Header>新作アイテム</HomeSection.Header>
-          <HomeSection.Product productSortType="popular" />
+          <HomeSection.Product
+            authStatus={authStatus?.userToken}
+            productSortType="popular"
+          />
         </HomeSection>
         <HomeSection>
           <HomeSection.Header>
