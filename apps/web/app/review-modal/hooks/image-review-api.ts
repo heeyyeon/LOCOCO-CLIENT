@@ -1,4 +1,9 @@
-import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import {
+  useQuery,
+  useMutation,
+  useQueryClient,
+  useQueries,
+} from '@tanstack/react-query';
 import { apiRequest } from 'app/api/apiRequest';
 import {
   ApiResponseImageReviewDetailResponse,
@@ -15,6 +20,21 @@ export const useImageReviews = () => {
         method: 'GET',
       });
     },
+  });
+};
+
+export const useAllImageReviewDetails = (reviews: any[] | undefined) => {
+  return useQueries({
+    queries: (reviews || []).map((review) => ({
+      queryKey: REVIEW_KEYS.IMAGE_DETAIL(review.reviewId),
+      queryFn: async (): Promise<ApiResponseImageReviewDetailResponse> => {
+        return apiRequest({
+          endPoint: `/api/reviews/details/${review.reviewId}/image`,
+          method: 'GET',
+        });
+      },
+      enabled: !!reviews && reviews.length > 0,
+    })),
   });
 };
 
