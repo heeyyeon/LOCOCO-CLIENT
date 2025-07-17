@@ -17,8 +17,6 @@ import {
   mediaFilesValidator,
 } from './useFileUploader';
 
-// 경로는 실제 위치에 맞게 조정
-
 const textCommentSchema = z
   .string()
   .min(
@@ -28,10 +26,9 @@ const textCommentSchema = z
   .max(
     REVIEW_TEXT.MAX_LENGTH,
     REVIEW_TEXT_ERROR_MESSAGE.MAX(REVIEW_TEXT.MAX_LENGTH)
-  )
-  .or(z.literal(''));
+  );
 const reviewSchema = z.object({
-  productOptionId: z.number().min(1, 'product option is required'),
+  productOptionId: z.number().optional(),
   rating: z.number().min(1, 'rating is required').max(5),
   positiveComment: textCommentSchema,
   negativeComment: textCommentSchema,
@@ -41,7 +38,7 @@ const reviewSchema = z.object({
 
 type ReviewFormData = z.infer<typeof reviewSchema>;
 
-export const useReviewInput = (onSuccess?: () => void) => {
+export const useReviewInput = (productId?: number, onSuccess?: () => void) => {
   const postReviewMutation = usePostReview(onSuccess);
 
   const {
@@ -53,7 +50,7 @@ export const useReviewInput = (onSuccess?: () => void) => {
   } = useForm<ReviewFormData>({
     resolver: zodResolver(reviewSchema),
     defaultValues: {
-      productOptionId: 0,
+      productOptionId: undefined,
       rating: 0,
       positiveComment: '',
       negativeComment: '',
@@ -95,9 +92,6 @@ export const useReviewInput = (onSuccess?: () => void) => {
 
   const onSubmit = async (formData: ReviewFormData) => {
     try {
-      //TODO: 실제 productId로 교체 필요
-      const productId = 17;
-
       // 1. 미디어 파일 presigned URL 요청
       let mediaUrls: string[] = [];
       if (formData.mediaFiles && formData.mediaFiles.length > 0) {
@@ -132,8 +126,7 @@ export const useReviewInput = (onSuccess?: () => void) => {
 
       // 4. 리뷰 제출
       const reviewRequest: ReviewRequest = {
-        //TODO: 실제 producOptiontId로 교체 필요
-        productOptionId: 1,
+        productOptionId: formData.productOptionId,
         rating: formData.rating,
         positiveComment: formData.positiveComment,
         negativeComment: formData.negativeComment,
@@ -141,10 +134,12 @@ export const useReviewInput = (onSuccess?: () => void) => {
         receiptUrl: receiptUrls,
       };
 
-      postReviewMutation.mutate({
-        productId,
-        review: reviewRequest,
-      });
+      if (productId) {
+        postReviewMutation.mutate({
+          productId,
+          review: reviewRequest,
+        });
+      }
     } catch (error) {
       console.error('리뷰 작성 실패:', error);
     }
