@@ -12,16 +12,9 @@ export default function LineLoginClient() {
 
   const code = searchParams.get('code') || '';
   const state = searchParams.get('state') || '';
-  const lineLoginRedirectURL =
-    process.env.NEXT_PUBLIC_LINE_LOGIN_REDIRECT_URL || '';
-
   const { isSuccess } = useQuery({
-    queryKey: LINE_LOGIN_QUERY_KEYS.LINE_LOGIN(
-      code,
-      state,
-      lineLoginRedirectURL
-    ),
-    queryFn: () => lineLogin({ code, state, lineLoginRedirectURL }),
+    queryKey: LINE_LOGIN_QUERY_KEYS.LINE_LOGIN(code, state),
+    queryFn: () => lineLogin({ code, state }),
   });
 
   useEffect(() => {
