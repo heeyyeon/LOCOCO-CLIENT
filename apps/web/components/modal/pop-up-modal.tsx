@@ -54,7 +54,7 @@ function PopUpModalContent({
   className,
 }: WarnModalContentProps) {
   return (
-    <DialogContent className={`sm:max-w-md ${className || ''}`}>
+    <DialogContent className={`${className || ''}`}>
       <DialogHeader>
         <DialogTitle>{title}</DialogTitle>
       </DialogHeader>

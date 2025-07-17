@@ -50,6 +50,14 @@ export default async function Main() {
           <HomeSection.YouTube />
         </HomeSection>
       </div>
+      <PopUpModal className="w-[40rem]">
+        <PopUpModal.Trigger>
+          <button>이거누르면켜짐</button>
+        </PopUpModal.Trigger>
+        <PopUpModal.Content className="max-w-[425px]">
+          <div className="w-[40rem]">asdf</div>
+        </PopUpModal.Content>
+      </PopUpModal>
     </div>
   );
 }
