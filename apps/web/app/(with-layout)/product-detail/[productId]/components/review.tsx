@@ -119,7 +119,7 @@ export default function Review({
           <Avatar src={profileImageUrl} />
           <p className="en-title2 w-full text-gray-800">{authorName}</p>
           {isMine ||
-            (true && (
+            (isAdmin && (
               <IconButton
                 onClick={handleDeleteReview}
                 size="md"
