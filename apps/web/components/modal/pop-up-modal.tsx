@@ -26,10 +26,11 @@ interface WarnModalContentProps {
   description?: string;
   confirmText?: string;
   children?: React.ReactNode;
+  subTitle?: string;
   className?: string;
 }
 
-function WarnModal({ children, className }: WarnModalProps) {
+function PopUpModal({ children, className }: WarnModalProps) {
   return (
     <div className={className}>
       <Dialog>{children}</Dialog>
@@ -37,14 +38,18 @@ function WarnModal({ children, className }: WarnModalProps) {
   );
 }
 
-function WarnModalTrigger({ children, asChild = true }: WarnModalTriggerProps) {
+function PopUpModalTrigger({
+  children,
+  asChild = true,
+}: WarnModalTriggerProps) {
   return <DialogTrigger asChild={asChild}>{children}</DialogTrigger>;
 }
 
-function WarnModalContent({
+function PopUpModalContent({
   title = 'お知らせ',
   description = '近日中にご案内できるよう進めております。',
   confirmText = '確認',
+  subTitle,
   children,
   className,
 }: WarnModalContentProps) {
@@ -58,7 +63,7 @@ function WarnModalContent({
         children
       ) : (
         <>
-          <h3>サービスを準備中です。</h3>
+          <Dialog>{subTitle}</Dialog>
           <DialogDescription>{description}</DialogDescription>
         </>
       )}
@@ -74,7 +79,7 @@ function WarnModalContent({
   );
 }
 
-WarnModal.Trigger = WarnModalTrigger;
-WarnModal.Content = WarnModalContent;
+PopUpModal.Trigger = PopUpModalTrigger;
+PopUpModal.Content = PopUpModalContent;
 
-export default WarnModal;
+export default PopUpModal;

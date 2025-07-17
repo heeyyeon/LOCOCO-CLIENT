@@ -1,3 +1,4 @@
+import PopUpModal from 'components/modal/pop-up-modal';
 import WarnModal from 'components/modal/warn-modal';
 import { Button } from '@/components';
 import { SvgJapaneseReview, SvgKoreanReview } from '@/icons';
