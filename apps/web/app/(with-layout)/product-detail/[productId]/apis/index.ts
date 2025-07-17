@@ -1,4 +1,3 @@
-import { ApiResponseToggleLikeResponse } from 'api/data-contracts';
 import { apiRequest } from 'app/api/apiRequest';
 import { ProductDetailResponse } from '../types';
 import { ProductDetailData } from '../types';

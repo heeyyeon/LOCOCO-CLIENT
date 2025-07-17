@@ -2,7 +2,6 @@
 
 import { useProductLike } from 'components/card/hooks/use-product-like';
 import { formatJPY } from 'utils/formatJPY';
-import { useState } from 'react';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import {
