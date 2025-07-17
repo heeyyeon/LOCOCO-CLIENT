@@ -51,19 +51,6 @@ export const useAllImageReviewDetails = (
   });
 };
 
-export const useImageReviewDetail = (reviewId: number) => {
-  return useQuery({
-    queryKey: REVIEW_KEYS.IMAGE_DETAIL(reviewId),
-    queryFn: async (): Promise<ApiResponseImageReviewDetailResponse> => {
-      return apiRequest({
-        endPoint: `/api/reviews/details/${reviewId}/image`,
-        method: 'GET',
-      });
-    },
-    enabled: !!reviewId,
-  });
-};
-
 export const useReviewLikeToggle = () => {
   const queryClient = useQueryClient();
 
