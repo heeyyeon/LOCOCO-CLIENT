@@ -65,7 +65,7 @@ export default function ProductInfo({
           </div>
           <IconButton
             onClick={() => likeMutation.mutate(productId)}
-            size="md"
+            size="lg"
             icon={
               isLiked ? (
                 <SvgLikeFill />
