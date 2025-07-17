@@ -1,7 +1,7 @@
 'use client';
 
+import { useProductLike } from 'components/card/hooks/use-product-like';
 import { formatJPY } from 'utils/formatJPY';
-import { useState } from 'react';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import {
@@ -40,6 +40,7 @@ interface ProductInfoProps {
 }
 
 export default function ProductInfo({
+  productId,
   productName,
   brandName,
   unit,
@@ -51,8 +52,8 @@ export default function ProductInfo({
   oliveYoungUrl,
   q10Url,
 }: ProductInfoProps) {
-  const [isLiked, setIsLiked] = useState(initialIsLiked);
   const params = useParams();
+  const { likeMutation, isLiked } = useProductLike({ initialIsLiked });
   return (
     <div className="flex flex-col justify-between">
       {/* 상품 정보 */}
@@ -67,8 +68,8 @@ export default function ProductInfo({
             </h1>
           </div>
           <IconButton
-            onClick={() => setIsLiked(!isLiked)}
-            size="lg"
+            onClick={() => likeMutation.mutate(productId)}
+            size="md"
             icon={
               isLiked ? (
                 <SvgLikeFill />
