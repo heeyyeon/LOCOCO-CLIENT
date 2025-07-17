@@ -16,6 +16,8 @@ export const REVIEW_KEYS = {
     page,
     size,
   ],
+  VIDEO_DETAILS: () => [...REVIEW_KEYS.VIDEO(), 'detail'],
+  VIDEO_DETAIL: (id: number) => [...REVIEW_KEYS.VIDEO_DETAILS(), id],
 
   IMAGE: () => [...REVIEW_KEYS.ALL, 'image'],
   IMAGE_LISTS: () => [...REVIEW_KEYS.ALL, 'list'],
