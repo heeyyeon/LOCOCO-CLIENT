@@ -31,7 +31,6 @@ export default function WriteReviewModal() {
     handleSubmit,
     isFormValid,
   } = useReviewInput(() => {
-    alert('리뷰 제출에 성공했어요.');
     reset();
     router.back();
   });

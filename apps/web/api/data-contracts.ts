@@ -42,6 +42,42 @@ export interface ReviewResponse {
   reviewId: number;
 }
 
+export interface ReviewImageResponse {
+  imageReviews: ReviewImageItemResponse[];
+}
+
+export interface ReviewImageItemResponse {
+  reviewId: number;
+  brandName: string;
+  productName: string;
+  likeCount: number;
+  rank: number;
+  productId: number;
+  reviewImage: string;
+  reviewVideo?: string;
+}
+export interface ReviewVideoResponse {
+  videoReviews: ReviewVideoItemResponse[];
+}
+
+export interface ReviewVideoItemResponse {
+  reviewId: number;
+  brandName: string;
+  productName: string;
+  likeCount: number;
+  rank: number;
+  productId: number;
+  reviewVideo: string;
+  reviewImage?: string;
+}
+export interface ApiResponseReviewImageResponse {
+  success?: boolean;
+  /** @format int32 */
+  status?: number;
+  message?: string;
+  data: ReviewImageResponse;
+}
+
 export interface ReviewAdminRequest {
   /** @format int64 */
   productOptionId?: number;
@@ -95,50 +131,16 @@ export interface ReviewMediaRequest {
   mediaType: string[];
 }
 
-export interface ApiResponseReviewImageResponse {
+export interface ApiResponseReviewMediaResponse {
   success?: boolean;
   /** @format int32 */
   status?: number;
   message?: string;
-  data: ReviewImageResponse;
+  data?: ReviewMediaResponse;
 }
 
-export interface ReviewImageResponse {
-  imageReviews: ReviewImageItemResponse[];
-}
-
-export interface ReviewImageItemResponse {
-  reviewId: number;
-  brandName: string;
-  productName: string;
-  likeCount: number;
-  rank: number;
-  productId: number;
-  reviewImage: string;
-  reviewVideo?: string;
-}
-
-export interface ApiResponseReviewVideoResponse {
-  success?: boolean;
-  /** @format int32 */
-  status?: number;
-  message?: string;
-  data: ReviewVideoResponse;
-}
-
-export interface ReviewVideoResponse {
-  videoReviews: ReviewVideoItemResponse[];
-}
-
-export interface ReviewVideoItemResponse {
-  reviewId: number;
-  brandName: string;
-  productName: string;
-  likeCount: number;
-  rank: number;
-  productId: number;
-  reviewVideo: string;
-  reviewImage?: string;
+export interface ReviewMediaResponse {
+  mediaUrl: string[];
 }
 
 export interface ApiResponseString {
@@ -313,8 +315,10 @@ export interface ImageReviewDetailResponse {
   negativeComment: string;
   authorName: string;
   profileImageUrl?: string;
+
   /** @format double */
   rating: number;
+
   option?: string;
   /** @format int64 */
   likeCount: number;
