@@ -57,12 +57,12 @@ export default function ReceiptCertification({ file, onChange, error }: Props) {
           <input
             type="file"
             accept="image/jpeg, image/png, image/webp"
-            className="flex aspect-square w-32 cursor-pointer items-center justify-center bg-gray-800 p-[2.2rem] opacity-0"
+            className="absolute inset-0 z-10 cursor-pointer opacity-0"
             onChange={handleFileChange}
             aria-label="영수증 이미지 업로더"
           />
-          <div className="absolute inset-0 flex items-center justify-center rounded bg-gray-800">
-            <SvgAdd className="aspect-square size-[3.6rem] shrink-0 fill-white" />
+          <div className="flex aspect-square size-32 cursor-pointer items-center justify-center rounded bg-gray-800">
+            <SvgAdd className="aspect-square size-[3.6rem] shrink-0 cursor-pointer fill-white" />
           </div>
         </div>
       )}

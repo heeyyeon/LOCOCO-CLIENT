@@ -8,20 +8,21 @@ import {
   SelectValue,
 } from '@/components';
 import { ErrorNotice } from '@/components';
+import { ProductOptionData } from '../../../types';
 
 interface Props {
-  value: ReviewFormData['productOptionId'];
+  value?: ReviewFormData['productOptionId'];
   onChange: (value: number) => void;
   error?: string;
+  options: ProductOptionData[];
 }
 
-const OPTIONS = [
-  { id: 1, name: 'オプション1' },
-  { id: 2, name: 'オプション2' },
-  { id: 3, name: 'オプション3' },
-];
-
-export default function ProductOption({ value, onChange, error }: Props) {
+export default function ProductOption({
+  value,
+  onChange,
+  error,
+  options,
+}: Props) {
   const handleValueChange = (id: string) => {
     onChange(Number(id));
   };
@@ -40,9 +41,9 @@ export default function ProductOption({ value, onChange, error }: Props) {
           <SelectValue placeholder="オプション" />
         </SelectTrigger>
         <SelectContent className="scrollbar-hide jp-body2">
-          {OPTIONS.map(({ id, name }) => (
+          {options.map(({ id, optionName }) => (
             <SelectItem hover value={String(id)} key={id}>
-              {name}
+              {optionName}
             </SelectItem>
           ))}
         </SelectContent>
