@@ -13,3 +13,4 @@ export * from './reaction-toggle';
 export * from './tag';
 export * from './textarea';
 export * from './star';
+export * from './dialog';
