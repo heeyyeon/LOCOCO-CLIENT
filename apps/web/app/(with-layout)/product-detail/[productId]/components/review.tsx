@@ -12,6 +12,7 @@ import { SvgGoodOutline } from '@lococo/design-system';
 import { SvgDelete } from '@lococo/design-system';
 import { IconButton } from '@lococo/design-system';
 import { postReviewLike } from '../apis';
+import { deleteReview } from '../apis';
 import { PRODUCT_DETAIL_QUERY_KEYS } from '../queries';
 import { ImageReviewDetailData } from '../types';
 import CommentBox from './comment-box';
@@ -32,6 +33,7 @@ export default function Review({
   isMine,
   option,
   isLiked: initialIsLiked,
+  isAdmin,
   //brandName,
   //productName,
   //authorId,
@@ -41,6 +43,7 @@ export default function Review({
   const [isLiked, setIsLiked] = useState(initialIsLiked);
   const [likeCount, setLikeCount] = useState(initialLikeCount);
   const { productId } = useParams();
+
   const { mutate: reviewLikeMutation } = useMutation({
     mutationKey: ['reviewLike'],
     mutationFn: (reviewId: number) => postReviewLike(reviewId),
@@ -57,6 +60,15 @@ export default function Review({
       setIsLiked(context?.previousState || false);
     },
     onSettled: () => {
+      queryClient.invalidateQueries({
+        queryKey: PRODUCT_DETAIL_QUERY_KEYS.REVIEW_LIST(Number(productId)),
+      });
+    },
+  });
+
+  const { mutate: reviewDeleteMutation } = useMutation({
+    mutationFn: (reviewId: number) => deleteReview(reviewId),
+    onSuccess: () => {
       queryClient.invalidateQueries({
         queryKey: PRODUCT_DETAIL_QUERY_KEYS.REVIEW_LIST(Number(productId)),
       });
@@ -109,15 +121,17 @@ export default function Review({
         <div className="flex items-center gap-[1.2rem]">
           <Avatar src={profileImageUrl} />
           <p className="en-title2 w-full text-gray-800">{authorName}</p>
-          {isMine && (
-            <IconButton
-              size="md"
-              color="tertiary"
-              icon={
-                <SvgDelete className="flex-shrink-0 items-end text-gray-500" />
-              }
-            ></IconButton>
-          )}
+          {isMine ||
+            (isAdmin && (
+              <IconButton
+                onClick={() => reviewDeleteMutation(reviewId)}
+                size="md"
+                color="tertiary"
+                icon={
+                  <SvgDelete className="flex-shrink-0 items-end text-gray-500" />
+                }
+              ></IconButton>
+            ))}
         </div>
 
         <div className="flex h-full flex-col gap-[1.2rem]">

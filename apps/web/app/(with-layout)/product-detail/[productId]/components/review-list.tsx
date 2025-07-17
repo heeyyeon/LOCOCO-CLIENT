@@ -41,6 +41,7 @@ export default function ReviewList() {
             reviewId={review.reviewId}
             productName={review.productName}
             authorId={review.authorId}
+            isAdmin={reviewList.isAdmin}
           />
         ))}
       {/* ))

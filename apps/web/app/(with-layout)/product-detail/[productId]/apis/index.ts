@@ -7,8 +7,8 @@ import { ImageReviewDetailDataList } from '../types';
 import { ImageReviewListResponse } from '../types';
 import { ReviewLikeResponse } from '../types';
 import { ReviewLikeData } from '../types';
-
-// 상품 상세 정보 응답 타입 정의
+import { ReviewDeleteResponse } from '../types';
+import { ReviewDeleteData } from '../types';
 
 /**
  * 상품 상세 정보를 가져오는 API 함수
@@ -72,5 +72,19 @@ export const postReviewLike = async (
     throw new Error('좋아요 실패');
   }
 
+  return response.data;
+};
+
+export const deleteReview = async (
+  reviewId: number
+): Promise<ReviewDeleteData> => {
+  const response = await apiRequest<ReviewDeleteResponse>({
+    endPoint: `/api/reviews/${reviewId}`,
+    method: 'DELETE',
+  });
+
+  if (!response.data) {
+    throw new Error('상품 삭제 실패');
+  }
   return response.data;
 };

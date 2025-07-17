@@ -66,6 +66,7 @@ export type ImageReviewListResponse = APIResponse<ImageReviewDetailDataList>;
 export interface ImageReviewDetailDataList {
   /** @format int64 */
   imageReviews: ImageReviewDetailData[];
+  isAdmin: boolean;
 }
 
 export interface ImageReviewDetailData {
@@ -87,9 +88,16 @@ export interface ImageReviewDetailData {
   isMine: boolean;
   isLiked: boolean;
   authorId: number;
+  isAdmin: boolean;
 }
 
 export type ReviewLikeResponse = APIResponse<ReviewLikeData>;
 export interface ReviewLikeData {
   likeCount: number;
+}
+
+export type ReviewDeleteResponse = APIResponse<ReviewDeleteData>;
+
+export interface ReviewDeleteData {
+  reviewId: number;
 }
