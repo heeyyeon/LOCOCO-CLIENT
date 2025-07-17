@@ -8,7 +8,7 @@ import {
   SvgGoodOutline,
   SvgSend,
 } from '@lococo/design-system';
-import { useReviewLikeToggle } from '../hooks/image-review-api';
+import { useReviewLikeToggle } from '../hooks/review-api';
 
 interface MediaInfoProps {
   reviewId: number;
