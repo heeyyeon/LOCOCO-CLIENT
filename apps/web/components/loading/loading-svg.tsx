@@ -5,7 +5,6 @@ import React, { useState, useEffect } from 'react';
 interface DotProps {
   position: number; // 1, 2, 3번째 점
   isJumping: boolean;
-  height?: number;
 }
 
 // px를 SVG 좌표계로 변환하는 함수
@@ -15,13 +14,11 @@ const pxToSvg = (px: number) => {
   return (px / actualHeight) * svgHeight;
 };
 
-const Dot: React.FC<DotProps> = ({ position, isJumping, height = 6 }) => {
+function Dot({ position, isJumping }: DotProps) {
   const getX = () => {
-    // 점 크기 12px, 간격 12px 기준으로 계산
     const dotSize = 12;
     const spacing = 12;
-    const startX = 10; // 시작 위치
-
+    const startX = 10;
     switch (position) {
       case 1:
         return pxToSvg(startX);
@@ -55,24 +52,9 @@ const Dot: React.FC<DotProps> = ({ position, isJumping, height = 6 }) => {
       className="transition-all duration-150 ease-linear"
     />
   );
-};
+}
 
-const Airplane: React.FC<{ currentView: number; isJumping: boolean }> = ({
-  currentView,
-  isJumping,
-}) => {
-  const getAirplaneX = () => {
-    // 비행기 X 위치: 점들 뒤에 14px 간격
-    const dotSize = 12;
-    const spacing = 12;
-    const startX = 10;
-    const lastDotX = startX + (dotSize + spacing) * 2; // 3번째 점 위치
-    const airplaneSpacing = 14; // 비행기 간격
-    return currentView === 3
-      ? pxToSvg(lastDotX + dotSize + airplaneSpacing + 4)
-      : pxToSvg(lastDotX + dotSize + airplaneSpacing);
-  };
-
+function Airplane({ isJumping }: { isJumping: boolean }) {
   const getAirplaneY = () => {
     // 비행기는 항상 아래에 있는 점(점프하지 않은 점)보다 4픽셀 아래에 위치
     const baseY = 30; // 기본 점 위치 (px)
@@ -90,7 +72,7 @@ const Airplane: React.FC<{ currentView: number; isJumping: boolean }> = ({
       }}
     />
   );
-};
+}
 
 export default function LoadingSvg() {
   const [currentView, setCurrentView] = useState(1);
@@ -128,7 +110,7 @@ export default function LoadingSvg() {
         <Dot position={3} isJumping={currentView === 3} />
 
         {/* 비행기 */}
-        <Airplane currentView={currentView} isJumping={currentView === 3} />
+        <Airplane isJumping={currentView === 3} />
       </svg>
     </div>
   );
