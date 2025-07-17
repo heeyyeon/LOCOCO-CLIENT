@@ -57,7 +57,7 @@ export interface ReviewAdminRequest {
    * @maxLength 1500
    */
   negativeComment: string;
-  mediaType?: "IMAGE" | "VIDEO";
+  mediaType?: 'IMAGE' | 'VIDEO';
   videoUrl?: string;
   /**
    * @maxItems 2147483647
@@ -249,7 +249,7 @@ export interface VideoReviewDetailResponse {
   negativeContent: string;
   /** @format int64 */
   likeCount: number;
-  videoUrl: string;
+  videoUrls: string[];
   profileImageUrl?: string;
   authorName: string;
   /** @format double */
@@ -400,21 +400,21 @@ export interface ProductDetailResponse {
   ingredients: string;
   oliveYoungUrl: string;
   q10Url: string;
-  middleCategory: "FACIAL_CARE" | "FACE_MAKEUP" | "EYE_MAKEUP" | "LIP_MAKEUP";
+  middleCategory: 'FACIAL_CARE' | 'FACE_MAKEUP' | 'EYE_MAKEUP' | 'LIP_MAKEUP';
   subCategory:
-    | "TONER"
-    | "MOISTURIZER"
-    | "ESSENCE_SERUM"
-    | "CREAM"
-    | "FOUNDATION"
-    | "POWDER_COMPACT"
-    | "CONCEALER"
-    | "BLUSHER"
-    | "EYEBROW"
-    | "EYESHADOW"
-    | "EYELINER"
-    | "LIPSTICK"
-    | "LIP_TINT";
+    | 'TONER'
+    | 'MOISTURIZER'
+    | 'ESSENCE_SERUM'
+    | 'CREAM'
+    | 'FOUNDATION'
+    | 'POWDER_COMPACT'
+    | 'CONCEALER'
+    | 'BLUSHER'
+    | 'EYEBROW'
+    | 'EYESHADOW'
+    | 'EYELINER'
+    | 'LIPSTICK'
+    | 'LIP_TINT';
 }
 
 export interface ProductOptionResponse {
@@ -495,5 +495,5 @@ export interface ApiResponseLineLoginResponse {
 export interface LineLoginResponse {
   accessToken: string;
   refreshToken: string;
-  loginStatus: "LOGIN" | "REGISTER";
+  loginStatus: 'LOGIN' | 'REGISTER';
 }

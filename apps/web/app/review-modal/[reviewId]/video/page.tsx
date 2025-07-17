@@ -103,13 +103,11 @@ export default function Page() {
       brandName: detail.brandName,
       productName: detail.productName,
       productImageUrl: detail.productImageUrl,
-      mediaList: [
-        {
-          id: 0,
-          type: 'video' as const,
-          url: detail.videoUrl,
-        },
-      ],
+      mediaList: detail.videoUrls.map((url: string, index: number) => ({
+        id: index,
+        type: 'video' as const,
+        url,
+      })),
     };
   });
 
