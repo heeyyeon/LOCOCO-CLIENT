@@ -13,24 +13,58 @@ const FOOTER = {
   menu: [
     {
       title: 'カテゴリー',
-
-      option: Object.values(CATEGORY_NAME),
+      option: [
+        {
+          name: CATEGORY_NAME.FACIAL_CARE,
+          href: '/search?middleCategory=FACIAL_CARE&searchType=PRODUCT',
+        },
+        {
+          name: CATEGORY_NAME.FACE_MAKEUP,
+          href: '/search?middleCategory=FACE_MAKEUP&searchType=PRODUCT',
+        },
+        {
+          name: CATEGORY_NAME.EYE_MAKEUP,
+          href: '/search?middleCategory=EYE_MAKEUP&searchType=PRODUCT',
+        },
+        {
+          name: CATEGORY_NAME.LIP_MAKEUP,
+          href: '/search?middleCategory=LIP_MAKEUP&searchType=PRODUCT',
+        },
+      ],
     },
     {
       title: 'サポート',
-      option: ['よくある質問', 'お問い合わせ', 'お知らせ'],
+      option: [
+        { name: 'よくある質問', href: '' },
+        { name: 'お問い合わせ', href: '' },
+        { name: 'お知らせ', href: '' },
+      ],
     },
     {
       title: 'インフォメーション',
-      option: ['プライバシーポリシー', '利用規約'],
+      option: [
+        {
+          name: 'プライバシーポリシー',
+          href: 'https://pricey-sheep-acd.notion.site/233dc4218399800eaa99e2d52d0de45f',
+        },
+        {
+          name: '利用規約',
+          href: 'https://pricey-sheep-acd.notion.site/233dc4218399800285a4e44918ecf132',
+        },
+      ],
     },
   ],
   copyright: '© 2025 Lococo. All rights reserved.',
 };
 
+type MenuItem = {
+  name: string;
+  href: string;
+};
+
 type Menu = {
   title: string;
-  option: string[];
+  option: MenuItem[];
 };
 
 interface FooterProps {
@@ -103,16 +137,30 @@ function FooterRight({ menu }: Pick<FooterProps, 'menu'>) {
         >
           <p className="jp-body1 font-bold">{title}</p>
           <div className="flex w-full flex-col items-start justify-start gap-2 md:gap-[0.8rem]">
-            {option.map((item) => (
-              <Link
-                href="/"
-                key={item}
-                className="flex h-[3.2rem] w-full items-center gap-2 py-[1rem] md:gap-[0.8rem]"
-              >
-                <p className="jp-body2 whitespace-nowrap font-medium">{item}</p>
-                <SvgArrowRight />
-              </Link>
-            ))}
+            {option.map((item) =>
+              item.href ? (
+                <Link
+                  href={item.href}
+                  key={item.name}
+                  className="flex h-[3.2rem] w-full items-center gap-2 py-[1rem] md:gap-[0.8rem]"
+                >
+                  <p className="jp-body2 whitespace-nowrap font-medium">
+                    {item.name}
+                  </p>
+                  <SvgArrowRight />
+                </Link>
+              ) : (
+                <div
+                  key={item.name}
+                  className="flex h-[3.2rem] w-full cursor-default items-center gap-2 py-[1rem] md:gap-[0.8rem]"
+                >
+                  <p className="jp-body2 cursor-not-allowed whitespace-nowrap font-medium">
+                    {item.name}
+                  </p>
+                  <SvgArrowRight className="text-gray-400" />
+                </div>
+              )
+            )}
           </div>
         </div>
       ))}
