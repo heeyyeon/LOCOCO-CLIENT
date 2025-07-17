@@ -1,6 +1,11 @@
 'use client';
 
-import { ReviewImageResponse, ReviewVideoResponse } from 'api/data-contracts';
+import {
+  MainImageReview,
+  MainImageReviewResponse,
+  MainVideoReview,
+  MainVideoReviewResponse,
+} from 'api/data-contracts';
 import CardReview from 'components/card/card-review';
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components';
@@ -10,7 +15,7 @@ import { cn } from '@/lib/utils';
 interface HomeSectionReviewProps {
   type: 'video' | 'image';
   className?: string;
-  reviewCardList: ReviewImageResponse | ReviewVideoResponse;
+  reviewCardList: MainImageReviewResponse | MainVideoReviewResponse;
 }
 
 export default function HomeSectionReview({
@@ -41,7 +46,9 @@ export default function HomeSectionReview({
             reviewId={review.reviewId}
             likeCount={review.likeCount}
             mediaUrl={
-              type === 'image' ? review.reviewImage : review.reviewVideo
+              type === 'image'
+                ? (review as MainImageReview).reviewImage
+                : (review as MainVideoReview).reviewVideo
             }
             handleCardClick={() => {
               // router.push(`/review-modal/${review.reviewId}/${type}`)
