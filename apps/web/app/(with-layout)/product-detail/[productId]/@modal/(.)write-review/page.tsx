@@ -2,7 +2,7 @@
 
 import Modal from 'components/modal/modal';
 import { useEffect, useState } from 'react';
-import { notFound, useParams, useRouter } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 import { Button, IconButton } from '@lococo/design-system';
 import { SvgClose } from '@/icons';
 import { getProductDetail } from '../../apis';
