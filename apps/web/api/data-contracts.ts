@@ -41,6 +41,41 @@ export interface ReviewResponse {
   /** @format int64 */
   reviewId: number;
 }
+export interface ReviewImageResponse {
+  imageReviews: ReviewImageItemResponse[];
+}
+
+export interface ReviewImageItemResponse {
+  reviewId: number;
+  brandName: string;
+  productName: string;
+  likeCount: number;
+  rank: number;
+  productId: number;
+  reviewImage: string;
+  reviewVideo?: string;
+}
+export interface ReviewVideoResponse {
+  videoReviews: ReviewVideoItemResponse[];
+}
+
+export interface ReviewVideoItemResponse {
+  reviewId: number;
+  brandName: string;
+  productName: string;
+  likeCount: number;
+  rank: number;
+  productId: number;
+  reviewVideo: string;
+  reviewImage?: string;
+}
+export interface ApiResponseReviewImageResponse {
+  success?: boolean;
+  /** @format int32 */
+  status?: number;
+  message?: string;
+  data: ReviewImageResponse;
+}
 
 export interface ReviewAdminRequest {
   /** @format int64 */
@@ -249,18 +284,15 @@ export interface VideoReviewDetailResponse {
   negativeContent: string;
   /** @format int64 */
   likeCount: number;
-  videoUrls: string[];
+  videoUrl: string;
   profileImageUrl?: string;
   authorName: string;
-  /** @format double */
-  rating: number;
+  rating: string;
   /** @format date-time */
   uploadAt: string;
   productImageUrl: string;
   receiptImageUrl?: string;
   isLiked: boolean;
-  /** @format int64 */
-  productId: number;
 }
 
 export interface ApiResponseImageReviewDetailResponse {
@@ -281,8 +313,7 @@ export interface ImageReviewDetailResponse {
   negativeComment: string;
   authorName: string;
   profileImageUrl?: string;
-  /** @format double */
-  rating: number;
+  rating: string;
   option?: string;
   /** @format int64 */
   likeCount: number;
@@ -292,8 +323,6 @@ export interface ImageReviewDetailResponse {
   productImageUrl: string;
   receiptImageUrl?: string;
   isLiked: boolean;
-  /** @format int64 */
-  productId: number;
 }
 
 export interface ApiResponseVideoReviewProductDetailResponse {
@@ -334,7 +363,6 @@ export interface ImageReviewProductDetailResponse {
   receiptUploaded: boolean;
   positiveComment: string;
   negativeComment: string;
-  profileImageUrl: string;
   authorName: string;
   /** @format int64 */
   authorId: number;
@@ -349,7 +377,6 @@ export interface ImageReviewProductDetailResponse {
 }
 
 export interface ImageReviewsProductDetailResponse {
-  isAdmin: boolean;
   imageReviews: ImageReviewProductDetailResponse[];
   pageInfo: PageableResponse;
 }
@@ -493,7 +520,5 @@ export interface ApiResponseLineLoginResponse {
 }
 
 export interface LineLoginResponse {
-  accessToken: string;
-  refreshToken: string;
   loginStatus: 'LOGIN' | 'REGISTER';
 }
