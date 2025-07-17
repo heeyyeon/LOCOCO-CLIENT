@@ -25,18 +25,10 @@ export class Admin<
    * @request DELETE:/api/admin/reviews/{reviewId}
    * @secure
    */
-  deleteReviewByAdmin = (
-    reviewId: number,
-    query: {
-      /** @format int64 */
-      userId: number;
-    },
-    params: RequestParams = {},
-  ) =>
+  deleteReviewByAdmin = (reviewId: number, params: RequestParams = {}) =>
     this.request<ApiResponseVoid, any>({
       path: `/api/admin/reviews/${reviewId}`,
       method: "DELETE",
-      query: query,
       secure: true,
       ...params,
     });
