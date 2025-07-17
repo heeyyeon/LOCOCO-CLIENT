@@ -1,5 +1,3 @@
-import PopUpModal from 'components/modal/pop-up-modal';
-import { Button } from '@/components';
 import { SvgJapaneseReview, SvgKoreanReview } from '@/icons';
 import HomeBanner from './(home)/components/home-banner';
 import HomeSection from './(home)/components/home-section';
