@@ -1,14 +1,25 @@
 import {
-  ApiResponseReviewImageResponse,
-  ReviewImageResponse,
+  ApiResponseMainVideoReviewResponse,
+  ApiResponseMainImageReviewResponse,
+  MainImageReviewResponse,
 } from 'api/data-contracts';
 import { apiRequest } from 'app/api/apiRequest';
 
-export const getVideoReviews = async () => {};
+export const getVideoReviews = async () => {
+  try {
+    const reviewVideoResponse =
+      await apiRequest<ApiResponseMainVideoReviewResponse>({
+        endPoint: '/api/reviews/video',
+      });
+    return reviewVideoResponse;
+  } catch {
+    return null;
+  }
+};
 export const getImageReviews = async () => {
   try {
     const reviewImageResponse =
-      await apiRequest<ApiResponseReviewImageResponse>({
+      await apiRequest<ApiResponseMainImageReviewResponse>({
         endPoint: '/api/reviews/image',
       });
     return reviewImageResponse;
@@ -17,7 +28,7 @@ export const getImageReviews = async () => {
   }
 };
 
-export const emptyReviewData: ReviewImageResponse = {
+export const emptyReviewData: MainImageReviewResponse = {
   imageReviews: Array.from({ length: 4 }, (_, index) => ({
     reviewId: -(index + 1), // 음수로 구분
     brandName: '데이터 준비중',

@@ -1,21 +1,34 @@
 'use client';
 
+import SwiperCore from 'swiper';
 import 'swiper/css';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { useEffect, useState } from 'react';
 import type { ReviewDetail } from '../types';
 import ReviewModalLayout from './review-modal-layout';
 
 interface ReviewModalSwiperProps {
+  currentIndex: number;
   reviews: ReviewDetail[];
   onClose: () => void;
 }
 
 export default function ReviewModalSwiper({
+  currentIndex,
   reviews,
   onClose,
 }: ReviewModalSwiperProps) {
+  const [swiper, setSwiper] = useState<SwiperCore>();
+
+  useEffect(() => {
+    if (swiper) {
+      swiper.slideTo(currentIndex);
+    }
+  }, [swiper, currentIndex]);
+
   return (
     <Swiper
+      onSwiper={setSwiper}
       direction="vertical"
       slidesPerView={1.2}
       centeredSlides
@@ -36,6 +49,7 @@ export default function ReviewModalSwiper({
               uploadAt: review.writtenTime,
             }}
             likeCount={review.likeCount}
+            isLiked={review.isLiked}
             brandName={review.brandName}
             productName={review.productName}
             productOption={review.option}

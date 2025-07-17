@@ -23,7 +23,7 @@ export default function HomeSectionReview({
     'imageReviews' in reviewCardList
       ? reviewCardList.imageReviews
       : reviewCardList.videoReviews;
-  console.log(reviews);
+
   return (
     <div className={cn(`mt-[3.2rem] flex flex-col gap-[3.2rem]`, className)}>
       <p className="jp-head3 font-[700]">
@@ -44,7 +44,7 @@ export default function HomeSectionReview({
               type === 'image' ? review.reviewImage : review.reviewVideo
             }
             handleCardClick={() => {
-              // router.push(`/review-modal/${review.reviewId}/${type}`)
+              router.push(`/review-modal/${review.reviewId}/${type}`);
             }}
           >
             <Button
