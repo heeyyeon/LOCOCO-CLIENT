@@ -36,14 +36,15 @@ export default function ReviewModalSwiper({
       spaceBetween={-45}
       modules={[Mousewheel, FreeMode]}
       mousewheel={{
-        sensitivity: 0.8,
+        sensitivity: 0.4,
         releaseOnEdges: true,
         forceToAxis: true,
+        thresholdDelta: 50,
+        thresholdTime: 200,
       }}
       freeMode={{
         enabled: true,
         sticky: true,
-        momentum: false,
       }}
       speed={400}
       resistance={false}
