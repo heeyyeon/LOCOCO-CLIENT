@@ -70,11 +70,13 @@ export default function VideoLayout({ url }: VideoLayoutProps) {
           <SvgPause className="size-[7.2rem] fill-white" />
         )}
       </div>
-      <Progress
-        value={progress}
-        height="0.25rem"
-        className="absolute bottom-2 left-4 right-4 bg-gray-600"
-      />
+      <div className="absolute bottom-2 left-4 right-4">
+        <Progress
+          value={progress}
+          height="0.25rem"
+          className="w-full bg-gray-600"
+        />
+      </div>
     </div>
   );
 }

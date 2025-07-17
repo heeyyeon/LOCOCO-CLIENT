@@ -1,7 +1,9 @@
+'use client';
+
 import { useQuery } from '@tanstack/react-query';
 import dayjs from 'dayjs';
 import Image from 'next/image';
-import { useParams } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 import { Avatar, SvgImgPhoto } from '@lococo/design-system';
 import { Star } from '@lococo/design-system';
 import { Tag } from '@lococo/design-system';
@@ -15,12 +17,16 @@ import CommentBox from './comment-box';
 //TODO: 좋아요 로직 추가
 export default function Review() {
   const { productId } = useParams();
+  const router = useRouter();
   const { data: reviewList } = useQuery({
     queryKey: PRODUCT_DETAIL_QUERY_KEYS.REVIEW_LIST(Number(productId)),
     queryFn: () => getReviewList(Number(productId)),
   });
 
   const reviewListData = reviewList?.imageReviews;
+  const handleClickReviewImages = (reviewId: number) => {
+    router.push(`/review-modal/${reviewId}/image?productId=${productId}`);
+  };
   return (
     <div className="flex flex-col gap-[3.2rem]">
       <h3 className="jp-head3 font-bold">写真付きレビュー</h3>
@@ -43,6 +49,7 @@ export default function Review() {
                     width={100}
                     height={100}
                     className="h-[10rem] w-[10rem] object-cover"
+                    onClick={() => handleClickReviewImages(review.reviewId)}
                   />
                 ))}
               </div>

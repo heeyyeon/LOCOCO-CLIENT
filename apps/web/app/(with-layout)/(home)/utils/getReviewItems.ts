@@ -1,10 +1,21 @@
 import {
+  ApiResponseMainVideoReviewResponse,
   ApiResponseMainImageReviewResponse,
   MainImageReviewResponse,
 } from 'api/data-contracts';
 import { apiRequest } from 'app/api/apiRequest';
 
-export const getVideoReviews = async () => {};
+export const getVideoReviews = async () => {
+  try {
+    const reviewVideoResponse =
+      await apiRequest<ApiResponseMainVideoReviewResponse>({
+        endPoint: '/api/reviews/video',
+      });
+    return reviewVideoResponse;
+  } catch {
+    return null;
+  }
+};
 export const getImageReviews = async () => {
   try {
     const reviewImageResponse =

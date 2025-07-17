@@ -206,6 +206,42 @@ export interface MainVideoReviewResponse {
   videoReviews: MainVideoReview[];
 }
 
+export interface ReviewImageResponse {
+  imageReviews: ReviewImageItemResponse[];
+}
+
+export interface ReviewImageItemResponse {
+  reviewId: number;
+  brandName: string;
+  productName: string;
+  likeCount: number;
+  rank: number;
+  productId: number;
+  reviewImage: string;
+  reviewVideo?: string;
+}
+export interface ReviewVideoResponse {
+  videoReviews: ReviewVideoItemResponse[];
+}
+
+export interface ReviewVideoItemResponse {
+  reviewId: number;
+  brandName: string;
+  productName: string;
+  likeCount: number;
+  rank: number;
+  productId: number;
+  reviewVideo: string;
+  reviewImage?: string;
+}
+export interface ApiResponseReviewImageResponse {
+  success?: boolean;
+  /** @format int32 */
+  status?: number;
+  message?: string;
+  data: ReviewImageResponse;
+}
+
 export interface ApiResponseMainImageReviewResponse {
   success?: boolean;
   /** @format int32 */
