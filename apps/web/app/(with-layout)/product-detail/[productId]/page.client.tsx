@@ -47,11 +47,12 @@ export default function ClientPage({
 
           <YoutubeCarousel youtubeListData={youtubeListData} />
           <StarRating
+            authStatus={authStatus}
             reviewCount={productData.reviewCount}
             rating={productData.rating}
             starPercent={productData.starPercent}
           />
-          <ReviewList />
+          <ReviewList authStatus={authStatus} />
         </div>
       </div>
     </div>

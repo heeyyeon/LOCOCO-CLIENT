@@ -17,6 +17,10 @@ import { PRODUCT_DETAIL_QUERY_KEYS } from '../queries';
 import { ImageReviewDetailData } from '../types';
 import CommentBox from './comment-box';
 
+interface ReviewProps extends ImageReviewDetailData {
+  authStatus: boolean;
+}
+
 export default function Review({
   reviewId,
   writtenTime,
@@ -35,7 +39,7 @@ export default function Review({
   //brandName,
   //productName,
   //authorId,
-}: ImageReviewDetailData) {
+}: ReviewProps) {
   const queryClient = useQueryClient();
   const router = useRouter();
   const { productId } = useParams();

@@ -162,7 +162,11 @@ export default function ProductInfo({
         </div>
         <Button color="secondary" variant="filled" rounded size="lg" asChild>
           <Link
-            href={`/product-detail/${params.productId}/write-review`}
+            href={
+              authStatus
+                ? `/product-detail/${params.productId}/write-review`
+                : '/login'
+            }
             className="jp-title2"
           >
             <SvgWrite /> レビューを書く

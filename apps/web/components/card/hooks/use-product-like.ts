@@ -3,7 +3,7 @@ import { PRODUCT_QUERIES } from 'app/(with-layout)/(home)/components/home-sectio
 import { apiRequest } from 'app/api/apiRequest';
 import { getCookie } from 'utils/client-cookie';
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 
 interface UseProductLikeProps {
   initialIsLiked: boolean;
