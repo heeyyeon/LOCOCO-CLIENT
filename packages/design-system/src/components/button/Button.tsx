@@ -89,6 +89,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       className,
       rounded = false,
       asChild = false,
+      disabled,
       ...props
     },
     ref
@@ -106,6 +107,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 
     return (
       <Comp
+        disabled={disabled}
         ref={ref}
         className={cn(
           buttonVariants({ variant, color, size, rounded }),

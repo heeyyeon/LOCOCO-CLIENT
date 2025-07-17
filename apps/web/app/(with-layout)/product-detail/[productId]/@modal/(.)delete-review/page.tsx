@@ -1,25 +1,38 @@
 'use client';
 
+import { useQueryClient } from '@tanstack/react-query';
+import { useMutation } from '@tanstack/react-query';
 import Modal from 'components/modal/modal';
 import React from 'react';
 import { useRouter } from 'next/navigation';
+import { useParams } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
 import { Button } from '@lococo/design-system';
+import { deleteReview } from '../../apis';
+import { PRODUCT_DETAIL_QUERY_KEYS } from '../../queries';
 
 export default function DeleteReviewModal() {
   const router = useRouter();
-  // TODO api 연동 시에 import해서 id 가져오기
-  // const searchParams = useSearchParams();
-  // const params = useParams();
-  // const id = params.id;
-  // const reviewId = searchParams.get('reviewId');
+  const searchParams = useSearchParams();
+  const params = useParams();
+  const reviewId = searchParams.get('reviewId');
+
+  const queryClient = useQueryClient();
+
+  const { mutate: reviewDeleteMutation } = useMutation({
+    mutationFn: (reviewId: number) => deleteReview(reviewId),
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: PRODUCT_DETAIL_QUERY_KEYS.REVIEW_LIST(
+          Number(params.productId)
+        ),
+      });
+      router.back();
+    },
+  });
 
   const handleDelete = async () => {
-    try {
-      // TODO 삭제 api 연동
-      router.back();
-    } catch (error) {
-      console.error('', error);
-    }
+    reviewDeleteMutation(Number(reviewId));
   };
 
   const handleCancel = () => {

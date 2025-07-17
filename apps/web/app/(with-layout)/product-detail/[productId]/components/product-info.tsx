@@ -60,12 +60,8 @@ export default function ProductInfo({
       <div className="flex w-[48rem] flex-col gap-[1.2rem]">
         <div className="flex justify-between gap-[0.4rem]">
           <div className="flex flex-col gap-[0.6rem]">
-            <h2 className="text-jp-title3 font-bold text-gray-700">
-              {brandName}
-            </h2>
-            <h1 className="text-jp-head3 font-bold text-gray-800">
-              {productName}
-            </h1>
+            <h2 className="jp-title3 font-bold text-gray-700">{brandName}</h2>
+            <h1 className="jp-head3 font-bold text-gray-800">{productName}</h1>
           </div>
           <IconButton
             onClick={() => likeMutation.mutate(productId)}
@@ -89,24 +85,29 @@ export default function ProductInfo({
           <p className="jp-body2 text-gray-600"> {unit}</p>
           <div className="flex items-center gap-[0.4rem]">
             <SvgStar className="fill-yellow" />
-            <span className="text-en-body1 text-gray-800">
+            <span className="en-body1 text-gray-800">
               {rating}/{MAX_RATING}
             </span>
-            <span className="text-en-body1 text-gray-600">({reviewCount})</span>
+            <span className="en-body1 text-gray-600">({reviewCount})</span>
           </div>
         </div>
-        <Select>
-          <SelectTrigger className="jp-body2 text-gray-800">
-            <SelectValue placeholder="オプション"></SelectValue>
-          </SelectTrigger>
-          <SelectContent className="jp-body2 text-gray-800">
-            {productOptions.map((option) => (
-              <SelectItem value={option.optionName} key={option.id} disabled>
-                {option.optionName}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
+        {productOptions.length > 0 && (
+          <Select>
+            <SelectTrigger
+              className="jp-body2 text-gray-800"
+              disabled={productOptions.length === 0}
+            >
+              <SelectValue placeholder="オプション" />
+            </SelectTrigger>
+            <SelectContent className="jp-body2 text-gray-800">
+              {productOptions.map((option) => (
+                <SelectItem value={option.optionName} key={option.id} disabled>
+                  {option.optionName}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        )}
       </div>
 
       {/* 버튼 레이어 */}
@@ -149,12 +150,11 @@ export default function ProductInfo({
           </Button>
         </div>
         <Button color="secondary" variant="filled" rounded size="lg" asChild>
-          {/* 추후 리뷰 작성 모달 URL 연결 */}
           <Link
             href={`/product-detail/${params.productId}/write-review`}
             className="jp-title2"
           >
-            <SvgWrite /> カートに入れる
+            <SvgWrite /> レビューを書く
           </Link>
         </Button>
       </div>

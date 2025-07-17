@@ -16,12 +16,12 @@
 
 /* Vertical Swiper Specific Styles */
 .mySwiper.vertical {
-  height: 34.8rem;
+  height: 35rem;
   width: 6rem;
 }
 
 .mySwiper.vertical .swiper-slide {
   width: 6rem;
-  height: 6rem !important;
-  margin-bottom: 1.2rem !important;
+  /* height: 6rem !important; */
+  /* margin-bottom: 1.2rem !important; */
 }
