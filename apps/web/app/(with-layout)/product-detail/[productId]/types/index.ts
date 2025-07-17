@@ -62,25 +62,29 @@ export interface YoutubeListData {
   youtubeUrls: string[];
 }
 
-export type ImageReviewListResponse = APIResponse<ImageReviewDetailData>;
-export interface ImageReviewDetailData {
+export type ImageReviewListResponse = APIResponse<ImageReviewDetailDataList>;
+export interface ImageReviewDetailDataList {
   /** @format int64 */
-  imageReviews: {
-    reviewId: number;
-    /** @format date-time */
-    writtenTime: string;
-    receiptUploaded: boolean;
-    positiveComment: string;
-    negativeComment: string;
-    authorName: string;
-    profileImageUrl: string;
-    rating: string;
-    option: string;
-    /** @format int64 */
-    likeCount: number;
-    images?: string[];
-    brandName: string;
-    productName: string;
-    isMine: boolean;
-  }[];
+  imageReviews: ImageReviewDetailData[];
+}
+
+export interface ImageReviewDetailData {
+  reviewId: number;
+  /** @format date-time */
+  writtenTime: string;
+  receiptUploaded: boolean;
+  positiveComment: string;
+  negativeComment: string;
+  authorName: string;
+  profileImageUrl: string;
+  rating: string;
+  option: string;
+  /** @format int64 */
+  likeCount: number;
+  images?: string[];
+  brandName: string;
+  productName: string;
+  isMine: boolean;
+  isLiked: boolean;
+  authorId: number;
 }

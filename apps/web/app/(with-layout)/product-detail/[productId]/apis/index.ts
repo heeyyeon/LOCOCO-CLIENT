@@ -3,7 +3,7 @@ import { ProductDetailResponse } from '../types';
 import { ProductDetailData } from '../types';
 import { YoutubeListResponse } from '../types';
 import { YoutubeListData } from '../types';
-import { ImageReviewDetailData } from '../types';
+import { ImageReviewDetailDataList } from '../types';
 import { ImageReviewListResponse } from '../types';
 
 // 상품 상세 정보 응답 타입 정의
@@ -45,7 +45,7 @@ export const getYoutubeList = async (
 
 export const getReviewList = async (
   productId: number
-): Promise<ImageReviewDetailData> => {
+): Promise<ImageReviewDetailDataList> => {
   const response = await apiRequest<ImageReviewListResponse>({
     endPoint: `/api/reviews/details/image?productId=${productId}&page=0&size=10`,
     method: 'GET',
