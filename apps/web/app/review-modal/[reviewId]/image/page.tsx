@@ -9,7 +9,7 @@ import ReviewModalSwiper from '../../components/review-modal-swiper';
 import {
   useImageReviews,
   useAllImageReviewDetails,
-} from '../../hooks/image-review-api';
+} from '../../hooks/review-api';
 import type { ReviewDetail } from '../../types';
 
 const formatDateToJapanese = (dateString: string): string => {
