@@ -42,6 +42,7 @@ export default function ReviewModalSwiper({
         >
           <ReviewModalLayout
             id={review.reviewId}
+            productId={review.productId}
             mediaList={review.mediaList}
             user={{
               name: review.authorName,

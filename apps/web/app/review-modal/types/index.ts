@@ -1,5 +1,6 @@
 export interface ReviewDetailBase {
   reviewId: number;
+  productId: number;
   writtenTime: string;
   receiptUploaded: boolean;
   positiveComment: string;
