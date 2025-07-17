@@ -31,7 +31,7 @@ const header = React.memo(function Header() {
       />
       <div
         className={cn(
-          'z-55 sticky top-0 mx-auto flex w-full min-w-[1366px] flex-col bg-white',
+          'sticky top-0 z-30 mx-auto flex w-full min-w-[1366px] flex-col bg-white',
           (isSearching || selectedCategory) &&
             'border-b border-dashed border-pink-500',
           !selectedCategory &&

@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { useParams } from 'next/navigation';
 import { Progress } from '@lococo/design-system';
 import { Button } from '@lococo/design-system';
 import { Star } from '@lococo/design-system';
@@ -17,6 +18,7 @@ export default function StarRating({
   rating,
   starPercent,
 }: StarRatingProps) {
+  const params = useParams();
   return (
     <div className="flex flex-col gap-[3.2rem]">
       <h3 className="text-jp-head2 inline-flex items-center gap-[1.2rem] font-bold">
@@ -53,7 +55,7 @@ export default function StarRating({
 
       <Button color="primary" variant="filled" size="lg" rounded asChild>
         {/* TODO: 랜딩 배포 이후 라우팅 URL 추가 */}
-        <Link href="">
+        <Link href={`/product-detail/${params.productId}/write-review`}>
           <span className="jp-title2 inline-flex items-center gap-[0.8rem]">
             <SvgWrite />
             レビューを書く

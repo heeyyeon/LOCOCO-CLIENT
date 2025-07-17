@@ -11,6 +11,7 @@ export { SvgBad } from './Bad';
 export { SvgCheck } from './Check';
 export { SvgCheckNonBg } from './CheckNonBg';
 export { SvgClose } from './Close';
+export { SvgDelete } from './Delete';
 export { SvgDivider } from './Divider';
 export { SvgErrorFill } from './ErrorFill';
 export { SvgGoodFill } from './GoodFill';

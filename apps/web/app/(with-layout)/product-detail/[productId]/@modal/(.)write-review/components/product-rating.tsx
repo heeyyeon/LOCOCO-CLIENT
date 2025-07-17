@@ -29,7 +29,7 @@ export default function ProductRating({ value, onChange, error }: Props) {
               <button
                 key={`${index}-star`}
                 type="button"
-                className="flex items-center justify-center transition-colors hover:scale-110"
+                className="flex cursor-pointer items-center justify-center transition-colors hover:scale-110"
                 onClick={() => onChange(starNumber)}
               >
                 <SvgStar
