@@ -7,11 +7,13 @@ import { Star } from '@lococo/design-system';
 import { Tag } from '@lococo/design-system';
 import { ReactionToggle } from '@lococo/design-system';
 import { SvgGoodOutline } from '@lococo/design-system';
+import { SvgDelete } from '@lococo/design-system';
+import { IconButton } from '@lococo/design-system';
 import { getReviewList } from '../apis';
 import { PRODUCT_DETAIL_QUERY_KEYS } from '../queries';
 import CommentBox from './comment-box';
 
-//TODO: isAuthor 분기처리
+//TODO: isMine 분기처리
 //TODO: 좋아요 로직 추가
 export default function Review() {
   const { productId } = useParams();
@@ -67,7 +69,18 @@ export default function Review() {
             <div className="flex w-[26.4rem] flex-col items-stretch gap-[1.2rem]">
               <div className="flex items-center gap-[1.2rem]">
                 <Avatar src={review.profileImageUrl} />
-                <p className="en-title2 text-gray-800">{review.authorName}</p>
+                <p className="en-title2 w-full text-gray-800">
+                  {review.authorName}
+                </p>
+                {review.isMine && (
+                  <IconButton
+                    size="md"
+                    color="tertiary"
+                    icon={
+                      <SvgDelete className="flex-shrink-0 items-end text-gray-500" />
+                    }
+                  ></IconButton>
+                )}
               </div>
 
               <div className="flex h-full flex-col gap-[1.2rem]">

@@ -81,5 +81,6 @@ export interface ImageReviewDetailData {
     images?: string[];
     brandName: string;
     productName: string;
+    isMine: boolean;
   }[];
 }
