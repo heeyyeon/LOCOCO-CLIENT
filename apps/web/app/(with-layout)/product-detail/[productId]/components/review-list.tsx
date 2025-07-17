@@ -1,6 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
 import { useParams } from 'next/navigation';
-import { SvgImgPhoto } from '@lococo/design-system';
 import { getReviewList } from '../apis';
 import { PRODUCT_DETAIL_QUERY_KEYS } from '../queries';
 import Review from './review';
@@ -8,16 +7,21 @@ import Review from './review';
 export default function ReviewList() {
   const { productId } = useParams();
 
-  const { data: reviewList, isSuccess } = useQuery({
+  const { data: reviewList, isPending } = useQuery({
     queryKey: PRODUCT_DETAIL_QUERY_KEYS.REVIEW_LIST(Number(productId)),
     queryFn: () => getReviewList(Number(productId)),
   });
 
+  if (isPending) {
+    return <div>Loading...</div>;
+  }
   const reviewListData = reviewList?.imageReviews;
+
   return (
     <div className="flex flex-col gap-[3.2rem]">
       <h3 className="jp-head3 font-bold">写真付きレビュー</h3>
-      {reviewListData && reviewListData.length > 0 ? (
+      {reviewListData &&
+        reviewListData.length > 0 &&
         reviewListData.map((review) => (
           <Review
             key={review.reviewId}
@@ -38,7 +42,8 @@ export default function ReviewList() {
             productName={review.productName}
             authorId={review.authorId}
           />
-        ))
+        ))}
+      {/* ))
       ) : (
         <>
           <div className="flex h-[31.1rem] flex-col items-center justify-center gap-[2.4rem]">
@@ -48,7 +53,7 @@ export default function ReviewList() {
             </p>
           </div>
         </>
-      )}
+      )} */}
     </div>
   );
 }
