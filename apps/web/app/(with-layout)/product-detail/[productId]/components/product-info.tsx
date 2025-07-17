@@ -3,6 +3,7 @@
 import { formatJPY } from 'utils/formatJPY';
 import { useState } from 'react';
 import Link from 'next/link';
+import { useParams } from 'next/navigation';
 import {
   Select,
   SelectTrigger,
@@ -51,6 +52,7 @@ export default function ProductInfo({
   q10Url,
 }: ProductInfoProps) {
   const [isLiked, setIsLiked] = useState(initialIsLiked);
+  const params = useParams();
   return (
     <div className="flex flex-col justify-between">
       {/* 상품 정보 */}
@@ -148,8 +150,7 @@ export default function ProductInfo({
         <Button color="secondary" variant="filled" rounded size="lg" asChild>
           {/* 추후 리뷰 작성 모달 URL 연결 */}
           <Link
-            // href={`/product-detail/${params.productId}/write-review`}
-            href=""
+            href={`/product-detail/${params.productId}/write-review`}
             className="jp-title2"
           >
             <SvgWrite /> カートに入れる

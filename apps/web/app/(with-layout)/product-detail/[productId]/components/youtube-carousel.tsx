@@ -74,7 +74,7 @@ export default function YoutubeCarousel({
               modules={[Navigation]}
               className="youtube-swiper"
             >
-              {youtubeListData?.youtubeUrls?.map((video) => (
+              {validatedYoutubeListData?.map((video) => (
                 <SwiperSlide key={video}>
                   <iframe
                     width="552"

@@ -9,6 +9,7 @@
  * ## SOURCE: https://github.com/acacode/swagger-typescript-api ##
  * ---------------------------------------------------------------
  */
+
 import {
   ApiResponseJwtLoginResponse,
   ApiResponseLineLoginResponse,
@@ -32,7 +33,7 @@ export class Auth<
   reissueRefreshToken = (params: RequestParams = {}) =>
     this.request<ApiResponseVoid, any>({
       path: `/api/auth/refresh`,
-      method: 'POST',
+      method: "POST",
       secure: true,
       ...params,
     });
@@ -82,7 +83,7 @@ export class Auth<
   redirectToLineAuth = (params: RequestParams = {}) =>
     this.request<void, any>({
       path: `/api/auth/line/redirect`,
-      method: 'GET',
+      method: "GET",
       secure: true,
       ...params,
     });
@@ -100,11 +101,11 @@ export class Auth<
       code: string;
       state: string;
     },
-    params: RequestParams = {}
+    params: RequestParams = {},
   ) =>
     this.request<ApiResponseLineLoginResponse, any>({
       path: `/api/auth/line/login`,
-      method: 'GET',
+      method: "GET",
       query: query,
       secure: true,
       ...params,
