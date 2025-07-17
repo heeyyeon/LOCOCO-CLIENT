@@ -16,7 +16,7 @@ export interface ReviewItem {
 }
 
 export interface ReviewFormData {
-  productOptionId: number;
+  productOptionId?: number;
   rating: number;
   positiveComment: string;
   negativeComment: string;

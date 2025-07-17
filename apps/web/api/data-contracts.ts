@@ -12,7 +12,7 @@
 
 export interface ReviewRequest {
   /** @format int64 */
-  productOptionId: number;
+  productOptionId?: number;
   /** @format int32 */
   rating: number;
   /**
@@ -290,10 +290,12 @@ export interface VideoReviewDetailResponse {
   authorName: string;
   /** @format double */
   rating: number;
+  option?: string;
   /** @format date-time */
   uploadAt: string;
   productImageUrl: string;
   receiptImageUrl?: string;
+  receiptUploaded: boolean;
   isLiked: boolean;
   /** @format int64 */
   productId: number;

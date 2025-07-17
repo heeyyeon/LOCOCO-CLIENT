@@ -238,4 +238,20 @@ export class Review<
       secure: true,
       ...params,
     });
+  /**
+   * No description
+   *
+   * @tags REVIEW
+   * @name DeleteReview
+   * @summary 리뷰 삭제 (본인이 작성한 리뷰)
+   * @request DELETE:/api/reviews/{reviewId}
+   * @secure
+   */
+  deleteReview = (reviewId: number, params: RequestParams = {}) =>
+    this.request<ApiResponseVoid, any>({
+      path: `/api/reviews/${reviewId}`,
+      method: "DELETE",
+      secure: true,
+      ...params,
+    });
 }
