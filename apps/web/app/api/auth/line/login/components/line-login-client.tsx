@@ -1,6 +1,7 @@
 'use client';
 
 import { useQuery } from '@tanstack/react-query';
+import LoadingSvg from 'components/loading/loading-svg';
 import { useEffect } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { lineLogin } from '../apis';
@@ -30,5 +31,9 @@ export default function LineLoginClient() {
     }
   }, [isSuccess, router]);
 
-  return <div>...</div>;
+  return (
+    <div className="flex h-screen w-full items-center justify-center">
+      <LoadingSvg />
+    </div>
+  );
 }
