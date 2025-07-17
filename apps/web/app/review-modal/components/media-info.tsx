@@ -29,11 +29,25 @@ export default function MediaInfo({
   isLiked: initialIsLiked = false,
 }: MediaInfoProps) {
   const [isLiked, setIsLiked] = useState(initialIsLiked);
+  const [optimisticLikeCount, setOptimisticLikeCount] = useState(likeCount);
   const likeToggle = useReviewLikeToggle();
 
   useEffect(() => {
     setIsLiked(initialIsLiked);
   }, [initialIsLiked]);
+
+  useEffect(() => {
+    setOptimisticLikeCount(likeCount);
+  }, [likeCount]);
+
+  const handleLikeToggle = (pressed: boolean) => {
+    setIsLiked(pressed);
+
+    setOptimisticLikeCount(
+      pressed ? optimisticLikeCount + 1 : optimisticLikeCount - 1
+    );
+    likeToggle.mutate(reviewId);
+  };
 
   return (
     <div className="absolute bottom-0 left-0 z-10 flex h-[16rem] w-full items-center justify-between rounded-bl-xl bg-gradient-to-t from-black/60 to-transparent p-[1.6rem]">
@@ -49,15 +63,12 @@ export default function MediaInfo({
         <ReactionToggle
           variant="vertical"
           pressed={isLiked}
-          onPressedChange={(pressed) => {
-            setIsLiked(pressed);
-            likeToggle.mutate(reviewId);
-          }}
+          onPressedChange={handleLikeToggle}
           className="text-white"
           disabled={likeToggle.isPending}
         >
           {isLiked ? <SvgGoodFill /> : <SvgGoodOutline />}
-          <span className="text-en-body1">{likeCount}</span>
+          <span className="text-en-body1">{optimisticLikeCount}</span>
         </ReactionToggle>
       </div>
     </div>

@@ -105,6 +105,7 @@ export default function Page() {
       rating: detail.rating,
       option: detail.option || '',
       likeCount: detail.likeCount,
+      isLiked: detail.isLiked,
       brandName: detail.brandName,
       productName: detail.productName,
       productImageUrl: detail.productImageUrl,
