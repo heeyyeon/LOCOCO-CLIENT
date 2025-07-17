@@ -53,7 +53,7 @@ export default function ReceiptCertification({ file, onChange, error }: Props) {
       </p>
 
       {!file && (
-        <div className="relative">
+        <div className="relative cursor-pointer">
           <input
             type="file"
             accept="image/jpeg, image/png, image/webp"
@@ -62,7 +62,10 @@ export default function ReceiptCertification({ file, onChange, error }: Props) {
             aria-label="영수증 이미지 업로더"
           />
           <div className="pointer-events-none absolute inset-0 flex items-center justify-center rounded bg-gray-800">
-            <SvgAdd className="aspect-square size-[3.6rem] shrink-0 fill-white" />
+            <SvgAdd
+              style={{ cursor: 'pointer' }}
+              className="aspect-square size-[3.6rem] shrink-0 fill-white"
+            />
           </div>
         </div>
       )}
@@ -81,7 +84,10 @@ export default function ReceiptCertification({ file, onChange, error }: Props) {
             className="absolute bottom-[0.4rem] right-[0.4rem] flex size-[1.8rem] items-center justify-center rounded-[0.2px] bg-black/30 p-[0.1rem]"
             type="button"
           >
-            <SvgClose className="size-[1.6rem] fill-white" />
+            <SvgClose
+              style={{ cursor: 'pointer' }}
+              className="size-[1.6rem] fill-white"
+            />
           </button>
         </div>
       )}

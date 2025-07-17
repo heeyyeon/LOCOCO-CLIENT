@@ -17,7 +17,7 @@ export default function ClientPage({
   youtubeListData,
 }: ClientPageProps) {
   return (
-    <div className="flex w-screen flex-col lg:flex lg:justify-center">
+    <div className="flex w-full flex-col lg:flex lg:justify-center">
       <ProductBreadCrumbSection
         middleCategory={productData.middleCategory}
         subCategory={productData.subCategory}

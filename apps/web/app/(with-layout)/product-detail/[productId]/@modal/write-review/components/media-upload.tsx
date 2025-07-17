@@ -80,9 +80,9 @@ export default function MediaUpload({
       label="写真または動画をアップロードしてください"
       className="flex-col gap-[2.4rem] border-b border-gray-400"
     >
-      <div className="flex flex-wrap gap-4">
+      <div className="flex cursor-pointer flex-wrap gap-4">
         {files.map((file, index) => (
-          <div key={index} className="relative h-32 w-32">
+          <div key={index} className="relative h-32 w-32 cursor-pointer">
             {objectUrls[index] &&
               (getFileType(file) === REVIEW_MEDIA_TYPE.IMAGE ? (
                 <Image
@@ -105,7 +105,10 @@ export default function MediaUpload({
               className="absolute bottom-[0.4rem] right-[0.4rem] flex size-[1.8rem] items-center justify-center rounded-[0.2px] bg-black/30 p-[0.1rem]"
               type="button"
             >
-              <SvgClose className="size-[1.6rem] fill-white" />
+              <SvgClose
+                className="size-[1.6rem] fill-white"
+                style={{ cursor: 'pointer' }}
+              />
             </button>
           </div>
         ))}
@@ -118,8 +121,11 @@ export default function MediaUpload({
               className="flex aspect-square w-32 cursor-pointer items-center justify-center bg-gray-800 p-[2.2rem] opacity-0"
               onChange={handleFileChange}
             />
-            <div className="pointer-events-none absolute inset-0 flex items-center justify-center rounded bg-gray-800">
-              <SvgAdd className="aspect-square size-[3.6rem] shrink-0 fill-white" />
+            <div className="absolute inset-0 flex items-center justify-center rounded bg-gray-800">
+              <SvgAdd
+                style={{ cursor: 'pointer' }}
+                className="aspect-square size-[3.6rem] shrink-0 fill-white"
+              />
             </div>
           </div>
         )}
