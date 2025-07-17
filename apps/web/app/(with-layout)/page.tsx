@@ -5,11 +5,13 @@ import HomeUpdateDate from './(home)/components/home-update-date';
 import {
   emptyReviewData,
   getImageReviews,
+  getVideoReviews,
 } from './(home)/utils/getReviewItems';
 import { getUserStatus } from './(home)/utils/getUserStatus';
 
 export default async function Main() {
   const reviewImageData = await getImageReviews();
+  const reviewVideoData = await getVideoReviews();
   const isUserLogin = await getUserStatus();
   return (
     <div className="flex w-full flex-col">
@@ -32,7 +34,10 @@ export default async function Main() {
             {<SvgJapaneseReview className="fill-red" width={40} height={29} />}
             いいね数が多いレビュー
           </HomeSection.Header>
-          {/* <HomeSection.Review type="video" /> */}
+          <HomeSection.Review
+            type="video"
+            reviewCardList={reviewVideoData?.data || emptyReviewData}
+          />
           <HomeSection.Review
             reviewCardList={reviewImageData?.data || emptyReviewData}
             type="image"

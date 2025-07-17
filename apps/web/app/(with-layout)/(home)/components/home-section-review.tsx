@@ -18,13 +18,12 @@ export default function HomeSectionReview({
   className,
   reviewCardList,
 }: HomeSectionReviewProps) {
-  console.log('homesection', reviewCardList);
   const router = useRouter();
   const reviews =
     'imageReviews' in reviewCardList
       ? reviewCardList.imageReviews
       : reviewCardList.videoReviews;
-  console.log(reviews);
+
   return (
     <div className={cn(`mt-[3.2rem] flex flex-col gap-[3.2rem]`, className)}>
       <p className="jp-head3 font-[700]">

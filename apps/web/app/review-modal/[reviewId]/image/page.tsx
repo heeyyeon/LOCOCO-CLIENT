@@ -1,6 +1,6 @@
 'use client';
 
-import { useParams, useRouter } from 'next/navigation';
+import { useParams, useRouter, useSearchParams } from 'next/navigation';
 import type {
   ApiResponseImageReviewDetailResponse,
   ImageReviewDetailResponse,
@@ -24,12 +24,15 @@ export default function Page() {
   const router = useRouter();
   const { reviewId: reviewIdParam } = useParams() as { reviewId: string };
   const currentReviewId = Number(reviewIdParam);
+  const searchParams = useSearchParams();
+  const productId = searchParams.get('productId');
+  const currentProductId = Number(productId);
 
   const {
     data: reviewsListResponse,
     isLoading: isListLoading,
     error: listError,
-  } = useImageReviews();
+  } = useImageReviews(currentProductId || undefined);
 
   // 모든 리뷰의 상세 정보 가져오기
   const detailQueries = useAllImageReviewDetails(

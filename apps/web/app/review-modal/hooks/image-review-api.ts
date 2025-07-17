@@ -11,10 +11,21 @@ import {
 } from '../../../api/data-contracts';
 import { REVIEW_KEYS } from '../../../constants/query-key';
 
-export const useImageReviews = () => {
+export const useImageReviews = (productId?: number) => {
   return useQuery({
-    queryKey: REVIEW_KEYS.IMAGE_LISTS(),
+    queryKey: productId
+      ? REVIEW_KEYS.IMAGE_DETAIL(productId)
+      : REVIEW_KEYS.IMAGE_LISTS(),
     queryFn: async (): Promise<ApiResponseMainImageReviewResponse> => {
+      if (productId) {
+        return apiRequest({
+          endPoint: `/api/reviews/details/image`,
+          method: 'GET',
+          params: {
+            productId: productId.toString(),
+          },
+        });
+      }
       return apiRequest({
         endPoint: '/api/reviews/image',
         method: 'GET',
