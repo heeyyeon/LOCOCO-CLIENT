@@ -9,6 +9,8 @@ export default function Page() {
 
   return (
     <ReviewModalSwiper
+      //TODO: 현재인덱스 받기
+      currentIndex={0}
       reviews={videoReviewMocks}
       onClose={() => router.back()}
     />

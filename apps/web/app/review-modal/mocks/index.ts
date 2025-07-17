@@ -17,6 +17,7 @@ export const videoReviewMocks: ReviewDetail[] = [
     likeCount: 123,
     brandName: 'ラネージュ',
     productName: 'リップ スリーピング マスク',
+    isLiked: false,
     productImageUrl:
       'https://images.unsplash.com/photo-1506744038136-46273834b3fb',
     mediaList: [
@@ -31,6 +32,7 @@ export const videoReviewMocks: ReviewDetail[] = [
     reviewId: 2,
     writtenTime: '2025-07-01T00:00:00Z',
     receiptUploaded: true,
+    isLiked: false,
     positiveComment:
       '最近使い始めたこの化粧水と乳液のセット、本当に気に入っています。最近使い始めたこの化粧水と乳液のセット、本当に気に入っています。最近使い始めたこの化粧水と乳液のセット、本当に気に入っています。最近使い始めたこの化粧水と乳液のセット、本当に気に入っています。最近使い始めたこの化粧水と乳液のセット、本当に気に入っています。最近使い始めたこの化粧水と乳液のセット、本当に気に入っています。',
     negativeComment:
@@ -57,6 +59,7 @@ export const videoReviewMocks: ReviewDetail[] = [
 export const imageReviewMocks: ReviewDetail[] = [
   {
     reviewId: 245,
+    isLiked: false,
     writtenTime: '2025-07-01T00:00:00Z',
     receiptUploaded: false,
     positiveComment:
@@ -92,6 +95,7 @@ export const imageReviewMocks: ReviewDetail[] = [
   },
   {
     reviewId: 243,
+    isLiked: false,
     writtenTime: '2025-07-01T00:00:00Z',
     receiptUploaded: false,
     positiveComment:
