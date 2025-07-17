@@ -112,7 +112,7 @@ export default function LoadingSvg() {
   return (
     <div className="flex items-center justify-center">
       <svg
-        width="154"
+        width="170"
         height="73"
         viewBox="0 0 154 73"
         fill="none"
