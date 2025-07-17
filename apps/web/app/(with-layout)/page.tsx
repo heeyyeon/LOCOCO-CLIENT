@@ -6,10 +6,11 @@ import {
   emptyReviewData,
   getImageReviews,
 } from './(home)/utils/getReviewItems';
+import { getUserStatus } from './(home)/utils/getUserStatus';
 
 export default async function Main() {
   const reviewImageData = await getImageReviews();
-
+  const isUserLogin = await getUserStatus();
   return (
     <div className="flex w-full flex-col">
       <HomeBanner />
@@ -17,11 +18,14 @@ export default async function Main() {
         <HomeUpdateDate />
         <HomeSection className="mt-[6rem]">
           <HomeSection.Header>レビュー数が多い商品</HomeSection.Header>
-          <HomeSection.Product productSortType="new" />
+          <HomeSection.Product
+            productSortType="popular"
+            authStatus={isUserLogin}
+          />
         </HomeSection>
         <HomeSection>
           <HomeSection.Header>新作アイテム</HomeSection.Header>
-          <HomeSection.Product productSortType="popular" />
+          <HomeSection.Product authStatus={isUserLogin} productSortType="new" />
         </HomeSection>
         <HomeSection>
           <HomeSection.Header>

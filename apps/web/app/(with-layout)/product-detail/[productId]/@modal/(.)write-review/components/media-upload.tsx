@@ -111,14 +111,14 @@ export default function MediaUpload({
         ))}
 
         {canAdd && (
-          <div className="relative">
+          <div className="relative cursor-pointer">
             <input
               type="file"
               accept={getAcceptAttribute()}
-              className="flex aspect-square w-32 cursor-pointer items-center justify-center bg-gray-800 p-[2.2rem] opacity-0"
+              className="flex aspect-square w-32 items-center justify-center bg-gray-800 p-[2.2rem] opacity-0"
               onChange={handleFileChange}
             />
-            <div className="pointer-events-none absolute inset-0 flex items-center justify-center rounded bg-gray-800">
+            <div className="absolute inset-0 flex items-center justify-center rounded bg-gray-800">
               <SvgAdd className="aspect-square size-[3.6rem] shrink-0 fill-white" />
             </div>
           </div>

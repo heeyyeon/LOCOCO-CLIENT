@@ -9,7 +9,7 @@ interface BadgeProps {
 const OTHER_RANK_STYLE = `border-b-[0.1rem] border-r-[0.1rem] border-pink-500 bg-pink-100 text-pink-500`;
 
 const badgeVariants = cva(
-  `en-title2 flex h-[3.6rem] w-[3.6rem] items-center justify-center font-[700] absolute left-0 top-0 z-50`,
+  `en-title2 flex h-[3.6rem] w-[3.6rem] items-center justify-center font-[700] absolute left-0 top-0 absolute`,
   {
     variants: {
       variant: {
