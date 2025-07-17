@@ -18,6 +18,7 @@ export default function HomeSectionReview({
   className,
   reviewCardList,
 }: HomeSectionReviewProps) {
+  console.log('homesection', reviewCardList);
   const router = useRouter();
   const reviews =
     'imageReviews' in reviewCardList
@@ -44,7 +45,7 @@ export default function HomeSectionReview({
               type === 'image' ? review.reviewImage : review.reviewVideo
             }
             handleCardClick={() => {
-              // router.push(`/review-modal/${review.reviewId}/${type}`)
+              router.push(`/review-modal/${review.reviewId}/${type}`);
             }}
           >
             <Button

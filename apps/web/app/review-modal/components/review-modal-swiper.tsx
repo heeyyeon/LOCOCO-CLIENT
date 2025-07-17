@@ -1,6 +1,7 @@
 'use client';
 
 import 'swiper/css';
+import { Mousewheel } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import type { ReviewDetail } from '../types';
 import ReviewModalLayout from './review-modal-layout';
@@ -14,12 +15,15 @@ export default function ReviewModalSwiper({
   reviews,
   onClose,
 }: ReviewModalSwiperProps) {
+  console.log('review swiper', reviews);
   return (
     <Swiper
       direction="vertical"
       slidesPerView={1.2}
       centeredSlides
       spaceBetween={-45}
+      modules={[Mousewheel]}
+      mousewheel={{ forceToAxis: true }}
       className="inset-0 h-screen w-screen bg-black/70"
     >
       {reviews.map((review) => (
