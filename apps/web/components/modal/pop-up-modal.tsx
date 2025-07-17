@@ -1,36 +1,38 @@
-import React from 'react';
+import React, { PropsWithChildren } from 'react';
 import {
-  Button,
   Dialog,
-  DialogClose,
   DialogContent,
-  DialogDescription,
   DialogFooter,
-  DialogHeader,
   DialogTitle,
   DialogTrigger,
 } from '@/components';
+import { cn } from '@/lib/utils';
 
-interface WarnModalProps {
-  children: React.ReactNode;
+interface PopUpModalProps extends PropsWithChildren {
   className?: string;
 }
 
-interface WarnModalTriggerProps {
-  children: React.ReactNode;
+interface PopUpModalTriggerProps extends PropsWithChildren {
   asChild?: boolean;
 }
 
-interface WarnModalContentProps {
-  title?: string;
-  description?: string;
-  confirmText?: string;
-  children?: React.ReactNode;
-  subTitle?: string;
+interface PopUpModalContentProps extends PropsWithChildren {
   className?: string;
 }
 
-function PopUpModal({ children, className }: WarnModalProps) {
+interface PopUpModalHeaderProps extends PropsWithChildren {
+  className?: string;
+}
+
+interface PopUpModalBodyProps extends PropsWithChildren {
+  className?: string;
+}
+
+interface PopUpModalFooterProps extends PropsWithChildren {
+  className?: string;
+}
+
+function PopUpModal({ children, className }: PopUpModalProps) {
   return (
     <div className={className}>
       <Dialog>{children}</Dialog>
@@ -41,45 +43,60 @@ function PopUpModal({ children, className }: WarnModalProps) {
 function PopUpModalTrigger({
   children,
   asChild = true,
-}: WarnModalTriggerProps) {
+}: PopUpModalTriggerProps) {
   return <DialogTrigger asChild={asChild}>{children}</DialogTrigger>;
 }
 
-function PopUpModalContent({
-  title = 'お知らせ',
-  description = '近日中にご案内できるよう進めております。',
-  confirmText = '確認',
-  subTitle,
-  children,
-  className,
-}: WarnModalContentProps) {
+function PopUpModalContent({ children, className }: PopUpModalContentProps) {
   return (
-    <DialogContent className={`${className || ''}`}>
-      <DialogHeader>
-        <DialogTitle>{title}</DialogTitle>
-      </DialogHeader>
-
-      {children ? (
-        children
-      ) : (
-        <>
-          <Dialog>{subTitle}</Dialog>
-          <DialogDescription>{description}</DialogDescription>
-        </>
+    <DialogContent
+      className={cn(
+        'flex w-[40rem] max-w-none flex-col overflow-hidden',
+        className
       )}
-
-      <DialogFooter className="sm:justify-start">
-        <DialogClose asChild>
-          <Button size="lg" variant="filled" color="primary">
-            {confirmText}
-          </Button>
-        </DialogClose>
-      </DialogFooter>
+      showCloseButton={false}
+    >
+      {children}
     </DialogContent>
+  );
+}
+
+function PopUpModalHeader({ children, className }: PopUpModalHeaderProps) {
+  return (
+    <header
+      className={cn(
+        'flex h-[4.8rem] shrink-0 items-center gap-[1rem] self-stretch border-b border-pink-500',
+        className
+      )}
+    >
+      <DialogTitle className="sr-only">Modal</DialogTitle>
+      {children}
+    </header>
+  );
+}
+
+function PopUpModalBody({ children, className }: PopUpModalBodyProps) {
+  return (
+    <div
+      className={cn('mb-[1.6rem] flex flex-1 flex-col gap-[0.8rem]', className)}
+    >
+      {children}
+    </div>
+  );
+}
+
+function PopUpModalFooter({ children, className }: PopUpModalFooterProps) {
+  return (
+    <DialogFooter className={cn('mt-[0.8rem] flex', className)}>
+      {children}
+    </DialogFooter>
   );
 }
 
 PopUpModal.Trigger = PopUpModalTrigger;
 PopUpModal.Content = PopUpModalContent;
+PopUpModal.Header = PopUpModalHeader;
+PopUpModal.Body = PopUpModalBody;
+PopUpModal.Footer = PopUpModalFooter;
 
 export default PopUpModal;

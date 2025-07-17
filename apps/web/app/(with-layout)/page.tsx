@@ -1,5 +1,4 @@
 import PopUpModal from 'components/modal/pop-up-modal';
-import WarnModal from 'components/modal/warn-modal';
 import { Button } from '@/components';
 import { SvgJapaneseReview, SvgKoreanReview } from '@/icons';
 import HomeBanner from './(home)/components/home-banner';
@@ -50,12 +49,31 @@ export default async function Main() {
           <HomeSection.YouTube />
         </HomeSection>
       </div>
-      <PopUpModal className="w-[40rem]">
+      <PopUpModal>
         <PopUpModal.Trigger>
           <button>이거누르면켜짐</button>
         </PopUpModal.Trigger>
-        <PopUpModal.Content className="max-w-[425px]">
-          <div className="w-[40rem]">asdf</div>
+        <PopUpModal.Content>
+          <PopUpModal.Header className="jp-body1 font-[700]">
+            お知らせ
+          </PopUpModal.Header>
+          <PopUpModal.Body>
+            <h3 className="jp-title2 font-[700]"> サービスを準備中です。</h3>
+            <p className="jp-caption3 font-[400]">
+              近日中にご案内できるよう進めております。
+            </p>
+          </PopUpModal.Body>
+          <PopUpModal.Footer>
+            <Button
+              size="lg"
+              color="primary"
+              variant="filled"
+              rounded={true}
+              className="jp-title2 font-[700]"
+            >
+              確認
+            </Button>
+          </PopUpModal.Footer>
         </PopUpModal.Content>
       </PopUpModal>
     </div>
