@@ -25,7 +25,7 @@ export default function ReviewModalSwiper({
     if (swiper) {
       swiper.slideTo(currentIndex);
     }
-  }, [swiper]);
+  }, [swiper, currentIndex]);
 
   return (
     <Swiper
