@@ -13,6 +13,7 @@ import Comment from './comment';
 type ReviewInfoProps = Pick<
   ReviewDetail,
   | 'reviewId'
+  | 'productId'
   | 'rating'
   | 'option'
   | 'positiveComment'
@@ -26,7 +27,7 @@ type ReviewInfoProps = Pick<
 };
 
 export default function ReviewInfo({
-  reviewId: productId,
+  productId,
   rating,
   option: productOption,
   positiveComment,

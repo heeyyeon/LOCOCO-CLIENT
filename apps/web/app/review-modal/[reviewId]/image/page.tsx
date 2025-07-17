@@ -90,6 +90,7 @@ export default function Page() {
 
     return {
       reviewId: detail.reviewId,
+      productId: detail.productId,
       writtenTime: formatDateToJapanese(detail.writtenTime),
       receiptUploaded: detail.receiptUploaded,
       positiveComment: detail.positiveComment,

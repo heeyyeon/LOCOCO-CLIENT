@@ -90,6 +90,7 @@ export default function Page() {
 
     return {
       reviewId: detail.reviewId,
+      productId: detail.productId,
       writtenTime: formatDateToJapanese(detail.uploadAt),
       receiptUploaded: !!detail.receiptImageUrl,
       positiveComment: detail.positiveContent,
