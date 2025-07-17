@@ -4,6 +4,7 @@ import dayjs from 'dayjs';
 import { useState } from 'react';
 import Image from 'next/image';
 import { useParams } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { Avatar } from '@lococo/design-system';
 import { Star } from '@lococo/design-system';
 import { Tag } from '@lococo/design-system';
@@ -12,12 +13,9 @@ import { SvgGoodOutline } from '@lococo/design-system';
 import { SvgDelete } from '@lococo/design-system';
 import { IconButton } from '@lococo/design-system';
 import { postReviewLike } from '../apis';
-import { deleteReview } from '../apis';
 import { PRODUCT_DETAIL_QUERY_KEYS } from '../queries';
 import { ImageReviewDetailData } from '../types';
 import CommentBox from './comment-box';
-
-//TODO: 리뷰 삭제 api추가
 
 export default function Review({
   reviewId,
@@ -39,10 +37,11 @@ export default function Review({
   //authorId,
 }: ImageReviewDetailData) {
   const queryClient = useQueryClient();
+  const router = useRouter();
+  const { productId } = useParams();
 
   const [isLiked, setIsLiked] = useState(initialIsLiked);
   const [likeCount, setLikeCount] = useState(initialLikeCount);
-  const { productId } = useParams();
 
   const { mutate: reviewLikeMutation } = useMutation({
     mutationKey: ['reviewLike'],
@@ -66,14 +65,12 @@ export default function Review({
     },
   });
 
-  const { mutate: reviewDeleteMutation } = useMutation({
-    mutationFn: (reviewId: number) => deleteReview(reviewId),
-    onSuccess: () => {
-      queryClient.invalidateQueries({
-        queryKey: PRODUCT_DETAIL_QUERY_KEYS.REVIEW_LIST(Number(productId)),
-      });
-    },
-  });
+  const handleDeleteReview = () => {
+    router.push(
+      `/product-detail/${productId}/delete-review?reviewId=${reviewId}`,
+      { scroll: false }
+    );
+  };
 
   return (
     <div
@@ -122,9 +119,9 @@ export default function Review({
           <Avatar src={profileImageUrl} />
           <p className="en-title2 w-full text-gray-800">{authorName}</p>
           {isMine ||
-            (isAdmin && (
+            (true && (
               <IconButton
-                onClick={() => reviewDeleteMutation(reviewId)}
+                onClick={handleDeleteReview}
                 size="md"
                 color="tertiary"
                 icon={
