@@ -1,4 +1,3 @@
-import LoadingSvg from 'components/loadingSvg/loading-svg';
 import { SvgJapaneseReview, SvgKoreanReview } from '@/icons';
 import HomeBanner from './(home)/components/home-banner';
 import HomeSection from './(home)/components/home-section';
