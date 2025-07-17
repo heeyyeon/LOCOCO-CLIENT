@@ -1,6 +1,8 @@
+import { useMutation } from '@tanstack/react-query';
+import { useQueryClient } from '@tanstack/react-query';
 import dayjs from 'dayjs';
-import { useState } from 'react';
 import Image from 'next/image';
+import { useParams } from 'next/navigation';
 import { Avatar } from '@lococo/design-system';
 import { Star } from '@lococo/design-system';
 import { Tag } from '@lococo/design-system';
@@ -8,11 +10,13 @@ import { ReactionToggle } from '@lococo/design-system';
 import { SvgGoodOutline } from '@lococo/design-system';
 import { SvgDelete } from '@lococo/design-system';
 import { IconButton } from '@lococo/design-system';
-import { ImageReviewDetailData } from '../types';
+import { postReviewLike } from '../apis';
+import { PRODUCT_DETAIL_QUERY_KEYS } from '../queries';
+import { ImageReviewDetailData, ImageReviewDetailDataList } from '../types';
+import { ReviewLikeData } from '../types';
 import CommentBox from './comment-box';
 
 //TODO: 리뷰 삭제 api추가
-//TODO: 좋아요 로직 추가
 
 export default function Review({
   reviewId,
@@ -27,11 +31,59 @@ export default function Review({
   receiptUploaded,
   isMine,
   option,
+  isLiked,
   //brandName,
   //productName,
   //authorId,
 }: ImageReviewDetailData) {
-  const [isLiked, setIsLiked] = useState(false);
+  const queryClient = useQueryClient();
+  const { productId } = useParams();
+  const { mutate: reviewLike } = useMutation<ReviewLikeData, Error, number>({
+    mutationFn: (reviewId: number) => postReviewLike(reviewId),
+    onMutate: async (reviewId: number) => {
+      await queryClient.cancelQueries({
+        queryKey: PRODUCT_DETAIL_QUERY_KEYS.REVIEW_LIST(Number(productId)),
+      });
+      const previousData = queryClient.getQueryData(
+        PRODUCT_DETAIL_QUERY_KEYS.REVIEW_LIST(Number(productId))
+      );
+      queryClient.setQueryData(
+        PRODUCT_DETAIL_QUERY_KEYS.REVIEW_LIST(Number(productId)),
+        (old: ImageReviewDetailDataList) => {
+          return old.imageReviews.map((review: ImageReviewDetailData) =>
+            review.reviewId === reviewId
+              ? {
+                  ...review,
+                  isLiked: !review.isLiked,
+                  likeCount: review.isLiked
+                    ? review.likeCount > 0
+                      ? review.likeCount - 1
+                      : review.likeCount
+                    : review.likeCount + 1,
+                }
+              : review
+          );
+        }
+      );
+      return { previousData };
+    },
+    onError: (__err, _, context) => {
+      const typedContext = context as
+        | { previousData: ImageReviewDetailDataList }
+        | undefined;
+      if (typedContext?.previousData) {
+        queryClient.setQueryData(
+          PRODUCT_DETAIL_QUERY_KEYS.REVIEW_LIST(Number(productId)),
+          typedContext.previousData
+        );
+      }
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: PRODUCT_DETAIL_QUERY_KEYS.REVIEW_LIST(Number(productId)),
+      });
+    },
+  });
 
   return (
     <div
@@ -62,11 +114,12 @@ export default function Review({
               variant="horizontal"
               pressed={isLiked}
               className="group"
+              onClick={() => reviewLike(reviewId)}
             >
               <div className="flex items-center gap-[0.4rem]">
-                <SvgGoodOutline />
+                <SvgGoodOutline className="transition-colors duration-300 group-hover:text-gray-500" />
                 <p className="en-body1 text-gray-800 transition-colors duration-300 group-hover:text-gray-500">
-                  112 {likeCount}
+                  {likeCount}
                 </p>
               </div>
             </ReactionToggle>

@@ -88,3 +88,8 @@ export interface ImageReviewDetailData {
   isLiked: boolean;
   authorId: number;
 }
+
+export type ReviewLikeResponse = APIResponse<ReviewLikeData>;
+export interface ReviewLikeData {
+  likeCount: number;
+}

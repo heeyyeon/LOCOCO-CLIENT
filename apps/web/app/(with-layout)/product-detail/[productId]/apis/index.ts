@@ -5,6 +5,8 @@ import { YoutubeListResponse } from '../types';
 import { YoutubeListData } from '../types';
 import { ImageReviewDetailDataList } from '../types';
 import { ImageReviewListResponse } from '../types';
+import { ReviewLikeResponse } from '../types';
+import { ReviewLikeData } from '../types';
 
 // 상품 상세 정보 응답 타입 정의
 
@@ -53,6 +55,21 @@ export const getReviewList = async (
 
   if (!response.data) {
     throw new Error('상품 상세 정보를 가져올 수 없습니다.');
+  }
+
+  return response.data;
+};
+
+export const postReviewLike = async (
+  reviewId: number
+): Promise<ReviewLikeData> => {
+  const response = await apiRequest<ReviewLikeResponse>({
+    endPoint: `/api/likes/reviews/${reviewId}`,
+    method: 'POST',
+  });
+
+  if (!response.data) {
+    throw new Error('좋아요 실패');
   }
 
   return response.data;
