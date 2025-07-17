@@ -27,6 +27,7 @@ type ReviewInfoProps = Pick<
 
 export default function ReviewInfo({
   reviewId: productId,
+  rating,
   option: productOption,
   positiveComment,
   negativeComment,
@@ -54,10 +55,10 @@ export default function ReviewInfo({
       </header>
 
       <div className="flex-1 overflow-y-auto p-[1.6rem] pb-[11rem]">
-        <Star rating={1} size="sm" color="yellow" />
-        <div className="text-jp-caption1 mt-[1.2rem] flex items-center gap-[0.6rem] font-medium text-gray-600">
-          <span>オプション :</span>
-          <span>{productOption}</span>
+        <Star rating={rating} size="sm" color="yellow" />
+        <div className="text-jp-caption1 mt-[1.2rem] flex gap-[0.6rem] font-medium text-gray-600">
+          <span className="flex-shrink-0">オプション :</span>
+          <span className="line-clamp-2 flex-1">{productOption}</span>
         </div>
         {isReceipt && <Tag text="レシート" className="mt-[1.2rem]" />}
         <div className="mt-[1.6rem]">

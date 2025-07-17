@@ -7,7 +7,7 @@ export default function ProductInfo({
   brandName,
 }: Pick<ProductItem, 'productName' | 'imageUrl' | 'brandName'>) {
   return (
-    <div className="flex items-center gap-[1.2rem] border-b border-dashed border-pink-500 bg-white py-[1.2rem]">
+    <div className="flex min-h-[8.4rem] items-center gap-[1.2rem] border-b border-dashed border-pink-500 bg-white p-[2rem]">
       {imageUrl && (
         <Image
           src={imageUrl}

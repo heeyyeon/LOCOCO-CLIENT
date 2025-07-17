@@ -26,12 +26,13 @@ export function useProductLike({ initialIsLiked }: UseProductLikeProps) {
     },
 
     onMutate: async () => {
-      setIsLiked(!isLiked);
-      return { originalState: isLiked };
+      const previousState = isLiked;
+      setIsLiked((prev) => !prev);
+      return { previousState };
     },
 
     onError: (error, _variables, context) => {
-      setIsLiked(context?.originalState || false);
+      setIsLiked(context?.previousState || false);
     },
     onSettled: () => {
       queryClient.invalidateQueries({ queryKey: PRODUCT_QUERIES.ALL });
@@ -44,6 +45,7 @@ export function useProductLike({ initialIsLiked }: UseProductLikeProps) {
   };
 
   return {
+    likeMutation,
     isLiked,
     handleLikeClick,
     userToken,

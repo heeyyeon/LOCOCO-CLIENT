@@ -15,10 +15,11 @@ export interface ReviewModallayoutProps {
   mediaList: Media[];
   user: User;
   likeCount: number;
+  isLiked: boolean;
   brandName: string;
   productName: string;
   productOption: string;
-  rating: 1 | 2 | 3 | 4 | 5;
+  rating: number;
   isReceipt?: boolean;
   positiveComment: string;
   negativeComment: string;
@@ -32,6 +33,7 @@ export default function ReviewModallayout({
   mediaList,
   user,
   likeCount,
+  isLiked,
   brandName,
   productName,
   productOption,
@@ -48,7 +50,13 @@ export default function ReviewModallayout({
         {/* 좌측: 미디어 + 하단정보 */}
         <div className="relative flex w-[55.2rem] flex-col">
           <MediaViewer mediaList={mediaList} />
-          <MediaInfo user={user} date={user.uploadAt} likeCount={likeCount} />
+          <MediaInfo
+            reviewId={id}
+            user={user}
+            date={user.uploadAt}
+            likeCount={likeCount}
+            isLiked={isLiked}
+          />
         </div>
         {/* 우측: 리뷰 상세 */}
         <div className="relative flex w-[38.4rem] flex-col">
