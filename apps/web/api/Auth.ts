@@ -100,6 +100,7 @@ export class Auth<
     query: {
       code: string;
       state: string;
+      redirectUri: string;
     },
     params: RequestParams = {},
   ) =>
