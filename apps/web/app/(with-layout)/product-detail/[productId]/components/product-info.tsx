@@ -37,6 +37,7 @@ interface ProductInfoProps {
   }[];
   oliveYoungUrl: string;
   q10Url: string;
+  authStatus: boolean;
 }
 
 export default function ProductInfo({
@@ -51,9 +52,19 @@ export default function ProductInfo({
   normalPrice,
   oliveYoungUrl,
   q10Url,
+  authStatus,
 }: ProductInfoProps) {
   const params = useParams();
-  const { likeMutation, isLiked } = useProductLike({ initialIsLiked });
+  const { likeMutation, isLiked, goToLogin } = useProductLike({
+    initialIsLiked,
+  });
+  const handleUserLike = () => {
+    if (authStatus) {
+      likeMutation.mutate(productId);
+    } else {
+      goToLogin();
+    }
+  };
   return (
     <div className="flex flex-col justify-between">
       {/* 상품 정보 */}
@@ -64,7 +75,7 @@ export default function ProductInfo({
             <h1 className="jp-head3 font-bold text-gray-800">{productName}</h1>
           </div>
           <IconButton
-            onClick={() => likeMutation.mutate(productId)}
+            onClick={() => handleUserLike()}
             size="md"
             icon={
               isLiked ? (

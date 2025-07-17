@@ -3,12 +3,14 @@ import { PRODUCT_QUERIES } from 'app/(with-layout)/(home)/components/home-sectio
 import { apiRequest } from 'app/api/apiRequest';
 import { getCookie } from 'utils/client-cookie';
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
 
 interface UseProductLikeProps {
   initialIsLiked: boolean;
 }
 
 export function useProductLike({ initialIsLiked }: UseProductLikeProps) {
+  const router = useRouter();
   const userToken = getCookie('AccessToken');
   const [isLiked, setIsLiked] = useState(initialIsLiked);
   const queryClient = useQueryClient();
@@ -44,10 +46,15 @@ export function useProductLike({ initialIsLiked }: UseProductLikeProps) {
     likeMutation.mutate(productId);
   };
 
+  const goToLogin = () => {
+    router.push('/login');
+  };
+
   return {
     likeMutation,
     isLiked,
     handleLikeClick,
     userToken,
+    goToLogin,
   };
 }
