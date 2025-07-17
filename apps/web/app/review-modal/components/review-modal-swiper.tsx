@@ -2,7 +2,6 @@
 
 import SwiperCore from 'swiper';
 import 'swiper/css';
-import { Mousewheel } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { useEffect, useState } from 'react';
 import type { ReviewDetail } from '../types';
@@ -34,8 +33,6 @@ export default function ReviewModalSwiper({
       slidesPerView={1.2}
       centeredSlides
       spaceBetween={-45}
-      modules={[Mousewheel]}
-      mousewheel={{ forceToAxis: true }}
       className="inset-0 h-screen w-screen bg-black/70"
     >
       {reviews.map((review) => (
