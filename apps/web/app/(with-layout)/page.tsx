@@ -18,14 +18,14 @@ export default async function Main() {
         <HomeUpdateDate />
         <HomeSection className="mt-[6rem]">
           <HomeSection.Header>レビュー数が多い商品</HomeSection.Header>
-          <HomeSection.Product productSortType="new" authStatus={isUserLogin} />
+          <HomeSection.Product
+            productSortType="popular"
+            authStatus={isUserLogin}
+          />
         </HomeSection>
         <HomeSection>
           <HomeSection.Header>新作アイテム</HomeSection.Header>
-          <HomeSection.Product
-            authStatus={isUserLogin}
-            productSortType="popular"
-          />
+          <HomeSection.Product authStatus={isUserLogin} productSortType="new" />
         </HomeSection>
         <HomeSection>
           <HomeSection.Header>
