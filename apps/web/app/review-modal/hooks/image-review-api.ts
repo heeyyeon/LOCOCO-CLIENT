@@ -68,16 +68,6 @@ export const useReviewLikeToggle = () => {
         queryClient.invalidateQueries({
           queryKey: REVIEW_KEYS.IMAGE_DETAIL(reviewId),
         });
-        queryClient.invalidateQueries({
-          queryKey: REVIEW_KEYS.IMAGE_LISTS(),
-        });
-      }
-    },
-    onError: (error, reviewId) => {
-      if (typeof reviewId === 'number') {
-        queryClient.invalidateQueries({
-          queryKey: REVIEW_KEYS.IMAGE_DETAIL(reviewId),
-        });
       }
     },
   });
