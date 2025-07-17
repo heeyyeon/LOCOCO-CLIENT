@@ -45,7 +45,7 @@ export default function CommentBox({ text, type }: CommentBoxProps) {
       <div
         ref={textRef}
         className={cn(
-          'jp-body2 text-gray-800',
+          'jp-body2 break-all text-gray-800',
           !isExpanded && 'line-clamp-3 max-h-[6.6rem] overflow-hidden'
         )}
       >
