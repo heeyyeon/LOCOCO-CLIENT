@@ -4,14 +4,12 @@ import { LineLoginResponse, LineLoginData } from '../types';
 export const lineLogin = async ({
   code,
   state,
-  lineLoginRedirectURL,
 }: {
   code: string;
   state: string;
-  lineLoginRedirectURL: string;
 }): Promise<LineLoginData> => {
   const response = await apiRequest<LineLoginResponse>({
-    endPoint: `/api/auth/line/login?code=${code}&state=${state}&redirectUri=${lineLoginRedirectURL}`,
+    endPoint: `/api/auth/line/login?code=${code}&state=${state}`,
     method: 'GET',
   });
 
