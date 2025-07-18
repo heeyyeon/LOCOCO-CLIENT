@@ -1,19 +1,19 @@
 'use client';
 
+import {
+  ImageReviewDetailResponse,
+  ApiResponseImageReviewDetailResponse,
+} from 'api/data-contracts';
 import ReviewOnboardingModal from 'app/review-modal/components/ReviewOnboardingModal';
+import ReviewModalSwiper from 'app/review-modal/components/review-modal-swiper';
+import {
+  useImageReviews,
+  useAllImageReviewDetails,
+} from 'app/review-modal/hooks/review-api';
+import { ReviewDetail } from 'app/review-modal/types';
 import LoadingSvg from 'components/loading/loading-svg';
 import { useState } from 'react';
 import { useParams, useRouter, useSearchParams } from 'next/navigation';
-import type {
-  ApiResponseVideoReviewDetailResponse,
-  VideoReviewDetailResponse,
-} from '../../../../api/data-contracts';
-import ReviewModalSwiper from '../../components/review-modal-swiper';
-import {
-  useVideoReviews,
-  useAllVideoReviewDetails,
-} from '../../hooks/review-api';
-import type { ReviewDetail } from '../../types';
 
 const formatDateToJapanese = (dateString: string): string => {
   const date = new Date(dateString);
@@ -23,11 +23,11 @@ const formatDateToJapanese = (dateString: string): string => {
   return `${year}年${month}月${day}日`;
 };
 
-interface VideoReviewClientPageProps {
+interface ImageReviewClientPageProps {
   userStatus: boolean;
 }
 
-export default function ClientPage({ userStatus }: VideoReviewClientPageProps) {
+export default function ClientPage({ userStatus }: ImageReviewClientPageProps) {
   const router = useRouter();
   const { reviewId: reviewIdParam } = useParams() as { reviewId: string };
   const currentReviewId = Number(reviewIdParam);
@@ -43,11 +43,11 @@ export default function ClientPage({ userStatus }: VideoReviewClientPageProps) {
     data: reviewsListResponse,
     isLoading: isListLoading,
     error: listError,
-  } = useVideoReviews(currentProductId || undefined);
+  } = useImageReviews(currentProductId || undefined);
 
   // 모든 리뷰의 상세 정보 가져오기
-  const detailQueries = useAllVideoReviewDetails(
-    reviewsListResponse?.data?.videoReviews
+  const detailQueries = useAllImageReviewDetails(
+    reviewsListResponse?.data?.imageReviews
   );
 
   if (isListLoading) {
@@ -61,7 +61,7 @@ export default function ClientPage({ userStatus }: VideoReviewClientPageProps) {
     return <div>리뷰 목록을 불러올 수 없습니다.</div>;
   }
 
-  const reviews = reviewsListResponse.data.videoReviews;
+  const reviews = reviewsListResponse.data.imageReviews;
 
   // 현재 리뷰의 인덱스 찾기
   const currentIndex = reviews.findIndex(
@@ -81,11 +81,11 @@ export default function ClientPage({ userStatus }: VideoReviewClientPageProps) {
   }
 
   // 상세 정보를 ID로 매핑
-  const detailMap = new Map<number, VideoReviewDetailResponse>();
+  const detailMap = new Map<number, ImageReviewDetailResponse>();
   reviews.forEach((review, index) => {
     const dq = detailQueries[index];
     if (dq?.isSuccess && dq.data) {
-      const response = dq.data as ApiResponseVideoReviewDetailResponse;
+      const response = dq.data as ApiResponseImageReviewDetailResponse;
       if (response.data) {
         detailMap.set(review.reviewId, response.data);
       }
@@ -109,22 +109,22 @@ export default function ClientPage({ userStatus }: VideoReviewClientPageProps) {
     return {
       reviewId: detail.reviewId,
       productId: detail.productId,
-      writtenTime: formatDateToJapanese(detail.uploadAt),
-      receiptUploaded: !!detail.receiptImageUrl,
-      positiveComment: detail.positiveContent,
-      negativeComment: detail.negativeContent,
+      writtenTime: formatDateToJapanese(detail.writtenTime),
+      receiptUploaded: detail.receiptUploaded,
+      positiveComment: detail.positiveComment,
+      negativeComment: detail.negativeComment,
       authorName: detail.authorName,
       profileImageUrl: detail.profileImageUrl ?? null,
       rating: detail.rating,
-      option: '',
+      option: detail.option || '',
       likeCount: detail.likeCount,
       isLiked: detail.isLiked,
       brandName: detail.brandName,
       productName: detail.productName,
       productImageUrl: detail.productImageUrl,
-      mediaList: detail.videoUrls.map((url: string, index: number) => ({
+      mediaList: detail.images.map((url: string, index: number) => ({
         id: index,
-        type: 'video' as const,
+        type: 'image' as const,
         url,
       })),
     };
