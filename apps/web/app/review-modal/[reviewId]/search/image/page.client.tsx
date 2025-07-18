@@ -10,7 +10,11 @@ import type {
   ImageReviewDetailResponse,
 } from '../../../../../api/data-contracts';
 import { ApiResponse } from '../../../../../app/api/api-response';
-import { ApiReviewSearchResponse } from '../../../../../app/api/review-response';
+import {
+  ApiReviewItem,
+  ApiReviewSearchResponse,
+  ImageReviewResponse,
+} from '../../../../../app/api/review-response';
 import { REVIEW_KEYS } from '../../../../../constants/query-key';
 import {
   CategoryNameEng,
@@ -57,7 +61,7 @@ export default function ClientPage({ userStatus }: ImageReviewClientPageProps) {
       : '';
 
   // 캐싱된 데이터 가져오기
-  let reviewData: any[] = [];
+  let reviewData: ImageReviewResponse[] | ApiReviewItem[] = [];
 
   if (keyword) {
     // 키워드 검색 캐시에서 데이터 가져오기
