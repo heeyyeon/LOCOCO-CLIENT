@@ -24,7 +24,6 @@ export function useHeaderAction() {
   };
 
   const handleSelectOption = (option: CategoryOptionEng) => {
-    console.log(option);
     if (option === 'ALL') {
       setSelectedOption(null);
       return;

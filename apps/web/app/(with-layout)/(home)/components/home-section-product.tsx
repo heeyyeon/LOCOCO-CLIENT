@@ -4,6 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 import { ApiResponseCategoryNewProductResponse } from 'api/data-contracts';
 import { apiRequest } from 'app/api/apiRequest';
 import CardProduct from 'components/card/card-product';
+import { CardSkeleton } from 'components/card/card-skeleton';
 import { CATEGORY_NAME } from 'constants/category';
 import { CategoryNameEng } from 'types/category';
 import React, { useState } from 'react';
@@ -66,27 +67,34 @@ export default function HomeSectionProduct({
         })}
         <div className="h-full flex-1 border-b" />
       </TabContainer>
-      {isLoading && <div className="h-[39.8rem] w-full bg-white" />}
-      <div className="grid grid-cols-4 gap-[2.4rem]">
-        {products?.map((product, index) => (
-          <CardProduct
-            key={product.productId}
-            authStatus={authStatus}
-            brandName={product.brandName}
-            productName={product.productName}
-            unit={product.unit}
-            productId={product.productId}
-            isLiked={product.isLiked}
-            rating={product.rating}
-            reviewCount={product.reviewCount}
-            imageUrl={product.imageUrls?.[0]}
-            handleCardClick={() =>
-              router.push(`/product-detail/${product.productId}`)
-            }
-            {...(index >= 0 && index < 3 && { ranking: index + 1 })}
-          />
-        ))}
-      </div>
+      {isLoading ? (
+        <div className="grid grid-cols-4 gap-[2.4rem]">
+          {Array.from({ length: 4 }, (_, index) => (
+            <CardSkeleton key={index} type="PRODUCT" />
+          ))}
+        </div>
+      ) : (
+        <div className="grid grid-cols-4 gap-[2.4rem]">
+          {products?.map((product, index) => (
+            <CardProduct
+              key={product.productId}
+              authStatus={authStatus}
+              brandName={product.brandName}
+              productName={product.productName}
+              unit={product.unit}
+              productId={product.productId}
+              isLiked={product.isLiked}
+              rating={product.rating}
+              reviewCount={product.reviewCount}
+              imageUrl={product.imageUrls?.[0]}
+              handleCardClick={() =>
+                router.push(`/product-detail/${product.productId}`)
+              }
+              {...(index >= 0 && index < 3 && { ranking: index + 1 })}
+            />
+          ))}
+        </div>
+      )}
     </div>
   );
 }

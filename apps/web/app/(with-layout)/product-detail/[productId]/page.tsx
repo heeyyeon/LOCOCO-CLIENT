@@ -18,9 +18,8 @@ export default async function Page({
     const youtubeListResponse = await getYoutubeList(Number(productId));
     productDetailData = productDetailResponse;
     youtubeListData = youtubeListResponse;
-  } catch (error) {
+  } catch {
     // TODO: 에러 핸들링 로직 추가
-    console.error(error);
     notFound();
   }
 
