@@ -44,7 +44,6 @@ export default function Review({
   const queryClient = useQueryClient();
   const router = useRouter();
   const { productId } = useParams();
-
   const [isLiked, setIsLiked] = useState(initialIsLiked);
   const [likeCount, setLikeCount] = useState(initialLikeCount);
 
@@ -100,9 +99,9 @@ export default function Review({
         <div className="h-[0.1rem] w-full border-t border-dashed border-pink-500" />
         <CommentBox type="negative" text={negativeComment} />
         <div className="flex gap-[1.26em]">
-          {images?.map((image) => (
+          {images?.map((image, index) => (
             <Image
-              key={image}
+              key={image + index}
               src={image}
               alt="reviewImage"
               width={100}
