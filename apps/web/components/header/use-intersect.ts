@@ -11,7 +11,9 @@ export const useIntersect = (
     const [entry] = entries;
     if (!entry) return;
 
-    if (!entry.isIntersecting) {
+    const isAtTop = window.scrollY <= 0;
+
+    if (!entry.isIntersecting && !isAtTop) {
       setIsVisible(false);
     } else {
       setIsVisible(true);

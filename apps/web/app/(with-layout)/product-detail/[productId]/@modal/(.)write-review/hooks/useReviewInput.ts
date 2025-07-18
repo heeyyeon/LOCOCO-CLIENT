@@ -100,7 +100,6 @@ export const useReviewInput = (productId?: number, onSuccess?: () => void) => {
           mediaType: mediaTypes,
         });
         mediaUrls = mediaResponse.data?.mediaUrl || [];
-        console.log('미디어 presigned URLs:', mediaUrls);
       }
 
       // 2. 영수증 파일 presigned URL 요청
@@ -110,7 +109,6 @@ export const useReviewInput = (productId?: number, onSuccess?: () => void) => {
           mediaType: formData.receiptFile.type,
         });
         receiptUrls = receiptResponse.data?.receiptUrl || [];
-        console.log('영수증 presigned URLs:', receiptUrls);
       }
 
       // 3. Presigned URL로 파일 업로드
@@ -121,8 +119,6 @@ export const useReviewInput = (productId?: number, onSuccess?: () => void) => {
       if (receiptUrls.length > 0 && formData.receiptFile) {
         await uploadFiles(receiptUrls, [formData.receiptFile], '영수증');
       }
-
-      console.log('모든 파일 업로드 완료');
 
       // 4. 리뷰 제출
       const reviewRequest: ReviewRequest = {

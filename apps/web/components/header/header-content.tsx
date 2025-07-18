@@ -97,8 +97,10 @@ export function TopUtil({ visible }: { visible: boolean }) {
   return (
     <div
       className={cn(
-        'ease flex w-full items-center justify-end self-stretch overflow-hidden px-[11.9rem] py-[2rem] transition-all duration-300',
-        !visible ? 'max-h-0 py-0 opacity-0' : 'max-h-20 opacity-100'
+        'flex w-full items-center justify-end self-stretch overflow-hidden px-[11.9rem] py-[2rem] transition-all duration-300 ease-out',
+        !visible
+          ? 'max-h-0 translate-y-[-100%] py-0 opacity-0'
+          : 'max-h-20 translate-y-0 opacity-100'
       )}
     >
       <TopUtilItem

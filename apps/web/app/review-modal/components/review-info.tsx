@@ -13,6 +13,7 @@ import Comment from './comment';
 type ReviewInfoProps = Pick<
   ReviewDetail,
   | 'reviewId'
+  | 'productId'
   | 'rating'
   | 'option'
   | 'positiveComment'
@@ -26,7 +27,7 @@ type ReviewInfoProps = Pick<
 };
 
 export default function ReviewInfo({
-  reviewId: productId,
+  productId,
   rating,
   option: productOption,
   positiveComment,
@@ -54,7 +55,7 @@ export default function ReviewInfo({
         />
       </header>
 
-      <div className="flex-1 overflow-y-auto p-[1.6rem] pb-[11rem]">
+      <div className="flex-1 overflow-y-scroll p-[1.6rem] pb-[11rem] [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-gray-400 [&::-webkit-scrollbar-track]:bg-gray-200 [&::-webkit-scrollbar]:w-2.5">
         <Star rating={rating} size="sm" color="yellow" />
         <div className="text-jp-caption1 mt-[1.2rem] flex gap-[0.6rem] font-medium text-gray-600">
           <span className="flex-shrink-0">オプション :</span>

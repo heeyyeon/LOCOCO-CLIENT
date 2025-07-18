@@ -37,6 +37,7 @@ interface ProductInfoProps {
   }[];
   oliveYoungUrl: string;
   q10Url: string;
+  authStatus: boolean;
 }
 
 export default function ProductInfo({
@@ -51,9 +52,19 @@ export default function ProductInfo({
   normalPrice,
   oliveYoungUrl,
   q10Url,
+  authStatus,
 }: ProductInfoProps) {
   const params = useParams();
-  const { likeMutation, isLiked } = useProductLike({ initialIsLiked });
+  const { likeMutation, isLiked, goToLogin } = useProductLike({
+    initialIsLiked,
+  });
+  const handleUserLike = () => {
+    if (authStatus) {
+      likeMutation.mutate(productId);
+    } else {
+      goToLogin();
+    }
+  };
   return (
     <div className="flex flex-col justify-between">
       {/* 상품 정보 */}
@@ -64,8 +75,8 @@ export default function ProductInfo({
             <h1 className="jp-head3 font-bold text-gray-800">{productName}</h1>
           </div>
           <IconButton
-            onClick={() => likeMutation.mutate(productId)}
-            size="md"
+            onClick={() => handleUserLike()}
+            size="lg"
             icon={
               isLiked ? (
                 <SvgLikeFill />
@@ -151,7 +162,11 @@ export default function ProductInfo({
         </div>
         <Button color="secondary" variant="filled" rounded size="lg" asChild>
           <Link
-            href={`/product-detail/${params.productId}/write-review`}
+            href={
+              authStatus
+                ? `/product-detail/${params.productId}/write-review`
+                : '/login'
+            }
             className="jp-title2"
           >
             <SvgWrite /> レビューを書く

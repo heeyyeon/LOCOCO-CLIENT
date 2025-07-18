@@ -54,7 +54,7 @@ export default function VideoLayout({ url }: VideoLayoutProps) {
         controls={false}
         loop
         playsInline
-        className="h-full w-full cursor-pointer object-cover"
+        className="h-full w-full cursor-pointer object-contain"
         onClick={handleVideoClick}
       />
       <div

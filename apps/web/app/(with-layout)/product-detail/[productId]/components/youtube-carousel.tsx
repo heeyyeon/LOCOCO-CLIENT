@@ -56,7 +56,7 @@ export default function YoutubeCarousel({
       <h3 className="text-jp-head2 inline-flex items-center gap-[1.2rem] font-bold text-gray-800">
         <SvgKoreanReview size={24} /> 韓国ユーチューバーレビュー
       </h3>
-      <div className="relative">
+      <div className="relative h-[31.1rem]">
         {validatedYoutubeListData && validatedYoutubeListData.length > 0 ? (
           <>
             <Swiper
@@ -72,7 +72,7 @@ export default function YoutubeCarousel({
               }}
               navigation={false}
               modules={[Navigation]}
-              className="youtube-swiper"
+              className="youtube-swiper absolute"
             >
               {validatedYoutubeListData?.map((video) => (
                 <SwiperSlide key={video}>
@@ -100,7 +100,7 @@ export default function YoutubeCarousel({
 
             {isNextButton && (
               <IconButton
-                className="absolute right-4 top-1/2 z-10 size-[3.2rem] -translate-y-1/2 bg-white p-0"
+                className="absolute right-4 top-1/2 z-10 size-[3.2rem] shrink-0 -translate-y-1/2 bg-white p-0"
                 onClick={() => swiperRef?.slideNext()}
                 size="md"
                 icon={<SvgArrowRight />}
