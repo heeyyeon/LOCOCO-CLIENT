@@ -16,6 +16,7 @@ import { IconButton } from '@lococo/design-system';
 import { SvgArrowRight } from '@/icons';
 import { SvgImgVideo } from '@/icons';
 import { getUserUploadedVideoList } from '../apis';
+import { PRODUCT_DETAIL_QUERY_KEYS } from '../queries';
 import './user-uploaded-video-carousel.css';
 
 export default function UserUploadVideoCarousel() {
@@ -27,7 +28,10 @@ export default function UserUploadVideoCarousel() {
   const [isPrevButton, setIsPrevButton] = useState(false);
 
   const { data: userUploadedVideoList } = useQuery({
-    queryKey: ['userUploadedVideoList', Number(params.productId)],
+    queryKey: PRODUCT_DETAIL_QUERY_KEYS.USER_VIDEO_REVIEW_LIST(
+      Number(params.productId)
+    ),
+
     queryFn: () => getUserUploadedVideoList(Number(params.productId)),
   });
 

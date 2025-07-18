@@ -35,8 +35,6 @@ export default function ClientPage({ userStatus }: VideoReviewClientPageProps) {
     'userUploadedVideoList',
     Number(productId),
   ]);
-  console.log('productId', productId);
-  console.log('reviewData', reviewData);
 
   const { reviewId: reviewIdParam } = useParams() as { reviewId: string };
   const currentReviewId = Number(reviewIdParam);
