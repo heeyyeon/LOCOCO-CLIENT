@@ -2,58 +2,13 @@
 
 import CardProduct from 'components/card/card-product';
 import CardSkeletonWrapper from 'components/card/card-skeleton';
-import { useProductSearch, useCategoryProductSearch } from 'hooks/headers-api';
-import { CategoryNameEng, CategoryOptionEng } from 'types/category';
-import { isValidCategoryKey, isValidCategoryOption } from 'utils/category';
-import { useSearchParams } from 'next/navigation';
 import { useRouter } from 'next/navigation';
+import useProductSectionData from '../hook/use-product-section';
 import NotFoundSection from './not-found-section';
 
 export default function SearchProductsSection() {
-  const searchParams = useSearchParams();
+  const { products, isLoading, hasError } = useProductSectionData();
   const router = useRouter();
-
-  const keyword = searchParams.get('keyword') || '';
-  const rawMiddle = searchParams.get('middleCategory') || '';
-  const rawSub = searchParams.get('subCategory') || '';
-
-  const middleCategory: CategoryNameEng | '' = isValidCategoryKey(rawMiddle)
-    ? rawMiddle
-    : '';
-  const subCategory: CategoryOptionEng | '' =
-    middleCategory && isValidCategoryOption(rawSub, middleCategory)
-      ? rawSub
-      : '';
-
-  const PAGE_SIZE = 8;
-  const PAGE_NUMBER = 0;
-
-  // 검색바로 검색한 경우
-  const {
-    data: productSearchData,
-    isLoading: isProductSearchLoading,
-    isError: isProductSearchError,
-  } = useProductSearch(keyword, PAGE_NUMBER, PAGE_SIZE, !!keyword);
-
-  // 카테고리로 검색한 경우
-  const {
-    data: categoryProductData,
-    isLoading: isCategoryProductLoading,
-    isError: isCategoryProductError,
-  } = useCategoryProductSearch(
-    middleCategory,
-    subCategory,
-    PAGE_NUMBER,
-    PAGE_SIZE,
-    !!middleCategory
-  );
-
-  const products = keyword
-    ? productSearchData?.data?.products || []
-    : categoryProductData?.data?.products || [];
-
-  const isLoading = keyword ? isProductSearchLoading : isCategoryProductLoading;
-  const hasError = keyword ? isProductSearchError : isCategoryProductError;
 
   const handleCardClick = (productId: number) => {
     router.push(`/product-detail/${productId}`);

@@ -4,7 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 import { ApiResponseCategoryNewProductResponse } from 'api/data-contracts';
 import { apiRequest } from 'app/api/apiRequest';
 import CardProduct from 'components/card/card-product';
-import CardSkeletonWrapper from 'components/card/card-skeleton';
+import { CardSkeleton } from 'components/card/card-skeleton';
 import { CATEGORY_NAME } from 'constants/category';
 import { CategoryNameEng } from 'types/category';
 import React, { useState } from 'react';
@@ -68,7 +68,11 @@ export default function HomeSectionProduct({
         <div className="h-full flex-1 border-b" />
       </TabContainer>
       {isLoading ? (
-        <CardSkeletonWrapper type="PRODUCT" />
+        <div className="grid grid-cols-4 gap-[2.4rem]">
+          {Array.from({ length: 4 }, (_, index) => (
+            <CardSkeleton key={index} type="PRODUCT" />
+          ))}
+        </div>
       ) : (
         <div className="grid grid-cols-4 gap-[2.4rem]">
           {products?.map((product, index) => (

@@ -33,12 +33,14 @@ export function CardSkeleton({ type }: CardSkeletonProps) {
 
 export default function CardSkeletonWrapper({
   type,
+  count = 4,
 }: {
   type: 'PRODUCT' | 'REVIEW_IMAGE' | 'REVIEW_VIDEO';
+  count?: number;
 }) {
   return (
     <div className="flex w-full items-center gap-[2.4rem] self-stretch">
-      {Array.from({ length: 4 }, (_, index) => (
+      {Array.from({ length: count }, (_, index) => (
         <CardSkeleton key={index} type={type} />
       ))}
     </div>

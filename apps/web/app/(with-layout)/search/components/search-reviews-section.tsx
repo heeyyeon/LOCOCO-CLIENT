@@ -2,58 +2,19 @@
 
 import CardReview from 'components/card/card-review';
 import CardSkeletonWrapper from 'components/card/card-skeleton';
-import { useReviewSearch, useCategoryReviewSearch } from 'hooks/headers-api';
-import { CategoryNameEng, CategoryOptionEng } from 'types/category';
-import { isValidCategoryKey, isValidCategoryOption } from 'utils/category';
-import { useSearchParams } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import {
   ImageReviewResponse,
   VideoReviewResponse,
 } from '../../../api/review-response';
+import useReviewSectionData from '../hook/use-review-section';
 import NotFoundSection from './not-found-section';
 
 function VideoReviewSection() {
-  const searchParams = useSearchParams();
+  const { reviewData, isLoading, hasError } = useReviewSectionData('VIDEO');
+  const router = useRouter();
 
-  const keyword = searchParams.get('keyword') || '';
-  const rawMiddle = searchParams.get('middleCategory') || '';
-  const rawSub = searchParams.get('subCategory') || '';
-
-  const middleCategory: CategoryNameEng | '' = isValidCategoryKey(rawMiddle)
-    ? rawMiddle
-    : '';
-  const subCategory: CategoryOptionEng | '' =
-    middleCategory && isValidCategoryOption(rawSub, middleCategory)
-      ? rawSub
-      : '';
-
-  const PAGE_SIZE = 8;
-  const PAGE_NUMBER = 0;
-
-  const {
-    data: reviewVideoSearchData,
-    isLoading: isReviewVideoSearchLoading,
-    isError: isReviewVideoSearchError,
-  } = useReviewSearch(keyword, 'VIDEO', PAGE_NUMBER, PAGE_SIZE, !!keyword);
-
-  const {
-    data: categoryReviewVideoData,
-    isLoading: isCategoryReviewVideoLoading,
-    isError: isCategoryReviewVideoError,
-  } = useCategoryReviewSearch(
-    middleCategory,
-    'VIDEO',
-    subCategory,
-    PAGE_NUMBER,
-    PAGE_SIZE,
-    !!middleCategory
-  );
-
-  const reviewVideoData = keyword
-    ? reviewVideoSearchData?.data?.reviews || []
-    : categoryReviewVideoData?.data?.reviews || [];
-
-  const videoReviews: VideoReviewResponse[] = reviewVideoData.map((review) => ({
+  const videoReviews: VideoReviewResponse[] = reviewData.map((review) => ({
     reviewId: review.reviewId,
     brandName: review.brandName,
     productName: review.productName,
@@ -61,15 +22,9 @@ function VideoReviewSection() {
     url: review.url || '',
   }));
 
-  const isLoading = keyword
-    ? isReviewVideoSearchLoading
-    : isCategoryReviewVideoLoading;
-  const hasError = keyword
-    ? isReviewVideoSearchError
-    : isCategoryReviewVideoError;
-
   const handleCardClick = (reviewId: number) => {
     console.log(reviewId);
+    router.push(`/review-modal/${reviewId}/video`);
   };
 
   if (isLoading) {
@@ -118,47 +73,10 @@ function VideoReviewSection() {
 }
 
 function ImageReviewSection() {
-  const searchParams = useSearchParams();
+  const { reviewData, isLoading, hasError } = useReviewSectionData('IMAGE');
+  const router = useRouter();
 
-  const keyword = searchParams.get('keyword') || '';
-  const rawMiddle = searchParams.get('middleCategory') || '';
-  const rawSub = searchParams.get('subCategory') || '';
-
-  const middleCategory: CategoryNameEng | '' = isValidCategoryKey(rawMiddle)
-    ? rawMiddle
-    : '';
-  const subCategory: CategoryOptionEng | '' =
-    middleCategory && isValidCategoryOption(rawSub, middleCategory)
-      ? rawSub
-      : '';
-
-  const PAGE_SIZE = 8;
-  const PAGE_NUMBER = 0;
-
-  const {
-    data: reviewImageSearchData,
-    isLoading: isReviewImageSearchLoading,
-    isError: isReviewImageSearchError,
-  } = useReviewSearch(keyword, 'IMAGE', PAGE_NUMBER, PAGE_SIZE, !!keyword);
-
-  const {
-    data: categoryReviewImageData,
-    isLoading: isCategoryReviewImageLoading,
-    isError: isCategoryReviewImageError,
-  } = useCategoryReviewSearch(
-    middleCategory,
-    'IMAGE',
-    subCategory,
-    PAGE_NUMBER,
-    PAGE_SIZE,
-    !!middleCategory
-  );
-
-  const reviewImageData = keyword
-    ? reviewImageSearchData?.data?.reviews || []
-    : categoryReviewImageData?.data?.reviews || [];
-
-  const imageReviews: ImageReviewResponse[] = reviewImageData.map((review) => ({
+  const imageReviews: ImageReviewResponse[] = reviewData.map((review) => ({
     reviewId: review.reviewId,
     brandName: review.brandName,
     productName: review.productName,
@@ -166,15 +84,9 @@ function ImageReviewSection() {
     url: review.url || '',
   }));
 
-  const isLoading = keyword
-    ? isReviewImageSearchLoading
-    : isCategoryReviewImageLoading;
-  const hasError = keyword
-    ? isReviewImageSearchError
-    : isCategoryReviewImageError;
-
   const handleCardClick = (reviewId: number) => {
     console.log(reviewId);
+    router.push(`/review-modal/${reviewId}/image`);
   };
 
   if (isLoading) {
