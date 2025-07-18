@@ -15,7 +15,7 @@ export default function OptionSelector({
   handleClickTab,
 }: TabsProps) {
   return (
-    <div className="flex w-full items-center self-stretch px-[11.9rem]">
+    <div className="mx-auto flex w-[1366px] items-center px-[11.9rem]">
       {Object.values(SEARCH_OPTION).map((value) => {
         const isSelected = selectedTab === value;
 

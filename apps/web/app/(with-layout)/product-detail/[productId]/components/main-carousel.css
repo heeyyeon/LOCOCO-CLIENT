@@ -1,0 +1,27 @@
+.mainCustomSwiper {
+  height: 46.8rem;
+  width: 46.8rem;
+}
+
+.mySwiper .swiper-slide {
+  opacity: 0.4;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.mySwiper .swiper-slide-thumb-active {
+  opacity: 1;
+  border: 2px dashed #ff488f;
+}
+
+/* Vertical Swiper Specific Styles */
+.mySwiper.vertical {
+  height: 35rem;
+  width: 6rem;
+}
+
+.mySwiper.vertical .swiper-slide {
+  width: 6rem;
+  /* height: 6rem !important; */
+  /* margin-bottom: 1.2rem !important; */
+}

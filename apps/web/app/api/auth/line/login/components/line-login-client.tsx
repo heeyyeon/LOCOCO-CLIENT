@@ -1,10 +1,10 @@
 'use client';
 
 import { useQuery } from '@tanstack/react-query';
-import { Auth } from 'api/Auth';
 import { useEffect } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
-import { lineLoginQueryKeys } from '../queries/queries';
+import { lineLogin } from '../apis';
+import { LINE_LOGIN_QUERY_KEYS } from '../queries/queries';
 
 export default function LineLoginClient() {
   const router = useRouter();
@@ -12,10 +12,9 @@ export default function LineLoginClient() {
 
   const code = searchParams.get('code') || '';
   const state = searchParams.get('state') || '';
-  const auth = new Auth();
   const { isSuccess } = useQuery({
-    queryKey: lineLoginQueryKeys.lineLogin(code, state),
-    queryFn: () => auth.lineLogin({ code, state }),
+    queryKey: LINE_LOGIN_QUERY_KEYS.LINE_LOGIN(code, state),
+    queryFn: () => lineLogin({ code, state }),
   });
 
   useEffect(() => {

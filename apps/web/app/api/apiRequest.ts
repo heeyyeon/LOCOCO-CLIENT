@@ -1,3 +1,5 @@
+import { getCookie } from 'utils/cookie';
+
 type RequestMethod = 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH';
 
 export interface ApiRequestProps {
@@ -5,6 +7,7 @@ export interface ApiRequestProps {
   method?: RequestMethod;
   data?: unknown;
   headers?: Record<string, string>;
+  params?: Record<string, string>;
 }
 const SERVER_API_BASE_URL = process.env.NEXT_PUBLIC_API_SERVER_URL;
 
@@ -23,11 +26,25 @@ export const apiRequest = async <T = unknown>({
   method = 'GET',
   data,
   headers,
+  params,
 }: ApiRequestProps): Promise<T> => {
+  const accessToken = await getCookie('AccessToken');
   try {
-    const requestUrl = `${SERVER_API_BASE_URL}${endPoint}`;
+    // 쿼리 파라미터가 있으면 URL에 추가
+    let requestUrl = `${SERVER_API_BASE_URL}${endPoint}`;
+    if (params && Object.keys(params).length > 0) {
+      const searchParams = new URLSearchParams();
+      Object.entries(params).forEach(([key, value]) => {
+        if (value !== undefined && value !== null) {
+          searchParams.append(key, value);
+        }
+      });
+      requestUrl += `?${searchParams.toString()}`;
+    }
+
     const defaultHeaders: Record<string, string> = {
       'Content-Type': 'application/json',
+      Authorization: `Bearer ${accessToken}`,
       ...headers,
     };
 
@@ -45,6 +62,7 @@ export const apiRequest = async <T = unknown>({
       method,
       data,
       headers,
+      params,
     });
 
     if (interceptedResponse) {
@@ -53,7 +71,12 @@ export const apiRequest = async <T = unknown>({
 
     if (!response.ok) {
       const error = await response.text();
-      console.error('에러 :', error);
+      console.error('API Response Error:', {
+        status: response.status,
+        statusText: response.statusText,
+        url: requestUrl,
+        error: error,
+      });
       throw error;
     }
     const responseData = await response.json();
@@ -67,7 +90,7 @@ export const apiRequest = async <T = unknown>({
 const refreshApi = async () => {
   // TODO HttpClient 인스턴스 활용하는 방식으로 수정
   const refreshResponse = await fetch(
-    `${SERVER_API_BASE_URL}api/auth/refresh`,
+    `${SERVER_API_BASE_URL}/api/auth/refresh`,
     {
       method: 'POST',
       credentials: 'include',
@@ -101,7 +124,7 @@ const responseInterceptor = async <T>(
       }
 
       const retryResponse = await fetch(
-        `${SERVER_API_BASE_URL}${originalRequest.endPoint}`,
+        `${SERVER_API_BASE_URL}/${originalRequest.endPoint}`,
         fetchOptions
       );
 
