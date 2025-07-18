@@ -29,15 +29,16 @@ function RightAnimation() {
   );
 }
 
-export default function ReviewOnboardingModal() {
-  const handleClose = () => {
-    console.log('close');
-  };
+export default function ReviewOnboardingModal({
+  handleCloseOnboarding,
+}: {
+  handleCloseOnboarding: () => void;
+}) {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80">
       <button
         className="absolute right-0 top-0 z-10 cursor-pointer p-[1.4rem]"
-        onClick={handleClose}
+        onClick={handleCloseOnboarding}
       >
         <SvgClose width={36} height={36} className="text-gray-500" />
       </button>

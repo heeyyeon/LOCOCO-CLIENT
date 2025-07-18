@@ -1,5 +1,8 @@
 'use client';
 
+import ReviewOnboardingModal from 'app/review-modal/components/ReviewOnboardingModal';
+import LoadingSvg from 'components/loading/loading-svg';
+import { useState } from 'react';
 import { useParams, useRouter, useSearchParams } from 'next/navigation';
 import type {
   ApiResponseImageReviewDetailResponse,
@@ -27,6 +30,10 @@ export default function Page() {
   const searchParams = useSearchParams();
   const productId = searchParams.get('productId');
   const currentProductId = Number(productId);
+  const [isOnboardingOpen, setIsOnboardingOpen] = useState(true);
+  const handleCloseOnboarding = () => {
+    setIsOnboardingOpen(false);
+  };
 
   const {
     data: reviewsListResponse,
@@ -40,7 +47,11 @@ export default function Page() {
   );
 
   if (isListLoading) {
-    return <div>로딩 중...</div>;
+    return (
+      <div className="flex min-h-screen w-full items-center justify-center bg-black">
+        <LoadingSvg />
+      </div>
+    );
   }
   if (listError || !reviewsListResponse?.data) {
     return <div>리뷰 목록을 불러올 수 없습니다.</div>;
@@ -58,7 +69,11 @@ export default function Page() {
 
   // 모든 상세 정보가 로딩 완료될 때까지 대기
   if (detailQueries.some((q) => q.isLoading)) {
-    return <div>상세 정보 로딩 중...</div>;
+    return (
+      <div className="flex min-h-screen w-full items-center justify-center bg-black">
+        <LoadingSvg />
+      </div>
+    );
   }
 
   // 상세 정보를 ID로 매핑
@@ -112,10 +127,15 @@ export default function Page() {
   });
 
   return (
-    <ReviewModalSwiper
-      currentIndex={currentIndex}
-      reviews={allReviews}
-      onClose={() => router.back()}
-    />
+    <>
+      {isOnboardingOpen && (
+        <ReviewOnboardingModal handleCloseOnboarding={handleCloseOnboarding} />
+      )}
+      <ReviewModalSwiper
+        currentIndex={currentIndex}
+        reviews={allReviews}
+        onClose={() => router.back()}
+      />
+    </>
   );
 }
