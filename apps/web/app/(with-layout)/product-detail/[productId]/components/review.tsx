@@ -61,6 +61,11 @@ export default function Review({
       return { previousState: isLiked };
     },
     onError: (__err, _, context) => {
+      if (context?.previousState) {
+        setLikeCount((prev) => prev + 1);
+      } else {
+        setLikeCount((prev) => prev - 1);
+      }
       setIsLiked(context?.previousState || false);
     },
     onSettled: () => {
@@ -102,7 +107,7 @@ export default function Review({
               alt="reviewImage"
               width={100}
               height={100}
-              className="h-[10rem] w-[10rem] object-cover"
+              className="h-[10rem] w-[10rem] cursor-pointer object-cover"
               onClick={() => {
                 router.push(
                   `/review-modal/${reviewId}/image?productId=${productId}`

@@ -52,8 +52,8 @@ export default function ClientPage({
             rating={productData.rating}
             starPercent={productData.starPercent}
           />
-          <ReviewList authStatus={authStatus} />
           <UserUploadVideoCarousel />
+          <ReviewList authStatus={authStatus} />
         </div>
       </div>
     </div>
