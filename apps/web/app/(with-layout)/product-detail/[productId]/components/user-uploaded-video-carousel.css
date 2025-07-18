@@ -1,7 +1,13 @@
 .user-uploaded-video--swiper {
   width: 125.4rem;
+  position: relative;
+  right: 5.95rem;
 }
 .user-uploaded-video--swiper > .swiper-wrapper {
   position: relative;
-  right: 49rem;
+}
+
+.insufficient-slides {
+  position: relative;
+  left: 0rem;
 }
