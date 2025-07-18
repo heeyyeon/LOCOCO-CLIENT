@@ -12,14 +12,12 @@ interface ReviewModalSwiperProps {
   currentIndex: number;
   reviews: ReviewDetail[];
   onClose: () => void;
-  userStatus: boolean;
 }
 
 export default function ReviewModalSwiper({
   currentIndex,
   reviews,
   onClose,
-  userStatus,
 }: ReviewModalSwiperProps) {
   const [swiper, setSwiper] = useState<SwiperCore>();
 
@@ -38,11 +36,12 @@ export default function ReviewModalSwiper({
       spaceBetween={-45}
       modules={[Mousewheel, FreeMode]}
       mousewheel={{
-        sensitivity: 0.4,
+        sensitivity: 0.8,
         releaseOnEdges: true,
         forceToAxis: true,
         thresholdDelta: 50,
         thresholdTime: 200,
+        noMousewheelClass: 'noMousewheel',
       }}
       freeMode={{
         enabled: true,
@@ -58,7 +57,6 @@ export default function ReviewModalSwiper({
           className="flex h-[55.2rem] items-center justify-center"
         >
           <ReviewModalLayout
-            userStatus={userStatus}
             id={review.reviewId}
             productId={review.productId}
             mediaList={review.mediaList}
