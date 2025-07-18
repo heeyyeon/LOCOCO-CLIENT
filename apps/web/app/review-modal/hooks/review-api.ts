@@ -111,12 +111,6 @@ export const useReviewLikeToggle = () => {
         queryClient.invalidateQueries({
           queryKey: REVIEW_KEYS.VIDEO_DETAIL(reviewId),
         });
-        queryClient.invalidateQueries({
-          queryKey: REVIEW_KEYS.IMAGE_LISTS(),
-        });
-        queryClient.invalidateQueries({
-          queryKey: REVIEW_KEYS.VIDEO_LISTS(),
-        });
       }
     },
   });
