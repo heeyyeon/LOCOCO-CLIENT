@@ -1,4 +1,5 @@
 # Lococo
+<img width="4098" height="1680" alt="home-banner" src="https://github.com/user-attachments/assets/410f0731-dd12-4a50-a6d3-8ece9abded34" />
 
 K-뷰티에 관심 있는 일본 사용자들을 위한 서비스 **Lococo**는 사용자 중심의 신뢰할 수 있는 리뷰 커뮤니티를 구축하고, 일본인 소비자에게 필요한 한국 인플루언서 콘텐츠를 자동 번역·요약하여 큐레이션해요. 검색/언어 장벽 없이 리뷰 확인부터 제품 정보 탐색, 구매 결정까지 한 번에 이어질 수 있는 원스톱 구조로 구성했어요. 
 
