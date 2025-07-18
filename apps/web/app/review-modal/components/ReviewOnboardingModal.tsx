@@ -1,79 +1,15 @@
-import { SvgClose, SvgVector } from '@/icons';
+import { SvgClose, SvgVector, SvgVector470 } from '@/icons';
 
 function LeftAnimation() {
   return (
-    <div className="relative flex h-[22.8rem] w-[22.8rem] flex-col items-center justify-center rounded-[1.6rem] bg-[rgba(235,236,239,0.20)]">
-      <div className="animate-vector470-move absolute left-1/2 top-[2rem] h-0 w-[2.6408rem] -translate-x-1/2 rounded-[1.3204rem] bg-gradient-to-b from-transparent to-pink-500 opacity-80"></div>
-      <div className="animate-circle-move absolute left-1/2 top-[2rem] h-[2.6408rem] w-[2.6408rem] -translate-x-1/2 rounded-full bg-pink-500"></div>
-      <div className="animate-vector-move absolute flex items-center justify-center">
-        <SvgVector
-          className="ml-[1.3204rem] h-[6.5175rem] w-[7.3456rem] text-white"
-          fill="white"
-        />
+    <div className="relative flex h-[22.8rem] w-[22.8rem] rounded-[1.6rem] bg-[rgba(235,236,239,0.20)]">
+      <div className="absolute left-[8.87rem] top-[2rem]">
+        <SvgVector470 height={99.704} width={26.408} />
+        <div className="absolute bottom-[0rem] left-1/2 h-[2.6408rem] w-[2.6408rem] -translate-x-1/2 rounded-full bg-pink-500"></div>
       </div>
-      <style jsx>{`
-        @keyframes vector470Move {
-          0% {
-            height: 0;
-          }
-          50% {
-            height: 8rem;
-          }
-          100% {
-            height: 0;
-          }
-        }
-
-        .animate-vector470-move {
-          animation: vector470Move 2s ease-out forwards;
-          will-change: height;
-        }
-        @keyframes circleMove {
-          0% {
-            top: 2rem;
-          }
-          50% {
-            top: 10rem;
-          }
-          100% {
-            top: 2rem;
-          }
-        }
-
-        .animate-circle-move {
-          animation: circleMove 2s ease-out forwards;
-          will-change: top;
-        }
-
-        @keyframes vectorMove {
-          0% {
-            top: 2rem;
-          }
-          50% {
-            top: 8rem;
-          }
-          100% {
-            top: 2rem;
-          }
-        }
-
-        .animate-vector-move {
-          animation: vectorMove 2s ease-out forwards;
-          will-change: top;
-        }
-
-        @keyframes vector469Move {
-          0% {
-            transform: translateY(0);
-          }
-          50% {
-            transform: translateY(3rem);
-          }
-          100% {
-            transform: translateY(0);
-          }
-        }
-      `}</style>
+      <div className="absolute left-[7.2rem] top-[10rem]">
+        <SvgVector width={73.456} height={65.175} fill="white" />
+      </div>
     </div>
   );
 }
@@ -82,10 +18,6 @@ function RightAnimation() {
   return (
     <div className="relative flex h-[22.8rem] w-[22.8rem] items-center justify-center rounded-[1.6rem] bg-[rgba(235,236,239,0.20)] px-0 py-[5.2464rem] backdrop-blur-sm">
       <div className="h-[12.3072rem] w-[6.7341rem] rounded-[13.9326rem] bg-white"></div>
-      <div className="animate-vector469-move absolute left-1/2 top-[7rem] h-[1.3933rem] w-[1.3933rem] -translate-x-1/2 rounded-full bg-pink-500"></div>
-      <div className="absolute top-[7rem] flex items-center justify-center">
-        <div className="h-[3.6015rem] w-[1.3933rem] rounded-full bg-gradient-to-b from-transparent to-pink-500 opacity-80"></div>
-      </div>
     </div>
   );
 }
