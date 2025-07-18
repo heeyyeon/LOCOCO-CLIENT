@@ -61,6 +61,11 @@ export default function Review({
       return { previousState: isLiked };
     },
     onError: (__err, _, context) => {
+      if (context?.previousState) {
+        setLikeCount((prev) => prev + 1);
+      } else {
+        setLikeCount((prev) => prev - 1);
+      }
       setIsLiked(context?.previousState || false);
     },
     onSettled: () => {
