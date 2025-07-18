@@ -4,6 +4,7 @@ import ProductBreadCrumbSection from './components/product-bread-crumb-section';
 import ProductDetailSection from './components/product-detail-section';
 import ReviewList from './components/review-list';
 import StarRating from './components/star-rating';
+import UserUploadVideoCarousel from './components/user-upload-video-carousel';
 import YoutubeCarousel from './components/youtube-carousel';
 import { ProductDetailData, YoutubeListData } from './types';
 
@@ -25,7 +26,7 @@ export default function ClientPage({
         subCategory={productData.subCategory}
         productName={productData.productName}
       />
-      <div className="mx-auto flex w-[133.6rem] items-center">
+      <div className="mx-auto flex w-[136.6rem] items-center">
         <div className="flex w-full flex-col gap-[10rem] px-[11.9rem] pb-[12rem] pt-[3.2rem]">
           <ProductDetailSection
             authStatus={authStatus}
@@ -44,7 +45,6 @@ export default function ClientPage({
             oliveYoungUrl={productData.oliveYoungUrl}
             q10Url={productData.q10Url}
           />
-
           <YoutubeCarousel youtubeListData={youtubeListData} />
           <StarRating
             authStatus={authStatus}
@@ -53,6 +53,7 @@ export default function ClientPage({
             starPercent={productData.starPercent}
           />
           <ReviewList authStatus={authStatus} />
+          <UserUploadVideoCarousel />
         </div>
       </div>
     </div>

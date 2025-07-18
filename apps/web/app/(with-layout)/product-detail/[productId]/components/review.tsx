@@ -103,6 +103,11 @@ export default function Review({
               width={100}
               height={100}
               className="h-[10rem] w-[10rem] object-cover"
+              onClick={() => {
+                router.push(
+                  `/review-modal/${reviewId}/image?productId=${productId}`
+                );
+              }}
             />
           ))}
         </div>
@@ -131,17 +136,16 @@ export default function Review({
         <div className="flex items-center gap-[1.2rem]">
           <Avatar src={profileImageUrl} />
           <p className="en-title2 w-full text-gray-800">{authorName}</p>
-          {isMine ||
-            (isAdmin && (
-              <IconButton
-                onClick={handleDeleteReview}
-                size="md"
-                color="tertiary"
-                icon={
-                  <SvgDelete className="flex-shrink-0 items-end text-gray-500" />
-                }
-              ></IconButton>
-            ))}
+          {(isMine || isAdmin) && (
+            <IconButton
+              onClick={handleDeleteReview}
+              size="md"
+              color="tertiary"
+              icon={
+                <SvgDelete className="flex-shrink-0 items-end text-gray-500" />
+              }
+            ></IconButton>
+          )}
         </div>
 
         <div className="flex h-full flex-col gap-[1.2rem]">

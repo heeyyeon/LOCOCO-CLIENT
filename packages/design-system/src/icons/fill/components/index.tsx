@@ -37,5 +37,7 @@ export { SvgStar } from './Star';
 export { SvgVector } from './Vector';
 export { SvgVector469 } from './Vector469';
 export { SvgVector470 } from './Vector470';
+export { SvgVector471 } from './Vector471';
+export { SvgVector472 } from './Vector472';
 export { SvgWrite } from './Write';
 export { SvgXTwitterFill } from './XTwitterFill';
