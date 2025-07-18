@@ -27,8 +27,8 @@ export default function UserUploadVideoCarousel() {
 
   const { data: userUploadedVideoList } = useQuery({
     queryKey: ['userUploadedVideoList', Number(params.productId)],
-    // queryFn: () => getUserUploadedVideoList(Number(params.productId)),
-    queryFn: () => getUserUploadedVideoList(61),
+    queryFn: () => getUserUploadedVideoList(Number(params.productId)),
+    // queryFn: () => getUserUploadedVideoList(61),
   });
 
   const userUploadedVideoListData = userUploadedVideoList?.videoReviews;
@@ -76,7 +76,9 @@ export default function UserUploadVideoCarousel() {
               reviewId={video.reviewId}
               mediaUrl={video.videoUrl}
               handleCardClick={() => {
-                router.push(`/review-modal/${video.reviewId}/video`);
+                router.push(
+                  `/review-modal/${video.reviewId}/video?productId=${params.productId}`
+                );
               }}
             />
           </SwiperSlide>

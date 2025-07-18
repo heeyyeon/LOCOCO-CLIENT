@@ -24,7 +24,7 @@ export default function ClientPage({
         subCategory={productData.subCategory}
         productName={productData.productName}
       />
-      <div className="mx-auto flex w-[133.6rem] items-center">
+      <div className="mx-auto flex w-[136.6rem] items-center">
         <div className="flex w-full flex-col gap-[10rem] px-[11.9rem] pb-[12rem] pt-[3.2rem]">
           <ProductDetailSection
             imageUrls={productData.imageUrls}
