@@ -6,7 +6,6 @@ import {
 } from '@tanstack/react-query';
 import { apiRequest } from 'app/api/apiRequest';
 import { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
 import {
   ApiResponseImageReviewDetailResponse,
   ApiResponseMainImageReviewResponse,

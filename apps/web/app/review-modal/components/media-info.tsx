@@ -1,7 +1,5 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { Elsie_Swash_Caps } from 'next/font/google';
 import { useRouter } from 'next/navigation';
 import {
   Avatar,
