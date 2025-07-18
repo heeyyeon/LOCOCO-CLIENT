@@ -20,19 +20,22 @@ export default function DeleteReviewModal() {
   const queryClient = useQueryClient();
 
   const { mutate: reviewDeleteMutation } = useMutation({
-    mutationFn: (reviewId: number) => deleteReview(reviewId),
+    mutationFn: (reviewId: number) => {
+      const response = deleteReview(reviewId);
+      return response;
+    },
     onSuccess: async () => {
       await queryClient.invalidateQueries({
         queryKey: PRODUCT_DETAIL_QUERY_KEYS.REVIEW_LIST(
           Number(params.productId)
         ),
       });
+      router.back();
     },
   });
 
   const handleDelete = async () => {
     reviewDeleteMutation(Number(reviewId));
-    router.back();
   };
 
   const handleCancel = () => {
