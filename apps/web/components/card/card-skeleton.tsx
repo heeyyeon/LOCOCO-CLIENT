@@ -20,32 +20,10 @@ export function CardSkeleton({ type }: CardSkeletonProps) {
 
   return (
     <div className="flex w-[26.4rem] flex-col items-start gap-[0.6rem]">
-      <style jsx>{`
-        @keyframes shimmer {
-          0% {
-            background-position: -200px 0;
-          }
-          100% {
-            background-position: calc(200px + 100%) 0;
-          }
-        }
-        .shimmer {
-          background: linear-gradient(
-            90deg,
-            #ebecef 0%,
-            #ebecef 30%,
-            #f8f9fa 50%,
-            #ebecef 70%,
-            #ebecef 100%
-          );
-          background-size: 200px 100%;
-          animation: shimmer 3s ease-in-out infinite;
-        }
-      `}</style>
       {skeletonItems.map((item, index) => (
         <div
           key={index}
-          className="shimmer w-full"
+          className="w-full bg-gray-200"
           style={{ height: item.height }}
         />
       ))}
