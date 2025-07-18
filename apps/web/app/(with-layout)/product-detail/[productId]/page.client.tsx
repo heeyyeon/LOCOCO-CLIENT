@@ -4,6 +4,7 @@ import ProductBreadCrumbSection from './components/product-bread-crumb-section';
 import ProductDetailSection from './components/product-detail-section';
 import ReviewList from './components/review-list';
 import StarRating from './components/star-rating';
+import UserUploadVideoCarousel from './components/user-upload-video-carousel';
 import YoutubeCarousel from './components/youtube-carousel';
 import { ProductDetailData, YoutubeListData } from './types';
 
@@ -41,13 +42,13 @@ export default function ClientPage({
             oliveYoungUrl={productData.oliveYoungUrl}
             q10Url={productData.q10Url}
           />
-
           <YoutubeCarousel youtubeListData={youtubeListData} />
           <StarRating
             reviewCount={productData.reviewCount}
             rating={productData.rating}
             starPercent={productData.starPercent}
           />
+          <UserUploadVideoCarousel />
           <ReviewList />
         </div>
       </div>

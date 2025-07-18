@@ -9,6 +9,8 @@ import { ReviewLikeResponse } from '../types';
 import { ReviewLikeData } from '../types';
 import { ReviewDeleteResponse } from '../types';
 import { ReviewDeleteData } from '../types';
+import { UserUploadedVideoListResponse } from '../types';
+import { UserUploadedVideoListData } from '../types';
 
 /**
  * 상품 상세 정보를 가져오는 API 함수
@@ -86,5 +88,20 @@ export const deleteReview = async (
   if (!response.data) {
     throw new Error('상품 삭제 실패');
   }
+  return response.data;
+};
+
+export const getUserUploadedVideoList = async (
+  productId: number
+): Promise<UserUploadedVideoListData> => {
+  const response = await apiRequest<UserUploadedVideoListResponse>({
+    endPoint: `/api/reviews/details/video?productId=${productId}`,
+    method: 'GET',
+  });
+
+  if (!response.data) {
+    throw new Error('유저 업로드 비디오 목록을 가져올 수 없습니다.');
+  }
+
   return response.data;
 };
