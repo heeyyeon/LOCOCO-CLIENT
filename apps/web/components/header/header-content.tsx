@@ -95,6 +95,7 @@ export function TopUtil({
     if (authStatus) {
       try {
         await apiRequest({ endPoint: '/api/auth/logout', method: 'POST' });
+        router.refresh();
       } catch {
         console.error('로그아웃 실패');
       }
