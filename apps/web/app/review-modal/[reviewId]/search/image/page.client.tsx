@@ -95,7 +95,7 @@ export default function ClientPage({ userStatus }: ImageReviewClientPageProps) {
     if (currentIndex === -1) {
       router.back();
     }
-  }, [currentIndex]);
+  }, [currentIndex, router]);
 
   if (detailQueries.some((q) => q.isLoading)) {
     return (

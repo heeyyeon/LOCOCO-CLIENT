@@ -93,7 +93,7 @@ export default function ClientPage({ userStatus }: VideoReviewClientPageProps) {
     if (currentIndex === -1) {
       router.back();
     }
-  }, [currentIndex]);
+  }, [currentIndex, router]);
 
   const detailQueries = useAllVideoReviewDetails(reviewData);
 
