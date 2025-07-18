@@ -21,8 +21,8 @@ export default function DeleteReviewModal() {
 
   const { mutate: reviewDeleteMutation } = useMutation({
     mutationFn: (reviewId: number) => deleteReview(reviewId),
-    onSuccess: () => {
-      queryClient.invalidateQueries({
+    onSuccess: async () => {
+      await queryClient.invalidateQueries({
         queryKey: PRODUCT_DETAIL_QUERY_KEYS.REVIEW_LIST(
           Number(params.productId)
         ),
@@ -58,9 +58,9 @@ export default function DeleteReviewModal() {
             size="lg"
             rounded={true}
             className="jp-title2 w-[17.8rem] text-pink-500"
-            onClick={handleDelete}
+            onClick={handleCancel}
           >
-            削除
+            キャンセル
           </Button>
           <Button
             color="primary"
@@ -68,9 +68,9 @@ export default function DeleteReviewModal() {
             size="lg"
             rounded={true}
             className="jp-title2 w-[17.8rem] text-white"
-            onClick={handleCancel}
+            onClick={handleDelete}
           >
-            キャンセル
+            削除
           </Button>
         </div>
       </Modal.Footer>
