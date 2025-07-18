@@ -1,19 +1,19 @@
 'use client';
 
-import ReviewOnboardingModal from 'app/review-modal/components/ReviewOnboardingModal';
-import LoadingSvg from 'components/loading/loading-svg';
-import { useState } from 'react';
-import { useParams, useRouter, useSearchParams } from 'next/navigation';
-import type {
-  ApiResponseImageReviewDetailResponse,
+import {
   ImageReviewDetailResponse,
-} from '../../../../api/data-contracts';
-import ReviewModalSwiper from '../../components/review-modal-swiper';
+  ApiResponseImageReviewDetailResponse,
+} from 'api/data-contracts';
+import ReviewOnboardingModal from 'app/review-modal/components/ReviewOnboardingModal';
+import ReviewModalSwiper from 'app/review-modal/components/review-modal-swiper';
 import {
   useImageReviews,
   useAllImageReviewDetails,
-} from '../../hooks/review-api';
-import type { ReviewDetail } from '../../types';
+} from 'app/review-modal/hooks/review-api';
+import { ReviewDetail } from 'app/review-modal/types';
+import LoadingSvg from 'components/loading/loading-svg';
+import { useState } from 'react';
+import { useParams, useRouter, useSearchParams } from 'next/navigation';
 
 const formatDateToJapanese = (dateString: string): string => {
   const date = new Date(dateString);

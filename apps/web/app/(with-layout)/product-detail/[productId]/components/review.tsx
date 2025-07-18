@@ -109,7 +109,7 @@ export default function Review({
               className="h-[10rem] w-[10rem] cursor-pointer object-cover"
               onClick={() => {
                 router.push(
-                  `/review-modal/${reviewId}/image?productId=${productId}`
+                  `/review-modal/${reviewId}/detail/image?productId=${productId}`
                 );
               }}
             />

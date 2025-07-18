@@ -83,7 +83,7 @@ export default function UserUploadVideoCarousel() {
                     mediaUrl={video.videoUrl}
                     handleCardClick={() => {
                       router.push(
-                        `/review-modal/${video.reviewId}/video?productId=${params.productId}`
+                        `/review-modal/${video.reviewId}/detail/video?productId=${params.productId}`
                       );
                     }}
                   />
