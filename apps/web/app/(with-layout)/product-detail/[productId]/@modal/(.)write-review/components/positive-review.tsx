@@ -27,7 +27,7 @@ export default function PositiveReview({ value, onChange, error }: Props) {
           maxLength={REVIEW_TEXT.MAX_LENGTH}
           className="h-[6.6rem]"
         />
-        {error && <ErrorNotice message={error} />}
+        {error && value.length > 0 && <ErrorNotice message={error} />}
       </Textarea.Container>
     </ContentWithLabel>
   );

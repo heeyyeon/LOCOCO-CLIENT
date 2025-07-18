@@ -14,6 +14,7 @@ import { useParams } from 'next/navigation';
 import { useRouter } from 'next/navigation';
 import { IconButton } from '@lococo/design-system';
 import { SvgArrowRight } from '@/icons';
+import { SvgImgVideo } from '@/icons';
 import { getUserUploadedVideoList } from '../apis';
 import './user-uploaded-video-carousel.css';
 
@@ -28,7 +29,6 @@ export default function UserUploadVideoCarousel() {
   const { data: userUploadedVideoList } = useQuery({
     queryKey: ['userUploadedVideoList', Number(params.productId)],
     queryFn: () => getUserUploadedVideoList(Number(params.productId)),
-    // queryFn: () => getUserUploadedVideoList(61),
   });
 
   const userUploadedVideoListData = userUploadedVideoList?.videoReviews;
@@ -50,62 +50,78 @@ export default function UserUploadVideoCarousel() {
   };
 
   return (
-    <div className="relative w-full">
-      <Swiper
-        onSwiper={handleSwiper}
-        slidesPerView={4.5}
-        slidesPerGroup={1}
-        centeredSlides={true}
-        onSlideChange={handleSwiper}
-        spaceBetween={24}
-        pagination={{
-          type: 'fraction',
-          clickable: true,
-        }}
-        navigation={false}
-        modules={[Navigation]}
-        className="user-uploaded-video--swiper"
-      >
-        {userUploadedVideoListData?.map((video) => (
-          <SwiperSlide key={video.reviewId}>
-            <CardReview
-              type="video"
-              brandName={video.brandName}
-              productName={video.productName}
-              likeCount={video.likeCount}
-              reviewId={video.reviewId}
-              mediaUrl={video.videoUrl}
-              handleCardClick={() => {
-                router.push(
-                  `/review-modal/${video.reviewId}/video?productId=${params.productId}`
-                );
+    <div className="flex flex-col gap-[3.2rem]">
+      <h3 className="text-jp-head2 inline-flex items-center gap-[1.2rem] font-bold">
+        動画レビュー
+      </h3>
+      <div className="relative h-[35.2rem] w-full">
+        {userUploadedVideoListData && userUploadedVideoListData.length > 0 ? (
+          <>
+            <Swiper
+              onSwiper={handleSwiper}
+              slidesPerView={4.5}
+              slidesPerGroup={1}
+              centeredSlides={true}
+              onSlideChange={handleSwiper}
+              spaceBetween={24}
+              pagination={{
+                type: 'fraction',
+                clickable: true,
               }}
-            />
-          </SwiperSlide>
-        ))}
-      </Swiper>
+              navigation={false}
+              modules={[Navigation]}
+              className="user-uploaded-video--swiper"
+            >
+              {userUploadedVideoListData?.map((video) => (
+                <SwiperSlide key={video.reviewId}>
+                  <CardReview
+                    type="video"
+                    brandName={video.brandName}
+                    productName={video.productName}
+                    likeCount={video.likeCount}
+                    reviewId={video.reviewId}
+                    mediaUrl={video.videoUrl}
+                    handleCardClick={() => {
+                      router.push(
+                        `/review-modal/${video.reviewId}/video?productId=${params.productId}`
+                      );
+                    }}
+                  />
+                </SwiperSlide>
+              ))}
+            </Swiper>
 
-      {isPrevButton && (
-        <IconButton
-          className="absolute bottom-[3rem] left-[3rem] top-1/2 z-10 size-[3.2rem] -translate-y-1/2 bg-white p-0"
-          onClick={() => swiperRef?.slidePrev()}
-          size="md"
-          icon={<SvgArrowRight className="rotate-180" />}
-          color="tertiary"
-          rounded
-        />
-      )}
+            {isPrevButton && (
+              <IconButton
+                className="absolute bottom-[3rem] left-[3rem] top-1/2 z-10 size-[3.2rem] -translate-y-1/2 bg-white p-0"
+                onClick={() => swiperRef?.slidePrev()}
+                size="md"
+                icon={<SvgArrowRight className="rotate-180" />}
+                color="tertiary"
+                rounded
+              />
+            )}
 
-      {isNextButton && (
-        <IconButton
-          className="absolute bottom-[3rem] right-[3rem] top-1/2 z-10 size-[3.2rem] shrink-0 bg-white p-0"
-          onClick={() => swiperRef?.slideNext()}
-          size="md"
-          icon={<SvgArrowRight />}
-          rounded
-          color="tertiary"
-        />
-      )}
+            {isNextButton && (
+              <IconButton
+                className="absolute bottom-[3rem] right-[3rem] top-1/2 z-10 size-[3.2rem] shrink-0 bg-white p-0"
+                onClick={() => swiperRef?.slideNext()}
+                size="md"
+                icon={<SvgArrowRight />}
+                rounded
+                color="tertiary"
+              />
+            )}
+          </>
+        ) : (
+          <div className="flex h-full flex-col items-center justify-center gap-[2.4rem]">
+            <SvgImgVideo size={100} className="fill-pink-300" />
+            <p className="jp-body1 font-[700]">
+              登録された動画レビューはありません。
+            </p>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

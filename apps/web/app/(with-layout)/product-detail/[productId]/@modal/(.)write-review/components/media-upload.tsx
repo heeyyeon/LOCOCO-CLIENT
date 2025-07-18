@@ -78,8 +78,12 @@ export default function MediaUpload({
   return (
     <ContentWithLabel
       label="写真または動画をアップロードしてください"
-      className="flex-col gap-[2.4rem] border-b border-gray-400"
+      className="flex-col border-b border-gray-400"
     >
+      <p className="jp-caption3 text-blue mt-[0.8rem] pb-[2.4rem]">
+        写真（最大5枚）または動画（1件）のみアップできます。
+      </p>
+
       <div className="flex flex-wrap gap-4">
         {files.map((file, index) => (
           <div key={index} className="relative h-32 w-32">
