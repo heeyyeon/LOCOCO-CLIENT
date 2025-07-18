@@ -90,6 +90,10 @@ export const useReviewInput = (productId?: number, onSuccess?: () => void) => {
     setValue('receiptFile', file, { shouldValidate: true });
   };
 
+  const parsePresignedUrl = (rawPresignedUrl: string) => {
+    return rawPresignedUrl.split('?')[0] || '';
+  };
+
   const onSubmit = async (formData: ReviewFormData) => {
     try {
       // 1. 미디어 파일 presigned URL 요청
@@ -127,7 +131,10 @@ export const useReviewInput = (productId?: number, onSuccess?: () => void) => {
         positiveComment: formData.positiveComment,
         negativeComment: formData.negativeComment,
         mediaUrl: mediaUrls,
-        receiptUrl: receiptUrls,
+        //TODO: 영수증 파일 여러개 업로드 시 처리 필요
+        receiptUrl: receiptUrls[0]
+          ? [parsePresignedUrl(receiptUrls[0])]
+          : undefined,
       };
 
       if (productId) {
