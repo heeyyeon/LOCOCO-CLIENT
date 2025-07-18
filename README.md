@@ -17,11 +17,16 @@ K-뷰티 플레이어와 일본인 소비자를 연결하는 bridge 역할을 �
     <th> <a href="https://github.com/hamxxn">권동희</a></th>
     </tr>
     <tr>
-    	<td><img src="https://github.com/Jeong-Ag.png" width="360px"></td>
-    	<td><img src="https://github.com/ljh0608.png" width="360px"></td>
-      <td><img src="https://github.com/kojesung.png" width="360px"></td>
-    	<td><img src="https://github.com/heeyyeon.png" width="360px"></td>
-      <td><img src="https://github.com/hamxxn.png" width="360px"></td>
+    	<td><img width="360px" height="1063" alt="정은" src="https://github.com/user-attachments/assets/30f54bac-2170-4c58-8f29-4fca629ac7a2" /></td>
+    	<td><img width="360px" height="1063" alt="재훈" src="https://github.com/user-attachments/assets/3a34bbcf-5937-42f2-812e-263925d0575c" /></td>
+      <td>
+<img width="360px" height="1063" alt="제성" src="https://github.com/user-attachments/assets/485d8bb7-427a-41c5-928b-c4e64dc2433e" />
+      </td>
+    	<td>
+        <img width="360px" height="1063" alt="희연" src="https://github.com/user-attachments/assets/48cc7bbb-ed1a-4142-b221-63fa5e730f6c" />
+      </td>
+      <td><img width="360px" height="1063" alt="동희" src="https://github.com/user-attachments/assets/ff9ba007-f5d7-4139-ad96-6d00bad02fae" />
+      </td>
     </tr>
     <tr>
     </tr>
