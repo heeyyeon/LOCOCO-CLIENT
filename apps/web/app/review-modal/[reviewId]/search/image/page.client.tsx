@@ -48,7 +48,6 @@ export default function ClientPage({ userStatus }: ImageReviewClientPageProps) {
   const subCategory = searchParams.get('subCategory');
   const queryClient = useQueryClient();
 
-  // 카테고리 파라미터 검증
   const validMiddleCategory: CategoryNameEng | '' = isValidCategoryKey(
     middleCategory || ''
   )
@@ -60,17 +59,14 @@ export default function ClientPage({ userStatus }: ImageReviewClientPageProps) {
       ? (subCategory as CategoryOptionEng)
       : '';
 
-  // 캐싱된 데이터 가져오기
   let reviewData: ImageReviewResponse[] | ApiReviewItem[] = [];
 
   if (keyword) {
-    // 키워드 검색 캐시에서 데이터 가져오기
     const searchCacheData = queryClient.getQueryData<
       ApiResponse<ApiReviewSearchResponse>
     >([...REVIEW_KEYS.IMAGE_LIST({ page: 0, size: 8 }), 'search', keyword]);
     reviewData = searchCacheData?.data?.reviews || [];
   } else if (validMiddleCategory) {
-    // 카테고리 검색 캐시에서 데이터 가져오기
     const categoryCacheData = queryClient.getQueryData<
       ApiResponse<ApiReviewSearchResponse>
     >([
@@ -83,11 +79,6 @@ export default function ClientPage({ userStatus }: ImageReviewClientPageProps) {
     reviewData = categoryCacheData?.data?.reviews || [];
   }
 
-  console.log('keyword', keyword);
-  console.log('middleCategory', middleCategory);
-  console.log('subCategory', subCategory);
-  console.log('reviewData', reviewData);
-
   const { reviewId: reviewIdParam } = useParams() as { reviewId: string };
   const currentReviewId = Number(reviewIdParam);
   const [isOnboardingOpen, setIsOnboardingOpen] = useState(true);
@@ -95,10 +86,8 @@ export default function ClientPage({ userStatus }: ImageReviewClientPageProps) {
     setIsOnboardingOpen(false);
   };
 
-  // 모든 리뷰의 상세 정보 가져오기
   const detailQueries = useAllImageReviewDetails(reviewData);
 
-  // 모든 상세 정보가 로딩 완료될 때까지 대기
   if (detailQueries.some((q) => q.isLoading)) {
     return (
       <div className="flex min-h-screen w-full items-center justify-center bg-black">
@@ -107,7 +96,6 @@ export default function ClientPage({ userStatus }: ImageReviewClientPageProps) {
     );
   }
 
-  // 상세 정보를 ID로 매핑
   const detailMap = new Map<number, ImageReviewDetailResponse>();
   reviewData.forEach((review, index) => {
     const dq = detailQueries[index];
@@ -119,7 +107,6 @@ export default function ClientPage({ userStatus }: ImageReviewClientPageProps) {
     }
   });
 
-  // 현재 리뷰의 인덱스 찾기
   const currentIndex = reviewData.findIndex(
     (review) => review.reviewId === currentReviewId
   );
@@ -128,14 +115,11 @@ export default function ClientPage({ userStatus }: ImageReviewClientPageProps) {
     return <div>리뷰를 찾을 수 없습니다.</div>;
   }
 
-  // 슬라이더에 넘길 리뷰 데이터 구성
   const allReviews: ReviewDetail[] = reviewData
-    // 1) detail이 존재하고 images가 한 개 이상인 리뷰만 걸러내고
     .filter((review) => {
       const detail = detailMap.get(review.reviewId);
       return !!detail && detail.images.length > 0;
     })
-    // 2) 걸러진 리뷰들에 대해서만 ReviewDetail 객체 생성
     .map((review) => {
       const detail = detailMap.get(review.reviewId)!;
       return {
