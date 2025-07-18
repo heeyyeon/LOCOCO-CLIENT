@@ -38,11 +38,12 @@ export default function ReviewModalSwiper({
       spaceBetween={-45}
       modules={[Mousewheel, FreeMode]}
       mousewheel={{
-        sensitivity: 0.4,
+        sensitivity: 0.8,
         releaseOnEdges: true,
         forceToAxis: true,
         thresholdDelta: 50,
         thresholdTime: 200,
+        noMousewheelClass: 'noMousewheel',
       }}
       freeMode={{
         enabled: true,
@@ -58,7 +59,6 @@ export default function ReviewModalSwiper({
           className="flex h-[55.2rem] items-center justify-center"
         >
           <ReviewModalLayout
-            userStatus={userStatus}
             id={review.reviewId}
             productId={review.productId}
             mediaList={review.mediaList}
@@ -77,6 +77,7 @@ export default function ReviewModalSwiper({
             positiveComment={review.positiveComment}
             negativeComment={review.negativeComment}
             productImageUrl={review.productImageUrl}
+            userStatus={userStatus}
             onClose={onClose}
           />
         </SwiperSlide>
