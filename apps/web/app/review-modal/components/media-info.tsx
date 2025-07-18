@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import {
   Avatar,
   ReactionToggle,
@@ -19,21 +19,22 @@ interface MediaInfoProps {
   date: string;
   likeCount: number;
   isLiked?: boolean;
+  userStatus: boolean;
 }
 
 export default function MediaInfo({
   reviewId,
   user,
   date,
-  likeCount,
+  likeCount: initialLikeCount,
   isLiked: initialIsLiked = false,
+  userStatus,
 }: MediaInfoProps) {
-  const [isLiked, setIsLiked] = useState(initialIsLiked);
-  const likeToggle = useReviewLikeToggle();
-
-  useEffect(() => {
-    setIsLiked(initialIsLiked);
-  }, [initialIsLiked]);
+  const { likeMutation, isLiked, likeCount } = useReviewLikeToggle(
+    initialIsLiked,
+    initialLikeCount
+  );
+  const router = useRouter();
 
   return (
     <div className="absolute bottom-0 left-0 z-10 flex h-[16rem] w-full items-center justify-between rounded-bl-xl bg-gradient-to-t from-black/60 to-transparent p-[1.6rem]">
@@ -49,12 +50,14 @@ export default function MediaInfo({
         <ReactionToggle
           variant="vertical"
           pressed={isLiked}
-          onPressedChange={(pressed) => {
-            setIsLiked(pressed);
-            likeToggle.mutate(reviewId);
+          onPressedChange={() => {
+            if (userStatus) {
+              likeMutation.mutate(reviewId);
+            } else {
+              router.push('/login');
+            }
           }}
           className="text-white"
-          disabled={likeToggle.isPending}
         >
           {isLiked ? <SvgGoodFill /> : <SvgGoodOutline />}
           <span className="text-en-body1">{likeCount}</span>
