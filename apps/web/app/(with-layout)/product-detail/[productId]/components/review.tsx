@@ -90,6 +90,11 @@ export default function Review({
               width={100}
               height={100}
               className="h-[10rem] w-[10rem] object-cover"
+              onClick={() => {
+                router.push(
+                  `/review-modal/${reviewId}/image?productId=${productId}`
+                );
+              }}
             />
           ))}
         </div>
