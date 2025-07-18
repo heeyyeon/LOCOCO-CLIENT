@@ -258,10 +258,22 @@ export default function SearchPageClient() {
         middleCategory={middleCategory}
         subCategory={subCategory}
       />
+      {keyword && (
+        <div className="mx-auto w-[1366px] px-[11.9rem] py-[6rem]">
+          <p className="jp-head2 text-gray-800">
+            「
+            <span className="inline-block max-w-[80rem] truncate align-bottom">
+              {keyword}
+            </span>
+            」 に関する検索結果
+          </p>
+        </div>
+      )}
       <OptionSelector
         selectedTab={selectedTab}
         handleClickTab={handleClickTab}
       />
+
       {!isClient && (
         <div className="mx-auto flex h-screen w-[1366px] items-center justify-center">
           Loading...
