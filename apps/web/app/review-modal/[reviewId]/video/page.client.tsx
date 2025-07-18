@@ -117,6 +117,7 @@ export default function ClientPage({ userStatus }: VideoReviewClientPageProps) {
 
   return (
     <ReviewModalSwiper
+      userStatus={userStatus}
       currentIndex={currentIndex}
       reviews={allReviews}
       onClose={() => router.back()}
