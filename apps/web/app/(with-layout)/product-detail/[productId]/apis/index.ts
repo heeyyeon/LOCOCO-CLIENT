@@ -85,7 +85,7 @@ export const deleteReview = async (
     method: 'DELETE',
   });
 
-  if (!response.data) {
+  if (!response.success) {
     throw new Error('상품 삭제 실패');
   }
   return response.data;
