@@ -23,7 +23,6 @@ function VideoReviewSection() {
   }));
 
   const handleCardClick = (reviewId: number) => {
-    console.log(reviewId);
     router.push(`/review-modal/${reviewId}/video`);
   };
 
@@ -85,7 +84,6 @@ function ImageReviewSection() {
   }));
 
   const handleCardClick = (reviewId: number) => {
-    console.log(reviewId);
     router.push(`/review-modal/${reviewId}/image`);
   };
 

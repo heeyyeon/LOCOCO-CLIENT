@@ -18,7 +18,6 @@ export default async function Page({
     youtubeListData = youtubeListResponse;
   } catch (error) {
     // TODO: 에러 핸들링 로직 추가
-    console.error(error);
     notFound();
   }
 
