@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { Button } from '@lococo/design-system';
+import { Button, SvgRemove } from '@lococo/design-system';
 import { SvgAdd } from '@lococo/design-system';
 import { SvgGoodFill } from '@lococo/design-system';
 import { SvgBad } from '@lococo/design-system';
@@ -62,6 +62,18 @@ export default function CommentBox({ text, type }: CommentBoxProps) {
         >
           <SvgAdd />
           <span className="jp-title3 font-bold">もっと見る</span>
+        </Button>
+      )}
+      {isExpanded && (
+        <Button
+          color="primary"
+          variant="text"
+          size="md"
+          className="w-fit px-0"
+          onClick={() => setIsExpanded(!isExpanded)}
+        >
+          <SvgRemove />
+          <span className="jp-title3 font-bold">閉じる</span>
         </Button>
       )}
     </div>
