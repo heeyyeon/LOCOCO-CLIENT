@@ -29,7 +29,6 @@ export default function UserUploadVideoCarousel() {
   const { data: userUploadedVideoList } = useQuery({
     queryKey: ['userUploadedVideoList', Number(params.productId)],
     queryFn: () => getUserUploadedVideoList(Number(params.productId)),
-    // queryFn: () => getUserUploadedVideoList(61),
   });
 
   const userUploadedVideoListData = userUploadedVideoList?.videoReviews;

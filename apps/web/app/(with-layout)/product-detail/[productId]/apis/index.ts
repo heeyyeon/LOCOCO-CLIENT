@@ -51,7 +51,7 @@ export const getReviewList = async (
   productId: number
 ): Promise<ImageReviewDetailDataList> => {
   const response = await apiRequest<ImageReviewListResponse>({
-    endPoint: `/api/reviews/details/image?productId=${productId}&page=0&size=10`,
+    endPoint: `/api/reviews/details/image?productId=${productId}&page=0&size=100`,
     method: 'GET',
   });
 
