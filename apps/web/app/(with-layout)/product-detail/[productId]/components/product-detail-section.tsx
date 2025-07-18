@@ -17,6 +17,7 @@ interface ProductDetailSectionProps {
   normalPrice: number;
   oliveYoungUrl: string;
   q10Url: string;
+  authStatus: boolean;
 }
 
 export default function ProductDetailSection({
@@ -34,12 +35,14 @@ export default function ProductDetailSection({
   normalPrice,
   oliveYoungUrl,
   q10Url,
+  authStatus,
 }: ProductDetailSectionProps) {
   return (
     <div className="flex w-full flex-col">
       <div className="flex justify-center gap-[8.4rem] pb-[6rem] pt-[3.2rem]">
         <ProductDetailMainCarousel imageUrlList={imageUrls} />
         <ProductInfo
+          authStatus={authStatus}
           productId={Number(productId)}
           productName={productName}
           brandName={brandName}

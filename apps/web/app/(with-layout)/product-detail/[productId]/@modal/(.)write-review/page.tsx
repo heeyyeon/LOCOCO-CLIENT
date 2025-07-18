@@ -82,12 +82,14 @@ export default function WriteReviewModal() {
           brandName={brandName}
         />
         <div className="flex flex-col gap-[1.2rem] p-[2rem]">
-          <ProductOption
-            value={formData.productOptionId}
-            onChange={updateProductOption}
-            error={errors.productOptionId}
-            options={productOptions}
-          />
+          {productOptions.length > 0 && (
+            <ProductOption
+              value={formData.productOptionId}
+              onChange={updateProductOption}
+              error={errors.productOptionId}
+              options={productOptions}
+            />
+          )}
           <ProductRating
             value={formData.rating}
             onChange={updateRating}
