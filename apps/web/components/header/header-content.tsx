@@ -1,8 +1,8 @@
 'use client';
 
+import { apiRequest } from 'app/api/apiRequest';
 import type { CategoryOptionEng, CategoryNameEng } from 'types/category';
 import { CategoryMetadata, getOptionLabel } from 'utils/category';
-import { deleteCookie, getCookie } from 'utils/client-cookie';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
@@ -14,6 +14,7 @@ import {
   SvgLogin,
   SvgLogo,
   SvgMy,
+  SvgOpen,
   SvgSearch,
 } from '@lococo/design-system';
 import Input from '@lococo/design-system/components/input/Input';
@@ -72,23 +73,31 @@ export function TopUtilItem({
     </button>
   );
 }
-export function TopUtil({ visible }: { visible: boolean }) {
+export function TopUtil({
+  visible,
+  authStatus,
+}: {
+  visible: boolean;
+  authStatus: boolean;
+}) {
   const router = useRouter();
-  const [userToken, setUserToken] = useState(getCookie('AccessToken'));
   const [loginLabel, setLoginLabel] = useState('ログイン');
 
   useEffect(() => {
-    if (userToken) {
+    if (authStatus) {
       setLoginLabel('ログアウト');
     } else {
       setLoginLabel('ログイン');
     }
-  }, [userToken]);
+  }, [authStatus]);
 
-  const handleAuthClick = () => {
-    if (userToken) {
-      deleteCookie('AccessToken');
-      setUserToken(null);
+  const handleAuthClick = async () => {
+    if (authStatus) {
+      try {
+        await apiRequest({ endPoint: '/api/auth/logout', method: 'POST' });
+      } catch {
+        console.error('로그아웃 실패');
+      }
     } else {
       router.push('/login');
     }
@@ -122,7 +131,13 @@ export function TopUtil({ visible }: { visible: boolean }) {
         disabled
       />
       <TopUtilItem
-        icon={<SvgLogin className="text-gray-600" size={16} />}
+        icon={
+          authStatus ? (
+            <SvgOpen className="fill-gray-600" size={16} />
+          ) : (
+            <SvgLogin className="text-gray-600" size={16} />
+          )
+        }
         label={loginLabel}
         onClick={handleAuthClick}
       />
