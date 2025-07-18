@@ -8,7 +8,6 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import { Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
-//TODO validYoutube 적용
 import { convertToEmbedUrl, validateYoutubeVideoList } from 'utils/youtube';
 import { useState } from 'react';
 import { IconButton } from '@lococo/design-system';
@@ -38,7 +37,7 @@ export default function YoutubeCarousel({
     setSwiperRef(swiper);
     if (
       validatedYoutubeListData &&
-      validatedYoutubeListData.length - 2 === swiper.activeIndex
+      validatedYoutubeListData.length - 2 <= swiper.activeIndex
     ) {
       setIsNextButton(false);
     } else {
@@ -63,8 +62,9 @@ export default function YoutubeCarousel({
               onSwiper={handleSwiper}
               slidesPerView={2.5}
               slidesPerGroup={1}
-              centeredSlides={true}
               onSlideChange={handleSwiper}
+              centeredSlides={false}
+              centerInsufficientSlides={false}
               spaceBetween={0}
               pagination={{
                 type: 'fraction',
@@ -72,7 +72,7 @@ export default function YoutubeCarousel({
               }}
               navigation={false}
               modules={[Navigation]}
-              className="youtube-swiper absolute"
+              className={`youtube-swiper absolute ${validatedYoutubeListData.length <= 2 ? 'insufficient-slides' : ''}`}
             >
               {validatedYoutubeListData?.map((video) => (
                 <SwiperSlide key={video}>

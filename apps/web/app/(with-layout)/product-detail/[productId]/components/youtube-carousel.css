@@ -1,7 +1,14 @@
 .youtube-swiper {
   width: 141.7rem;
+  position: relative;
+  right: 11.9rem;
 }
 .youtube-swiper > .swiper-wrapper {
   position: relative;
-  right: 43rem;
+  /* right: 43rem; */
+}
+
+.insufficient-slides {
+  position: relative;
+  left: 0rem;
 }
