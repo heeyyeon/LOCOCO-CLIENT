@@ -16,6 +16,9 @@ function VideoReviewSection() {
   const searchParams = useSearchParams();
   const keyword = searchParams.get('keyword');
 
+  const middleCategory = searchParams.get('middleCategory');
+  const subCategory = searchParams.get('subCategory');
+
   const videoReviews: VideoReviewResponse[] = reviewData.map((review) => ({
     reviewId: review.reviewId,
     brandName: review.brandName,
@@ -25,7 +28,13 @@ function VideoReviewSection() {
   }));
 
   const handleCardClick = (reviewId: number) => {
-    router.push(`/review-modal/${reviewId}/search/video?keyword=${keyword}`);
+    if (keyword) {
+      router.push(`/review-modal/${reviewId}/search/video?keyword=${keyword}`);
+    } else {
+      router.push(
+        `/review-modal/${reviewId}/search/video?middleCategory=${middleCategory}&subCategory=${subCategory}`
+      );
+    }
   };
 
   if (isLoading) {
@@ -63,7 +72,7 @@ function VideoReviewSection() {
                 reviewId={reviewId}
                 likeCount={likeCount}
                 mediaUrl={url}
-                handleCardClick={handleCardClick}
+                handleCardClick={() => handleCardClick(reviewId)}
               />
             )
           )}
@@ -78,6 +87,8 @@ function ImageReviewSection() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const keyword = searchParams.get('keyword');
+  const middleCategory = searchParams.get('middleCategory');
+  const subCategory = searchParams.get('subCategory');
 
   const imageReviews: ImageReviewResponse[] = reviewData.map((review) => ({
     reviewId: review.reviewId,
@@ -88,7 +99,13 @@ function ImageReviewSection() {
   }));
 
   const handleCardClick = (reviewId: number) => {
-    router.push(`/review-modal/${reviewId}/search/image?keyword=${keyword}`);
+    if (keyword) {
+      router.push(`/review-modal/${reviewId}/search/image?keyword=${keyword}`);
+    } else {
+      router.push(
+        `/review-modal/${reviewId}/search/image?middleCategory=${middleCategory}&subCategory=${subCategory}`
+      );
+    }
   };
 
   if (isLoading) {
