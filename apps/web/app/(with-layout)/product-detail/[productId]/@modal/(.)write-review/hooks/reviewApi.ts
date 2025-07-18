@@ -21,8 +21,7 @@ export const usePostReview = (onSuccess?: () => void) => {
       });
     },
 
-    onSuccess: (data, variables) => {
-      console.log('리뷰 작성 성공:', data);
+    onSuccess: (_, variables) => {
       if (onSuccess) onSuccess();
       queryClient.invalidateQueries({
         queryKey: PRODUCT_DETAIL_QUERY_KEYS.REVIEW_LIST(variables.productId),
