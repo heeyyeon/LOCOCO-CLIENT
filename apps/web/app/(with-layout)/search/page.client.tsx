@@ -23,6 +23,7 @@ export default function SearchPageClient() {
   const rawMiddle = searchParams.get('middleCategory') || '';
   const rawSub = searchParams.get('subCategory') || '';
   const rawSearchType = searchParams.get('searchType') || '';
+  const keyword = searchParams.get('keyword') || '';
 
   const middleCategory: CategoryNameEng | '' = isValidCategoryKey(rawMiddle)
     ? rawMiddle
