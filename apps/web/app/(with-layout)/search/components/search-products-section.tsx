@@ -6,7 +6,13 @@ import { useRouter } from 'next/navigation';
 import useProductSectionData from '../hook/use-product-section';
 import NotFoundSection from './not-found-section';
 
-export default function SearchProductsSection() {
+interface SearchProductsSectionProps {
+  authStatus: boolean;
+}
+
+export default function SearchProductsSection({
+  authStatus,
+}: SearchProductsSectionProps) {
   const { products, isLoading, hasError } = useProductSectionData();
   const router = useRouter();
 
@@ -49,6 +55,7 @@ export default function SearchProductsSection() {
                 url,
               }) => (
                 <CardProduct
+                  authStatus={authStatus}
                   key={productId}
                   brandName={brandName}
                   productName={productName}
