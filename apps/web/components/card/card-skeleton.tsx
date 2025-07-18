@@ -37,7 +37,7 @@ export default function CardSkeletonWrapper({
   type: 'PRODUCT' | 'REVIEW_IMAGE' | 'REVIEW_VIDEO';
 }) {
   return (
-    <div className="flex items-center gap-[2.4rem] self-stretch">
+    <div className="flex w-full items-center gap-[2.4rem] self-stretch">
       {Array.from({ length: 4 }, (_, index) => (
         <CardSkeleton key={index} type={type} />
       ))}

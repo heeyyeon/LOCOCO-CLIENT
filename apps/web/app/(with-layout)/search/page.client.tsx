@@ -55,7 +55,7 @@ export default function SearchPageClient() {
   }[selectedTab];
 
   if (!isClient) {
-    return <div className="h-[90rem] w-screen bg-white" />;
+    return <div className="h-[90rem] w-full bg-white" />;
   }
 
   return (
