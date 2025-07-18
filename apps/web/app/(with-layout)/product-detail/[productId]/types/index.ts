@@ -101,3 +101,17 @@ export type ReviewDeleteResponse = APIResponse<ReviewDeleteData>;
 export interface ReviewDeleteData {
   reviewId: number;
 }
+
+export type UserUploadedVideoListResponse =
+  APIResponse<UserUploadedVideoListData>;
+
+export interface UserUploadedVideoListData {
+  videoReviews: UserUploadedVideoData[];
+}
+export interface UserUploadedVideoData {
+  reviewId: number;
+  brandName: string;
+  productName: string;
+  likeCount: number;
+  videoUrl: string;
+}
