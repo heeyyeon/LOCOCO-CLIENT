@@ -6,7 +6,11 @@ import { CategoryBar, TopUtil } from './header-content';
 import { useHeaderAction } from './use-header-action';
 import { useIntersect } from './use-intersect';
 
-const header = React.memo(function Header() {
+interface HeaderProps {
+  authStatus: boolean;
+}
+
+const header = React.memo(function Header({ authStatus }: HeaderProps) {
   const {
     categories,
     selectedCategory,
@@ -39,7 +43,7 @@ const header = React.memo(function Header() {
             'border-b-[0.1rem] border-gray-500'
         )}
       >
-        <TopUtil visible={isVisible} />
+        <TopUtil visible={isVisible} authStatus={authStatus} />
         <CategoryBar
           categories={categories}
           selectedCategory={selectedCategory}
