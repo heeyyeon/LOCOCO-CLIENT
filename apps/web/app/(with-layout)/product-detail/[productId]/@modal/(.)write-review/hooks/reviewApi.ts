@@ -1,8 +1,11 @@
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { ApiResponseReviewResponse, ReviewRequest } from 'api/data-contracts';
 import { apiRequest } from 'app/api/apiRequest';
+import { PRODUCT_DETAIL_QUERY_KEYS } from '../../../queries';
 
 export const usePostReview = (onSuccess?: () => void) => {
+  const queryClient = useQueryClient();
+
   return useMutation({
     mutationFn: ({
       productId,
@@ -18,9 +21,12 @@ export const usePostReview = (onSuccess?: () => void) => {
       });
     },
 
-    onSuccess: (data) => {
+    onSuccess: (data, variables) => {
       console.log('리뷰 작성 성공:', data);
       if (onSuccess) onSuccess();
+      queryClient.invalidateQueries({
+        queryKey: PRODUCT_DETAIL_QUERY_KEYS.REVIEW_LIST(variables.productId),
+      });
     },
 
     onError: (error) => {
