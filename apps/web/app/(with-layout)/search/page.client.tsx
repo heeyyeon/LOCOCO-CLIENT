@@ -11,7 +11,13 @@ import SearchBreadCrumbSection from './components/search-bread-crumb-section';
 import SearchProductsSection from './components/search-products-section';
 import SearchReviewSection from './components/search-reviews-section';
 
-export default function SearchPageClient() {
+interface SearchPageClientProps {
+  authStatus: boolean;
+}
+
+export default function SearchPageClient({
+  authStatus,
+}: SearchPageClientProps) {
   const searchParams = useSearchParams();
   const router = useRouter();
   const [isClient, setIsClient] = useState(false);
@@ -51,7 +57,7 @@ export default function SearchPageClient() {
   };
 
   const tabRender = {
-    [SEARCH_OPTION.PRODUCT]: <SearchProductsSection />,
+    [SEARCH_OPTION.PRODUCT]: <SearchProductsSection authStatus={authStatus} />,
     [SEARCH_OPTION.REVIEW]: <SearchReviewSection />,
   }[selectedTab];
 
