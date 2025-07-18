@@ -11,12 +11,14 @@ interface StarRatingProps {
   reviewCount: number;
   rating: number;
   starPercent: ScorePercentData[];
+  authStatus: boolean;
 }
 
 export default function StarRating({
   reviewCount,
   rating,
   starPercent,
+  authStatus,
 }: StarRatingProps) {
   const params = useParams();
   return (
@@ -55,7 +57,13 @@ export default function StarRating({
 
       <Button color="primary" variant="filled" size="lg" rounded asChild>
         {/* TODO: 랜딩 배포 이후 라우팅 URL 추가 */}
-        <Link href={`/product-detail/${params.productId}/write-review`}>
+        <Link
+          href={
+            authStatus
+              ? `/product-detail/${params.productId}/write-review`
+              : '/login'
+          }
+        >
           <span className="jp-title2 inline-flex items-center gap-[0.8rem]">
             <SvgWrite />
             レビューを書く
