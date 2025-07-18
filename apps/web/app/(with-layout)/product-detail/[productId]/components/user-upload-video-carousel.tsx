@@ -36,7 +36,7 @@ export default function UserUploadVideoCarousel() {
     setSwiperRef(swiper);
     if (
       userUploadedVideoListData &&
-      userUploadedVideoListData.length - 4 === swiper.activeIndex
+      userUploadedVideoListData.length - 4 <= swiper.activeIndex
     ) {
       setIsNextButton(false);
     } else {
@@ -61,7 +61,8 @@ export default function UserUploadVideoCarousel() {
               onSwiper={handleSwiper}
               slidesPerView={4.5}
               slidesPerGroup={1}
-              centeredSlides={true}
+              centeredSlides={false}
+              centerInsufficientSlides={false}
               onSlideChange={handleSwiper}
               spaceBetween={24}
               pagination={{
@@ -70,7 +71,7 @@ export default function UserUploadVideoCarousel() {
               }}
               navigation={false}
               modules={[Navigation]}
-              className="user-uploaded-video--swiper"
+              className={`user-uploaded-video--swiper ${userUploadedVideoListData.length <= 4 ? 'insufficient-slides' : ''}`}
             >
               {userUploadedVideoListData?.map((video) => (
                 <SwiperSlide key={video.reviewId}>
@@ -93,7 +94,7 @@ export default function UserUploadVideoCarousel() {
 
             {isPrevButton && (
               <IconButton
-                className="absolute bottom-[3rem] left-[3rem] top-1/2 z-10 size-[3.2rem] -translate-y-1/2 bg-white p-0"
+                className="left absolute bottom-[3rem] top-1/2 z-10 size-[3.2rem] -translate-y-1/2 bg-white p-0"
                 onClick={() => swiperRef?.slidePrev()}
                 size="md"
                 icon={<SvgArrowRight className="rotate-180" />}
@@ -104,7 +105,7 @@ export default function UserUploadVideoCarousel() {
 
             {isNextButton && (
               <IconButton
-                className="absolute bottom-[3rem] right-[3rem] top-1/2 z-10 size-[3.2rem] shrink-0 bg-white p-0"
+                className="absolute bottom-[3rem] right-[0rem] top-1/2 z-10 size-[3.2rem] shrink-0 bg-white p-0"
                 onClick={() => swiperRef?.slideNext()}
                 size="md"
                 icon={<SvgArrowRight />}

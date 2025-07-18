@@ -41,7 +41,6 @@ export default function YoutubeCarousel({
     ) {
       setIsNextButton(false);
     } else {
-      console.log(swiper.activeIndex);
       setIsNextButton(true);
     }
     if (swiper.activeIndex === 0) {
