@@ -93,42 +93,38 @@ export default function ClientPage({ userStatus }: ImageReviewClientPageProps) {
   });
 
   // 슬라이더에 넘길 리뷰 데이터 구성
-  const allReviews: ReviewDetail[] = reviews.map((review) => {
-    if (!review) {
-      throw new Error('리뷰 데이터가 없습니다.');
-    }
-
-    const detail = detailMap.get(review.reviewId);
-
-    if (!detail) {
-      throw new Error(
-        `리뷰 ${review.reviewId}의 상세 정보를 찾을 수 없습니다.`
-      );
-    }
-
-    return {
-      reviewId: detail.reviewId,
-      productId: detail.productId,
-      writtenTime: formatDateToJapanese(detail.writtenTime),
-      receiptUploaded: detail.receiptUploaded,
-      positiveComment: detail.positiveComment,
-      negativeComment: detail.negativeComment,
-      authorName: detail.authorName,
-      profileImageUrl: detail.profileImageUrl ?? null,
-      rating: detail.rating,
-      option: detail.option || '',
-      likeCount: detail.likeCount,
-      isLiked: detail.isLiked,
-      brandName: detail.brandName,
-      productName: detail.productName,
-      productImageUrl: detail.productImageUrl,
-      mediaList: detail.images.map((url: string, index: number) => ({
-        id: index,
-        type: 'image' as const,
-        url,
-      })),
-    };
-  });
+  const allReviews: ReviewDetail[] = reviews
+    // 1) detail이 존재하고 images가 한 개 이상인 리뷰만 걸러내고
+    .filter((review) => {
+      const detail = detailMap.get(review.reviewId);
+      return !!detail && detail.images.length > 0;
+    })
+    // 2) 걸러진 리뷰들에 대해서만 ReviewDetail 객체 생성
+    .map((review) => {
+      const detail = detailMap.get(review.reviewId)!;
+      return {
+        reviewId: detail.reviewId,
+        productId: detail.productId,
+        writtenTime: formatDateToJapanese(detail.writtenTime),
+        receiptUploaded: detail.receiptUploaded,
+        positiveComment: detail.positiveComment,
+        negativeComment: detail.negativeComment,
+        authorName: detail.authorName,
+        profileImageUrl: detail.profileImageUrl ?? null,
+        rating: detail.rating,
+        option: detail.option || '',
+        likeCount: detail.likeCount,
+        isLiked: detail.isLiked,
+        brandName: detail.brandName,
+        productName: detail.productName,
+        productImageUrl: detail.productImageUrl,
+        mediaList: detail.images.map((url, index) => ({
+          id: index,
+          type: 'image' as const,
+          url,
+        })),
+      };
+    });
 
   return (
     <>
