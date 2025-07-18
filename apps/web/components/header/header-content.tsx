@@ -14,6 +14,7 @@ import {
   SvgLogin,
   SvgLogo,
   SvgMy,
+  SvgOpen,
   SvgSearch,
 } from '@lococo/design-system';
 import Input from '@lococo/design-system/components/input/Input';
@@ -130,7 +131,13 @@ export function TopUtil({
         disabled
       />
       <TopUtilItem
-        icon={<SvgLogin className="text-gray-600" size={16} />}
+        icon={
+          authStatus ? (
+            <SvgOpen className="fill-gray-600" size={16} />
+          ) : (
+            <SvgLogin className="text-gray-600" size={16} />
+          )
+        }
         label={loginLabel}
         onClick={handleAuthClick}
       />
