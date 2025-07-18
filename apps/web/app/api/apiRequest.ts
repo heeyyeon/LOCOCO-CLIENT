@@ -28,7 +28,9 @@ export const apiRequest = async <T = unknown>({
   headers,
   params,
 }: ApiRequestProps): Promise<T> => {
-  const accessToken = await getCookie('AccessToken');
+  // const accessToken = await getCookie('AccessToken');
+  const accessToken =
+    'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMyIsImlhdCI6MTc1Mjc2NzA1MSwiZXhwIjoxNzUzMzcxODUxLCJpZCI6MTMsInJvbGUiOiJST0xFX1VTRVIiLCJsaW5lSWQiOiIxMyJ9.FOUwm-9LapyJnWHeVFLajpvxDx7649QecFfklE-NsmI';
   try {
     // 쿼리 파라미터가 있으면 URL에 추가
     let requestUrl = `${SERVER_API_BASE_URL}${endPoint}`;
