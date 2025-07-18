@@ -38,14 +38,13 @@ export default function SearchBreadCrumbSection({
               {CATEGORY_NAME[middleCategory]}
             </BreadcrumbItem>
 
-            {subCategory && (
-              <>
-                <BreadcrumbSeparator />
-                <BreadcrumbItem className="flex h-[3.2rem] items-center justify-center gap-[1rem] px-[1.6rem] py-[1rem]">
-                  {getSubCategoryName(middleCategory, subCategory)}
-                </BreadcrumbItem>
-              </>
-            )}
+            <BreadcrumbSeparator />
+            <BreadcrumbItem className="flex h-[3.2rem] items-center justify-center gap-[1rem] px-[1.6rem] py-[1rem]">
+              {getSubCategoryName(
+                middleCategory,
+                subCategory ? subCategory : 'ALL'
+              )}
+            </BreadcrumbItem>
           </BreadcrumbList>
         </Breadcrumb>
       )}

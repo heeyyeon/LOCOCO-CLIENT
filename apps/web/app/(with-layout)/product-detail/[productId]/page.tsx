@@ -1,3 +1,4 @@
+import { getUserStatus } from 'app/(with-layout)/(home)/utils/getUserStatus';
 import { notFound } from 'next/navigation';
 import { getProductDetail, getYoutubeList } from './apis';
 import ClientPage from './page.client';
@@ -8,6 +9,7 @@ export default async function Page({
   params: Promise<{ productId: string }>;
 }) {
   const { productId } = await params;
+  const isUserLogin = await getUserStatus();
 
   let productDetailData;
   let youtubeListData;
@@ -16,9 +18,8 @@ export default async function Page({
     const youtubeListResponse = await getYoutubeList(Number(productId));
     productDetailData = productDetailResponse;
     youtubeListData = youtubeListResponse;
-  } catch (error) {
+  } catch {
     // TODO: 에러 핸들링 로직 추가
-    console.error(error);
     notFound();
   }
 
@@ -28,6 +29,7 @@ export default async function Page({
 
   return (
     <ClientPage
+      authStatus={isUserLogin}
       productData={productDetailData}
       youtubeListData={youtubeListData}
     />

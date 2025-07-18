@@ -11,11 +11,13 @@ import { ProductDetailData, YoutubeListData } from './types';
 interface ClientPageProps {
   productData: ProductDetailData;
   youtubeListData: YoutubeListData;
+  authStatus: boolean;
 }
 
 export default function ClientPage({
   productData,
   youtubeListData,
+  authStatus,
 }: ClientPageProps) {
   return (
     <div className="flex w-full flex-col lg:flex lg:justify-center">
@@ -27,6 +29,7 @@ export default function ClientPage({
       <div className="mx-auto flex w-[136.6rem] items-center">
         <div className="flex w-full flex-col gap-[10rem] px-[11.9rem] pb-[12rem] pt-[3.2rem]">
           <ProductDetailSection
+            authStatus={authStatus}
             imageUrls={productData.imageUrls}
             productDetail={productData.productDetail}
             ingredients={productData.ingredients}
@@ -44,12 +47,13 @@ export default function ClientPage({
           />
           <YoutubeCarousel youtubeListData={youtubeListData} />
           <StarRating
+            authStatus={authStatus}
             reviewCount={productData.reviewCount}
             rating={productData.rating}
             starPercent={productData.starPercent}
           />
+          <ReviewList authStatus={authStatus} />
           <UserUploadVideoCarousel />
-          <ReviewList />
         </div>
       </div>
     </div>

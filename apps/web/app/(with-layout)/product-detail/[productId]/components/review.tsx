@@ -17,6 +17,10 @@ import { PRODUCT_DETAIL_QUERY_KEYS } from '../queries';
 import { ImageReviewDetailData } from '../types';
 import CommentBox from './comment-box';
 
+interface ReviewProps extends ImageReviewDetailData {
+  authStatus: boolean;
+}
+
 export default function Review({
   reviewId,
   writtenTime,
@@ -32,10 +36,11 @@ export default function Review({
   option,
   isLiked: initialIsLiked,
   isAdmin,
+  authStatus,
   //brandName,
   //productName,
   //authorId,
-}: ImageReviewDetailData) {
+}: ReviewProps) {
   const queryClient = useQueryClient();
   const router = useRouter();
   const { productId } = useParams();
@@ -72,6 +77,14 @@ export default function Review({
     );
   };
 
+  const handleLikeReview = (reviewId: number) => {
+    if (authStatus) {
+      reviewLikeMutation(reviewId);
+    } else {
+      router.push('/login');
+    }
+  };
+
   return (
     <div
       key={reviewId}
@@ -106,7 +119,7 @@ export default function Review({
               variant="horizontal"
               pressed={isLiked}
               className="group"
-              onClick={() => reviewLikeMutation(reviewId)}
+              onClick={() => handleLikeReview(reviewId)}
             >
               <div className="flex items-center gap-[0.4rem]">
                 <SvgGoodOutline className="transition-colors duration-300 group-hover:text-gray-500" />

@@ -12,6 +12,7 @@ export interface User {
 }
 export interface ReviewModallayoutProps {
   id: number;
+  productId: number;
   mediaList: Media[];
   user: User;
   likeCount: number;
@@ -30,6 +31,7 @@ export interface ReviewModallayoutProps {
 
 export default function ReviewModallayout({
   id,
+  productId,
   mediaList,
   user,
   likeCount,
@@ -62,6 +64,7 @@ export default function ReviewModallayout({
         <div className="relative flex w-[38.4rem] flex-col">
           <ReviewInfo
             reviewId={id}
+            productId={productId}
             brandName={brandName}
             productName={productName}
             option={productOption}

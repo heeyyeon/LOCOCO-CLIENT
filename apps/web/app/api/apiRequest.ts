@@ -133,7 +133,7 @@ const responseInterceptor = async <T>(
         return retryData;
       } else {
         const retryError = await retryResponse.text();
-        console.error('재시도 에러 :', retryError);
+
         throw retryError;
       }
     }

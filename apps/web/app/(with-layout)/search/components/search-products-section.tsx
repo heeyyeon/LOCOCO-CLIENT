@@ -1,19 +1,34 @@
 'use client';
 
 import CardProduct from 'components/card/card-product';
+import CardSkeletonWrapper from 'components/card/card-skeleton';
 import { useRouter } from 'next/navigation';
-import { ProductItem } from '../../../api/product-response';
+import useProductSectionData from '../hook/use-product-section';
 import NotFoundSection from './not-found-section';
 
-export default function SearchProductsSection({
-  products,
-}: {
-  products: ProductItem[];
-}) {
+export default function SearchProductsSection() {
+  const { products, isLoading, hasError } = useProductSectionData();
   const router = useRouter();
+
   const handleCardClick = (productId: number) => {
     router.push(`/product-detail/${productId}`);
   };
+
+  if (isLoading) {
+    return (
+      <section className="mx-auto flex w-[1366px] flex-col items-center justify-center px-[11.9rem] pb-[12rem] pt-[3.2rem]">
+        <CardSkeletonWrapper type="PRODUCT" />
+      </section>
+    );
+  }
+
+  if (hasError) {
+    return (
+      <section className="mx-auto flex w-[1366px] flex-col items-center justify-center px-[11.9rem] pb-[12rem] pt-[3.2rem]">
+        <div>데이터를 불러오는 중 오류가 발생했습니다.</div>
+      </section>
+    );
+  }
 
   return (
     <>

@@ -43,7 +43,6 @@ export default function Page() {
     return <div>로딩 중...</div>;
   }
   if (listError || !reviewsListResponse?.data) {
-    console.error('리뷰 목록 에러:', listError);
     return <div>리뷰 목록을 불러올 수 없습니다.</div>;
   }
 
@@ -90,6 +89,7 @@ export default function Page() {
 
     return {
       reviewId: detail.reviewId,
+      productId: detail.productId,
       writtenTime: formatDateToJapanese(detail.writtenTime),
       receiptUploaded: detail.receiptUploaded,
       positiveComment: detail.positiveComment,
