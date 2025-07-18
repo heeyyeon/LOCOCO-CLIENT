@@ -1,6 +1,8 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { Elsie_Swash_Caps } from 'next/font/google';
+import { useRouter } from 'next/navigation';
 import {
   Avatar,
   ReactionToggle,
@@ -34,6 +36,7 @@ export default function MediaInfo({
     initialIsLiked,
     initialLikeCount
   );
+  const router = useRouter();
 
   return (
     <div className="absolute bottom-0 left-0 z-10 flex h-[16rem] w-full items-center justify-between rounded-bl-xl bg-gradient-to-t from-black/60 to-transparent p-[1.6rem]">
@@ -50,7 +53,11 @@ export default function MediaInfo({
           variant="vertical"
           pressed={isLiked}
           onPressedChange={() => {
-            likeMutation.mutate(reviewId);
+            if (userStatus) {
+              likeMutation.mutate(reviewId);
+            } else {
+              router.push('/login');
+            }
           }}
           className="text-white"
         >
