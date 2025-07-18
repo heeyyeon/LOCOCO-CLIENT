@@ -51,7 +51,7 @@ export default function HomeSectionReview({
                 : (review as MainVideoReview).reviewVideo
             }
             handleCardClick={() => {
-              router.push(`/review-modal/${review.reviewId}/${type}`);
+              router.push(`/review-modal/${review.reviewId}/home/${type}`);
             }}
           >
             <Button

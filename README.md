@@ -1,4 +1,5 @@
 # Lococo
+<img width="4098" height="1680" alt="home-banner" src="https://github.com/user-attachments/assets/410f0731-dd12-4a50-a6d3-8ece9abded34" />
 
 K-뷰티에 관심 있는 일본 사용자들을 위한 서비스 **Lococo**는 사용자 중심의 신뢰할 수 있는 리뷰 커뮤니티를 구축하고, 일본인 소비자에게 필요한 한국 인플루언서 콘텐츠를 자동 번역·요약하여 큐레이션해요. 검색/언어 장벽 없이 리뷰 확인부터 제품 정보 탐색, 구매 결정까지 한 번에 이어질 수 있는 원스톱 구조로 구성했어요. 
 
@@ -16,18 +17,30 @@ K-뷰티 플레이어와 일본인 소비자를 연결하는 bridge 역할을 �
     <th> <a href="https://github.com/hamxxn">권동희</a></th>
     </tr>
     <tr>
-    	<td><img src="https://github.com/Jeong-Ag.png" width="360px"></td>
-    	<td><img src="https://github.com/ljh0608.png" width="360px"></td>
-      <td><img src="https://github.com/kojesung.png" width="360px"></td>
-    	<td><img src="https://github.com/heeyyeon.png" width="360px"></td>
-      <td><img src="https://github.com/hamxxn.png" width="360px"></td>
+    	<td><img width="360px" height="1063" alt="정은" src="https://github.com/user-attachments/assets/30f54bac-2170-4c58-8f29-4fca629ac7a2" /></td>
+    	<td><img width="360px" height="1063" alt="재훈" src="https://github.com/user-attachments/assets/3a34bbcf-5937-42f2-812e-263925d0575c" /></td>
+      <td>
+<img width="360px" height="1063" alt="제성" src="https://github.com/user-attachments/assets/485d8bb7-427a-41c5-928b-c4e64dc2433e" />
+      </td>
+    	<td>
+        <img width="360px" height="1063" alt="희연" src="https://github.com/user-attachments/assets/48cc7bbb-ed1a-4142-b221-63fa5e730f6c" />
+      </td>
+      <td><img width="360px" height="1063" alt="동희" src="https://github.com/user-attachments/assets/ff9ba007-f5d7-4139-ad96-6d00bad02fae" />
+      </td>
     </tr>
     <tr>
     </tr>
     </table>
 </div>
 
+![home](https://github.com/user-attachments/assets/29b768ac-ccd9-484a-8e64-994c614615a8)
+![리뷰모달](https://github.com/user-attachments/assets/9b130a8e-40ba-4667-82fa-b24e46bd5a92)
+![상세](https://github.com/user-attachments/assets/81519bdc-132b-494f-bae1-842473626d72)
+![search](https://github.com/user-attachments/assets/f7280ad5-7326-42c1-a1cb-c35e4569b047)
+![리뷰작성](https://github.com/user-attachments/assets/1991d73a-f49e-4a22-83d3-e1bd3a34d7f0)
+
 <br/>
+
 
 ## Tech Stack
 

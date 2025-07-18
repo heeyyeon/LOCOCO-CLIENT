@@ -3,7 +3,7 @@
 import { useProductLike } from 'components/card/hooks/use-product-like';
 import { formatJPY } from 'utils/formatJPY';
 import Link from 'next/link';
-import { useParams } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 import {
   Select,
   SelectTrigger,
@@ -55,6 +55,7 @@ export default function ProductInfo({
   authStatus,
 }: ProductInfoProps) {
   const params = useParams();
+  const router = useRouter();
   const { likeMutation, isLiked, goToLogin } = useProductLike({
     initialIsLiked,
   });
@@ -160,17 +161,23 @@ export default function ProductInfo({
             </Link>
           </Button>
         </div>
-        <Button color="secondary" variant="filled" rounded size="lg" asChild>
-          <Link
-            href={
-              authStatus
-                ? `/product-detail/${params.productId}/write-review`
-                : '/login'
+        <Button
+          color="secondary"
+          variant="filled"
+          rounded
+          size="lg"
+          className="jp-title2 font-bold"
+          onClick={() => {
+            if (authStatus) {
+              router.push(`/product-detail/${params.productId}/write-review`, {
+                scroll: false,
+              });
+            } else {
+              goToLogin();
             }
-            className="jp-title2"
-          >
-            <SvgWrite /> レビューを書く
-          </Link>
+          }}
+        >
+          <SvgWrite /> レビューを書く
         </Button>
       </div>
     </div>

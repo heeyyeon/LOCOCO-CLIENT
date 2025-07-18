@@ -80,6 +80,7 @@ export const useVideoReviews = (productId?: number) => {
 export const useAllVideoReviewDetails = (
   reviews: { reviewId: number }[] | undefined
 ) => {
+  console.log('reviews', reviews);
   return useQueries({
     queries: (reviews || []).map((review) => ({
       queryKey: REVIEW_KEYS.VIDEO_DETAIL(review.reviewId),

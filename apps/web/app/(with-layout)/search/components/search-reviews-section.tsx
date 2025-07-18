@@ -2,7 +2,7 @@
 
 import CardReview from 'components/card/card-review';
 import CardSkeletonWrapper from 'components/card/card-skeleton';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import {
   ImageReviewResponse,
   VideoReviewResponse,
@@ -13,6 +13,8 @@ import NotFoundSection from './not-found-section';
 function VideoReviewSection() {
   const { reviewData, isLoading, hasError } = useReviewSectionData('VIDEO');
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const keyword = searchParams.get('keyword');
 
   const videoReviews: VideoReviewResponse[] = reviewData.map((review) => ({
     reviewId: review.reviewId,
@@ -23,7 +25,7 @@ function VideoReviewSection() {
   }));
 
   const handleCardClick = (reviewId: number) => {
-    router.push(`/review-modal/${reviewId}/video`);
+    router.push(`/review-modal/${reviewId}/search/video?keyword=${keyword}`);
   };
 
   if (isLoading) {
@@ -74,6 +76,8 @@ function VideoReviewSection() {
 function ImageReviewSection() {
   const { reviewData, isLoading, hasError } = useReviewSectionData('IMAGE');
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const keyword = searchParams.get('keyword');
 
   const imageReviews: ImageReviewResponse[] = reviewData.map((review) => ({
     reviewId: review.reviewId,
@@ -84,7 +88,7 @@ function ImageReviewSection() {
   }));
 
   const handleCardClick = (reviewId: number) => {
-    router.push(`/review-modal/${reviewId}/image`);
+    router.push(`/review-modal/${reviewId}/search/image?keyword=${keyword}`);
   };
 
   if (isLoading) {
@@ -122,7 +126,7 @@ function ImageReviewSection() {
                 reviewId={reviewId}
                 likeCount={likeCount}
                 mediaUrl={url}
-                handleCardClick={handleCardClick}
+                handleCardClick={() => handleCardClick(reviewId)}
               />
             )
           )}
