@@ -26,6 +26,12 @@ export const usePostReview = (onSuccess?: () => void) => {
       queryClient.invalidateQueries({
         queryKey: PRODUCT_DETAIL_QUERY_KEYS.REVIEW_LIST(variables.productId),
       });
+
+      queryClient.invalidateQueries({
+        queryKey: PRODUCT_DETAIL_QUERY_KEYS.USER_VIDEO_REVIEW_LIST(
+          variables.productId
+        ),
+      });
     },
 
     onError: (error) => {
