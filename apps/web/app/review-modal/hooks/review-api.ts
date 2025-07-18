@@ -5,6 +5,7 @@ import {
   useQueries,
 } from '@tanstack/react-query';
 import { apiRequest } from 'app/api/apiRequest';
+import { useEffect, useState } from 'react';
 import {
   ApiResponseImageReviewDetailResponse,
   ApiResponseMainImageReviewResponse,
@@ -93,31 +94,45 @@ export const useAllVideoReviewDetails = (
   });
 };
 
-export const useReviewLikeToggle = () => {
+export const useReviewLikeToggle = (
+  initialIsLiked: boolean,
+  initialLikeCount: number
+) => {
+  const [isLiked, setIsLiked] = useState<boolean>(initialIsLiked);
+  const [likeCount, setLikeCount] = useState<number>(initialLikeCount);
   const queryClient = useQueryClient();
 
-  return useMutation({
+  useEffect(() => {
+    setIsLiked(initialIsLiked);
+    setLikeCount(initialLikeCount);
+  }, [initialIsLiked, initialLikeCount]);
+
+  const likeMutation = useMutation({
     mutationFn: async (reviewId: number) => {
       return apiRequest({
         endPoint: `/api/likes/reviews/${reviewId}`,
         method: 'POST',
       });
     },
-    onSuccess: (_, reviewId) => {
-      if (typeof reviewId === 'number') {
-        queryClient.invalidateQueries({
-          queryKey: REVIEW_KEYS.IMAGE_DETAIL(reviewId),
-        });
-        queryClient.invalidateQueries({
-          queryKey: REVIEW_KEYS.VIDEO_DETAIL(reviewId),
-        });
-        queryClient.invalidateQueries({
-          queryKey: REVIEW_KEYS.IMAGE_LISTS(),
-        });
-        queryClient.invalidateQueries({
-          queryKey: REVIEW_KEYS.VIDEO_LISTS(),
-        });
-      }
+
+    onMutate: () => {
+      const previousState = isLiked;
+      const previousLikeCount = likeCount;
+      setIsLiked((prev) => !prev);
+      setLikeCount((prev) => (isLiked ? prev - 1 : prev + 1));
+      return { previousState, previousLikeCount };
+    },
+
+    onError: (_error, _variables, context) => {
+      setIsLiked(context?.previousState || false);
+      setLikeCount(context?.previousLikeCount || 0);
+    },
+
+    onSettled: () => {
+      queryClient.invalidateQueries({
+        queryKey: REVIEW_KEYS.ALL,
+      });
     },
   });
+  return { likeMutation, isLiked, likeCount };
 };

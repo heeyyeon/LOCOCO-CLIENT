@@ -1,4 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
+import LoadingSvg from 'components/loading/loading-svg';
 import { useParams } from 'next/navigation';
 import { SvgImgPhoto } from '@/icons';
 import { getReviewList } from '../apis';
@@ -18,7 +19,11 @@ export default function ReviewList({ authStatus }: ReviewListProps) {
   });
 
   if (isPending) {
-    return <div>Loading...</div>;
+    return (
+      <div className="flex h-[50rem] w-full items-center justify-center">
+        <LoadingSvg />
+      </div>
+    );
   }
   const reviewListData = reviewList?.imageReviews;
 

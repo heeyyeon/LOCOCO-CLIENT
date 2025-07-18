@@ -12,12 +12,14 @@ interface ReviewModalSwiperProps {
   currentIndex: number;
   reviews: ReviewDetail[];
   onClose: () => void;
+  userStatus: boolean;
 }
 
 export default function ReviewModalSwiper({
   currentIndex,
   reviews,
   onClose,
+  userStatus,
 }: ReviewModalSwiperProps) {
   const [swiper, setSwiper] = useState<SwiperCore>();
 
@@ -56,6 +58,7 @@ export default function ReviewModalSwiper({
           className="flex h-[55.2rem] items-center justify-center"
         >
           <ReviewModalLayout
+            userStatus={userStatus}
             id={review.reviewId}
             productId={review.productId}
             mediaList={review.mediaList}
