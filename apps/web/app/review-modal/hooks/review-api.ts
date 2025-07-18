@@ -99,7 +99,6 @@ export const useReviewLikeToggle = (
   initialIsLiked: boolean,
   initialLikeCount: number
 ) => {
-  const router = useRouter();
   const [isLiked, setIsLiked] = useState<boolean>(initialIsLiked);
   const [likeCount, setLikeCount] = useState<number>(initialLikeCount);
   const queryClient = useQueryClient();
@@ -131,25 +130,10 @@ export const useReviewLikeToggle = (
     },
 
     onSettled: () => {
-      queryClient.invalidateQueries({ queryKey: [''] });
+      queryClient.invalidateQueries({
+        queryKey: REVIEW_KEYS.ALL,
+      });
     },
-
-    // onSuccess: (_, reviewId) => {
-    //   if (typeof reviewId === 'number') {
-    //     queryClient.invalidateQueries({
-    //       queryKey: REVIEW_KEYS.IMAGE_DETAIL(reviewId),
-    //     });
-    //     queryClient.invalidateQueries({
-    //       queryKey: REVIEW_KEYS.VIDEO_DETAIL(reviewId),
-    //     });
-    //     queryClient.invalidateQueries({
-    //       queryKey: REVIEW_KEYS.IMAGE_LISTS(),
-    //     });
-    //     queryClient.invalidateQueries({
-    //       queryKey: REVIEW_KEYS.VIDEO_LISTS(),
-    //     });
-    //   }
-    // },
   });
   return { likeMutation, isLiked, likeCount };
 };
