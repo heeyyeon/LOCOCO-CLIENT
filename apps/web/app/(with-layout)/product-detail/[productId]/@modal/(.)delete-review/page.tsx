@@ -27,12 +27,12 @@ export default function DeleteReviewModal() {
           Number(params.productId)
         ),
       });
-      router.back();
     },
   });
 
   const handleDelete = async () => {
     reviewDeleteMutation(Number(reviewId));
+    router.back();
   };
 
   const handleCancel = () => {
