@@ -2,7 +2,11 @@
 
 import { useQueryClient } from '@tanstack/react-query';
 import { ApiResponse } from 'app/api/api-response';
-import { ApiReviewSearchResponse } from 'app/api/review-response';
+import {
+  ApiReviewItem,
+  ApiReviewSearchResponse,
+  VideoReviewResponse,
+} from 'app/api/review-response';
 import ReviewOnboardingModal from 'app/review-modal/components/ReviewOnboardingModal';
 import LoadingSvg from 'components/loading/loading-svg';
 import { REVIEW_KEYS } from 'constants/query-key';
@@ -12,6 +16,14 @@ import type {
   ApiResponseVideoReviewDetailResponse,
   VideoReviewDetailResponse,
 } from '../../../../../api/data-contracts';
+import {
+  CategoryNameEng,
+  CategoryOptionEng,
+} from '../../../../../types/category';
+import {
+  isValidCategoryKey,
+  isValidCategoryOption,
+} from '../../../../../utils/category';
 import ReviewModalSwiper from '../../../components/review-modal-swiper';
 import { useAllVideoReviewDetails } from '../../../hooks/review-api';
 import type { ReviewDetail } from '../../../types';
@@ -32,12 +44,40 @@ export default function ClientPage({ userStatus }: VideoReviewClientPageProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const keyword = searchParams.get('keyword');
+  const middleCategory = searchParams.get('middleCategory');
+  const subCategory = searchParams.get('subCategory');
   const queryClient = useQueryClient();
-  const reviewData = queryClient.getQueryData<
-    ApiResponse<ApiReviewSearchResponse>
-  >([...REVIEW_KEYS.VIDEO_LIST({ page: 0, size: 8 }), 'search', keyword]);
-  console.log('reviewData', reviewData);
-  console.log('keyword', keyword);
+
+  const validMiddleCategory: CategoryNameEng | '' = isValidCategoryKey(
+    middleCategory || ''
+  )
+    ? (middleCategory as CategoryNameEng)
+    : '';
+  const validSubCategory: CategoryOptionEng | '' =
+    validMiddleCategory &&
+    isValidCategoryOption(subCategory || '', validMiddleCategory)
+      ? (subCategory as CategoryOptionEng)
+      : '';
+
+  let reviewData: VideoReviewResponse[] | ApiReviewItem[] = [];
+
+  if (keyword) {
+    const searchCacheData = queryClient.getQueryData<
+      ApiResponse<ApiReviewSearchResponse>
+    >([...REVIEW_KEYS.VIDEO_LIST({ page: 0, size: 8 }), 'search', keyword]);
+    reviewData = searchCacheData?.data?.reviews || [];
+  } else if (validMiddleCategory) {
+    const categoryCacheData = queryClient.getQueryData<
+      ApiResponse<ApiReviewSearchResponse>
+    >([
+      ...REVIEW_KEYS.VIDEO_LIST({ page: 0, size: 8 }),
+      'category',
+      validMiddleCategory,
+      validSubCategory,
+      'VIDEO',
+    ]);
+    reviewData = categoryCacheData?.data?.reviews || [];
+  }
 
   const { reviewId: reviewIdParam } = useParams() as { reviewId: string };
   const currentReviewId = Number(reviewIdParam);
@@ -46,10 +86,8 @@ export default function ClientPage({ userStatus }: VideoReviewClientPageProps) {
     setIsOnboardingOpen(false);
   };
 
-  // 모든 리뷰의 상세 정보 가져오기
-  const detailQueries = useAllVideoReviewDetails(reviewData?.data?.reviews);
+  const detailQueries = useAllVideoReviewDetails(reviewData);
 
-  // 모든 상세 정보가 로딩 완료될 때까지 대기
   if (detailQueries.some((q) => q.isLoading)) {
     return (
       <div className="flex min-h-screen w-full items-center justify-center bg-black">
@@ -58,9 +96,8 @@ export default function ClientPage({ userStatus }: VideoReviewClientPageProps) {
     );
   }
 
-  // 상세 정보를 ID로 매핑
   const detailMap = new Map<number, VideoReviewDetailResponse>();
-  reviewData?.data?.reviews?.forEach((review, index) => {
+  reviewData.forEach((review, index) => {
     const dq = detailQueries[index];
     if (dq?.isSuccess && dq.data) {
       const response = dq.data as ApiResponseVideoReviewDetailResponse;
@@ -70,27 +107,21 @@ export default function ClientPage({ userStatus }: VideoReviewClientPageProps) {
     }
   });
 
-  // 현재 리뷰의 인덱스 찾기
-  const currentIndex =
-    reviewData?.data?.reviews?.findIndex(
-      (review) => review.reviewId === currentReviewId
-    ) ?? -1;
+  const currentIndex = reviewData.findIndex(
+    (review) => review.reviewId === currentReviewId
+  );
 
   if (currentIndex === -1) {
     return <div>리뷰를 찾을 수 없습니다.</div>;
   }
 
-  // 슬라이더에 넘길 리뷰 데이터 구성
-  const allReviews: ReviewDetail[] =
-    reviewData?.data?.reviews?.map((review) => {
+  const allReviews: ReviewDetail[] = reviewData
+    .filter((review) => {
       const detail = detailMap.get(review.reviewId);
-
-      if (!detail) {
-        throw new Error(
-          `리뷰 ${review.reviewId}의 상세 정보를 찾을 수 없습니다.`
-        );
-      }
-
+      return !!detail && detail.videoUrls.length > 0;
+    })
+    .map((review) => {
+      const detail = detailMap.get(review.reviewId)!;
       return {
         reviewId: detail.reviewId,
         productId: detail.productId,
@@ -101,7 +132,7 @@ export default function ClientPage({ userStatus }: VideoReviewClientPageProps) {
         authorName: detail.authorName,
         profileImageUrl: detail.profileImageUrl ?? null,
         rating: detail.rating,
-        option: '',
+        option: detail.option || '',
         likeCount: detail.likeCount,
         isLiked: detail.isLiked,
         brandName: detail.brandName,
@@ -113,7 +144,7 @@ export default function ClientPage({ userStatus }: VideoReviewClientPageProps) {
           url,
         })),
       };
-    }) || [];
+    });
 
   return (
     <>

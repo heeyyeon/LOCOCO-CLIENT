@@ -1,18 +1,27 @@
 'use client';
 
 import { useQueryClient } from '@tanstack/react-query';
-import { PRODUCT_DETAIL_QUERY_KEYS } from 'app/(with-layout)/product-detail/[productId]/queries';
-import { ImageReviewDetailDataList } from 'app/(with-layout)/product-detail/[productId]/types';
 import ReviewOnboardingModal from 'app/review-modal/components/ReviewOnboardingModal';
 import LoadingSvg from 'components/loading/loading-svg';
 import { useState } from 'react';
 import { useParams, useRouter, useSearchParams } from 'next/navigation';
 import type {
-  ApiResponseVideoReviewDetailResponse,
-  VideoReviewDetailResponse,
+  ApiResponseImageReviewDetailResponse,
+  ImageReviewDetailResponse,
 } from '../../../../../api/data-contracts';
+import { ApiResponse } from '../../../../../app/api/api-response';
+import { ApiReviewSearchResponse } from '../../../../../app/api/review-response';
+import { REVIEW_KEYS } from '../../../../../constants/query-key';
+import {
+  CategoryNameEng,
+  CategoryOptionEng,
+} from '../../../../../types/category';
+import {
+  isValidCategoryKey,
+  isValidCategoryOption,
+} from '../../../../../utils/category';
 import ReviewModalSwiper from '../../../components/review-modal-swiper';
-import { useAllVideoReviewDetails } from '../../../hooks/review-api';
+import { useAllImageReviewDetails } from '../../../hooks/review-api';
 import type { ReviewDetail } from '../../../types';
 
 const formatDateToJapanese = (dateString: string): string => {
@@ -23,19 +32,56 @@ const formatDateToJapanese = (dateString: string): string => {
   return `${year}年${month}月${day}日`;
 };
 
-interface VideoReviewClientPageProps {
+interface ImageReviewClientPageProps {
   userStatus: boolean;
 }
 
-export default function ClientPage({ userStatus }: VideoReviewClientPageProps) {
+export default function ClientPage({ userStatus }: ImageReviewClientPageProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const productId = searchParams.get('productId');
+  const keyword = searchParams.get('keyword');
+  const middleCategory = searchParams.get('middleCategory');
+  const subCategory = searchParams.get('subCategory');
   const queryClient = useQueryClient();
-  const reviewData = queryClient.getQueryData<ImageReviewDetailDataList>(
-    PRODUCT_DETAIL_QUERY_KEYS.REVIEW_LIST(Number(productId))
-  );
-  console.log('productId', productId);
+
+  // 카테고리 파라미터 검증
+  const validMiddleCategory: CategoryNameEng | '' = isValidCategoryKey(
+    middleCategory || ''
+  )
+    ? (middleCategory as CategoryNameEng)
+    : '';
+  const validSubCategory: CategoryOptionEng | '' =
+    validMiddleCategory &&
+    isValidCategoryOption(subCategory || '', validMiddleCategory)
+      ? (subCategory as CategoryOptionEng)
+      : '';
+
+  // 캐싱된 데이터 가져오기
+  let reviewData: any[] = [];
+
+  if (keyword) {
+    // 키워드 검색 캐시에서 데이터 가져오기
+    const searchCacheData = queryClient.getQueryData<
+      ApiResponse<ApiReviewSearchResponse>
+    >([...REVIEW_KEYS.IMAGE_LIST({ page: 0, size: 8 }), 'search', keyword]);
+    reviewData = searchCacheData?.data?.reviews || [];
+  } else if (validMiddleCategory) {
+    // 카테고리 검색 캐시에서 데이터 가져오기
+    const categoryCacheData = queryClient.getQueryData<
+      ApiResponse<ApiReviewSearchResponse>
+    >([
+      ...REVIEW_KEYS.IMAGE_LIST({ page: 0, size: 8 }),
+      'category',
+      validMiddleCategory,
+      validSubCategory,
+      'IMAGE',
+    ]);
+    reviewData = categoryCacheData?.data?.reviews || [];
+  }
+
+  console.log('keyword', keyword);
+  console.log('middleCategory', middleCategory);
+  console.log('subCategory', subCategory);
   console.log('reviewData', reviewData);
 
   const { reviewId: reviewIdParam } = useParams() as { reviewId: string };
@@ -46,7 +92,7 @@ export default function ClientPage({ userStatus }: VideoReviewClientPageProps) {
   };
 
   // 모든 리뷰의 상세 정보 가져오기
-  const detailQueries = useAllVideoReviewDetails(reviewData?.imageReviews);
+  const detailQueries = useAllImageReviewDetails(reviewData);
 
   // 모든 상세 정보가 로딩 완료될 때까지 대기
   if (detailQueries.some((q) => q.isLoading)) {
@@ -58,11 +104,11 @@ export default function ClientPage({ userStatus }: VideoReviewClientPageProps) {
   }
 
   // 상세 정보를 ID로 매핑
-  const detailMap = new Map<number, VideoReviewDetailResponse>();
-  reviewData?.imageReviews?.forEach((review, index) => {
+  const detailMap = new Map<number, ImageReviewDetailResponse>();
+  reviewData.forEach((review, index) => {
     const dq = detailQueries[index];
     if (dq?.isSuccess && dq.data) {
-      const response = dq.data as ApiResponseVideoReviewDetailResponse;
+      const response = dq.data as ApiResponseImageReviewDetailResponse;
       if (response.data) {
         detailMap.set(review.reviewId, response.data);
       }
@@ -70,49 +116,47 @@ export default function ClientPage({ userStatus }: VideoReviewClientPageProps) {
   });
 
   // 현재 리뷰의 인덱스 찾기
-  const currentIndex =
-    reviewData?.imageReviews?.findIndex(
-      (review) => review.reviewId === currentReviewId
-    ) ?? -1;
+  const currentIndex = reviewData.findIndex(
+    (review) => review.reviewId === currentReviewId
+  );
 
   if (currentIndex === -1) {
     return <div>리뷰를 찾을 수 없습니다.</div>;
   }
 
   // 슬라이더에 넘길 리뷰 데이터 구성
-  const allReviews: ReviewDetail[] =
-    reviewData?.imageReviews?.map((review) => {
+  const allReviews: ReviewDetail[] = reviewData
+    // 1) detail이 존재하고 images가 한 개 이상인 리뷰만 걸러내고
+    .filter((review) => {
       const detail = detailMap.get(review.reviewId);
-
-      if (!detail) {
-        throw new Error(
-          `리뷰 ${review.reviewId}의 상세 정보를 찾을 수 없습니다.`
-        );
-      }
-
+      return !!detail && detail.images.length > 0;
+    })
+    // 2) 걸러진 리뷰들에 대해서만 ReviewDetail 객체 생성
+    .map((review) => {
+      const detail = detailMap.get(review.reviewId)!;
       return {
         reviewId: detail.reviewId,
         productId: detail.productId,
-        writtenTime: formatDateToJapanese(detail.uploadAt),
-        receiptUploaded: !!detail.receiptImageUrl,
-        positiveComment: detail.positiveContent,
-        negativeComment: detail.negativeContent,
+        writtenTime: formatDateToJapanese(detail.writtenTime),
+        receiptUploaded: detail.receiptUploaded,
+        positiveComment: detail.positiveComment,
+        negativeComment: detail.negativeComment,
         authorName: detail.authorName,
         profileImageUrl: detail.profileImageUrl ?? null,
         rating: detail.rating,
-        option: '',
+        option: detail.option || '',
         likeCount: detail.likeCount,
         isLiked: detail.isLiked,
         brandName: detail.brandName,
         productName: detail.productName,
         productImageUrl: detail.productImageUrl,
-        mediaList: detail.videoUrls.map((url: string, index: number) => ({
+        mediaList: detail.images.map((url, index) => ({
           id: index,
-          type: 'video' as const,
+          type: 'image' as const,
           url,
         })),
       };
-    }) || [];
+    });
 
   return (
     <>
