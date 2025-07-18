@@ -27,7 +27,14 @@ K-뷰티 플레이어와 일본인 소비자를 연결하는 bridge 역할을 �
     </table>
 </div>
 
+![home](https://github.com/user-attachments/assets/29b768ac-ccd9-484a-8e64-994c614615a8)
+![리뷰모달](https://github.com/user-attachments/assets/9b130a8e-40ba-4667-82fa-b24e46bd5a92)
+![상세](https://github.com/user-attachments/assets/81519bdc-132b-494f-bae1-842473626d72)
+![search](https://github.com/user-attachments/assets/f7280ad5-7326-42c1-a1cb-c35e4569b047)
+![리뷰작성](https://github.com/user-attachments/assets/1991d73a-f49e-4a22-83d3-e1bd3a34d7f0)
+
 <br/>
+
 
 ## Tech Stack
 
