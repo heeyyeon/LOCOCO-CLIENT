@@ -1,7 +1,9 @@
-import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google';
 import type { Metadata } from 'next';
 import { Noto_Sans_JP } from 'next/font/google';
 import localFont from 'next/font/local';
+
+import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google';
+
 import { Providers } from '../components/providers';
 import './globals.css';
 

@@ -1,12 +1,17 @@
 'use client';
 
+import { ChangeEvent, useEffect, useState } from 'react';
+
+import Image from 'next/image';
+
 import ContentWithLabel from 'components/input/content-with-label';
 import { REVIEW_MEDIA_MAX_COUNT, REVIEW_MEDIA_TYPE } from 'constants/review';
 import { MediaType } from 'types/review';
-import { ChangeEvent, useEffect, useState } from 'react';
-import Image from 'next/image';
-import { ErrorNotice } from '@/components';
+
+import { ErrorNotice } from '@lococo/design-system/error-notice';
+
 import { SvgAdd, SvgClose } from '@/icons';
+
 import {
   ALLOWED_IMAGE_TYPES,
   ALLOWED_MEDIA_TYPES,

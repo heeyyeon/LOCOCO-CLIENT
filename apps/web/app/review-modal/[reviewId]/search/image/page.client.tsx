@@ -1,5 +1,9 @@
 'use client';
 
+import { useEffect, useState } from 'react';
+
+import { useParams, useRouter, useSearchParams } from 'next/navigation';
+
 import { useQueryClient } from '@tanstack/react-query';
 import type {
   ApiResponseImageReviewDetailResponse,
@@ -8,8 +12,7 @@ import type {
 import { ApiResponse } from 'app/api/api-response';
 import ReviewOnboardingModal from 'app/review-modal/components/ReviewOnboardingModal';
 import LoadingSvg from 'components/loading/loading-svg';
-import { useState, useEffect } from 'react';
-import { useParams, useRouter, useSearchParams } from 'next/navigation';
+
 import { REVIEW_KEYS } from '../../../../../constants/query-key';
 import {
   CategoryNameEng,

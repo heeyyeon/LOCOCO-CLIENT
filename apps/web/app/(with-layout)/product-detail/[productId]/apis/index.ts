@@ -1,16 +1,19 @@
 import { apiRequest } from 'app/api/apiRequest';
-import { ProductDetailResponse } from '../types';
-import { ProductDetailData } from '../types';
-import { YoutubeListResponse } from '../types';
-import { YoutubeListData } from '../types';
-import { ImageReviewDetailDataList } from '../types';
-import { ImageReviewListResponse } from '../types';
-import { ReviewLikeResponse } from '../types';
-import { ReviewLikeData } from '../types';
-import { ReviewDeleteResponse } from '../types';
-import { ReviewDeleteData } from '../types';
-import { UserUploadedVideoListResponse } from '../types';
-import { UserUploadedVideoListData } from '../types';
+
+import {
+  ImageReviewDetailDataList,
+  ImageReviewListResponse,
+  ProductDetailData,
+  ProductDetailResponse,
+  ReviewDeleteData,
+  ReviewDeleteResponse,
+  ReviewLikeData,
+  ReviewLikeResponse,
+  UserUploadedVideoListData,
+  UserUploadedVideoListResponse,
+  YoutubeListData,
+  YoutubeListResponse,
+} from '../types';
 
 /**
  * 상품 상세 정보를 가져오는 API 함수

@@ -1,6 +1,6 @@
 import {
-  ApiResponseMainVideoReviewResponse,
   ApiResponseMainImageReviewResponse,
+  ApiResponseMainVideoReviewResponse,
   MainImageReviewResponse,
 } from '@typescript-swagger/data-contracts';
 import { apiRequest } from 'app/api/apiRequest';

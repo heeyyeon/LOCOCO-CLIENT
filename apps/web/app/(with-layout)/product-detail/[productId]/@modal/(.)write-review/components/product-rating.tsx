@@ -2,8 +2,10 @@
 
 import ContentWithLabel from 'components/input/content-with-label';
 import type { ReviewFormData } from 'types/review';
-import { SvgStar } from '@lococo/design-system';
-import { ErrorNotice } from '@/components';
+
+import { ErrorNotice } from '@lococo/design-system/error-notice';
+
+import { SvgStar } from '@/icons';
 import { cn } from '@/lib/utils';
 
 interface Props {

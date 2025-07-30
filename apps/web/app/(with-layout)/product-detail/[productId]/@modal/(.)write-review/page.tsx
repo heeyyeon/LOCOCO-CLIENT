@@ -1,10 +1,16 @@
 'use client';
 
-import Modal from 'components/modal/modal';
 import { useEffect, useState } from 'react';
+
 import { useParams, useRouter } from 'next/navigation';
-import { Button, IconButton } from '@lococo/design-system';
+
+import Modal from 'components/modal/modal';
+
+import { Button } from '@lococo/design-system/button';
+import { IconButton } from '@lococo/design-system/icon-button';
+
 import { SvgClose } from '@/icons';
+
 import { getProductDetail } from '../../apis';
 import { ProductOptionData } from '../../types';
 import {

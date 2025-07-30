@@ -1,5 +1,6 @@
 import { apiRequest } from 'app/api/apiRequest';
-import { LineLoginResponse, LineLoginData } from '../types';
+
+import { LineLoginData, LineLoginResponse } from '../types';
 
 export const lineLogin = async ({
   code,

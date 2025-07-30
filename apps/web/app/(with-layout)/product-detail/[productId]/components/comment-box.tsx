@@ -1,8 +1,8 @@
-import { useState, useRef, useEffect } from 'react';
-import { Button, SvgRemove } from '@lococo/design-system';
-import { SvgAdd } from '@lococo/design-system';
-import { SvgGoodFill } from '@lococo/design-system';
-import { SvgBad } from '@lococo/design-system';
+import { useEffect, useRef, useState } from 'react';
+
+import { Button } from '@lococo/design-system/button';
+
+import { SvgAdd, SvgBad, SvgGoodFill, SvgRemove } from '@/icons';
 import { cn } from '@/lib/utils';
 
 interface CommentBoxProps {

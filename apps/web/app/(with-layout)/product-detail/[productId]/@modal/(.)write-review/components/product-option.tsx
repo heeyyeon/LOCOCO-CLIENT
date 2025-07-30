@@ -1,13 +1,15 @@
 import ContentWithLabel from 'components/input/content-with-label';
 import type { ReviewFormData } from 'types/review';
+
+import { ErrorNotice } from '@lococo/design-system/error-notice';
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@/components';
-import { ErrorNotice } from '@/components';
+} from '@lococo/design-system/select';
+
 import { ProductOptionData } from '../../../types';
 
 interface Props {

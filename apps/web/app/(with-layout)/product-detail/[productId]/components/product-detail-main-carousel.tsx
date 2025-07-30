@@ -1,5 +1,9 @@
 'use client';
 
+import { useRef, useState } from 'react';
+
+import Image from 'next/image';
+
 import type { Swiper as SwiperType } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -7,12 +11,12 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import { Thumbs } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { useState, useRef } from 'react';
-import Image from 'next/image';
-import { IconButton } from '@lococo/design-system';
-import { SvgArrowUp } from '@/icons';
-import { SvgArrowDown } from '@/icons';
+
+import { IconButton } from '@lococo/design-system/icon-button';
+
+import { SvgArrowDown, SvgArrowUp } from '@/icons';
 import { cn } from '@/lib/utils';
+
 import './main-carousel.css';
 
 interface CarouselProps {

@@ -1,5 +1,7 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
+
 import {
   MainImageReview,
   MainImageReviewResponse,
@@ -7,8 +9,9 @@ import {
   MainVideoReviewResponse,
 } from '@typescript-swagger/data-contracts';
 import CardReview from 'components/card/card-review';
-import { useRouter } from 'next/navigation';
-import { Button } from '@/components';
+
+import { Button } from '@lococo/design-system/button';
+
 import { SvgArrowOutward } from '@/icons';
 import { cn } from '@/lib/utils';
 

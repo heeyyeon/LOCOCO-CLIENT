@@ -3,8 +3,9 @@
 import ContentWithLabel from 'components/input/content-with-label';
 import { REVIEW_TEXT, REVIEW_TEXT_PLACEHOLDER } from 'constants/review';
 import type { ReviewFormData } from 'types/review';
-import ErrorNotice from '@lococo/design-system/components/error-notice/ErrorNotice';
-import { Textarea } from '@/components';
+
+import { ErrorNotice } from '@lococo/design-system/error-notice';
+import { Textarea } from '@lococo/design-system/textarea';
 
 interface Props {
   value: ReviewFormData['positiveComment'];

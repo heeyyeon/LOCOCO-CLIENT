@@ -1,11 +1,16 @@
 'use client';
 
-import { apiRequest } from 'app/api/apiRequest';
-import type { CategoryOptionEng, CategoryNameEng } from 'types/category';
-import { CategoryMetadata, getOptionLabel } from 'utils/category';
 import { useEffect, useState } from 'react';
+
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+
+import { apiRequest } from 'app/api/apiRequest';
+import type { CategoryNameEng, CategoryOptionEng } from 'types/category';
+import { CategoryMetadata, getOptionLabel } from 'utils/category';
+
+import { Input } from '@lococo/design-system/input';
+
 import {
   SvgClose,
   SvgDivider,
@@ -16,9 +21,9 @@ import {
   SvgMy,
   SvgOpen,
   SvgSearch,
-} from '@lococo/design-system';
-import Input from '@lococo/design-system/components/input/Input';
+} from '@/icons';
 import { cn } from '@/lib/utils';
+
 import { useScrollHeader } from './use-scroll-header';
 
 interface TopUtilItemProps {

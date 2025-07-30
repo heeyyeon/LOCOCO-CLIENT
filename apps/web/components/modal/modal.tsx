@@ -1,4 +1,5 @@
 import { PropsWithChildren, useEffect } from 'react';
+
 import { cn } from '@/lib/utils';
 
 interface ModalProps extends PropsWithChildren {

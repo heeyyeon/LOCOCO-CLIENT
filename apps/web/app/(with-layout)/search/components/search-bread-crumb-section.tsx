@@ -1,11 +1,13 @@
 import { CATEGORY_NAME, CATEGORY_OPTIONS } from 'constants/category';
 import { CategoryNameEng, CategoryOptionEng } from 'types/category';
+
 import {
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbList,
   BreadcrumbSeparator,
-} from '@/components';
+} from '@lococo/design-system/breadcrumb';
+
 import { SvgHomeFill } from '@/icons';
 
 type RenderBreadCrumbProps = {

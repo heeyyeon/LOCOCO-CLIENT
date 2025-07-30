@@ -1,13 +1,12 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import {
-  Avatar,
-  ReactionToggle,
-  SvgGoodFill,
-  SvgGoodOutline,
-  SvgSend,
-} from '@lococo/design-system';
+
+import { Avatar } from '@lococo/design-system/avatar';
+import { ReactionToggle } from '@lococo/design-system/reaction-toggle';
+
+import { SvgGoodFill, SvgGoodOutline, SvgSend } from '@/icons';
+
 import { useReviewLikeToggle } from '../hooks/review-api';
 
 interface MediaInfoProps {

@@ -1,8 +1,10 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
+
 import CardProduct from 'components/card/card-product';
 import CardSkeletonWrapper from 'components/card/card-skeleton';
-import { useRouter } from 'next/navigation';
+
 import useProductSectionData from '../hook/use-product-section';
 import NotFoundSection from './not-found-section';
 

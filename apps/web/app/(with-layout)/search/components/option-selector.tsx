@@ -2,7 +2,9 @@
 
 import { SEARCH_OPTION } from 'constants/option';
 import { SearchOption } from 'types/option';
-import { Button } from '@/components';
+
+import { Button } from '@lococo/design-system/button';
+
 import { cn } from '@/lib/utils';
 
 interface TabsProps {

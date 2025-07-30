@@ -1,5 +1,9 @@
 'use client';
 
+import React, { useState } from 'react';
+
+import { useRouter } from 'next/navigation';
+
 import { useQuery } from '@tanstack/react-query';
 import { ApiResponseNewProductsByCategoryResponse } from '@typescript-swagger/data-contracts';
 import { apiRequest } from 'app/api/apiRequest';
@@ -7,9 +11,8 @@ import CardProduct from 'components/card/card-product';
 import { CardSkeleton } from 'components/card/card-skeleton';
 import { CATEGORY_NAME } from 'constants/category';
 import { CategoryNameEng } from 'types/category';
-import React, { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import { Tab, TabContainer } from '@/components/tab/Tab';
+
+import { Tab, TabContainer } from '@lococo/design-system/tab';
 
 type ProductSortType = 'new' | 'popular';
 
@@ -38,6 +41,8 @@ export default function HomeSectionProduct({
     useState<CategoryNameEng>('FACIAL_CARE');
   const router = useRouter();
 
+  const boolData: boolean = true;
+  console.log(boolData);
   const { data, isLoading } = useQuery({
     queryKey: PRODUCT_QUERIES.CATEGORY(selectedTab, productSortType),
     queryFn: () =>

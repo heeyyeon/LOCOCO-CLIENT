@@ -1,7 +1,10 @@
 'use client';
 
-import { useRef, useState, useEffect } from 'react';
-import { Progress, SvgPlayArrow, SvgPause } from '@lococo/design-system';
+import { useEffect, useRef, useState } from 'react';
+
+import { Progress } from '@lococo/design-system/progress';
+
+import { SvgPause, SvgPlayArrow } from '@/icons';
 import { cn } from '@/lib/utils';
 
 interface VideoLayoutProps {

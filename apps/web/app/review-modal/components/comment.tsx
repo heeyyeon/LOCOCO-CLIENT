@@ -1,5 +1,4 @@
-import { SvgGoodFill } from '@lococo/design-system';
-import { SvgBad } from '@lococo/design-system';
+import { SvgBad, SvgGoodFill } from '@/icons';
 
 interface CommentProps {
   children: React.ReactNode;

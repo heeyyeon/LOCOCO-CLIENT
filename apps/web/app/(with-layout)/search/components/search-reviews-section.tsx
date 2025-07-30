@@ -1,8 +1,10 @@
 'use client';
 
+import { useRouter, useSearchParams } from 'next/navigation';
+
 import CardReview from 'components/card/card-review';
 import CardSkeletonWrapper from 'components/card/card-skeleton';
-import { useRouter, useSearchParams } from 'next/navigation';
+
 import {
   ImageReviewResponse,
   VideoReviewResponse,

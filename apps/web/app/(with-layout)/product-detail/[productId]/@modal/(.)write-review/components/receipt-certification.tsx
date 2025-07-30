@@ -1,10 +1,14 @@
 'use client';
 
+import { ChangeEvent, useEffect, useState } from 'react';
+
+import Image from 'next/image';
+
 import ContentWithLabel from 'components/input/content-with-label';
 import type { ReviewFormData } from 'types/review';
-import { useState, ChangeEvent, useEffect } from 'react';
-import Image from 'next/image';
-import { ErrorNotice } from '@/components';
+
+import { ErrorNotice } from '@lococo/design-system/error-notice';
+
 import { SvgAdd, SvgClose } from '@/icons';
 
 interface Props {

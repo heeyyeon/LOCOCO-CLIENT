@@ -1,10 +1,16 @@
 'use client';
 
+import { PropsWithChildren } from 'react';
+
+import Image from 'next/image';
+
 import { cva } from 'class-variance-authority';
 import { ReviewItem } from 'types/review';
-import { PropsWithChildren } from 'react';
-import Image from 'next/image';
-import { Badge, SvgGoodFill } from '@lococo/design-system';
+
+import { Badge } from '@lococo/design-system/badge';
+
+import { SvgGoodFill } from '@/icons';
+
 import { cn } from '../../../../packages/design-system/src/lib/utils';
 
 const imageWrapperVariant = cva(

@@ -1,8 +1,11 @@
 'use client';
 
 import { useId } from 'react';
+
 import Link from 'next/link';
-import { SvgLine } from '@lococo/design-system';
+
+import { SvgLine } from '@/icons';
+
 import { generateLineLoginUrl } from '../utils/generateLinLoginUrl';
 
 export default function LoginButton() {

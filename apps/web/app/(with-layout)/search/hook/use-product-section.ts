@@ -1,7 +1,8 @@
-import { useProductSearch, useCategoryProductSearch } from 'hooks/headers-api';
+import { useSearchParams } from 'next/navigation';
+
+import { useCategoryProductSearch, useProductSearch } from 'hooks/headers-api';
 import { CategoryNameEng, CategoryOptionEng } from 'types/category';
 import { isValidCategoryKey, isValidCategoryOption } from 'utils/category';
-import { useSearchParams } from 'next/navigation';
 
 export default function useProductSectionData() {
   const searchParams = useSearchParams();

@@ -1,11 +1,13 @@
-import { CATEGORY_NAME } from 'constants/category';
 import Link from 'next/link';
+
+import { CATEGORY_NAME } from 'constants/category';
+
 import {
-  SvgInstagramFill,
-  SvgXTwitterFill,
   SvgArrowRight,
+  SvgInstagramFill,
   SvgMailFill,
-} from '@lococo/design-system';
+  SvgXTwitterFill,
+} from '@/icons';
 
 const FOOTER = {
   title: 'Lococo',

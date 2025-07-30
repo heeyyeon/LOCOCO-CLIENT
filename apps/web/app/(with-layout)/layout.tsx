@@ -1,5 +1,6 @@
 import Footer from 'components/footer/footer';
 import Header from 'components/header/header';
+
 import { getUserStatus } from './(home)/utils/getUserStatus';
 
 export default async function WithLayoutLayout({
