@@ -20,11 +20,11 @@ export default meta;
 const SELECT_OPTIONS = ['apple', 'banana', 'blueberry', 'grapes', 'pineapple'];
 
 const OptionSelectOverflow = () => {
-  const [open, setOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <Select open={open} onOpenChange={() => setOpen(!open)}>
-      <SelectTrigger open={open}>
+    <Select open={isOpen} onOpenChange={() => setIsOpen(!isOpen)}>
+      <SelectTrigger open={isOpen}>
         <SelectValue placeholder="Select a fruit" />
       </SelectTrigger>
       <SelectContent>
