@@ -12,7 +12,8 @@ import baseConfig from './base.js';
  * @type {import("eslint").Linter.Config[]}
  * */
 export const nextJsConfig = [
-  pluginImport.flatConfigs.recommended,
+  ...pluginImport.flatConfigs.recommended,
+  ...pluginImport.flatConfigs.typescript,
   ...baseConfig,
   {
     ...pluginReact.configs.flat.recommended,
