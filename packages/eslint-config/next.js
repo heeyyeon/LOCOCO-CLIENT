@@ -1,11 +1,9 @@
 import pluginNext from '@next/eslint-plugin-next';
-// import eslintConfigPrettier from 'eslint-config-prettier';
 import pluginImport from 'eslint-plugin-import';
 import pluginReact from 'eslint-plugin-react';
 import pluginReactHooks from 'eslint-plugin-react-hooks';
 import globals from 'globals';
 
-// import { config as baseConfig } from './base.js';
 import baseConfig from './base.js';
 
 /**
@@ -32,6 +30,16 @@ export const nextJsConfig = [
     rules: {
       ...pluginNext.configs.recommended.rules,
       ...pluginNext.configs['core-web-vitals'].rules,
+    },
+    settings: {
+      // for alias import
+      'import/parsers': {
+        espree: ['.js', '.cjs', '.mjs', '.jsx'],
+      },
+      'import/resolver': {
+        typescript: true,
+        node: true,
+      },
     },
   },
   {
