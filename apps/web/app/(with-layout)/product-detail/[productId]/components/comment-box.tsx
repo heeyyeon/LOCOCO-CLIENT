@@ -11,7 +11,7 @@ interface CommentBoxProps {
 }
 export default function CommentBox({ text, type }: CommentBoxProps) {
   const [isExpanded, setIsExpanded] = useState(false);
-  const [showButton, setShowButton] = useState(false);
+  const [isShowButton, setIsShowButton] = useState(false);
   const textRef = useRef<HTMLDivElement>(null);
 
   // TODO: 추후 커스텀 훅 분리
@@ -23,7 +23,7 @@ export default function CommentBox({ text, type }: CommentBoxProps) {
 
       // 실제 내용 높이가 3줄보다 큰지 확인
       const isOverflowing = element.scrollHeight > threeLineHeight;
-      setShowButton(isOverflowing);
+      setIsShowButton(isOverflowing);
     }
   }, [text]);
 
@@ -52,7 +52,7 @@ export default function CommentBox({ text, type }: CommentBoxProps) {
         {text}
       </div>
 
-      {showButton && !isExpanded && (
+      {isShowButton && !isExpanded && (
         <Button
           color="primary"
           variant="text"

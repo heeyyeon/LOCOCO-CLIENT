@@ -45,32 +45,34 @@ export default [
 
       // 중복 import 감지
       'no-duplicate-imports': 'error',
-
       // 네이밍 컨벤션
       '@typescript-eslint/naming-convention': [
         'error',
-        // 변수명: 카멜케이스
-        {
-          selector: 'variable',
-          format: ['camelCase'],
-          filter: {
-            regex: '^[A-Z][A-Z0-9_]*$',
-            match: false,
-          },
-        },
-        // boolean 변수: is 접두사
-        {
-          selector: 'variable',
-          types: ['boolean'],
-          format: ['camelCase'],
-          prefix: ['is'],
-        },
-        // 상수: 대문자 스네이크케이스
+
+        // const boolean 변수: is|can|has 접두사 필수
         {
           selector: 'variable',
           modifiers: ['const'],
-          format: ['camelCase', 'UPPER_CASE'],
+          types: ['boolean'],
+          format: ['camelCase'],
+          custom: {
+            regex: '^(is|can|has)[A-Z][a-zA-Z0-9]*$',
+            match: true,
+          },
         },
+
+        // const 변수 (boolean 제외): camelCase or UPPER_CASE
+        {
+          selector: 'variable',
+          modifiers: ['const'],
+          types: ['boolean'],
+          format: ['camelCase', 'UPPER_CASE'],
+          custom: {
+            regex: '^is[A-Z][a-zA-Z0-9]*$',
+            match: false,
+          },
+        },
+
         // 타입/인터페이스: 파스칼케이스
         {
           selector: 'typeLike',

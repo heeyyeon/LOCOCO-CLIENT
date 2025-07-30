@@ -41,8 +41,6 @@ export default function HomeSectionProduct({
     useState<CategoryNameEng>('FACIAL_CARE');
   const router = useRouter();
 
-  const boolData: boolean = true;
-  console.log(boolData);
   const { data, isLoading } = useQuery({
     queryKey: PRODUCT_QUERIES.CATEGORY(selectedTab, productSortType),
     queryFn: () =>

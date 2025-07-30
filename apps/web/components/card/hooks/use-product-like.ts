@@ -30,13 +30,13 @@ export function useProductLike({ initialIsLiked }: UseProductLikeProps) {
     },
 
     onMutate: async () => {
-      const previousState = isLiked;
+      const isPreviousLiked = isLiked;
       setIsLiked((prev) => !prev);
-      return { previousState };
+      return { isPreviousLiked };
     },
 
     onError: (error, _variables, context) => {
-      setIsLiked(context?.previousState || false);
+      setIsLiked(context?.isPreviousLiked || false);
     },
     onSettled: () => {
       queryClient.invalidateQueries({ queryKey: PRODUCT_QUERIES.ALL });

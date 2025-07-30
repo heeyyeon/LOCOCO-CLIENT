@@ -118,15 +118,15 @@ export const useReviewLikeToggle = (
     },
 
     onMutate: () => {
-      const previousState = isLiked;
+      const isPreviousLiked = isLiked;
       const previousLikeCount = likeCount;
       setIsLiked((prev) => !prev);
       setLikeCount((prev) => (isLiked ? prev - 1 : prev + 1));
-      return { previousState, previousLikeCount };
+      return { isPreviousLiked, previousLikeCount };
     },
 
     onError: (_error, _variables, context) => {
-      setIsLiked(context?.previousState || false);
+      setIsLiked(context?.isPreviousLiked || false);
       setLikeCount(context?.previousLikeCount || 0);
     },
 
