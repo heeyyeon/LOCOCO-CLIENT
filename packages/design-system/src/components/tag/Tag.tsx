@@ -1,5 +1,5 @@
-import { cn } from '@/lib/utils';
 import { SvgCheckNonBg } from '../../icons/fill/components/CheckNonBg';
+import { cn } from '../../lib/utils';
 
 interface TagProps {
   text: string;

@@ -1,4 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
+
 import { SvgClose } from '../../icons/fill/components/Close';
 import IconButton from './IconButton';
 
