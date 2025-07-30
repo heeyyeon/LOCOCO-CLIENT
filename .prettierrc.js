@@ -9,5 +9,9 @@ module.exports = {
   importOrder: ['^react', '^next', '^@lococo/(.*)$', '^@/(.*)$', '^[./]'],
   importOrderSeparation: true,
   importOrderSortSpecifiers: true,
-  plugins: ['@trivago/prettier-plugin-sort-imports', 'prettier-plugin-tailwindcss', 'eslint-plugin-prettier'],
+  plugins: [
+    '@trivago/prettier-plugin-sort-imports',
+    'prettier-plugin-tailwindcss',
+    'eslint-plugin-prettier',
+  ],
 };
