@@ -1,11 +1,11 @@
 'use client';
 
 import { useQueryClient } from '@tanstack/react-query';
-import { ApiResponse } from '@typescript-swagger/api-response';
 import type {
   ApiResponseImageReviewDetailResponse,
   ImageReviewDetailResponse,
 } from '@typescript-swagger/data-contracts';
+import { ApiResponse } from 'app/api/api-response';
 import ReviewOnboardingModal from 'app/review-modal/components/ReviewOnboardingModal';
 import LoadingSvg from 'components/loading/loading-svg';
 import { useState, useEffect } from 'react';

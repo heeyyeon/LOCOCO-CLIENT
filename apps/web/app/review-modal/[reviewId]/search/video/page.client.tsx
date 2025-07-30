@@ -1,11 +1,11 @@
 'use client';
 
 import { useQueryClient } from '@tanstack/react-query';
-import { ApiResponse } from '@typescript-swagger/api-response';
 import type {
   ApiResponseVideoReviewDetailResponse,
   VideoReviewDetailResponse,
 } from '@typescript-swagger/data-contracts';
+import { ApiResponse } from 'app/api/api-response';
 import {
   ApiReviewItem,
   ApiReviewSearchResponse,

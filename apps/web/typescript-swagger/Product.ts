@@ -11,11 +11,11 @@
  */
 
 import {
-  ApiResponseCategoryNewProductResponse,
-  ApiResponseCategoryPopularProductResponse,
+  ApiResponseNewProductsByCategoryResponse,
   ApiResponseObject,
+  ApiResponsePopularProductsByCategoryResponse,
   ApiResponseProductDetailResponse,
-  ApiResponseProductDetailYoutubeResponse,
+  ApiResponseProductYoutubeResponse,
   ApiResponseString,
 } from "./data-contracts";
 import { HttpClient, RequestParams } from "./http-client";
@@ -100,7 +100,7 @@ export class Product<
    * @secure
    */
   getProductDetailYoutube = (productId: number, params: RequestParams = {}) =>
-    this.request<ApiResponseProductDetailYoutubeResponse, any>({
+    this.request<ApiResponseProductYoutubeResponse, any>({
       path: `/api/products/details/${productId}/youtube`,
       method: "GET",
       secure: true,
@@ -188,7 +188,7 @@ export class Product<
     },
     params: RequestParams = {},
   ) =>
-    this.request<ApiResponseCategoryPopularProductResponse, any>({
+    this.request<ApiResponsePopularProductsByCategoryResponse, any>({
       path: `/api/products/categories/popular`,
       method: "GET",
       query: query,
@@ -224,7 +224,7 @@ export class Product<
     },
     params: RequestParams = {},
   ) =>
-    this.request<ApiResponseCategoryNewProductResponse, any>({
+    this.request<ApiResponseNewProductsByCategoryResponse, any>({
       path: `/api/products/categories/new`,
       method: "GET",
       query: query,

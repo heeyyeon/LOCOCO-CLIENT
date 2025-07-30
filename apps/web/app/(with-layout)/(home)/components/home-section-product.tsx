@@ -1,7 +1,7 @@
 'use client';
 
 import { useQuery } from '@tanstack/react-query';
-import { ApiResponseCategoryNewProductResponse } from '@typescript-swagger/data-contracts';
+import { ApiResponseNewProductsByCategoryResponse } from '@typescript-swagger/data-contracts';
 import { apiRequest } from 'app/api/apiRequest';
 import CardProduct from 'components/card/card-product';
 import { CardSkeleton } from 'components/card/card-skeleton';
@@ -41,7 +41,7 @@ export default function HomeSectionProduct({
   const { data, isLoading } = useQuery({
     queryKey: PRODUCT_QUERIES.CATEGORY(selectedTab, productSortType),
     queryFn: () =>
-      apiRequest<ApiResponseCategoryNewProductResponse>({
+      apiRequest<ApiResponseNewProductsByCategoryResponse>({
         endPoint: `/api/products/categories/${productSortType}?middleCategory=${selectedTab}&page=0&size=4`,
       }),
   });

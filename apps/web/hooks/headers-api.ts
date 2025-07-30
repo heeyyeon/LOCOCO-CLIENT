@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { ApiResponse } from '@typescript-swagger/api-response';
+import { ApiResponse } from 'app/api/api-response';
 import { apiRequest } from 'app/api/apiRequest';
 import { ProductSearchResponse } from 'app/api/product-response';
 import { ApiReviewSearchResponse } from 'app/api/review-response';

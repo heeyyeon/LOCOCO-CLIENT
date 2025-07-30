@@ -10,7 +10,7 @@
  * ---------------------------------------------------------------
  */
 
-import { ApiResponseListVideoResponse } from "./data-contracts";
+import { ApiResponseListTrendsYoutubeResponse } from "./data-contracts";
 import { HttpClient, RequestParams } from "./http-client";
 
 export class Youtube<
@@ -26,7 +26,7 @@ export class Youtube<
    * @secure
    */
   getPopularTrends = (params: RequestParams = {}) =>
-    this.request<ApiResponseListVideoResponse, any>({
+    this.request<ApiResponseListTrendsYoutubeResponse, any>({
       path: `/api/youtube/trends`,
       method: "GET",
       secure: true,
