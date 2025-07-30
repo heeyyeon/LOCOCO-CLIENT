@@ -1,6 +1,5 @@
 import js from '@eslint/js';
 import eslintConfigPrettier from 'eslint-config-prettier';
-import onlyWarn from 'eslint-plugin-only-warn';
 import turboPlugin from 'eslint-plugin-turbo';
 import tseslint from 'typescript-eslint';
 
@@ -33,11 +32,6 @@ export default [
     },
   },
   {
-    plugins: {
-      onlyWarn,
-    },
-  },
-  {
     ignores: ['dist/**', '**/node_modules/**'],
   },
   // 로코코 내부 컨벤션
@@ -48,6 +42,9 @@ export default [
 
       // 사용되지 않는 변수 경고
       '@typescript-eslint/no-unused-vars': 'error',
+
+      // 중복 import 감지
+      'no-duplicate-imports': 'error',
 
       // 네이밍 컨벤션
       '@typescript-eslint/naming-convention': [
