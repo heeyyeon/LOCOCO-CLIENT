@@ -1,7 +1,7 @@
 'use client';
 
 import { useQuery } from '@tanstack/react-query';
-import { ApiResponseCategoryNewProductResponse } from 'api/data-contracts';
+import { ApiResponseCategoryNewProductResponse } from '@typescript-swagger/data-contracts';
 import { apiRequest } from 'app/api/apiRequest';
 import CardProduct from 'components/card/card-product';
 import { CardSkeleton } from 'components/card/card-skeleton';

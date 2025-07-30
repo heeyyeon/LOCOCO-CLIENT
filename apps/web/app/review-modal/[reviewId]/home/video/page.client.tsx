@@ -3,7 +3,7 @@
 import {
   VideoReviewDetailResponse,
   ApiResponseVideoReviewDetailResponse,
-} from 'api/data-contracts';
+} from '@typescript-swagger/data-contracts';
 import ReviewOnboardingModal from 'app/review-modal/components/ReviewOnboardingModal';
 import ReviewModalSwiper from 'app/review-modal/components/review-modal-swiper';
 import {

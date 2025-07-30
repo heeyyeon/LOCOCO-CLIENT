@@ -1,7 +1,11 @@
 'use client';
 
 import { useQueryClient } from '@tanstack/react-query';
-import { ApiResponse } from 'app/api/api-response';
+import { ApiResponse } from '@typescript-swagger/api-response';
+import type {
+  ApiResponseVideoReviewDetailResponse,
+  VideoReviewDetailResponse,
+} from '@typescript-swagger/data-contracts';
 import {
   ApiReviewItem,
   ApiReviewSearchResponse,
@@ -12,10 +16,6 @@ import LoadingSvg from 'components/loading/loading-svg';
 import { REVIEW_KEYS } from 'constants/query-key';
 import { useEffect, useState } from 'react';
 import { useParams, useRouter, useSearchParams } from 'next/navigation';
-import type {
-  ApiResponseVideoReviewDetailResponse,
-  VideoReviewDetailResponse,
-} from '../../../../../api/data-contracts';
 import {
   CategoryNameEng,
   CategoryOptionEng,

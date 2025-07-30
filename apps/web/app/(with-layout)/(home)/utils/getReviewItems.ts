@@ -2,7 +2,7 @@ import {
   ApiResponseMainVideoReviewResponse,
   ApiResponseMainImageReviewResponse,
   MainImageReviewResponse,
-} from 'api/data-contracts';
+} from '@typescript-swagger/data-contracts';
 import { apiRequest } from 'app/api/apiRequest';
 
 export const getVideoReviews = async () => {

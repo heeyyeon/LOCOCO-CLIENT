@@ -1,4 +1,4 @@
-import { ApiResponse } from 'app/api/api-response';
+import { ApiResponse } from '@typescript-swagger/api-response';
 
 export type LineLoginResponse = ApiResponse<LineLoginData>;
 

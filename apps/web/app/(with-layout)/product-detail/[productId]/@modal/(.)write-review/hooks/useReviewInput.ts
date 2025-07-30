@@ -1,7 +1,7 @@
 'use client';
 
 import { zodResolver } from '@hookform/resolvers/zod';
-import { ReviewRequest } from 'api/data-contracts';
+import { ReviewRequest } from '@typescript-swagger/data-contracts';
 import { REVIEW_TEXT, REVIEW_TEXT_ERROR_MESSAGE } from 'constants/review';
 import { z } from 'zod';
 import { useForm } from 'react-hook-form';

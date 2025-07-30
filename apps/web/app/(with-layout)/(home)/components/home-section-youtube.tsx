@@ -1,4 +1,4 @@
-import { ApiResponseListVideoResponse } from 'api/data-contracts';
+import { ApiResponseListVideoResponse } from '@typescript-swagger/data-contracts';
 import { apiRequest } from 'app/api/apiRequest';
 import { convertToEmbedUrl, validateYoutubeVideoList } from 'utils/youtube';
 

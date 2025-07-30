@@ -9,7 +9,8 @@
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
-      "@/*": ["../../packages/design-system/src/*"]
+      "@/*": ["../../packages/design-system/src/*"],
+      "@typescript-swagger/*": ["typescript-swagger/*"]
     }
   },
   "include": [

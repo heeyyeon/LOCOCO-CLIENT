@@ -5,7 +5,7 @@ import {
   MainImageReviewResponse,
   MainVideoReview,
   MainVideoReviewResponse,
-} from 'api/data-contracts';
+} from '@typescript-swagger/data-contracts';
 import CardReview from 'components/card/card-review';
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components';

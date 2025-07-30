@@ -4,14 +4,14 @@ import {
   useQueryClient,
   useQueries,
 } from '@tanstack/react-query';
-import { apiRequest } from 'app/api/apiRequest';
-import { useEffect, useState } from 'react';
 import {
   ApiResponseImageReviewDetailResponse,
   ApiResponseMainImageReviewResponse,
   ApiResponseMainVideoReviewResponse,
   ApiResponseVideoReviewDetailResponse,
-} from '../../../api/data-contracts';
+} from '@typescript-swagger/data-contracts';
+import { apiRequest } from 'app/api/apiRequest';
+import { useEffect, useState } from 'react';
 import { REVIEW_KEYS } from '../../../constants/query-key';
 
 export const useImageReviews = (productId?: number) => {
