@@ -46,39 +46,6 @@ export default [
       // 중복 import 감지
       'no-duplicate-imports': 'error',
       // 네이밍 컨벤션
-      '@typescript-eslint/naming-convention': [
-        'error',
-
-        // const boolean 변수: is|can|has 접두사 필수
-        {
-          selector: 'variable',
-          modifiers: ['const'],
-          types: ['boolean'],
-          format: ['camelCase'],
-          custom: {
-            regex: '^(is|can|has)[A-Z][a-zA-Z0-9]*$',
-            match: true,
-          },
-        },
-
-        // const 변수 (boolean 제외): camelCase or UPPER_CASE
-        {
-          selector: 'variable',
-          modifiers: ['const'],
-          types: ['boolean'],
-          format: ['camelCase', 'UPPER_CASE'],
-          custom: {
-            regex: '^is[A-Z][a-zA-Z0-9]*$',
-            match: false,
-          },
-        },
-
-        // 타입/인터페이스: 파스칼케이스
-        {
-          selector: 'typeLike',
-          format: ['PascalCase'],
-        },
-      ],
     },
   },
 ];
