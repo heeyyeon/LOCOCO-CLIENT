@@ -13,8 +13,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { convertToEmbedUrl, validateYoutubeVideoList } from 'utils/youtube';
 
 import { IconButton } from '@lococo/design-system/icon-button';
-
-import { SvgArrowRight, SvgImgVideo, SvgKoreanReview } from '@/icons';
+import { SvgArrowRight, SvgImgVideo, SvgKoreanReview } from '@lococo/icons';
 
 import { YoutubeListData } from '../types';
 import './youtube-carousel.css';

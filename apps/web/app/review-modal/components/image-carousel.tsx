@@ -9,8 +9,7 @@ import 'swiper/css';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import { IconButton } from '@lococo/design-system/icon-button';
-
-import { SvgArrowLeft, SvgArrowRight } from '@/icons';
+import { SvgArrowLeft, SvgArrowRight } from '@lococo/icons';
 
 interface ImageCarouselProps {
   images: string[];

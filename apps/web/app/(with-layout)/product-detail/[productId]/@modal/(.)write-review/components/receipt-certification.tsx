@@ -8,8 +8,7 @@ import ContentWithLabel from 'components/input/content-with-label';
 import type { ReviewFormData } from 'types/review';
 
 import { ErrorNotice } from '@lococo/design-system/error-notice';
-
-import { SvgAdd, SvgClose } from '@/icons';
+import { SvgAdd, SvgClose } from '@lococo/icons';
 
 interface Props {
   file: ReviewFormData['receiptFile'];

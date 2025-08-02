@@ -4,7 +4,7 @@ import { useId } from 'react';
 
 import Link from 'next/link';
 
-import { SvgLine } from '@/icons';
+import { SvgLine } from '@lococo/icons';
 
 import { generateLineLoginUrl } from '../utils/generateLinLoginUrl';
 

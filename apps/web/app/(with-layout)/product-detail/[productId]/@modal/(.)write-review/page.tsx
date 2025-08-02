@@ -8,8 +8,7 @@ import Modal from 'components/modal/modal';
 
 import { Button } from '@lococo/design-system/button';
 import { IconButton } from '@lococo/design-system/icon-button';
-
-import { SvgClose } from '@/icons';
+import { SvgClose } from '@lococo/icons';
 
 import { getProductDetail } from '../../apis';
 import { ProductOptionData } from '../../types';

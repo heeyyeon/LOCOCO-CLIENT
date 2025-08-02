@@ -4,8 +4,7 @@ import { useRouter } from 'next/navigation';
 
 import { Avatar } from '@lococo/design-system/avatar';
 import { ReactionToggle } from '@lococo/design-system/reaction-toggle';
-
-import { SvgGoodFill, SvgGoodOutline, SvgSend } from '@/icons';
+import { SvgGoodFill, SvgGoodOutline, SvgSend } from '@lococo/icons';
 
 import { useReviewLikeToggle } from '../hooks/review-api';
 

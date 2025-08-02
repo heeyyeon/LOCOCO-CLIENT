@@ -7,8 +7,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@lococo/design-system/dialog';
-
-import { cn } from '@/lib/utils';
+import { cn } from '@lococo/utils';
 
 interface PopUpModalProps extends PropsWithChildren {
   className?: string;

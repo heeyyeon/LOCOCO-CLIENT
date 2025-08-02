@@ -11,8 +11,7 @@ import { IconButton } from '@lococo/design-system/icon-button';
 import { ReactionToggle } from '@lococo/design-system/reaction-toggle';
 import { Star } from '@lococo/design-system/star';
 import { Tag } from '@lococo/design-system/tag';
-
-import { SvgDelete, SvgGoodOutline } from '@/icons';
+import { SvgDelete, SvgGoodOutline } from '@lococo/icons';
 
 import { postReviewLike } from '../apis';
 import { PRODUCT_DETAIL_QUERY_KEYS } from '../queries';

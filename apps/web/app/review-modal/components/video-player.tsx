@@ -3,9 +3,8 @@
 import { useEffect, useRef, useState } from 'react';
 
 import { Progress } from '@lococo/design-system/progress';
-
-import { SvgPause, SvgPlayArrow } from '@/icons';
-import { cn } from '@/lib/utils';
+import { SvgPause, SvgPlayArrow } from '@lococo/icons';
+import { cn } from '@lococo/utils';
 
 interface VideoLayoutProps {
   url: string;

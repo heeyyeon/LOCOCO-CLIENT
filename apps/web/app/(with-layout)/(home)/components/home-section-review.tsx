@@ -11,9 +11,8 @@ import {
 import CardReview from 'components/card/card-review';
 
 import { Button } from '@lococo/design-system/button';
-
-import { SvgArrowOutward } from '@/icons';
-import { cn } from '@/lib/utils';
+import { SvgArrowOutward } from '@lococo/icons';
+import { cn } from '@lococo/utils';
 
 interface HomeSectionReviewProps {
   type: 'video' | 'image';

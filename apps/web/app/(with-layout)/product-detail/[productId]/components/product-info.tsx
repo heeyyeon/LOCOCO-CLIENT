@@ -15,15 +15,14 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@lococo/design-system/select';
-
 import {
   SvgLikeFill,
   SvgLikeOutline,
   SvgPurchase,
   SvgStar,
   SvgWrite,
-} from '@/icons';
-import { cn } from '@/lib/utils';
+} from '@lococo/icons';
+import { cn } from '@lococo/utils';
 
 const MAX_RATING = 5;
 

@@ -9,8 +9,7 @@ import { REVIEW_MEDIA_MAX_COUNT, REVIEW_MEDIA_TYPE } from 'constants/review';
 import { MediaType } from 'types/review';
 
 import { ErrorNotice } from '@lococo/design-system/error-notice';
-
-import { SvgAdd, SvgClose } from '@/icons';
+import { SvgAdd, SvgClose } from '@lococo/icons';
 
 import {
   ALLOWED_IMAGE_TYPES,

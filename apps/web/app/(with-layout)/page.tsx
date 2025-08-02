@@ -1,4 +1,4 @@
-import { SvgJapaneseReview, SvgKoreanReview } from '@/icons';
+import { SvgJapaneseReview, SvgKoreanReview } from '@lococo/icons';
 
 import HomeBanner from './(home)/components/home-banner';
 import HomeSection from './(home)/components/home-section';

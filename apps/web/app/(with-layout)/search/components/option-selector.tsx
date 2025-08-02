@@ -4,8 +4,7 @@ import { SEARCH_OPTION } from 'constants/option';
 import { SearchOption } from 'types/option';
 
 import { Button } from '@lococo/design-system/button';
-
-import { cn } from '@/lib/utils';
+import { cn } from '@lococo/utils';
 
 interface TabsProps {
   selectedTab: SearchOption;

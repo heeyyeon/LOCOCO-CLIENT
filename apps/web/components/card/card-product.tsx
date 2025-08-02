@@ -7,9 +7,8 @@ import { ProductItem } from 'types/product';
 
 import { Badge } from '@lococo/design-system/badge';
 import { IconButton } from '@lococo/design-system/icon-button';
-
-import { SvgLikeFill, SvgLikeOutline, SvgStar } from '@/icons';
-import { cn } from '@/lib/utils';
+import { SvgLikeFill, SvgLikeOutline, SvgStar } from '@lococo/icons';
+import { cn } from '@lococo/utils';
 
 import { useProductLike } from './hooks/use-product-like';
 

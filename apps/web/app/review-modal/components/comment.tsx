@@ -1,4 +1,4 @@
-import { SvgBad, SvgGoodFill } from '@/icons';
+import { SvgBad, SvgGoodFill } from '@lococo/icons';
 
 interface CommentProps {
   children: React.ReactNode;

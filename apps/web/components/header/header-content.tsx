@@ -10,7 +10,6 @@ import type { CategoryNameEng, CategoryOptionEng } from 'types/category';
 import { CategoryMetadata, getOptionLabel } from 'utils/category';
 
 import { Input } from '@lococo/design-system/input';
-
 import {
   SvgClose,
   SvgDivider,
@@ -21,8 +20,8 @@ import {
   SvgMy,
   SvgOpen,
   SvgSearch,
-} from '@/icons';
-import { cn } from '@/lib/utils';
+} from '@lococo/icons';
+import { cn } from '@lococo/utils';
 
 import { useScrollHeader } from './use-scroll-header';
 

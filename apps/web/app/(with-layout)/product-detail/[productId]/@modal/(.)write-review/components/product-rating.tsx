@@ -4,9 +4,8 @@ import ContentWithLabel from 'components/input/content-with-label';
 import type { ReviewFormData } from 'types/review';
 
 import { ErrorNotice } from '@lococo/design-system/error-notice';
-
-import { SvgStar } from '@/icons';
-import { cn } from '@/lib/utils';
+import { SvgStar } from '@lococo/icons';
+import { cn } from '@lococo/utils';
 
 interface Props {
   value: ReviewFormData['rating'];

@@ -13,9 +13,8 @@ import { Thumbs } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import { IconButton } from '@lococo/design-system/icon-button';
-
-import { SvgArrowDown, SvgArrowUp } from '@/icons';
-import { cn } from '@/lib/utils';
+import { SvgArrowDown, SvgArrowUp } from '@lococo/icons';
+import { cn } from '@lococo/utils';
 
 import './main-carousel.css';
 

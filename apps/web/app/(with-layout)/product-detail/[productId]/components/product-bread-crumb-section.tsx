@@ -7,8 +7,7 @@ import {
   BreadcrumbList,
   BreadcrumbSeparator,
 } from '@lococo/design-system/breadcrumb';
-
-import { SvgHomeFill } from '@/icons';
+import { SvgHomeFill } from '@lococo/icons';
 
 type ProductBreadCrumbSectionProps = {
   middleCategory: CategoryNameEng | '';

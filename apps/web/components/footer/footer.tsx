@@ -7,7 +7,7 @@ import {
   SvgInstagramFill,
   SvgMailFill,
   SvgXTwitterFill,
-} from '@/icons';
+} from '@lococo/icons';
 
 const FOOTER = {
   title: 'Lococo',

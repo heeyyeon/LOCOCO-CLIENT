@@ -3,7 +3,7 @@ import { useParams } from 'next/navigation';
 import { useQuery } from '@tanstack/react-query';
 import LoadingSvg from 'components/loading/loading-svg';
 
-import { SvgImgPhoto } from '@/icons';
+import { SvgImgPhoto } from '@lococo/icons';
 
 import { getReviewList } from '../apis';
 import { PRODUCT_DETAIL_QUERY_KEYS } from '../queries';

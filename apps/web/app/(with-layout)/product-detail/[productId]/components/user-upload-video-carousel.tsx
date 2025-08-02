@@ -15,8 +15,7 @@ import { Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import { IconButton } from '@lococo/design-system/icon-button';
-
-import { SvgArrowRight, SvgImgVideo } from '@/icons';
+import { SvgArrowRight, SvgImgVideo } from '@lococo/icons';
 
 import { getUserUploadedVideoList } from '../apis';
 import { PRODUCT_DETAIL_QUERY_KEYS } from '../queries';

@@ -8,8 +8,7 @@ import { cva } from 'class-variance-authority';
 import { ReviewItem } from 'types/review';
 
 import { Badge } from '@lococo/design-system/badge';
-
-import { SvgGoodFill } from '@/icons';
+import { SvgGoodFill } from '@lococo/icons';
 
 import { cn } from '../../../../packages/design-system/src/lib/utils';
 

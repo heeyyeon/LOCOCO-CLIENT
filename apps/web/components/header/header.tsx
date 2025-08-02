@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-import { cn } from '@/lib/utils';
+import { cn } from '@lococo/utils';
 
 import { CategoryBar, TopUtil } from './header-content';
 import { useHeaderAction } from './use-header-action';
