@@ -1,5 +1,5 @@
 import pluginNext from '@next/eslint-plugin-next';
-import pluginImport from 'eslint-plugin-import';
+import importPlugin from 'eslint-plugin-import';
 import pluginReact from 'eslint-plugin-react';
 import pluginReactHooks from 'eslint-plugin-react-hooks';
 import globals from 'globals';
@@ -12,15 +12,22 @@ import baseConfig from './base.js';
  * @type {import("eslint").Linter.Config[]}
  * */
 export const nextJsConfig = [
-  ...pluginImport.flatConfigs.recommended,
-  ...pluginImport.flatConfigs.typescript,
+  importPlugin.flatConfigs.recommended,
+  //...pluginImport.flatConfigs.typescript,
   ...baseConfig,
   {
+    rules: {
+      'import/no-duplicates': 'error',
+    },
+  },
+  {
     ...pluginReact.configs.flat.recommended,
+
     languageOptions: {
       ...pluginReact.configs.flat.recommended.languageOptions,
-      globals: {
-        ...globals.serviceworker,
+      parserOptions: {
+        globals: globals.node,
+        ecmaVersion: 'latest',
       },
     },
   },
@@ -36,10 +43,6 @@ export const nextJsConfig = [
       // for alias import
       'import/parsers': {
         espree: ['.js', '.cjs', '.mjs', '.jsx'],
-      },
-      'import/resolver': {
-        typescript: true,
-        node: true,
       },
     },
   },
