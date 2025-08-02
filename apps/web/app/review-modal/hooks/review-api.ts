@@ -6,13 +6,13 @@ import {
   useQuery,
   useQueryClient,
 } from '@tanstack/react-query';
+import { apiRequest } from 'app/api/apiRequest';
 import {
   ApiResponseImageReviewDetailResponse,
   ApiResponseMainImageReviewResponse,
   ApiResponseMainVideoReviewResponse,
   ApiResponseVideoReviewDetailResponse,
-} from '@typescript-swagger/data-contracts';
-import { apiRequest } from 'app/api/apiRequest';
+} from 'typescript-swagger-codegen/data-contracts';
 
 import { REVIEW_KEYS } from '../../../constants/query-key';
 

@@ -5,12 +5,12 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
 import { useQuery } from '@tanstack/react-query';
-import { ApiResponseNewProductsByCategoryResponse } from '@typescript-swagger/data-contracts';
 import { apiRequest } from 'app/api/apiRequest';
 import CardProduct from 'components/card/card-product';
 import { CardSkeleton } from 'components/card/card-skeleton';
 import { CATEGORY_NAME } from 'constants/category';
 import { CategoryNameEng } from 'types/category';
+import { ApiResponseNewProductsByCategoryResponse } from 'typescript-swagger-codegen/data-contracts';
 
 import { Tab, TabContainer } from '@lococo/design-system/tab';
 

@@ -1,5 +1,5 @@
-import { ApiResponseListTrendsYoutubeResponse } from '@typescript-swagger/data-contracts';
 import { apiRequest } from 'app/api/apiRequest';
+import { ApiResponseListTrendsYoutubeResponse } from 'typescript-swagger-codegen/data-contracts';
 import { convertToEmbedUrl, validateYoutubeVideoList } from 'utils/youtube';
 
 export default async function HomeSectionYouTube() {

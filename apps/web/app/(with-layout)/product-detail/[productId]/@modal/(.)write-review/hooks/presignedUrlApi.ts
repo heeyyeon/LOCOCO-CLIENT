@@ -4,7 +4,7 @@ import {
   ApiResponseReviewReceiptResponse,
   ReviewMediaRequest,
   ReviewReceiptRequest,
-} from 'swagger-codegen/data-contracts';
+} from 'typescript-swagger-codegen/data-contracts';
 
 export const getMediaPresignedUrl = async (request: ReviewMediaRequest) => {
   return await apiRequest<ApiResponseReviewMediaResponse>({

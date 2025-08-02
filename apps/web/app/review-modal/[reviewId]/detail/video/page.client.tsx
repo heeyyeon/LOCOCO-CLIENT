@@ -5,13 +5,13 @@ import { useState } from 'react';
 import { useParams, useRouter, useSearchParams } from 'next/navigation';
 
 import { useQueryClient } from '@tanstack/react-query';
-import type {
-  ApiResponseVideoReviewDetailResponse,
-  VideoReviewDetailResponse,
-} from '@typescript-swagger/data-contracts';
 import { UserUploadedVideoListData } from 'app/(with-layout)/product-detail/[productId]/types';
 import ReviewOnboardingModal from 'app/review-modal/components/ReviewOnboardingModal';
 import LoadingSvg from 'components/loading/loading-svg';
+import type {
+  ApiResponseVideoReviewDetailResponse,
+  VideoReviewDetailResponse,
+} from 'typescript-swagger-codegen/data-contracts';
 
 import ReviewModalSwiper from '../../../components/review-modal-swiper';
 import { useAllVideoReviewDetails } from '../../../hooks/review-api';

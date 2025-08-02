@@ -3,7 +3,7 @@ import { apiRequest } from 'app/api/apiRequest';
 import {
   ApiResponseReviewResponse,
   ReviewRequest,
-} from 'swagger-codegen/data-contracts';
+} from 'typescript-swagger-codegen/data-contracts';
 
 import { PRODUCT_DETAIL_QUERY_KEYS } from '../../../queries';
 

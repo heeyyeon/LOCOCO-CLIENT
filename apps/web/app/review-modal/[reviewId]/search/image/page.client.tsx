@@ -5,13 +5,13 @@ import { useEffect, useState } from 'react';
 import { useParams, useRouter, useSearchParams } from 'next/navigation';
 
 import { useQueryClient } from '@tanstack/react-query';
-import type {
-  ApiResponseImageReviewDetailResponse,
-  ImageReviewDetailResponse,
-} from '@typescript-swagger/data-contracts';
 import { ApiResponse } from 'app/api/api-response';
 import ReviewOnboardingModal from 'app/review-modal/components/ReviewOnboardingModal';
 import LoadingSvg from 'components/loading/loading-svg';
+import type {
+  ApiResponseImageReviewDetailResponse,
+  ImageReviewDetailResponse,
+} from 'typescript-swagger-codegen/data-contracts';
 
 import { REVIEW_KEYS } from '../../../../../constants/query-key';
 import {
