@@ -1,5 +1,7 @@
 'use client';
 
+import { useState } from 'react';
+
 import { useQuery } from '@tanstack/react-query';
 import type { Swiper as SwiperType } from 'swiper';
 import 'swiper/css';
@@ -9,10 +11,10 @@ import 'swiper/css/scrollbar';
 import { Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { convertToEmbedUrl, validateYoutubeVideoList } from 'utils/youtube';
-import { useState } from 'react';
-import { IconButton } from '@lococo/design-system';
-import { SvgArrowRight, SvgImgVideo } from '@/icons';
-import { SvgKoreanReview } from '@/icons';
+
+import { IconButton } from '@lococo/design-system/icon-button';
+import { SvgArrowRight, SvgImgVideo, SvgKoreanReview } from '@lococo/icons';
+
 import { YoutubeListData } from '../types';
 import './youtube-carousel.css';
 

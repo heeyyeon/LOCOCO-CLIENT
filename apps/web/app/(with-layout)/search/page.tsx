@@ -1,4 +1,5 @@
 import { Suspense } from 'react';
+
 import { getUserStatus } from '../(home)/utils/getUserStatus';
 import SearchPageClient from './page.client';
 

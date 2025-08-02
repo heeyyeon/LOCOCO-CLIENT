@@ -243,7 +243,7 @@ export class Review<
    *
    * @tags REVIEW
    * @name DeleteReview
-   * @summary 리뷰 삭제 (본인이 작성한 리뷰)
+   * @summary 리뷰 삭제 (일반 유저 및 어드민 모두 가능
    * @request DELETE:/api/reviews/{reviewId}
    * @secure
    */

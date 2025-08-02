@@ -1,4 +1,4 @@
-import { CATEGORY_OPTIONS, CATEGORY_NAME } from 'constants/category';
+import { CATEGORY_NAME, CATEGORY_OPTIONS } from 'constants/category';
 
 export type CategoryNameEng = keyof typeof CATEGORY_OPTIONS;
 

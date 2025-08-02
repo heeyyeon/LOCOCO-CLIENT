@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { MediaItem } from '../types';
 import MediaInfo from './media-info';
 import MediaViewer from './media-viewer';

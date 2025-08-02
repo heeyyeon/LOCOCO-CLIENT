@@ -6,7 +6,7 @@ const YOUTUBE_PATTERNS = [
 ] as const;
 
 /**
-import { ApiResponseListVideoResponse } from '../api/data-contracts';
+import { ApiResponseListVideoResponse } from '@typescript-swagger/data-contracts';
  * YouTube URL을 embed URL로 변환하는 함수
  * @param url - YouTube URL (watch?v= 형식)
  * @returns embed URL

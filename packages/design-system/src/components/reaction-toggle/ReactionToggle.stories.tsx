@@ -1,5 +1,7 @@
-import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
+
+import type { Meta, StoryObj } from '@storybook/react-vite';
+
 import { SvgGoodFill } from '../../icons/fill/components/GoodFill';
 import { SvgGoodOutline } from '../../icons/fill/components/GoodOutline';
 import { SvgLikeFill } from '../../icons/fill/components/LikeFill';
@@ -24,16 +26,16 @@ export default meta;
 type Story = StoryObj<typeof ReactionToggle>;
 
 export const Vertical: Story = {
-  render: (args) => {
+  render: function Render(args) {
     const [isPressed, setIsPressed] = useState(false);
-    const { pressed, ...restArgs } = args;
+    const { ...restArgs } = args;
 
     return (
       <div className="bg-black p-5 text-white">
         <ReactionToggle
+          {...restArgs}
           pressed={isPressed}
           onPressedChange={setIsPressed}
-          {...restArgs}
         >
           {isPressed ? (
             <SvgLikeFill className="size-[2.4rem]" />
@@ -51,16 +53,16 @@ export const Vertical: Story = {
 };
 
 export const Horizontal: Story = {
-  render: (args) => {
+  render: function Render(args) {
     const [isPressed, setIsPressed] = useState(false);
-    const { pressed, ...restArgs } = args;
+    const { ...restArgs } = args;
 
     return (
       <ReactionToggle
+        {...restArgs}
         pressed={isPressed}
         onPressedChange={setIsPressed}
         className="text-en-body1"
-        {...restArgs}
       >
         {isPressed ? (
           <SvgGoodFill className="size-[1.8rem]" />

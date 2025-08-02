@@ -9,12 +9,15 @@
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
-      "@/*": ["../../packages/design-system/src/*"]
+      "@lococo/icons": ["../../packages/design-system/src/icons"],
+      "@lococo/utils": ["../../packages/design-system/src/lib/utils"],
+      "@typescript-swagger/*": ["typescript-swagger-codegen/*"]
     }
   },
   "include": [
     "**/*.ts",
     "**/*.tsx",
+    ".eslint.config.js",
     "next-env.d.ts",
     "next.config.js",
     ".next/types/**/*.ts"

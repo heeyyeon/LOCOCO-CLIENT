@@ -1,24 +1,28 @@
 'use client';
 
-import { useProductLike } from 'components/card/hooks/use-product-like';
-import { formatJPY } from 'utils/formatJPY';
 import Link from 'next/link';
 import { useParams, useRouter } from 'next/navigation';
+
+import { useProductLike } from 'components/card/hooks/use-product-like';
+import { formatJPY } from 'utils/formatJPY';
+
+import { Button } from '@lococo/design-system/button';
+import { IconButton } from '@lococo/design-system/icon-button';
 import {
   Select,
-  SelectTrigger,
-  SelectValue,
   SelectContent,
   SelectItem,
-} from '@lococo/design-system';
-import { Button } from '@lococo/design-system';
-import { IconButton } from '@lococo/design-system';
-import { SvgLikeFill } from '@/icons';
-import { SvgLikeOutline } from '@/icons';
-import { SvgStar } from '@/icons';
-import { SvgPurchase } from '@/icons';
-import { SvgWrite } from '@/icons';
-import { cn } from '@/lib/utils';
+  SelectTrigger,
+  SelectValue,
+} from '@lococo/design-system/select';
+import {
+  SvgLikeFill,
+  SvgLikeOutline,
+  SvgPurchase,
+  SvgStar,
+  SvgWrite,
+} from '@lococo/icons';
+import { cn } from '@lococo/utils';
 
 const MAX_RATING = 5;
 

@@ -1,12 +1,13 @@
 import React, { PropsWithChildren } from 'react';
+
 import {
   Dialog,
   DialogContent,
   DialogFooter,
   DialogTitle,
   DialogTrigger,
-} from '@/components';
-import { cn } from '@/lib/utils';
+} from '@lococo/design-system/dialog';
+import { cn } from '@lococo/utils';
 
 interface PopUpModalProps extends PropsWithChildren {
   className?: string;

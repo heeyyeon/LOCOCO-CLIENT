@@ -1,16 +1,15 @@
 'use client';
 
-import { ProductItem } from 'types/product';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import {
-  Badge,
-  IconButton,
-  SvgLikeFill,
-  SvgLikeOutline,
-  SvgStar,
-} from '@lococo/design-system';
-import { cn } from '@/lib/utils';
+
+import { ProductItem } from 'types/product';
+
+import { Badge } from '@lococo/design-system/badge';
+import { IconButton } from '@lococo/design-system/icon-button';
+import { SvgLikeFill, SvgLikeOutline, SvgStar } from '@lococo/icons';
+import { cn } from '@lococo/utils';
+
 import { useProductLike } from './hooks/use-product-like';
 
 interface CardProductProps extends ProductItem {

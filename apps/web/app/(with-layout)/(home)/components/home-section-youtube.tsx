@@ -1,10 +1,10 @@
-import { ApiResponseListVideoResponse } from 'api/data-contracts';
 import { apiRequest } from 'app/api/apiRequest';
+import { ApiResponseListTrendsYoutubeResponse } from 'typescript-swagger-codegen/data-contracts';
 import { convertToEmbedUrl, validateYoutubeVideoList } from 'utils/youtube';
 
 export default async function HomeSectionYouTube() {
   try {
-    const response = await apiRequest<ApiResponseListVideoResponse>({
+    const response = await apiRequest<ApiResponseListTrendsYoutubeResponse>({
       endPoint: '/api/youtube/trends',
     });
 

@@ -57,7 +57,7 @@ export interface ReviewAdminRequest {
    * @maxLength 1500
    */
   negativeComment: string;
-  mediaType?: 'IMAGE' | 'VIDEO';
+  mediaType?: "IMAGE" | "VIDEO";
   videoUrl?: string;
   /**
    * @maxItems 2147483647
@@ -158,15 +158,15 @@ export interface JwtLoginResponse {
   refreshToken?: string;
 }
 
-export interface ApiResponseListVideoResponse {
+export interface ApiResponseListTrendsYoutubeResponse {
   success?: boolean;
   /** @format int32 */
   status?: number;
   message?: string;
-  data?: VideoResponse[];
+  data?: TrendsYoutubeResponse[];
 }
 
-export interface VideoResponse {
+export interface TrendsYoutubeResponse {
   /** @format int64 */
   id: number;
   topic: string;
@@ -204,42 +204,6 @@ export interface MainVideoReview {
 
 export interface MainVideoReviewResponse {
   videoReviews: MainVideoReview[];
-}
-
-export interface ReviewImageResponse {
-  imageReviews: ReviewImageItemResponse[];
-}
-
-export interface ReviewImageItemResponse {
-  reviewId: number;
-  brandName: string;
-  productName: string;
-  likeCount: number;
-  rank: number;
-  productId: number;
-  reviewImage: string;
-  reviewVideo?: string;
-}
-export interface ReviewVideoResponse {
-  videoReviews: ReviewVideoItemResponse[];
-}
-
-export interface ReviewVideoItemResponse {
-  reviewId: number;
-  brandName: string;
-  productName: string;
-  likeCount: number;
-  rank: number;
-  productId: number;
-  reviewVideo: string;
-  reviewImage?: string;
-}
-export interface ApiResponseReviewImageResponse {
-  success?: boolean;
-  /** @format int32 */
-  status?: number;
-  message?: string;
-  data: ReviewImageResponse;
 }
 
 export interface ApiResponseMainImageReviewResponse {
@@ -430,7 +394,7 @@ export interface ProductDetailResponse {
   reviewCount: number;
   /** @format double */
   rating: number;
-  starPercent: ScorePercent[];
+  starPercent: RatingPercentResponse[];
   isLiked: boolean;
   /** @format int64 */
   normalPrice: number;
@@ -438,21 +402,21 @@ export interface ProductDetailResponse {
   ingredients: string;
   oliveYoungUrl: string;
   q10Url: string;
-  middleCategory: 'FACIAL_CARE' | 'FACE_MAKEUP' | 'EYE_MAKEUP' | 'LIP_MAKEUP';
+  middleCategory: "FACIAL_CARE" | "FACE_MAKEUP" | "EYE_MAKEUP" | "LIP_MAKEUP";
   subCategory:
-    | 'TONER'
-    | 'MOISTURIZER'
-    | 'ESSENCE_SERUM'
-    | 'CREAM'
-    | 'FOUNDATION'
-    | 'POWDER_COMPACT'
-    | 'CONCEALER'
-    | 'BLUSHER'
-    | 'EYEBROW'
-    | 'EYESHADOW'
-    | 'EYELINER'
-    | 'LIPSTICK'
-    | 'LIP_TINT';
+    | "TONER"
+    | "MOISTURIZER"
+    | "ESSENCE_SERUM"
+    | "CREAM"
+    | "FOUNDATION"
+    | "POWDER_COMPACT"
+    | "CONCEALER"
+    | "BLUSHER"
+    | "EYEBROW"
+    | "EYESHADOW"
+    | "EYELINER"
+    | "LIPSTICK"
+    | "LIP_TINT";
 }
 
 export interface ProductOptionResponse {
@@ -461,40 +425,40 @@ export interface ProductOptionResponse {
   optionName: string;
 }
 
-export interface ScorePercent {
+export interface RatingPercentResponse {
   /** @format int32 */
   score: number;
   /** @format double */
   percent: number;
 }
 
-export interface ApiResponseProductDetailYoutubeResponse {
+export interface ApiResponseProductYoutubeResponse {
   success?: boolean;
   /** @format int32 */
   status?: number;
   message?: string;
-  data?: ProductDetailYoutubeResponse;
+  data?: ProductYoutubeResponse;
 }
 
-export interface ProductDetailYoutubeResponse {
+export interface ProductYoutubeResponse {
   youtubeUrls: string[];
 }
 
-export interface ApiResponseCategoryPopularProductResponse {
+export interface ApiResponsePopularProductsByCategoryResponse {
   success?: boolean;
   /** @format int32 */
   status?: number;
   message?: string;
-  data?: CategoryPopularProductResponse;
+  data?: PopularProductsByCategoryResponse;
 }
 
-export interface CategoryPopularProductResponse {
+export interface PopularProductsByCategoryResponse {
   searchQuery: string;
-  products: ProductResponse[];
+  products: ProductBasicResponse[];
   pageInfo: PageableResponse;
 }
 
-export interface ProductResponse {
+export interface ProductBasicResponse {
   /** @format int64 */
   productId: number;
   imageUrls: string[];
@@ -508,17 +472,17 @@ export interface ProductResponse {
   isLiked: boolean;
 }
 
-export interface ApiResponseCategoryNewProductResponse {
+export interface ApiResponseNewProductsByCategoryResponse {
   success?: boolean;
   /** @format int32 */
   status?: number;
   message?: string;
-  data?: CategoryNewProductResponse;
+  data?: NewProductsByCategoryResponse;
 }
 
-export interface CategoryNewProductResponse {
+export interface NewProductsByCategoryResponse {
   searchQuery: string;
-  products: ProductResponse[];
+  products: ProductBasicResponse[];
   pageInfo: PageableResponse;
 }
 
@@ -533,5 +497,5 @@ export interface ApiResponseLineLoginResponse {
 export interface LineLoginResponse {
   accessToken: string;
   refreshToken: string;
-  loginStatus: 'LOGIN' | 'REGISTER';
+  loginStatus: "LOGIN" | "REGISTER";
 }

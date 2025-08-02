@@ -1,4 +1,5 @@
 import { PropsWithChildren } from 'react';
+
 import Link from 'next/link';
 
 export interface HomeSectionHeaderProps extends PropsWithChildren {

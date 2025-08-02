@@ -1,17 +1,18 @@
-import { useMutation } from '@tanstack/react-query';
-import { useQueryClient } from '@tanstack/react-query';
-import dayjs from 'dayjs';
 import { useState } from 'react';
+
 import Image from 'next/image';
-import { useParams } from 'next/navigation';
-import { useRouter } from 'next/navigation';
-import { Avatar } from '@lococo/design-system';
-import { Star } from '@lococo/design-system';
-import { Tag } from '@lococo/design-system';
-import { ReactionToggle } from '@lococo/design-system';
-import { SvgGoodOutline } from '@lococo/design-system';
-import { SvgDelete } from '@lococo/design-system';
-import { IconButton } from '@lococo/design-system';
+import { useParams, useRouter } from 'next/navigation';
+
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import dayjs from 'dayjs';
+
+import { Avatar } from '@lococo/design-system/avatar';
+import { IconButton } from '@lococo/design-system/icon-button';
+import { ReactionToggle } from '@lococo/design-system/reaction-toggle';
+import { Star } from '@lococo/design-system/star';
+import { Tag } from '@lococo/design-system/tag';
+import { SvgDelete, SvgGoodOutline } from '@lococo/icons';
+
 import { postReviewLike } from '../apis';
 import { PRODUCT_DETAIL_QUERY_KEYS } from '../queries';
 import { ImageReviewDetailData } from '../types';

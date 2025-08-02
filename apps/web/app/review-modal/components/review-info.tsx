@@ -1,12 +1,11 @@
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import {
-  Star,
-  Tag,
-  SvgArrowOutward,
-  IconButton,
-  SvgClose,
-} from '@lococo/design-system';
+
+import { IconButton } from '@lococo/design-system/icon-button';
+import { Star } from '@lococo/design-system/star';
+import { Tag } from '@lococo/design-system/tag';
+import { SvgArrowOutward, SvgClose } from '@lococo/icons';
+
 import { ReviewDetail } from '../types';
 import Comment from './comment';
 

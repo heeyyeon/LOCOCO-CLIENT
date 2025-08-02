@@ -1,6 +1,8 @@
 import * as SelectPrimitive from '@radix-ui/react-select';
+
 import { ComponentProps } from 'react';
-import { SvgArrowUp, SvgArrowDown } from '../../icons/fill/components';
+
+import { SvgArrowDown, SvgArrowUp } from '../../icons/fill/components';
 import { cn } from '../../lib/utils';
 
 function Select({ ...props }: ComponentProps<typeof SelectPrimitive.Root>) {

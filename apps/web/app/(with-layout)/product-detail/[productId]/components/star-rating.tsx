@@ -1,10 +1,11 @@
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
-import { Progress } from '@lococo/design-system';
-import { Button } from '@lococo/design-system';
-import { Star } from '@lococo/design-system';
-import { SvgJapaneseReview } from '@/icons';
-import { SvgWrite } from '@/icons';
+
+import { Button } from '@lococo/design-system/button';
+import { Progress } from '@lococo/design-system/progress';
+import { Star } from '@lococo/design-system/star';
+import { SvgJapaneseReview, SvgWrite } from '@lococo/icons';
+
 import { ScorePercentData } from '../types';
 
 interface StarRatingProps {

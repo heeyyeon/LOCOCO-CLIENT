@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import React from 'react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
+
 import { SvgErrorFill } from '../../icons/fill/components/ErrorFill';
 import Button from './Button';
 

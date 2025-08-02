@@ -1,9 +1,9 @@
-import { CATEGORY_OPTIONS, CATEGORY_NAME } from 'constants/category';
+import { CATEGORY_NAME, CATEGORY_OPTIONS } from 'constants/category';
 import type {
-  CategoryNameEng,
   CategoryName,
-  CategoryOptionEng,
+  CategoryNameEng,
   CategoryOption,
+  CategoryOptionEng,
 } from 'types/category';
 
 /** CategoryNameEng 타입인지 확인하는 타입 가드 */

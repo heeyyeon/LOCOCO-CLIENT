@@ -1,7 +1,8 @@
-import { useReviewSearch, useCategoryReviewSearch } from 'hooks/headers-api';
+import { useSearchParams } from 'next/navigation';
+
+import { useCategoryReviewSearch, useReviewSearch } from 'hooks/headers-api';
 import { CategoryNameEng, CategoryOptionEng } from 'types/category';
 import { isValidCategoryKey, isValidCategoryOption } from 'utils/category';
-import { useSearchParams } from 'next/navigation';
 
 export default function useReviewSectionData(reviewType: 'VIDEO' | 'IMAGE') {
   const searchParams = useSearchParams();

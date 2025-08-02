@@ -1,4 +1,5 @@
 import { ComponentProps, PropsWithChildren, useId } from 'react';
+
 import { cn } from '../../lib/utils';
 
 interface TextareaProps extends ComponentProps<'textarea'> {
@@ -24,29 +25,32 @@ function Textarea({
     .join(' ');
 
   return (
-    <div className="flex py-[0.8rem]">
-      <textarea
-        id={textareaId}
-        className={cn(
-          'scrollbar-hide w-full resize-none border-none text-gray-800 outline-none placeholder:text-gray-500',
-          className
-        )}
-        aria-label={ariaLabel}
-        aria-describedby={describedByIds || undefined}
-        {...props}
-      />
-      {maxLength && (
-        <div
-          id={counterId}
+    <div className="flex flex-col">
+      <div className="flex py-[0.8rem]">
+        <textarea
+          id={textareaId}
           className={cn(
-            'w-[8rem] px-2 text-sm',
-            value?.length ? 'text-gray-800' : 'text-gray-500'
+            'scrollbar-hide w-full resize-none border-none text-gray-800 outline-none placeholder:text-gray-500',
+            className
           )}
-          aria-live="polite"
-        >
-          {value ? value.length : 0}/{maxLength}
-        </div>
-      )}
+          aria-label={ariaLabel}
+          aria-describedby={describedByIds || undefined}
+          value={value}
+          {...props}
+        />
+        {maxLength && (
+          <div
+            id={counterId}
+            className={cn(
+              'w-[8rem] px-2 text-sm',
+              value?.length ? 'text-gray-800' : 'text-gray-500'
+            )}
+            aria-live="polite"
+          >
+            {value ? value.length : 0}/{maxLength}
+          </div>
+        )}
+      </div>
     </div>
   );
 }

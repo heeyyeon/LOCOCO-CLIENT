@@ -1,5 +1,7 @@
-import { getUserStatus } from 'app/(with-layout)/(home)/utils/getUserStatus';
 import { notFound } from 'next/navigation';
+
+import { getUserStatus } from 'app/(with-layout)/(home)/utils/getUserStatus';
+
 import { getProductDetail, getYoutubeList } from './apis';
 import ClientPage from './page.client';
 

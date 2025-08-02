@@ -1,20 +1,18 @@
 'use client';
 
+import { useEffect, useState } from 'react';
+
+import { useParams, useRouter, useSearchParams } from 'next/navigation';
+
 import { useQueryClient } from '@tanstack/react-query';
+import { ApiResponse } from 'app/api/api-response';
 import ReviewOnboardingModal from 'app/review-modal/components/ReviewOnboardingModal';
 import LoadingSvg from 'components/loading/loading-svg';
-import { useState, useEffect } from 'react';
-import { useParams, useRouter, useSearchParams } from 'next/navigation';
 import type {
   ApiResponseImageReviewDetailResponse,
   ImageReviewDetailResponse,
-} from '../../../../../api/data-contracts';
-import { ApiResponse } from '../../../../../app/api/api-response';
-import {
-  ApiReviewItem,
-  ApiReviewSearchResponse,
-  ImageReviewResponse,
-} from '../../../../../app/api/review-response';
+} from 'typescript-swagger-codegen/data-contracts';
+
 import { REVIEW_KEYS } from '../../../../../constants/query-key';
 import {
   CategoryNameEng,
@@ -24,6 +22,11 @@ import {
   isValidCategoryKey,
   isValidCategoryOption,
 } from '../../../../../utils/category';
+import {
+  ApiReviewItem,
+  ApiReviewSearchResponse,
+  ImageReviewResponse,
+} from '../../../../api/review-response';
 import ReviewModalSwiper from '../../../components/review-modal-swiper';
 import { useAllImageReviewDetails } from '../../../hooks/review-api';
 import type { ReviewDetail } from '../../../types';

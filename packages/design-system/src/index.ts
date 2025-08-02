@@ -1,5 +1,5 @@
-// Components
-export * from './components/index';
+// utils
+export * from './lib/utils';
 
 // icons
 export * from './icons';

@@ -1,6 +1,10 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { ApiResponseReviewResponse, ReviewRequest } from 'api/data-contracts';
 import { apiRequest } from 'app/api/apiRequest';
+import {
+  ApiResponseReviewResponse,
+  ReviewRequest,
+} from 'typescript-swagger-codegen/data-contracts';
+
 import { PRODUCT_DETAIL_QUERY_KEYS } from '../../../queries';
 
 export const usePostReview = (onSuccess?: () => void) => {

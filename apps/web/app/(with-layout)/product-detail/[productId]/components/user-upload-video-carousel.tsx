@@ -1,5 +1,9 @@
 'use client';
 
+import { useState } from 'react';
+
+import { useParams, useRouter } from 'next/navigation';
+
 import { useQuery } from '@tanstack/react-query';
 import CardReview from 'components/card/card-review';
 import type { Swiper as SwiperType } from 'swiper';
@@ -9,12 +13,10 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import { Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { useState } from 'react';
-import { useParams } from 'next/navigation';
-import { useRouter } from 'next/navigation';
-import { IconButton } from '@lococo/design-system';
-import { SvgArrowRight } from '@/icons';
-import { SvgImgVideo } from '@/icons';
+
+import { IconButton } from '@lococo/design-system/icon-button';
+import { SvgArrowRight, SvgImgVideo } from '@lococo/icons';
+
 import { getUserUploadedVideoList } from '../apis';
 import { PRODUCT_DETAIL_QUERY_KEYS } from '../queries';
 import './user-uploaded-video-carousel.css';

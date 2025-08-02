@@ -1,10 +1,12 @@
 'use client';
 
+import { useEffect, useState } from 'react';
+
 import SwiperCore from 'swiper';
 import 'swiper/css';
-import { Mousewheel, FreeMode } from 'swiper/modules';
+import { FreeMode, Mousewheel } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { useEffect, useState } from 'react';
+
 import type { ReviewDetail } from '../types';
 import ReviewModalLayout from './review-modal-layout';
 

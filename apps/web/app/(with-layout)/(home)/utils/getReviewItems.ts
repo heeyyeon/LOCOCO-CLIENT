@@ -1,9 +1,9 @@
-import {
-  ApiResponseMainVideoReviewResponse,
-  ApiResponseMainImageReviewResponse,
-  MainImageReviewResponse,
-} from 'api/data-contracts';
 import { apiRequest } from 'app/api/apiRequest';
+import {
+  ApiResponseMainImageReviewResponse,
+  ApiResponseMainVideoReviewResponse,
+  MainImageReviewResponse,
+} from 'typescript-swagger-codegen/data-contracts';
 
 export const getVideoReviews = async () => {
   try {
