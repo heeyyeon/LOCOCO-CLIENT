@@ -63,10 +63,6 @@ export const nextJsConfig = [
           selector: 'variable',
           modifiers: ['const'],
           format: ['camelCase', 'UPPER_CASE'],
-          custom: {
-            regex: '^is[A-Z][a-zA-Z0-9]*$',
-            match: false,
-          },
         },
         // const boolean 변수: is|can|has 접두사 필수
         {
