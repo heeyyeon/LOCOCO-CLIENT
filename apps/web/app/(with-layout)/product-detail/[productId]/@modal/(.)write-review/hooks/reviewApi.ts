@@ -1,9 +1,9 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { apiRequest } from 'app/api/apiRequest';
 import {
   ApiResponseReviewResponse,
   ReviewRequest,
-} from '@typescript-swagger/data-contracts';
-import { apiRequest } from 'app/api/apiRequest';
+} from 'swagger-codegen/data-contracts';
 
 import { PRODUCT_DETAIL_QUERY_KEYS } from '../../../queries';
 

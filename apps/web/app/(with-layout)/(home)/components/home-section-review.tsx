@@ -2,13 +2,13 @@
 
 import { useRouter } from 'next/navigation';
 
+import CardReview from 'components/card/card-review';
 import {
   MainImageReview,
   MainImageReviewResponse,
   MainVideoReview,
   MainVideoReviewResponse,
-} from '@typescript-swagger/data-contracts';
-import CardReview from 'components/card/card-review';
+} from 'swagger-codegen/data-contracts';
 
 import { Button } from '@lococo/design-system/button';
 import { SvgArrowOutward } from '@lococo/icons';
