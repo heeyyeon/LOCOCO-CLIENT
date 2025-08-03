@@ -37,3 +37,21 @@ export default async function Page({
     />
   );
 }
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ productId: string }>;
+}) {
+  const productId = (await params).productId;
+  const productDetail = await getProductDetail(Number(productId));
+  return {
+    title: productDetail.productName,
+    description: productDetail.productDetail,
+    openGraph: {
+      title: productDetail.productName + ' | ' + productDetail.brandName,
+      description: productDetail.productDetail,
+      images: productDetail.imageUrls[0],
+    },
+  };
+}
