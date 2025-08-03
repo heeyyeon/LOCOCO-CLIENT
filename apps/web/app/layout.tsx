@@ -61,6 +61,12 @@ export default function RootLayout({
     <html lang="ja" suppressHydrationWarning>
       <GoogleAnalytics gaId="G-GT92YY193R" />
       <GoogleTagManager gtmId="GTM-5QMBC6SP" />
+      <head>
+        <meta
+          name="google-site-verification"
+          content="kSp4ZBLdAObw2vrbpzFmceC7CaPyk4m15BLxUpbu-k8"
+        />
+      </head>
       <body
         className={`${notoSansJP.variable} ${pretendard.variable} min-h-screen lg:flex lg:justify-center`}
       >
