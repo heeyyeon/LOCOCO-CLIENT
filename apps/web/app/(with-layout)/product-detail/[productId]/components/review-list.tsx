@@ -31,7 +31,7 @@ export default function ReviewList({ authStatus }: ReviewListProps) {
   const reviewListData = reviewList?.imageReviews;
   return (
     <div className="flex flex-col gap-[3.2rem]">
-      <h3 className="jp-head3 font-bold">写真付きレビュー</h3>
+      <h2 className="jp-head3 font-bold">写真付きレビュー</h2>
       {reviewListData && reviewListData.length > 0 ? (
         reviewListData.map((review) => (
           <Review
