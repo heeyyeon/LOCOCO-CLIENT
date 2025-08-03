@@ -1,3 +1,5 @@
+import { cache } from 'react';
+
 import { apiRequest } from 'app/api/apiRequest';
 
 import {
@@ -20,20 +22,20 @@ import {
  * @param productId 상품 ID
  * @returns Promise<ProductDetailResponse>
  */
-export const getProductDetail = async (
-  productId: number
-): Promise<ProductDetailData> => {
-  const response = await apiRequest<ProductDetailResponse>({
-    endPoint: `/api/products/details/${productId}`,
-    method: 'GET',
-  });
+export const getProductDetail = cache(
+  async (productId: number): Promise<ProductDetailData> => {
+    const response = await apiRequest<ProductDetailResponse>({
+      endPoint: `/api/products/details/${productId}`,
+      method: 'GET',
+    });
 
-  if (!response.data) {
-    throw new Error('상품 정보를 가져올 수 없습니다.');
+    if (!response.data) {
+      throw new Error('상품 정보를 가져올 수 없습니다.');
+    }
+
+    return response.data;
   }
-
-  return response.data;
-};
+);
 
 export const getYoutubeList = async (
   productId: number

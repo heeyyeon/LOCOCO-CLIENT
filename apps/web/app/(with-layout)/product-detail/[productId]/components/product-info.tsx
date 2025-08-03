@@ -76,12 +76,15 @@ export default function ProductInfo({
       <div className="flex w-[48rem] flex-col gap-[1.2rem]">
         <div className="flex justify-between gap-[0.4rem]">
           <div className="flex flex-col gap-[0.6rem]">
-            <h2 className="jp-title3 font-bold text-gray-700">{brandName}</h2>
+            <p className="jp-title3 font-bold text-gray-700">{brandName}</p>
             <h1 className="jp-head3 font-bold text-gray-800">{productName}</h1>
           </div>
           <IconButton
             onClick={() => handleUserLike()}
             size="lg"
+            ariaLabel={
+              isLiked ? 'いいねを解除するボタン' : '商品をいいねするボタン'
+            }
             icon={
               isLiked ? (
                 <SvgLikeFill />

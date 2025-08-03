@@ -1,4 +1,5 @@
 import { cva } from 'class-variance-authority';
+
 import { SvgStar } from '../../icons/fill/components/Star';
 
 const sizeColorVariant = cva('', {
@@ -66,9 +67,5 @@ export default function Star({
     );
   });
 
-  return (
-    <div className={`flex ${className}`} aria-label={`별점 5점 중 ${rating}점`}>
-      {stars}
-    </div>
-  );
+  return <div className={`flex ${className}`}>{stars}</div>;
 }

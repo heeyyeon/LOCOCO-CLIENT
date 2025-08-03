@@ -40,7 +40,10 @@ export default function ProductDetailSection({
   return (
     <div className="flex w-full flex-col">
       <div className="flex justify-center gap-[8.4rem] pb-[6rem] pt-[3.2rem]">
-        <ProductDetailMainCarousel imageUrlList={imageUrls} />
+        <ProductDetailMainCarousel
+          imageUrlList={imageUrls}
+          productName={productName}
+        />
         <ProductInfo
           authStatus={authStatus}
           productId={Number(productId)}
