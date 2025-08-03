@@ -26,8 +26,11 @@ export const metadata: Metadata = {
     default: 'Lococo',
     template: 'Lococo | %s',
   },
-  description: 'Kコスメと出会う 一番の近道',
+  description:
+    '日本最大級の韓国コスメレビューサイトLococo(ロココ)。話題のK-ビューティー商品をチェックして、Qoo10でそのまま購入可能！',
   keywords: [
+    'Lococo',
+    'ロココ',
     'Kビューティー',
     'ダイソー',
     'オリーブヤング',
