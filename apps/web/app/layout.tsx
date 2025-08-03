@@ -41,6 +41,19 @@ export const metadata: Metadata = {
   verification: {
     google: 'kSp4ZBLdAObw2vrbpzFmceC7CaPyk4m15BLxUpbu',
   },
+  robots: {
+    index: true,
+    follow: true,
+    nocache: false,
+    googleBot: {
+      index: true,
+      follow: true,
+      noimageindex: false,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
   openGraph: {
     type: 'website',
     title: {
