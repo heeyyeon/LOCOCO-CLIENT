@@ -22,7 +22,10 @@ const pretendard = localFont({
 });
 
 export const metadata: Metadata = {
-  title: 'Lococo',
+  title: {
+    default: 'Lococo',
+    template: 'Lococo | %s',
+  },
   description: 'Kコスメと出会う 一番の近道',
   keywords: [
     'Kビューティー',
