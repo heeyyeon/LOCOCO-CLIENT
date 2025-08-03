@@ -38,16 +38,19 @@ export const metadata: Metadata = {
     'Lips',
     '@cosme',
   ],
+  verification: {
+    google: 'kSp4ZBLdAObw2vrbpzFmceC7CaPyk4m15BLxUpbu',
+  },
   openGraph: {
     type: 'website',
     title: {
       default: 'Lococo',
-      template: ' Lococo | %s',
+      template: ' %s | Lococo',
     },
     description: 'Kコスメと出会う 一番の近道',
     images: '/images/home-banner.png',
     url: 'https://lococo.beauty',
-    siteName: 'Lococo beauty',
+    siteName: 'Lococo',
     locale: 'ja_JP',
   },
 };
@@ -61,12 +64,7 @@ export default function RootLayout({
     <html lang="ja" suppressHydrationWarning>
       <GoogleAnalytics gaId="G-GT92YY193R" />
       <GoogleTagManager gtmId="GTM-5QMBC6SP" />
-      <head>
-        <meta
-          name="google-site-verification"
-          content="kSp4ZBLdAObw2vrbpzFmceC7CaPyk4m15BLxUpbu-k8"
-        />
-      </head>
+
       <body
         className={`${notoSansJP.variable} ${pretendard.variable} min-h-screen lg:flex lg:justify-center`}
       >
