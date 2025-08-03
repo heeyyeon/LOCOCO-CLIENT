@@ -20,10 +20,12 @@ import './main-carousel.css';
 
 interface CarouselProps {
   imageUrlList: string[];
+  productName: string;
 }
 
 export default function ProductDetailMainCarousel({
   imageUrlList,
+  productName,
 }: CarouselProps) {
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);
   const mainSwiperRef = useRef<SwiperType | null>(null);
@@ -47,7 +49,7 @@ export default function ProductDetailMainCarousel({
             <SwiperSlide key={imageUrl}>
               <Image
                 src={imageUrl}
-                alt="swiper thumbnail"
+                alt={`${productName}`}
                 width={60}
                 height={60}
                 className="h-full w-full object-cover"

@@ -72,7 +72,7 @@ export default function CardReview({
               width={264}
               height={264}
               src={mediaUrl}
-              alt={productName}
+              alt={`${productName} review image`}
               className="h-full w-full object-cover"
             />
           )
