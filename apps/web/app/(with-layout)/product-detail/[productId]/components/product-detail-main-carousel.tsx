@@ -49,7 +49,7 @@ export default function ProductDetailMainCarousel({
             <SwiperSlide key={imageUrl}>
               <Image
                 src={imageUrl}
-                alt={`${productName}`}
+                alt={`${productName} thumbnail`}
                 width={60}
                 height={60}
                 className="h-full w-full object-cover"
@@ -103,7 +103,7 @@ export default function ProductDetailMainCarousel({
             <SwiperSlide key={imageUrl}>
               <Image
                 src={imageUrl}
-                alt="swiper main"
+                alt={`${productName}`}
                 width={468}
                 height={468}
                 className="h-full w-full object-contain"
