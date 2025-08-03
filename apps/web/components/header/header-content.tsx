@@ -163,7 +163,7 @@ export function CategoryBar({
       onMouseLeave={handleMouseLeaveCategory}
     >
       <div className="mx-auto flex h-[6.4rem] w-[1366px] items-center gap-[2rem] px-[11.9rem]">
-        <Link href="/">
+        <Link href="/" aria-label="ロココホームにアクセス">
           <SvgLogo className="h-[2.7rem] w-[16rem] shrink-0" />
         </Link>
 

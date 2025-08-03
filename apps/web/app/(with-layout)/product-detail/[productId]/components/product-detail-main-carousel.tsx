@@ -63,7 +63,7 @@ export default function ProductDetailMainCarousel({
                 : '[&>svg]:fill-gray-800'
             )}
             onClick={() => mainSwiperRef.current?.slidePrev()}
-            aria-label="이전 이미지"
+            aria-label="前の画像"
             icon={<SvgArrowUp />}
           />
           <IconButton
@@ -73,7 +73,7 @@ export default function ProductDetailMainCarousel({
                 : '[&>svg]:fill-gray-800'
             )}
             onClick={() => mainSwiperRef.current?.slideNext()}
-            aria-label="다음 이미지"
+            aria-label="次の画像"
             icon={<SvgArrowDown />}
           />
         </div>

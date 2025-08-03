@@ -99,18 +99,24 @@ function FooterLeft({ title, desc }: Pick<FooterProps, 'title' | 'desc'>) {
         <Link
           href="https://www.instagram.com/lococo.official/"
           className="flex h-[4.4rem] w-[4.4rem] items-center justify-center p-1"
+          aria-label="ロココインスタグラムにアクセス"
+          title="ロココインスタグラムにアクセス"
         >
           <SvgInstagramFill className="text-pink-500" />
         </Link>
         <Link
           href="https://x.com/Lococo_official"
           className="flex h-[4.4rem] w-[4.4rem] items-center justify-center p-1"
+          aria-label="ロココXにアクセス"
+          title="ロココXにアクセス"
         >
           <SvgXTwitterFill className="text-pink-500" />
         </Link>
         <Link
           href="mailto:lococo.official@gmail.com"
           className="flex h-[4.4rem] w-[4.4rem] items-center justify-center p-1"
+          aria-label="ロココメールを送る"
+          title="ロココメールを送る"
         >
           <SvgMailFill className="text-pink-500" />
         </Link>

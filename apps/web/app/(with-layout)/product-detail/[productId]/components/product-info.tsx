@@ -82,6 +82,9 @@ export default function ProductInfo({
           <IconButton
             onClick={() => handleUserLike()}
             size="lg"
+            ariaLabel={
+              isLiked ? 'いいねを解除するボタン' : '商品をいいねするボタン'
+            }
             icon={
               isLiked ? (
                 <SvgLikeFill />
