@@ -24,7 +24,6 @@ export default function CardProduct({
   rating,
   reviewCount,
   imageUrl,
-  authStatus,
   handleCardClick,
 }: CardProductProps) {
   const router = useRouter();

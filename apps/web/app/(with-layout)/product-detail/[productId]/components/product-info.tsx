@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useParams, useRouter } from 'next/navigation';
 
 import { useProductLike } from 'components/card/hooks/use-product-like';
+import { useAuth } from 'hooks/use-auth';
 import { formatJPY } from 'utils/formatJPY';
 
 import { Button } from '@lococo/design-system/button';
@@ -41,7 +42,6 @@ interface ProductInfoProps {
   }[];
   oliveYoungUrl: string;
   q10Url: string;
-  authStatus: boolean;
 }
 
 export default function ProductInfo({
@@ -56,15 +56,15 @@ export default function ProductInfo({
   normalPrice,
   oliveYoungUrl,
   q10Url,
-  authStatus,
 }: ProductInfoProps) {
   const params = useParams();
   const router = useRouter();
   const { likeMutation, isLiked, goToLogin } = useProductLike({
     initialIsLiked,
   });
+  const { isLoggedIn } = useAuth();
   const handleUserLike = () => {
-    if (authStatus) {
+    if (isLoggedIn) {
       likeMutation.mutate(productId);
     } else {
       goToLogin();
@@ -175,7 +175,7 @@ export default function ProductInfo({
           size="lg"
           className="jp-title2 font-bold"
           onClick={() => {
-            if (authStatus) {
+            if (isLoggedIn) {
               router.push(`/product-detail/${params.productId}/write-review`, {
                 scroll: false,
               });
