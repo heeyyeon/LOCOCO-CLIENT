@@ -1,13 +1,14 @@
 'use client';
 
-import { useAuth } from 'hooks/use-auth';
-import { ProductItem } from 'types/product';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
+
+import { ProductItem } from 'types/product';
+
 import { Badge } from '@lococo/design-system/badge';
 import { IconButton } from '@lococo/design-system/icon-button';
 import { SvgLikeFill, SvgLikeOutline, SvgStar } from '@lococo/icons';
 import { cn } from '@lococo/utils';
+
 import { useProductLike } from './hooks/use-product-like';
 
 interface CardProductProps extends ProductItem {
@@ -26,18 +27,10 @@ export default function CardProduct({
   imageUrl,
   handleCardClick,
 }: CardProductProps) {
-  const router = useRouter();
   const { isLiked, handleLikeClick } = useProductLike({
     initialIsLiked,
   });
 
-  const goToLogin = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    router.push('/login');
-  };
-
-  const { isLoggedIn } = useAuth();
-  console.log(isLoggedIn);
   return (
     <article
       className="flex w-[26.4rem] cursor-pointer flex-col"
@@ -62,13 +55,7 @@ export default function CardProduct({
       <div className="flex h-[4.4rem] items-center justify-between border-b-[0.1rem] border-dashed border-pink-500">
         <p className="jp-body1 font-[700]">{brandName}</p>
         <IconButton
-          onClick={(e) => {
-            if (isLoggedIn) {
-              handleLikeClick(e, productId);
-            } else {
-              goToLogin(e);
-            }
-          }}
+          onClick={(e) => handleLikeClick(productId, e)}
           size="md"
           icon={
             isLiked ? (

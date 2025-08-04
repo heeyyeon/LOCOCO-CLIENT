@@ -59,17 +59,21 @@ export default function ProductInfo({
 }: ProductInfoProps) {
   const params = useParams();
   const router = useRouter();
-  const { likeMutation, isLiked, goToLogin } = useProductLike({
+  const { isLiked, handleLikeClick } = useProductLike({
     initialIsLiked,
   });
   const { isLoggedIn } = useAuth();
-  const handleUserLike = () => {
+
+  const handleClickReviewBtn = () => {
     if (isLoggedIn) {
-      likeMutation.mutate(productId);
+      router.push(`/product-detail/${params.productId}/write-review`, {
+        scroll: false,
+      });
     } else {
-      goToLogin();
+      router.push('/login');
     }
   };
+
   return (
     <div className="flex flex-col justify-between">
       {/* 상품 정보 */}
@@ -80,7 +84,7 @@ export default function ProductInfo({
             <h1 className="jp-head3 font-bold text-gray-800">{productName}</h1>
           </div>
           <IconButton
-            onClick={() => handleUserLike()}
+            onClick={() => handleLikeClick(productId)}
             size="lg"
             ariaLabel={
               isLiked ? 'いいねを解除するボタン' : '商品をいいねするボタン'
@@ -174,15 +178,7 @@ export default function ProductInfo({
           rounded
           size="lg"
           className="jp-title2 font-bold"
-          onClick={() => {
-            if (isLoggedIn) {
-              router.push(`/product-detail/${params.productId}/write-review`, {
-                scroll: false,
-              });
-            } else {
-              goToLogin();
-            }
-          }}
+          onClick={() => handleClickReviewBtn()}
         >
           <SvgWrite /> レビューを書く
         </Button>
