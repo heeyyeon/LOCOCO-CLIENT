@@ -1,4 +1,3 @@
-import { getUserStatus } from 'app/(with-layout)/(home)/utils/getUserStatus';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getProductDetail, getReviewList, getYoutubeList } from './apis';
@@ -62,7 +61,6 @@ export default async function Page({
   return (
     <>
       <ClientPage
-        authStatus={isUserLogin}
         productData={productDetailData}
         youtubeListData={youtubeListData}
       />
