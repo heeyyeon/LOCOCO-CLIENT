@@ -1,4 +1,4 @@
-import { getCookie } from 'utils/cookie';
+import { getCookie } from 'utils/client-cookie';
 
 export async function getUserStatus() {
   const isUserAccessToken = !!(await getCookie('AccessToken'));
