@@ -11,25 +11,23 @@ interface OptionBarProps {
   handleSelectOption: (option: CategoryOptionEng) => void;
   handleMouseLeaveCategory: () => void;
 }
-export function OptionBar({
+export function CategoryOptionBar({
   options,
   selectedOption,
   selectedCategoryKey,
   handleSelectOption,
 }: OptionBarProps) {
   return (
-    <div className="absolute left-0 right-0 top-[calc(100%+1px)] z-50 mx-auto flex h-[5.2rem] w-full min-w-[1366px] items-center border-b border-solid border-pink-500 bg-white">
-      <div className="mx-auto flex h-[6.4rem] w-[1366px] items-center gap-[2rem] px-[11.9rem]">
+    <div className="absolute left-0 right-0 top-[calc(100%-1px)] z-50 mx-auto flex h-[5.2rem] w-full min-w-[1366px] flex-col bg-white">
+      <div className="h-[1px] w-full border-t-[1px] border-dashed border-pink-500"></div>
+      <div className="flex h-full w-full items-center border-b-[1px] border-solid border-pink-500">
+        <div className="mx-auto flex h-[6.4rem] w-[1366px] items-center gap-[2rem] px-[11.9rem]">
         {options.map((option, index) => {
           const isActive = option === selectedOption;
           const isLast = index === options.length - 1;
           const label = getOptionLabel(selectedCategoryKey, option);
-          let url = '';
-          if (option === 'ALL') {
-            url = `/search?middleCategory=${selectedCategoryKey}&searchType=PRODUCT`;
-          } else {
-            url = `/search?middleCategory=${selectedCategoryKey}&subCategory=${option}&searchType=PRODUCT`;
-          }
+          const url = `/search?middleCategory=${selectedCategoryKey}${option !== 'ALL' ? `&subCategory=${option}` : ''}&searchType=PRODUCT`;
+        
           return (
             <div
               key={`option-${option}`}
@@ -49,6 +47,7 @@ export function OptionBar({
             </div>
           );
         })}
+        </div>
       </div>
     </div>
   );
