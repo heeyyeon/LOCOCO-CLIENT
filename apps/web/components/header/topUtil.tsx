@@ -19,7 +19,7 @@ interface TopUtilItemProps {
   disabled?: boolean;
 }
 
-const TopUtilItem = ({
+const topUtilItem = ({
   icon,
   label,
   onClick,
@@ -68,35 +68,33 @@ export default function TopUtil({ authStatus }: { authStatus: boolean }) {
         'flex w-full items-center justify-end self-stretch overflow-hidden px-[11.9rem] py-[2rem] transition-all duration-300 ease-out'
       )}
     >
-      <TopUtilItem
-        icon={<SvgMy className="text-gray-600" size={16} />}
-        label="マイページ"
-        onClick={() => console.log('마이페이지 클릭')}
-        disabled
-      />
-      <TopUtilItem
-        icon={<SvgLikeFill className="text-gray-600" size={16} />}
-        label="お気に入り"
-        onClick={() => console.log('좋아요 클릭')}
-        disabled
-      />
-      <TopUtilItem
-        icon={<SvgHistory className="text-gray-600" size={16} />}
-        label="最近見た商품"
-        onClick={() => console.log('내역 클릭')}
-        disabled
-      />
-      <TopUtilItem
-        icon={
-          authStatus ? (
-            <SvgOpen className="fill-gray-600" size={16} />
-          ) : (
-            <SvgLogin className="text-gray-600" size={16} />
-          )
-        }
-        label={loginLabel}
-        onClick={handleAuthClick}
-      />
+      {topUtilItem({
+        icon: <SvgMy className="text-gray-600" size={16} />,
+        label: "マイページ",
+        onClick: () => console.log('마이페이지 클릭'),
+        disabled: true,
+      })}
+      {topUtilItem({
+        icon: <SvgLikeFill className="text-gray-600" size={16} />,
+        label: "お気に入り",
+        onClick: () => console.log('좋아요 클릭'),
+        disabled: true,
+      })}
+      {topUtilItem({
+        icon: <SvgHistory className="text-gray-600" size={16} />,
+        label: "最近見た商품",
+        onClick: () => console.log('내역 클릭'),
+        disabled: true,
+      })}
+      {topUtilItem({
+        icon: authStatus ? (
+          <SvgOpen className="fill-gray-600" size={16} />
+        ) : (
+          <SvgLogin className="text-gray-600" size={16} />
+        ),
+        label: loginLabel,
+        onClick: handleAuthClick,
+      })}
     </nav>
   );
 }
