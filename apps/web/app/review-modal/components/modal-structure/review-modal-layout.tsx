@@ -1,9 +1,8 @@
 import React from 'react';
 
-import { MediaItem } from '../types';
-import MediaInfo from './media-info';
-import MediaViewer from './media-viewer';
-import ReviewInfo from './review-info';
+import { MediaItem } from '../../types';
+import { MediaInfo, MediaViewer } from '../media';
+import { ReviewInfo } from '../review';
 
 export type Media = MediaItem;
 export interface User {

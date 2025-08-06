@@ -7,8 +7,8 @@ import 'swiper/css';
 import { FreeMode, Mousewheel } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
-import type { ReviewDetail } from '../types';
-import ReviewModalLayout from './review-modal-layout';
+import type { ReviewDetail } from '../../types';
+import { ReviewModalLayout } from './';
 
 interface ReviewModalSwiperProps {
   currentIndex: number;

@@ -4,8 +4,10 @@ import { useState } from 'react';
 
 import { useParams, useRouter, useSearchParams } from 'next/navigation';
 
-import ReviewOnboardingModal from 'app/review-modal/components/ReviewOnboardingModal';
-import ReviewModalSwiper from 'app/review-modal/components/review-modal-swiper';
+import {
+  ReviewModalSwiper,
+  ReviewOnboardingModal,
+} from 'app/review-modal/components';
 import {
   useAllImageReviewDetails,
   useImageReviews,
