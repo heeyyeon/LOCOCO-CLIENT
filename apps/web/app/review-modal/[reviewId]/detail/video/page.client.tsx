@@ -6,14 +6,16 @@ import { useParams, useRouter, useSearchParams } from 'next/navigation';
 
 import { useQueryClient } from '@tanstack/react-query';
 import { UserUploadedVideoListData } from 'app/(with-layout)/product-detail/[productId]/types';
-import ReviewOnboardingModal from 'app/review-modal/components/ReviewOnboardingModal';
+import {
+  ReviewModalSwiper,
+  ReviewOnboardingModal,
+} from 'app/review-modal/components';
 import LoadingSvg from 'components/loading/loading-svg';
 import type {
   ApiResponseVideoReviewDetailResponse,
   VideoReviewDetailResponse,
 } from 'typescript-swagger-codegen/data-contracts';
 
-import ReviewModalSwiper from '../../../components/review-modal-swiper';
 import { useAllVideoReviewDetails } from '../../../hooks/review-api';
 import type { ReviewDetail } from '../../../types';
 
@@ -101,19 +103,19 @@ export default function ClientPage({ userStatus }: VideoReviewClientPageProps) {
         authorName: detail.authorName,
         profileImageUrl: detail.profileImageUrl ?? null,
         rating: detail.rating,
-        option: '',
+        option: detail.option || '',
         likeCount: detail.likeCount,
         isLiked: detail.isLiked,
         brandName: detail.brandName,
         productName: detail.productName,
         productImageUrl: detail.productImageUrl,
-        mediaList: detail.videoUrls.map((url: string, index: number) => ({
+        mediaList: detail.videoUrls.map((url, index) => ({
           id: index,
           type: 'video' as const,
           url,
         })),
       };
-    }) || [];
+    }) ?? [];
 
   return (
     <>

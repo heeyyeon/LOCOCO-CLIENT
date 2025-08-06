@@ -6,7 +6,10 @@ import { useParams, useRouter, useSearchParams } from 'next/navigation';
 
 import { useQueryClient } from '@tanstack/react-query';
 import { ApiResponse } from 'app/api/api-response';
-import ReviewOnboardingModal from 'app/review-modal/components/ReviewOnboardingModal';
+import {
+  ReviewModalSwiper,
+  ReviewOnboardingModal,
+} from 'app/review-modal/components';
 import LoadingSvg from 'components/loading/loading-svg';
 import type {
   ApiResponseImageReviewDetailResponse,
@@ -27,7 +30,6 @@ import {
   ApiReviewSearchResponse,
   ImageReviewResponse,
 } from '../../../../api/review-response';
-import ReviewModalSwiper from '../../../components/review-modal-swiper';
 import { useAllImageReviewDetails } from '../../../hooks/review-api';
 import type { ReviewDetail } from '../../../types';
 
@@ -100,6 +102,11 @@ export default function ClientPage({ userStatus }: ImageReviewClientPageProps) {
     }
   }, [currentIndex, router]);
 
+  if (currentIndex === -1) {
+    return null;
+  }
+
+  // 모든 상세 정보가 로딩 완료될 때까지 대기
   if (detailQueries.some((q) => q.isLoading)) {
     return (
       <div className="flex min-h-screen w-full items-center justify-center bg-black">
@@ -108,6 +115,7 @@ export default function ClientPage({ userStatus }: ImageReviewClientPageProps) {
     );
   }
 
+  // 상세 정보를 ID로 매핑
   const detailMap = new Map<number, ImageReviewDetailResponse>();
   reviewData.forEach((review, index) => {
     const dq = detailQueries[index];
@@ -118,13 +126,8 @@ export default function ClientPage({ userStatus }: ImageReviewClientPageProps) {
       }
     }
   });
-  console.log('detailQueriesfirst' + detailQueries);
-  console.log('reviewData' + reviewData);
 
-  // if (currentIndex === -1) {
-  //   router.back();
-  // }
-
+  // 슬라이더에 넘길 리뷰 데이터 구성
   const allReviews: ReviewDetail[] = reviewData
     .filter((review) => {
       const detail = detailMap.get(review.reviewId);

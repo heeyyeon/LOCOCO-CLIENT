@@ -4,8 +4,10 @@ import { useState } from 'react';
 
 import { useParams, useRouter, useSearchParams } from 'next/navigation';
 
-import ReviewOnboardingModal from 'app/review-modal/components/ReviewOnboardingModal';
-import ReviewModalSwiper from 'app/review-modal/components/review-modal-swiper';
+import {
+  ReviewModalSwiper,
+  ReviewOnboardingModal,
+} from 'app/review-modal/components';
 import {
   useAllVideoReviewDetails,
   useVideoReviews,
@@ -118,7 +120,7 @@ export default function ClientPage({ userStatus }: VideoReviewClientPageProps) {
       authorName: detail.authorName,
       profileImageUrl: detail.profileImageUrl ?? null,
       rating: detail.rating,
-      option: '',
+      option: detail.option || '',
       likeCount: detail.likeCount,
       isLiked: detail.isLiked,
       brandName: detail.brandName,
