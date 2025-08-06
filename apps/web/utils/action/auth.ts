@@ -1,9 +1,9 @@
 'use server';
 
-import { getCookie } from 'utils/client-cookie';
+import { getServerCookie } from './cookie';
 
 export async function checkIsLoggedIn() {
-  const isUserAccessToken = await getCookie('AccessToken');
+  const isUserAccessToken = await getServerCookie('AccessToken');
   if (!isUserAccessToken) {
     return false;
   } else {

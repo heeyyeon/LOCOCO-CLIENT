@@ -7,7 +7,7 @@ export async function setCookie(key: string, value: string) {
   cookieStore.set(key, value);
 }
 
-export async function getCookie(key: string) {
+export async function getServerCookie(key: string) {
   const cookieStore = await cookies();
   return cookieStore.get(key)?.value;
 }
