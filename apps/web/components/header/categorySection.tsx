@@ -4,14 +4,16 @@ import { CATEGORY_OPTIONS, CATEGORY_NAME } from 'constants/category';
 import { CategoryOptionEng, CategoryNameEng } from 'types/category';
 import Link from 'next/link';
 import { cn } from '@lococo/utils';
-import { OptionBar } from './categoryOptionBar';
+import { CategoryOptionBar } from './categoryOptionBar';
 import { useHeaderAction } from './use-header-action';
 
-export function CategorySection() {
-  const categories = Object.entries(CATEGORY_NAME).map(([key, name]) => ({
-    key: key as CategoryNameEng,
-    name,
-  }));
+export function CategorySection({ 
+  handleCloseSearchBar, 
+  isSearching 
+}: { 
+  handleCloseSearchBar: () => void;
+  isSearching: boolean;
+}) {
   const {
     selectedCategory,
     selectedOption,
@@ -19,6 +21,10 @@ export function CategorySection() {
     handleSelectOption,
     handleMouseLeaveCategory,
   } = useHeaderAction();
+  const categories = Object.entries(CATEGORY_NAME).map(([key, name]) => ({
+    key: key as CategoryNameEng,
+    name,
+  }));
   const options = selectedCategory
     ? (Object.keys(CATEGORY_OPTIONS[selectedCategory]) as CategoryOptionEng[])
     : [];
@@ -26,6 +32,11 @@ export function CategorySection() {
   return (
     <div
       className="flex h-[6rem] items-center"
+      onMouseEnter={() => {
+        if (isSearching) {
+          handleCloseSearchBar();
+        }
+      }}
       onMouseLeave={handleMouseLeaveCategory}
     >
       {categories.map(({ key, name }) => {
@@ -45,7 +56,7 @@ export function CategorySection() {
               {name}
             </Link>
             {selectedCategory && (
-              <OptionBar
+              <CategoryOptionBar
                 options={options}
                 selectedOption={selectedOption}
                 selectedCategoryKey={selectedCategory}
