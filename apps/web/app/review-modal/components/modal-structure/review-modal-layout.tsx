@@ -45,6 +45,7 @@ export default function ReviewModallayout({
   productImageUrl,
   isReceipt,
   onClose,
+  children,
 }: ReviewModallayoutProps) {
   return (
     <div className="relative flex h-full w-full items-center justify-center">
@@ -77,6 +78,7 @@ export default function ReviewModallayout({
           />
         </div>
       </div>
+      {children}
     </div>
   );
 }
