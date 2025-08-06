@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { isLogin } from 'utils/action/auth';
+import { checkIsLoggedIn } from 'utils/action/auth';
 
 interface UseAuthReturn {
   isLoggedIn: boolean | null;
@@ -12,7 +12,7 @@ export function useAuth(): UseAuthReturn {
   useEffect(() => {
     const checkLoginStatus = async () => {
       try {
-        const isUserLoggedIn = await isLogin();
+        const isUserLoggedIn = await checkIsLoggedIn();
         setIsLoggedIn(isUserLoggedIn);
       } catch {
         setIsLoggedIn(false);

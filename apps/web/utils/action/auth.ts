@@ -2,7 +2,7 @@
 
 import { getCookie } from 'utils/client-cookie';
 
-export async function isLogin() {
+export async function checkIsLoggedIn() {
   const isUserAccessToken = await getCookie('AccessToken');
   if (!isUserAccessToken) {
     return false;
