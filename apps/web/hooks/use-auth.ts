@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { isLogin } from 'components/action/auth';
+import { isLogin } from 'utils/action/auth';
 
 interface UseAuthReturn {
   isLoggedIn: boolean | null;

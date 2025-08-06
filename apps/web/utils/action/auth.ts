@@ -1,6 +1,6 @@
 'use server';
 
-import { getCookie } from 'utils/cookie';
+import { getCookie } from 'utils/client-cookie';
 
 export async function isLogin() {
   const isUserAccessToken = await getCookie('AccessToken');
