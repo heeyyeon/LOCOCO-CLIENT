@@ -1,7 +1,6 @@
 'use client';
 
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
 
 import { ProductItem } from 'types/product';
 
@@ -26,18 +25,11 @@ export default function CardProduct({
   rating,
   reviewCount,
   imageUrl,
-  authStatus,
   handleCardClick,
 }: CardProductProps) {
-  const router = useRouter();
   const { isLiked, handleLikeClick } = useProductLike({
     initialIsLiked,
   });
-
-  const goToLogin = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    router.push('/login');
-  };
 
   return (
     <article
@@ -63,13 +55,7 @@ export default function CardProduct({
       <div className="flex h-[4.4rem] items-center justify-between border-b-[0.1rem] border-dashed border-pink-500">
         <p className="jp-body1 font-[700]">{brandName}</p>
         <IconButton
-          onClick={(e) => {
-            if (authStatus) {
-              handleLikeClick(e, productId);
-            } else {
-              goToLogin(e);
-            }
-          }}
+          onClick={(e) => handleLikeClick(productId, e)}
           size="md"
           icon={
             isLiked ? (

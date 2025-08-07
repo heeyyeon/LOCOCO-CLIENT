@@ -17,7 +17,6 @@ interface ProductDetailSectionProps {
   normalPrice: number;
   oliveYoungUrl: string;
   q10Url: string;
-  authStatus: boolean;
 }
 
 export default function ProductDetailSection({
@@ -35,7 +34,6 @@ export default function ProductDetailSection({
   normalPrice,
   oliveYoungUrl,
   q10Url,
-  authStatus,
 }: ProductDetailSectionProps) {
   return (
     <div className="flex w-full flex-col">
@@ -45,7 +43,6 @@ export default function ProductDetailSection({
           productName={productName}
         />
         <ProductInfo
-          authStatus={authStatus}
           productId={Number(productId)}
           productName={productName}
           brandName={brandName}

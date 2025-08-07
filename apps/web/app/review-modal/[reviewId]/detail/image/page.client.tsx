@@ -25,11 +25,7 @@ const formatDateToJapanese = (dateString: string): string => {
   return `${year}年${month}月${day}日`;
 };
 
-interface ImageReviewClientPageProps {
-  userStatus: boolean;
-}
-
-export default function ClientPage({ userStatus }: ImageReviewClientPageProps) {
+export default function ClientPage() {
   const router = useRouter();
   const { reviewId: reviewIdParam } = useParams() as { reviewId: string };
   const currentReviewId = Number(reviewIdParam);
@@ -134,7 +130,6 @@ export default function ClientPage({ userStatus }: ImageReviewClientPageProps) {
         <ReviewOnboardingModal handleCloseOnboarding={handleCloseOnboarding} />
       )}
       <ReviewModalSwiper
-        userStatus={userStatus}
         currentIndex={currentIndex}
         reviews={allReviews}
         onClose={() => router.back()}

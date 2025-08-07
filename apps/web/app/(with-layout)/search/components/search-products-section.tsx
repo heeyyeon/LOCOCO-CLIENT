@@ -8,13 +8,7 @@ import CardSkeletonWrapper from 'components/card/card-skeleton';
 import useProductSectionData from '../hook/use-product-section';
 import NotFoundSection from './not-found-section';
 
-interface SearchProductsSectionProps {
-  authStatus: boolean;
-}
-
-export default function SearchProductsSection({
-  authStatus,
-}: SearchProductsSectionProps) {
+export default function SearchProductsSection() {
   const { products, isLoading, hasError } = useProductSectionData();
   const router = useRouter();
 
@@ -57,7 +51,6 @@ export default function SearchProductsSection({
                 url,
               }) => (
                 <CardProduct
-                  authStatus={authStatus}
                   key={productId}
                   brandName={brandName}
                   productName={productName}

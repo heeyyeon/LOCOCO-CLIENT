@@ -5,6 +5,7 @@ import { useParams, useRouter } from 'next/navigation';
 
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import dayjs from 'dayjs';
+import { useAuth } from 'hooks/use-auth';
 
 import { Avatar } from '@lococo/design-system/avatar';
 import { IconButton } from '@lococo/design-system/icon-button';
@@ -17,10 +18,6 @@ import { postReviewLike } from '../apis';
 import { PRODUCT_DETAIL_QUERY_KEYS } from '../queries';
 import { ImageReviewDetailData } from '../types';
 import CommentBox from './comment-box';
-
-interface ReviewProps extends ImageReviewDetailData {
-  authStatus: boolean;
-}
 
 export default function Review({
   reviewId,
@@ -37,14 +34,14 @@ export default function Review({
   option,
   isLiked: initialIsLiked,
   isAdmin,
-  authStatus,
   //brandName,
   //productName,
   //authorId,
-}: ReviewProps) {
+}: ImageReviewDetailData) {
   const queryClient = useQueryClient();
   const router = useRouter();
   const { productId } = useParams();
+  const { isLoggedIn } = useAuth();
   const [isLiked, setIsLiked] = useState(initialIsLiked);
   const [likeCount, setLikeCount] = useState(initialLikeCount);
 
@@ -83,7 +80,7 @@ export default function Review({
   };
 
   const handleLikeReview = (reviewId: number) => {
-    if (authStatus) {
+    if (isLoggedIn) {
       reviewLikeMutation(reviewId);
     } else {
       router.push('/login');
