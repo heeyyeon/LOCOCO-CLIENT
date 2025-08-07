@@ -1,7 +1,7 @@
 ---
 name: Feature Template
 about: '✨ 새로운 기능을 추가하는 경우 사용해주세요'
-title: ''
+title: 'LCO-00 '
 labels: ''
 assignees: ''
 ---

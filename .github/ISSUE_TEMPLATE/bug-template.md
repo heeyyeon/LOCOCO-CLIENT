@@ -1,7 +1,7 @@
 ---
 name: Bug Template
 about: "\U0001F41E 버그가 발생한 경우 사용해주세요"
-title: ''
+title: 'LCO-00'
 labels: ''
 assignees: ''
 ---
