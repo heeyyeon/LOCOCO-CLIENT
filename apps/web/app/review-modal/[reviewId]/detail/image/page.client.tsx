@@ -14,18 +14,11 @@ import {
 } from 'app/review-modal/hooks/review-api';
 import { ReviewDetail } from 'app/review-modal/types';
 import LoadingSvg from 'components/loading/loading-svg';
+import dayjs from 'dayjs';
 import {
   ApiResponseImageReviewDetailResponse,
   ImageReviewDetailResponse,
 } from 'typescript-swagger-codegen/data-contracts';
-
-const formatDateToJapanese = (dateString: string): string => {
-  const date = new Date(dateString);
-  const year = date.getFullYear();
-  const month = String(date.getMonth() + 1).padStart(2, '0');
-  const day = String(date.getDate()).padStart(2, '0');
-  return `${year}年${month}月${day}日`;
-};
 
 interface ImageReviewClientPageProps {
   userStatus: boolean;
@@ -109,7 +102,7 @@ export default function ClientPage({ userStatus }: ImageReviewClientPageProps) {
       return {
         reviewId: detail.reviewId,
         productId: detail.productId,
-        writtenTime: formatDateToJapanese(detail.writtenTime),
+        writtenTime: dayjs(detail.writtenTime).format('YYYY年MM月DD日'),
         receiptUploaded: detail.receiptUploaded,
         positiveComment: detail.positiveComment,
         negativeComment: detail.negativeComment,
