@@ -20,6 +20,7 @@ jobs:
       - name: Checkout develop code
         uses: actions/checkout@v4
         with:
+          token: ${{ secrets.AUTO_ACTIONS }}
           ref: develop
 
       - name: Issue Parser
