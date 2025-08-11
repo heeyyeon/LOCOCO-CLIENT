@@ -1,5 +1,5 @@
-import { MainHeader } from './mainHeader';
-import TopUtil from './topUtil';
+import { MainHeader } from './main-header';
+import TopUtil from './top-util';
 
 interface HeaderProps {
   authStatus: boolean;

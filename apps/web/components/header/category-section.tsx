@@ -1,19 +1,25 @@
 'use client';
 
-import { CATEGORY_OPTIONS, CATEGORY_NAME } from 'constants/category';
-import { CategoryOptionEng, CategoryNameEng } from 'types/category';
 import Link from 'next/link';
-import { cn } from '@lococo/utils';
-import { CategoryOptionBar } from './categoryOptionBar';
-import { useHeaderAction } from './use-header-action';
 
-export function CategorySection({ 
-  handleCloseSearchBar, 
-  isSearching 
-}: { 
+import { CATEGORY_NAME, CATEGORY_OPTIONS } from 'constants/category';
+import { CategoryNameEng, CategoryOptionEng } from 'types/category';
+
+import { cn } from '@lococo/utils';
+
+import { CategoryOptionBar } from './category-option-bar';
+import { useHeaderAction } from './hooks/use-header-action';
+import { getUrl } from './utils/get-url';
+
+interface CategorySectionProps {
   handleCloseSearchBar: () => void;
   isSearching: boolean;
-}) {
+}
+
+export function CategorySection({
+  handleCloseSearchBar,
+  isSearching,
+}: CategorySectionProps) {
   const {
     selectedCategory,
     selectedOption,
@@ -44,7 +50,7 @@ export function CategorySection({
         return (
           <div key={key}>
             <Link
-              href={`/search?middleCategory=${key}&searchType=PRODUCT`}
+              href={getUrl('', key, '', 'PRODUCT')}
               key={key}
               className={cn(
                 'jp-title2 flex h-[6rem] cursor-pointer items-center whitespace-nowrap px-[3.2rem] pb-[1rem] pt-[1rem] font-bold',
