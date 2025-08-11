@@ -1,16 +1,18 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
+
+import CardReview from 'components/card/card-review';
 import {
   MainImageReview,
   MainImageReviewResponse,
   MainVideoReview,
   MainVideoReviewResponse,
-} from 'api/data-contracts';
-import CardReview from 'components/card/card-review';
-import { useRouter } from 'next/navigation';
-import { Button } from '@/components';
-import { SvgArrowOutward } from '@/icons';
-import { cn } from '@/lib/utils';
+} from 'swagger-codegen/data-contracts';
+
+import { Button } from '@lococo/design-system/button';
+import { SvgArrowOutward } from '@lococo/icons';
+import { cn } from '@lococo/utils';
 
 interface HomeSectionReviewProps {
   type: 'video' | 'image';

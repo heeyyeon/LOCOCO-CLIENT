@@ -1,36 +1,41 @@
+import { cache } from 'react';
+
 import { apiRequest } from 'app/api/apiRequest';
-import { ProductDetailResponse } from '../types';
-import { ProductDetailData } from '../types';
-import { YoutubeListResponse } from '../types';
-import { YoutubeListData } from '../types';
-import { ImageReviewDetailDataList } from '../types';
-import { ImageReviewListResponse } from '../types';
-import { ReviewLikeResponse } from '../types';
-import { ReviewLikeData } from '../types';
-import { ReviewDeleteResponse } from '../types';
-import { ReviewDeleteData } from '../types';
-import { UserUploadedVideoListResponse } from '../types';
-import { UserUploadedVideoListData } from '../types';
+
+import {
+  ImageReviewDetailDataList,
+  ImageReviewListResponse,
+  ProductDetailData,
+  ProductDetailResponse,
+  ReviewDeleteData,
+  ReviewDeleteResponse,
+  ReviewLikeData,
+  ReviewLikeResponse,
+  UserUploadedVideoListData,
+  UserUploadedVideoListResponse,
+  YoutubeListData,
+  YoutubeListResponse,
+} from '../types';
 
 /**
  * 상품 상세 정보를 가져오는 API 함수
  * @param productId 상품 ID
  * @returns Promise<ProductDetailResponse>
  */
-export const getProductDetail = async (
-  productId: number
-): Promise<ProductDetailData> => {
-  const response = await apiRequest<ProductDetailResponse>({
-    endPoint: `/api/products/details/${productId}`,
-    method: 'GET',
-  });
+export const getProductDetail = cache(
+  async (productId: number): Promise<ProductDetailData> => {
+    const response = await apiRequest<ProductDetailResponse>({
+      endPoint: `/api/products/details/${productId}`,
+      method: 'GET',
+    });
 
-  if (!response.data) {
-    throw new Error('상품 정보를 가져올 수 없습니다.');
+    if (!response.data) {
+      throw new Error('상품 정보를 가져올 수 없습니다.');
+    }
+
+    return response.data;
   }
-
-  return response.data;
-};
+);
 
 export const getYoutubeList = async (
   productId: number

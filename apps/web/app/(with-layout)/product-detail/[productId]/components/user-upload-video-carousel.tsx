@@ -1,5 +1,9 @@
 'use client';
 
+import { useState } from 'react';
+
+import { useParams, useRouter } from 'next/navigation';
+
 import { useQuery } from '@tanstack/react-query';
 import CardReview from 'components/card/card-review';
 import type { Swiper as SwiperType } from 'swiper';
@@ -9,12 +13,10 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import { Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { useState } from 'react';
-import { useParams } from 'next/navigation';
-import { useRouter } from 'next/navigation';
-import { IconButton } from '@lococo/design-system';
-import { SvgArrowRight } from '@/icons';
-import { SvgImgVideo } from '@/icons';
+
+import { IconButton } from '@lococo/design-system/icon-button';
+import { SvgArrowRight, SvgImgVideo } from '@lococo/icons';
+
 import { getUserUploadedVideoList } from '../apis';
 import { PRODUCT_DETAIL_QUERY_KEYS } from '../queries';
 import './user-uploaded-video-carousel.css';
@@ -55,9 +57,9 @@ export default function UserUploadVideoCarousel() {
 
   return (
     <div className="flex flex-col gap-[3.2rem]">
-      <h3 className="text-jp-head2 inline-flex items-center gap-[1.2rem] font-bold">
+      <h2 className="text-jp-head2 inline-flex items-center gap-[1.2rem] font-bold">
         動画レビュー
-      </h3>
+      </h2>
       <div className="relative h-[35.2rem] w-full">
         {userUploadedVideoListData && userUploadedVideoListData.length > 0 ? (
           <>

@@ -1,12 +1,14 @@
-import { cva, type VariantProps } from 'class-variance-authority';
+import { type VariantProps, cva } from 'class-variance-authority';
+
 import { cn } from '../../lib/utils';
 
 interface IconButtonProps
   extends Omit<React.ComponentProps<'button'>, 'color' | 'size'>,
     VariantProps<typeof iconButtonVariants> {
-  icon?: React.ReactNode;
+  icon: React.ReactNode;
   color?: 'primary' | 'secondary' | 'tertiary';
   size?: 'sm' | 'md' | 'lg';
+  ariaLabel?: string;
   rounded?: boolean;
 }
 
@@ -41,10 +43,14 @@ export default function IconButton({
   icon,
   className,
   rounded = false,
+  type = 'button',
+  ariaLabel,
   ...props
 }: IconButtonProps) {
   return (
     <button
+      aria-label={ariaLabel}
+      type={type}
       className={cn(
         iconButtonVariants({
           color,

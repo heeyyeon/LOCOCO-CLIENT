@@ -1,10 +1,12 @@
 'use client';
 
+import { useEffect, useState } from 'react';
+
 import SwiperCore from 'swiper';
 import 'swiper/css';
-import { Mousewheel, FreeMode } from 'swiper/modules';
+import { FreeMode, Mousewheel } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { useEffect, useState } from 'react';
+
 import type { ReviewDetail } from '../types';
 import ReviewModalLayout from './review-modal-layout';
 
@@ -12,14 +14,12 @@ interface ReviewModalSwiperProps {
   currentIndex: number;
   reviews: ReviewDetail[];
   onClose: () => void;
-  userStatus: boolean;
 }
 
 export default function ReviewModalSwiper({
   currentIndex,
   reviews,
   onClose,
-  userStatus,
 }: ReviewModalSwiperProps) {
   const [swiper, setSwiper] = useState<SwiperCore>();
 
@@ -77,7 +77,6 @@ export default function ReviewModalSwiper({
             positiveComment={review.positiveComment}
             negativeComment={review.negativeComment}
             productImageUrl={review.productImageUrl}
-            userStatus={userStatus}
             onClose={onClose}
           />
         </SwiperSlide>

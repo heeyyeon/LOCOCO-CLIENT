@@ -1,19 +1,21 @@
 'use client';
 
-import {
-  VideoReviewDetailResponse,
-  ApiResponseVideoReviewDetailResponse,
-} from 'api/data-contracts';
+import { useState } from 'react';
+
+import { useParams, useRouter, useSearchParams } from 'next/navigation';
+
 import ReviewOnboardingModal from 'app/review-modal/components/ReviewOnboardingModal';
 import ReviewModalSwiper from 'app/review-modal/components/review-modal-swiper';
 import {
-  useVideoReviews,
   useAllVideoReviewDetails,
+  useVideoReviews,
 } from 'app/review-modal/hooks/review-api';
 import { ReviewDetail } from 'app/review-modal/types';
 import LoadingSvg from 'components/loading/loading-svg';
-import { useState } from 'react';
-import { useParams, useRouter, useSearchParams } from 'next/navigation';
+import {
+  ApiResponseVideoReviewDetailResponse,
+  VideoReviewDetailResponse,
+} from 'swagger-codegen/data-contracts';
 
 const formatDateToJapanese = (dateString: string): string => {
   const date = new Date(dateString);
@@ -23,11 +25,7 @@ const formatDateToJapanese = (dateString: string): string => {
   return `${year}年${month}月${day}日`;
 };
 
-interface VideoReviewClientPageProps {
-  userStatus: boolean;
-}
-
-export default function ClientPage({ userStatus }: VideoReviewClientPageProps) {
+export default function ClientPage() {
   const router = useRouter();
   const { reviewId: reviewIdParam } = useParams() as { reviewId: string };
   const currentReviewId = Number(reviewIdParam);
@@ -136,7 +134,6 @@ export default function ClientPage({ userStatus }: VideoReviewClientPageProps) {
         <ReviewOnboardingModal handleCloseOnboarding={handleCloseOnboarding} />
       )}
       <ReviewModalSwiper
-        userStatus={userStatus}
         currentIndex={currentIndex}
         reviews={allReviews}
         onClose={() => router.back()}

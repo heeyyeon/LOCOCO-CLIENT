@@ -1,20 +1,18 @@
 'use client';
 
+import { useEffect, useState } from 'react';
+
+import { useParams, useRouter, useSearchParams } from 'next/navigation';
+
 import { useQueryClient } from '@tanstack/react-query';
+import { ApiResponse } from 'app/api/api-response';
 import ReviewOnboardingModal from 'app/review-modal/components/ReviewOnboardingModal';
 import LoadingSvg from 'components/loading/loading-svg';
-import { useState, useEffect } from 'react';
-import { useParams, useRouter, useSearchParams } from 'next/navigation';
 import type {
   ApiResponseImageReviewDetailResponse,
   ImageReviewDetailResponse,
-} from '../../../../../api/data-contracts';
-import { ApiResponse } from '../../../../../app/api/api-response';
-import {
-  ApiReviewItem,
-  ApiReviewSearchResponse,
-  ImageReviewResponse,
-} from '../../../../../app/api/review-response';
+} from 'swagger-codegen/data-contracts';
+
 import { REVIEW_KEYS } from '../../../../../constants/query-key';
 import {
   CategoryNameEng,
@@ -24,6 +22,11 @@ import {
   isValidCategoryKey,
   isValidCategoryOption,
 } from '../../../../../utils/category';
+import {
+  ApiReviewItem,
+  ApiReviewSearchResponse,
+  ImageReviewResponse,
+} from '../../../../api/review-response';
 import ReviewModalSwiper from '../../../components/review-modal-swiper';
 import { useAllImageReviewDetails } from '../../../hooks/review-api';
 import type { ReviewDetail } from '../../../types';
@@ -36,11 +39,7 @@ const formatDateToJapanese = (dateString: string): string => {
   return `${year}年${month}月${day}日`;
 };
 
-interface ImageReviewClientPageProps {
-  userStatus: boolean;
-}
-
-export default function ClientPage({ userStatus }: ImageReviewClientPageProps) {
+export default function ClientPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const keyword = searchParams.get('keyword');
@@ -159,7 +158,6 @@ export default function ClientPage({ userStatus }: ImageReviewClientPageProps) {
         <ReviewOnboardingModal handleCloseOnboarding={handleCloseOnboarding} />
       )}
       <ReviewModalSwiper
-        userStatus={userStatus}
         currentIndex={currentIndex}
         reviews={allReviews}
         onClose={() => router.back()}

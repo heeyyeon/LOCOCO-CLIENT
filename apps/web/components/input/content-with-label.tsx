@@ -1,5 +1,6 @@
 import { HTMLAttributes } from 'react';
-import { cn } from '@/lib/utils';
+
+import { cn } from '@lococo/utils';
 
 interface ContentWithLabelProps extends HTMLAttributes<HTMLDivElement> {
   label: string;

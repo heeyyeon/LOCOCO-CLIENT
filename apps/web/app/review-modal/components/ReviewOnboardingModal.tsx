@@ -1,6 +1,6 @@
 'use client';
 
-import { SvgClose, SvgVector, SvgVector469, SvgVector470 } from '@/icons';
+import { SvgClose, SvgVector, SvgVector469, SvgVector470 } from '@lococo/icons';
 
 function LeftAnimation() {
   return (

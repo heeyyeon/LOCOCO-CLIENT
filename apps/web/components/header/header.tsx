@@ -1,15 +1,13 @@
 'use client';
 
 import React from 'react';
-import { cn } from '@/lib/utils';
+
+import { cn } from '@lococo/utils';
+
 import { CategoryBar, TopUtil } from './header-content';
 import { useHeaderAction } from './use-header-action';
 
-interface HeaderProps {
-  authStatus: boolean;
-}
-
-const header = React.memo(function Header({ authStatus }: HeaderProps) {
+const header = React.memo(function Header() {
   const {
     categories,
     selectedCategory,
@@ -38,7 +36,7 @@ const header = React.memo(function Header({ authStatus }: HeaderProps) {
             'border-b-[0.1rem] border-gray-500'
         )}
       >
-        <TopUtil authStatus={authStatus} />
+        <TopUtil />
         <CategoryBar
           categories={categories}
           selectedCategory={selectedCategory}

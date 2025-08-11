@@ -1,7 +1,9 @@
-import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google';
 import type { Metadata } from 'next';
 import { Noto_Sans_JP } from 'next/font/google';
 import localFont from 'next/font/local';
+
+import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google';
+
 import { Providers } from '../components/providers';
 import './globals.css';
 
@@ -20,9 +22,15 @@ const pretendard = localFont({
 });
 
 export const metadata: Metadata = {
-  title: 'Lococo',
-  description: 'Kコスメと出会う 一番の近道',
+  title: {
+    default: 'Lococo',
+    template: 'Lococo | %s',
+  },
+  description:
+    '日本最大級の韓国コスメレビューサイトLococo(ロココ)。話題のK-ビューティー商品をチェックして、Qoo10でそのまま購入可能！',
   keywords: [
+    'Lococo',
+    'ロココ',
     'Kビューティー',
     'ダイソー',
     'オリーブヤング',
@@ -36,9 +44,28 @@ export const metadata: Metadata = {
     'Lips',
     '@cosme',
   ],
+  verification: {
+    google: 'kSp4ZBLdAObw2vrbpzFmceC7CaPyk4m15BLxUpbu',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    nocache: false,
+    googleBot: {
+      index: true,
+      follow: true,
+      noimageindex: false,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
   openGraph: {
     type: 'website',
-    title: 'Lococo',
+    title: {
+      default: 'Lococo',
+      template: ' %s | Lococo',
+    },
     description: 'Kコスメと出会う 一番の近道',
     images: '/images/home-banner.png',
     url: 'https://lococo.beauty',
@@ -56,6 +83,7 @@ export default function RootLayout({
     <html lang="ja" suppressHydrationWarning>
       <GoogleAnalytics gaId="G-GT92YY193R" />
       <GoogleTagManager gtmId="GTM-5QMBC6SP" />
+
       <body
         className={`${notoSansJP.variable} ${pretendard.variable} min-h-screen lg:flex lg:justify-center`}
       >

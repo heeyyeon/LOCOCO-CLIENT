@@ -1,10 +1,15 @@
 'use client';
 
+import { PropsWithChildren } from 'react';
+
+import Image from 'next/image';
+
 import { cva } from 'class-variance-authority';
 import { ReviewItem } from 'types/review';
-import { PropsWithChildren } from 'react';
-import Image from 'next/image';
-import { Badge, SvgGoodFill } from '@lococo/design-system';
+
+import { Badge } from '@lococo/design-system/badge';
+import { SvgGoodFill } from '@lococo/icons';
+
 import { cn } from '../../../../packages/design-system/src/lib/utils';
 
 const imageWrapperVariant = cva(
@@ -67,7 +72,7 @@ export default function CardReview({
               width={264}
               height={264}
               src={mediaUrl}
-              alt={productName}
+              alt={`${productName} review image`}
               className="h-full w-full object-cover"
             />
           )

@@ -1,15 +1,18 @@
 'use client';
 
+import { useState } from 'react';
+
+import { useParams, useRouter, useSearchParams } from 'next/navigation';
+
 import { useQueryClient } from '@tanstack/react-query';
 import { UserUploadedVideoListData } from 'app/(with-layout)/product-detail/[productId]/types';
 import ReviewOnboardingModal from 'app/review-modal/components/ReviewOnboardingModal';
 import LoadingSvg from 'components/loading/loading-svg';
-import { useState } from 'react';
-import { useParams, useRouter, useSearchParams } from 'next/navigation';
 import type {
   ApiResponseVideoReviewDetailResponse,
   VideoReviewDetailResponse,
-} from '../../../../../api/data-contracts';
+} from 'swagger-codegen/data-contracts';
+
 import ReviewModalSwiper from '../../../components/review-modal-swiper';
 import { useAllVideoReviewDetails } from '../../../hooks/review-api';
 import type { ReviewDetail } from '../../../types';
@@ -22,11 +25,7 @@ const formatDateToJapanese = (dateString: string): string => {
   return `${year}年${month}月${day}日`;
 };
 
-interface VideoReviewClientPageProps {
-  userStatus: boolean;
-}
-
-export default function ClientPage({ userStatus }: VideoReviewClientPageProps) {
+export default function ClientPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const productId = searchParams.get('productId');
@@ -118,7 +117,6 @@ export default function ClientPage({ userStatus }: VideoReviewClientPageProps) {
         <ReviewOnboardingModal handleCloseOnboarding={handleCloseOnboarding} />
       )}
       <ReviewModalSwiper
-        userStatus={userStatus}
         currentIndex={currentIndex}
         reviews={allReviews}
         onClose={() => router.back()}

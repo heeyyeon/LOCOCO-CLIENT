@@ -1,5 +1,7 @@
 'use client';
 
+import { useState } from 'react';
+
 import { useQuery } from '@tanstack/react-query';
 import type { Swiper as SwiperType } from 'swiper';
 import 'swiper/css';
@@ -9,10 +11,10 @@ import 'swiper/css/scrollbar';
 import { Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { convertToEmbedUrl, validateYoutubeVideoList } from 'utils/youtube';
-import { useState } from 'react';
-import { IconButton } from '@lococo/design-system';
-import { SvgArrowRight, SvgImgVideo } from '@/icons';
-import { SvgKoreanReview } from '@/icons';
+
+import { IconButton } from '@lococo/design-system/icon-button';
+import { SvgArrowRight, SvgImgVideo, SvgKoreanReview } from '@lococo/icons';
+
 import { YoutubeListData } from '../types';
 import './youtube-carousel.css';
 
@@ -52,9 +54,9 @@ export default function YoutubeCarousel({
 
   return (
     <div className="flex flex-col gap-[3.2rem]">
-      <h3 className="text-jp-head2 inline-flex items-center gap-[1.2rem] font-bold text-gray-800">
+      <h2 className="text-jp-head2 inline-flex items-center gap-[1.2rem] font-bold text-gray-800">
         <SvgKoreanReview size={24} /> 韓国ユーチューバーレビュー
-      </h3>
+      </h2>
       <div className="relative h-[31.1rem]">
         {validatedYoutubeListData && validatedYoutubeListData.length > 0 ? (
           <>
@@ -95,6 +97,7 @@ export default function YoutubeCarousel({
                 icon={<SvgArrowRight className="rotate-180" />}
                 color="tertiary"
                 rounded
+                ariaLabel="前のビデオ"
               />
             )}
 
@@ -106,6 +109,7 @@ export default function YoutubeCarousel({
                 icon={<SvgArrowRight />}
                 rounded
                 color="tertiary"
+                ariaLabel="次のビデオ"
               />
             )}
           </>

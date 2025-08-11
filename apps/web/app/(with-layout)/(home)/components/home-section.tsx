@@ -1,5 +1,7 @@
 import { ReactNode } from 'react';
-import { cn } from '@/lib/utils';
+
+import { cn } from '@lococo/utils';
+
 import HomeSectionHeader from './home-section-header';
 import HomeSectionProduct from './home-section-product';
 import HomeSectionReview from './home-section-review';

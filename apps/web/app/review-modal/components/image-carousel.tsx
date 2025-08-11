@@ -1,12 +1,15 @@
 'use client';
 
+import { useRef, useState } from 'react';
+
+import Image from 'next/image';
+
 import type { Swiper as SwiperType } from 'swiper';
 import 'swiper/css';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { useRef, useState } from 'react';
-import Image from 'next/image';
-import { IconButton } from '@lococo/design-system';
-import { SvgArrowLeft, SvgArrowRight } from '@/icons';
+
+import { IconButton } from '@lococo/design-system/icon-button';
+import { SvgArrowLeft, SvgArrowRight } from '@lococo/icons';
 
 interface ImageCarouselProps {
   images: string[];

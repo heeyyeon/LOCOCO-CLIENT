@@ -1,7 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import { TabContainer, Tab } from '@lococo/design-system';
+
+import { Tab, TabContainer } from '@lococo/design-system/tab';
 
 interface ProductInfoTabProps {
   productDetail: string;

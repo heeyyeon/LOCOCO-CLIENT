@@ -1,5 +1,9 @@
 'use client';
 
+import { useRef, useState } from 'react';
+
+import Image from 'next/image';
+
 import type { Swiper as SwiperType } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -7,20 +11,21 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import { Thumbs } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { useState, useRef } from 'react';
-import Image from 'next/image';
-import { IconButton } from '@lococo/design-system';
-import { SvgArrowUp } from '@/icons';
-import { SvgArrowDown } from '@/icons';
-import { cn } from '@/lib/utils';
+
+import { IconButton } from '@lococo/design-system/icon-button';
+import { SvgArrowDown, SvgArrowUp } from '@lococo/icons';
+import { cn } from '@lococo/utils';
+
 import './main-carousel.css';
 
 interface CarouselProps {
   imageUrlList: string[];
+  productName: string;
 }
 
 export default function ProductDetailMainCarousel({
   imageUrlList,
+  productName,
 }: CarouselProps) {
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);
   const mainSwiperRef = useRef<SwiperType | null>(null);
@@ -44,7 +49,7 @@ export default function ProductDetailMainCarousel({
             <SwiperSlide key={imageUrl}>
               <Image
                 src={imageUrl}
-                alt="swiper thumbnail"
+                alt={`${productName} thumbnail`}
                 width={60}
                 height={60}
                 className="h-full w-full object-cover"
@@ -60,7 +65,7 @@ export default function ProductDetailMainCarousel({
                 : '[&>svg]:fill-gray-800'
             )}
             onClick={() => mainSwiperRef.current?.slidePrev()}
-            aria-label="이전 이미지"
+            aria-label="前の画像"
             icon={<SvgArrowUp />}
           />
           <IconButton
@@ -70,7 +75,7 @@ export default function ProductDetailMainCarousel({
                 : '[&>svg]:fill-gray-800'
             )}
             onClick={() => mainSwiperRef.current?.slideNext()}
-            aria-label="다음 이미지"
+            aria-label="次の画像"
             icon={<SvgArrowDown />}
           />
         </div>
@@ -98,7 +103,7 @@ export default function ProductDetailMainCarousel({
             <SwiperSlide key={imageUrl}>
               <Image
                 src={imageUrl}
-                alt="swiper main"
+                alt={`${productName}`}
                 width={468}
                 height={468}
                 className="h-full w-full object-contain"

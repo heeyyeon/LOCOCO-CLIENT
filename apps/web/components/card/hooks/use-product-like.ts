@@ -1,9 +1,11 @@
+import { useEffect, useState } from 'react';
+
+import { useRouter } from 'next/navigation';
+
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { PRODUCT_QUERIES } from 'app/(with-layout)/(home)/components/home-section-product';
 import { apiRequest } from 'app/api/apiRequest';
-import { getCookie } from 'utils/client-cookie';
-import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import { useAuth } from 'hooks/use-auth';
 
 interface UseProductLikeProps {
   initialIsLiked: boolean;
@@ -11,9 +13,9 @@ interface UseProductLikeProps {
 
 export function useProductLike({ initialIsLiked }: UseProductLikeProps) {
   const router = useRouter();
-  const userToken = getCookie('AccessToken');
   const [isLiked, setIsLiked] = useState(initialIsLiked);
   const queryClient = useQueryClient();
+  const { isLoggedIn } = useAuth();
 
   useEffect(() => {
     setIsLiked(initialIsLiked);
@@ -28,22 +30,28 @@ export function useProductLike({ initialIsLiked }: UseProductLikeProps) {
     },
 
     onMutate: async () => {
-      const previousState = isLiked;
+      const isPreviousLiked = isLiked;
       setIsLiked((prev) => !prev);
-      return { previousState };
+      return { isPreviousLiked };
     },
 
     onError: (error, _variables, context) => {
-      setIsLiked(context?.previousState || false);
+      setIsLiked(context?.isPreviousLiked || false);
     },
     onSettled: () => {
       queryClient.invalidateQueries({ queryKey: PRODUCT_QUERIES.ALL });
     },
   });
 
-  const handleLikeClick = async (e: React.MouseEvent, productId: number) => {
-    e.stopPropagation();
-    likeMutation.mutate(productId);
+  const handleLikeClick = async (productId: number, e?: React.MouseEvent) => {
+    if (e) {
+      e.stopPropagation();
+    }
+    if (isLoggedIn) {
+      likeMutation.mutate(productId);
+    } else {
+      goToLogin();
+    }
   };
 
   const goToLogin = () => {
@@ -54,7 +62,6 @@ export function useProductLike({ initialIsLiked }: UseProductLikeProps) {
     likeMutation,
     isLiked,
     handleLikeClick,
-    userToken,
     goToLogin,
   };
 }

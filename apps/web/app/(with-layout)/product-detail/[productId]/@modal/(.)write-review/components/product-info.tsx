@@ -1,5 +1,6 @@
-import { ProductItem } from 'types/product';
 import Image from 'next/image';
+
+import { ProductItem } from 'types/product';
 
 export default function ProductInfo({
   productName,

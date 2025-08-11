@@ -1,4 +1,5 @@
 import { ComponentProps } from 'react';
+
 import { SvgAvatar } from '../../icons/fill/components/Avatar';
 
 export default function Avatar({ src, ...props }: ComponentProps<'img'>) {

@@ -1,6 +1,7 @@
-import { cva, type VariantProps } from 'class-variance-authority';
-import type { ComponentProps } from 'react';
-import { ReactNode } from 'react';
+import type { ComponentProps, ReactNode } from 'react';
+
+import { type VariantProps, cva } from 'class-variance-authority';
+
 import { cn } from '../../lib/utils';
 
 interface TabProps

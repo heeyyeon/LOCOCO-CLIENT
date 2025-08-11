@@ -1,21 +1,23 @@
 'use client';
 
+import React, { useState } from 'react';
+
+import { useRouter } from 'next/navigation';
+
 import { useQuery } from '@tanstack/react-query';
-import { ApiResponseCategoryNewProductResponse } from 'api/data-contracts';
 import { apiRequest } from 'app/api/apiRequest';
 import CardProduct from 'components/card/card-product';
 import { CardSkeleton } from 'components/card/card-skeleton';
 import { CATEGORY_NAME } from 'constants/category';
+import { ApiResponseNewProductsByCategoryResponse } from 'swagger-codegen/data-contracts';
 import { CategoryNameEng } from 'types/category';
-import React, { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import { Tab, TabContainer } from '@/components/tab/Tab';
+
+import { Tab, TabContainer } from '@lococo/design-system/tab';
 
 type ProductSortType = 'new' | 'popular';
 
 interface HomeSectionProductProps {
   productSortType: ProductSortType;
-  authStatus?: boolean;
 }
 
 export const PRODUCT_QUERIES = {
@@ -32,7 +34,6 @@ export const PRODUCT_QUERIES = {
 
 export default function HomeSectionProduct({
   productSortType = 'new',
-  authStatus,
 }: HomeSectionProductProps) {
   const [selectedTab, setSelectedTab] =
     useState<CategoryNameEng>('FACIAL_CARE');
@@ -41,7 +42,7 @@ export default function HomeSectionProduct({
   const { data, isLoading } = useQuery({
     queryKey: PRODUCT_QUERIES.CATEGORY(selectedTab, productSortType),
     queryFn: () =>
-      apiRequest<ApiResponseCategoryNewProductResponse>({
+      apiRequest<ApiResponseNewProductsByCategoryResponse>({
         endPoint: `/api/products/categories/${productSortType}?middleCategory=${selectedTab}&page=0&size=4`,
       }),
   });
@@ -78,7 +79,6 @@ export default function HomeSectionProduct({
           {products?.map((product, index) => (
             <CardProduct
               key={product.productId}
-              authStatus={authStatus}
               brandName={product.brandName}
               productName={product.productName}
               unit={product.unit}

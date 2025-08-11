@@ -1,13 +1,14 @@
 'use client';
 
-import { useQueryClient } from '@tanstack/react-query';
-import { useMutation } from '@tanstack/react-query';
-import Modal from 'components/modal/modal';
 import React from 'react';
-import { useRouter } from 'next/navigation';
-import { useParams } from 'next/navigation';
-import { useSearchParams } from 'next/navigation';
-import { Button } from '@lococo/design-system';
+
+import { useParams, useRouter, useSearchParams } from 'next/navigation';
+
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import Modal from 'components/modal/modal';
+
+import { Button } from '@lococo/design-system/button';
+
 import { deleteReview } from '../../apis';
 import { PRODUCT_DETAIL_QUERY_KEYS } from '../../queries';
 

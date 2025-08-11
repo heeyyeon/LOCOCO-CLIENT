@@ -1,11 +1,13 @@
-import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
+
+import type { Meta, StoryObj } from '@storybook/react-vite';
+
 import {
   Select,
-  SelectTrigger,
-  SelectValue,
   SelectContent,
   SelectItem,
+  SelectTrigger,
+  SelectValue,
 } from './Select';
 
 const meta: Meta<typeof Select> = {
@@ -18,11 +20,11 @@ export default meta;
 const SELECT_OPTIONS = ['apple', 'banana', 'blueberry', 'grapes', 'pineapple'];
 
 const OptionSelectOverflow = () => {
-  const [open, setOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <Select open={open} onOpenChange={() => setOpen(!open)}>
-      <SelectTrigger open={open}>
+    <Select open={isOpen} onOpenChange={() => setIsOpen(!isOpen)}>
+      <SelectTrigger open={isOpen}>
         <SelectValue placeholder="Select a fruit" />
       </SelectTrigger>
       <SelectContent>

@@ -1,24 +1,29 @@
 'use client';
 
-import { useProductLike } from 'components/card/hooks/use-product-like';
-import { formatJPY } from 'utils/formatJPY';
 import Link from 'next/link';
 import { useParams, useRouter } from 'next/navigation';
+
+import { useProductLike } from 'components/card/hooks/use-product-like';
+import { useAuth } from 'hooks/use-auth';
+import { formatJPY } from 'utils/formatJPY';
+
+import { Button } from '@lococo/design-system/button';
+import { IconButton } from '@lococo/design-system/icon-button';
 import {
   Select,
-  SelectTrigger,
-  SelectValue,
   SelectContent,
   SelectItem,
-} from '@lococo/design-system';
-import { Button } from '@lococo/design-system';
-import { IconButton } from '@lococo/design-system';
-import { SvgLikeFill } from '@/icons';
-import { SvgLikeOutline } from '@/icons';
-import { SvgStar } from '@/icons';
-import { SvgPurchase } from '@/icons';
-import { SvgWrite } from '@/icons';
-import { cn } from '@/lib/utils';
+  SelectTrigger,
+  SelectValue,
+} from '@lococo/design-system/select';
+import {
+  SvgLikeFill,
+  SvgLikeOutline,
+  SvgPurchase,
+  SvgStar,
+  SvgWrite,
+} from '@lococo/icons';
+import { cn } from '@lococo/utils';
 
 const MAX_RATING = 5;
 
@@ -37,7 +42,6 @@ interface ProductInfoProps {
   }[];
   oliveYoungUrl: string;
   q10Url: string;
-  authStatus: boolean;
 }
 
 export default function ProductInfo({
@@ -52,32 +56,39 @@ export default function ProductInfo({
   normalPrice,
   oliveYoungUrl,
   q10Url,
-  authStatus,
 }: ProductInfoProps) {
   const params = useParams();
   const router = useRouter();
-  const { likeMutation, isLiked, goToLogin } = useProductLike({
+  const { isLiked, handleLikeClick } = useProductLike({
     initialIsLiked,
   });
-  const handleUserLike = () => {
-    if (authStatus) {
-      likeMutation.mutate(productId);
+  const { isLoggedIn } = useAuth();
+
+  const handleClickReviewBtn = () => {
+    if (isLoggedIn) {
+      router.push(`/product-detail/${params.productId}/write-review`, {
+        scroll: false,
+      });
     } else {
-      goToLogin();
+      router.push('/login');
     }
   };
+
   return (
     <div className="flex flex-col justify-between">
       {/* 상품 정보 */}
       <div className="flex w-[48rem] flex-col gap-[1.2rem]">
         <div className="flex justify-between gap-[0.4rem]">
           <div className="flex flex-col gap-[0.6rem]">
-            <h2 className="jp-title3 font-bold text-gray-700">{brandName}</h2>
+            <p className="jp-title3 font-bold text-gray-700">{brandName}</p>
             <h1 className="jp-head3 font-bold text-gray-800">{productName}</h1>
           </div>
           <IconButton
-            onClick={() => handleUserLike()}
+            onClick={() => handleLikeClick(productId)}
             size="lg"
+            ariaLabel={
+              isLiked ? 'いいねを解除するボタン' : '商品をいいねするボタン'
+            }
             icon={
               isLiked ? (
                 <SvgLikeFill />
@@ -167,15 +178,7 @@ export default function ProductInfo({
           rounded
           size="lg"
           className="jp-title2 font-bold"
-          onClick={() => {
-            if (authStatus) {
-              router.push(`/product-detail/${params.productId}/write-review`, {
-                scroll: false,
-              });
-            } else {
-              goToLogin();
-            }
-          }}
+          onClick={() => handleClickReviewBtn()}
         >
           <SvgWrite /> レビューを書く
         </Button>
