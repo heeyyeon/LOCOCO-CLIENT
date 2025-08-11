@@ -28,9 +28,9 @@ export function SearchBar({
     }
   };
   return (
-    <div className="absolute left-0 right-0 top-[calc(100%+1px)] z-50 mx-auto flex h-[5.2rem] w-full min-w-[1366px] items-center bg-white">
+    <div className="absolute left-0 right-0 top-[calc(100%)] z-50 mx-auto flex h-[5.2rem] w-full min-w-[1366px] flex-col items-center bg-white">
       <div className="h-[1px] w-full border-t-[1px] border-dashed border-pink-500" />
-      <div className="mx-auto flex h-[6.4rem] w-[1366px] items-center border-b-[1px] border-solid border-pink-500">
+      <div className="mx-auto flex h-[5.2rem] w-full items-center border-b-[1px] border-solid border-pink-500">
         <div className="flex h-[6.4rem] w-[1366px] items-center gap-[2rem] px-[11.9rem]">
           <Input
             type="search"

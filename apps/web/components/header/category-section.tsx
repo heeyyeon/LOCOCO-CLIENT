@@ -37,7 +37,7 @@ export function CategorySection({
 
   return (
     <div
-      className="flex h-[6rem] items-center"
+      className="flex h-[6em] items-center"
       onMouseEnter={() => {
         if (isSearching) {
           handleCloseSearchBar();
