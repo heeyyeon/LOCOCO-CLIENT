@@ -9,11 +9,7 @@ import { getReviewList } from '../apis';
 import { PRODUCT_DETAIL_QUERY_KEYS } from '../queries';
 import Review from './review';
 
-interface ReviewListProps {
-  authStatus: boolean;
-}
-
-export default function ReviewList({ authStatus }: ReviewListProps) {
+export default function ReviewList() {
   const { productId } = useParams();
 
   const { data: reviewList, isPending } = useQuery({
@@ -35,7 +31,6 @@ export default function ReviewList({ authStatus }: ReviewListProps) {
       {reviewListData && reviewListData.length > 0 ? (
         reviewListData.map((review) => (
           <Review
-            authStatus={authStatus}
             key={review.reviewId}
             images={review.images}
             writtenTime={review.writtenTime}

@@ -18,7 +18,6 @@ type ProductSortType = 'new' | 'popular';
 
 interface HomeSectionProductProps {
   productSortType: ProductSortType;
-  authStatus?: boolean;
 }
 
 export const PRODUCT_QUERIES = {
@@ -35,7 +34,6 @@ export const PRODUCT_QUERIES = {
 
 export default function HomeSectionProduct({
   productSortType = 'new',
-  authStatus,
 }: HomeSectionProductProps) {
   const [selectedTab, setSelectedTab] =
     useState<CategoryNameEng>('FACIAL_CARE');
@@ -81,7 +79,6 @@ export default function HomeSectionProduct({
           {products?.map((product, index) => (
             <CardProduct
               key={product.productId}
-              authStatus={authStatus}
               brandName={product.brandName}
               productName={product.productName}
               unit={product.unit}

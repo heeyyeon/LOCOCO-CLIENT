@@ -25,11 +25,7 @@ const formatDateToJapanese = (dateString: string): string => {
   return `${year}年${month}月${day}日`;
 };
 
-interface VideoReviewClientPageProps {
-  userStatus: boolean;
-}
-
-export default function ClientPage({ userStatus }: VideoReviewClientPageProps) {
+export default function ClientPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const productId = searchParams.get('productId');
@@ -121,7 +117,6 @@ export default function ClientPage({ userStatus }: VideoReviewClientPageProps) {
         <ReviewOnboardingModal handleCloseOnboarding={handleCloseOnboarding} />
       )}
       <ReviewModalSwiper
-        userStatus={userStatus}
         currentIndex={currentIndex}
         reviews={allReviews}
         onClose={() => router.back()}

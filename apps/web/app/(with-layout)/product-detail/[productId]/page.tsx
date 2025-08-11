@@ -1,8 +1,5 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-
-import { getUserStatus } from 'app/(with-layout)/(home)/utils/getUserStatus';
-
 import { getProductDetail, getReviewList, getYoutubeList } from './apis';
 import ClientPage from './page.client';
 
@@ -12,7 +9,6 @@ export default async function Page({
   params: Promise<{ productId: string }>;
 }) {
   const { productId } = await params;
-  const isUserLogin = await getUserStatus();
 
   let productDetailData;
   let youtubeListData;
@@ -65,7 +61,6 @@ export default async function Page({
   return (
     <>
       <ClientPage
-        authStatus={isUserLogin}
         productData={productDetailData}
         youtubeListData={youtubeListData}
       />
