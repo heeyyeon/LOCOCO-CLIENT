@@ -37,7 +37,7 @@ export default function ReviewModalSwiper({
       direction="vertical"
       slidesPerView={1.2}
       centeredSlides
-      spaceBetween={-window.innerHeight * 0.2}
+      spaceBetween={-window.innerHeight * 0.1}
       modules={[Mousewheel, FreeMode]}
       mousewheel={{
         sensitivity: 0.8,
