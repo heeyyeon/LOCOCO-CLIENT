@@ -3,7 +3,6 @@
 import Link from 'next/link';
 
 import { SvgClose, SvgLogo, SvgSearch } from '@lococo/icons';
-import { cn } from '@lococo/utils';
 
 import { CategorySection } from './category-section';
 import { useHeaderAction } from './hooks/use-header-action';
