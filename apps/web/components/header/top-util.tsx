@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 
 import { apiRequest } from 'app/api/apiRequest';
+import { useAuth } from 'hooks/use-auth';
 
 import {
   SvgHistory,
@@ -40,25 +41,27 @@ const TopUtilItem = ({
   );
 };
 
-export default function TopUtil({ authStatus }: { authStatus: boolean }) {
+export default function TopUtil() {
   const router = useRouter();
   const [loginLabel, setLoginLabel] = useState('ログイン');
 
+  const { isLoggedIn } = useAuth();
+
   useEffect(() => {
-    if (authStatus) {
+    if (isLoggedIn) {
       setLoginLabel('ログアウト');
     } else {
       setLoginLabel('ログイン');
     }
-  }, [authStatus]);
+  }, [isLoggedIn]);
 
   const handleAuthClick = async () => {
-    if (authStatus) {
+    if (isLoggedIn) {
       try {
         await apiRequest({ endPoint: '/api/auth/logout', method: 'POST' });
         router.refresh();
       } catch {
-        alert('ログアウトに失敗しました');
+        console.error('로그아웃 실패');
       }
     } else {
       router.push('/login');
@@ -91,7 +94,7 @@ export default function TopUtil({ authStatus }: { authStatus: boolean }) {
       />
       <TopUtilItem
         icon={
-          authStatus ? (
+          isLoggedIn ? (
             <SvgOpen className="fill-gray-600" size={16} />
           ) : (
             <SvgLogin className="text-gray-600" size={16} />

@@ -1,14 +1,10 @@
 import { MainHeader } from './main-header';
 import TopUtil from './top-util';
 
-interface HeaderProps {
-  authStatus: boolean;
-}
-
-export function Header({ authStatus }: HeaderProps) {
+export default function Header() {
   return (
     <>
-      <TopUtil authStatus={authStatus} />
+      <TopUtil />
       <MainHeader />
     </>
   );
