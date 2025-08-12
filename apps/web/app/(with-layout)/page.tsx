@@ -5,6 +5,7 @@ import { SvgKoreanReview } from '@lococo/icons';
 import HomeBanner from './(home)/components/home-banner';
 import HomeSection from './(home)/components/home-section';
 import HomeUpdateDate from './(home)/components/home-update-date';
+import HomeReviewFallback from './(home)/components/server-wrapper/home-review-fallback';
 import HomeReviewServer from './(home)/components/server-wrapper/home-review-server';
 
 export default function Main() {
@@ -21,7 +22,7 @@ export default function Main() {
           <HomeSection.Header>新作アイテム</HomeSection.Header>
           <HomeSection.Product productSortType="new" />
         </HomeSection>
-        <Suspense fallback={<div>로딩중</div>}>
+        <Suspense fallback={<HomeReviewFallback />}>
           <HomeReviewServer />
         </Suspense>
         <Suspense fallback={<div>로딩중</div>}>
