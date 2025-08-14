@@ -5,6 +5,7 @@ import HomeSection from './(home)/components/home-section';
 import HomeUpdateDate from './(home)/components/home-update-date';
 import HomeReviewFallback from './(home)/components/server-wrapper/home-review-fallback';
 import HomeReviewServer from './(home)/components/server-wrapper/home-review-server';
+import HomeYoutubeFallback from './(home)/components/server-wrapper/home-youtube-fallback';
 import HomeYoutubeServer from './(home)/components/server-wrapper/home-youtube-server';
 
 export default function Main() {
@@ -24,7 +25,7 @@ export default function Main() {
         <Suspense fallback={<HomeReviewFallback />}>
           <HomeReviewServer />
         </Suspense>
-        <Suspense fallback={<div>로딩중</div>}>
+        <Suspense fallback={<HomeYoutubeFallback />}>
           <HomeYoutubeServer />
         </Suspense>
       </div>
