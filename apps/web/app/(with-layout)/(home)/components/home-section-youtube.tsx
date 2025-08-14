@@ -1,8 +1,25 @@
 import { apiRequest } from 'app/api/apiRequest';
-import { ApiResponseListTrendsYoutubeResponse } from 'swagger-codegen/data-contracts';
+import {
+  ApiResponseListTrendsYoutubeResponse,
+  TrendsYoutubeResponse,
+} from 'swagger-codegen/data-contracts';
 import { convertToEmbedUrl, validateYoutubeVideoList } from 'utils/youtube';
 
-export default async function HomeSectionYouTube() {
+interface HomeSectionYouTubeProps {
+  showVideos: {
+    url: string;
+    id: number;
+    topic: string;
+    title: string;
+    popularity: number;
+    viewCount: number;
+    uploadedAt: string;
+  }[];
+}
+
+export default async function HomeSectionYouTube({
+  showVideos,
+}: HomeSectionYouTubeProps) {
   try {
     const response = await apiRequest<ApiResponseListTrendsYoutubeResponse>({
       endPoint: '/api/youtube/trends',
