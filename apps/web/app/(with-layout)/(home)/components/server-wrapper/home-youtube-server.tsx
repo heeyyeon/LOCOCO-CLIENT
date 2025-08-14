@@ -8,6 +8,16 @@ import { SvgKoreanReview } from '@lococo/icons';
 
 import HomeSection from '../home-section';
 
+interface VideoWithAllProps {
+  url: string;
+  id: number;
+  topic: string;
+  title: string;
+  popularity: number;
+  viewCount: number;
+  uploadedAt: string;
+}
+
 export default async function HomeYoutubeServer() {
   try {
     const response = await apiRequest<ApiResponseListTrendsYoutubeResponse>({
@@ -25,7 +35,7 @@ export default async function HomeYoutubeServer() {
       .map((video) => video.url || '')
       .filter((url) => url);
     const validatedVideoUrls = await validateYoutubeVideoList(videoUrls, 25);
-    const showVideos = videos
+    const showVideos: VideoWithAllProps[] = videos
       .map((video, index) => ({
         ...video,
         url: validatedVideoUrls[index] || video.url,
@@ -41,6 +51,6 @@ export default async function HomeYoutubeServer() {
       </HomeSection>
     );
   } catch {
-    return <div></div>;
+    return <div>영상 불러오기 실패</div>;
   }
 }

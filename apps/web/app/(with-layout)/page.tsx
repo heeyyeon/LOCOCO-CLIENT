@@ -1,12 +1,11 @@
 import { Suspense } from 'react';
 
-import { SvgKoreanReview } from '@lococo/icons';
-
 import HomeBanner from './(home)/components/home-banner';
 import HomeSection from './(home)/components/home-section';
 import HomeUpdateDate from './(home)/components/home-update-date';
 import HomeReviewFallback from './(home)/components/server-wrapper/home-review-fallback';
 import HomeReviewServer from './(home)/components/server-wrapper/home-review-server';
+import HomeYoutubeServer from './(home)/components/server-wrapper/home-youtube-server';
 
 export default function Main() {
   return (
@@ -26,13 +25,7 @@ export default function Main() {
           <HomeReviewServer />
         </Suspense>
         <Suspense fallback={<div>로딩중</div>}>
-          <HomeSection>
-            <HomeSection.Header>
-              {<SvgKoreanReview width={40} height={29} />}
-              人気のKビューティーYouTube動画
-            </HomeSection.Header>
-            <HomeSection.YouTube />
-          </HomeSection>
+          <HomeYoutubeServer />
         </Suspense>
       </div>
     </div>
