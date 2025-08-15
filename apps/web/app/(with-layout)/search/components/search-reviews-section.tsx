@@ -1,71 +1,64 @@
 'use client';
 
-import { useRouter, useSearchParams } from 'next/navigation';
-
-import CardReview from 'components/card/card-review';
-import CardSkeletonWrapper from 'components/card/card-skeleton';
+import { useRouter } from 'next/navigation';
 
 import {
   ImageReviewResponse,
   VideoReviewResponse,
-} from '../../../api/review-response';
+} from '@typescript-swagger/data-contracts';
+import CardReview from 'components/card/card-review';
+import CardSkeletonWrapper from 'components/card/card-skeleton';
+import { CategoryNameEng, CategoryOptionEng } from 'types/category';
+
 import useReviewSectionData from '../hook/use-review-section';
 import NotFoundSection from './not-found-section';
 
-function VideoReviewSection() {
-  const { reviewData, isLoading, hasError } = useReviewSectionData('VIDEO');
-  const router = useRouter();
-  const searchParams = useSearchParams();
-  const keyword = searchParams.get('keyword');
+interface SearchReviewSectionProps {
+  keyword?: string;
+  middleCategory?: CategoryNameEng;
+  subCategory?: CategoryOptionEng;
+  page?: number;
+  size?: number;
+  handleCardClick: (reviewId: number) => void;
+}
 
-  const middleCategory = searchParams.get('middleCategory');
-  const subCategory = searchParams.get('subCategory');
+function VideoReviewSection({
+  keyword,
+  middleCategory,
+  subCategory,
+  page,
+  size,
+  handleCardClick,
+}: SearchReviewSectionProps) {
+  const { data, isPending } = useReviewSectionData({
+    keyword,
+    middleCategory: middleCategory,
+    subCategory: subCategory,
+    reviewType: 'VIDEO',
+    page,
+    size,
+  });
 
-  const videoReviews: VideoReviewResponse[] = reviewData.map((review) => ({
-    reviewId: review.reviewId,
-    brandName: review.brandName,
-    productName: review.productName,
-    likeCount: review.likeCount,
-    url: review.url || '',
-  }));
-
-  const handleCardClick = (reviewId: number) => {
-    if (keyword) {
-      router.push(`/review-modal/${reviewId}/search/video?keyword=${keyword}`);
-    } else {
-      router.push(
-        `/review-modal/${reviewId}/search/video?middleCategory=${middleCategory}&subCategory=${subCategory}`
-      );
-    }
-  };
-
-  if (isLoading) {
-    return (
-      <div className="flex max-w-[1366px] flex-col gap-[3.2rem] pt-[3.2rem]">
-        <p className="jp-head3 font-bold text-gray-700">動画レビュー</p>
-        <CardSkeletonWrapper type="REVIEW_VIDEO" />
-      </div>
-    );
-  }
-
-  if (hasError) {
-    return (
-      <div className="flex max-w-[1366px] flex-col gap-[3.2rem] pt-[3.2rem]">
-        <p className="jp-head3 font-bold text-gray-700">動画レビュー</p>
-        <div>데이터를 불러오는 중 오류가 발생했습니다.</div>
-      </div>
-    );
-  }
+  const reviews = data?.data.reviews;
 
   return (
     <div className="flex max-w-[1366px] flex-col gap-[3.2rem] pt-[3.2rem]">
       <p className="jp-head3 font-bold text-gray-700">動画レビュー</p>
-      {videoReviews.length === 0 ? (
+
+      {isPending ? (
+        <CardSkeletonWrapper type="REVIEW_VIDEO" />
+      ) : !reviews || reviews.length === 0 ? (
         <NotFoundSection variant="review" />
       ) : (
         <div className="grid max-w-[1366px] grid-cols-4 gap-[2.4rem]">
-          {videoReviews.map(
-            ({ reviewId, brandName, productName, likeCount, url }) => (
+          {reviews.map(
+            ({
+              reviewId,
+              brandName,
+              productName,
+              likeCount,
+              url,
+            }: VideoReviewResponse) => (
               <CardReview
                 key={reviewId}
                 type="video"
@@ -84,59 +77,42 @@ function VideoReviewSection() {
   );
 }
 
-function ImageReviewSection() {
-  const { reviewData, isLoading, hasError } = useReviewSectionData('IMAGE');
-  const router = useRouter();
-  const searchParams = useSearchParams();
-  const keyword = searchParams.get('keyword');
-  const middleCategory = searchParams.get('middleCategory');
-  const subCategory = searchParams.get('subCategory');
+function ImageReviewSection({
+  keyword,
+  middleCategory,
+  subCategory,
+  page,
+  size,
+  handleCardClick,
+}: SearchReviewSectionProps) {
+  const { data, isPending } = useReviewSectionData({
+    keyword,
+    middleCategory: middleCategory,
+    subCategory: subCategory,
+    reviewType: 'IMAGE',
+    page,
+    size,
+  });
 
-  const imageReviews: ImageReviewResponse[] = reviewData.map((review) => ({
-    reviewId: review.reviewId,
-    brandName: review.brandName,
-    productName: review.productName,
-    likeCount: review.likeCount,
-    url: review.url || '',
-  }));
-
-  const handleCardClick = (reviewId: number) => {
-    if (keyword) {
-      router.push(`/review-modal/${reviewId}/search/image?keyword=${keyword}`);
-    } else {
-      router.push(
-        `/review-modal/${reviewId}/search/image?middleCategory=${middleCategory}&subCategory=${subCategory}`
-      );
-    }
-  };
-
-  if (isLoading) {
-    return (
-      <div className="flex max-w-[1366px] flex-col gap-[3.2rem] pt-[3.2rem]">
-        <p className="jp-head3 font-bold text-gray-700">写真付きレビュー</p>
-        <CardSkeletonWrapper type="REVIEW_IMAGE" />
-      </div>
-    );
-  }
-
-  if (hasError) {
-    return (
-      <div className="flex max-w-[1366px] flex-col gap-[3.2rem] pt-[3.2rem]">
-        <p className="jp-head3 font-bold text-gray-700">写真付きレビュー</p>
-        <div>데이터를 불러오는 중 오류가 발생했습니다.</div>
-      </div>
-    );
-  }
+  const reviews = data?.data.reviews;
 
   return (
     <div className="flex max-w-[1366px] flex-col gap-[3.2rem] pt-[3.2rem]">
       <p className="jp-head3 font-bold text-gray-700">写真付きレビュー</p>
-      {imageReviews.length === 0 ? (
+      {isPending ? (
+        <CardSkeletonWrapper type="REVIEW_IMAGE" />
+      ) : !reviews || reviews.length === 0 ? (
         <NotFoundSection variant="review" />
       ) : (
         <div className="grid max-w-[1366px] grid-cols-4 gap-[2.4rem]">
-          {imageReviews.map(
-            ({ reviewId, brandName, productName, likeCount, url }) => (
+          {reviews.map(
+            ({
+              reviewId,
+              brandName,
+              productName,
+              likeCount,
+              url,
+            }: ImageReviewResponse) => (
               <CardReview
                 key={reviewId}
                 type="image"
@@ -155,11 +131,41 @@ function ImageReviewSection() {
   );
 }
 
-export default function SearchReviewSection() {
+export default function SearchReviewSection({
+  keyword,
+  middleCategory,
+  subCategory,
+  page,
+  size,
+}: SearchReviewSectionProps) {
+  const router = useRouter();
+  const handleCardClick = (reviewId: number) => {
+    if (keyword) {
+      router.push(`/review-modal/${reviewId}/search/video?keyword=${keyword}`);
+    } else {
+      router.push(
+        `/review-modal/${reviewId}/search/video?middleCategory=${middleCategory}&subCategory=${subCategory}`
+      );
+    }
+  };
   return (
     <section className="mx-auto flex w-[1366px] flex-col content-center px-[11.9rem] pb-[12rem] pt-0">
-      <VideoReviewSection />
-      <ImageReviewSection />
+      <VideoReviewSection
+        keyword={keyword}
+        middleCategory={middleCategory}
+        subCategory={subCategory}
+        page={page}
+        size={size}
+        handleCardClick={handleCardClick}
+      />
+      <ImageReviewSection
+        keyword={keyword}
+        middleCategory={middleCategory}
+        subCategory={subCategory}
+        page={page}
+        size={size}
+        handleCardClick={handleCardClick}
+      />
     </section>
   );
 }
