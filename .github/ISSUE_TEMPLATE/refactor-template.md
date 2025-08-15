@@ -1,7 +1,7 @@
 ---
 name: Refactor Template
 about: "\U0001F6E0️ 변경사항이 생긴 경우 사용해주세요"
-title: ''
+title: 'LCO-00'
 labels: ''
 assignees: ''
 ---
