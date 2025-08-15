@@ -10,8 +10,11 @@ export const getUrl = (
   if (keyword) {
     return `/search?keyword=${keyword}&searchType=${searchType}`;
   }
+  if (selectedOption === 'ALL') {
+    selectedOption = '';
+  }
 
   return `/search?middleCategory=${selectedCategoryKey}${
-    selectedOption !== 'ALL' ? `&subCategory=${selectedOption}` : ''
+    selectedOption ? `&subCategory=${selectedOption}` : ''
   }&searchType=${searchType}`;
 };
