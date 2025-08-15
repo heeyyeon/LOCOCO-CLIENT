@@ -19,7 +19,6 @@ interface SearchReviewSectionProps {
   subCategory?: CategoryOptionEng;
   page?: number;
   size?: number;
-  handleCardClick: (reviewId: number) => void;
 }
 
 function VideoReviewSection({
@@ -28,7 +27,6 @@ function VideoReviewSection({
   subCategory,
   page,
   size,
-  handleCardClick,
 }: SearchReviewSectionProps) {
   const { data, isPending } = useReviewSectionData({
     keyword,
@@ -38,6 +36,16 @@ function VideoReviewSection({
     page,
     size,
   });
+  const router = useRouter();
+  const handleCardClick = (reviewId: number) => {
+    if (keyword) {
+      router.push(`/review-modal/${reviewId}/search/video?keyword=${keyword}`);
+    } else {
+      router.push(
+        `/review-modal/${reviewId}/search/video?middleCategory=${middleCategory}&subCategory=${subCategory}`
+      );
+    }
+  };
 
   const reviews = data?.data.reviews;
 
@@ -83,7 +91,6 @@ function ImageReviewSection({
   subCategory,
   page,
   size,
-  handleCardClick,
 }: SearchReviewSectionProps) {
   const { data, isPending } = useReviewSectionData({
     keyword,
@@ -93,6 +100,16 @@ function ImageReviewSection({
     page,
     size,
   });
+  const router = useRouter();
+  const handleCardClick = (reviewId: number) => {
+    if (keyword) {
+      router.push(`/review-modal/${reviewId}/search/image?keyword=${keyword}`);
+    } else {
+      router.push(
+        `/review-modal/${reviewId}/search/image?middleCategory=${middleCategory}&subCategory=${subCategory}`
+      );
+    }
+  };
 
   const reviews = data?.data.reviews;
 
@@ -138,16 +155,6 @@ export default function SearchReviewSection({
   page,
   size,
 }: SearchReviewSectionProps) {
-  const router = useRouter();
-  const handleCardClick = (reviewId: number) => {
-    if (keyword) {
-      router.push(`/review-modal/${reviewId}/search/video?keyword=${keyword}`);
-    } else {
-      router.push(
-        `/review-modal/${reviewId}/search/video?middleCategory=${middleCategory}&subCategory=${subCategory}`
-      );
-    }
-  };
   return (
     <section className="mx-auto flex w-[1366px] flex-col content-center px-[11.9rem] pb-[12rem] pt-0">
       <VideoReviewSection
@@ -156,7 +163,6 @@ export default function SearchReviewSection({
         subCategory={subCategory}
         page={page}
         size={size}
-        handleCardClick={handleCardClick}
       />
       <ImageReviewSection
         keyword={keyword}
@@ -164,7 +170,6 @@ export default function SearchReviewSection({
         subCategory={subCategory}
         page={page}
         size={size}
-        handleCardClick={handleCardClick}
       />
     </section>
   );
