@@ -37,20 +37,20 @@ export default function ReviewModalContent({
     );
   }
 
-  if (listError || allReviews.length === 0) {
-    return <div>리뷰 목록을 불러올 수 없습니다.</div>;
-  }
-
-  if (currentIndex === -1) {
-    return <div>리뷰를 찾을 수 없습니다.</div>;
-  }
-
   if (detailQueries.some((q) => q.isLoading)) {
     return (
       <div className="flex min-h-screen w-full items-center justify-center bg-black">
         <LoadingSvg />
       </div>
     );
+  }
+
+  if (listError || allReviews.length === 0) {
+    return <div>리뷰 목록을 불러올 수 없습니다.</div>;
+  }
+
+  if (currentIndex === -1) {
+    return <div>리뷰를 찾을 수 없습니다.</div>;
   }
 
   return (
