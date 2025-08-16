@@ -16,6 +16,11 @@ export function MainHeader() {
     handleChangeSearchValue,
     handleSearchIconClick,
     handleCloseSearchBar,
+    selectedCategory,
+    selectedOption,
+    handleSelectCategory,
+    handleSelectOption,
+    handleMouseLeaveCategory,
   } = useHeaderAction();
 
   return (
@@ -28,6 +33,11 @@ export function MainHeader() {
           <CategorySection
             handleCloseSearchBar={handleCloseSearchBar}
             isSearching={isSearching}
+            selectedCategory={selectedCategory}
+            selectedOption={selectedOption}
+            handleSelectCategory={handleSelectCategory}
+            handleSelectOption={handleSelectOption}
+            handleMouseLeaveCategory={handleMouseLeaveCategory}
           />
         </div>
 

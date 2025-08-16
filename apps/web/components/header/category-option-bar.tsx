@@ -13,7 +13,6 @@ interface OptionBarProps {
   selectedCategoryKey: CategoryNameEng;
   selectedOption: CategoryOptionEng | null;
   handleSelectOption: (option: CategoryOptionEng) => void;
-  handleMouseLeaveCategory: () => void;
 }
 export function CategoryOptionBar({
   options,
