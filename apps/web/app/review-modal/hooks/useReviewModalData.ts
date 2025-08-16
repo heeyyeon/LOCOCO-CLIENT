@@ -10,13 +10,13 @@ import {
 } from 'app/api/review-response';
 import { REVIEW_KEYS } from 'constants/query-key';
 import dayjs from 'dayjs';
-import { CategoryNameEng, CategoryOptionEng } from 'types/category';
 import {
   ApiResponseImageReviewDetailResponse,
   ApiResponseVideoReviewDetailResponse,
   ImageReviewDetailResponse,
   VideoReviewDetailResponse,
-} from 'typescript-swagger-codegen/data-contracts';
+} from 'swagger-codegen/data-contracts';
+import { CategoryNameEng, CategoryOptionEng } from 'types/category';
 import { isValidCategoryKey, isValidCategoryOption } from 'utils/category';
 
 import { ReviewDetail } from '../types';
