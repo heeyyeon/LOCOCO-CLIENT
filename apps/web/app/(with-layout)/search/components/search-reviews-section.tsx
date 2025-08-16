@@ -15,8 +15,8 @@ import NotFoundSection from './not-found-section';
 
 interface SearchReviewSectionProps {
   keyword?: string;
-  middleCategory?: CategoryNameEng;
-  subCategory?: CategoryOptionEng;
+  middleCategory?: CategoryNameEng | null;
+  subCategory?: CategoryOptionEng | null;
   page?: number;
   size?: number;
 }
@@ -30,8 +30,8 @@ function VideoReviewSection({
 }: SearchReviewSectionProps) {
   const { data, isPending } = useReviewSectionData({
     keyword,
-    middleCategory: middleCategory,
-    subCategory: subCategory,
+    middleCategory,
+    subCategory,
     reviewType: 'VIDEO',
     page,
     size,
@@ -94,8 +94,8 @@ function ImageReviewSection({
 }: SearchReviewSectionProps) {
   const { data, isPending } = useReviewSectionData({
     keyword,
-    middleCategory: middleCategory,
-    subCategory: subCategory,
+    middleCategory,
+    subCategory,
     reviewType: 'IMAGE',
     page,
     size,

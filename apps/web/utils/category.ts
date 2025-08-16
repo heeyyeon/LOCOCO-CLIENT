@@ -1,6 +1,5 @@
-import { CATEGORY_NAME, CATEGORY_OPTIONS } from 'constants/category';
+import { CATEGORY_OPTIONS } from 'constants/category';
 import type {
-  CategoryName,
   CategoryNameEng,
   CategoryOption,
   CategoryOptionEng,
@@ -14,8 +13,9 @@ function isCategoryKey(key: string): key is CategoryNameEng {
 /** CategoryOptionEng 타입인지 확인하는 타입 가드 */
 function isCategoryOptionKey(
   key: string,
-  category: CategoryNameEng
+  category: CategoryNameEng | null
 ): key is CategoryOptionEng {
+  if (!category) return false;
   return key in CATEGORY_OPTIONS[category];
 }
 
@@ -36,7 +36,7 @@ export function isValidCategoryKey(value: string): value is CategoryNameEng {
  */
 export function isValidCategoryOption(
   value: string,
-  categoryKey: CategoryNameEng
+  categoryKey: CategoryNameEng | null
 ): value is CategoryOptionEng {
   return value !== '' && isCategoryOptionKey(value, categoryKey);
 }
@@ -58,5 +58,3 @@ export function getOptionLabel(
 
   return options[optionKey];
 }
-
-

@@ -12,8 +12,8 @@ import NotFoundSection from './not-found-section';
 
 interface UseProductSectionDataProps {
   keyword?: string;
-  middleCategory?: CategoryNameEng;
-  subCategory?: CategoryOptionEng;
+  middleCategory?: CategoryNameEng | null;
+  subCategory?: CategoryOptionEng | null;
   page?: number;
   size?: number;
 }
@@ -48,20 +48,31 @@ export default function SearchProductsSection({
         {isPending ? (
           <CardSkeletonWrapper type="PRODUCT" />
         ) : (
-          products?.map((p: ProductListItemResponse) => (
-            <CardProduct
-              key={p.productId}
-              brandName={p.brandName}
-              productName={p.productName}
-              unit={p.unit}
-              productId={p.productId}
-              isLiked={p.isLiked}
-              rating={p.rating}
-              reviewCount={p.reviewCount}
-              imageUrl={p.url}
-              handleCardClick={handleCardClick}
-            />
-          ))
+          products?.map(
+            ({
+              productId,
+              brandName,
+              productName,
+              unit,
+              isLiked,
+              rating,
+              reviewCount,
+              url,
+            }: ProductListItemResponse) => (
+              <CardProduct
+                key={productId}
+                brandName={brandName}
+                productName={productName}
+                unit={unit}
+                productId={productId}
+                isLiked={isLiked}
+                rating={rating}
+                reviewCount={reviewCount}
+                imageUrl={url}
+                handleCardClick={handleCardClick}
+              />
+            )
+          )
         )}
       </div>
     </section>

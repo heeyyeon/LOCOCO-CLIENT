@@ -2,7 +2,8 @@
 
 import { useRouter, useSearchParams } from 'next/navigation';
 
-import { CategoryNameEng, CategoryOptionEng } from 'types/category';
+import { isValidCategoryKey, isValidCategoryOption } from 'utils/category';
+import { isValidSearchType } from 'utils/option';
 
 import { SearchOption } from '../../../constants/option';
 import OptionSelector from './components/option-selector';
@@ -14,15 +15,21 @@ export default function SearchPageClient() {
   const searchParams = useSearchParams();
   const router = useRouter();
 
-  const middleCategory = searchParams.get(
-    'middleCategory'
-  ) as CategoryNameEng | null;
-  const subCategory = searchParams.get(
-    'subCategory'
-  ) as CategoryOptionEng | null;
-  const searchTypeParam = searchParams.get('searchType');
-  const searchType: SearchOption =
-    (searchTypeParam as SearchOption) || 'PRODUCT';
+  const middleCategoryParam = searchParams.get('middleCategory') || '';
+  const middleCategory = isValidCategoryKey(middleCategoryParam)
+    ? middleCategoryParam
+    : null;
+
+  const subCategoryParam = searchParams.get('subCategory') || '';
+  const subCategory = isValidCategoryOption(subCategoryParam, middleCategory)
+    ? subCategoryParam
+    : null;
+
+  const searchTypeParam = searchParams.get('searchType') || '';
+  const searchType = isValidSearchType(searchTypeParam)
+    ? searchTypeParam
+    : 'PRODUCT';
+
   const keyword = searchParams.get('keyword') || '';
 
   const PAGE_SIZE = 8;
@@ -38,33 +45,12 @@ export default function SearchPageClient() {
     router.push(`/search?${params.toString()}`);
   };
 
-  const tabRender = {
-    PRODUCT: (
-      <SearchProductsSection
-        keyword={keyword}
-        middleCategory={middleCategory || undefined}
-        subCategory={subCategory || undefined}
-        page={PAGE_NUMBER}
-        size={PAGE_SIZE}
-      />
-    ),
-    REVIEW: (
-      <SearchReviewSection
-        keyword={keyword}
-        middleCategory={middleCategory || undefined}
-        subCategory={subCategory || undefined}
-        page={PAGE_NUMBER}
-        size={PAGE_SIZE}
-      />
-    ),
-  }[searchType];
-
   return (
     <div className="flex min-h-screen w-full flex-col items-start">
       <div className="flex flex-col items-start self-stretch"></div>
       <SearchBreadCrumbSection
-        middleCategory={middleCategory || ''}
-        subCategory={subCategory || ''}
+        middleCategory={middleCategory}
+        subCategory={subCategory}
       />
       {keyword && (
         <div className="mx-auto w-[1366px] px-[11.9rem] py-[6rem]">
@@ -78,10 +64,27 @@ export default function SearchPageClient() {
         </div>
       )}
       <OptionSelector
-        selectedTab={(searchTypeParam as SearchOption) || 'PRODUCT'}
+        selectedTab={searchType}
         handleClickTab={handleClickTab}
       />
-      {tabRender}
+      {searchType === 'PRODUCT' && (
+        <SearchProductsSection
+          keyword={keyword}
+          middleCategory={middleCategory}
+          subCategory={subCategory}
+          page={PAGE_NUMBER}
+          size={PAGE_SIZE}
+        />
+      )}
+      {searchType === 'REVIEW' && (
+        <SearchReviewSection
+          keyword={keyword}
+          middleCategory={middleCategory}
+          subCategory={subCategory}
+          page={PAGE_NUMBER}
+          size={PAGE_SIZE}
+        />
+      )}
     </div>
   );
 }

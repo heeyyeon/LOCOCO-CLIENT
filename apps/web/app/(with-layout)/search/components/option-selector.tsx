@@ -17,7 +17,7 @@ export default function OptionSelector({
   return (
     <div className="mx-auto flex w-[1366px] items-center px-[11.9rem]">
       {Object.keys(SEARCH_OPTION).map((key) => {
-        const value = key as SearchOption;
+        const value = key as keyof typeof SEARCH_OPTION;
         const isSelected = selectedTab === value;
         return (
           <Button

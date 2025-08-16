@@ -9,8 +9,8 @@ import { ApiResponseSearchProductsResponse } from '../types/search';
 
 interface UseProductSectionDataProps {
   keyword?: string;
-  middleCategory?: CategoryNameEng;
-  subCategory?: CategoryOptionEng;
+  middleCategory?: CategoryNameEng | null;
+  subCategory?: CategoryOptionEng | null;
   page?: number;
   size?: number;
   enabled?: boolean;
