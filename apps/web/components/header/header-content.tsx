@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
 import { apiRequest } from 'app/api/apiRequest';
+import { useAuth } from 'hooks/use-auth';
 import type { CategoryNameEng, CategoryOptionEng } from 'types/category';
 import { CategoryMetadata, getOptionLabel } from 'utils/category';
 
@@ -78,20 +79,22 @@ export function TopUtilItem({
     </button>
   );
 }
-export function TopUtil({ authStatus }: { authStatus: boolean }) {
+export function TopUtil() {
   const router = useRouter();
   const [loginLabel, setLoginLabel] = useState('ログイン');
   const { headerMarginTop } = useScrollHeader();
+  const { isLoggedIn } = useAuth();
+
   useEffect(() => {
-    if (authStatus) {
+    if (isLoggedIn) {
       setLoginLabel('ログアウト');
     } else {
       setLoginLabel('ログイン');
     }
-  }, [authStatus]);
+  }, [isLoggedIn]);
 
   const handleAuthClick = async () => {
-    if (authStatus) {
+    if (isLoggedIn) {
       try {
         await apiRequest({ endPoint: '/api/auth/logout', method: 'POST' });
         router.refresh();
@@ -130,7 +133,7 @@ export function TopUtil({ authStatus }: { authStatus: boolean }) {
       />
       <TopUtilItem
         icon={
-          authStatus ? (
+          isLoggedIn ? (
             <SvgOpen className="fill-gray-600" size={16} />
           ) : (
             <SvgLogin className="text-gray-600" size={16} />
@@ -163,7 +166,7 @@ export function CategoryBar({
       onMouseLeave={handleMouseLeaveCategory}
     >
       <div className="mx-auto flex h-[6.4rem] w-[1366px] items-center gap-[2rem] px-[11.9rem]">
-        <Link href="/">
+        <Link href="/" aria-label="ロココホームにアクセス">
           <SvgLogo className="h-[2.7rem] w-[16rem] shrink-0" />
         </Link>
 

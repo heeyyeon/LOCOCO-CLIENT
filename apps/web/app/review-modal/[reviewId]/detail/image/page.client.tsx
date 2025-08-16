@@ -4,11 +4,7 @@ import { useRouter } from 'next/navigation';
 
 import ReviewModalContent from '../../../components/modal-structure/ReviewModalContent';
 
-interface ImageReviewClientPageProps {
-  userStatus: boolean;
-}
-
-export default function ClientPage({ userStatus }: ImageReviewClientPageProps) {
+export default function ClientPage() {
   const router = useRouter();
 
   const handleClose = () => {
@@ -16,11 +12,6 @@ export default function ClientPage({ userStatus }: ImageReviewClientPageProps) {
   };
 
   return (
-    <ReviewModalContent
-      userStatus={userStatus}
-      source="detail"
-      type="image"
-      onClose={handleClose}
-    />
+    <ReviewModalContent source="detail" type="image" onClose={handleClose} />
   );
 }

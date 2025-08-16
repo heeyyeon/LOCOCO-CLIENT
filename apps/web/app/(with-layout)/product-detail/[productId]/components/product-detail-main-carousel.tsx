@@ -20,10 +20,12 @@ import './main-carousel.css';
 
 interface CarouselProps {
   imageUrlList: string[];
+  productName: string;
 }
 
 export default function ProductDetailMainCarousel({
   imageUrlList,
+  productName,
 }: CarouselProps) {
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);
   const mainSwiperRef = useRef<SwiperType | null>(null);
@@ -47,7 +49,7 @@ export default function ProductDetailMainCarousel({
             <SwiperSlide key={imageUrl}>
               <Image
                 src={imageUrl}
-                alt="swiper thumbnail"
+                alt={`${productName} thumbnail`}
                 width={60}
                 height={60}
                 className="h-full w-full object-cover"
@@ -63,7 +65,7 @@ export default function ProductDetailMainCarousel({
                 : '[&>svg]:fill-gray-800'
             )}
             onClick={() => mainSwiperRef.current?.slidePrev()}
-            aria-label="이전 이미지"
+            aria-label="前の画像"
             icon={<SvgArrowUp />}
           />
           <IconButton
@@ -73,7 +75,7 @@ export default function ProductDetailMainCarousel({
                 : '[&>svg]:fill-gray-800'
             )}
             onClick={() => mainSwiperRef.current?.slideNext()}
-            aria-label="다음 이미지"
+            aria-label="次の画像"
             icon={<SvgArrowDown />}
           />
         </div>
@@ -101,7 +103,7 @@ export default function ProductDetailMainCarousel({
             <SwiperSlide key={imageUrl}>
               <Image
                 src={imageUrl}
-                alt="swiper main"
+                alt={`${productName}`}
                 width={468}
                 height={468}
                 className="h-full w-full object-contain"

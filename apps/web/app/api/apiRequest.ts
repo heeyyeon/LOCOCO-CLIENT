@@ -1,4 +1,4 @@
-import { getCookie } from 'utils/cookie';
+import { getServerCookie } from 'utils/action/cookie';
 
 type RequestMethod = 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH';
 
@@ -28,7 +28,7 @@ export const apiRequest = async <T = unknown>({
   headers,
   params,
 }: ApiRequestProps): Promise<T> => {
-  const accessToken = await getCookie('AccessToken');
+  const accessToken = await getServerCookie('AccessToken');
   try {
     // 쿼리 파라미터가 있으면 URL에 추가
     let requestUrl = `${SERVER_API_BASE_URL}${endPoint}`;

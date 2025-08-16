@@ -14,14 +14,12 @@ interface ReviewModalSwiperProps {
   currentIndex: number;
   reviews: ReviewDetail[];
   onClose: () => void;
-  userStatus: boolean;
 }
 
 export default function ReviewModalSwiper({
   currentIndex,
   reviews,
   onClose,
-  userStatus,
 }: ReviewModalSwiperProps) {
   const [swiper, setSwiper] = useState<SwiperCore>();
 
@@ -79,7 +77,6 @@ export default function ReviewModalSwiper({
             positiveComment={review.positiveComment}
             negativeComment={review.negativeComment}
             productImageUrl={review.productImageUrl}
-            userStatus={userStatus}
             onClose={onClose}
           />
         </SwiperSlide>

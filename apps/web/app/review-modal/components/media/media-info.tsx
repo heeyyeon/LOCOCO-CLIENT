@@ -2,6 +2,8 @@
 
 import { useRouter } from 'next/navigation';
 
+import { useAuth } from 'hooks/use-auth';
+
 import { Avatar } from '@lococo/design-system/avatar';
 import { ReactionToggle } from '@lococo/design-system/reaction-toggle';
 import { SvgGoodFill, SvgGoodOutline, SvgSend } from '@lococo/icons';
@@ -17,7 +19,6 @@ interface MediaInfoProps {
   date: string;
   likeCount: number;
   isLiked?: boolean;
-  userStatus: boolean;
 }
 
 export default function MediaInfo({
@@ -26,13 +27,13 @@ export default function MediaInfo({
   date,
   likeCount: initialLikeCount,
   isLiked: initialIsLiked = false,
-  userStatus,
 }: MediaInfoProps) {
   const { likeMutation, isLiked, likeCount } = useReviewLikeToggle(
     initialIsLiked,
     initialLikeCount
   );
   const router = useRouter();
+  const { isLoggedIn } = useAuth();
 
   return (
     <div className="absolute bottom-0 left-0 z-10 flex h-[16rem] w-full items-center justify-between rounded-bl-xl bg-gradient-to-t from-black/60 to-transparent p-[1.6rem]">
@@ -49,7 +50,7 @@ export default function MediaInfo({
           variant="vertical"
           pressed={isLiked}
           onPressedChange={() => {
-            if (userStatus) {
+            if (isLoggedIn) {
               likeMutation.mutate(reviewId);
             } else {
               router.push('/login');

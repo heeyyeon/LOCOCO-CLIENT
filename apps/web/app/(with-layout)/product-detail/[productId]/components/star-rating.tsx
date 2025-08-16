@@ -1,3 +1,4 @@
+import { useAuth } from 'hooks/use-auth';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
 
@@ -12,21 +13,20 @@ interface StarRatingProps {
   reviewCount: number;
   rating: number;
   starPercent: ScorePercentData[];
-  authStatus: boolean;
 }
 
 export default function StarRating({
   reviewCount,
   rating,
   starPercent,
-  authStatus,
 }: StarRatingProps) {
   const params = useParams();
+  const { isLoggedIn } = useAuth();
   return (
     <div className="flex flex-col gap-[3.2rem]">
-      <h3 className="text-jp-head2 inline-flex items-center gap-[1.2rem] font-bold">
+      <h2 className="text-jp-head2 inline-flex items-center gap-[1.2rem] font-bold">
         <SvgJapaneseReview size={24} className="fill-red" /> 日本人レビュー
-      </h3>
+      </h2>
 
       <div className="flex h-[25.6rem] w-full items-center justify-between rounded-[1.2rem] bg-gray-100 px-[8rem] py-[4rem]">
         <div className="flex gap-[2rem]">
@@ -60,7 +60,7 @@ export default function StarRating({
         {/* TODO: 랜딩 배포 이후 라우팅 URL 추가 */}
         <Link
           href={
-            authStatus
+            isLoggedIn
               ? `/product-detail/${params.productId}/write-review`
               : '/login'
           }

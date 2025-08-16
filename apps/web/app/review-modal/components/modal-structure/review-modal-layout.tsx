@@ -27,7 +27,6 @@ export interface ReviewModallayoutProps {
   productImageUrl: string;
   onClose?: () => void;
   children?: React.ReactNode;
-  userStatus: boolean;
 }
 
 export default function ReviewModallayout({
@@ -46,7 +45,6 @@ export default function ReviewModallayout({
   productImageUrl,
   isReceipt,
   onClose,
-  userStatus,
   children,
 }: ReviewModallayoutProps) {
   return (
@@ -56,7 +54,6 @@ export default function ReviewModallayout({
         <div className="relative flex w-[55.2rem] flex-col">
           <MediaViewer mediaList={mediaList} />
           <MediaInfo
-            userStatus={userStatus}
             reviewId={id}
             user={user}
             date={user.uploadAt}

@@ -8,7 +8,6 @@ import { useReviewModalData } from '../../hooks/useReviewModalData';
 import { ReviewModalSwiper, ReviewOnboardingModal } from './';
 
 interface ReviewModalContentProps {
-  userStatus: boolean;
   source: 'home' | 'detail' | 'search';
   type: 'image' | 'video';
   productId?: number;
@@ -16,7 +15,6 @@ interface ReviewModalContentProps {
 }
 
 export default function ReviewModalContent({
-  userStatus,
   source,
   type,
   productId,
@@ -61,7 +59,6 @@ export default function ReviewModalContent({
         <ReviewOnboardingModal handleCloseOnboarding={handleCloseOnboarding} />
       )}
       <ReviewModalSwiper
-        userStatus={userStatus}
         currentIndex={currentIndex}
         reviews={allReviews}
         onClose={onClose || (() => {})}

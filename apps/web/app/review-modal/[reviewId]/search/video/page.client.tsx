@@ -4,11 +4,7 @@ import { useRouter } from 'next/navigation';
 
 import ReviewModalContent from '../../../components/modal-structure/ReviewModalContent';
 
-interface VideoReviewClientPageProps {
-  userStatus: boolean;
-}
-
-export default function ClientPage({ userStatus }: VideoReviewClientPageProps) {
+export default function ClientPage() {
   const router = useRouter();
 
   const handleClose = () => {
@@ -16,11 +12,6 @@ export default function ClientPage({ userStatus }: VideoReviewClientPageProps) {
   };
 
   return (
-    <ReviewModalContent
-      userStatus={userStatus}
-      source="search"
-      type="video"
-      onClose={handleClose}
-    />
+    <ReviewModalContent source="search" type="video" onClose={handleClose} />
   );
 }

@@ -9,11 +9,7 @@ import { getReviewList } from '../apis';
 import { PRODUCT_DETAIL_QUERY_KEYS } from '../queries';
 import Review from './review';
 
-interface ReviewListProps {
-  authStatus: boolean;
-}
-
-export default function ReviewList({ authStatus }: ReviewListProps) {
+export default function ReviewList() {
   const { productId } = useParams();
 
   const { data: reviewList, isPending } = useQuery({
@@ -31,11 +27,10 @@ export default function ReviewList({ authStatus }: ReviewListProps) {
   const reviewListData = reviewList?.imageReviews;
   return (
     <div className="flex flex-col gap-[3.2rem]">
-      <h3 className="jp-head3 font-bold">写真付きレビュー</h3>
+      <h2 className="jp-head3 font-bold">写真付きレビュー</h2>
       {reviewListData && reviewListData.length > 0 ? (
         reviewListData.map((review) => (
           <Review
-            authStatus={authStatus}
             key={review.reviewId}
             images={review.images}
             writtenTime={review.writtenTime}

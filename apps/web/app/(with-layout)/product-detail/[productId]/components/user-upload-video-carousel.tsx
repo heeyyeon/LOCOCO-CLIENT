@@ -57,9 +57,9 @@ export default function UserUploadVideoCarousel() {
 
   return (
     <div className="flex flex-col gap-[3.2rem]">
-      <h3 className="text-jp-head2 inline-flex items-center gap-[1.2rem] font-bold">
+      <h2 className="text-jp-head2 inline-flex items-center gap-[1.2rem] font-bold">
         動画レビュー
-      </h3>
+      </h2>
       <div className="relative h-[35.2rem] w-full">
         {userUploadedVideoListData && userUploadedVideoListData.length > 0 ? (
           <>

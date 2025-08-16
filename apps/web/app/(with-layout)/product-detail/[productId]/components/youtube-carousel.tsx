@@ -54,9 +54,9 @@ export default function YoutubeCarousel({
 
   return (
     <div className="flex flex-col gap-[3.2rem]">
-      <h3 className="text-jp-head2 inline-flex items-center gap-[1.2rem] font-bold text-gray-800">
+      <h2 className="text-jp-head2 inline-flex items-center gap-[1.2rem] font-bold text-gray-800">
         <SvgKoreanReview size={24} /> 韓国ユーチューバーレビュー
-      </h3>
+      </h2>
       <div className="relative h-[31.1rem]">
         {validatedYoutubeListData && validatedYoutubeListData.length > 0 ? (
           <>
@@ -97,6 +97,7 @@ export default function YoutubeCarousel({
                 icon={<SvgArrowRight className="rotate-180" />}
                 color="tertiary"
                 rounded
+                ariaLabel="前のビデオ"
               />
             )}
 
@@ -108,6 +109,7 @@ export default function YoutubeCarousel({
                 icon={<SvgArrowRight />}
                 rounded
                 color="tertiary"
+                ariaLabel="次のビデオ"
               />
             )}
           </>
