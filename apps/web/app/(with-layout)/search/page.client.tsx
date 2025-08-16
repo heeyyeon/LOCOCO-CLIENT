@@ -4,18 +4,22 @@ import { useRouter, useSearchParams } from 'next/navigation';
 
 import { CategoryNameEng, CategoryOptionEng } from 'types/category';
 
+import { SearchOption } from '../../../constants/option';
 import OptionSelector from './components/option-selector';
 import SearchBreadCrumbSection from './components/search-bread-crumb-section';
 import SearchProductsSection from './components/search-products-section';
 import SearchReviewSection from './components/search-reviews-section';
-import { SearchOption } from './constant/option';
 
 export default function SearchPageClient() {
   const searchParams = useSearchParams();
   const router = useRouter();
 
-  const middleCategory = searchParams.get('middleCategory') as CategoryNameEng;
-  const subCategory = searchParams.get('subCategory') as CategoryOptionEng;
+  const middleCategory = searchParams.get(
+    'middleCategory'
+  ) as CategoryNameEng | null;
+  const subCategory = searchParams.get(
+    'subCategory'
+  ) as CategoryOptionEng | null;
   const searchTypeParam = searchParams.get('searchType');
   const searchType: SearchOption =
     (searchTypeParam as SearchOption) || 'PRODUCT';
@@ -38,8 +42,8 @@ export default function SearchPageClient() {
     PRODUCT: (
       <SearchProductsSection
         keyword={keyword}
-        middleCategory={middleCategory}
-        subCategory={subCategory}
+        middleCategory={middleCategory || undefined}
+        subCategory={subCategory || undefined}
         page={PAGE_NUMBER}
         size={PAGE_SIZE}
       />
@@ -47,8 +51,8 @@ export default function SearchPageClient() {
     REVIEW: (
       <SearchReviewSection
         keyword={keyword}
-        middleCategory={middleCategory}
-        subCategory={subCategory}
+        middleCategory={middleCategory || undefined}
+        subCategory={subCategory || undefined}
         page={PAGE_NUMBER}
         size={PAGE_SIZE}
       />
@@ -59,8 +63,8 @@ export default function SearchPageClient() {
     <div className="flex min-h-screen w-full flex-col items-start">
       <div className="flex flex-col items-start self-stretch"></div>
       <SearchBreadCrumbSection
-        middleCategory={middleCategory}
-        subCategory={subCategory}
+        middleCategory={middleCategory || ''}
+        subCategory={subCategory || ''}
       />
       {keyword && (
         <div className="mx-auto w-[1366px] px-[11.9rem] py-[6rem]">

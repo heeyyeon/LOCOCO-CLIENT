@@ -22,12 +22,12 @@ interface TopUtilItemProps {
   disabled?: boolean;
 }
 
-const TopUtilItem = ({
+function TopUtilItem({
   icon,
   label,
   onClick,
   disabled = false,
-}: TopUtilItemProps) => {
+}: TopUtilItemProps) {
   return (
     <button
       onClick={onClick}
@@ -38,7 +38,7 @@ const TopUtilItem = ({
       <p className="jp-body2 text-gray-600">{label}</p>
     </button>
   );
-};
+}
 
 export default function TopUtil() {
   const router = useRouter();

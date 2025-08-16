@@ -64,7 +64,7 @@ export const useCategoryProductSearch = ({
         endPoint: `/api/products/categories/search`,
         method: 'GET',
         params: {
-          middleCategory: middleCategory ?? '',
+          middleCategory: middleCategory as CategoryNameEng,
           searchType: 'PRODUCT',
           page: page.toString(),
           size: size.toString(),
@@ -82,50 +82,30 @@ export default function useProductSectionData({
   page = 0,
   size = 8,
 }: UseProductSectionDataProps) {
-  if (keyword) {
-    const { data, isPending } = useQuery<ApiResponseSearchProductsResponse>({
-      queryKey: [
-        ...PRODUCT_KEYS.PRODUCT_LIST({ page, size }),
-        'search',
-        keyword,
-      ],
-      queryFn: () =>
-        apiRequest<ApiResponseSearchProductsResponse>({
-          endPoint: `/api/products/search`,
-          method: 'GET',
-          params: {
-            keyword,
-            searchType: 'PRODUCT',
-            page: page.toString(),
-            size: size.toString(),
-          },
-        }),
-    });
-    return { data, isPending };
-  } else {
-    const { data, isPending } = useQuery<ApiResponseSearchProductsResponse>({
-      queryKey: [
-        ...PRODUCT_KEYS.PRODUCT_LIST({ page, size }),
-        'category',
-        middleCategory as CategoryNameEng,
-        subCategory as CategoryOptionEng | undefined,
-      ],
-      queryFn: () => {
-        const params: Record<string, string> = {
-          middleCategory: middleCategory ?? '',
-          searchType: 'PRODUCT',
-          page: page.toString(),
-          size: size.toString(),
-          ...(subCategory && subCategory !== 'ALL' && { subCategory }),
-        };
+  const searchResult = useProductSearch({
+    keyword,
+    page,
+    size,
+    enabled: !!keyword,
+  });
 
-        return apiRequest<ApiResponseSearchProductsResponse>({
-          endPoint: `/api/products/categories/search`,
-          method: 'GET',
-          params,
-        });
-      },
-    });
-    return { data, isPending };
+  const categoryResult = useCategoryProductSearch({
+    middleCategory: middleCategory as CategoryNameEng,
+    subCategory: subCategory as CategoryOptionEng | undefined,
+    page,
+    size,
+    enabled: !!middleCategory && !keyword,
+  });
+
+  if (keyword) {
+    return {
+      data: searchResult.data,
+      isPending: searchResult.isPending,
+    };
+  } else {
+    return {
+      data: categoryResult.data,
+      isPending: categoryResult.isPending,
+    };
   }
 }

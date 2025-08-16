@@ -107,30 +107,32 @@ export default function useReviewSectionData({
   page = 0,
   size = 8,
 }: UseReviewSectionDataProps) {
+  const searchResult = useReviewSearch({
+    keyword,
+    reviewType,
+    page,
+    size,
+    enabled: !!keyword,
+  });
+
+  const categoryResult = useCategoryReviewSearch({
+    middleCategory: middleCategory as CategoryNameEng,
+    reviewType,
+    subCategory: subCategory as CategoryOptionEng,
+    page,
+    size,
+    enabled: !!middleCategory && !keyword,
+  });
+
   if (keyword) {
-    const { data, isPending } = useReviewSearch({
-      keyword,
-      reviewType,
-      page,
-      size,
-      enabled: !!keyword,
-    });
     return {
-      data,
-      isPending,
+      data: searchResult.data,
+      isPending: searchResult.isPending,
     };
   } else {
-    const { data, isPending } = useCategoryReviewSearch({
-      middleCategory: middleCategory as CategoryNameEng,
-      reviewType,
-      subCategory: subCategory as CategoryOptionEng,
-      page,
-      size,
-      enabled: !!middleCategory,
-    });
     return {
-      data,
-      isPending,
+      data: categoryResult.data,
+      isPending: categoryResult.isPending,
     };
   }
 }
