@@ -1,8 +1,9 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import LoadingSvg from 'components/loading/loading-svg';
+import { useAuth } from 'hooks/use-auth';
 
 import { useReviewModalData } from '../../hooks/useReviewModalData';
 import { ReviewModalSwiper, ReviewOnboardingModal } from './';
@@ -14,16 +15,43 @@ interface ReviewModalContentProps {
   onClose?: () => void;
 }
 
+const showOnboarding = (isLoggedIn: boolean): boolean => {
+  if (typeof window === 'undefined') return false;
+
+  const onboardingKey = isLoggedIn ? 'shownLoggedIn' : 'shownAnonymous';
+  const hasSeenOnboarding = localStorage.getItem(onboardingKey);
+
+  return !hasSeenOnboarding;
+};
+
+const markOnboardingAsSeen = (isLoggedIn: boolean): void => {
+  if (typeof window === 'undefined') return;
+
+  const onboardingKey = isLoggedIn ? 'shownLoggedIn' : 'shownAnonymous';
+  localStorage.setItem(onboardingKey, 'true');
+};
+
 export default function ReviewModalContent({
   source,
   type,
   productId,
   onClose,
 }: ReviewModalContentProps) {
-  const [isOnboardingOpen, setIsOnboardingOpen] = useState(true);
+  const [isOnboardingOpen, setIsOnboardingOpen] = useState(false);
+  const { isLoggedIn } = useAuth();
+
+  useEffect(() => {
+    if (isLoggedIn !== null) {
+      const canShowOnboarding = showOnboarding(isLoggedIn);
+      setIsOnboardingOpen(canShowOnboarding);
+    }
+  }, [isLoggedIn]);
 
   const handleCloseOnboarding = () => {
     setIsOnboardingOpen(false);
+    if (isLoggedIn !== null) {
+      markOnboardingAsSeen(isLoggedIn);
+    }
   };
 
   const { currentIndex, allReviews, isListLoading, listError, detailQueries } =
