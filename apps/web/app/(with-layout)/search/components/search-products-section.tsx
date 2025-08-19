@@ -12,8 +12,8 @@ import NotFoundSection from './not-found-section';
 
 interface UseProductSectionDataProps {
   keyword?: string;
-  middleCategory?: CategoryNameEng | null;
-  subCategory?: CategoryOptionEng | null;
+  middleCategory?: CategoryNameEng | '';
+  subCategory?: CategoryOptionEng | '';
   page?: number;
   size?: number;
 }

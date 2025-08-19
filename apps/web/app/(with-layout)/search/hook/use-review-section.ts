@@ -10,8 +10,8 @@ import {
 
 interface UseReviewSectionDataProps {
   keyword?: string;
-  middleCategory?: CategoryNameEng | null;
-  subCategory?: CategoryOptionEng | null;
+  middleCategory?: CategoryNameEng | '';
+  subCategory?: CategoryOptionEng | '';
   reviewType?: 'VIDEO' | 'IMAGE';
   page?: number;
   size?: number;
@@ -55,7 +55,7 @@ export const useReviewSearch = ({
 
 // 카테고리별 리뷰 검색
 export const useCategoryReviewSearch = ({
-  middleCategory,
+  middleCategory = '',
   reviewType = 'VIDEO',
   subCategory,
   page = 0,
@@ -87,7 +87,7 @@ export const useCategoryReviewSearch = ({
         endPoint: `/api/products/categories/search`,
         method: 'GET',
         params: {
-          middleCategory: middleCategory as CategoryNameEng,
+          middleCategory: middleCategory,
           searchType: 'REVIEW',
           mediaType: reviewType,
           page: page.toString(),
@@ -116,9 +116,9 @@ export default function useReviewSectionData({
   });
 
   const categoryResult = useCategoryReviewSearch({
-    middleCategory: middleCategory as CategoryNameEng,
+    middleCategory: middleCategory,
     reviewType,
-    subCategory: subCategory as CategoryOptionEng,
+    subCategory: subCategory,
     page,
     size,
     enabled: !!middleCategory && !keyword,

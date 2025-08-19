@@ -9,8 +9,8 @@ import { ApiResponseSearchProductsResponse } from '../types/search';
 
 interface UseProductSectionDataProps {
   keyword?: string;
-  middleCategory?: CategoryNameEng | null;
-  subCategory?: CategoryOptionEng | null;
+  middleCategory?: CategoryNameEng | '';
+  subCategory?: CategoryOptionEng | '';
   page?: number;
   size?: number;
   enabled?: boolean;
@@ -42,7 +42,7 @@ export const useProductSearch = ({
 
 // 카테고리별 상품 검색
 export const useCategoryProductSearch = ({
-  middleCategory,
+  middleCategory = '',
   subCategory,
   page = 0,
   size = 8,
@@ -64,7 +64,7 @@ export const useCategoryProductSearch = ({
         endPoint: `/api/products/categories/search`,
         method: 'GET',
         params: {
-          middleCategory: middleCategory as CategoryNameEng,
+          middleCategory: middleCategory,
           searchType: 'PRODUCT',
           page: page.toString(),
           size: size.toString(),
@@ -90,8 +90,8 @@ export default function useProductSectionData({
   });
 
   const categoryResult = useCategoryProductSearch({
-    middleCategory: middleCategory as CategoryNameEng,
-    subCategory: subCategory as CategoryOptionEng | undefined,
+    middleCategory: middleCategory || '',
+    subCategory: subCategory || '',
     page,
     size,
     enabled: !!middleCategory && !keyword,
