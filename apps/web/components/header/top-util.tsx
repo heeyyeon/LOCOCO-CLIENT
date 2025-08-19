@@ -68,8 +68,8 @@ export default function TopUtil() {
   };
 
   return (
-    <nav className="mx-auto w-full">
-      <div className="mx-auto flex w-[1366px] items-center justify-end px-[11.9rem] py-[2rem]">
+    <nav className="mx-auto w-full bg-white">
+      <div className="mx-auto flex w-[1366px] items-center justify-end bg-white px-[11.9rem] py-[2rem]">
         <TopUtilItem
           icon={<SvgMy className="text-gray-600" size={16} />}
           label="マイページ"

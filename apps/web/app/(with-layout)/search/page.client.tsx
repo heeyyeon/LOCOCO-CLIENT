@@ -1,9 +1,10 @@
 'use client';
 
 import { useRouter, useSearchParams } from 'next/navigation';
+import { notFound } from 'next/navigation';
 
+import { CategoryNameEng, CategoryOptionEng } from 'types/category';
 import { isValidCategoryKey, isValidCategoryOption } from 'utils/category';
-import { isValidSearchType } from 'utils/option';
 
 import { SearchOption } from '../../../constants/option';
 import OptionSelector from './components/option-selector';
@@ -16,21 +17,30 @@ export default function SearchPageClient() {
   const router = useRouter();
 
   const middleCategoryParam = searchParams.get('middleCategory') || '';
-  const middleCategory = isValidCategoryKey(middleCategoryParam)
-    ? middleCategoryParam
-    : null;
-
   const subCategoryParam = searchParams.get('subCategory') || '';
-  const subCategory = isValidCategoryOption(subCategoryParam, middleCategory)
-    ? subCategoryParam
-    : null;
-
-  const searchTypeParam = searchParams.get('searchType') || '';
-  const searchType = isValidSearchType(searchTypeParam)
-    ? searchTypeParam
-    : 'PRODUCT';
-
+  const searchTypeParam = searchParams.get('searchType') || 'PRODUCT';
   const keyword = searchParams.get('keyword') || '';
+
+  if (!isValidCategoryKey(middleCategoryParam) && !keyword) {
+    notFound();
+  }
+
+  if (
+    !isValidCategoryOption(
+      subCategoryParam,
+      middleCategoryParam as CategoryNameEng
+    )
+  ) {
+    notFound();
+  }
+
+  if (searchTypeParam !== 'PRODUCT' && searchTypeParam !== 'REVIEW') {
+    notFound();
+  }
+
+  const middleCategory = middleCategoryParam as CategoryNameEng;
+  const subCategory = subCategoryParam as CategoryOptionEng;
+  const searchType = searchTypeParam as SearchOption;
 
   const PAGE_SIZE = 8;
   const PAGE_NUMBER = 0;
