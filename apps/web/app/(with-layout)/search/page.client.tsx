@@ -1,7 +1,6 @@
 'use client';
 
-import { useRouter, useSearchParams } from 'next/navigation';
-import { notFound } from 'next/navigation';
+import { notFound, useRouter, useSearchParams } from 'next/navigation';
 
 import { CategoryNameEng, CategoryOptionEng } from 'types/category';
 import { isValidCategoryKey, isValidCategoryOption } from 'utils/category';
