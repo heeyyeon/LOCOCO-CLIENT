@@ -17,6 +17,7 @@ import {
 } from 'app/review-modal/components';
 import LoadingSvg from 'components/loading/loading-svg';
 import { REVIEW_KEYS } from 'constants/query-key';
+import dayjs from 'dayjs';
 import type {
   ApiResponseVideoReviewDetailResponse,
   VideoReviewDetailResponse,
@@ -32,14 +33,6 @@ import {
 } from '../../../../../utils/category';
 import { useAllVideoReviewDetails } from '../../../hooks/review-api';
 import type { ReviewDetail } from '../../../types';
-
-const formatDateToJapanese = (dateString: string): string => {
-  const date = new Date(dateString);
-  const year = date.getFullYear();
-  const month = String(date.getMonth() + 1).padStart(2, '0');
-  const day = String(date.getDate()).padStart(2, '0');
-  return `${year}年${month}月${day}日`;
-};
 
 export default function ClientPage() {
   const router = useRouter();
@@ -134,7 +127,7 @@ export default function ClientPage() {
       return {
         reviewId: detail.reviewId,
         productId: detail.productId,
-        writtenTime: formatDateToJapanese(detail.uploadAt),
+        writtenTime: dayjs(detail.uploadAt).format('YYYY年MM月DD日'),
         receiptUploaded: !!detail.receiptImageUrl,
         positiveComment: detail.positiveContent,
         negativeComment: detail.negativeContent,
