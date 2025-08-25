@@ -19,9 +19,9 @@ const showOnboarding = (isLoggedIn: boolean): boolean => {
   if (typeof window === 'undefined') return false;
 
   const onboardingKey = isLoggedIn ? 'shownLoggedIn' : 'shownAnonymous';
-  const hasSeenOnboarding = localStorage.getItem(onboardingKey);
+  const isVisited = localStorage.getItem(onboardingKey);
 
-  return !hasSeenOnboarding;
+  return !isVisited;
 };
 
 const markOnboardingAsSeen = (isLoggedIn: boolean): void => {
@@ -42,8 +42,8 @@ export default function ReviewModalContent({
 
   useEffect(() => {
     if (isLoggedIn !== null) {
-      const canShowOnboarding = showOnboarding(isLoggedIn);
-      setIsOnboardingOpen(canShowOnboarding);
+      const isOnboardingRequired = showOnboarding(isLoggedIn);
+      setIsOnboardingOpen(isOnboardingRequired);
     }
   }, [isLoggedIn]);
 
@@ -65,6 +65,7 @@ export default function ReviewModalContent({
     );
   }
 
+  // TODO: 추후 에러 페이지로 변경
   if (listError || allReviews.length === 0) {
     return <div>리뷰 목록을 불러올 수 없습니다.</div>;
   }
