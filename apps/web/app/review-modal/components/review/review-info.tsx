@@ -7,7 +7,7 @@ import { Tag } from '@lococo/design-system/tag';
 import { SvgArrowOutward, SvgClose } from '@lococo/icons';
 
 import { ReviewDetail } from '../../types';
-import { Comment } from './';
+import Comment from './comment';
 
 type ReviewInfoProps = Pick<
   ReviewDetail,
