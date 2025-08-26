@@ -24,7 +24,7 @@ export function MainHeader() {
   } = useHeaderAction();
 
   return (
-    <header className="sticky top-0 z-50 mx-auto w-full border-b border-gray-200 bg-white">
+    <header className="sticky top-0 z-50 mx-auto w-full min-w-[1366px] border-b-[1px] border-gray-200 bg-white">
       <div className="mx-auto flex h-[6.4rem] w-[1366px] items-center gap-[2rem] bg-white px-[11.9rem]">
         <div className="flex flex-grow items-center gap-[2rem]">
           <Link href="/" aria-label="ロココホームにアクセス">
