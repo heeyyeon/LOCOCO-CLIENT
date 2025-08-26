@@ -1,5 +1,3 @@
-// 라우팅 및 파라미터 관련
-// URL 파라미터 추출, 검색 파라미터 처리, 카테고리 파라미터 유효성 검사
 import { useParams, useSearchParams } from 'next/navigation';
 
 import { CategoryNameEng, CategoryOptionEng } from 'types/category';
