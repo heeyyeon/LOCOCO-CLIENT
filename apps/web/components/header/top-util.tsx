@@ -18,7 +18,7 @@ import {
 interface TopUtilItemProps {
   icon: React.ReactNode;
   label: string;
-  onClick: () => void;
+  onClick?: () => void;
   disabled?: boolean;
 }
 
@@ -30,7 +30,7 @@ function TopUtilItem({
 }: TopUtilItemProps) {
   return (
     <button
-      onClick={onClick}
+      onClick={onClick || (() => {})}
       className="flex h-[3.2rem] cursor-pointer items-center justify-center gap-[0.8rem] whitespace-nowrap px-[1.6rem] py-[1rem] disabled:cursor-not-allowed"
       disabled={disabled}
     >
@@ -73,19 +73,16 @@ export default function TopUtil() {
         <TopUtilItem
           icon={<SvgMy className="text-gray-600" size={16} />}
           label="マイページ"
-          onClick={() => console.log('마이페이지 클릭')}
           disabled={true}
         />
         <TopUtilItem
           icon={<SvgLikeFill className="text-gray-600" size={16} />}
           label="お気に入り"
-          onClick={() => console.log('좋아요 클릭')}
           disabled={true}
         />
         <TopUtilItem
           icon={<SvgHistory className="text-gray-600" size={16} />}
-          label="最近見た商품"
-          onClick={() => console.log('내역 클릭')}
+          label="最近見た商品"
           disabled={true}
         />
         <TopUtilItem
