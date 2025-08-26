@@ -62,13 +62,6 @@ export const useCategoryReviewSearch = ({
   size = 8,
   enabled = true,
 }: UseReviewSectionDataProps) => {
-  if (!middleCategory) {
-    return {
-      data: null,
-      isPending: false,
-    };
-  }
-
   return useQuery<
     ApiKeywordVideoReviewListResponse | ApiKeywordImageReviewListResponse
   >({
@@ -89,7 +82,7 @@ export const useCategoryReviewSearch = ({
         endPoint: `/api/products/categories/search`,
         method: 'GET',
         params: {
-          middleCategory: middleCategory,
+          ...(middleCategory && { middleCategory }),
           searchType: 'REVIEW',
           mediaType: reviewType,
           page: page.toString(),

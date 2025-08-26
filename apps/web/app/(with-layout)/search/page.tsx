@@ -13,13 +13,17 @@ interface SearchParams {
   keyword?: string;
 }
 
-export default function Page({ searchParams }: { searchParams: SearchParams }) {
-  const middleCategoryParam = searchParams.middleCategory || '';
-  const subCategoryParam = searchParams.subCategory || '';
-  const searchTypeParam = searchParams.searchType || 'PRODUCT';
-  const keyword = searchParams.keyword || '';
+export default async function Page({
+  searchParams,
+}: {
+  searchParams: Promise<SearchParams>;
+}) {
+  const params = await searchParams;
+  const middleCategoryParam = params.middleCategory || '';
+  const subCategoryParam = params.subCategory || '';
+  const searchTypeParam = params.searchType || 'PRODUCT';
+  const keyword = params.keyword || '';
 
-  // 서버에서 사전 검증
   if (!isValidCategoryKey(middleCategoryParam) && !keyword) {
     redirect('/404');
   }
@@ -39,7 +43,6 @@ export default function Page({ searchParams }: { searchParams: SearchParams }) {
     redirect('/404');
   }
 
-  // 검증 통과시 클라이언트 컴포넌트에 전달
   return (
     <SearchPageClient
       validatedParams={{

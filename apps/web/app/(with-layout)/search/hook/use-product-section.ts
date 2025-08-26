@@ -48,13 +48,6 @@ export const useCategoryProductSearch = ({
   size = 8,
   enabled = true,
 }: UseProductSectionDataProps) => {
-  if (!middleCategory) {
-    return {
-      data: null,
-      isPending: false,
-    };
-  }
-
   return useQuery<ApiResponseSearchProductsResponse>({
     queryKey: [
       ...PRODUCT_KEYS.PRODUCT_LIST({ page, size }),
@@ -67,7 +60,7 @@ export const useCategoryProductSearch = ({
         endPoint: `/api/products/categories/search`,
         method: 'GET',
         params: {
-          middleCategory: middleCategory,
+          ...(middleCategory && { middleCategory }),
           searchType: 'PRODUCT',
           page: page.toString(),
           size: size.toString(),
@@ -93,8 +86,8 @@ export default function useProductSectionData({
   });
 
   const categoryResult = useCategoryProductSearch({
-    middleCategory: middleCategory || null,
-    subCategory: subCategory || null,
+    middleCategory: middleCategory,
+    subCategory: subCategory,
     page,
     size,
     enabled: !!middleCategory && !keyword,

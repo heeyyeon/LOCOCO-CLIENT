@@ -4,7 +4,6 @@ import {
   SearchProductsResponse,
 } from '@typescript-swagger/data-contracts';
 
-// Generic API response type
 export interface ApiResponse<T> {
   success: boolean;
   status: number;
@@ -12,7 +11,6 @@ export interface ApiResponse<T> {
   message?: string;
 }
 
-// Specific API response types using the generic
 export type ApiResponseSearchProductsResponse =
   ApiResponse<SearchProductsResponse>;
 export type ApiKeywordVideoReviewListResponse =

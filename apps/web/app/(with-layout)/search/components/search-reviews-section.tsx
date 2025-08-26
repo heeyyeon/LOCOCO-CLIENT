@@ -52,7 +52,6 @@ function VideoReviewSection({
   return (
     <div className="flex max-w-[1366px] flex-col gap-[3.2rem] pt-[3.2rem]">
       <p className="jp-head3 font-bold text-gray-700">動画レビュー</p>
-
       {isPending ? (
         <CardSkeletonWrapper type="REVIEW_VIDEO" />
       ) : !reviews || reviews.length === 0 ? (

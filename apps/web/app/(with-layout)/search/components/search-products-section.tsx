@@ -25,10 +25,6 @@ export default function SearchProductsSection({
   page,
   size,
 }: UseProductSectionDataProps) {
-  if (!middleCategory) {
-    return <ProductNotFoundSection />;
-  }
-
   const { data, isPending } = useProductSectionData({
     keyword,
     middleCategory,
