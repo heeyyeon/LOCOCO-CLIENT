@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { NextIntlClientProvider } from 'next-intl';
 import { Noto_Sans_JP } from 'next/font/google';
 import localFont from 'next/font/local';
 
@@ -27,7 +28,7 @@ export const metadata: Metadata = {
     template: 'Lococo | %s',
   },
   description:
-    '日本最大級の韓国コスメレビューサイトLococo(ロココ)。話題のK-ビューティー商品をチェックして、Qoo10でそのまま購入可能！',
+    '日本最大級の韓国コスメレビューサイトLococo(ロココ)。話題のK-ビューティー商品をチェックして、Qoo10でそのまま購入可能!',
   keywords: [
     'Lococo',
     'ロココ',
@@ -87,7 +88,9 @@ export default function RootLayout({
       <body
         className={`${notoSansJP.variable} ${pretendard.variable} min-h-screen lg:flex lg:justify-center`}
       >
-        <Providers>{children}</Providers>
+        <NextIntlClientProvider>
+          <Providers>{children}</Providers>
+        </NextIntlClientProvider>
       </body>
     </html>
   );
