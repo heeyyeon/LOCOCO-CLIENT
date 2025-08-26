@@ -15,19 +15,19 @@ interface ReviewModalContentProps {
   onClose?: () => void;
 }
 
-const showOnboarding = (isLoggedIn: boolean): boolean => {
+const showOnboarding = (): boolean => {
   if (typeof window === 'undefined') return false;
 
-  const onboardingKey = isLoggedIn ? 'shownLoggedIn' : 'shownAnonymous';
+  const onboardingKey = 'shownOnboarding';
   const isVisited = localStorage.getItem(onboardingKey);
 
   return !isVisited;
 };
 
-const markOnboardingAsSeen = (isLoggedIn: boolean): void => {
+const markOnboardingAsSeen = (): void => {
   if (typeof window === 'undefined') return;
 
-  const onboardingKey = isLoggedIn ? 'shownLoggedIn' : 'shownAnonymous';
+  const onboardingKey = 'shownOnboarding';
   localStorage.setItem(onboardingKey, 'true');
 };
 
@@ -42,16 +42,14 @@ export default function ReviewModalContent({
 
   useEffect(() => {
     if (isLoggedIn !== null) {
-      const isOnboardingRequired = showOnboarding(isLoggedIn);
+      const isOnboardingRequired = showOnboarding();
       setIsOnboardingOpen(isOnboardingRequired);
     }
   }, [isLoggedIn]);
 
   const handleCloseOnboarding = () => {
     setIsOnboardingOpen(false);
-    if (isLoggedIn !== null) {
-      markOnboardingAsSeen(isLoggedIn);
-    }
+    markOnboardingAsSeen();
   };
 
   const { currentIndex, allReviews, isListLoading, listError, detailQueries } =
