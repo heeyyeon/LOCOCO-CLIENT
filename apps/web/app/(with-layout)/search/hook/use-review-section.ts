@@ -10,8 +10,8 @@ import {
 
 interface UseReviewSectionDataProps {
   keyword?: string;
-  middleCategory?: CategoryNameEng | '';
-  subCategory?: CategoryOptionEng | '';
+  middleCategory?: CategoryNameEng | null;
+  subCategory?: CategoryOptionEng | null;
   reviewType?: 'VIDEO' | 'IMAGE';
   page?: number;
   size?: number;
@@ -55,16 +55,18 @@ export const useReviewSearch = ({
 
 // 카테고리별 리뷰 검색
 export const useCategoryReviewSearch = ({
-  middleCategory = '',
+  middleCategory,
   reviewType = 'VIDEO',
   subCategory,
   page = 0,
   size = 8,
   enabled = true,
 }: UseReviewSectionDataProps) => {
-  // ALL 옵션 처리
-  if (subCategory === 'ALL') {
-    subCategory = undefined;
+  if (!middleCategory) {
+    return {
+      data: null,
+      isPending: false,
+    };
   }
 
   return useQuery<
@@ -92,7 +94,7 @@ export const useCategoryReviewSearch = ({
           mediaType: reviewType,
           page: page.toString(),
           size: size.toString(),
-          ...(subCategory && { subCategory }),
+          ...(subCategory && subCategory !== 'ALL' && { subCategory }),
         },
       }),
     enabled: enabled && !!middleCategory,

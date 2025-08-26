@@ -11,12 +11,12 @@ import CardSkeletonWrapper from 'components/card/card-skeleton';
 import { CategoryNameEng, CategoryOptionEng } from 'types/category';
 
 import useReviewSectionData from '../hook/use-review-section';
-import NotFoundSection from './not-found-section';
+import ReviewNotFoundSection from './review-not-found';
 
 interface SearchReviewSectionProps {
   keyword?: string;
-  middleCategory?: CategoryNameEng | '';
-  subCategory?: CategoryOptionEng | '';
+  middleCategory?: CategoryNameEng | null;
+  subCategory?: CategoryOptionEng | null;
   page?: number;
   size?: number;
 }
@@ -56,7 +56,7 @@ function VideoReviewSection({
       {isPending ? (
         <CardSkeletonWrapper type="REVIEW_VIDEO" />
       ) : !reviews || reviews.length === 0 ? (
-        <NotFoundSection variant="review" />
+        <ReviewNotFoundSection />
       ) : (
         <div className="grid max-w-[1366px] grid-cols-4 gap-[2.4rem]">
           {reviews.map(
@@ -119,7 +119,7 @@ function ImageReviewSection({
       {isPending ? (
         <CardSkeletonWrapper type="REVIEW_IMAGE" />
       ) : !reviews || reviews.length === 0 ? (
-        <NotFoundSection variant="review" />
+        <ReviewNotFoundSection />
       ) : (
         <div className="grid max-w-[1366px] grid-cols-4 gap-[2.4rem]">
           {reviews.map(

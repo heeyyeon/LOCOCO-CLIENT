@@ -9,8 +9,8 @@ import { ApiResponseSearchProductsResponse } from '../types/search';
 
 interface UseProductSectionDataProps {
   keyword?: string;
-  middleCategory?: CategoryNameEng | '';
-  subCategory?: CategoryOptionEng | '';
+  middleCategory?: CategoryNameEng | null;
+  subCategory?: CategoryOptionEng | null;
   page?: number;
   size?: number;
   enabled?: boolean;
@@ -42,14 +42,17 @@ export const useProductSearch = ({
 
 // 카테고리별 상품 검색
 export const useCategoryProductSearch = ({
-  middleCategory = '',
+  middleCategory,
   subCategory,
   page = 0,
   size = 8,
   enabled = true,
 }: UseProductSectionDataProps) => {
-  if (subCategory === 'ALL') {
-    subCategory = undefined;
+  if (!middleCategory) {
+    return {
+      data: null,
+      isPending: false,
+    };
   }
 
   return useQuery<ApiResponseSearchProductsResponse>({
@@ -68,7 +71,7 @@ export const useCategoryProductSearch = ({
           searchType: 'PRODUCT',
           page: page.toString(),
           size: size.toString(),
-          ...(subCategory && { subCategory }),
+          ...(subCategory && subCategory !== 'ALL' && { subCategory }),
         },
       }),
     enabled: enabled && !!middleCategory,
@@ -90,8 +93,8 @@ export default function useProductSectionData({
   });
 
   const categoryResult = useCategoryProductSearch({
-    middleCategory: middleCategory || '',
-    subCategory: subCategory || '',
+    middleCategory: middleCategory || null,
+    subCategory: subCategory || null,
     page,
     size,
     enabled: !!middleCategory && !keyword,

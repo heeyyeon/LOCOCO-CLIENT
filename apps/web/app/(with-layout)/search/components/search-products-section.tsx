@@ -8,12 +8,12 @@ import { CategoryNameEng, CategoryOptionEng } from 'types/category';
 
 import type { ProductListItemResponse } from '../../../../swagger-codegen/data-contracts';
 import useProductSectionData from '../hook/use-product-section';
-import NotFoundSection from './not-found-section';
+import ProductNotFoundSection from './product-not-found';
 
 interface UseProductSectionDataProps {
   keyword?: string;
-  middleCategory?: CategoryNameEng | '';
-  subCategory?: CategoryOptionEng | '';
+  middleCategory?: CategoryNameEng | null;
+  subCategory?: CategoryOptionEng | null;
   page?: number;
   size?: number;
 }
@@ -25,6 +25,10 @@ export default function SearchProductsSection({
   page,
   size,
 }: UseProductSectionDataProps) {
+  if (!middleCategory) {
+    return <ProductNotFoundSection />;
+  }
+
   const { data, isPending } = useProductSectionData({
     keyword,
     middleCategory,
@@ -39,7 +43,7 @@ export default function SearchProductsSection({
   };
 
   if (products && products.length === 0) {
-    return <NotFoundSection />;
+    return <ProductNotFoundSection />;
   }
 
   return (

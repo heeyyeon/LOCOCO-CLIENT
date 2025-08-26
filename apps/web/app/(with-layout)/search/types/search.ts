@@ -4,23 +4,18 @@ import {
   SearchProductsResponse,
 } from '@typescript-swagger/data-contracts';
 
-export interface ApiResponseSearchProductsResponse {
+// Generic API response type
+export interface ApiResponse<T> {
   success: boolean;
   status: number;
-  data: SearchProductsResponse;
+  data: T;
   message?: string;
 }
 
-export interface ApiKeywordVideoReviewListResponse {
-  success: boolean;
-  status: number;
-  data: KeywordVideoReviewListResponse;
-  message?: string;
-}
-
-export interface ApiKeywordImageReviewListResponse {
-  success: boolean;
-  status: number;
-  data: KeywordImageReviewListResponse;
-  message?: string;
-}
+// Specific API response types using the generic
+export type ApiResponseSearchProductsResponse =
+  ApiResponse<SearchProductsResponse>;
+export type ApiKeywordVideoReviewListResponse =
+  ApiResponse<KeywordVideoReviewListResponse>;
+export type ApiKeywordImageReviewListResponse =
+  ApiResponse<KeywordImageReviewListResponse>;
