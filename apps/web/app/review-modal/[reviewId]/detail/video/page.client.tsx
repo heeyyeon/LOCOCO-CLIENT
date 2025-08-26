@@ -1,26 +1,13 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
+import { useModalClose } from 'hooks/useModalClose';
 
 import ReviewModalContent from '../../../components/modal-structure/ReviewModalContent';
 
-interface VideoReviewClientPageProps {
-  userStatus: boolean;
-}
-
-export default function ClientPage({ userStatus }: VideoReviewClientPageProps) {
-  const router = useRouter();
-
-  const handleClose = () => {
-    router.back();
-  };
+export default function ClientPage() {
+  const { handleClose } = useModalClose();
 
   return (
-    <ReviewModalContent
-      userStatus={userStatus}
-      source="detail"
-      type="video"
-      onClose={handleClose}
-    />
+    <ReviewModalContent source="detail" type="video" onClose={handleClose} />
   );
 }

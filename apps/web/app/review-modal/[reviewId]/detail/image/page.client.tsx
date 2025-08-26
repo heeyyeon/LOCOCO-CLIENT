@@ -1,26 +1,13 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
+import { useModalClose } from 'hooks/useModalClose';
 
 import ReviewModalContent from '../../../components/modal-structure/ReviewModalContent';
 
-interface ImageReviewClientPageProps {
-  userStatus: boolean;
-}
-
-export default function ClientPage({ userStatus }: ImageReviewClientPageProps) {
-  const router = useRouter();
-
-  const handleClose = () => {
-    router.back();
-  };
+export default function ClientPage() {
+  const { handleClose } = useModalClose();
 
   return (
-    <ReviewModalContent
-      userStatus={userStatus}
-      source="detail"
-      type="image"
-      onClose={handleClose}
-    />
+    <ReviewModalContent source="detail" type="image" onClose={handleClose} />
   );
 }
