@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { NextIntlClientProvider, hasLocale } from 'next-intl';
-import { setRequestLocale } from 'next-intl/server';
+import { getTimeZone, setRequestLocale } from 'next-intl/server';
 import { Noto_Sans_JP } from 'next/font/google';
 import localFont from 'next/font/local';
 import { notFound } from 'next/navigation';
@@ -86,6 +86,8 @@ export default async function RootLayout({
   params: Promise<{ locale: string }>;
 }>) {
   const { locale } = await params;
+  const timeZone = await getTimeZone();
+
   if (!hasLocale(routing.locales, locale)) {
     notFound();
   }
@@ -98,7 +100,7 @@ export default async function RootLayout({
       <body
         className={`${notoSansJP.variable} ${pretendard.variable} min-h-screen lg:flex lg:justify-center`}
       >
-        <NextIntlClientProvider locale={locale}>
+        <NextIntlClientProvider locale={locale} timeZone={timeZone}>
           <Providers>{children}</Providers>
         </NextIntlClientProvider>
       </body>
