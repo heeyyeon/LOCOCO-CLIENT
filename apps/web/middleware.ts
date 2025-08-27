@@ -13,13 +13,12 @@ export default function middleware(req: NextRequest) {
   // next-intl 미들웨어 실행하여 locale 처리
   const response = intlMiddleware(req);
 
-  // 기존 인증 로직
   const accessTokenCookie = cookies.get('AccessToken');
   const isLoggedIn = accessTokenCookie !== undefined;
 
+  // TODO: 추후 routing을 관리하는 파일로 분리
   // 로그인이 필요한 페이지 (인증이 필요한 페이지)
   const AUTH_REQUIRED_PAGES = ['/product-detail/:productId/write-review'];
-
   // 로그인 후 접근 불가능한 페이지
   const LOGIN_RESTRICTED_PAGES = ['/login', '/api/auth/line/login'];
 
