@@ -20,9 +20,7 @@ export default async function Main() {
         <HomeUpdateDate />
         <HomeSection className="mt-[6rem]">
           <HomeSection.Header>レビュー数が多い商品</HomeSection.Header>
-          <HomeSection.Product
-            productSortType="popular"
-          />
+          <HomeSection.Product productSortType="popular" />
         </HomeSection>
         <HomeSection>
           <HomeSection.Header>新作アイテム</HomeSection.Header>

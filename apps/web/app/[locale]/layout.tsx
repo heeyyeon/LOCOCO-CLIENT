@@ -1,12 +1,15 @@
 import type { Metadata } from 'next';
-import { NextIntlClientProvider } from 'next-intl';
+import { NextIntlClientProvider, hasLocale } from 'next-intl';
+import { setRequestLocale } from 'next-intl/server';
 import { Noto_Sans_JP } from 'next/font/google';
 import localFont from 'next/font/local';
+import { notFound } from 'next/navigation';
 
 import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google';
 
-import { Providers } from '../components/providers';
-import './globals.css';
+import { Providers } from '../../components/providers';
+import { routing } from '../../i18n/routing';
+import './../globals.css';
 
 const notoSansJP = Noto_Sans_JP({
   subsets: ['latin'],
@@ -16,7 +19,7 @@ const notoSansJP = Noto_Sans_JP({
 });
 
 const pretendard = localFont({
-  src: './fonts/PretendardVariable.woff2',
+  src: './../fonts/PretendardVariable.woff2',
   variable: '--font-pretendard',
   weight: '500 700',
   display: 'swap',
@@ -75,11 +78,18 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
+  params,
 }: Readonly<{
   children: React.ReactNode;
+  params: Promise<{ locale: string }>;
 }>) {
+  const { locale } = await params;
+  if (!hasLocale(routing.locales, locale)) {
+    notFound();
+  }
+  setRequestLocale(locale);
   return (
     <html lang="ja" suppressHydrationWarning>
       <GoogleAnalytics gaId="G-GT92YY193R" />
@@ -88,7 +98,7 @@ export default function RootLayout({
       <body
         className={`${notoSansJP.variable} ${pretendard.variable} min-h-screen lg:flex lg:justify-center`}
       >
-        <NextIntlClientProvider>
+        <NextIntlClientProvider locale={locale}>
           <Providers>{children}</Providers>
         </NextIntlClientProvider>
       </body>

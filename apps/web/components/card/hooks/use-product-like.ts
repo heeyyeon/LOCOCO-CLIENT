@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { PRODUCT_QUERIES } from 'app/(with-layout)/(home)/components/home-section-product';
+import { PRODUCT_QUERIES } from 'app/[locale]/(with-layout)/(home)/components/home-section-product';
 import { apiRequest } from 'app/api/apiRequest';
 import { useAuth } from 'hooks/use-auth';
 

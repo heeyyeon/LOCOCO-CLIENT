@@ -8,7 +8,7 @@ import CardSkeletonWrapper from 'components/card/card-skeleton';
 import {
   ImageReviewResponse,
   VideoReviewResponse,
-} from '../../../api/review-response';
+} from '../../../../api/review-response';
 import useReviewSectionData from '../hook/use-review-section';
 import NotFoundSection from './not-found-section';
 
