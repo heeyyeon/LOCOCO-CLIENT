@@ -1,4 +1,4 @@
-import { useParams, useSearchParams } from 'next/navigation';
+import { notFound, useParams, useSearchParams } from 'next/navigation';
 
 import { CategoryNameEng, CategoryOptionEng } from 'types/category';
 import { isValidCategoryKey, isValidCategoryOption } from 'utils/category';
@@ -8,9 +8,14 @@ interface UseReviewModalParamsProps {
 }
 
 export function useReviewModalParams({ productId }: UseReviewModalParamsProps) {
-  const { reviewId: reviewIdParam } = useParams() as { reviewId: string };
   const searchParams = useSearchParams();
+  const params = useParams();
 
+  if (!params?.reviewId || typeof params.reviewId !== 'string') {
+    notFound();
+  }
+
+  const reviewIdParam = params.reviewId;
   const currentReviewId = Number(reviewIdParam);
   const currentProductId =
     productId || Number(searchParams.get('productId')) || 0;
