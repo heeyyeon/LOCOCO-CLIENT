@@ -1,11 +1,11 @@
-import * as SelectPrimitive from '@radix-ui/react-select';
+import { ComponentProps, ReactNode } from 'react';
 
-import { ComponentProps } from 'react';
+import * as SelectPrimitive from '@radix-ui/react-select';
 
 import { SvgArrowDown, SvgArrowUp } from '../../icons/fill/components';
 import { cn } from '../../lib/utils';
 
-function Select({ ...props }: ComponentProps<typeof SelectPrimitive.Root>) {
+function SelectRoot({ ...props }: ComponentProps<typeof SelectPrimitive.Root>) {
   return <SelectPrimitive.Root data-slot="select" {...props} />;
 }
 
@@ -107,4 +107,58 @@ function SelectItem({
   );
 }
 
-export { Select, SelectContent, SelectItem, SelectTrigger, SelectValue };
+interface SelectOption {
+  value: string;
+  label: string;
+  icon?: ReactNode;
+}
+
+interface SelectProps {
+  variant?: 'default' | 'reverse';
+  placeholder?: string;
+  options?: SelectOption[];
+  className?: string;
+  children?: ReactNode;
+}
+
+export function Select({
+  variant = 'default',
+  placeholder,
+  options = [],
+  className,
+  children,
+}: SelectProps) {
+  const triggerElement = (
+    <SelectTrigger className={className}>
+      <SelectValue placeholder={placeholder} />
+    </SelectTrigger>
+  );
+  const contentElement = (
+    <SelectContent>
+      {options.length > 0
+        ? options.map((option) => (
+            <SelectItem key={option.value} value={option.value}>
+              {option.label}
+            </SelectItem>
+          ))
+        : children}
+    </SelectContent>
+  );
+  return (
+    <SelectRoot>
+      {variant === 'reverse' ? (
+        <>
+          {contentElement}
+          {triggerElement}
+        </>
+      ) : (
+        <>
+          {triggerElement}
+          {contentElement}
+        </>
+      )}
+    </SelectRoot>
+  );
+}
+
+export { SelectRoot, SelectContent, SelectItem, SelectTrigger, SelectValue };
