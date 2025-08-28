@@ -55,7 +55,13 @@ export default function ReviewModalContent({
   const { currentIndex, allReviews, isListLoading, listError, detailQueries } =
     useReviewModalData({ source, type, productId });
 
-  if (isListLoading || detailQueries.some((q) => q.isLoading)) {
+  const currentQuery =
+    currentIndex >= 0 && currentIndex < detailQueries.length
+      ? detailQueries[currentIndex]
+      : undefined;
+  const isCurrentReady = Boolean(currentQuery?.isSuccess);
+
+  if (isListLoading || !isCurrentReady) {
     return (
       <div className="flex min-h-screen w-full items-center justify-center bg-black">
         <LoadingSvg />

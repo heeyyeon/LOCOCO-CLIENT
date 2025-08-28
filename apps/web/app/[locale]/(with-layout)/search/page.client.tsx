@@ -1,90 +1,80 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
-
 import { useRouter, useSearchParams } from 'next/navigation';
 
-import { SEARCH_OPTION } from 'constants/option';
 import { CategoryNameEng, CategoryOptionEng } from 'types/category';
-import { SearchOption } from 'types/option';
-import { isValidCategoryKey, isValidCategoryOption } from 'utils/category';
 
+import { SearchOption } from '../../../constants/option';
 import OptionSelector from './components/option-selector';
 import SearchBreadCrumbSection from './components/search-bread-crumb-section';
 import SearchProductsSection from './components/search-products-section';
 import SearchReviewSection from './components/search-reviews-section';
 
-export default function SearchPageClient() {
-  const searchParams = useSearchParams();
+export default function SearchPageClient({
+  validatedParams,
+}: {
+  validatedParams: {
+    middleCategory: CategoryNameEng;
+    subCategory: CategoryOptionEng;
+    searchType: SearchOption;
+    keyword: string;
+  };
+}) {
   const router = useRouter();
-  const [isClient, setIsClient] = useState(false);
-
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
-
-  const rawMiddle = searchParams.get('middleCategory') || '';
-  const rawSub = searchParams.get('subCategory') || '';
-  const rawSearchType = searchParams.get('searchType') || '';
-  const keyword = searchParams.get('keyword') || '';
-
-  const middleCategory: CategoryNameEng | '' = isValidCategoryKey(rawMiddle)
-    ? rawMiddle
-    : '';
-  const subCategory: CategoryOptionEng | '' =
-    middleCategory && isValidCategoryOption(rawSub, middleCategory)
-      ? rawSub
-      : '';
-
-  const selectedTab: SearchOption = useMemo(() => {
-    if (rawSearchType === 'REVIEW') return SEARCH_OPTION.REVIEW;
-    return SEARCH_OPTION.PRODUCT;
-  }, [rawSearchType]);
+  const searchParams = useSearchParams();
+  const PAGE_SIZE = 8;
+  const PAGE_NUMBER = 0;
 
   const handleClickTab = (option: SearchOption) => {
     const params = new URLSearchParams(searchParams.toString());
-
-    if (option === SEARCH_OPTION.REVIEW) {
+    if (option === 'REVIEW') {
       params.set('searchType', 'REVIEW');
     } else {
       params.set('searchType', 'PRODUCT');
     }
-
     router.push(`/search?${params.toString()}`);
   };
-
-  const tabRender = {
-    [SEARCH_OPTION.PRODUCT]: <SearchProductsSection />,
-    [SEARCH_OPTION.REVIEW]: <SearchReviewSection />,
-  }[selectedTab];
-
-  if (!isClient) {
-    return <div className="min-h-screen w-full bg-white" />;
-  }
 
   return (
     <div className="flex min-h-screen w-full flex-col items-start">
       <div className="flex flex-col items-start self-stretch"></div>
       <SearchBreadCrumbSection
-        middleCategory={middleCategory}
-        subCategory={subCategory}
+        middleCategory={validatedParams.middleCategory}
+        subCategory={validatedParams.subCategory}
       />
-      {keyword && (
+      {validatedParams.keyword && (
         <div className="mx-auto w-[1366px] px-[11.9rem] py-[6rem]">
           <p className="jp-head2 text-gray-800">
             「
             <span className="inline-block max-w-[80rem] truncate align-bottom">
-              {keyword}
+              {validatedParams.keyword}
             </span>
             」 に関する検索結果
           </p>
         </div>
       )}
       <OptionSelector
-        selectedTab={selectedTab}
+        selectedTab={validatedParams.searchType}
         handleClickTab={handleClickTab}
       />
-      {tabRender}
+      {validatedParams.searchType === 'PRODUCT' && (
+        <SearchProductsSection
+          keyword={validatedParams.keyword}
+          middleCategory={validatedParams.middleCategory}
+          subCategory={validatedParams.subCategory}
+          page={PAGE_NUMBER}
+          size={PAGE_SIZE}
+        />
+      )}
+      {validatedParams.searchType === 'REVIEW' && (
+        <SearchReviewSection
+          keyword={validatedParams.keyword}
+          middleCategory={validatedParams.middleCategory}
+          subCategory={validatedParams.subCategory}
+          page={PAGE_NUMBER}
+          size={PAGE_SIZE}
+        />
+      )}
     </div>
   );
 }
