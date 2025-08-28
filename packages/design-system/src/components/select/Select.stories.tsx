@@ -3,6 +3,7 @@ import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import {
+  Select,
   SelectContent,
   SelectItem,
   SelectRoot,
@@ -71,6 +72,23 @@ const ReviewSelect = () => {
     </SelectRoot>
   );
 };
+
+const NewSelect = () => {
+  return (
+    <Select
+      variant="reverse"
+      placeholder="ddddddd"
+      options={[
+        { value: 'red', label: '빨강' },
+        { value: 'blue', label: '파랑' },
+        { value: 'green', label: '초록' },
+      ]}
+      className=""
+    ></Select>
+  );
+};
+
+export const New: StoryObj<typeof Select> = { render: () => <NewSelect /> };
 
 export const OptionOverflow: StoryObj<typeof SelectRoot> = {
   render: () => <OptionSelectOverflow />,

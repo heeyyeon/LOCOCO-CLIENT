@@ -52,8 +52,11 @@ function SelectContent({
   className,
   children,
   position = 'popper',
+  variant = 'default',
   ...props
-}: ComponentProps<typeof SelectPrimitive.Content>) {
+}: ComponentProps<typeof SelectPrimitive.Content> & {
+  variant?: 'default' | 'reverse';
+}) {
   return (
     <SelectPrimitive.Portal>
       <SelectPrimitive.Content
@@ -61,6 +64,7 @@ function SelectContent({
         className={cn(
           'data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 scrollbar-hide box-shadow relative z-50 w-[var(--radix-select-trigger-width)] overflow-y-auto overflow-x-hidden border-b border-pink-500 bg-pink-100',
           position === 'popper' && 'overflow-y-scroll',
+          variant === 'reverse' && 'data-[side=top]:slide-in-from-bottom-2',
           className
         )}
         style={{
@@ -68,6 +72,7 @@ function SelectContent({
         }}
         position={position}
         avoidCollisions={false}
+        side={variant === 'reverse' ? 'top' : 'bottom'}
         {...props}
       >
         <SelectPrimitive.Viewport
@@ -134,7 +139,7 @@ export function Select({
     </SelectTrigger>
   );
   const contentElement = (
-    <SelectContent>
+    <SelectContent variant={variant}>
       {options.length > 0
         ? options.map((option) => (
             <SelectItem key={option.value} value={option.value}>
@@ -146,17 +151,8 @@ export function Select({
   );
   return (
     <SelectRoot>
-      {variant === 'reverse' ? (
-        <>
-          {contentElement}
-          {triggerElement}
-        </>
-      ) : (
-        <>
-          {triggerElement}
-          {contentElement}
-        </>
-      )}
+      {triggerElement}
+      {contentElement}
     </SelectRoot>
   );
 }
