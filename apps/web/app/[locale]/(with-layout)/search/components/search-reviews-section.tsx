@@ -5,15 +5,11 @@ import { useRouter } from 'next/navigation';
 import {
   ImageReviewResponse,
   VideoReviewResponse,
-<<<<<<< HEAD:apps/web/app/[locale]/(with-layout)/search/components/search-reviews-section.tsx
-} from '../../../../api/review-response';
-=======
 } from '@typescript-swagger/data-contracts';
 import CardReview from 'components/card/card-review';
 import CardSkeletonWrapper from 'components/card/card-skeleton';
 import { CategoryNameEng, CategoryOptionEng } from 'types/category';
 
->>>>>>> develop:apps/web/app/(with-layout)/search/components/search-reviews-section.tsx
 import useReviewSectionData from '../hook/use-review-section';
 import ReviewNotFoundSection from './review-not-found';
 
