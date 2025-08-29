@@ -2,6 +2,7 @@ import { useState } from 'react';
 
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
+import { Avatar } from '../avatar';
 import {
   Select,
   SelectContent,
@@ -79,11 +80,11 @@ const NewSelect = () => {
       variant="reverse"
       placeholder="ddddddd"
       options={[
-        { value: 'red', label: '빨강' },
-        { value: 'blue', label: '파랑' },
-        { value: 'green', label: '초록' },
+        { label: '빨강', icon: <Avatar sizes="16p" /> },
+        { label: '파랑' },
+        { label: '초록' },
       ]}
-      className=""
+      className="w-[990px]"
     ></Select>
   );
 };

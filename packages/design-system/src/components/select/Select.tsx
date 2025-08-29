@@ -113,7 +113,6 @@ function SelectItem({
 }
 
 interface SelectOption {
-  value: string;
   label: string;
   icon?: ReactNode;
 }
@@ -133,26 +132,25 @@ export function Select({
   className,
   children,
 }: SelectProps) {
-  const triggerElement = (
-    <SelectTrigger className={className}>
-      <SelectValue placeholder={placeholder} />
-    </SelectTrigger>
-  );
-  const contentElement = (
-    <SelectContent variant={variant}>
-      {options.length > 0
-        ? options.map((option) => (
-            <SelectItem key={option.value} value={option.value}>
-              {option.label}
-            </SelectItem>
-          ))
-        : children}
-    </SelectContent>
-  );
   return (
     <SelectRoot>
-      {triggerElement}
-      {contentElement}
+      <SelectTrigger className={className}>
+        <SelectValue placeholder={placeholder} />
+      </SelectTrigger>
+      <SelectContent variant={variant}>
+        {options.length > 0
+          ? options.map((option) => (
+              <SelectItem key={option.label} value={option.label}>
+                <div className="flex items-center gap-[16px]">
+                  {option?.icon}
+                  <span className="text-[14px] font-[500] text-gray-800">
+                    {option.label}
+                  </span>
+                </div>
+              </SelectItem>
+            ))
+          : children}
+      </SelectContent>
     </SelectRoot>
   );
 }
