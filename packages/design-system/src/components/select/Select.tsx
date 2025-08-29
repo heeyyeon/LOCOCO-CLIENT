@@ -28,9 +28,11 @@ function SelectValue({
 function SelectTrigger({
   className,
   children,
+  size = 'default',
   ...props
 }: ComponentProps<typeof SelectPrimitive.Trigger> & {
   open?: boolean;
+  size?: 'small' | 'default';
 }) {
   return (
     <SelectPrimitive.Trigger
@@ -39,6 +41,10 @@ function SelectTrigger({
         'group flex h-[4rem] cursor-pointer items-center justify-between gap-[1rem] self-stretch border-b border-gray-500 bg-white pr-[1.2rem] text-gray-500 focus:outline-none',
         '[&:not([data-placeholder])]:border-gray-400',
         '[&[data-state=open]]:border-b-pink-500 [&[data-state=open]]:text-black',
+        {
+          'w-[40.8rem]': size === 'default',
+          'w-[12rem]': size === 'small',
+        },
         className
       )}
       {...props}
@@ -130,7 +136,7 @@ interface SelectProps {
   className?: string;
   isError?: boolean;
   errorText?: string;
-  size?: 'small' | 'large';
+  size?: 'small' | 'default';
   children?: ReactNode;
 }
 
@@ -141,12 +147,12 @@ export function Select({
   className,
   isError,
   errorText,
-  size,
+  size = 'default',
   children,
 }: SelectProps) {
   return (
     <SelectRoot>
-      <SelectTrigger className={className}>
+      <SelectTrigger className={className} size={size}>
         <SelectValue placeholder={placeholder} />
       </SelectTrigger>
       {isError && (
