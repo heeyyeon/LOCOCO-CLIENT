@@ -129,7 +129,7 @@ interface SelectOption {
   icon?: ReactNode;
 }
 
-interface SelectProps {
+interface SelectProps extends ComponentProps<typeof SelectPrimitive.Root> {
   variant?: 'default' | 'reverse';
   placeholder?: string;
   options?: SelectOption[];
@@ -137,7 +137,6 @@ interface SelectProps {
   isError?: boolean;
   errorText?: string;
   size?: 'small' | 'default';
-  children?: ReactNode;
 }
 
 export function Select({
@@ -148,15 +147,15 @@ export function Select({
   isError,
   errorText,
   size = 'default',
-  children,
+  ...selectProps
 }: SelectProps) {
   return (
-    <SelectRoot>
+    <SelectRoot {...selectProps}>
       <SelectTrigger className={className} size={size}>
         <SelectValue placeholder={placeholder} />
       </SelectTrigger>
       {isError && (
-        <div className="h-19px mt-[0.2rem] flex items-center gap-[0.8rem]">
+        <div className="mt-[0.2rem] flex h-[1.9rem] items-center gap-[0.8rem]">
           <SvgError size={13.33} fill="rgba(239,67,81,1)" />
           <span className="text-[12px] font-[400] text-[rgba(239,67,81,1)]">
             {errorText}
@@ -164,18 +163,16 @@ export function Select({
         </div>
       )}
       <SelectContent variant={variant}>
-        {options.length > 0
-          ? options.map((option) => (
-              <SelectItem key={option.label} value={option.label}>
-                <div className="flex items-center gap-[16px]">
-                  {option?.icon}
-                  <span className="text-[14px] font-[500] text-gray-800">
-                    {option.label}
-                  </span>
-                </div>
-              </SelectItem>
-            ))
-          : children}
+        {options.map((option) => (
+          <SelectItem key={option.label} value={option.label}>
+            <div className="flex items-center gap-[16px]">
+              {option?.icon}
+              <span className="text-[14px] font-[500] text-gray-800">
+                {option.label}
+              </span>
+            </div>
+          </SelectItem>
+        ))}
       </SelectContent>
     </SelectRoot>
   );
