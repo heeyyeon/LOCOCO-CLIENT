@@ -150,10 +150,25 @@ export function Select({
   ...selectProps
 }: SelectProps) {
   return (
-    <SelectRoot {...selectProps}>
-      <SelectTrigger className={className} size={size}>
-        <SelectValue placeholder={placeholder} />
-      </SelectTrigger>
+    <div>
+      <SelectRoot {...selectProps}>
+        <SelectTrigger className={className} size={size}>
+          <SelectValue placeholder={placeholder} />
+        </SelectTrigger>
+
+        <SelectContent variant={variant}>
+          {options.map((option) => (
+            <SelectItem key={option.label} value={option.label}>
+              <div className="flex items-center gap-[16px]">
+                {option.icon}
+                <span className="text-[14px] font-[500] text-gray-800">
+                  {option.label}
+                </span>
+              </div>
+            </SelectItem>
+          ))}
+        </SelectContent>
+      </SelectRoot>
       {isError && (
         <div className="mt-[0.2rem] flex h-[1.9rem] items-center gap-[0.8rem]">
           <SvgError size={13.33} fill="rgba(239,67,81,1)" />
@@ -162,19 +177,7 @@ export function Select({
           </span>
         </div>
       )}
-      <SelectContent variant={variant}>
-        {options.map((option) => (
-          <SelectItem key={option.label} value={option.label}>
-            <div className="flex items-center gap-[16px]">
-              {option?.icon}
-              <span className="text-[14px] font-[500] text-gray-800">
-                {option.label}
-              </span>
-            </div>
-          </SelectItem>
-        ))}
-      </SelectContent>
-    </SelectRoot>
+    </div>
   );
 }
 
