@@ -32,7 +32,9 @@ function SelectTrigger({
     <SelectPrimitive.Trigger
       data-slot="select-trigger"
       className={cn(
-        'group flex h-[5.2rem] cursor-pointer items-center justify-between gap-[1rem] self-stretch border-b border-gray-400 bg-white pr-[1.2rem] focus:outline-none [&[data-state=open]]:border-pink-500',
+        'group flex h-[4rem] cursor-pointer items-center justify-between gap-[1rem] self-stretch border-b border-gray-500 bg-white pr-[1.2rem] text-gray-500 focus:outline-none',
+        '[&:not([data-placeholder])]:border-gray-400',
+        '[&[data-state=open]]:border-b-pink-500 [&[data-state=open]]:text-black',
         className
       )}
       {...props}
@@ -92,7 +94,7 @@ function SelectContent({
 function SelectItem({
   className,
   children,
-  hover = false,
+  hover = true,
   ...props
 }: ComponentProps<typeof SelectPrimitive.Item> & {
   hover?: boolean;
@@ -122,6 +124,9 @@ interface SelectProps {
   placeholder?: string;
   options?: SelectOption[];
   className?: string;
+  isError?: boolean;
+  errorText?: string;
+  size?: 'small' | 'large';
   children?: ReactNode;
 }
 
@@ -130,6 +135,9 @@ export function Select({
   placeholder,
   options = [],
   className,
+  isError,
+  errorText,
+  size,
   children,
 }: SelectProps) {
   return (
@@ -137,6 +145,7 @@ export function Select({
       <SelectTrigger className={className}>
         <SelectValue placeholder={placeholder} />
       </SelectTrigger>
+      {isError && <>{errorText}</>}
       <SelectContent variant={variant}>
         {options.length > 0
           ? options.map((option) => (

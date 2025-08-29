@@ -84,7 +84,6 @@ const NewSelect = () => {
         { label: '파랑' },
         { label: '초록' },
       ]}
-      className="w-[990px]"
     ></Select>
   );
 };
