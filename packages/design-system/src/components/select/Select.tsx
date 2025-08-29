@@ -2,7 +2,11 @@ import { ComponentProps, ReactNode } from 'react';
 
 import * as SelectPrimitive from '@radix-ui/react-select';
 
-import { SvgArrowDown, SvgArrowUp } from '../../icons/fill/components';
+import {
+  SvgArrowDown,
+  SvgArrowUp,
+  SvgError,
+} from '../../icons/fill/components';
 import { cn } from '../../lib/utils';
 
 function SelectRoot({ ...props }: ComponentProps<typeof SelectPrimitive.Root>) {
@@ -145,7 +149,14 @@ export function Select({
       <SelectTrigger className={className}>
         <SelectValue placeholder={placeholder} />
       </SelectTrigger>
-      {isError && <>{errorText}</>}
+      {isError && (
+        <div className="h-19px mt-[0.2rem] flex items-center gap-[0.8rem]">
+          <SvgError size={13.33} fill="rgba(239,67,81,1)" />
+          <span className="text-[12px] font-[400] text-[rgba(239,67,81,1)]">
+            {errorText}
+          </span>
+        </div>
+      )}
       <SelectContent variant={variant}>
         {options.length > 0
           ? options.map((option) => (

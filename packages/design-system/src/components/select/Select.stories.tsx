@@ -84,6 +84,8 @@ const NewSelect = () => {
         { label: '파랑' },
         { label: '초록' },
       ]}
+      isError={true}
+      errorText="에러메쎄제에이에이예"
     ></Select>
   );
 };
