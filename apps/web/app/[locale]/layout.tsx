@@ -93,7 +93,7 @@ export default async function RootLayout({
   }
   setRequestLocale(locale);
   return (
-    <html lang="ja" suppressHydrationWarning>
+    <html lang={locale} suppressHydrationWarning>
       <GoogleAnalytics gaId="G-GT92YY193R" />
       <GoogleTagManager gtmId="GTM-5QMBC6SP" />
 
