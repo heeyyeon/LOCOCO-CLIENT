@@ -3,18 +3,23 @@ import { cn } from '../../lib/utils';
 
 interface ErrorNoticeProps {
   message: string;
+  errorIconSize?: number;
   className?: string;
 }
 
-export default function ErrorNotice({ message, className }: ErrorNoticeProps) {
+export default function ErrorNotice({
+  message,
+  errorIconSize = 16,
+  className,
+}: ErrorNoticeProps) {
   return (
     <p
       className={cn(
-        'jp-caption3 mt-[0.8rem] flex items-center text-[color:var(--color-red)]',
+        'jp-caption3 mt-[0.2rem] flex h-[1.9rem] items-center gap-[0.8rem] text-[color:var(--color-red)]',
         className
       )}
     >
-      <SvgErrorFill className="fill-color-red mr-[0.5rem]" size={16} />
+      <SvgErrorFill className="fill-color-red" size={errorIconSize} />
       {message}
     </p>
   );
