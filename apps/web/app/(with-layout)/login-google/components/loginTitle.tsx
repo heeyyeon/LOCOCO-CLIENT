@@ -6,8 +6,10 @@ export default function LoginTitle({
   return (
     <>
       {/* TODO: 폰트 스타일 추가 */}
-      <h1 className="mb-[1.6rem] text-pink-500">Welcome to Lococo!</h1>
-      <div className="text-center text-gray-800">
+      <h1 className="inter-head3 mb-[1.6rem] font-bold text-pink-500">
+        Welcome to Lococo!
+      </h1>
+      <div className="inter-caption2 text-center font-medium text-gray-800">
         {mode === 'login' ? (
           <p>Log in to your Google account right away</p>
         ) : (
