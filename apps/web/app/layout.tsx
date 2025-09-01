@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Noto_Sans_JP } from 'next/font/google';
+import { Inter, Noto_Sans_JP, Noto_Sans_KR } from 'next/font/google';
 import localFont from 'next/font/local';
 
 import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google';
@@ -18,6 +18,20 @@ const pretendard = localFont({
   src: './fonts/PretendardVariable.woff2',
   variable: '--font-pretendard',
   weight: '500 700',
+  display: 'swap',
+});
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+  weight: ['400', '500', '600', '700'],
+  display: 'swap',
+});
+
+const notoSansKR = Noto_Sans_KR({
+  subsets: ['latin'],
+  variable: '--font-noto-sans-kr',
+  weight: ['400', '500', '600', '700'],
   display: 'swap',
 });
 
@@ -85,7 +99,7 @@ export default function RootLayout({
       <GoogleTagManager gtmId="GTM-5QMBC6SP" />
 
       <body
-        className={`${notoSansJP.variable} ${pretendard.variable} min-h-screen lg:flex lg:justify-center`}
+        className={`${notoSansJP.variable} ${pretendard.variable} ${inter.variable} ${notoSansKR.variable} min-h-screen lg:flex lg:justify-center`}
       >
         <Providers>{children}</Providers>
       </body>

@@ -66,6 +66,12 @@
 
   /* 추후 커스텀 브레이크포인트 추가 */
   /* --breakpoint-lg: 133.6rem; */
+
+  /*inter body*/
+  --text-inter-body3: 1.6rem;
+
+  /*noto Sans KR body*/
+  --text-noto-sans-kr-body3: 1.5rem;
 }
 
 @layer base {
@@ -188,6 +194,20 @@
   .en-caption1 {
     font-family: var(--font-pretendard);
     font-size: var(--text-en-caption1);
+    line-height: 150%;
+  }
+
+  /*Inter body*/
+  .inter-body3 {
+    font-family: var(--font-inter);
+    font-size: var(--text-inter-body3);
+    line-height: 150%;
+  }
+
+  /*Noto Sans KR body*/
+  .kr-body3 {
+    font-family: var(--font-noto-sans-kr);
+    font-size: var(--text-noto-sans-kr-body3);
     line-height: 150%;
   }
 
