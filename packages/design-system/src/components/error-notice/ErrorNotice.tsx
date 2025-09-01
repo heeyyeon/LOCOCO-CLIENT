@@ -15,7 +15,7 @@ export default function ErrorNotice({
   return (
     <p
       className={cn(
-        'jp-caption3 mt-[0.2rem] flex h-[1.9rem] items-center gap-[0.8rem] text-[color:var(--color-red)]',
+        'inter-caption3 mt-[0.2rem] flex h-[1.9rem] items-center gap-[0.8rem] font-[400] text-[color:var(--color-red)]',
         className
       )}
     >

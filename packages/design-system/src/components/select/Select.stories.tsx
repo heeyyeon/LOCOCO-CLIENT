@@ -1,8 +1,7 @@
 import { useState } from 'react';
 
-import type { Meta, StoryObj } from '@storybook/react-vite';
+import { Meta, StoryObj } from '@storybook/react-vite';
 
-import { Avatar } from '../avatar';
 import {
   Select,
   SelectContent,
@@ -79,11 +78,7 @@ const NewSelect = () => {
     <Select
       variant="reverse"
       placeholder="ddddddd"
-      options={[
-        { label: '빨강', icon: <Avatar sizes="16p" /> },
-        { label: '파랑' },
-        { label: '초록' },
-      ]}
+      options={[{ label: '빨강' }, { label: '파랑' }, { label: '초록' }]}
       isError={true}
       errorText="에러메쎄제에이에이예"
     ></Select>
