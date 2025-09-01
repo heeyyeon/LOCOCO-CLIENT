@@ -5,7 +5,6 @@ export default function LoginTitle({
 }) {
   return (
     <>
-      {/* TODO: 폰트 스타일 추가 */}
       <h1 className="inter-head3 mb-[1.6rem] font-bold text-pink-500">
         Welcome to Lococo!
       </h1>
