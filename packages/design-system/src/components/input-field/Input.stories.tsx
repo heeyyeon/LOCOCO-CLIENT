@@ -39,7 +39,7 @@ export const Search: Story = {
   args: {
     type: 'Inter',
     placeholder: 'Search...',
-    leftIcon: <SvgSearch size={20} />,
+    rightIcon: <SvgSearch size={20} />,
   },
 };
 
@@ -47,7 +47,7 @@ export const ButtonLeft: Story = {
   args: {
     type: 'NotoSansKR',
     placeholder: '검색...',
-    leftIcon: (
+    rightIcon: (
       <Button variant="filled" color="primary" size="md">
         label
       </Button>

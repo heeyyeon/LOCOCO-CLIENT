@@ -6,8 +6,8 @@ import { cn } from '../../lib/utils';
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   type?: 'Inter' | 'NotoSansKR';
-  leftIcon?: React.ReactNode;
-  handleLeftIconClick?: () => void;
+  rightIcon?: React.ReactNode;
+  handleRightIconClick?: () => void;
 }
 
 const inputVariants = cva('w-full focus:outline-none', {
@@ -25,19 +25,19 @@ const inputVariants = cva('w-full focus:outline-none', {
 export default function Input({
   type = 'Inter',
   className,
-  leftIcon,
-  handleLeftIconClick,
+  rightIcon,
+  handleRightIconClick,
   ...props
 }: InputProps) {
   return (
     <div className="inline-flex w-[40.8rem] items-center justify-start gap-[1rem] border-b border-gray-400 py-[0.8rem] transition-colors duration-200 focus-within:border-pink-500">
       <input className={cn(inputVariants({ type }), className)} {...props} />
-      {leftIcon && (
+      {rightIcon && (
         <div
-          onClick={handleLeftIconClick}
+          onClick={handleRightIconClick}
           className="flex cursor-pointer items-center justify-center"
         >
-          {leftIcon}
+          {rightIcon}
         </div>
       )}
     </div>
