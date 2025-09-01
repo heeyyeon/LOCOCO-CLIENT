@@ -49,7 +49,7 @@ export const ButtonLeft: Story = {
     placeholder: '검색...',
     leftIcon: (
       <Button variant="filled" color="primary" size="md">
-        검색
+        label
       </Button>
     ),
   },
