@@ -16,6 +16,7 @@ export { SvgDivider } from './Divider';
 export { SvgErrorFill } from './ErrorFill';
 export { SvgGoodFill } from './GoodFill';
 export { SvgGoodOutline } from './GoodOutline';
+export { SvgGoogle } from './Google';
 export { SvgHistory } from './History';
 export { SvgHomeFill } from './HomeFill';
 export { SvgImgPhoto } from './ImgPhoto';
