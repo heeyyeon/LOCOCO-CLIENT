@@ -9,7 +9,7 @@ const meta: Meta<typeof Input> = {
   component: Input,
   tags: ['autodocs'],
   argTypes: {
-    type: {
+    fontType: {
       control: { type: 'radio' },
       options: ['Inter', 'NotoSansKR'],
     },
@@ -23,21 +23,21 @@ type Story = StoryObj<typeof Input>;
 
 export const Default: Story = {
   args: {
-    type: 'Inter',
+    fontType: 'Inter',
     placeholder: 'Enter text...',
   },
 };
 
 export const NotoSansKR: Story = {
   args: {
-    type: 'NotoSansKR',
+    fontType: 'NotoSansKR',
     placeholder: '한국어 텍스트...',
   },
 };
 
 export const Search: Story = {
   args: {
-    type: 'Inter',
+    fontType: 'Inter',
     placeholder: 'Search...',
     rightIcon: <SvgSearch size={20} />,
   },
@@ -45,7 +45,7 @@ export const Search: Story = {
 
 export const ButtonLeft: Story = {
   args: {
-    type: 'NotoSansKR',
+    fontType: 'NotoSansKR',
     placeholder: '검색...',
     rightIcon: (
       <Button variant="filled" color="primary" size="md">
