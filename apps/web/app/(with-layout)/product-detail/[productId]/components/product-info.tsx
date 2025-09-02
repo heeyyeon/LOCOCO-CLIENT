@@ -139,7 +139,7 @@ export default function ProductInfo({
           <Button
             color="primary"
             variant="filled"
-            rounded
+            rounded="sm"
             size="lg"
             asChild
             className="flex-1"
@@ -157,7 +157,7 @@ export default function ProductInfo({
           <Button
             color="primary"
             variant="filled"
-            rounded
+            rounded="sm"
             size="lg"
             asChild
             className="flex-1"
@@ -175,7 +175,7 @@ export default function ProductInfo({
         <Button
           color="secondary"
           variant="filled"
-          rounded
+          rounded="sm"
           size="lg"
           className="jp-title2 font-bold"
           onClick={() => handleClickReviewBtn()}

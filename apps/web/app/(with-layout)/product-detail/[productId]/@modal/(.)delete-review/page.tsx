@@ -60,7 +60,7 @@ export default function DeleteReviewModal() {
             color="secondary"
             variant="filled"
             size="lg"
-            rounded={true}
+            rounded="sm"
             className="jp-title2 w-[17.8rem] text-pink-500"
             onClick={handleCancel}
           >
@@ -70,7 +70,7 @@ export default function DeleteReviewModal() {
             color="primary"
             variant="filled"
             size="lg"
-            rounded={true}
+            rounded="sm"
             className="jp-title2 w-[17.8rem] text-white"
             onClick={handleDelete}
           >
