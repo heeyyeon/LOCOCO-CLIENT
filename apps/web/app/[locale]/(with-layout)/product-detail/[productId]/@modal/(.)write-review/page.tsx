@@ -129,7 +129,7 @@ export default function WriteReviewModal() {
           size="lg"
           color="primary"
           className="jp-title2 w-full px-[1.6rem] py-[1.2rem]"
-          rounded
+          rounded="sm"
           onClick={onSubmit}
           disabled={!isFormValid}
         >
