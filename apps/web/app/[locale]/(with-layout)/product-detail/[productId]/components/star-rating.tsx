@@ -1,6 +1,7 @@
-import { useAuth } from 'hooks/use-auth';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
+
+import { useAuth } from 'hooks/use-auth';
 
 import { Button } from '@lococo/design-system/button';
 import { Progress } from '@lococo/design-system/progress';
@@ -56,7 +57,7 @@ export default function StarRating({
         </div>
       </div>
 
-      <Button color="primary" variant="filled" size="lg" rounded asChild>
+      <Button color="primary" variant="filled" size="lg" rounded="sm" asChild>
         {/* TODO: 랜딩 배포 이후 라우팅 URL 추가 */}
         <Link
           href={
