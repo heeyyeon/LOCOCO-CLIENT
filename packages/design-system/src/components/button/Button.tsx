@@ -15,6 +15,7 @@ interface ButtonProps
   size: 'lg' | 'md' | 'sm';
   asChild?: boolean;
   rounded?: 'none' | 'sm' | 'md';
+  fontType?: 'InterTitle3' | 'InterBody1' | 'InterBody2' | 'InterBody4';
 }
 
 const baseButtonStyle = 'py-[1rem] gap-[0.8rem]';
@@ -41,6 +42,12 @@ const buttonVariants = cva(
         none: 'rounded-none',
         sm: 'rounded-[0.8rem]',
         md: 'rounded-[3.2rem]',
+      },
+      fontType: {
+        InterTitle3: 'inter-title3',
+        InterBody1: 'inter-body1',
+        InterBody2: 'inter-body2',
+        InterBody4: 'inter-body4',
       },
     },
     compoundVariants: [
@@ -90,6 +97,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       children,
       className,
       rounded = 'md',
+      fontType = 'InterBody1',
       asChild = false,
       disabled,
       ...props
@@ -112,7 +120,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         disabled={disabled}
         ref={ref}
         className={cn(
-          buttonVariants({ variant, color, size, rounded }),
+          buttonVariants({ variant, color, size, rounded, fontType }),
           className
         )}
         {...props}
