@@ -14,9 +14,10 @@ interface ButtonProps
   variant: 'filled' | 'outline' | 'text';
   size: 'lg' | 'md' | 'sm';
   asChild?: boolean;
+  rounded?: 'none' | 'sm' | 'md';
 }
 
-const baseButtonStyle = 'rounded-[3.2rem] py-[1rem] gap-[0.8rem]';
+const baseButtonStyle = 'py-[1rem] gap-[0.8rem]';
 
 const buttonVariants = cva(
   'flex items-center transition-colors duration-300 justify-center font-bold disabled:bg-gray-200 disabled:text-gray-500 disabled:cursor-not-allowed cursor-pointer grow',
@@ -35,6 +36,11 @@ const buttonVariants = cva(
         lg: `h-[6.4rem] px-[3.2rem] ${baseButtonStyle}`,
         md: `h-[5.6rem] px-[3.2rem] ${baseButtonStyle}`,
         sm: `h-[4.8rem] px-[2.4rem] ${baseButtonStyle}`,
+      },
+      rounded: {
+        none: 'rounded-none',
+        sm: 'rounded-[0.8rem]',
+        md: 'rounded-[3.2rem]',
       },
     },
     compoundVariants: [
@@ -68,6 +74,7 @@ const buttonVariants = cva(
       variant: 'filled',
       color: 'primary',
       size: 'md',
+      rounded: 'md',
     },
   }
 );
@@ -82,6 +89,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       iconRight,
       children,
       className,
+      rounded = 'md',
       asChild = false,
       disabled,
       ...props
@@ -103,7 +111,10 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       <Comp
         disabled={disabled}
         ref={ref}
-        className={cn(buttonVariants({ variant, color, size }), className)}
+        className={cn(
+          buttonVariants({ variant, color, size, rounded }),
+          className
+        )}
         {...props}
       >
         {buttonContent}
