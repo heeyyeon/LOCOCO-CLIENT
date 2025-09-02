@@ -15,6 +15,10 @@ const meta: Meta<typeof Button> = {
     },
     size: { control: 'radio', options: ['lg', 'md', 'sm'] },
     rounded: { control: 'radio', options: ['none', 'sm', 'md'] },
+    fontType: {
+      control: 'radio',
+      options: ['InterTitle3', 'InterBody1', 'InterBody2', 'InterBody4'],
+    },
     disabled: { control: 'boolean' },
   },
 };
@@ -28,6 +32,7 @@ export const FilledPrimary: Story = {
     variant: 'filled',
     color: 'primary',
     size: 'lg',
+    fontType: 'InterTitle3',
   },
 };
 
@@ -37,6 +42,7 @@ export const FilledPrimaryMedium: Story = {
     variant: 'filled',
     color: 'primary',
     size: 'md',
+    fontType: 'InterBody1',
   },
 };
 
@@ -46,6 +52,7 @@ export const FilledPrimarySmall: Story = {
     variant: 'filled',
     color: 'primary',
     size: 'sm',
+    fontType: 'InterBody2',
   },
 };
 
@@ -56,6 +63,7 @@ export const FilledPrimaryWithLeftIcon: Story = {
     color: 'primary',
     size: 'lg',
     iconLeft: <SvgErrorFill />,
+    fontType: 'InterTitle3',
   },
 };
 
@@ -66,6 +74,7 @@ export const FilledPrimaryWithRightIcon: Story = {
     color: 'primary',
     size: 'lg',
     iconRight: <SvgErrorFill />,
+    fontType: 'InterTitle3',
   },
 };
 
@@ -76,6 +85,7 @@ export const FilledPrimaryMediumWithLeftIcon: Story = {
     color: 'primary',
     size: 'md',
     iconLeft: <SvgErrorFill />,
+    fontType: 'InterBody1',
   },
 };
 
@@ -96,6 +106,7 @@ export const FilledPrimarySmallWithLeftIcon: Story = {
     color: 'primary',
     size: 'sm',
     iconLeft: <SvgErrorFill />,
+    fontType: 'InterBody2',
   },
 };
 
@@ -106,6 +117,7 @@ export const FilledPrimarySmallWithRightIcon: Story = {
     color: 'primary',
     size: 'sm',
     iconRight: <SvgErrorFill />,
+    fontType: 'InterBody2',
   },
 };
 
@@ -116,6 +128,7 @@ export const OutlineDefault: Story = {
     variant: 'outline',
     color: 'primary',
     size: 'lg',
+    fontType: 'InterTitle3',
   },
 };
 
@@ -125,6 +138,7 @@ export const OutlineDefaultMedium: Story = {
     variant: 'outline',
     color: 'primary',
     size: 'md',
+    fontType: 'InterBody1',
   },
 };
 
@@ -134,6 +148,7 @@ export const OutlineDefaultSmall: Story = {
     variant: 'outline',
     color: 'primary',
     size: 'sm',
+    fontType: 'InterBody2',
   },
 };
 
@@ -144,6 +159,7 @@ export const OutlineDefaultWithLeftIcon: Story = {
     color: 'primary',
     size: 'lg',
     iconLeft: <SvgErrorFill />,
+    fontType: 'InterTitle3',
   },
 };
 
@@ -154,6 +170,7 @@ export const OutlineDefaultWithRightIcon: Story = {
     color: 'primary',
     size: 'lg',
     iconRight: <SvgErrorFill />,
+    fontType: 'InterTitle3',
   },
 };
 
@@ -164,6 +181,7 @@ export const TextPrimary: Story = {
     variant: 'text',
     color: 'primary',
     size: 'lg',
+    fontType: 'InterTitle3',
   },
 };
 
@@ -173,6 +191,7 @@ export const TextPrimaryMedium: Story = {
     variant: 'text',
     color: 'primary',
     size: 'md',
+    fontType: 'InterBody1',
   },
 };
 
@@ -182,6 +201,7 @@ export const TextPrimarySmall: Story = {
     variant: 'text',
     color: 'primary',
     size: 'sm',
+    fontType: 'InterBody2',
   },
 };
 
@@ -192,6 +212,7 @@ export const TextPrimaryWithLeftIcon: Story = {
     color: 'primary',
     size: 'lg',
     iconLeft: <SvgErrorFill />,
+    fontType: 'InterTitle3',
   },
 };
 
@@ -202,6 +223,7 @@ export const TextPrimaryWithRightIcon: Story = {
     color: 'primary',
     size: 'lg',
     iconRight: <SvgErrorFill />,
+    fontType: 'InterTitle3',
   },
 };
 
@@ -212,6 +234,7 @@ export const FilledSecondary: Story = {
     variant: 'filled',
     color: 'secondary',
     size: 'lg',
+    fontType: 'InterTitle3',
   },
 };
 
@@ -221,6 +244,7 @@ export const FilledSecondaryMedium: Story = {
     variant: 'filled',
     color: 'secondary',
     size: 'md',
+    fontType: 'InterBody1',
   },
 };
 
@@ -230,6 +254,7 @@ export const FilledSecondarySmall: Story = {
     variant: 'filled',
     color: 'secondary',
     size: 'sm',
+    fontType: 'InterBody2',
   },
 };
 
@@ -240,6 +265,7 @@ export const FilledSecondaryWithLeftIcon: Story = {
     color: 'secondary',
     size: 'lg',
     iconLeft: <SvgErrorFill />,
+    fontType: 'InterTitle3',
   },
 };
 
@@ -250,6 +276,7 @@ export const FilledSecondaryWithRightIcon: Story = {
     color: 'secondary',
     size: 'lg',
     iconRight: <SvgErrorFill />,
+    fontType: 'InterTitle3',
   },
 };
 
@@ -259,6 +286,7 @@ export const TextSecondary: Story = {
     variant: 'text',
     color: 'secondary',
     size: 'lg',
+    fontType: 'InterTitle3',
   },
 };
 
@@ -268,6 +296,7 @@ export const TextSecondaryMedium: Story = {
     variant: 'text',
     color: 'secondary',
     size: 'md',
+    fontType: 'InterBody1',
   },
 };
 
@@ -277,6 +306,7 @@ export const TextSecondarySmall: Story = {
     variant: 'text',
     color: 'secondary',
     size: 'sm',
+    fontType: 'InterBody2',
   },
 };
 
@@ -287,6 +317,7 @@ export const FilledPrimaryDisabled: Story = {
     variant: 'filled',
     color: 'primary',
     size: 'lg',
+    fontType: 'InterTitle3',
     disabled: true,
   },
 };
@@ -297,6 +328,7 @@ export const TextPrimaryDisabled: Story = {
     variant: 'text',
     color: 'primary',
     size: 'lg',
+    fontType: 'InterTitle3',
     disabled: true,
   },
 };
@@ -309,6 +341,7 @@ export const FilledPrimaryRoundedNone: Story = {
     color: 'primary',
     size: 'lg',
     rounded: 'none',
+    fontType: 'InterTitle3',
   },
 };
 
@@ -319,5 +352,6 @@ export const FilledPrimaryRoundedSmall: Story = {
     color: 'primary',
     size: 'lg',
     rounded: 'sm',
+    fontType: 'InterTitle3',
   },
 };
