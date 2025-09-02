@@ -11,19 +11,16 @@ export default function middleware(req: NextRequest) {
   const { origin, pathname } = nextUrl;
 
   // next-intl 미들웨어 실행하여 locale 처리
-
   const response = intlMiddleware(req);
 
   // 지원하지 않는 locale 접근시 default locale로 리다이렉트
   const unsupportedLocale = ['fr', 'ru', 'ja', 'zh'];
-  const firstSegment = pathname.split('/')[1];
+  const firstSegment = pathname.split('/')[1]; // 현재 locale
+  const pathWithoutLocale = pathname.replace(`/${firstSegment}`, '');
+
   if (firstSegment && unsupportedLocale.includes(firstSegment)) {
-    const pathWithoutUnsupportedLocale = pathname.replace(
-      `/${firstSegment}`,
-      ''
-    );
     const redirectUrl = new URL(
-      `/${routing.defaultLocale}${pathWithoutUnsupportedLocale}`,
+      `/${routing.defaultLocale}${pathWithoutLocale}`,
       process.env.NEXT_PUBLIC_BASE_URL
     );
     return NextResponse.redirect(redirectUrl);
@@ -33,24 +30,38 @@ export default function middleware(req: NextRequest) {
   const isLoggedIn = accessTokenCookie !== undefined;
 
   // TODO: 추후 routing을 관리하는 파일로 분리
-  // 로그인이 필요한 페이지 (인증이 필요한 페이지)
-  const AUTH_REQUIRED_PAGES = ['/product-detail/:productId/write-review'];
-  // 로그인 후 접근 불가능한 페이지
-  const LOGIN_RESTRICTED_PAGES = ['/login', '/api/auth/line/login'];
+  // 로그인이 필요한 페이지 (인증이 필요한 페이지) - locale 제외한 경로
+  const AUTH_REQUIRED_PATH = ['/product-detail/:productId/write-review'];
+  // 로그인 후 접근 불가능한 페이지 - locale 제외한 경로
+  const LOGIN_RESTRICTED_PATH = ['/login', '/api/auth/line/login'];
 
   // 인증이 필요한 페이지 체크
-  if (AUTH_REQUIRED_PAGES.includes(pathname)) {
+  const isAuthRequired = AUTH_REQUIRED_PATH.some((path) => {
+    const regex = new RegExp(path.replace(':productId', '[^/]+'));
+    return regex.test(pathWithoutLocale);
+  });
+
+  const currentLocale =
+    firstSegment && !unsupportedLocale.includes(firstSegment)
+      ? firstSegment
+      : routing.defaultLocale;
+
+  if (isAuthRequired) {
     if (!isLoggedIn) {
-      return NextResponse.redirect(new URL('/login', origin));
+      return NextResponse.redirect(new URL(`/${currentLocale}/login`, origin));
     } else {
       return NextResponse.next();
     }
   }
 
   // 로그인한 상태에서 접근할 수 없는 페이지 체크
-  if (LOGIN_RESTRICTED_PAGES.includes(pathname)) {
+  const isLoginRestricted = LOGIN_RESTRICTED_PATH.some((pattern) => {
+    return pathWithoutLocale === pattern;
+  });
+
+  if (isLoginRestricted) {
     if (isLoggedIn) {
-      return NextResponse.redirect(new URL('/', origin));
+      return NextResponse.redirect(new URL(`/${currentLocale}`, origin));
     } else {
       return NextResponse.next();
     }
