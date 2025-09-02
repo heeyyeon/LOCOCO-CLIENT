@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { NextIntlClientProvider, hasLocale } from 'next-intl';
 import { getTimeZone, setRequestLocale } from 'next-intl/server';
-import { Noto_Sans_JP } from 'next/font/google';
+import { Inter, Noto_Sans_JP, Noto_Sans_KR } from 'next/font/google';
 import localFont from 'next/font/local';
 import { notFound } from 'next/navigation';
 
@@ -22,6 +22,20 @@ const pretendard = localFont({
   src: './../fonts/PretendardVariable.woff2',
   variable: '--font-pretendard',
   weight: '500 700',
+  display: 'swap',
+});
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+  weight: ['400', '500', '600', '700'],
+  display: 'swap',
+});
+
+const notoSansKR = Noto_Sans_KR({
+  subsets: ['latin'],
+  variable: '--font-noto-sans-kr',
+  weight: ['400', '500', '600', '700'],
   display: 'swap',
 });
 
@@ -98,7 +112,7 @@ export default async function RootLayout({
       <GoogleTagManager gtmId="GTM-5QMBC6SP" />
 
       <body
-        className={`${notoSansJP.variable} ${pretendard.variable} min-h-screen lg:flex lg:justify-center`}
+        className={`${notoSansJP.variable} ${pretendard.variable} ${inter.variable} ${notoSansKR.variable} min-h-screen lg:flex lg:justify-center`}
       >
         <NextIntlClientProvider locale={locale} timeZone={timeZone}>
           <Providers>{children}</Providers>
