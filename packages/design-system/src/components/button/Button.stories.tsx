@@ -14,6 +14,7 @@ const meta: Meta<typeof Button> = {
       options: ['primary', 'secondary'],
     },
     size: { control: 'radio', options: ['lg', 'md', 'sm'] },
+    rounded: { control: 'radio', options: ['none', 'sm', 'md'] },
     disabled: { control: 'boolean' },
   },
 };
@@ -297,5 +298,26 @@ export const TextPrimaryDisabled: Story = {
     color: 'primary',
     size: 'lg',
     disabled: true,
+  },
+};
+
+// ROUNDED VARIANTS
+export const FilledPrimaryRoundedNone: Story = {
+  args: {
+    children: 'Label',
+    variant: 'filled',
+    color: 'primary',
+    size: 'lg',
+    rounded: 'none',
+  },
+};
+
+export const FilledPrimaryRoundedSmall: Story = {
+  args: {
+    children: 'Label',
+    variant: 'filled',
+    color: 'primary',
+    size: 'lg',
+    rounded: 'sm',
   },
 };
