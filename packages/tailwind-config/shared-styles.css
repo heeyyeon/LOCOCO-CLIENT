@@ -64,6 +64,44 @@
   /* EN caption */
   --text-en-caption1: 1.2rem;
 
+  /*Inter head*/
+  --text-inter-head1: 4rem;
+  --text-inter-head2: 3.2rem;
+  --text-inter-head3: 2.8rem;
+
+  /*Inter title*/
+  --text-inter-title1: 2.4rem;
+  --text-inter-title2: 2rem;
+  --text-inter-title3: 1.8rem;
+
+  /*Inter body*/
+  --text-inter-body1: 1.6rem;
+  --text-inter-body2: 1.4rem;
+  --text-inter-body3: 1.6rem;
+  --text-inter-body4: 1.4rem;
+
+  /*Inter caption*/
+  --text-inter-caption: 1.2rem;
+
+  /*Noto Sans KR head*/
+  --text-noto-sans-kr-head1: 3.8rem;
+  --text-noto-sans-kr-head2: 3rem;
+  --text-noto-sans-kr-head3: 2.6rem;
+
+  /*Noto Sans KR title*/
+  --text-noto-sans-kr-title1: 2.3rem;
+  --text-noto-sans-kr-title2: 1.9rem;
+  --text-noto-sans-kr-title3: 1.7rem;
+
+  /*Noto Sans KR body*/
+  --text-noto-sans-kr-body1: 1.5rem;
+  --text-noto-sans-kr-body2: 1.3rem;
+  --text-noto-sans-kr-body3: 1.5rem;
+  --text-noto-sans-kr-body4: 1.3rem;
+
+  /*Noto Sans KR caption*/
+  --text-noto-sans-kr-caption: 1.2rem;
+
   /* 추후 커스텀 브레이크포인트 추가 */
   /* --breakpoint-lg: 133.6rem; */
 
@@ -197,18 +235,150 @@
     line-height: 150%;
   }
 
+  /*Inter head*/
+  .inter-head1 {
+    font-family: var(--font-inter);
+    font-size: var(--text-inter-head1);
+    line-height: 140%;
+  }
+  .inter-head2 {
+    font-family: var(--font-inter);
+    font-size: var(--text-inter-head2);
+    line-height: 140%;
+  }
+  .inter-head3 {
+    font-family: var(--font-inter);
+    font-size: var(--text-inter-head3);
+    line-height: 140%;
+  }
+
+  /*Inter title*/
+  .inter-title1 {
+    font-family: var(--font-inter);
+    font-size: var(--text-inter-title1);
+    line-height: 150%;
+  }
+  .inter-title2 {
+    font-family: var(--font-inter);
+    font-size: var(--text-inter-title2);
+    line-height: 150%;
+  }
+  .inter-title3 {
+    font-family: var(--font-inter);
+    font-size: var(--text-inter-title3);
+    line-height: 150%;
+  }
+
   /*Inter body*/
+  .inter-body1 {
+    font-family: var(--font-inter);
+    font-size: var(--text-inter-body1);
+    line-height: 150%;
+  }
+  .inter-body2 {
+    font-family: var(--font-inter);
+    font-size: var(--text-inter-body2);
+    line-height: 150%;
+  }
   .inter-body3 {
     font-family: var(--font-inter);
     font-size: var(--text-inter-body3);
     line-height: 150%;
   }
+  .inter-body4 {
+    font-family: var(--font-inter);
+    font-size: var(--text-inter-body4);
+    line-height: 150%;
+  }
+
+  /*Inter caption*/
+  .inter-caption1 {
+    font-family: var(--font-inter);
+    font-size: var(--text-inter-caption);
+    line-height: 160%;
+  }
+  .inter-caption2 {
+    font-family: var(--font-inter);
+    font-size: var(--text-inter-caption);
+    line-height: 160%;
+  }
+  .inter-caption3 {
+    font-family: var(--font-inter);
+    font-size: var(--text-inter-caption);
+    line-height: 160%;
+  }
+
+  /*Noto Sans KR head*/
+  .kr-head1 {
+    font-family: var(--font-noto-sans-kr);
+    font-size: var(--text-noto-sans-kr-head1);
+    line-height: 150%;
+  }
+  .kr-head2 {
+    font-family: var(--font-noto-sans-kr);
+    font-size: var(--text-noto-sans-kr-head2);
+    line-height: 150%;
+  }
+  .kr-head3 {
+    font-family: var(--font-noto-sans-kr);
+    font-size: var(--text-noto-sans-kr-head3);
+    line-height: 150%;
+  }
+
+  /*Noto Sans KR title*/
+  .kr-title1 {
+    font-family: var(--font-noto-sans-kr);
+    font-size: var(--text-noto-sans-kr-title1);
+    line-height: 150%;
+  }
+  .kr-title2 {
+    font-family: var(--font-noto-sans-kr);
+    font-size: var(--text-noto-sans-kr-title2);
+    line-height: 150%;
+  }
+  .kr-title3 {
+    font-family: var(--font-noto-sans-kr);
+    font-size: var(--text-noto-sans-kr-title3);
+    line-height: 150%;
+  }
 
   /*Noto Sans KR body*/
+  .kr-body1 {
+    font-family: var(--font-noto-sans-kr);
+    font-size: var(--text-noto-sans-kr-body1);
+    line-height: 150%;
+  }
+  .kr-body2 {
+    font-family: var(--font-noto-sans-kr);
+    font-size: var(--text-noto-sans-kr-body2);
+    line-height: 150%;
+  }
   .kr-body3 {
     font-family: var(--font-noto-sans-kr);
     font-size: var(--text-noto-sans-kr-body3);
     line-height: 150%;
+  }
+  .kr-body4 {
+    font-family: var(--font-noto-sans-kr);
+    font-size: var(--text-noto-sans-kr-body4);
+    line-height: 150%;
+  }
+
+  /*Noto Sans KR caption*/
+  .kr-caption1 {
+    font-family: var(--font-noto-sans-kr);
+    font-size: var(--text-noto-sans-kr-caption);
+    line-height: 160%;
+  }
+  .kr-caption2 {
+    font-family: var(--font-noto-sans-kr);
+    font-size: var(--text-noto-sans-kr-caption);
+    line-height: 160%;
+  }
+  .kr-caption3 {
+    font-family: var(--font-noto-sans-kr);
+    font-size: var(--text-noto-sans-kr-caption);
+    line-height: 160%;
   }
 
   .shadow-button {
