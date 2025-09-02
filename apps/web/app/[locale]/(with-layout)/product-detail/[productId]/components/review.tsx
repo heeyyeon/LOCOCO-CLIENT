@@ -100,7 +100,7 @@ export default function Review({
           {images?.map((image, index) => (
             <Image
               key={image + index}
-              src={image}
+              src={image.trimEnd()}
               alt="reviewImage"
               width={100}
               height={100}
