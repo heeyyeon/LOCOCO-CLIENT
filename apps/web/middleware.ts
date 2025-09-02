@@ -16,13 +16,11 @@ export default function middleware(req: NextRequest) {
   // 지원하지 않는 locale 접근시 default locale로 리다이렉트
   const unsupportedLocale = ['fr', 'ru', 'ja', 'zh'];
   const firstSegment = pathname.split('/')[1]; // 현재 locale
-  const pathWithoutLocale = pathname.replace(`/${firstSegment}`, '');
+  const pathWithoutLocale = pathname.replace(`/${firstSegment}`, '') || '/';
 
   if (firstSegment && unsupportedLocale.includes(firstSegment)) {
-    const redirectUrl = new URL(
-      `/${routing.defaultLocale}${pathWithoutLocale}`,
-      process.env.NEXT_PUBLIC_BASE_URL
-    );
+    const redirectPath = `/${routing.defaultLocale}${pathWithoutLocale}`;
+    const redirectUrl = new URL(redirectPath, origin);
     return NextResponse.redirect(redirectUrl);
   }
 
@@ -48,7 +46,8 @@ export default function middleware(req: NextRequest) {
 
   if (isAuthRequired) {
     if (!isLoggedIn) {
-      return NextResponse.redirect(new URL(`/${currentLocale}/login`, origin));
+      const loginPath = `/${currentLocale}/login`;
+      return NextResponse.redirect(new URL(loginPath, origin));
     } else {
       return NextResponse.next();
     }
@@ -61,7 +60,8 @@ export default function middleware(req: NextRequest) {
 
   if (isLoginRestricted) {
     if (isLoggedIn) {
-      return NextResponse.redirect(new URL(`/${currentLocale}`, origin));
+      const homePath = `/${currentLocale}`;
+      return NextResponse.redirect(new URL(homePath, origin));
     } else {
       return NextResponse.next();
     }
