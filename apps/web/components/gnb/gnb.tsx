@@ -7,7 +7,7 @@ import GnbMenu from './gnb-menu';
 
 export default function Gnb() {
   return (
-    <header className="flex h-[7.2rem] w-full items-center justify-between px-[11.9rem]">
+    <header className="inter-body1 flex h-[7.2rem] w-full items-center justify-between px-[11.9rem] font-[700]">
       <Image
         src={logo}
         alt="logo"
@@ -16,9 +16,9 @@ export default function Gnb() {
         className="h-[27px] w-[162px]"
       />
       <GnbMenu></GnbMenu>
-      <div>
-        <GnbLanguage></GnbLanguage>
+      <div className="flex h-full items-center gap-[1.6rem]">
         <GnbAuth />
+        <GnbLanguage />
       </div>
     </header>
   );

@@ -23,6 +23,7 @@ export { SvgImgVideo } from './ImgVideo';
 export { SvgInstagramFill } from './InstagramFill';
 export { SvgJapaneseReview } from './JapaneseReview';
 export { SvgKoreanReview } from './KoreanReview';
+export { SvgLanguage } from './Language';
 export { SvgLikeFill } from './LikeFill';
 export { SvgLikeOutline } from './LikeOutline';
 export { SvgLogin } from './Login';
