@@ -2,6 +2,8 @@
 
 import { useAuth } from 'hooks/use-auth';
 
+import { SvgProfileIcon } from '@lococo/icons';
+
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -13,18 +15,21 @@ export default function GnbAuth() {
   const { isLoggedIn } = useAuth();
   return (
     <div className="flex h-[5.6rem] items-center gap-4">
-      {isLoggedIn ? (
+      {!isLoggedIn ? (
         <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <button className="rounded bg-blue-500 px-4 py-2 text-black">
-              유저이름
+          <DropdownMenuTrigger asChild className="relative">
+            <button className="flex h-[5.6rem] items-center gap-[1rem] px-[1rem] py-[1.6rem] text-black">
+              <SvgProfileIcon size={20} />
+              <span>유저이름</span>
             </button>
           </DropdownMenuTrigger>
 
-          <DropdownMenuContent align="end">
-            <DropdownMenuItem>1</DropdownMenuItem>
-            <DropdownMenuItem>2</DropdownMenuItem>
-            <DropdownMenuItem>3</DropdownMenuItem>
+          <DropdownMenuContent
+            align="end"
+            className="mt-[0.4rem] w-[var(--radix-dropdown-menu-trigger-width)]"
+          >
+            <DropdownMenuItem>My Page</DropdownMenuItem>
+            <DropdownMenuItem>Log Out</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       ) : (

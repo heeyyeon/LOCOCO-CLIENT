@@ -32,6 +32,7 @@ export { SvgMy } from './My';
 export { SvgOpen } from './Open';
 export { SvgPause } from './Pause';
 export { SvgPlayArrow } from './PlayArrow';
+export { SvgProfileIcon } from './ProfileIcon';
 export { SvgPurchase } from './Purchase';
 export { SvgRemove } from './Remove';
 export { SvgSearch } from './Search';
