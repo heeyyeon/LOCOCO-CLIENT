@@ -1,3 +1,8 @@
+'use client';
+
+import { useLocale } from 'next-intl';
+import { usePathname, useRouter } from 'next/navigation';
+
 import {
   SelectContent,
   SelectItem,
@@ -7,15 +12,24 @@ import {
 import { SvgLanguage } from '@lococo/icons';
 
 const LANGUAGES = [
-  { value: 'Eng', label: 'Eng' },
-  { value: 'Esn', label: 'Esn' },
-  { value: 'Kor', label: 'Kor' },
+  { value: 'en', label: 'Eng' },
+  { value: 'es', label: 'Esn' },
+  { value: 'ko', label: 'Kor' },
 ];
 
 export default function GnbLanguage() {
+  const router = useRouter();
+  const pathname = usePathname();
+  const locale = useLocale();
+
+  const handleLanguageChange = (newLocale: string) => {
+    const newPathname = pathname.replace(`/${locale}`, `/${newLocale}`);
+    router.push(newPathname);
+  };
+
   return (
-    <div>
-      <SelectRoot>
+    <div className="flex items-center">
+      <SelectRoot value={locale} onValueChange={handleLanguageChange}>
         <SelectTrigger
           className="!w-[3.2rem] border-none p-0 text-black"
           onlyChildren={true}
