@@ -6,6 +6,12 @@ import {
 } from '@lococo/design-system/select';
 import { SvgLanguage } from '@lococo/icons';
 
+const LANGUAGES = [
+  { value: 'Eng', label: 'Eng' },
+  { value: 'Esn', label: 'Esn' },
+  { value: 'Kor', label: 'Kor' },
+];
+
 export default function GnbLanguage() {
   return (
     <div>
@@ -16,31 +22,21 @@ export default function GnbLanguage() {
         >
           <SvgLanguage size={32} className="h-full w-full" />
         </SelectTrigger>
+
         <SelectContent
           className="inter-body4 mt-[2rem] w-[8.4rem]"
           align="center"
         >
-          <SelectItem
-            hover
-            value="Eng"
-            className="flex h-[4.4rem] w-[8.4rem] justify-center p-0 text-center"
-          >
-            Eng
-          </SelectItem>
-          <SelectItem
-            hover
-            value="Esn"
-            className="flex h-[4.4rem] w-[8.4rem] justify-center p-0 text-center"
-          >
-            Esn
-          </SelectItem>
-          <SelectItem
-            hover
-            value="Kor"
-            className="flex h-[4.4rem] w-[8.4rem] justify-center p-0 text-center"
-          >
-            Kor
-          </SelectItem>
+          {LANGUAGES.map((lang) => (
+            <SelectItem
+              key={lang.value}
+              value={lang.value}
+              className="flex h-[4.4rem] w-[8.4rem] justify-center p-0 text-center"
+              hover
+            >
+              {lang.label}
+            </SelectItem>
+          ))}
         </SelectContent>
       </SelectRoot>
     </div>
