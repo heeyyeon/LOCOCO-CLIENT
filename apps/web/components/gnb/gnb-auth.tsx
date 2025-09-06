@@ -26,7 +26,7 @@ export default function GnbAuth() {
 
           <DropdownMenuContent
             align="end"
-            className="mt-[0.4rem] w-[var(--radix-dropdown-menu-trigger-width)]"
+            className="inter-body4 mt-[0.4rem] w-[var(--radix-dropdown-menu-trigger-width)] font-[500]"
           >
             <DropdownMenuItem>My Page</DropdownMenuItem>
             <DropdownMenuItem>Log Out</DropdownMenuItem>
