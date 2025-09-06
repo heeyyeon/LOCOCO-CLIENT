@@ -1,5 +1,7 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
+
 import { useAuth } from 'hooks/use-auth';
 
 import { SvgProfileIcon } from '@lococo/icons';
@@ -13,6 +15,7 @@ import {
 
 export default function GnbAuth() {
   const { isLoggedIn } = useAuth();
+  const t = useTranslations('gnb');
   return (
     <div className="flex h-[5.6rem] items-center gap-4">
       {!isLoggedIn ? (
@@ -28,15 +31,15 @@ export default function GnbAuth() {
             align="end"
             className="inter-body4 mt-[0.4rem] w-[var(--radix-dropdown-menu-trigger-width)] font-[500]"
           >
-            <DropdownMenuItem>My Page</DropdownMenuItem>
-            <DropdownMenuItem>Log Out</DropdownMenuItem>
+            <DropdownMenuItem>{t('myPage')}</DropdownMenuItem>
+            <DropdownMenuItem>{t('logOut')}</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       ) : (
         <>
-          <button className="px-[1.6rem] py-[1rem]">Log in</button>
+          <button className="px-[1.6rem] py-[1rem]">{t('login')}</button>
           <button className="px-[1.6rem] py-[1rem] text-pink-500">
-            Sign up
+            {t('signUp')}
           </button>
         </>
       )}
