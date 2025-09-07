@@ -6,7 +6,7 @@ export default function LoginPage({
 }: {
   searchParams: { mode?: string };
 }) {
-  const mode = (searchParams.mode as 'login' | 'signup') || 'login';
+  const mode = searchParams.mode === 'signup' ? 'signup' : 'login';
 
   return (
     <main className="mx-auto flex w-screen min-w-[1366px] items-center justify-center bg-gray-100">
