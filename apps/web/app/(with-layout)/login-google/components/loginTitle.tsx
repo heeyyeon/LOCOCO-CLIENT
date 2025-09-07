@@ -4,11 +4,11 @@ export default function LoginTitle({
   mode?: 'login' | 'signup';
 }) {
   return (
-    <>
+    <section className="text-center">
       <h1 className="inter-head3 mb-[1.6rem] font-bold text-pink-500">
         Welcome to Lococo!
       </h1>
-      <div className="inter-caption2 text-center font-medium text-gray-800">
+      <div className="inter-caption2 font-medium text-gray-800">
         {mode === 'login' ? (
           <p>Log in to your Google account right away</p>
         ) : (
@@ -21,6 +21,6 @@ export default function LoginTitle({
           </>
         )}
       </div>
-    </>
+    </section>
   );
 }
