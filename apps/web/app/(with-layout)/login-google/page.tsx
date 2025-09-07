@@ -1,12 +1,13 @@
 import LoginButton from './components/loginButton';
 import LoginTitle from './components/loginTitle';
 
-export default function LoginPage({
+export default async function LoginPage({
   searchParams,
 }: {
-  searchParams: { mode?: string };
+  searchParams: Promise<{ mode?: string }>;
 }) {
-  const mode = searchParams.mode === 'signup' ? 'signup' : 'login';
+  const params = await searchParams;
+  const mode = params.mode === 'signup' ? 'signup' : 'login';
 
   return (
     <main className="mx-auto flex w-screen min-w-[1366px] items-center justify-center bg-gray-100">
