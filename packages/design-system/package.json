@@ -19,6 +19,8 @@
     "./tab": "./src/components/tab/index.ts",
     "./tag": "./src/components/tag/index.ts",
     "./textarea": "./src/components/textarea/index.ts",
+    "./image-upload": "./src/components/image-upload/index.ts",
+    "./image-campagin": "./src/components/image-campagin/index.ts",
     "./styles.css": "./dist/index.css"
   },
   "scripts": {
