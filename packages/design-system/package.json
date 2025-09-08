@@ -18,6 +18,9 @@
     "./star": "./src/components/star/index.ts",
     "./tab": "./src/components/tab/index.ts",
     "./tag": "./src/components/tag/index.ts",
+    "./modal": "./src/components/modal/index.ts",
+    "./modal-button": "./src/components/modal-button/index.ts",
+    "./modal-header": "./src/components/modal-header/index.ts",
     "./textarea": "./src/components/textarea/index.ts",
     "./styles.css": "./dist/index.css"
   },
