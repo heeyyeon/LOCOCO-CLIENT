@@ -45,7 +45,6 @@ export const RightButton: Story = {
   },
 };
 
-// ButtonWrapper 스토리 - render 함수를 사용하여 직접 렌더링
 export const ButtonWrapper: Story = {
   render: () => (
     <ModalButtonWrapper
