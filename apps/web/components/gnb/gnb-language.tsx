@@ -1,7 +1,8 @@
 'use client';
 
 import { useLocale } from 'next-intl';
-import { usePathname, useRouter } from 'next/navigation';
+
+import { usePathname, useRouter } from 'i18n/navigation';
 
 import {
   SelectContent,
@@ -23,8 +24,7 @@ export default function GnbLanguage() {
   const locale = useLocale();
 
   const handleLanguageChange = (newLocale: string) => {
-    const newPathname = pathname.replace(`/${locale}`, `/${newLocale}`);
-    router.push(newPathname);
+    router.push(pathname, { locale: newLocale });
   };
 
   return (
