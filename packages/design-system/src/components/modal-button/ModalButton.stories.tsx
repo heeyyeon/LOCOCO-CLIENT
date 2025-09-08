@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react-vite';
 
-import ModalButton, { ModalButtonWrapper } from './ModalButton';
+import ModalButton from './ModalButton';
 
 const ButtonMeta: Meta<typeof ModalButton> = {
   title: 'Components/ModalButton',
@@ -25,7 +25,7 @@ export const DefaultButton: Story = {
   args: {
     text: 'Button',
     variant: 'default',
-    onClick: () => console.log('Default button clicked'),
+    onClick: () => {},
   },
 };
 
@@ -33,7 +33,7 @@ export const LeftButton: Story = {
   args: {
     text: 'Button',
     variant: 'left',
-    onClick: () => console.log('Left button clicked'),
+    onClick: () => {},
   },
 };
 
@@ -41,26 +41,17 @@ export const RightButton: Story = {
   args: {
     text: 'Button',
     variant: 'right',
-    onClick: () => console.log('Right button clicked'),
+    onClick: () => {},
   },
 };
 
 export const ButtonWrapper: Story = {
   render: () => (
-    <ModalButtonWrapper
-      children={[
-        {
-          text: 'Cancel',
-          variant: 'left',
-          onClick: () => console.log('Cancel clicked'),
-        },
-        {
-          text: 'Save',
-          variant: 'right',
-          onClick: () => console.log('Save clicked'),
-        },
-      ]}
-    />
+    <div className="flex items-center">
+      <ModalButton text="Cancel" variant="left" onClick={() => {}} />
+      <div className="h-[5.6rem] w-[2px] bg-pink-500" />
+      <ModalButton text="Save" variant="right" onClick={() => {}} />
+    </div>
   ),
   parameters: {
     layout: 'centered',
