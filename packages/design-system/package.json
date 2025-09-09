@@ -21,6 +21,7 @@
     "./textarea": "./src/components/textarea/index.ts",
     "./image-upload": "./src/components/image-upload/index.ts",
     "./image-campagin": "./src/components/image-campagin/index.ts",
+    "./image-preview": "./src/components/image-preview/index.ts",
     "./styles.css": "./dist/index.css"
   },
   "scripts": {
