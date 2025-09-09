@@ -1,14 +1,10 @@
-import type { ComponentProps, ReactNode } from 'react';
-
-import { type VariantProps, cva } from 'class-variance-authority';
+import { ReactNode } from 'react';
 
 import { cn } from '../../lib/utils';
 
-interface TabProps
-  extends ComponentProps<'button'>,
-    VariantProps<typeof tabVariants> {
+interface TabProps {
   label: string;
-  className?: string;
+  icClick: boolean;
 }
 
 interface TabContainerProps {
@@ -16,42 +12,14 @@ interface TabContainerProps {
   className?: string;
 }
 
-const tabVariants = cva(
-  'inline-flex w-auto items-center justify-center gap-2.5 bg-white px-[2rem] py-[2rem] font-bold cursor-pointer',
-  {
-    variants: {
-      variant: {
-        primary: 'h-11 jp-title3  text-gray-500 leading-normal',
-        secondary: 'h-14 jp-title2  text-gray-800 leading-relaxed',
-      },
-      active: {
-        true: 'border-b-2 border-solid',
-        false: 'border-b border-solid border-gray-300',
-      },
-    },
-    compoundVariants: [
-      {
-        active: true,
-        variant: 'primary',
-        className: 'text-pink-500 border-pink-500',
-      },
-      {
-        active: true,
-        variant: 'secondary',
-        className: 'text-gray-800 border-gray-800',
-      },
-    ],
-    defaultVariants: {
-      variant: 'primary',
-      active: false,
-    },
-  }
-);
-function Tab({ label, active, variant, className, ...props }: TabProps) {
+function Tab({ label, icClick, ...props }: TabProps) {
   return (
     <button
       type="button"
-      className={cn(tabVariants({ active, variant }), className)}
+      className={cn(
+        'inter-title2 h-[4.6rem] cursor-pointer bg-white p-[0.8rem] text-gray-500',
+        icClick && 'text-pink-500'
+      )}
       {...props}
     >
       {label}
@@ -62,10 +30,7 @@ function Tab({ label, active, variant, className, ...props }: TabProps) {
 function TabContainer({ children, className }: TabContainerProps) {
   return (
     <div
-      className={cn(
-        'inline-flex items-center justify-start overflow-hidden',
-        className
-      )}
+      className={cn('flex items-center justify-center gap-[1rem]', className)}
     >
       {children}
     </div>
