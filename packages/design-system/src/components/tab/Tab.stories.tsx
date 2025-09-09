@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 
 import { Tab, TabContainer } from './Tab';
 
@@ -13,8 +13,11 @@ const meta: Meta<typeof Tab> = {
     label: {
       control: { type: 'text' },
     },
-    icClick: {
+    isClick: {
       control: { type: 'boolean' },
+    },
+    handleClick: {
+      action: 'clicked',
     },
   },
 };
@@ -26,23 +29,25 @@ type Story = StoryObj<typeof Tab>;
 export const Default: Story = {
   args: {
     label: 'Tab',
-    icClick: false,
+    isClick: false,
+    handleClick: () => {},
   },
 };
 
 export const Active: Story = {
   args: {
     label: 'Active Tab',
-    icClick: true,
+    isClick: true,
+    handleClick: () => {},
   },
 };
 
 export const MultipleTabs: Story = {
   render: () => (
     <TabContainer>
-      <Tab label="Home" icClick={true} />
-      <Tab label="About" icClick={false} />
-      <Tab label="Contact" icClick={false} />
+      <Tab label="Home" isClick={true} handleClick={() => {}} />
+      <Tab label="About" isClick={false} handleClick={() => {}} />
+      <Tab label="Contact" isClick={false} handleClick={() => {}} />
     </TabContainer>
   ),
 };

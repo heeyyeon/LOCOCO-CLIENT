@@ -14,9 +14,8 @@ export default function HomeProductFallback() {
             <Tab
               key={key}
               label={name}
-              variant="primary"
-              active={categoryKey === 'FACIAL_CARE'}
-              className="jp-title3 cursor-default opacity-50"
+              isClick={categoryKey === 'FACIAL_CARE'}
+              handleClick={() => {}}
             />
           );
         })}

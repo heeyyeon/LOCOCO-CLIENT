@@ -65,12 +65,10 @@ export default function HomeSectionProduct({
           const name = CATEGORY_NAME[categoryKey];
           return (
             <Tab
-              onClick={() => setSelectedTab(categoryKey)}
               key={key}
               label={name}
-              variant="primary"
-              active={categoryKey === selectedTab}
-              className="jp-title3"
+              isClick={categoryKey === selectedTab}
+              handleClick={() => setSelectedTab(categoryKey)}
             />
           );
         })}
