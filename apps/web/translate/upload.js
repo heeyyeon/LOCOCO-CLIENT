@@ -1,8 +1,3 @@
-// place in translate/upload.js
-import { createRequire } from 'module';
-
-const require = createRequire(import.meta.url);
-
 const {
   loadSpreadsheet,
   localesPath,
@@ -38,7 +33,7 @@ async function updateTranslationsFromKeyMapToSheet(doc, keyMap) {
   const exsitKeys = {};
   const addedRows = [];
   rows.forEach((row) => {
-    const key = row[columnKeyToHeader.key];
+    const key = row._rawData[0];
     if (keyMap[key]) {
       exsitKeys[key] = true;
     }
@@ -50,12 +45,12 @@ async function updateTranslationsFromKeyMapToSheet(doc, keyMap) {
         [columnKeyToHeader.key]: key,
         ...Object.keys(translations).reduce((result, lng) => {
           const header = columnKeyToHeader[lng];
-          result[header] = translations[lng];
-
+          if (header) {
+            result[header] = translations[lng];
+          }
           return result;
         }, {}),
       };
-
       addedRows.push(row);
     }
   }
@@ -78,8 +73,31 @@ function toJson(keyMap) {
   return json;
 }
 
+// 중첩된 객체를 평면화하는 함수
+function flattenObject(obj, prefix = '') {
+  const flattened = {};
+
+  for (const [key, value] of Object.entries(obj)) {
+    const newKey = prefix ? `${prefix}.${key}` : key;
+
+    if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
+      // 중첩된 객체인 경우 재귀적으로 평면화
+      Object.assign(flattened, flattenObject(value, newKey));
+    } else {
+      // 리프 노드인 경우
+      flattened[newKey] = value;
+    }
+  }
+
+  return flattened;
+}
+
 function gatherKeyMap(keyMap, lng, json) {
-  for (const [keyWithPostfix, translated] of Object.entries(json)) {
+  // 중첩된 JSON을 평면화
+  const flattenedJson = flattenObject(json);
+  lng = lng.replace('.json', '');
+
+  for (const [keyWithPostfix, translated] of Object.entries(flattenedJson)) {
     const key = getPureKey(keyWithPostfix);
 
     if (!keyMap[key]) {
@@ -88,9 +106,8 @@ function gatherKeyMap(keyMap, lng, json) {
 
     const keyMapWithLng = keyMap[key];
     if (!keyMapWithLng[keyWithPostfix]) {
-      keyMapWithLng[keyWithPostfix] = lngs.reduce((initObj, lng) => {
-        initObj[lng] = NOT_AVAILABLE_CELL;
-
+      keyMapWithLng[keyWithPostfix] = lngs.reduce((initObj, lang) => {
+        initObj[lang] = '';
         return initObj;
       }, {});
     }

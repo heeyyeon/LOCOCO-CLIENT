@@ -9,9 +9,9 @@ const sheetId = 0; // your sheet id
 const NOT_AVAILABLE_CELL = '_N/A';
 const columnKeyToHeader = {
   key: '키',
-  'ko-KR': '한글',
-  'en-US': '영어',
-  'es-AR': '스페인어',
+  'ko': '한글',
+  'en': '영어',
+  'es': '스페인어',
 };
 
 // Initialize auth - see https://theoephraim.github.io/node-google-spreadsheet/#/guides/authentication
