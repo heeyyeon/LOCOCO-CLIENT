@@ -5,11 +5,9 @@ const {
   lngs,
   sheetId,
   columnKeyToHeader,
-  NOT_AVAILABLE_CELL,
 } = await import('./index.js');
 
-const headerValues = ['키', '한글', '영어', '스페인어'];
-
+const headerValues = Object.values(columnKeyToHeader);
 async function addNewSheet(doc, title, sheetId) {
   const sheet = await doc.addSheet({
     sheetId,
@@ -28,7 +26,6 @@ async function updateTranslationsFromKeyMapToSheet(doc, keyMap) {
   }
 
   const rows = await sheet.getRows();
-
   // find exsit keys
   const exsitKeys = {};
   const addedRows = [];
@@ -95,6 +92,8 @@ function flattenObject(obj, prefix = '') {
 function gatherKeyMap(keyMap, lng, json) {
   // 중첩된 JSON을 평면화
   const flattenedJson = flattenObject(json);
+
+  // message 파일 이름에서 .json 제거
   lng = lng.replace('.json', '');
 
   for (const [keyWithPostfix, translated] of Object.entries(flattenedJson)) {
@@ -116,13 +115,27 @@ function gatherKeyMap(keyMap, lng, json) {
   }
 }
 
+async function resetSheet() {
+  const doc = await loadSpreadsheet();
+  const sheet = doc.sheetsById[sheetId];
+  sheet.clear();
+}
+
+async function addHeaderRowToSheet() {
+  const doc = await loadSpreadsheet();
+  const sheet = doc.sheetsById[sheetId];
+  await sheet.setHeaderRow(headerValues);
+}
+
 async function updateSheetFromJson() {
+  await resetSheet();
+  await addHeaderRowToSheet();
+
   const doc = await loadSpreadsheet();
   const fs = await import('fs');
   fs.readdir(localesPath, (error, lngs) => {
     if (error) {
       console.log('readdir error');
-      // console.error(error);
       throw error;
     }
 
