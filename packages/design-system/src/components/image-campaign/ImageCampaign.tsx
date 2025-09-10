@@ -3,16 +3,12 @@ import { ReactNode } from 'react';
 import { cn } from '../../lib/utils';
 
 interface ImageCampaignProps {
-  src?: string;
-  alt?: string;
   selected: boolean;
   children: ReactNode;
   className?: string;
 }
 
 export default function ImageCampaign({
-  src,
-  alt,
   selected,
   children,
   ...props
