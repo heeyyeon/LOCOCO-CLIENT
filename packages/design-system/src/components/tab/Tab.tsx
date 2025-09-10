@@ -4,8 +4,9 @@ import { cn } from '../../lib/utils';
 
 interface TabProps {
   label: string;
-  isClick: boolean;
-  handleClick: () => void;
+  value: string;
+  selected?: boolean;
+  handleClick: (value: string) => void;
 }
 
 interface TabContainerProps {
@@ -13,15 +14,15 @@ interface TabContainerProps {
   className?: string;
 }
 
-function Tab({ label, isClick, handleClick, ...props }: TabProps) {
+function Tab({ value, label, selected, handleClick, ...props }: TabProps) {
   return (
     <button
       type="button"
       className={cn(
         'inter-title2 h-[4.6rem] cursor-pointer bg-white p-[0.8rem] text-gray-500',
-        isClick && 'text-pink-500'
+        selected && 'text-pink-500'
       )}
-      onClick={handleClick}
+      onClick={() => handleClick(value)}
       {...props}
     >
       {label}
