@@ -2,7 +2,6 @@ import { cn } from '../../lib/utils';
 
 interface ModalHeaderProps {
   text: string;
-  isHover: boolean;
 }
 
 export default function ModalHeader({ text, ...props }: ModalHeaderProps) {

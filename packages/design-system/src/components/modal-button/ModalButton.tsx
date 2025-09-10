@@ -1,8 +1,9 @@
+import { ButtonHTMLAttributes } from 'react';
+
 import { cn } from '../../lib/utils';
 
-interface ModalButtonProps {
+interface ModalButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   text: string;
-  onClick: () => void;
   variant?: 'right' | 'left' | 'default';
   isSelected?: boolean;
 }
@@ -13,7 +14,6 @@ interface ModalButtonWrapperProps {
 
 export default function ModalButton({
   text,
-  onClick,
   variant = 'default',
   isSelected,
   ...props
@@ -21,11 +21,12 @@ export default function ModalButton({
   if (variant === 'default') {
     return (
       <button
+        type="button"
         className={cn(
           'inter-body1 flex h-[5.6rem] w-[55rem] items-center justify-center rounded-b-[3.2rem] bg-pink-100 px-[3.2rem] py-[1.6rem] text-pink-500 hover:bg-pink-200',
           isSelected && 'bg-pink-500'
         )}
-        onClick={onClick}
+        onClick={props.onClick}
         {...props}
       >
         {text}
@@ -41,7 +42,7 @@ export default function ModalButton({
           isSelected && 'bg-pink-100'
         )}
         style={{ borderBottomLeftRadius: '3.2rem' }}
-        onClick={onClick}
+        onClick={props.onClick}
         {...props}
       >
         {text}
@@ -57,7 +58,7 @@ export default function ModalButton({
           isSelected && 'bg-pink-200'
         )}
         style={{ borderBottomRightRadius: '3.2rem' }}
-        onClick={onClick}
+        onClick={props.onClick}
         {...props}
       >
         {text}

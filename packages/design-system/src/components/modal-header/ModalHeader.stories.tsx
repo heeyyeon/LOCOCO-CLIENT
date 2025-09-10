@@ -14,10 +14,6 @@ const HeaderMeta: Meta<typeof ModalHeader> = {
       control: 'text',
       description: 'Header text',
     },
-    isHover: {
-      control: 'boolean',
-      description: 'Whether the header is in hover state',
-    },
   },
 };
 
@@ -28,6 +24,5 @@ type HeaderStory = StoryObj<typeof ModalHeader>;
 export const Default: HeaderStory = {
   args: {
     text: 'Modal Title',
-    isHover: false,
   },
 };
