@@ -1,6 +1,5 @@
 'use client';
 
-import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -16,8 +15,6 @@ import { useAddressSearch } from '../../../../../hooks/useAddressSearch';
 import { type BrandSignupForm, brandSignupSchema } from './hooks/signup';
 
 export default function BrandSignupPage() {
-  const [submitError, setSubmitError] = useState<string | null>(null);
-
   const form = useForm<BrandSignupForm>({
     resolver: zodResolver(brandSignupSchema),
     mode: 'onChange',
@@ -30,15 +27,8 @@ export default function BrandSignupPage() {
       },
     });
 
-  const handleSubmit = async (data: BrandSignupForm) => {
-    try {
-      setSubmitError(null);
-      console.log('브랜드 회원가입 데이터:', data);
-      alert('회원가입이 완료되었습니다!');
-    } catch (error) {
-      console.error('회원가입 실패:', error);
-      setSubmitError('회원가입 중 오류가 발생했습니다. 다시 시도해주세요.');
-    }
+  const handleSubmit = () => {
+    // TODO: 가입 확인 모달 연결하기
   };
 
   return (
@@ -50,7 +40,6 @@ export default function BrandSignupPage() {
       />
       <SignupFormLayout
         title="Join Lococo Creator Community!"
-        submitError={submitError}
         onBack={() => window.history.back()}
         onSubmit={form.handleSubmit(handleSubmit)}
         isValid={form.formState.isValid}
