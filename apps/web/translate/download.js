@@ -1,3 +1,8 @@
+/**
+ * @fileoverview Google Sheets에서 번역 데이터를 다운로드하고 JSON 파일로 변환하는 모듈
+ * @author LOKOKO Team JaeHoon
+ */
+
 // place in translate/download.js
 //const mkdirp = require('mkdirp');
 const {
@@ -10,19 +15,40 @@ const {
   NOT_AVAILABLE_CELL,
 } = await import('./index.js');
 
-// 언어 코드 → 숫자 매핑
-// _rawData 인덱스 매핑 ex) _rowData=[key값, 한글, 영어, 스페인어]
+/**
+ * 언어 코드를 Google Sheets의 _rawData 인덱스로 매핑하는 객체
+ * @description _rawData 배열 구조: [key값, 한글, 영어, 스페인어]
+ * @type {Object.<string, number>}
+ */
 const langToNumber = {
   ko: 1,
   en: 2,
   es: 3,
 };
 
+/**
+ * 언어 코드에 해당하는 _rawData 인덱스를 반환
+ * @param {string} lang - 언어 코드 (ko, en, es)
+ * @returns {number} 해당 언어의 _rawData 인덱스
+ * @throws {Error} 지원하지 않는 언어 코드인 경우 에러 발생
+ * @example
+ * getNumberByLang('ko') // 1
+ * getNumberByLang('en') // 2
+ * getNumberByLang('unknown') // Error: Unsupported language code: unknown
+ */
 function getNumberByLang(lang) {
-  return langToNumber[lang] ?? 0; // 매핑되지 않으면 0 리턴
+  if (!(lang in langToNumber)) {
+    throw new Error(`Unsupported language code: ${lang}`);
+  }
+  return langToNumber[lang];
 }
 
-// 평면화된 키를 중첩 객체로 변환하는 함수
+/**
+ * 평면화된 키를 중첩 객체로 변환하는 함수
+ * @description 점(.)으로 구분된 키를 중첩 객체 구조로 변환
+ * @param {Object.<string, string>} flatObj - 평면화된 키-값 객체
+ * @returns {Object} 중첩 구조로 변환된 객체
+ */
 function unflattenObject(flatObj) {
   const result = {};
 
@@ -85,6 +111,15 @@ async function fetchTranslationsFromSheetToJson(doc) {
   return lngsMap;
 }
 
+/**
+ * Google Sheets에서 번역 데이터를 가져와서 로컬 JSON 파일로 업데이트
+ * @description Google Sheets의 번역 데이터를 다운로드하여 각 언어별 JSON 파일로 저장
+ * @returns {Promise<void>}
+ * @throws {Error} 파일 읽기/쓰기 오류 시 발생
+ * @example
+ * await updateJsonFromSheet();
+ * // messages/ko.json, messages/en.json, messages/es.json 파일이 업데이트됨
+ */
 async function updateJsonFromSheet() {
   const fs = await import('fs');
 
