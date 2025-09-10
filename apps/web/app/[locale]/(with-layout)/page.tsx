@@ -1,6 +1,7 @@
 import { Suspense } from 'react';
 
 import Card from 'components/card/Card';
+import { getChipVariantByDate } from 'components/card/utils/getChipVariantByDate';
 
 import HomeBanner from './(home)/components/home-banner';
 import HomeSection from './(home)/components/home-section';
@@ -17,7 +18,13 @@ export default function Main() {
     <div className="flex w-full flex-col">
       <HomeBanner />
       <div className="flex w-full items-center justify-center bg-gray-500">
-        <Card brand="브랜드" title="상품명" src="/img" />
+        <Card
+          brand="브랜드"
+          title="상품명"
+          src="/img"
+          dueDate="2025.09.30"
+          chipVariant={getChipVariantByDate('2025.09.1')}
+        />
       </div>
       <div className="mx-auto flex w-[112.8rem] flex-col">
         <HomeUpdateDate />
