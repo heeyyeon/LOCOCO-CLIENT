@@ -23,7 +23,7 @@ export default function Main() {
           title="상품명"
           src="/img"
           dueDate="2025.09.30"
-          chipVariant={getChipVariantByDate('2025.09.1')}
+          chipVariant={getChipVariantByDate('2025.09.31')}
         />
       </div>
       <div className="mx-auto flex w-[112.8rem] flex-col">
