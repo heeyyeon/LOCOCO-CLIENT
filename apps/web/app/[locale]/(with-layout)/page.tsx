@@ -1,5 +1,7 @@
 import { Suspense } from 'react';
 
+import Card from 'components/card/Card';
+
 import HomeBanner from './(home)/components/home-banner';
 import HomeSection from './(home)/components/home-section';
 import HomeUpdateDate from './(home)/components/home-update-date';
@@ -14,6 +16,9 @@ export default function Main() {
   return (
     <div className="flex w-full flex-col">
       <HomeBanner />
+      <div className="flex w-full items-center justify-center bg-gray-500">
+        <Card brand="브랜드" title="상품명" src="/img" />
+      </div>
       <div className="mx-auto flex w-[112.8rem] flex-col">
         <HomeUpdateDate />
         <HomeSection className="mt-[6rem]">
