@@ -67,7 +67,8 @@ export default function HomeSectionProduct({
             <Tab
               key={key}
               label={name}
-              isClick={categoryKey === selectedTab}
+              value={categoryKey}
+              selected={categoryKey === selectedTab}
               handleClick={() => setSelectedTab(categoryKey)}
             />
           );

@@ -14,7 +14,8 @@ export default function HomeProductFallback() {
             <Tab
               key={key}
               label={name}
-              isClick={categoryKey === 'FACIAL_CARE'}
+              value={categoryKey}
+              selected={categoryKey === 'FACIAL_CARE'}
               handleClick={() => {}}
             />
           );
