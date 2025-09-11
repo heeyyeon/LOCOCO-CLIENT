@@ -19,7 +19,7 @@ export default function ImagePreview({
   ...props
 }: ImagePreviewProps) {
   return (
-    <div className="border-1 relative h-[7.2rem] w-[7.2rem] rounded-[1.6rem] border-gray-200">
+    <div className="relative h-[7.2rem] w-[7.2rem] rounded-[1.6rem] border border-gray-200">
       <img
         src={src}
         alt={alt}
