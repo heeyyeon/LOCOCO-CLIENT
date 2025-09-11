@@ -13,7 +13,6 @@ export default function BracketChip({
   chipVariant,
   className,
 }: BracketChipProps) {
-  console.log(chipVariant, dueDate);
   return (
     <div
       className={cn(
