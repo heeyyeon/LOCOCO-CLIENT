@@ -11,7 +11,7 @@ interface InfoChipProps {
   className?: string;
 }
 
-const infoChipVariants = cva('inline-flex items-center gap-[0.5rem] border-1', {
+const infoChipVariants = cva('inline-flex items-center gap-[0.5rem] border', {
   variants: {
     color: {
       default: 'border-gray-400 text-gray-700',
@@ -26,8 +26,9 @@ const infoChipVariants = cva('inline-flex items-center gap-[0.5rem] border-1', {
   },
 });
 
-const getIconSize = (size: 'md' | 'lg') => {
-  return size === 'lg' ? 20 : 16;
+const ICON_SIZES = {
+  md: 16,
+  lg: 20,
 };
 
 const getIconColor = (color: 'default' | 'green' | 'red' | 'blue') => {
@@ -50,7 +51,7 @@ export default function InfoChip({
   return (
     <div className={cn(infoChipVariants({ color, size }), className)}>
       {icon && (
-        <SvgParticipant size={getIconSize(size)} fill={getIconColor(color)} />
+        <SvgParticipant size={ICON_SIZES[size]} fill={getIconColor(color)} />
       )}
       <span>{text}</span>
     </div>
