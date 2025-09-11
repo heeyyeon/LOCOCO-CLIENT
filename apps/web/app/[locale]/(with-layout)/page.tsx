@@ -24,6 +24,10 @@ export default function Main() {
           src="/img"
           dueDate="2025.09.1"
           chipVariant={getChipVariantByDate('2025.09.1')}
+          label="Label"
+          maxPeople={80}
+          applyPeople={40}
+          id={1}
         />
       </div>
       <div className="mx-auto flex w-[112.8rem] flex-col">
