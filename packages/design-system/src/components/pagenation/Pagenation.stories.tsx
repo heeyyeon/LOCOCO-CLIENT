@@ -2,11 +2,11 @@ import { useState } from 'react';
 
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
-import Pagination from './Pagenation';
+import Pagenation from './Pagenation';
 
-const meta: Meta<typeof Pagination> = {
-  title: 'Components/Pagination',
-  component: Pagination,
+const meta: Meta<typeof Pagenation> = {
+  title: 'Components/Pagenation',
+  component: Pagenation,
   parameters: {
     layout: 'centered',
   },
@@ -24,8 +24,7 @@ const meta: Meta<typeof Pagination> = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-// Interactive wrapper component
-function PaginationWrapper({
+function PagenationWrapper({
   totalPages,
   initialPage = 1,
 }: {
@@ -35,7 +34,7 @@ function PaginationWrapper({
   const [currentPage, setCurrentPage] = useState(initialPage);
 
   return (
-    <Pagination
+    <Pagenation
       currentPage={currentPage}
       totalPages={totalPages}
       handlePageChange={setCurrentPage}
@@ -44,21 +43,21 @@ function PaginationWrapper({
 }
 
 export const Small: Story = {
-  render: () => <PaginationWrapper totalPages={6} />,
+  render: () => <PagenationWrapper totalPages={6} />,
 };
 
 export const RightMoveable: Story = {
-  render: () => <PaginationWrapper totalPages={8} initialPage={1} />,
+  render: () => <PagenationWrapper totalPages={8} initialPage={1} />,
 };
 
 export const LeftMoveable: Story = {
-  render: () => <PaginationWrapper totalPages={8} initialPage={8} />,
+  render: () => <PagenationWrapper totalPages={8} initialPage={8} />,
 };
 
 export const LeftAndRightMoveable: Story = {
-  render: () => <PaginationWrapper totalPages={12} initialPage={6} />,
+  render: () => <PagenationWrapper totalPages={12} initialPage={6} />,
 };
 
 export const SinglePage: Story = {
-  render: () => <PaginationWrapper totalPages={1} initialPage={1} />,
+  render: () => <PagenationWrapper totalPages={1} initialPage={1} />,
 };

@@ -1,7 +1,7 @@
 import { SvgArrowLeft, SvgArrowRight, SvgEllipsis } from '../../icons';
 import { cn } from '../../lib/utils';
 
-interface PaginationProps {
+interface PagenationProps {
   currentPage: number;
   totalPages: number;
   handlePageChange: (page: number) => void;
@@ -37,32 +37,56 @@ export function PageButton({
   );
 }
 
-export default function Pagination({
+export default function Pagenation({
   currentPage,
   totalPages,
   handlePageChange,
   className,
-}: PaginationProps) {
-  const safePage = Math.min(Math.max(currentPage, 1), totalPages);
+}: PagenationProps) {
+  const safeTotalPages = Math.max(1, totalPages);
+  const safePage = Math.min(Math.max(currentPage, 1), safeTotalPages);
   const getVisiblePages = (): (number | 'ellipsis')[] => {
-    if (totalPages <= 6) return range(1, totalPages);
+    if (safeTotalPages <= 6) return range(1, safeTotalPages);
 
     const pages: (number | 'ellipsis')[] = [];
-    const start = Math.max(2, safePage - 2);
-    const end = Math.min(totalPages - 1, safePage + 2);
+    const centerPages = 5;
 
-    pages.push(1);
-    if (start > 2) pages.push('ellipsis');
-    pages.push(...range(start, end));
-    if (end < totalPages - 1) pages.push('ellipsis');
-    pages.push(totalPages);
+    let centerStart = Math.max(1, safePage - 2);
+    let centerEnd = Math.min(safeTotalPages, centerStart + centerPages - 1);
+
+    if (centerEnd >= safeTotalPages) {
+      centerEnd = safeTotalPages;
+      centerStart = Math.max(1, centerEnd - centerPages + 1);
+    }
+
+    if (centerStart > 1) {
+      pages.push(1);
+      if (centerStart > 2) {
+        pages.push('ellipsis');
+      }
+    }
+    if (centerStart + 5 >= safeTotalPages) {
+      centerStart = safeTotalPages - 4;
+    }
+    if (centerEnd - 5 <= 1) {
+      centerEnd = 5;
+    }
+
+    pages.push(...range(centerStart, centerEnd));
+
+    if (centerEnd < safeTotalPages) {
+      if (centerEnd < safeTotalPages - 1) {
+        pages.push('ellipsis');
+      }
+      pages.push(safeTotalPages);
+    }
 
     return pages;
   };
 
   const visiblePages = getVisiblePages();
   const canPrev = safePage > 1;
-  const canNext = safePage < totalPages;
+  const canNext = safePage < safeTotalPages;
 
   return (
     <div className={cn('flex items-center gap-[0.4rem]', className)}>
