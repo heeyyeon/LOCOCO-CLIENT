@@ -1,5 +1,13 @@
 {
   "home": {
     "title": "Hello world!"
+  },
+  "gnb": {
+    "myPage": "My Page",
+    "logOut": "Log Out",
+    "login": "Log in",
+    "signUp": "Sign up",
+    "campaigns": "Campaigns",
+    "howItWorks": "How It Works"
   }
 }

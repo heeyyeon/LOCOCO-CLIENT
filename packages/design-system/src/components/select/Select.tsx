@@ -26,10 +26,12 @@ function SelectTrigger({
   className,
   children,
   size = 'default',
+  onlyChildren = false,
   ...props
 }: ComponentProps<typeof SelectPrimitive.Trigger> & {
   open?: boolean;
   size?: 'small' | 'default';
+  onlyChildren?: boolean;
 }) {
   return (
     <SelectPrimitive.Trigger
@@ -47,12 +49,14 @@ function SelectTrigger({
       {...props}
     >
       {children}
-      <SelectPrimitive.Icon asChild>
-        <div className="relative">
-          <SvgArrowDown className="group-data-[state=open]:hidden" />
-          <SvgArrowUp className="inset-0 fill-pink-500 group-data-[state=closed]:hidden" />
-        </div>
-      </SelectPrimitive.Icon>
+      {onlyChildren === false && (
+        <SelectPrimitive.Icon asChild>
+          <div className="relative">
+            <SvgArrowDown className="group-data-[state=open]:hidden" />
+            <SvgArrowUp className="inset-0 fill-pink-500 group-data-[state=closed]:hidden" />
+          </div>
+        </SelectPrimitive.Icon>
+      )}
     </SelectPrimitive.Trigger>
   );
 }
@@ -128,7 +132,7 @@ interface SelectOption {
 
 interface SelectProps extends ComponentProps<typeof SelectPrimitive.Root> {
   variant?: 'default' | 'reverse';
-  placeholder?: string;
+  placeholder?: ReactNode;
   options?: SelectOption[];
   className?: string;
   isError?: boolean;

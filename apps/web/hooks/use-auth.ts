@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect, useState } from 'react';
 
 import { checkIsLoggedIn } from 'utils/action/auth';
