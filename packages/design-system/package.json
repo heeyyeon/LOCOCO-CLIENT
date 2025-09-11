@@ -22,7 +22,6 @@
     "./info-chip": "./src/components/info-chip/index.ts",
     "./pagenation": "./src/components/pagenation/index.ts",
     "./image-upload": "./src/components/image-upload/index.ts",
-    "./image-campaign": "./src/components/image-campaign/index.ts",
     "./image-preview": "./src/components/image-preview/index.ts",
     "./styles.css": "./dist/index.css"
   },
