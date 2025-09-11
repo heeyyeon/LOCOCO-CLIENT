@@ -59,6 +59,11 @@ function unflattenObject(flatObj) {
     // 마지막 키를 제외한 모든 키에 대해 중첩 객체 생성
     for (let i = 0; i < keys.length - 1; i++) {
       const currentKey = keys[i];
+
+      if (current[currentKey] && typeof current[currentKey] !== 'object') {
+        current[currentKey] = { _value: current[currentKey] };
+      }
+
       if (!current[currentKey]) {
         current[currentKey] = {};
       }
@@ -67,6 +72,10 @@ function unflattenObject(flatObj) {
 
     // 마지막 키에 값 할당
     const lastKey = keys[keys.length - 1];
+
+    if (current[lastKey] && typeof current[lastKey] !== 'object') {
+      current[lastKey] = { _value: current[lastKey] };
+    }
     current[lastKey] = value;
   }
 
