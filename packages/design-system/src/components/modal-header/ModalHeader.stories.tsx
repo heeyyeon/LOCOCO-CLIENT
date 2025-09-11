@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 
+import { SvgClose } from '../../icons/fill/components/Close';
 import ModalHeader from './ModalHeader';
 
 const HeaderMeta: Meta<typeof ModalHeader> = {
@@ -24,5 +25,12 @@ type HeaderStory = StoryObj<typeof ModalHeader>;
 export const Default: HeaderStory = {
   args: {
     text: 'Modal Title',
+  },
+};
+
+export const WithRightContent: HeaderStory = {
+  args: {
+    text: 'Modal Title',
+    rightContent: <SvgClose />,
   },
 };
