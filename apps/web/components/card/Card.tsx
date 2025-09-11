@@ -37,12 +37,10 @@ export default function Card({
   const router = useRouter();
   return (
     <div
-      className={
-        (cn(
-          'group relative h-[33.1rem] w-[36rem] overflow-hidden rounded-[2.4rem] bg-gray-700'
-        ),
-        className)
-      }
+      className={cn(
+        'group relative h-[33.1rem] w-[36rem] overflow-hidden rounded-[2.4rem] bg-gray-700',
+        className
+      )}
     >
       <Image width={360} height={216} src={src} alt={`${title}상품 카드`} />
       <BracketChip
