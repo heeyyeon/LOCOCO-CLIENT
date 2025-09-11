@@ -127,9 +127,47 @@ async function addHeaderRowToSheet() {
   await sheet.setHeaderRow(headerValues);
 }
 
+async function sortRange() {
+  const doc = await loadSpreadsheet();
+  const sheet = doc.sheetsById[sheetId];
+
+  // 정렬 요청 정의
+  const request = {
+    sortRange: {
+      range: {
+        sheetId: sheet.sheetId, // sheet 객체의 고유 ID
+        startRowIndex: 1, // 헤더 제외 (0-based index)
+        endRowIndex: sheet.rowCount,
+        startColumnIndex: 0, // 첫 번째 열부터
+        endColumnIndex: sheet.columnCount,
+      },
+      sortSpecs: [
+        {
+          dimensionIndex: 0, // 0번째 열 (Key 컬럼)
+          sortOrder: 'ASCENDING', // 오름차순 (DESCENDING 도 가능)
+        },
+        // 필요하다면 여러 열 기준 정렬 추가 가능
+        // {
+        //   dimensionIndex: 1,
+        //   sortOrder: 'DESCENDING',
+        // },
+      ],
+    },
+  };
+
+  try {
+    await doc.sheetsApi.post(`:batchUpdate`, {
+      json: { requests: [request] },
+    });
+    console.log('시트 정렬 성공 ✅');
+  } catch (error) {
+    console.error('시트 정렬 중 오류 발생 ❌:', error);
+  }
+}
+
 async function updateSheetFromJson() {
-  await resetSheet();
-  await addHeaderRowToSheet();
+  // await resetSheet();
+  // await addHeaderRowToSheet();
 
   const doc = await loadSpreadsheet();
   const fs = await import('fs');
@@ -151,6 +189,8 @@ async function updateSheetFromJson() {
     });
 
     updateTranslationsFromKeyMapToSheet(doc, toJson(keyMap));
+
+    sortRange();
   });
 }
 
