@@ -18,6 +18,8 @@
     "./star": "./src/components/star/index.ts",
     "./tab": "./src/components/tab/index.ts",
     "./tag": "./src/components/tag/index.ts",
+    "./modal-button": "./src/components/modal-button/index.ts",
+    "./modal-header": "./src/components/modal-header/index.ts",
     "./textarea": "./src/components/textarea/index.ts",
     "./info-chip": "./src/components/info-chip/index.ts",
     "./pagenation": "./src/components/pagenation/index.ts",
