@@ -30,6 +30,7 @@ export { SvgLogin } from './Login';
 export { SvgMailFill } from './MailFill';
 export { SvgMy } from './My';
 export { SvgOpen } from './Open';
+export { SvgParticipant } from './Participant';
 export { SvgPause } from './Pause';
 export { SvgPlayArrow } from './PlayArrow';
 export { SvgPurchase } from './Purchase';
