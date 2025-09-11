@@ -13,11 +13,15 @@ export default function BracketChip({
   chipVariant,
   className,
 }: BracketChipProps) {
+  const CHIP_COLOR = {
+    expired: 'bg-gray-500',
+    active: 'bg-pink-500',
+  };
   return (
     <div
       className={cn(
         'inter-body1 flex h-[3.2rem] w-[8.8rem] items-center justify-center text-white',
-        chipVariant === 'expired' ? 'bg-gray-500' : 'bg-pink-500',
+        CHIP_COLOR[chipVariant],
         className
       )}
       style={{
