@@ -13,6 +13,7 @@ export { SvgCheckNonBg } from './CheckNonBg';
 export { SvgClose } from './Close';
 export { SvgDelete } from './Delete';
 export { SvgDivider } from './Divider';
+export { SvgEllipsis } from './Ellipsis';
 export { SvgErrorFill } from './ErrorFill';
 export { SvgGoodFill } from './GoodFill';
 export { SvgGoodOutline } from './GoodOutline';

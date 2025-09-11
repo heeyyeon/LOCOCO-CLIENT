@@ -20,6 +20,7 @@
     "./tag": "./src/components/tag/index.ts",
     "./textarea": "./src/components/textarea/index.ts",
     "./info-chip": "./src/components/info-chip/index.ts",
+    "./pagenation": "./src/components/pagenation/index.ts",
     "./styles.css": "./dist/index.css"
   },
   "scripts": {
