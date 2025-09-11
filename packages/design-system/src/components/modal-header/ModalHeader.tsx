@@ -1,18 +1,30 @@
+import { ReactNode } from 'react';
+
 import { cn } from '../../lib/utils';
 
 interface ModalHeaderProps {
   text: string;
+  rightContent?: ReactNode;
 }
 
-export default function ModalHeader({ text, ...props }: ModalHeaderProps) {
+export default function ModalHeader({
+  text,
+  rightContent,
+  ...props
+}: ModalHeaderProps) {
   return (
     <div
       className={cn(
-        'inter-title2 flex w-[55rem] items-center justify-center rounded-t-[3.2rem] border-b-[1px] border-pink-500 p-[1.6rem] text-pink-500'
+        'relative flex w-[55rem] items-center justify-center rounded-t-[3.2rem] border-b border-pink-500 bg-white p-[1.6rem]'
       )}
       {...props}
     >
-      {text}
+      <div className="inter-title2 text-pink-500">{text}</div>
+      {rightContent && (
+        <div className="absolute right-[1.6rem] top-[1.6rem] cursor-pointer">
+          {rightContent}
+        </div>
+      )}
     </div>
   );
 }
