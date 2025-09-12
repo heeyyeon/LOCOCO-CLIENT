@@ -22,17 +22,15 @@ export default function ProductInfoTab({
       <TabContainer className="w-full">
         <Tab
           label="製品の特徴"
-          variant={'secondary'}
-          className="w-full"
-          onClick={() => setActiveTab('productDetail')}
-          active={activeTab === 'productDetail'}
+          value="productDetail"
+          selected={activeTab === 'productDetail'}
+          handleClick={() => setActiveTab('productDetail')}
         ></Tab>
         <Tab
           label="原材料・成分"
-          variant={'secondary'}
-          className="w-full"
-          onClick={() => setActiveTab('ingredients')}
-          active={activeTab === 'ingredients'}
+          value="ingredients"
+          selected={activeTab === 'ingredients'}
+          handleClick={() => setActiveTab('ingredients')}
         ></Tab>
       </TabContainer>
 
