@@ -19,7 +19,7 @@ interface TabContainerProps {
 }
 
 const tabVariants = cva(
-  'inter-title2 h-[4.6rem] cursor-pointer bg-white p-[0.8rem] font-[700]',
+  'inter-title2 h-[4.6rem] cursor-pointer p-[0.8rem] font-[700]',
   {
     variants: {
       variant: {
@@ -70,7 +70,7 @@ function TabContainer({
   return (
     <div
       className={cn(
-        'flex items-center justify-center gap-[1rem]',
+        'flex items-center justify-center',
         variant === 'vertical' && 'flex-col',
         className
       )}

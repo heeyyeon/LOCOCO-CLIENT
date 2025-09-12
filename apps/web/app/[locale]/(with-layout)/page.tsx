@@ -26,6 +26,11 @@ export default function Main() {
           <HomeSectionCampaign />
         </HomeSection>
 
+        <HomeSection>
+          <HomeSection.Header>Opening Soon</HomeSection.Header>
+          <HomeSectionCampaign />
+        </HomeSection>
+
         {/* <HomeSection>
           <HomeSection.Header>新作アイテム</HomeSection.Header>
           <Suspense fallback={<HomeProductFallback />}>

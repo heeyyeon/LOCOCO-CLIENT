@@ -23,6 +23,7 @@ export default function HomeSectionCampaign() {
         <TabContainer variant="horizontal">
           {CATEGORY_VALUES.map((CATEGORY_VALUE) => (
             <Tab
+              className="bg-none"
               key={CATEGORY_VALUE}
               label={CATEGORY_VALUE}
               value={CATEGORY_VALUE}
