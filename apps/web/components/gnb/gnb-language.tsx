@@ -2,6 +2,7 @@
 
 import { useLocale } from 'next-intl';
 
+import { LANGUAGES } from 'constants/language';
 import { usePathname, useRouter } from 'i18n/navigation';
 
 import {
@@ -11,12 +12,6 @@ import {
   SelectTrigger,
 } from '@lococo/design-system/select';
 import { SvgLanguage } from '@lococo/icons';
-
-const LANGUAGES = [
-  { value: 'en', label: 'Eng' },
-  { value: 'es', label: 'Esn' },
-  { value: 'ko', label: 'Kor' },
-];
 
 export default function GnbLanguage() {
   const router = useRouter();
