@@ -29,7 +29,7 @@ export default function CampaignLanguage({
     <div className="flex h-full items-center">
       <SelectRoot value={locale} onValueChange={handleLanguageChange}>
         <SelectTrigger
-          className="flex w-fit items-center gap-[0.8rem] border-none px-[3.2rem] py-[1.6rem] text-black"
+          className="flex w-fit items-center gap-[0.8rem] border-none bg-none px-[3.2rem] py-[1.6rem] text-black"
           onlyChildren={true}
         >
           <p className="inter-body1 font-[700]">Language</p>
@@ -37,7 +37,7 @@ export default function CampaignLanguage({
         </SelectTrigger>
 
         <SelectContent
-          className="inter-body4 mt-[2rem] w-[11rem]"
+          className="inter-body4 mt-[1.6rem] w-[11rem]"
           align="center"
         >
           {LANGUAGES.map((lang) => (

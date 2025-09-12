@@ -9,5 +9,9 @@
     "signUp": "Sign up",
     "campaigns": "Campaigns",
     "howItWorks": "How It Works"
+  },
+  "card": {
+    "goToApply": "Go To Apply",
+    "campaignThumbnailImage": "campaign thumbnail image"
   }
 }
