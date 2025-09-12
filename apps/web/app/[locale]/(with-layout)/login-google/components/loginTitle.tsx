@@ -1,7 +1,7 @@
 export default function LoginTitle({
-  mode = 'login',
+  authType = 'login',
 }: {
-  mode?: 'login' | 'signup';
+  authType?: 'login' | 'signup';
 }) {
   return (
     <section className="text-center">
@@ -9,7 +9,7 @@ export default function LoginTitle({
         Welcome to Lococo!
       </h1>
       <div className="inter-caption2 font-medium text-gray-800">
-        {mode === 'login' ? (
+        {authType === 'login' ? (
           <p>Log in to your Google account right away</p>
         ) : (
           <>
