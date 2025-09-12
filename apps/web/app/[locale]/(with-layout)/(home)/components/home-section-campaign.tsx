@@ -1,3 +1,5 @@
+'use client';
+
 import { useState } from 'react';
 
 import { CATEGORY_VALUES, CategoryValue } from 'types/category';
@@ -10,14 +12,15 @@ export default function HomeSectionCampaign() {
   return (
     <div className="flex w-full flex-col gap-4">
       <div className="flex h-[5.6rem] w-full items-center justify-between">
-        <TabContainer>
+        <TabContainer variant="horizontal">
           {CATEGORY_VALUES.map((CATEGORY_VALUE) => (
             <Tab
               key={CATEGORY_VALUE}
               label={CATEGORY_VALUE}
+              value={CATEGORY_VALUE}
+              selected={campaignCategory === CATEGORY_VALUE}
               onClick={() => setCampaignCategory(CATEGORY_VALUE)}
-              active={campaignCategory === CATEGORY_VALUE}
-            ></Tab>
+            />
           ))}
         </TabContainer>
         <div>더보기</div>

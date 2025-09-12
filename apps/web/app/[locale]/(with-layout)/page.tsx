@@ -2,6 +2,7 @@ import { Suspense } from 'react';
 
 import HomeBanner from './(home)/components/home-banner';
 import HomeSection from './(home)/components/home-section';
+import HomeSectionCampaign from './(home)/components/home-section-campaign';
 import HomeProductFallback from './(home)/components/server-wrapper/home-product-fallback';
 import HomeProductServer from './(home)/components/server-wrapper/home-product-server';
 import HomeReviewFallback from './(home)/components/server-wrapper/home-review-fallback';
@@ -19,6 +20,10 @@ export default function Main() {
           <Suspense fallback={<HomeProductFallback />}>
             <HomeProductServer productSortType="popular" />
           </Suspense>
+        </HomeSection>
+
+        <HomeSection>
+          <HomeSectionCampaign />
         </HomeSection>
 
         <HomeSection>

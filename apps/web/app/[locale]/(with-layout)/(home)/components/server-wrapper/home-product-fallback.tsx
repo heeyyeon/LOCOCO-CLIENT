@@ -16,7 +16,6 @@ export default function HomeProductFallback() {
               label={name}
               value={categoryKey}
               selected={categoryKey === 'FACIAL_CARE'}
-              handleClick={() => {}}
             />
           );
         })}

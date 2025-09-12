@@ -69,7 +69,7 @@ export default function HomeSectionProduct({
               label={name}
               value={categoryKey}
               selected={categoryKey === selectedTab}
-              handleClick={() => setSelectedTab(categoryKey)}
+              onClick={() => setSelectedTab(categoryKey)}
             />
           );
         })}
