@@ -19,7 +19,7 @@ export default function ModalHeader({
       )}
       {...props}
     >
-      <div className="inter-title2 text-pink-500">{text}</div>
+      <div className="inter-title2 font-bold text-pink-500">{text}</div>
       {rightContent && (
         <div className="absolute right-[1.6rem] top-[1.6rem] cursor-pointer">
           {rightContent}
