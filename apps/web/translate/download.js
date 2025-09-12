@@ -20,11 +20,10 @@ const {
  * @description _rawData 배열 구조: [key값, 한글, 영어, 스페인어]
  * @type {Object.<string, number>}
  */
-const langToNumber = {
-  ko: 1,
-  en: 2,
-  es: 3,
-};
+const langToNumber = lngs.reduce((acc, lng, index) => {
+  acc[lng] = index + 1; // _rawData[0]은 key이므로 1부터 시작
+  return acc;
+}, {});
 
 /**
  * 언어 코드에 해당하는 _rawData 인덱스를 반환
