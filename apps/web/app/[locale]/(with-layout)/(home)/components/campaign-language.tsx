@@ -26,13 +26,13 @@ export default function CampaignLanguage({
   };
 
   return (
-    <div className="flex items-center">
+    <div className="flex h-full items-center">
       <SelectRoot value={locale} onValueChange={handleLanguageChange}>
         <SelectTrigger
-          className="flex w-fit gap-[0.8rem] border-none px-[3.2rem] py-[1.6rem] text-black"
+          className="flex w-fit items-center gap-[0.8rem] border-none px-[3.2rem] py-[1.6rem] text-black"
           onlyChildren={true}
         >
-          <p className="inter-body1 text-[700]">Language</p>
+          <p className="inter-body1 font-[700]">Language</p>
           <SvgArrowUp size={24} />
         </SelectTrigger>
 

@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { CATEGORY_VALUES, CategoryValue } from 'types/category';
 
 import { Tab, TabContainer } from '@lococo/design-system/tab';
+import { SvgAdd } from '@lococo/icons';
 
 import CampaignLanguage, { LocaleType } from './campaign-language';
 
@@ -27,11 +28,16 @@ export default function HomeSectionCampaign() {
             />
           ))}
         </TabContainer>
-        <div>
+        <div className="flex items-center">
           <CampaignLanguage
             locale={campaignLanguage}
             setLocale={setCampaignLanguage}
           />
+          {/* button에 onClick 이벤트 추가 */}
+          <button className="flex cursor-pointer items-center gap-[0.8rem] px-[3.2rem] py-[1.6rem]">
+            <p className="inter-body1 font-[700]">See More</p>
+            <SvgAdd size={24} />
+          </button>
         </div>
       </div>
       {/* TODO Card Map */}
