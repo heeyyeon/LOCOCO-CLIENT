@@ -14,7 +14,6 @@ export default function Main() {
   return (
     <div className="flex w-full flex-col">
       <HomeBanner />
-      <div className="flex w-full items-center justify-center bg-gray-500"></div>
       <div className="mx-auto flex w-[112.8rem] flex-col">
         <HomeUpdateDate />
         <HomeSection className="mt-[6rem]">
