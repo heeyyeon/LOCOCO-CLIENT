@@ -2,6 +2,9 @@
 
 import { useState } from 'react';
 
+import Card from 'components/card/Card';
+import { getChipVariantByDate } from 'components/card/utils/getChipVariantByDate';
+import { campaignDummyData } from 'mocks/campaignData';
 import { CATEGORY_VALUES, CategoryValue } from 'types/category';
 
 import { Tab, TabContainer } from '@lococo/design-system/tab';
@@ -15,7 +18,7 @@ export default function HomeSectionCampaign() {
 
   const [campaignLanguage, setCampaignLanguage] = useState<LocaleType>('en');
   return (
-    <div className="flex w-full flex-col gap-[0.6rem]">
+    <div className="flex w-full flex-col gap-[1.6rem]">
       <div className="flex h-[5.6rem] w-full items-center justify-between">
         <TabContainer variant="horizontal">
           {CATEGORY_VALUES.map((CATEGORY_VALUE) => (
@@ -40,7 +43,22 @@ export default function HomeSectionCampaign() {
           </button>
         </div>
       </div>
-      {/* TODO Card Map */}
+      <div className="grid grid-cols-3 gap-x-[2.4rem] gap-y-[3.2rem]">
+        {campaignDummyData.map((campaign) => (
+          <Card
+            key={campaign.campaignId}
+            dueDate={campaign.dueDate}
+            chipVariant={getChipVariantByDate(campaign.dueDate)}
+            brand={campaign.brand}
+            title={campaign.title}
+            label={campaign.label}
+            maxApplicants={campaign.maxApplicants}
+            currentApplicants={campaign.currentApplicants}
+            productThumbnailSrc={campaign.productThumbnailSrc}
+            campaignId={campaign.campaignId}
+          />
+        ))}
+      </div>
     </div>
   );
 }

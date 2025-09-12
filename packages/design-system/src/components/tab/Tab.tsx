@@ -19,7 +19,7 @@ interface TabContainerProps {
 }
 
 const tabVariants = cva(
-  'inter-title2 h-[4.6rem] cursor-pointer bg-white p-[0.8rem] font-700',
+  'inter-title2 h-[4.6rem] cursor-pointer bg-white p-[0.8rem] font-[700]',
   {
     variants: {
       variant: {
