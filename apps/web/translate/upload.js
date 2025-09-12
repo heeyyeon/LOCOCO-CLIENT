@@ -19,7 +19,7 @@ async function addNewSheet(doc, title, sheetId) {
 }
 
 async function updateTranslationsFromKeyMapToSheet(doc, keyMap) {
-  const title = 'Your Sheet Title';
+  const title = 'Lococo Translate sheet';
   let sheet = doc.sheetsById[sheetId];
   if (!sheet) {
     sheet = await addNewSheet(doc, title, sheetId);
