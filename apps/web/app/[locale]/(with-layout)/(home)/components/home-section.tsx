@@ -16,7 +16,7 @@ export default function HomeSection({
 }) {
   return (
     <section
-      className={cn(`mt-[12rem] flex w-full flex-col gap-[3.2rem]`, className)}
+      className={cn(`mt-[12rem] flex w-full flex-col gap-[1.6rem]`, className)}
     >
       {children}
     </section>
