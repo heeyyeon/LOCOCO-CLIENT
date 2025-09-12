@@ -15,10 +15,10 @@ interface CardProps {
   brand: string;
   title: string;
   label: string;
-  maxPeople: number;
-  applyPeople: number;
-  src: string;
-  id: number;
+  maxApplicants: number;
+  currentApplicants: number;
+  productThumbnailSrc: string;
+  campaignId: number;
   className?: string;
 }
 
@@ -27,10 +27,10 @@ export default function Card({
   brand,
   title,
   label,
-  maxPeople,
-  applyPeople,
-  src,
-  id,
+  maxApplicants,
+  currentApplicants,
+  productThumbnailSrc,
+  campaignId,
   chipVariant,
   className,
 }: CardProps) {
@@ -41,7 +41,12 @@ export default function Card({
         className
       )}
     >
-      <Image width={360} height={216} src={src} alt={`${title}상품 카드`} />
+      <Image
+        width={360}
+        height={216}
+        src={productThumbnailSrc}
+        alt={`${title}상품 카드`}
+      />
       <BracketChip
         dueDate={dueDate}
         chipVariant={chipVariant}
@@ -54,11 +59,14 @@ export default function Card({
         </div>
         <div className="flex items-center gap-[0.8rem]">
           <InfoChip text={label} />
-          <InfoChip icon={true} text={`${applyPeople}/${maxPeople}`} />
+          <InfoChip
+            icon={true}
+            text={`${currentApplicants}/${maxApplicants}`}
+          />
         </div>
         <div className="mt-auto">
           <Link
-            href={`/campaign/${id}`}
+            href={`/campaign/${campaignId}`}
             className="inter-body2 h-[4.8rem] w-full rounded-[3.2rem] bg-pink-100 font-[700] text-pink-500 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
           >
             Go to Apply
