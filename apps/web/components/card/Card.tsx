@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 
-import { useRouter } from 'i18n/navigation';
+import { Link } from 'i18n/navigation';
 
 import { cn } from '@lococo/utils';
 
@@ -34,7 +34,6 @@ export default function Card({
   chipVariant,
   className,
 }: CardProps) {
-  const router = useRouter();
   return (
     <div
       className={cn(
@@ -48,7 +47,7 @@ export default function Card({
         chipVariant={chipVariant}
         className="absolute right-[1.6rem] top-[1.6rem]"
       />
-      <div className="absolute bottom-0 flex h-[11.5rem] w-full flex-col gap-[0.8rem] rounded-t-[2.4rem] bg-white p-[1.6rem] transition-all duration-300 group-hover:h-[16.3rem]">
+      <div className="absolute bottom-0 flex h-[11.5rem] w-full flex-col gap-[0.8rem] bg-white p-[1.6rem] transition-all duration-300 group-hover:h-[16.3rem]">
         <div>
           <p className="inter-body4">{brand}</p>
           <p className="inter-title3">{title}</p>
@@ -58,12 +57,12 @@ export default function Card({
           <InfoChip icon={true} text={`${applyPeople}/${maxPeople}`} />
         </div>
         <div className="mt-auto">
-          <button
-            onClick={() => router.push(`/campaign/${id}`)}
+          <Link
+            href={`/campaign/${id}`}
             className="inter-body2 h-[4.8rem] w-full rounded-[3.2rem] bg-pink-100 font-[700] text-pink-500 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
           >
             Go to Apply
-          </button>
+          </Link>
         </div>
       </div>
     </div>
