@@ -26,18 +26,18 @@ async function updateTranslationsFromKeyMapToSheet(doc, keyMap) {
   }
 
   const rows = await sheet.getRows();
-  // find exsit keys
-  const exsitKeys = {};
+  // find exist keys
+  const existKeys = {};
   const addedRows = [];
   rows.forEach((row) => {
     const key = row._rawData[0];
     if (keyMap[key]) {
-      exsitKeys[key] = true;
+      existKeys[key] = true;
     }
   });
 
   for (const [key, translations] of Object.entries(keyMap)) {
-    if (!exsitKeys[key]) {
+    if (!existKeys[key]) {
       const row = {
         [columnKeyToHeader.key]: key,
         ...Object.keys(translations).reduce((result, lng) => {
@@ -146,11 +146,6 @@ async function sortRange() {
           dimensionIndex: 0, // 0번째 열 (Key 컬럼)
           sortOrder: 'ASCENDING', // 오름차순 (DESCENDING 도 가능)
         },
-        // 필요하다면 여러 열 기준 정렬 추가 가능
-        // {
-        //   dimensionIndex: 1,
-        //   sortOrder: 'DESCENDING',
-        // },
       ],
     },
   };
@@ -166,9 +161,6 @@ async function sortRange() {
 }
 
 async function updateSheetFromJson() {
-  // await resetSheet();
-  // await addHeaderRowToSheet();
-
   const doc = await loadSpreadsheet();
   const fs = await import('fs');
   fs.readdir(localesPath, (error, lngs) => {
@@ -189,11 +181,17 @@ async function updateSheetFromJson() {
     });
 
     updateTranslationsFromKeyMapToSheet(doc, toJson(keyMap));
-
+    // 키 업데이트 후 정렬하는 로직 추가
     sortRange();
   });
 }
 
 (async () => {
-  await updateSheetFromJson();
+  try {
+    await updateSheetFromJson();
+    console.log('번역 키 업로드 완료 ✅');
+  } catch (error) {
+    console.error('번역 키 업로드 실패 ❌:', error);
+    process.exit(1);
+  }
 })();

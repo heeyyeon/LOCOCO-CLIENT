@@ -148,6 +148,7 @@ async function updateJsonFromSheet() {
         if (err) {
           throw err;
         }
+        console.log(`${lng} 파일 다운로드 완료 ✅`);
       });
     });
   });

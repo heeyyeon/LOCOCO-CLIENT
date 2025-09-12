@@ -11,7 +11,7 @@
     "lint": "next lint --max-warnings 0",
     "check-types": "tsc --noEmit",
     "translate:download": "node --env-file .env translate/download.js",
-    "translate:upload": "node translate/upload.js"
+    "translate:upload": "node --env-file .env translate/upload.js"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.1.1",
