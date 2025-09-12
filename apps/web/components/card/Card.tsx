@@ -1,5 +1,6 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 
 import { Link } from 'i18n/navigation';
@@ -34,6 +35,7 @@ export default function Card({
   chipVariant,
   className,
 }: CardProps) {
+  const card = useTranslations('Card');
   return (
     <div
       className={cn(
@@ -45,7 +47,7 @@ export default function Card({
         width={360}
         height={216}
         src={productThumbnailSrc}
-        alt={`${title}상품 카드`}
+        alt={`${title}${card('campaign thumbnail image')}`}
       />
       <BracketChip
         dueDate={dueDate}
@@ -69,7 +71,7 @@ export default function Card({
             href={`/campaign/${campaignId}`}
             className="inter-body2 h-[4.8rem] w-full rounded-[3.2rem] bg-pink-100 font-[700] text-pink-500 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
           >
-            Go to Apply
+            {card('GoToApply')}
           </Link>
         </div>
       </div>
