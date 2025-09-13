@@ -1,33 +1,21 @@
 'use client';
 
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 import Card from 'components/card/Card';
 import { getChipVariantByDate } from 'components/card/utils/getChipVariantByDate';
-import { Link } from 'i18n/navigation';
 import { campaignDummyData } from 'mocks/campaignData';
-import { CATEGORY_VALUES, CategoryValue } from 'types/category';
 
 import { Tab, TabContainer } from '@lococo/design-system/tab';
-import { SvgAdd } from '@lococo/icons';
 
+import { CATEGORY_VALUES, CategoryValue } from '../../../../../types/category';
 import CampaignLanguage, { LocaleType } from './campaign-language';
 
-interface HomeSectionCampaignProps {
-  kindOfCard: 'KBeauty' | 'openingSoon';
-  seeMore?: boolean;
-}
-
-export default function HomeSectionCampaign({
-  // kindOfCard,
-  seeMore = false,
-}: HomeSectionCampaignProps) {
+export default function HomeSectionAllCampaign() {
   const [campaignCategory, setCampaignCategory] =
     useState<CategoryValue>('ALL');
-  const [campaignLanguage, setCampaignLanguage] = useState<LocaleType>('en');
 
-  // TODO kindOfCard로 api 호출 -> 위의 훅들 기반으로 호출하고 인자로 size 넘겨주기(여기선 6)
-  const campaigns = campaignDummyData?.slice(0, 6) || [];
+  const [campaignLanguage, setCampaignLanguage] = useState<LocaleType>('en');
 
   return (
     <div className="flex w-full flex-col gap-[1.6rem]">
@@ -48,19 +36,10 @@ export default function HomeSectionCampaign({
             locale={campaignLanguage}
             setLocale={setCampaignLanguage}
           />
-          {seeMore && (
-            <Link
-              href={'/all/1'}
-              className="flex cursor-pointer items-center gap-[0.8rem] px-[3.2rem] py-[1.6rem]"
-            >
-              <p className="inter-body1 font-[700]">See More</p>
-              <SvgAdd size={24} />
-            </Link>
-          )}
         </div>
       </div>
       <div className="grid grid-cols-3 gap-x-[2.4rem] gap-y-[3.2rem]">
-        {campaigns.map((campaign) => (
+        {campaignDummyData.map((campaign) => (
           <Card
             key={campaign.campaignId}
             dueDate={campaign.dueDate}

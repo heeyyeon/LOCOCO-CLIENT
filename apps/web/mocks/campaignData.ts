@@ -10,18 +10,6 @@ interface CampaignData {
   campaignId: number;
 }
 
-// 화장품 더미 이미지 URLs
-const DUMMY_IMAGES = [
-  'https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=360&h=216&fit=crop&q=80', // 립스틱들
-  'https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=360&h=216&fit=crop&q=80', // 화장품 브러쉬
-  'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=360&h=216&fit=crop&q=80', // 파운데이션 보틀
-  'https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=360&h=216&fit=crop&q=80', // 아이섀도우 팔레트
-  'https://images.unsplash.com/photo-1570194065650-d99fb4bedf0a?w=360&h=216&fit=crop&q=80', // 스킨케어 크림
-  'https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?w=360&h=216&fit=crop&q=80', // 향수 병
-  'https://images.unsplash.com/photo-1576426863848-c21f53c60b19?w=360&h=216&fit=crop&q=80', // 마스크팩
-  'https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=360&h=216&fit=crop&q=80', // 세럼 보틀
-];
-
 // 화장품 캠페인 더미 데이터
 export const campaignDummyData: CampaignData[] = [
   {
@@ -32,7 +20,8 @@ export const campaignDummyData: CampaignData[] = [
     label: '립메이크업',
     maxApplicants: 80,
     currentApplicants: 34,
-    productThumbnailSrc: DUMMY_IMAGES[0],
+    productThumbnailSrc:
+      'https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=360&h=216&fit=crop&q=80',
     campaignId: 2001,
   },
   {
@@ -43,7 +32,8 @@ export const campaignDummyData: CampaignData[] = [
     label: '향수',
     maxApplicants: 50,
     currentApplicants: 50,
-    productThumbnailSrc: DUMMY_IMAGES[5],
+    productThumbnailSrc:
+      'https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=360&h=216&fit=crop&q=80',
     campaignId: 2002,
   },
   {
@@ -54,7 +44,8 @@ export const campaignDummyData: CampaignData[] = [
     label: '베이스메이크업',
     maxApplicants: 100,
     currentApplicants: 67,
-    productThumbnailSrc: DUMMY_IMAGES[2],
+    productThumbnailSrc:
+      'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=360&h=216&fit=crop&q=80',
     campaignId: 2003,
   },
   {
@@ -65,7 +56,8 @@ export const campaignDummyData: CampaignData[] = [
     label: '아이메이크업',
     maxApplicants: 60,
     currentApplicants: 28,
-    productThumbnailSrc: DUMMY_IMAGES[3],
+    productThumbnailSrc:
+      'https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=360&h=216&fit=crop&q=80',
     campaignId: 2004,
   },
   {
@@ -76,7 +68,8 @@ export const campaignDummyData: CampaignData[] = [
     label: '스킨케어',
     maxApplicants: 30,
     currentApplicants: 30,
-    productThumbnailSrc: DUMMY_IMAGES[4],
+    productThumbnailSrc:
+      'https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=360&h=216&fit=crop&q=80',
     campaignId: 2005,
   },
   {
@@ -87,29 +80,32 @@ export const campaignDummyData: CampaignData[] = [
     label: '스킨케어',
     maxApplicants: 40,
     currentApplicants: 15,
-    productThumbnailSrc: DUMMY_IMAGES[7],
+    productThumbnailSrc:
+      'https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?w=360&h=216&fit=crop&q=80',
     campaignId: 2006,
   },
-  // {
-  //   dueDate: '2025-09-25',
-  //   chipVariant: 'active',
-  //   brand: 'Laneige',
-  //   title: '라네즈 워터 슬리핑 마스크 체험단',
-  //   label: '마스크팩',
-  //   maxApplicants: 120,
-  //   currentApplicants: 89,
-  //   productThumbnailSrc: DUMMY_IMAGES[6],
-  //   campaignId: 2007,
-  // },
-  // {
-  //   dueDate: '2025-10-10',
-  //   chipVariant: 'active',
-  //   brand: 'Charlotte Tilbury',
-  //   title: '필로우 토크 립스틱 컬렉션 체험단',
-  //   label: '립메이크업',
-  //   maxApplicants: 70,
-  //   currentApplicants: 42,
-  //   productThumbnailSrc: DUMMY_IMAGES[1],
-  //   campaignId: 2008,
-  // },
+  {
+    dueDate: '2025-09-25',
+    chipVariant: 'active',
+    brand: 'Laneige',
+    title: '라네즈 워터 슬리핑 마스크 체험단',
+    label: '마스크팩',
+    maxApplicants: 120,
+    currentApplicants: 89,
+    productThumbnailSrc:
+      'https://images.unsplash.com/photo-1576426863848-c21f53c60b19?w=360&h=216&fit=crop&q=80',
+    campaignId: 2007,
+  },
+  {
+    dueDate: '2025-10-10',
+    chipVariant: 'active',
+    brand: 'Charlotte Tilbury',
+    title: '필로우 토크 립스틱 컬렉션 체험단',
+    label: '립메이크업',
+    maxApplicants: 70,
+    currentApplicants: 42,
+    productThumbnailSrc:
+      'https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=360&h=216&fit=crop&q=80',
+    campaignId: 2008,
+  },
 ];

@@ -23,12 +23,12 @@ export default function Main() {
 
         <HomeSection className="mt-[6rem]">
           <HomeSection.Header>K-Beauty Campaigns</HomeSection.Header>
-          <HomeSectionCampaign />
+          <HomeSectionCampaign kindOfCard="KBeauty" seeMore={true} />
         </HomeSection>
 
         <HomeSection>
           <HomeSection.Header>Opening Soon</HomeSection.Header>
-          <HomeSectionCampaign />
+          <HomeSectionCampaign kindOfCard="openingSoon" seeMore={false} />
         </HomeSection>
 
         {/* <HomeSection>
