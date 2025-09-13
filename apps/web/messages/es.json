@@ -9,5 +9,10 @@
     "signUp": "Registrarse",
     "campaigns": "Campañas",
     "howItWorks": "Cómo Funciona"
+  },
+  "ConfirmSignupModal": {
+    "title": "¡Enviado Exitosamente!",
+    "message": "Su solicitud fue enviada exitosamente.<br/>Le enviaremos el resultado por correo electrónico dentro de 24 horas.",
+    "confirmButton": "De Acuerdo"
   }
 }

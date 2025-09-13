@@ -9,5 +9,10 @@
     "signUp": "회원가입",
     "campaigns": "캠페인",
     "howItWorks": "작동 방식"
+  },
+  "ConfirmSignupModal": {
+    "title": "성공적으로 제출되었습니다!",
+    "message": "신청서가 성공적으로 제출되었습니다.<br/>24시간 이내에 결과를 이메일로 보내드리겠습니다.",
+    "confirmButton": "확인"
   }
 }
