@@ -1,7 +1,9 @@
 import { JWT } from 'google-auth-library';
 import { GoogleSpreadsheet } from 'google-spreadsheet';
 
-import credentials from './credentials.json' with { type: 'json' };
+const email = process.env.GOOGLE_CLIENT_EMAIL;
+const key = process.env.GOOGLE_PRIVATE_KEY;
+const googleSheetId = process.env.TRANSLATE_GOOGLE_SHEET_ID;
 
 const ns = 'ko';
 const lngs = ['ko', 'en', 'es'];
@@ -14,15 +16,14 @@ const columnKeyToHeader = {
   en: '영어',
   es: '스페인어',
 };
-const googleSheetId = process.env.TRANSLATE_GOOGLE_SHEET_ID;
 
 // Initialize auth - see https://theoephraim.github.io/node-google-spreadsheet/#/guides/authentication
-const email = credentials.client_email;
-const key = credentials.private_key.replace(/\\n/g, '\n');
+
+const parsedKey = key.replace(/\\n/g, '\n');
 
 const serviceAccountAuth = new JWT({
   email,
-  key,
+  key: parsedKey,
   scopes: ['https://www.googleapis.com/auth/spreadsheets'],
 });
 /**
@@ -31,8 +32,6 @@ const serviceAccountAuth = new JWT({
 async function loadSpreadsheet() {
   // spreadsheet key is the long id in the sheets URL
   const doc = new GoogleSpreadsheet(googleSheetId, serviceAccountAuth);
-  // load directly from json file if not in secure environment
-
   await doc.loadInfo(); // loads document properties and worksheets
 
   return doc;

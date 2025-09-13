@@ -146,6 +146,7 @@ async function updateJsonFromSheet() {
       const jsonString = JSON.stringify(lngsMap[lng], null, 2);
       fs.writeFile(localeJsonFilePath, jsonString, 'utf8', (err) => {
         if (err) {
+          console.log(`${lng} 파일 다운로드 실패 ❌`);
           throw err;
         }
         console.log(`${lng} 파일 다운로드 완료 ✅`);
