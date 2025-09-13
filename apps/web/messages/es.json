@@ -9,5 +9,14 @@
     "signUp": "Registrarse",
     "campaigns": "Campañas",
     "howItWorks": "Cómo Funciona"
+  },
+  "UserInductionModal": {
+    "title": "Sugerencia de Creador",
+    "message": [
+      "Las aplicaciones de campaña solo están disponibles para miembros creadores.",
+      "¿Te gustaría registrarte como creador?"
+    ],
+    "cancelButton": "No",
+    "confirmButton": "Sí"
   }
 }

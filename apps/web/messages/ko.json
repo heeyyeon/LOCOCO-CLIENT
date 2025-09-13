@@ -9,5 +9,14 @@
     "signUp": "회원가입",
     "campaigns": "캠페인",
     "howItWorks": "작동 방식"
+  },
+  "UserInductionModal": {
+    "title": "크리에이터 가입",
+    "message": [
+      "캠페인 신청은 크리에이터 회원만 가능합니다.",
+      "크리에이터로 가입하시겠습니까?"
+    ],
+    "cancelButton": "아니요",
+    "confirmButton": "네"
   }
 }
