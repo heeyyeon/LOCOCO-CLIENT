@@ -1,3 +1,5 @@
+import { useTranslations } from 'next-intl';
+
 import {
   Dialog,
   DialogContent,
@@ -17,6 +19,8 @@ export function ConfirmSignupModal({
   onOpenChange,
   onConfirm,
 }: ConfirmSignupModalProps) {
+  const confirmSignupModal = useTranslations('ConfirmSignupModal');
+
   const handleConfirmModal = () => {
     onConfirm();
     onOpenChange(false);
@@ -28,20 +32,27 @@ export function ConfirmSignupModal({
         className="w-full max-w-[55rem] overflow-hidden rounded-[3.2rem] p-0"
         showCloseButton={false}
       >
-        <DialogTitle className="sr-only">Successfully Submitted!</DialogTitle>
+        <DialogTitle className="sr-only">
+          {confirmSignupModal('title')}
+        </DialogTitle>
 
-        <ModalHeader text="Successfully Submitted!" />
+        <ModalHeader text={confirmSignupModal('title')} />
 
         <section className="bg-white px-[4rem] py-[7rem]">
           <div className="text-center">
-            <p className="inter-body3 font-medium text-gray-800">
-              Your application was successfully submitted. <br />
-              We&apos;ll email you the result within 24 hours.
-            </p>
+            <p
+              className="inter-body3 font-medium text-gray-800"
+              dangerouslySetInnerHTML={{
+                __html: confirmSignupModal('message'),
+              }}
+            />
           </div>
         </section>
 
-        <ModalButton text="Okay" onClick={handleConfirmModal} />
+        <ModalButton
+          text={confirmSignupModal('confirmButton')}
+          onClick={handleConfirmModal}
+        />
       </DialogContent>
     </Dialog>
   );
