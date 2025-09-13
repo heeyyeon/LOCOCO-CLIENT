@@ -5,7 +5,7 @@ import { SvgClose } from '@lococo/icons';
 
 interface AddressSearchModalProps {
   isOpen: boolean;
-  onComplete: (data: { roadAddress: string }) => void;
+  onComplete: (data: { roadAddress: string; zonecode: string }) => void;
   onClose: () => void;
 }
 
@@ -37,7 +37,12 @@ export function AddressSearchModal({
 
         <div className="h-[52rem]">
           <DaumPostcode
-            onComplete={onComplete}
+            onComplete={(data) => {
+              onComplete({
+                roadAddress: data.roadAddress,
+                zonecode: data.zonecode,
+              });
+            }}
             onClose={onClose}
             autoClose={true}
             style={{

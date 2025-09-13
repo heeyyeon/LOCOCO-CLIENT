@@ -2,6 +2,7 @@ import { useState } from 'react';
 
 interface AddressData {
   roadAddress: string;
+  zonecode: string;
 }
 
 interface UseAddressSearchProps {

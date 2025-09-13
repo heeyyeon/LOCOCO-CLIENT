@@ -23,7 +23,8 @@ export default function BrandSignupPage() {
   const { isOpen, openAddressSearch, closeAddressSearch, handleComplete } =
     useAddressSearch({
       onComplete: (data) => {
-        form.setValue('street', data.roadAddress);
+        const address = `${data.roadAddress} (${data.zonecode})`;
+        form.setValue('street', address);
       },
     });
 
