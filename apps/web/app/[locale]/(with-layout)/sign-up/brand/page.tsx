@@ -94,7 +94,7 @@ export default function BrandSignupPage() {
               register={form.register('street')}
               error={form.formState.errors.street?.message}
               showSearchIcon
-              onSearchClick={openAddressSearch}
+              handleClickSearch={openAddressSearch}
             />
 
             <TextFormField

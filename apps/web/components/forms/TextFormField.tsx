@@ -14,7 +14,7 @@ interface TextFormFieldProps {
   error?: string;
   className?: string;
   showSearchIcon?: boolean;
-  onSearchClick?: () => void;
+  handleClickSearch?: () => void;
 }
 
 export function TextFormField({
@@ -25,7 +25,7 @@ export function TextFormField({
   error,
   className,
   showSearchIcon = false,
-  onSearchClick,
+  handleClickSearch,
 }: TextFormFieldProps) {
   return (
     <div className={cn('flex items-center justify-between', className)}>
@@ -41,7 +41,7 @@ export function TextFormField({
           {showSearchIcon && (
             <button
               type="button"
-              onClick={onSearchClick}
+              onClick={handleClickSearch}
               className="absolute right-2 top-1/2 flex -translate-y-1/2 cursor-pointer items-center justify-center"
               aria-label="주소 검색 아이콘"
             >
