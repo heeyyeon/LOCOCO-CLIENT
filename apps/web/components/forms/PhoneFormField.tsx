@@ -27,13 +27,13 @@ export function PhoneFormField({
   error,
   className,
 }: PhoneFormFieldProps) {
-  const [displayValue, setDisplayValue] = useState('');
+  const [formattedPhoneNumber, setFormattedPhoneNumber] = useState('');
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = e.target.value;
     const formattedValue = formatPhoneNumber(inputValue);
 
-    setDisplayValue(formattedValue);
+    setFormattedPhoneNumber(formattedValue);
 
     const numericValue = removePhoneNumberFormat(inputValue);
     e.target.value = numericValue;
@@ -52,7 +52,7 @@ export function PhoneFormField({
       <div className="flex flex-col">
         <Input
           {...register}
-          value={displayValue}
+          value={formattedPhoneNumber}
           onChange={handleInputChange}
           placeholder={placeholder}
           maxLength={13}
