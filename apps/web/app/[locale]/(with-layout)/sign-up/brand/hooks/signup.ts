@@ -9,7 +9,7 @@ export const brandSignupSchema = z
       .trim()
       .min(1, '브랜드 이름을 입력해주세요.')
       .max(30, '브랜드 이름은 최대 30글자입니다.')
-      .regex(/^[a-zA-Z가-힣\s]+$/, '한글 또는 영어만 입력해주세요.'),
+      .regex(/^[a-zA-Z가-힣0-9\s]+$/, '한글, 영어, 숫자만 입력해주세요.'),
     contactName: z
       .string()
       .trim()
