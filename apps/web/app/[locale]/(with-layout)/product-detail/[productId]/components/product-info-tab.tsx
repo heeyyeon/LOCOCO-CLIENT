@@ -34,7 +34,7 @@ export default function ProductInfoTab({
         ></Tab>
       </TabContainer>
 
-      <div className="text-jp-body1 border-b-[0.1rem] border-gray-300 py-[4rem] text-gray-700">
+      <div className="body1 border-b-[0.1rem] border-gray-300 py-[4rem] text-gray-700">
         {activeTab === 'productDetail' ? productDetail : ingredients}
       </div>
     </div>

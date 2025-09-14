@@ -19,8 +19,8 @@ export default function ProductInfo({
         />
       )}
       <div className="flex flex-col items-start gap-[0.4rem]">
-        <h3 className="jp-body1 font-bold text-gray-800">{productName}</h3>
-        <p className="jp-body2 text-gray-800">{brandName}</p>
+        <h3 className="body1 font-bold text-gray-800">{productName}</h3>
+        <p className="body2 text-gray-800">{brandName}</p>
       </div>
     </div>
   );

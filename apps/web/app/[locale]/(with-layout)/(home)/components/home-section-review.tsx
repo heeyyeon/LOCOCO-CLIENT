@@ -33,7 +33,7 @@ export default function HomeSectionReview({
 
   return (
     <div className={cn(`mt-[3.2rem] flex flex-col gap-[3.2rem]`, className)}>
-      <p className="jp-head3 font-[700]">
+      <p className="head3 font-[700]">
         {type === 'video' && '動画レビュー'}
         {type === 'image' && '写真付きレビュー'}
       </p>
@@ -65,7 +65,7 @@ export default function HomeSectionReview({
                 router.push(`/product-detail/${review.productId}`);
               }}
             >
-              <div className="jp-title3 flex items-center gap-[0.8rem] font-bold">
+              <div className="title3 flex items-center gap-[0.8rem] font-bold">
                 <SvgArrowOutward />
                 見に行く
               </div>

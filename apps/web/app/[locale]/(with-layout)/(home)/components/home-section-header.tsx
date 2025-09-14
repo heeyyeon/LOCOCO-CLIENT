@@ -16,7 +16,7 @@ export default function HomeSectionHeader({
         {children}
       </h3>
       {moreInfoUrl && (
-        <Link href={moreInfoUrl} className="jp-title2 font-[700]">
+        <Link href={moreInfoUrl} className="title2 font-[700]">
           더보기
         </Link>
       )}

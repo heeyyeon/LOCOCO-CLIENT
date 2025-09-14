@@ -24,7 +24,7 @@ export function SignupFormLayout({
   return (
     <main className="bg-gray-100 py-[6.4rem]">
       <div className="mx-auto max-w-[74.4rem] px-4">
-        <h1 className="inter-head2 mb-[2.2rem] text-center font-bold text-pink-500">
+        <h1 className="head2 mb-[2.2rem] text-center font-bold text-pink-500">
           {title}
         </h1>
 
