@@ -12,7 +12,7 @@ import BracketChip from './BracketChip';
 
 interface CardProps {
   dueDate: string;
-  chipVariant: 'expired' | 'active'; // variant 확장 가능
+  chipVariant: 'expired' | 'active' | 'approved' | 'declined' | 'progress';
   brand: string;
   title: string;
   label: string;

@@ -1,9 +1,11 @@
 import Card from 'components/card/Card';
 import { getChipVariantByDate } from 'components/card/utils/getChipVariantByDate';
+import { UserApplicationState } from 'mocks/campaignData';
 
 interface Campaign {
   campaignId: number;
   dueDate: string;
+  userApplicationState: UserApplicationState;
   brand: string;
   title: string;
   label: string;
@@ -23,7 +25,11 @@ export default function CampaignGrid({ campaigns }: CampaignGridProps) {
         <Card
           key={campaign.campaignId}
           dueDate={campaign.dueDate}
-          chipVariant={getChipVariantByDate(campaign.dueDate)}
+          chipVariant={
+            campaign.userApplicationState
+              ? campaign.userApplicationState
+              : getChipVariantByDate(campaign.dueDate)
+          }
           brand={campaign.brand}
           title={campaign.title}
           label={campaign.label}
