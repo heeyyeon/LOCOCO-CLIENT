@@ -10,11 +10,12 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   handleRightIconClick?: () => void;
 }
 
+// TODO Input Variation 수정 필요
 const inputVariants = cva('w-full focus:outline-none', {
   variants: {
     fontType: {
-      Inter: 'inter-body3',
-      NotoSansKR: 'kr-body3',
+      Inter: 'body3',
+      NotoSansKR: 'body3',
     },
   },
   defaultVariants: {
