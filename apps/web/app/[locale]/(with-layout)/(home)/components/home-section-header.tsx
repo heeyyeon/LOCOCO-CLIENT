@@ -12,7 +12,7 @@ export default function HomeSectionHeader({
 }: HomeSectionHeaderProps) {
   return (
     <section className="mt-[6rem] flex justify-between">
-      <h3 className="jp-head1 flex items-center gap-[1.2rem] font-[700]">
+      <h3 className="head1 flex items-center gap-[1.2rem] font-[700]">
         {children}
       </h3>
       {moreInfoUrl && (
