@@ -1,5 +1,5 @@
+import CampaignAll from '../../(home)/components/campaign-all';
 import HomeSection from '../../(home)/components/home-section';
-import HomeSectionAllCampaign from '../../(home)/components/home-section-all-campaign';
 
 export default function AllCampaign() {
   return (
@@ -7,7 +7,7 @@ export default function AllCampaign() {
       <div className="mx-auto flex w-[112.8rem] flex-col">
         <HomeSection className="mt-[0.4rem]">
           <HomeSection.Header>K-Beauty Campaigns</HomeSection.Header>
-          <HomeSectionAllCampaign />
+          <CampaignAll />
         </HomeSection>
       </div>
     </div>
