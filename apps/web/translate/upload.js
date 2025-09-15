@@ -1,0 +1,197 @@
+const {
+  loadSpreadsheet,
+  localesPath,
+  getPureKey,
+  lngs,
+  sheetId,
+  columnKeyToHeader,
+} = await import('./index.js');
+
+const headerValues = Object.values(columnKeyToHeader);
+async function addNewSheet(doc, title, sheetId) {
+  const sheet = await doc.addSheet({
+    sheetId,
+    title,
+    headerValues,
+  });
+
+  return sheet;
+}
+
+async function updateTranslationsFromKeyMapToSheet(doc, keyMap) {
+  const title = 'Lococo Translate sheet';
+  let sheet = doc.sheetsById[sheetId];
+  if (!sheet) {
+    sheet = await addNewSheet(doc, title, sheetId);
+  }
+
+  const rows = await sheet.getRows();
+  // find exist keys
+  const existKeys = {};
+  const addedRows = [];
+  rows.forEach((row) => {
+    const key = row._rawData[0];
+    if (keyMap[key]) {
+      existKeys[key] = true;
+    }
+  });
+
+  for (const [key, translations] of Object.entries(keyMap)) {
+    if (!existKeys[key]) {
+      const row = {
+        [columnKeyToHeader.key]: key,
+        ...Object.keys(translations).reduce((result, lng) => {
+          const header = columnKeyToHeader[lng];
+          if (header) {
+            result[header] = translations[lng];
+          }
+          return result;
+        }, {}),
+      };
+      addedRows.push(row);
+    }
+  }
+
+  // upload new keys
+  await sheet.addRows(addedRows);
+}
+
+function toJson(keyMap) {
+  const json = {};
+
+  Object.entries(keyMap).forEach(([__, keysByPlural]) => {
+    for (const [keyWithPostfix, translations] of Object.entries(keysByPlural)) {
+      json[keyWithPostfix] = {
+        ...translations,
+      };
+    }
+  });
+
+  return json;
+}
+
+// 중첩된 객체를 평면화하는 함수
+function flattenObject(obj, prefix = '') {
+  const flattened = {};
+
+  for (const [key, value] of Object.entries(obj)) {
+    const newKey = prefix ? `${prefix}.${key}` : key;
+
+    if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
+      // 중첩된 객체인 경우 재귀적으로 평면화
+      Object.assign(flattened, flattenObject(value, newKey));
+    } else {
+      // 리프 노드인 경우
+      flattened[newKey] = value;
+    }
+  }
+
+  return flattened;
+}
+
+function gatherKeyMap(keyMap, lng, json) {
+  // 중첩된 JSON을 평면화
+  const flattenedJson = flattenObject(json);
+
+  // message 파일 이름에서 .json 제거
+  lng = lng.replace('.json', '');
+
+  for (const [keyWithPostfix, translated] of Object.entries(flattenedJson)) {
+    const key = getPureKey(keyWithPostfix);
+
+    if (!keyMap[key]) {
+      keyMap[key] = {};
+    }
+
+    const keyMapWithLng = keyMap[key];
+    if (!keyMapWithLng[keyWithPostfix]) {
+      keyMapWithLng[keyWithPostfix] = lngs.reduce((initObj, lang) => {
+        initObj[lang] = '';
+        return initObj;
+      }, {});
+    }
+
+    keyMapWithLng[keyWithPostfix][lng] = translated;
+  }
+}
+
+async function resetSheet() {
+  const doc = await loadSpreadsheet();
+  const sheet = doc.sheetsById[sheetId];
+  sheet.clear();
+}
+
+async function addHeaderRowToSheet() {
+  const doc = await loadSpreadsheet();
+  const sheet = doc.sheetsById[sheetId];
+  await sheet.setHeaderRow(headerValues);
+}
+
+async function sortRange() {
+  const doc = await loadSpreadsheet();
+  const sheet = doc.sheetsById[sheetId];
+
+  // 정렬 요청 정의
+  const request = {
+    sortRange: {
+      range: {
+        sheetId: sheet.sheetId, // sheet 객체의 고유 ID
+        startRowIndex: 1, // 헤더 제외 (0-based index)
+        endRowIndex: sheet.rowCount,
+        startColumnIndex: 0, // 첫 번째 열부터
+        endColumnIndex: sheet.columnCount,
+      },
+      sortSpecs: [
+        {
+          dimensionIndex: 0, // 0번째 열 (Key 컬럼)
+          sortOrder: 'ASCENDING', // 오름차순 (DESCENDING 도 가능)
+        },
+      ],
+    },
+  };
+
+  try {
+    await doc.sheetsApi.post(`:batchUpdate`, {
+      json: { requests: [request] },
+    });
+    console.log('시트 정렬 성공 ✅');
+  } catch (error) {
+    console.error('시트 정렬 중 오류 발생 ❌:', error);
+  }
+}
+
+async function updateSheetFromJson() {
+  const doc = await loadSpreadsheet();
+  const fs = await import('fs');
+  fs.readdir(localesPath, (error, lngs) => {
+    if (error) {
+      console.log('readdir error');
+      throw error;
+    }
+
+    const keyMap = {};
+
+    lngs.forEach((lng) => {
+      const localeJsonFilePath = `${localesPath}/${lng}`;
+
+      // eslint-disable-next-line no-sync
+      const json = fs.readFileSync(localeJsonFilePath, 'utf8');
+
+      gatherKeyMap(keyMap, lng, JSON.parse(json));
+    });
+
+    updateTranslationsFromKeyMapToSheet(doc, toJson(keyMap));
+    // 키 업데이트 후 정렬하는 로직 추가
+    sortRange();
+  });
+}
+
+(async () => {
+  try {
+    await updateSheetFromJson();
+    console.log('번역 키 업로드 완료 ✅');
+  } catch (error) {
+    console.error('번역 키 업로드 실패 ❌:', error);
+    process.exit(1);
+  }
+})();
