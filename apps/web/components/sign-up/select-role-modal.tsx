@@ -1,3 +1,5 @@
+import { useTranslations } from 'next-intl';
+
 import { Button } from '@lococo/design-system/button';
 import {
   Dialog,
@@ -20,11 +22,7 @@ export function SelectRoleModal({
   onOpenChange,
   onSelectRole,
 }: SelectRoleModalProps) {
-  const roleTextMap = {
-    creator: 'Creator',
-    brand: 'Brand',
-    user: 'User',
-  };
+  const t = useTranslations('SelectRoleModal');
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -32,10 +30,10 @@ export function SelectRoleModal({
         className="w-full max-w-[55rem] overflow-hidden rounded-[3.2rem] p-0"
         showCloseButton={false}
       >
-        <DialogTitle className="sr-only">Choose Your Role</DialogTitle>
+        <DialogTitle className="sr-only">{t('title')}</DialogTitle>
 
         <ModalHeader
-          text="Choose Your Role"
+          text={t('title')}
           rightContent={
             <button
               type="button"
@@ -51,11 +49,10 @@ export function SelectRoleModal({
         <section className="bg-white px-[4rem] py-[4rem]">
           <header className="mb-[4.4rem] text-center">
             <h1 className="inter-head3 mb-[0.4rem] font-bold text-pink-500">
-              Welcome to Lococo!
+              {t('welcomeTitle')}
             </h1>
             <p className="inter-body3 font-medium text-gray-800">
-              Select your role to sign in. <br />
-              You won&apos;t be able to change this later.
+              {t('description')}
             </p>
           </header>
 
@@ -73,7 +70,7 @@ export function SelectRoleModal({
                     onOpenChange(false);
                   }}
                 >
-                  Log in as a {roleTextMap[role]}
+                  {t('loginAs')} {t(`roles.${role}`)}
                 </Button>
               );
             })}
