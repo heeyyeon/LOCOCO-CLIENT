@@ -10,6 +10,7 @@ interface TabProps
   label: string;
   value: string;
   className?: string;
+  onClick?: () => void;
 }
 
 interface TabContainerProps {
