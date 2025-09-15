@@ -41,6 +41,7 @@ export function SelectRoleModal({
               type="button"
               aria-label="Close"
               onClick={() => onOpenChange(false)}
+              className="text-gray-500"
             >
               <SvgClose />
             </button>
