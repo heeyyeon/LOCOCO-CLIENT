@@ -14,8 +14,8 @@ export function FormSection({
   return (
     <div className="space-y-[1.6rem]">
       <div>
-        <h2 className="kr-title2 font-bold text-gray-800">{title}</h2>
-        <p className="kr-body4 mt-[0.4rem] text-gray-500">{description}</p>
+        <h2 className="title2 font-bold text-gray-800">{title}</h2>
+        <p className="body4 mt-[0.4rem] text-gray-500">{description}</p>
       </div>
       <div className="space-y-4">{children}</div>
     </div>

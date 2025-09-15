@@ -28,7 +28,7 @@ export default function OptionSelector({
             onClick={() => handleClickTab(value)}
             className={cn(
               'flex h-[6rem] w-full items-center justify-center border-b-2 bg-white px-[2rem] py-[1rem] font-bold',
-              `${isSelected ? 'en-title2 border-gray-800' : 'jp-title2 border-gray-300'}`
+              `${isSelected ? 'title2 border-gray-800' : 'title2 border-gray-300'}`
             )}
           >
             {SEARCH_OPTION[value]}

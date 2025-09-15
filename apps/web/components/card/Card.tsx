@@ -56,8 +56,8 @@ export default function Card({
       />
       <div className="absolute bottom-0 flex h-[11.5rem] w-full flex-col gap-[0.8rem] bg-white p-[1.6rem] transition-all duration-300 group-hover:h-[16.3rem]">
         <div>
-          <p className="inter-body4">{brand}</p>
-          <p className="inter-title3">{title}</p>
+          <p className="body4">{brand}</p>
+          <p className="title3">{title}</p>
         </div>
         <div className="flex items-center gap-[0.8rem]">
           <InfoChip text={label} />
@@ -69,7 +69,7 @@ export default function Card({
         <div className="mt-auto">
           <Link
             href={`/campaign/${campaignId}`}
-            className="inter-body2 h-[4.8rem] w-full rounded-[3.2rem] bg-pink-100 font-[700] text-pink-500 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+            className="body2 h-[4.8rem] w-full rounded-[3.2rem] bg-pink-100 font-[700] text-pink-500 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
           >
             {card('GoToApply')}
           </Link>
