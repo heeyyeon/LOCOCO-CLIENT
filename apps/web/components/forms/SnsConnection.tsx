@@ -10,7 +10,7 @@ interface SnsConnectionSectionProps {
   title?: string;
   description?: string;
   connectedSns: SnsPlatform[];
-  handleConnectSns: (sns: SnsPlatform) => void;
+  onConnectSns: (sns: SnsPlatform) => void;
   hasError?: boolean;
   errorMessage?: string;
   platforms?: SnsPlatform[];
@@ -33,7 +33,7 @@ export function SnsConnection({
   title = 'SNS Link',
   description = '',
   connectedSns,
-  handleConnectSns,
+  onConnectSns,
   hasError = false,
   errorMessage = 'Please add your account link at least one.',
   platforms = DEFAULT_PLATFORMS,
@@ -75,7 +75,7 @@ export function SnsConnection({
                 </div>
               ) : (
                 <Button
-                  onClick={() => handleConnectSns(platform)}
+                  onClick={() => onConnectSns(platform)}
                   variant="outline"
                   color="primary"
                   size="sm"
