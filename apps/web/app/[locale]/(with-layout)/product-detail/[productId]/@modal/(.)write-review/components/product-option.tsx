@@ -39,10 +39,10 @@ export default function ProductOption({
         value={value ? String(value) : ''}
         onValueChange={handleValueChange}
       >
-        <SelectTrigger className="jp-body2">
+        <SelectTrigger className="body2">
           <SelectValue placeholder="オプション" />
         </SelectTrigger>
-        <SelectContent className="scrollbar-hide jp-body2">
+        <SelectContent className="scrollbar-hide body2">
           {options.map(({ id, optionName }) => (
             <SelectItem hover value={String(id)} key={id}>
               {optionName}

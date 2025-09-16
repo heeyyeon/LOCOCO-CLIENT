@@ -1,43 +1,24 @@
-import { Suspense } from 'react';
-
-import Gnb from 'components/gnb/gnb';
+import { getTranslations } from 'next-intl/server';
 
 import HomeBanner from './(home)/components/home-banner';
 import HomeSection from './(home)/components/home-section';
-import HomeUpdateDate from './(home)/components/home-update-date';
-import HomeProductFallback from './(home)/components/server-wrapper/home-product-fallback';
-import HomeProductServer from './(home)/components/server-wrapper/home-product-server';
-import HomeReviewFallback from './(home)/components/server-wrapper/home-review-fallback';
-import HomeReviewServer from './(home)/components/server-wrapper/home-review-server';
-import HomeYoutubeFallback from './(home)/components/server-wrapper/home-youtube-fallback';
-import HomeYoutubeServer from './(home)/components/server-wrapper/home-youtube-server';
+import HomeSectionCampaign from './(home)/components/home-section-campaign';
 
-export default function Main() {
+export default async function Main() {
+  const t = await getTranslations('main');
   return (
-    <div className="flex w-full flex-col">
+    <div className="flex w-full flex-col bg-pink-100">
       <HomeBanner />
-      <Gnb />
       <div className="mx-auto flex w-[112.8rem] flex-col">
-        <HomeUpdateDate />
         <HomeSection className="mt-[6rem]">
-          <HomeSection.Header>レビュー数が多い商品</HomeSection.Header>
-          <Suspense fallback={<HomeProductFallback />}>
-            <HomeProductServer productSortType="popular" />
-          </Suspense>
+          <HomeSection.Header>{t('kBeautyCampaigns')}</HomeSection.Header>
+          <HomeSectionCampaign kindOfCard="KBeauty" seeMore={true} />
         </HomeSection>
 
         <HomeSection>
-          <HomeSection.Header>新作アイテム</HomeSection.Header>
-          <Suspense fallback={<HomeProductFallback />}>
-            <HomeProductServer productSortType="new" />
-          </Suspense>
+          <HomeSection.Header>{t('openingSoon')}</HomeSection.Header>
+          <HomeSectionCampaign kindOfCard="openingSoon" seeMore={false} />
         </HomeSection>
-        <Suspense fallback={<HomeReviewFallback />}>
-          <HomeReviewServer />
-        </Suspense>
-        <Suspense fallback={<HomeYoutubeFallback />}>
-          <HomeYoutubeServer />
-        </Suspense>
       </div>
     </div>
   );

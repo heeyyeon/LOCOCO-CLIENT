@@ -54,7 +54,7 @@ export default function YoutubeCarousel({
 
   return (
     <div className="flex flex-col gap-[3.2rem]">
-      <h2 className="text-jp-head2 inline-flex items-center gap-[1.2rem] font-bold text-gray-800">
+      <h2 className="head2 inline-flex items-center gap-[1.2rem] font-bold text-gray-800">
         <SvgKoreanReview size={24} /> 韓国ユーチューバーレビュー
       </h2>
       <div className="relative h-[31.1rem]">
@@ -116,7 +116,7 @@ export default function YoutubeCarousel({
         ) : (
           <div className="flex h-[31.1rem] w-full flex-col items-center justify-center gap-[2.4rem]">
             <SvgImgVideo size={100} className="fill-pink-300" />
-            <p className="jp-body1 font-[700]">
+            <p className="body1 font-[700]">
               登録された韓国ユーチューバーレビューはありません。
             </p>
           </div>

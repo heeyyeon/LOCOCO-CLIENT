@@ -44,7 +44,7 @@ export default function ReviewInfo({
 
   return (
     <div className="relative flex h-full flex-col overflow-hidden rounded-r-xl">
-      <header className="text-jp-body1 sticky top-0 z-10 flex h-[4.8rem] items-center justify-between border-b border-pink-500 bg-white pl-[1.6rem] font-bold">
+      <header className="body1 sticky top-0 z-10 flex h-[4.8rem] items-center justify-between border-b border-pink-500 bg-white pl-[1.6rem] font-bold">
         <span>レビュー</span>
         <IconButton
           icon={<SvgClose />}
@@ -56,7 +56,7 @@ export default function ReviewInfo({
 
       <div className="noMousewheel flex-1 overflow-y-scroll p-[1.6rem] pb-[11rem] [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-gray-400 [&::-webkit-scrollbar-track]:bg-gray-200 [&::-webkit-scrollbar]:w-2.5">
         <Star rating={rating} size="sm" color="yellow" />
-        <div className="text-jp-caption1 mt-[1.2rem] flex gap-[0.6rem] font-medium text-gray-600">
+        <div className="caption1 mt-[1.2rem] flex gap-[0.6rem] font-medium text-gray-600">
           <span className="flex-shrink-0">オプション :</span>
           <span className="line-clamp-2 flex-1">{productOption}</span>
         </div>
@@ -82,10 +82,10 @@ export default function ReviewInfo({
           className="mr-[1.2rem] flex cursor-pointer flex-col items-start gap-[0.4rem]"
           onClick={handleProductClick}
         >
-          <span className="jp-body1 truncate font-bold text-gray-800">
+          <span className="body1 truncate font-bold text-gray-800">
             {brandName}
           </span>
-          <span className="jp-body2 w-[23.3rem] truncate text-gray-800">
+          <span className="body2 w-[23.3rem] truncate text-gray-800">
             {productName}
           </span>
         </div>

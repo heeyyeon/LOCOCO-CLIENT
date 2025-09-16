@@ -35,7 +35,7 @@ export default function CommentBox({ text, type }: CommentBoxProps) {
         ) : (
           <SvgBad />
         )}
-        <span className="jp-body1 font-bold text-gray-600">
+        <span className="body1 font-bold text-gray-600">
           {type === 'positive' ? '良かったです' : '気になる点'}
         </span>
       </div>
@@ -44,7 +44,7 @@ export default function CommentBox({ text, type }: CommentBoxProps) {
       <div
         ref={textRef}
         className={cn(
-          'jp-body2 break-all text-gray-800',
+          'body2 break-all text-gray-800',
           !isExpanded && 'line-clamp-3 max-h-[6.6rem] overflow-hidden'
         )}
       >
@@ -60,7 +60,7 @@ export default function CommentBox({ text, type }: CommentBoxProps) {
           onClick={() => setIsExpanded(!isExpanded)}
         >
           <SvgAdd />
-          <span className="jp-title3 font-bold">もっと見る</span>
+          <span className="title3 font-bold">もっと見る</span>
         </Button>
       )}
       {isExpanded && (
@@ -72,7 +72,7 @@ export default function CommentBox({ text, type }: CommentBoxProps) {
           onClick={() => setIsExpanded(!isExpanded)}
         >
           <SvgRemove />
-          <span className="jp-title3 font-bold">閉じる</span>
+          <span className="title3 font-bold">閉じる</span>
         </Button>
       )}
     </div>

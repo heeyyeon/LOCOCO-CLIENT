@@ -92,8 +92,8 @@ function FooterLeft({ title, desc }: Pick<FooterProps, 'title' | 'desc'>) {
   return (
     <div className="flex flex-1 flex-col items-start gap-8 bg-pink-100 md:gap-12 lg:gap-[5.6rem]">
       <div className="flex w-full flex-col items-start gap-4 md:gap-6 lg:gap-[2.4rem]">
-        <p className="en-title3 font-bold leading-loose">{title}</p>
-        <p className="jp-body2 font-medium text-gray-600">{desc}</p>
+        <p className="title3 font-bold leading-loose">{title}</p>
+        <p className="body2 font-medium text-gray-600">{desc}</p>
       </div>
       <div className="flex items-center gap-2 md:gap-[0.8rem]">
         <Link
@@ -128,7 +128,7 @@ function FooterLeft({ title, desc }: Pick<FooterProps, 'title' | 'desc'>) {
 function FooterBottom({ copyright }: Pick<FooterProps, 'copyright'>) {
   return (
     <div className="flex min-h-[5.2rem] w-full items-center justify-center gap-4 border-t border-dashed border-pink-500 bg-pink-100 px-4 py-4">
-      <p className="en-body1 bg-pink-100 text-center font-medium text-pink-500">
+      <p className="body1 bg-pink-100 text-center font-medium text-pink-500">
         {copyright}
       </p>
     </div>
@@ -143,7 +143,7 @@ function FooterRight({ menu }: Pick<FooterProps, 'menu'>) {
           key={title}
           className="flex min-w-0 flex-1 flex-col items-start gap-4 md:gap-6 lg:w-[16.8rem] lg:gap-[2.4rem]"
         >
-          <p className="jp-body1 font-bold">{title}</p>
+          <p className="body1 font-bold">{title}</p>
           <div className="flex w-full flex-col items-start justify-start gap-2 md:gap-[0.8rem]">
             {option.map((item) =>
               item.href ? (
@@ -152,7 +152,7 @@ function FooterRight({ menu }: Pick<FooterProps, 'menu'>) {
                   key={item.name}
                   className="flex h-[3.2rem] w-full items-center gap-2 py-[1rem] md:gap-[0.8rem]"
                 >
-                  <p className="jp-body2 whitespace-nowrap font-medium">
+                  <p className="body2 whitespace-nowrap font-medium">
                     {item.name}
                   </p>
                   <SvgArrowRight />
@@ -162,7 +162,7 @@ function FooterRight({ menu }: Pick<FooterProps, 'menu'>) {
                   key={item.name}
                   className="flex h-[3.2rem] w-full cursor-default items-center gap-2 py-[1rem] md:gap-[0.8rem]"
                 >
-                  <p className="jp-body2 cursor-not-allowed whitespace-nowrap font-medium">
+                  <p className="body2 cursor-not-allowed whitespace-nowrap font-medium">
                     {item.name}
                   </p>
                   <SvgArrowRight className="text-gray-400" />

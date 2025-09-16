@@ -38,7 +38,7 @@ export function SearchBar({
             onChange={(e) => handleChangeSearchValue(e.target.value)}
             onKeyDown={handleKeyDown}
             placeholder="ラネージュ"
-            className="jp-title2 h-[5.2rem] w-full text-right font-bold leading-[3rem] text-gray-800"
+            className="title2 h-[5.2rem] w-full text-right font-bold leading-[3rem] text-gray-800"
           />
           <div className="flex h-[6.4rem] w-[5.2rem] shrink-0 cursor-pointer items-center justify-center p-[1.4rem]">
             {searchValue.trim() ? (
