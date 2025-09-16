@@ -2,26 +2,36 @@
 
 import React, { useState } from 'react';
 
+import SideBar from '../../../../components/side-bar/side-bar';
 import ConnectSNS from './components/connect-sns';
-import ContentSubmissions from './components/content-submissions';
-import EditProfile from './components/edit-profile';
+import ContentSubmissions from './components/content-submissions/ContentSubmissions';
+import EditProfile from './components/edit-profile/EditProfile';
 import MyCampaign from './components/my-campaign';
-import SideBar from './components/side-bar';
-import { MENU, Menu } from './constant/menu';
+import { MENU } from './constant/menu';
+import { mockup } from './constant/mockup';
 
 export default function PageClient() {
-  const [activeTab, setActiveTab] = useState<Menu>(MENU.myCampaign);
-  const handleClickTab = (tab: Menu) => {
-    setActiveTab(tab);
+  const [activeMenu, setActiveMenu] = useState<string>(MENU.myCampaign);
+  const handleClickTab = (tab: string) => {
+    setActiveMenu(tab);
   };
 
   return (
     <div className="flex w-full items-start gap-[2.4rem]">
-      <SideBar activeTab={activeTab} handleClickTab={handleClickTab} />
-      {activeTab === MENU.myCampaign && <MyCampaign />}
-      {activeTab === MENU.editProfile && <EditProfile />}
-      {activeTab === MENU.connectSNS && <ConnectSNS />}
-      {activeTab === MENU.contentSubmissions && <ContentSubmissions />}
+      <SideBar
+        profileImage={mockup.profile.profileImage}
+        name={mockup.profile.name}
+        email={mockup.profile.email}
+        instagram={mockup.profile.instagram}
+        level={mockup.profile.level}
+        activeMenu={activeMenu}
+        handleClickTab={handleClickTab}
+        menus={Object.values(MENU)}
+      />
+      {activeMenu === MENU.myCampaign && <MyCampaign />}
+      {activeMenu === MENU.editProfile && <EditProfile />}
+      {activeMenu === MENU.connectSNS && <ConnectSNS />}
+      {activeMenu === MENU.contentSubmissions && <ContentSubmissions />}
     </div>
   );
 }
