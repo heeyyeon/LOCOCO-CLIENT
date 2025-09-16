@@ -69,7 +69,10 @@ export const DragDropArea = ({
         invalidFiles.push(file.name);
       }
     });
-
+    if (validImageFiles.length === 0 && validVideoFiles.length === 0) {
+      setErrorMessage(FILE_ERROR_MESSAGE.EMPTY_FILE);
+      return;
+    }
     // 지원하지 않는 파일이 있으면 에러 메시지 표시
     if (invalidFiles.length > 0) {
       setErrorMessage(FILE_ERROR_MESSAGE.NOT_ALLOWED_FILE_TYPE);

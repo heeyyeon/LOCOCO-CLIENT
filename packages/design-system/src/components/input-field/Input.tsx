@@ -30,7 +30,12 @@ export default function Input({
   ...props
 }: InputProps) {
   return (
-    <div className="inline-flex w-[40.8rem] items-center justify-start gap-[1rem] border-b border-gray-400 py-[0.8rem] transition-colors duration-200 focus-within:border-pink-500">
+    <div
+      className={cn(
+        'inline-flex w-[40.8rem] items-center justify-start gap-[1rem] border-b border-gray-400 py-[0.8rem] transition-colors duration-200 focus-within:border-pink-500',
+        className
+      )}
+    >
       <input
         className={cn(inputVariants({ fontType }), className)}
         {...props}
