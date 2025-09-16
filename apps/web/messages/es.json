@@ -1,6 +1,17 @@
 {
   "aabc": "aabc",
   "abc": "abc",
+  "card": {
+    "campaignThumbnailImage": "",
+    "card": "",
+    "goToApply": ""
+  },
+  "gnb": {
+    "campaigns": "",
+    "howItWorks": "",
+    "logOut": "",
+    "myPage": ""
+  },
   "home": {
     "description": "Información del producto",
     "homeSection": {

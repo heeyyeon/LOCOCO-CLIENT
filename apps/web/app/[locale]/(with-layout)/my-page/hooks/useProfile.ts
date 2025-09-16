@@ -3,54 +3,91 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
+import { useTranslations } from 'next-intl';
+
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 
-import { singleImageValidator } from '../../../../../hooks/useFileUploader';
-import { PROFILE_TEXT_ERROR_MESSAGE } from '../constant/editProfile';
+import { createSingleImageValidator } from '../../../../../hooks/useFileUploader';
+import { PROFILE_TEXT_ERROR_MESSAGE_KEYS } from '../constant/editProfile';
 
-const birthSchema = z.object({
-  year: z.string().min(1, PROFILE_TEXT_ERROR_MESSAGE.BIRTH.YEAR),
-  month: z.string().min(1, PROFILE_TEXT_ERROR_MESSAGE.BIRTH.MONTH),
-  date: z.string().min(1, PROFILE_TEXT_ERROR_MESSAGE.BIRTH.DATE),
-});
-
-const phoneSchema = z.object({
-  countryCode: z.string().min(1, PROFILE_TEXT_ERROR_MESSAGE.PHONE.COUNTRY_CODE),
-  phoneNumber: z.string().min(1, PROFILE_TEXT_ERROR_MESSAGE.PHONE.PHONE_NUMBER),
-});
-
-const profileSchema = z.object({
-  id: z.string().min(1, PROFILE_TEXT_ERROR_MESSAGE.ID),
-  birth: birthSchema,
-  gender: z.string().min(1, PROFILE_TEXT_ERROR_MESSAGE.GENDER),
-  firstName: z.string().min(1, PROFILE_TEXT_ERROR_MESSAGE.FIRST_NAME),
-  lastName: z.string().min(1, PROFILE_TEXT_ERROR_MESSAGE.LAST_NAME),
-  email: z.string().email(PROFILE_TEXT_ERROR_MESSAGE.EMAIL),
-  phone: phoneSchema,
-  contentLanguage: z
-    .string()
-    .min(1, PROFILE_TEXT_ERROR_MESSAGE.CONTENT_LANGUAGE),
-  country: z.string().min(1, PROFILE_TEXT_ERROR_MESSAGE.COUNTRY),
-  state: z.string().min(1, PROFILE_TEXT_ERROR_MESSAGE.STATE),
-  city: z.string().min(1, PROFILE_TEXT_ERROR_MESSAGE.CITY),
-  addressLine1: z.string().min(1, PROFILE_TEXT_ERROR_MESSAGE.ADDRESS_LINE_1),
-  addressLine2: z
-    .string()
-    .min(1, PROFILE_TEXT_ERROR_MESSAGE.ADDRESS_LINE_2)
-    .optional(),
-  zip: z.string().min(1, PROFILE_TEXT_ERROR_MESSAGE.ZIP).optional(),
-  profileImage: singleImageValidator.optional(),
-  skinType: z.string().min(1, PROFILE_TEXT_ERROR_MESSAGE.SKIN_TYPE),
-  skinTone: z.string().min(1, PROFILE_TEXT_ERROR_MESSAGE.SKIN_TONE),
-});
-
-export type ProfileFormData = z.infer<typeof profileSchema>;
+export type ProfileFormData = {
+  id: string;
+  birth: {
+    year: string;
+    month: string;
+    date: string;
+  };
+  gender: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: {
+    countryCode: string;
+    phoneNumber: string;
+  };
+  contentLanguage: string;
+  country: string;
+  state: string;
+  city: string;
+  addressLine1: string;
+  addressLine2?: string;
+  zip?: string;
+  profileImage?: File;
+  skinType: string;
+  skinTone: string;
+};
 
 export const useProfile = (userId?: number, onSuccess?: () => void) => {
+  const t = useTranslations('myPage.editProfile');
+
   // ID 중복 체크 관련
   const [isIdChecked, setIsIdChecked] = useState(false);
   const [idCheckError, setIdCheckError] = useState<string>('');
+
+  const birthSchema = z.object({
+    year: z.string().min(1, t(PROFILE_TEXT_ERROR_MESSAGE_KEYS.BIRTH.YEAR)),
+    month: z.string().min(1, t(PROFILE_TEXT_ERROR_MESSAGE_KEYS.BIRTH.MONTH)),
+    date: z.string().min(1, t(PROFILE_TEXT_ERROR_MESSAGE_KEYS.BIRTH.DATE)),
+  });
+
+  const phoneSchema = z.object({
+    countryCode: z
+      .string()
+      .min(1, t(PROFILE_TEXT_ERROR_MESSAGE_KEYS.PHONE.COUNTRY_CODE)),
+    phoneNumber: z
+      .string()
+      .min(1, t(PROFILE_TEXT_ERROR_MESSAGE_KEYS.PHONE.PHONE_NUMBER)),
+  });
+
+  const profileSchema = z.object({
+    id: z.string().min(1, t(PROFILE_TEXT_ERROR_MESSAGE_KEYS.ID)),
+    birth: birthSchema,
+    gender: z.string().min(1, t(PROFILE_TEXT_ERROR_MESSAGE_KEYS.GENDER)),
+    firstName: z.string().min(1, t(PROFILE_TEXT_ERROR_MESSAGE_KEYS.FIRST_NAME)),
+    lastName: z.string().min(1, t(PROFILE_TEXT_ERROR_MESSAGE_KEYS.LAST_NAME)),
+    email: z.string().email(t(PROFILE_TEXT_ERROR_MESSAGE_KEYS.EMAIL)),
+    phone: phoneSchema,
+    contentLanguage: z
+      .string()
+      .min(1, t(PROFILE_TEXT_ERROR_MESSAGE_KEYS.CONTENT_LANGUAGE)),
+    country: z.string().min(1, t(PROFILE_TEXT_ERROR_MESSAGE_KEYS.COUNTRY)),
+    state: z.string().min(1, t(PROFILE_TEXT_ERROR_MESSAGE_KEYS.STATE)),
+    city: z.string().min(1, t(PROFILE_TEXT_ERROR_MESSAGE_KEYS.CITY)),
+    addressLine1: z
+      .string()
+      .min(1, t(PROFILE_TEXT_ERROR_MESSAGE_KEYS.ADDRESS_LINE_1)),
+    addressLine2: z
+      .string()
+      .min(1, t(PROFILE_TEXT_ERROR_MESSAGE_KEYS.ADDRESS_LINE_2))
+      .optional(),
+    zip: z.string().min(1, t(PROFILE_TEXT_ERROR_MESSAGE_KEYS.ZIP)).optional(),
+    profileImage: createSingleImageValidator(
+      t(PROFILE_TEXT_ERROR_MESSAGE_KEYS.PROFILE_IMAGE)
+    ).optional(),
+    skinType: z.string().min(1, t(PROFILE_TEXT_ERROR_MESSAGE_KEYS.SKIN_TYPE)),
+    skinTone: z.string().min(1, t(PROFILE_TEXT_ERROR_MESSAGE_KEYS.SKIN_TONE)),
+  });
 
   const {
     handleSubmit,
@@ -103,7 +140,7 @@ export const useProfile = (userId?: number, onSuccess?: () => void) => {
 
   const checkIdAvailability = async () => {
     if (!formData.id.trim()) {
-      setIdCheckError(PROFILE_TEXT_ERROR_MESSAGE.ID);
+      setIdCheckError(t(PROFILE_TEXT_ERROR_MESSAGE_KEYS.ID));
       return;
     }
     setIdCheckError('');

@@ -1,3 +1,5 @@
+import { useTranslations } from 'next-intl';
+
 import { Select } from '@lococo/design-system/select';
 
 import type { ProfileFormData } from '../../hooks/useProfile';
@@ -16,55 +18,56 @@ export default function Skin({
   updateSkinType,
   updateSkinTone,
 }: SkinProps) {
+  const t = useTranslations('myPage.editProfile.skin');
   return (
     <section className="flex w-full flex-col gap-[1.6rem]">
       <div className="flex flex-col gap-[0.6rem]">
-        <p className="inter-title2 text-gray-800">Skin</p>
-        <p className="inter-caption3 text-gray-500">Tell us about you more!</p>
+        <p className="inter-title2 text-gray-800">{t('title')}</p>
+        <p className="inter-caption3 text-gray-500">{t('description')}</p>
       </div>
-      <InputWrapper label="Skin Type" required>
+      <InputWrapper label={t('skinType')} required>
         <Select
           options={[
-            { label: 'Normal' },
-            { label: 'Dry' },
-            { label: 'Oily' },
-            { label: 'Combination' },
-            { label: 'Sensitive' },
-            { label: 'Others' },
+            { label: t('skinTypeOptions.normal') },
+            { label: t('skinTypeOptions.dry') },
+            { label: t('skinTypeOptions.oily') },
+            { label: t('skinTypeOptions.combination') },
+            { label: t('skinTypeOptions.sensitive') },
+            { label: t('skinTypeOptions.others') },
           ]}
           onValueChange={(value) => updateSkinType(value)}
-          placeholder="Skin Type"
+          placeholder={t('skinType')}
           value={formData.skinType}
           isError={errors.skinType}
           errorText={errors.skinType}
         />
       </InputWrapper>
-      <InputWrapper label="Skin Tone" required>
+      <InputWrapper label={t('skinTone')} required>
         <Select
           options={[
-            { label: 'Shade 1' },
-            { label: 'Shade 2' },
-            { label: 'Shade 3' },
-            { label: 'Shade 4' },
-            { label: 'Shade 5' },
-            { label: 'Shade 6' },
-            { label: 'Shade 7' },
-            { label: 'Shade 8' },
-            { label: 'Shade 9' },
-            { label: 'Shade 10' },
-            { label: 'Shade 11' },
-            { label: 'Shade 12' },
-            { label: 'Shade 13' },
-            { label: 'Shade 14' },
-            { label: 'Shade 15' },
-            { label: 'Shade 16' },
-            { label: 'Shade 17' },
-            { label: 'Shade 18' },
-            { label: 'Shade 19' },
-            { label: 'Shade 20' },
+            { label: t('skinToneOptions.shade1') },
+            { label: t('skinToneOptions.shade2') },
+            { label: t('skinToneOptions.shade3') },
+            { label: t('skinToneOptions.shade4') },
+            { label: t('skinToneOptions.shade5') },
+            { label: t('skinToneOptions.shade6') },
+            { label: t('skinToneOptions.shade7') },
+            { label: t('skinToneOptions.shade8') },
+            { label: t('skinToneOptions.shade9') },
+            { label: t('skinToneOptions.shade10') },
+            { label: t('skinToneOptions.shade11') },
+            { label: t('skinToneOptions.shade12') },
+            { label: t('skinToneOptions.shade13') },
+            { label: t('skinToneOptions.shade14') },
+            { label: t('skinToneOptions.shade15') },
+            { label: t('skinToneOptions.shade16') },
+            { label: t('skinToneOptions.shade17') },
+            { label: t('skinToneOptions.shade18') },
+            { label: t('skinToneOptions.shade19') },
+            { label: t('skinToneOptions.shade20') },
           ]}
           onValueChange={(value) => updateSkinTone(value)}
-          placeholder="Skin Tone"
+          placeholder={t('skinTone')}
           value={formData.skinTone}
           isError={errors.skinTone}
           errorText={errors.skinTone}

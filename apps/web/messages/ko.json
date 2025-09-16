@@ -1,19 +1,30 @@
 {
   "aabc": "aabc",
   "abc": "abc",
+  "card": {
+    "campaignThumbnailImage": "캠페인 썸네일 이미지",
+    "card": "카드",
+    "goToApply": "지원하기 "
+  },
+  "gnb": {
+    "campaigns": "캠페인",
+    "howItWorks": "사용 안내 ",
+    "logOut": "로그 아웃 ",
+    "myPage": "마이페이지 "
+  },
   "home": {
     "description": "상품정보",
     "homeSection": {
-      "title": ""
+      "title": "제목"
     },
     "ingredients": "성분",
     "productDetail22": "상품상세"
   },
   "languageSelectTrigger": {
-    "language": ""
+    "language": "언어 "
   },
   "main": {
-    "kBeautyCampaigns": "",
-    "openingSoon": ""
+    "kBeautyCampaigns": "K-Beauty Campaigns",
+    "openingSoon": "공개 예정 "
   }
 }

@@ -1,3 +1,5 @@
+import { useTranslations } from 'next-intl';
+
 import { ErrorNotice } from '@lococo/design-system/error-notice';
 import { Input } from '@lococo/design-system/input-field';
 import { Select } from '@lococo/design-system/select';
@@ -33,9 +35,10 @@ export default function PersonalInformation({
   updateContentLanguage,
   updateEmail,
 }: PersonalInformationProps) {
+  const t = useTranslations('myPage.editProfile.personalInformation');
   return (
     <section className="flex w-full flex-col gap-[1.6rem]">
-      <p className="inter-title2 text-gray-800">Personal Details</p>
+      <p className="inter-title2 text-gray-800">{t('title')}</p>
       <InputWrapper label="Birth" required>
         <div className="flex gap-[2.4rem]">
           <Select
@@ -51,7 +54,7 @@ export default function PersonalInformation({
                 date: formData.birth.date,
               })
             }
-            placeholder="Year"
+            placeholder={t('year')}
             value={formData.birth.year}
             isError={errors.birthYear}
             errorText={errors.birthYear}
@@ -69,7 +72,7 @@ export default function PersonalInformation({
                 date: formData.birth.date,
               })
             }
-            placeholder="Month"
+            placeholder={t('month')}
             value={formData.birth.month}
             isError={errors.birthMonth}
             errorText={errors.birthMonth}
@@ -87,14 +90,14 @@ export default function PersonalInformation({
                 date: value,
               })
             }
-            placeholder="Date"
+            placeholder={t('date')}
             value={formData.birth.date}
             isError={errors.birthDate}
             errorText={errors.birthDate}
           />
         </div>
       </InputWrapper>
-      <InputWrapper label="Gender" required>
+      <InputWrapper label={t('gender')} required>
         <Select
           options={[
             { label: 'Male' },
@@ -103,7 +106,7 @@ export default function PersonalInformation({
             { label: 'Prefer not to say' },
           ]}
           onValueChange={(value) => updateGender(value)}
-          placeholder="Gender"
+          placeholder={t('gender')}
           value={formData.gender}
           isError={errors.gender}
           errorText={errors.gender}
@@ -111,7 +114,7 @@ export default function PersonalInformation({
       </InputWrapper>
 
       <InputWrapper
-        label="First Name"
+        label={t('firstName')}
         required
         notice={errors.firstName && <ErrorNotice message={errors.firstName} />}
       >
@@ -122,7 +125,7 @@ export default function PersonalInformation({
       </InputWrapper>
 
       <InputWrapper
-        label="Last Name"
+        label={t('lastName')}
         required
         notice={errors.lastName && <ErrorNotice message={errors.lastName} />}
       >
@@ -133,7 +136,7 @@ export default function PersonalInformation({
       </InputWrapper>
 
       <InputWrapper
-        label="Phone Number"
+        label={t('phoneNumber')}
         required
         notice={
           (errors.phoneNumber || errors.phoneCountryCode) && (
@@ -153,7 +156,7 @@ export default function PersonalInformation({
                 phoneNumber: formData.phone.phoneNumber,
               })
             }
-            placeholder="Country Code"
+            placeholder={t('countryCode')}
             value={formData.phone.countryCode}
           />
 
@@ -170,7 +173,7 @@ export default function PersonalInformation({
         </div>
       </InputWrapper>
 
-      <InputWrapper label="Content Language" required>
+      <InputWrapper label={t('contentLanguage')} required>
         <Select
           options={[
             { label: 'English' },
@@ -178,7 +181,7 @@ export default function PersonalInformation({
             { label: 'Spanish' },
           ]}
           onValueChange={(value) => updateContentLanguage(value)}
-          placeholder="Content Language"
+          placeholder={t('contentLanguage')}
           value={formData.contentLanguage}
           isError={errors.contentLanguage}
           errorText={errors.contentLanguage}
@@ -186,7 +189,7 @@ export default function PersonalInformation({
       </InputWrapper>
 
       <InputWrapper
-        label="Email"
+        label={t('email')}
         required
         notice={errors.email && <ErrorNotice message={errors.email} />}
       >

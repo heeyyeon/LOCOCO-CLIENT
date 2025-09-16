@@ -2,15 +2,25 @@
 
 import React, { useState } from 'react';
 
+import { useTranslations } from 'next-intl';
+
 import SideBar from '../../../../components/side-bar/side-bar';
 import ConnectSNS from './components/connect-sns';
 import ContentSubmissions from './components/content-submissions/ContentSubmissions';
 import EditProfile from './components/edit-profile/EditProfile';
 import MyCampaign from './components/my-campaign';
-import { MENU } from './constant/menu';
 import { mockup } from './constant/mockup';
 
 export default function PageClient() {
+  const t = useTranslations('myPage.menus');
+
+  const MENU = {
+    myCampaign: t('myCampaign'),
+    editProfile: t('editProfile'),
+    connectSNS: t('connectSNS'),
+    contentSubmissions: t('contentSubmissions'),
+  };
+
   const [activeMenu, setActiveMenu] = useState<string>(MENU.myCampaign);
   const handleClickTab = (tab: string) => {
     setActiveMenu(tab);

@@ -20,11 +20,11 @@ export const ALLOWED_MEDIA_TYPES = [
   ...ALLOWED_VIDEO_TYPES,
 ];
 
-export const FILE_ERROR_MESSAGE = {
-  NOT_ALLOWED_FILE_TYPE: '지원하지 않는 파일 형식입니다.',
-  CANNOT_UPLOAD_FILE: '최대 파일 개수를 초과했습니다.',
-  FILE_TOO_LARGE: '파일 크기가 너무 큽니다.',
-  EMPTY_FILE: '최소 하나의 파일을 업로드해야 합니다.',
+export const FILE_ERROR_MESSAGE_KEYS = {
+  NOT_ALLOWED_FILE_TYPE: 'notAllowedFileType',
+  CANNOT_UPLOAD_FILE: 'cannotUploadFile',
+  FILE_TOO_LARGE: 'fileTooLarge',
+  EMPTY_FILE: 'emptyFile',
 } as const;
 
 export const isImageFile = (file: File): boolean => {
@@ -39,44 +39,56 @@ export const isMediaFile = (file: File): boolean => {
   return ALLOWED_MEDIA_TYPES.includes(file.type);
 };
 
-export const createFileTypeValidator = (allowedTypes: string[]) => {
+export const createFileTypeValidator = (
+  allowedTypes: string[],
+  errorMessage: string
+) => {
   return z.instanceof(File).refine((file) => allowedTypes.includes(file.type), {
-    message: FILE_ERROR_MESSAGE.NOT_ALLOWED_FILE_TYPE,
+    message: errorMessage,
   });
 };
 
-export const singleImageValidator = z
-  .instanceof(File)
-  .refine((file) => ALLOWED_IMAGE_TYPES.includes(file.type), {
-    message: FILE_ERROR_MESSAGE.NOT_ALLOWED_FILE_TYPE,
+export const createSingleImageValidator = (errorMessage: string) =>
+  z.instanceof(File).refine((file) => ALLOWED_IMAGE_TYPES.includes(file.type), {
+    message: errorMessage,
   });
 
-export const singleVideoValidator = z
-  .instanceof(File)
-  .refine((file) => ALLOWED_VIDEO_TYPES.includes(file.type), {
-    message: FILE_ERROR_MESSAGE.NOT_ALLOWED_FILE_TYPE,
+export const createSingleVideoValidator = (errorMessage: string) =>
+  z.instanceof(File).refine((file) => ALLOWED_VIDEO_TYPES.includes(file.type), {
+    message: errorMessage,
   });
 
-export const singleMediaValidator = z
-  .instanceof(File)
-  .refine((file) => ALLOWED_MEDIA_TYPES.includes(file.type), {
-    message: FILE_ERROR_MESSAGE.NOT_ALLOWED_FILE_TYPE,
+export const createSingleMediaValidator = (errorMessage: string) =>
+  z.instanceof(File).refine((file) => ALLOWED_MEDIA_TYPES.includes(file.type), {
+    message: errorMessage,
   });
 
-export const multipleImageValidator = z
-  .array(singleImageValidator)
-  .refine((files) => files.length > 0, {
-    message: FILE_ERROR_MESSAGE.EMPTY_FILE,
+export const createMultipleImageValidator = (
+  fileTypeError: string,
+  emptyError: string
+) => {
+  const singleValidator = createSingleImageValidator(fileTypeError);
+  return z.array(singleValidator).refine((files) => files.length > 0, {
+    message: emptyError,
   });
+};
 
-export const multipleVideoValidator = z
-  .array(singleVideoValidator)
-  .refine((files) => files.length > 0, {
-    message: FILE_ERROR_MESSAGE.EMPTY_FILE,
+export const createMultipleVideoValidator = (
+  fileTypeError: string,
+  emptyError: string
+) => {
+  const singleValidator = createSingleVideoValidator(fileTypeError);
+  return z.array(singleValidator).refine((files) => files.length > 0, {
+    message: emptyError,
   });
+};
 
-export const multipleMediaValidator = z
-  .array(singleMediaValidator)
-  .refine((files) => files.length > 0, {
-    message: FILE_ERROR_MESSAGE.EMPTY_FILE,
+export const createMultipleMediaValidator = (
+  fileTypeError: string,
+  emptyError: string
+) => {
+  const singleValidator = createSingleMediaValidator(fileTypeError);
+  return z.array(singleValidator).refine((files) => files.length > 0, {
+    message: emptyError,
   });
+};

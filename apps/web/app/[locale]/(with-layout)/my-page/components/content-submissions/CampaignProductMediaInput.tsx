@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 
+import { useTranslations } from 'next-intl';
+
 import { DragDropArea } from 'components/drag-drop/DragDropArea';
 
 import { ErrorNotice } from '@lococo/design-system/error-notice';
 
-import { ContentSubmissionsFormData } from '../../types/contentSubmissions';
+import { ContentSubmissionsFormData } from '../../hooks/useContentSubmissions';
 
 interface CampaignProductMediaInputProps {
   formData: ContentSubmissionsFormData;
@@ -17,6 +19,9 @@ export default function CampaignProductMediaInput({
   errors,
   updateCampaignProductMedia,
 }: CampaignProductMediaInputProps) {
+  const t = useTranslations(
+    'myPage.contentSubmissions.campaignProductMediaInput'
+  );
   const [imageFiles, setImageFiles] = useState<File[]>([]);
   const [videoFiles, setVideoFiles] = useState<File[]>([]);
 
@@ -57,17 +62,15 @@ export default function CampaignProductMediaInput({
   return (
     <section className="flex w-full flex-col gap-[1.6rem]">
       <div className="flex flex-col gap-[0.4rem]">
-        <p className="inter-title2 text-gray-800">Campaign Product Media</p>
+        <p className="inter-title2 text-gray-800">{t('title')}</p>
         <div className="flex items-center gap-[0.8rem]">
-          <p className="inter-body4 text-gray-500">
-            Drag and drop or click to upload the file.
-          </p>
+          <p className="inter-body4 text-gray-500">{t('description')}</p>
           <button
             type="button"
             className="inter-body4 cursor-pointer border-b border-pink-500 bg-transparent text-pink-500"
             onClick={triggerFileInput}
           >
-            Select File
+            {t('selectFile')}
           </button>
         </div>
       </div>

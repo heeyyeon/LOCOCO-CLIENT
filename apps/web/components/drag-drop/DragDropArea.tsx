@@ -1,12 +1,14 @@
 import React, { ChangeEvent, useEffect, useRef, useState } from 'react';
 
+import { useTranslations } from 'next-intl';
+
 import { ErrorNotice } from '@lococo/design-system/error-notice';
 import { ImagePreview } from '@lococo/design-system/image-preview';
 import { cn } from '@lococo/utils';
 
 import {
   ALLOWED_MEDIA_TYPES,
-  FILE_ERROR_MESSAGE,
+  FILE_ERROR_MESSAGE_KEYS,
   isImageFile,
   isVideoFile,
 } from '../../hooks/useFileUploader';
@@ -30,6 +32,7 @@ export const DragDropArea = ({
   className,
   inputFileId = 'drag-drop-file-input',
 }: DragDropAreaProps) => {
+  const t = useTranslations('fileUploader');
   const [isDragOver, setIsDragOver] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const scrollContainerRef = useRef<HTMLDivElement>(null);
@@ -70,12 +73,12 @@ export const DragDropArea = ({
       }
     });
     if (validImageFiles.length === 0 && validVideoFiles.length === 0) {
-      setErrorMessage(FILE_ERROR_MESSAGE.EMPTY_FILE);
+      setErrorMessage(t(FILE_ERROR_MESSAGE_KEYS.EMPTY_FILE));
       return;
     }
     // 지원하지 않는 파일이 있으면 에러 메시지 표시
     if (invalidFiles.length > 0) {
-      setErrorMessage(FILE_ERROR_MESSAGE.NOT_ALLOWED_FILE_TYPE);
+      setErrorMessage(t(FILE_ERROR_MESSAGE_KEYS.NOT_ALLOWED_FILE_TYPE));
       return;
     }
 
@@ -86,7 +89,7 @@ export const DragDropArea = ({
       validImageFiles.length +
       validVideoFiles.length;
     if (totalFiles > maxFiles) {
-      setErrorMessage(FILE_ERROR_MESSAGE.CANNOT_UPLOAD_FILE);
+      setErrorMessage(t(FILE_ERROR_MESSAGE_KEYS.CANNOT_UPLOAD_FILE));
       return;
     }
 

@@ -2,10 +2,15 @@
 
 import { useForm } from 'react-hook-form';
 
+import { useTranslations } from 'next-intl';
+
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 
-import { multipleMediaValidator } from '../../../../../hooks/useFileUploader';
+import {
+  FILE_ERROR_MESSAGE_KEYS,
+  createMultipleMediaValidator,
+} from '../../../../../hooks/useFileUploader';
 import { CONTENT_SUBMISSION_TEXT_ERROR_MESSAGE } from '../constant/contentSubmission';
 
 const contentSubmissionsSchema = z.object({
@@ -13,24 +18,48 @@ const contentSubmissionsSchema = z.object({
   contentType: z
     .string()
     .min(1, CONTENT_SUBMISSION_TEXT_ERROR_MESSAGE.CONTENT_TYPE),
-  campaignProductMedia: multipleMediaValidator,
+  campaignProductMedia: createMultipleMediaValidator(
+    FILE_ERROR_MESSAGE_KEYS.NOT_ALLOWED_FILE_TYPE,
+    FILE_ERROR_MESSAGE_KEYS.EMPTY_FILE
+  ),
   captionAndHashtags: z
     .string()
     .min(1, CONTENT_SUBMISSION_TEXT_ERROR_MESSAGE.CAPTION_AND_HASHTAGS),
 });
 
-export type ContentSubmissionsFormData = z.infer<
-  typeof contentSubmissionsSchema
->;
+export type ContentSubmissionsFormData = {
+  campaign: string;
+  contentType: string;
+  campaignProductMedia: File[];
+  captionAndHashtags: string;
+};
 
 export const useContentSubmissions = (
   campaignId?: number,
   onSuccess?: () => void
 ) => {
+  const t = useTranslations('fileUploader');
+
   // TODO: API에서 캠페인 목록을 가져와서 campaign 설정
   const campaignCount = 3;
 
   const forms = Array.from({ length: campaignCount }, (_, index) => {
+    const contentSubmissionsSchema = z.object({
+      campaign: z
+        .string()
+        .min(1, CONTENT_SUBMISSION_TEXT_ERROR_MESSAGE.CAMPAIGN),
+      contentType: z
+        .string()
+        .min(1, CONTENT_SUBMISSION_TEXT_ERROR_MESSAGE.CONTENT_TYPE),
+      campaignProductMedia: createMultipleMediaValidator(
+        t(FILE_ERROR_MESSAGE_KEYS.NOT_ALLOWED_FILE_TYPE),
+        t(FILE_ERROR_MESSAGE_KEYS.EMPTY_FILE)
+      ),
+      captionAndHashtags: z
+        .string()
+        .min(1, CONTENT_SUBMISSION_TEXT_ERROR_MESSAGE.CAPTION_AND_HASHTAGS),
+    });
+
     const {
       setValue,
       reset,

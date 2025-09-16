@@ -1,6 +1,17 @@
 {
   "aabc": "aabc",
   "abc": "abc",
+  "card": {
+    "campaignThumbnailImage": "campaign thumbnail image",
+    "card": "card",
+    "goToApply": "Go To Apply"
+  },
+  "gnb": {
+    "campaigns": "campaigns",
+    "howItWorks": "how it works",
+    "logOut": "Log Out",
+    "myPage": "My Page"
+  },
   "home": {
     "description": "productDescription",
     "homeSection": {
@@ -16,16 +27,133 @@
     "kBeautyCampaigns": "K-Beauty Campaigns",
     "openingSoon": "Opening Soon"
   },
-  "campaigns": {},
-  "gnb": {
-    "campaigns": "campaigns",
-    "howItWorks": "how it works",
-    "myPage": "My Page",
-    "logOut": "Log Out"
+  "myPage": {
+    "menus": {
+      "myCampaign": "My Campaign",
+      "editProfile": "Edit Profile",
+      "connectSNS": "Connect SNS",
+      "contentSubmissions": "Content Submissions"
+    },
+    "editProfile": {
+      "idRequired": "ID is required",
+      "yearRequired": "Year is required",
+      "monthRequired": "Month is required",
+      "dateRequired": "Date is required",
+      "genderRequired": "Gender is required",
+      "firstNameRequired": "First name is required",
+      "lastNameRequired": "Last name is required",
+      "emailRequired": "Email is required",
+      "countryCodeRequired": "Country code is required",
+      "phoneNumberRequired": "Phone number is required",
+      "countryRequired": "Country is required",
+      "stateRequired": "State is required",
+      "cityRequired": "City is required",
+      "addressLine1Required": "Address line 1 is required",
+      "addressLine2Required": "Address line 2 is required",
+      "zipRequired": "Zip is required",
+      "contentLanguageRequired": "Content language is required",
+      "skinTypeRequired": "Skin type is required",
+      "skinToneRequired": "Skin tone is required",
+      "profileImageRequired": "Profile image is required",
+      "basicInformation": {
+        "title": "Basic Information",
+        "id": "ID",
+        "idCheck": "Check availability",
+        "idCheckSuccess": "ID Check Success"
+      },
+      "profilePhoto": {
+        "title": "Profile Photo",
+        "changePhoto": "Change Photo"
+      },
+      "personalInformation": {
+        "title": "Personal Information",
+        "birth": "Birth",
+        "year": "Year",
+        "month": "Month",
+        "date": "Date",
+        "gender": "Gender",
+        "firstName": "First Name",
+        "lastName": "Last Name",
+        "phoneNumber": "Phone Number",
+        "countryCode": "Country Code",
+        "contentLanguage": "Content Language",
+        "email": "Email"
+      },
+      "homeAddress": {
+        "title": "Home Address",
+        "description": "Please provide your home address for product delivery.",
+        "country": "Country",
+        "state": "State/Region/Province",
+        "city": "City / Town",
+        "addressLine1": "Address Line 1",
+        "addressLine2": "Address Line 2",
+        "zip": "Zip/Postal Code"
+      },
+      "skin": {
+        "title": "Skin",
+        "description": "Tell us about you more!",
+        "skinType": "Skin Type",
+        "skinTone": "Skin Tone",
+        "skinTypeOptions": {
+          "normal": "Normal",
+          "dry": "Dry",
+          "oily": "Oily",
+          "combination": "Combination",
+          "sensitive": "Sensitive",
+          "others": "Others"
+        },
+        "skinToneOptions": {
+          "shade1": "Shade 1",
+          "shade2": "Shade 2",
+          "shade3": "Shade 3",
+          "shade4": "Shade 4",
+          "shade5": "Shade 5",
+          "shade6": "Shade 6",
+          "shade7": "Shade 7",
+          "shade8": "Shade 8",
+          "shade9": "Shade 9",
+          "shade10": "Shade 10",
+          "shade11": "Shade 11",
+          "shade12": "Shade 12",
+          "shade13": "Shade 13",
+          "shade14": "Shade 14",
+          "shade15": "Shade 15",
+          "shade16": "Shade 16",
+          "shade17": "Shade 17",
+          "shade18": "Shade 18",
+          "shade19": "Shade 19",
+          "shade20": "Shade 20"
+        }
+      }
+    },
+    "contentSubmissions": {
+      "campaignSelect": {
+        "title": "Select a Campaign",
+        "description": "Please select a campaign",
+        "selectCampaign": "Select a Campaign"
+      },
+      "contentTypeSelect": {
+        "title": "Content Type",
+        "selectContentType": "Select a Content Type",
+        "instagramPost": "Instagram Post",
+        "instagramReels": "Instagram Reels",
+        "tiktokVideo": "Tiktok Video"
+      },
+      "campaignProductMediaInput": {
+        "title": "Campaign Product Media",
+        "description": "Drag and drop or click to upload the file.",
+        "selectFile": "Select File"
+      },
+      "hashtagsInput": {
+        "title": "Submit Your Caption & Hashtags",
+        "description": "Please paste the exact caption and hashtags you used on"
+      }
+    }
   },
-  "card": {
-    "card": "card",
-    "campaignThumbnailImage": "campaign thumbnail image",
-    "goToApply": "Go To Apply"
+  "fileUploader": {
+    "notAllowedFileType": "Not allowed file type",
+    "cannotUploadFile": "Cannot upload file",
+    "fileTooLarge": "File too large",
+    "emptyFile": "Empty file"
   }
 }

@@ -1,11 +1,13 @@
 import { useState } from 'react';
 
+import { useTranslations } from 'next-intl';
+
 import { ErrorNotice } from '@lococo/design-system/error-notice';
 import { SvgInstagram } from '@lococo/icons';
 import { SvgTiktok } from '@lococo/icons';
 import { cn } from '@lococo/utils';
 
-import { ContentSubmissionsFormData } from '../../types/contentSubmissions';
+import { ContentSubmissionsFormData } from '../../hooks/useContentSubmissions';
 
 interface ContentTypeSelectProps {
   formData: ContentSubmissionsFormData;
@@ -18,6 +20,7 @@ export default function ContentTypeSelect({
   errors,
   updateContentType,
 }: ContentTypeSelectProps) {
+  const t = useTranslations('myPage.contentSubmissions.contentTypeSelect');
   const [selectedContentType, setSelectedContentType] = useState<string>(
     formData.contentType
   );
@@ -28,15 +31,15 @@ export default function ContentTypeSelect({
 
   const CONTENT_TYPES = [
     {
-      label: 'Instagram Post',
+      label: t('instagramPost'),
       icon: <SvgInstagram size={20} />,
     },
     {
-      label: 'Instagram Reels',
+      label: t('instagramReels'),
       icon: <SvgInstagram size={20} />,
     },
     {
-      label: 'Tiktok Video',
+      label: t('tiktokVideo'),
       icon: <SvgTiktok size={20} />,
     },
   ] as const;
@@ -50,7 +53,7 @@ export default function ContentTypeSelect({
 
   return (
     <section className="flex w-full flex-col gap-[1.6rem]">
-      <p className="inter-title2 text-gray-800">Content Type</p>
+      <p className="inter-title2 text-gray-800">{t('title')}</p>
       <div className="flex gap-[1.2rem]">
         {CONTENT_TYPES.map(({ label, icon: Icon }) => (
           <button

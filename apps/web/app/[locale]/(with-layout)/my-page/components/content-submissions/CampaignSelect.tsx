@@ -1,6 +1,8 @@
+import { useTranslations } from 'next-intl';
+
 import { Select } from '@lococo/design-system/select';
 
-import { ContentSubmissionsFormData } from '../../types/contentSubmissions';
+import { ContentSubmissionsFormData } from '../../hooks/useContentSubmissions';
 
 interface CampaignSelectProps {
   formData: ContentSubmissionsFormData;
@@ -13,13 +15,14 @@ export default function CampaignSelect({
   errors,
   updateCampaign,
 }: CampaignSelectProps) {
+  const t = useTranslations('myPage.contentSubmissions.campaignSelect');
   return (
     <section className="flex w-full flex-col gap-[1.6rem]">
-      <p className="inter-title2 text-gray-800">Select a Campaign</p>
+      <p className="inter-title2 text-gray-800">{t('title')}</p>
       <Select
-        options={[{ label: 'Campaign' }]}
+        options={[]}
         onValueChange={(value) => updateCampaign(value)}
-        placeholder="Select a Campaign"
+        placeholder={t('selectCampaign')}
         value={formData.campaign}
         isError={!!errors.campaign}
         errorText={errors.campaign}

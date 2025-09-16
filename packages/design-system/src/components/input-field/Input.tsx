@@ -20,7 +20,10 @@ export default function Input({
         className
       )}
     >
-      <input className={className} {...props} />
+      <input
+        className="h-full w-full border-none bg-transparent outline-none"
+        {...props}
+      />
       {rightIcon && (
         <div
           onClick={handleRightIconClick}

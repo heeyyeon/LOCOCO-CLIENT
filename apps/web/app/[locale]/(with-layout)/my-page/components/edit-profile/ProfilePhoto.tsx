@@ -1,5 +1,6 @@
 import { ChangeEvent, useEffect, useState } from 'react';
 
+import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 
 import { Button } from '@lococo/design-system/button';
@@ -19,6 +20,7 @@ export default function ProfilePhoto({
   onChange,
   error,
 }: ProfilePhotoProps) {
+  const t = useTranslations('myPage.editProfile.profilePhoto');
   const [profileImage, setProfileImage] = useState<string>();
 
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -46,7 +48,7 @@ export default function ProfilePhoto({
 
   return (
     <section className="flex w-full flex-col gap-[2.5rem]">
-      <p className="inter-title2 text-gray-800">Profile Photo</p>
+      <p className="inter-title2 text-gray-800">{t('title')}</p>
       <div className="flex w-full flex-col items-center gap-[3.2rem]">
         {profileImage ? (
           <Image
@@ -77,7 +79,7 @@ export default function ProfilePhoto({
               document.getElementById('profile-photo-input')?.click()
             }
           >
-            Change Photo
+            {t('changePhoto')}
           </Button>
           {error && <p className="text-sm text-red-500">{error}</p>}
         </div>
