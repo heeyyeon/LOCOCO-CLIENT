@@ -57,8 +57,8 @@ export default function Card({
       <div className="absolute bottom-0 flex h-[11.5rem] w-full flex-col justify-between bg-white p-[1.6rem] transition-all duration-300 group-hover:h-[17.9rem]">
         <div className="flex flex-col gap-[0.8rem]">
           <div>
-            <p className="inter-body4">{brand}</p>
-            <p className="inter-title3">{title}</p>
+            <p className="body4">{brand}</p>
+            <p className="title3">{title}</p>
           </div>
           <div className="flex items-center gap-[0.8rem]">
             <InfoChip text={label} />
@@ -71,7 +71,7 @@ export default function Card({
         <div>
           <Link
             href={`/campaign/${campaignId}`}
-            className="inter-body2 flex h-[4.8rem] w-[32.8rem] items-center justify-center rounded-[3.2rem] bg-pink-100 font-[700] text-pink-500 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+            className="body2 flex h-[4.8rem] w-[32.8rem] items-center justify-center rounded-[3.2rem] bg-pink-100 font-[700] text-pink-500 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
           >
             {card('goToApply')}
           </Link>

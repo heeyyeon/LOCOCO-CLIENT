@@ -32,10 +32,7 @@ export default function GnbLanguage() {
           <SvgLanguage size={32} className="h-full w-full" />
         </SelectTrigger>
 
-        <SelectContent
-          className="inter-body4 mt-[2rem] w-[8.4rem]"
-          align="center"
-        >
+        <SelectContent className="body4 mt-[2rem] w-[8.4rem]" align="center">
           {LANGUAGES.map((lang) => (
             <SelectItem
               key={lang.value}

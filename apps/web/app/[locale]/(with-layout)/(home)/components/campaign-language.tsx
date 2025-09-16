@@ -36,14 +36,11 @@ export default function CampaignLanguage({
           className="flex w-fit items-center gap-[0.8rem] border-none bg-none px-[3.2rem] py-[1.6rem] text-black"
           onlyChildren={true}
         >
-          <p className="inter-body1 font-[700]">{t('language')}</p>
+          <p className="body1 font-[700]">{t('language')}</p>
           <SvgArrowUp size={24} />
         </SelectTrigger>
 
-        <SelectContent
-          className="inter-body4 mt-[1.6rem] w-[11rem]"
-          align="center"
-        >
+        <SelectContent className="body4 mt-[1.6rem] w-[11rem]" align="center">
           {LANGUAGES.map((lang) => (
             <SelectItem
               key={lang.value}

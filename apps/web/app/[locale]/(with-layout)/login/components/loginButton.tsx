@@ -15,7 +15,7 @@ export default function LoginButton() {
   return (
     <Link
       href={lineLoginUrl}
-      className="jp-body1 relative mt-[12rem] flex h-[4.8rem] cursor-pointer items-center rounded-[0.6rem] bg-[#06C755] pl-[5.4rem] pr-[5.4rem] font-bold text-white"
+      className="body1 relative mt-[12rem] flex h-[4.8rem] cursor-pointer items-center rounded-[0.6rem] bg-[#06C755] pl-[5.4rem] pr-[5.4rem] font-bold text-white"
     >
       <span className="absolute left-[2.1rem] flex items-center">
         <SvgLine size={20} />

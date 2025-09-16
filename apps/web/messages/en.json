@@ -9,11 +9,23 @@
     "ingredients": "ingredients",
     "productDetail22": "productDetail22"
   },
+  "languageSelectTrigger": {
+    "language": "Language"
+  },
   "main": {
     "kBeautyCampaigns": "K-Beauty Campaigns",
     "openingSoon": "Opening Soon"
   },
-  "languageSelectTrigger": {
-    "language": "Language"
+  "campaigns": {},
+  "gnb": {
+    "campaigns": "campaigns",
+    "howItWorks": "how it works",
+    "myPage": "My Page",
+    "logOut": "Log Out"
+  },
+  "card": {
+    "card": "card",
+    "campaignThumbnailImage": "campaign thumbnail image",
+    "goToApply": "Go To Apply"
   }
 }

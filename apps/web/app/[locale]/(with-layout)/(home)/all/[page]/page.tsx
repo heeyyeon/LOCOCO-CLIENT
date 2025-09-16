@@ -9,7 +9,7 @@ export default async function AllCampaign() {
     <div className="flex w-full flex-col bg-pink-100">
       <div className="mx-auto flex w-[112.8rem] flex-col">
         <HomeSection className="mt-[0.4rem]">
-          <HomeSection.Header>{t('K-Beauty Campaigns}')}</HomeSection.Header>
+          <HomeSection.Header>{t('kBeautyCampaigns')}</HomeSection.Header>
           <CampaignAll />
         </HomeSection>
       </div>

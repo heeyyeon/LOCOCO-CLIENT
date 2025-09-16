@@ -9,7 +9,7 @@ export default function HomeSectionHeader({
 }: HomeSectionHeaderProps) {
   return (
     <div className="mt-[6rem] flex justify-between">
-      <h3 className="inter-head1 flex items-center gap-[1.2rem] font-[700] text-pink-500">
+      <h3 className="head1 flex items-center gap-[1.2rem] font-[700] text-pink-500">
         {children}
       </h3>
     </div>

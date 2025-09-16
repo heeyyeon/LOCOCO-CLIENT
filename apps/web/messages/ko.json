@@ -8,5 +8,12 @@
     },
     "ingredients": "성분",
     "productDetail22": "상품상세"
+  },
+  "languageSelectTrigger": {
+    "language": ""
+  },
+  "main": {
+    "kBeautyCampaigns": "",
+    "openingSoon": ""
   }
 }

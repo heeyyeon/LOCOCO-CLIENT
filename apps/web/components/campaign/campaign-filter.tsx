@@ -56,7 +56,7 @@ export default function CampaignFilters({
             href={'/all/1'}
             className="flex cursor-pointer items-center gap-[0.8rem] px-[3.2rem] py-[1.6rem]"
           >
-            <p className="inter-body1 font-[700]">See More</p>
+            <p className="body1 font-[700]">See More</p>
             <SvgAdd size={24} />
           </Link>
         )}
