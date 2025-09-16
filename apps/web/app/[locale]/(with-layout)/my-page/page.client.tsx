@@ -5,10 +5,10 @@ import React, { useState } from 'react';
 import { useTranslations } from 'next-intl';
 
 import SideBar from '../../../../components/side-bar/side-bar';
-import ConnectSNS from './components/connect-sns';
+import ConnectSNS from './components/connect-sns/connect-sns';
 import ContentSubmissions from './components/content-submissions/ContentSubmissions';
 import EditProfile from './components/edit-profile/EditProfile';
-import MyCampaign from './components/my-campaign';
+import MyCampaign from './components/my-campagin/my-campaign';
 import { mockup } from './constant/mockup';
 
 export default function PageClient() {

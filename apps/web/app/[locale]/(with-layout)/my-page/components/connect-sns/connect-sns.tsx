@@ -9,8 +9,8 @@ export default function ConnectSNS() {
         <div className="flex w-full flex-col items-start gap-[4.8rem]">
           <section className="flex w-full flex-col gap-[1.6rem]">
             <div className="flex flex-col gap-[0.6rem]">
-              <p className="inter-title2 text-gray-800">SNS Link</p>
-              <p className="inter-caption3 text-gray-500">
+              <p className="title2 text-gray-800">SNS Link</p>
+              <p className="caption3 text-gray-500">
                 Connect your Social Account!
               </p>
             </div>

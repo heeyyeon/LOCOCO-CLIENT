@@ -29,8 +29,8 @@ export default function HomeAddress({
   return (
     <section className="flex w-full flex-col gap-[1.6rem]">
       <div className="flex flex-col gap-[1.6rem]">
-        <p className="inter-title2 text-gray-800">{t('title')}</p>
-        <p className="inter-caption3 text-gray-500">{t('description')}</p>
+        <p className="title2 text-gray-800">{t('title')}</p>
+        <p className="caption3 text-gray-500">{t('description')}</p>
       </div>
       <InputWrapper label={t('country')} required>
         <Select

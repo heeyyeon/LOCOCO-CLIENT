@@ -46,14 +46,14 @@ export default function ContentTypeSelect({
 
   const getButtonClassName = (label: string) =>
     cn(
-      'inter-body1 flex cursor-pointer items-center gap-[0.5rem] rounded-[2.4rem] border border-gray-400 px-[1.6rem] py-[0.6rem] transition-colors',
+      'body1 flex cursor-pointer items-center gap-[0.5rem] rounded-[2.4rem] border border-gray-400 px-[1.6rem] py-[0.6rem] transition-colors',
       selectedContentType === label &&
         'border-pink-500 bg-pink-100 text-pink-500'
     );
 
   return (
     <section className="flex w-full flex-col gap-[1.6rem]">
-      <p className="inter-title2 text-gray-800">{t('title')}</p>
+      <p className="title2 text-gray-800">{t('title')}</p>
       <div className="flex gap-[1.2rem]">
         {CONTENT_TYPES.map(({ label, icon: Icon }) => (
           <button

@@ -19,7 +19,7 @@ export default function InputWrapper({
         {required && (
           <span className="mr-[0.8rem] h-[0.6rem] w-[0.6rem] rounded-full bg-[#EF4351]" />
         )}
-        <p className="inter-body1 text-gray-700">{label}</p>
+        <p className="body1 text-gray-700">{label}</p>
       </div>
       <div className="relative">
         {children}

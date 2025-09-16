@@ -38,7 +38,7 @@ export default function PersonalInformation({
   const t = useTranslations('myPage.editProfile.personalInformation');
   return (
     <section className="flex w-full flex-col gap-[1.6rem]">
-      <p className="inter-title2 text-gray-800">{t('title')}</p>
+      <p className="title2 text-gray-800">{t('title')}</p>
       <InputWrapper label="Birth" required>
         <div className="flex gap-[2.4rem]">
           <Select

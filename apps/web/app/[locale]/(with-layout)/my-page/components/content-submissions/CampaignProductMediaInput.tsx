@@ -62,12 +62,12 @@ export default function CampaignProductMediaInput({
   return (
     <section className="flex w-full flex-col gap-[1.6rem]">
       <div className="flex flex-col gap-[0.4rem]">
-        <p className="inter-title2 text-gray-800">{t('title')}</p>
+        <p className="title2 text-gray-800">{t('title')}</p>
         <div className="flex items-center gap-[0.8rem]">
-          <p className="inter-body4 text-gray-500">{t('description')}</p>
+          <p className="body4 text-gray-500">{t('description')}</p>
           <button
             type="button"
-            className="inter-body4 cursor-pointer border-b border-pink-500 bg-transparent text-pink-500"
+            className="body4 cursor-pointer border-b border-pink-500 bg-transparent text-pink-500"
             onClick={triggerFileInput}
           >
             {t('selectFile')}

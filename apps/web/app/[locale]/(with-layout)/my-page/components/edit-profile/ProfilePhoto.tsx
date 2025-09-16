@@ -48,7 +48,7 @@ export default function ProfilePhoto({
 
   return (
     <section className="flex w-full flex-col gap-[2.5rem]">
-      <p className="inter-title2 text-gray-800">{t('title')}</p>
+      <p className="title2 text-gray-800">{t('title')}</p>
       <div className="flex w-full flex-col items-center gap-[3.2rem]">
         {profileImage ? (
           <Image

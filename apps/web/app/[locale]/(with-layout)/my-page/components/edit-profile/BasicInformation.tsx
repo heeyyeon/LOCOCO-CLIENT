@@ -33,7 +33,7 @@ export default function BasicInformation({
   const noticeContent = notice || idCheckNotice || idCheckSuccessNotice;
   return (
     <section className="flex w-full flex-col gap-[1.6rem]">
-      <p className="inter-title2 text-gray-800">{t('title')}</p>
+      <p className="title2 text-gray-800">{t('title')}</p>
       <div className="flex flex-col gap-[0.3rem]">
         <InputWrapper label={t('id')} required notice={noticeContent}>
           <Input
@@ -45,7 +45,7 @@ export default function BasicInformation({
                 variant="outline"
                 color="secondary"
                 onClick={onCheckAvailability}
-                className="inter-body2 h-auto whitespace-nowrap rounded-[0.8rem] px-[1.6rem] py-[0.8rem]"
+                className="body2 h-auto whitespace-nowrap rounded-[0.8rem] px-[1.6rem] py-[0.8rem]"
               >
                 {t('idCheck')}
               </Button>

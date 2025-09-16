@@ -31,7 +31,7 @@ const BracketChip = ({ text, chipColor, className }: BracketChipProps) => {
   return (
     <div
       className={cn(
-        'inter-body1 flex h-[3.2rem] w-[8.8rem] items-center justify-center text-white',
+        'body1 flex h-[3.2rem] w-[8.8rem] items-center justify-center text-white',
         className
       )}
       style={{
@@ -81,8 +81,8 @@ export default function CardCampaign({
       />
       <div className="flex w-full flex-col gap-[0.6em] rounded-b-[1.6rem] border border-t-0 border-gray-200 bg-white p-[1.6rem]">
         <div>
-          <p className="inter-body4">{deadline}</p>
-          <p className="inter-title3">{title}</p>
+          <p className="body4">{deadline}</p>
+          <p className="title3">{title}</p>
         </div>
 
         {button}

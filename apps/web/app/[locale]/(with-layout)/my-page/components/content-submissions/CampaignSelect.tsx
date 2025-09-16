@@ -18,7 +18,7 @@ export default function CampaignSelect({
   const t = useTranslations('myPage.contentSubmissions.campaignSelect');
   return (
     <section className="flex w-full flex-col gap-[1.6rem]">
-      <p className="inter-title2 text-gray-800">{t('title')}</p>
+      <p className="title2 text-gray-800">{t('title')}</p>
       <Select
         options={[]}
         onValueChange={(value) => updateCampaign(value)}
