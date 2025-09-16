@@ -53,7 +53,7 @@ export function SnsConnection({
             className={index < platforms.length - 1 ? 'mb-[2rem]' : ''}
           >
             <div className="flex items-center justify-between">
-              <label className="kr-body1 flex items-center font-bold text-gray-700">
+              <label className="body1 flex items-center font-bold text-gray-700">
                 {t(`platforms.${platform}`)}
               </label>
               <div className="flex flex-col">
@@ -65,7 +65,7 @@ export function SnsConnection({
                         className="fill-[color:var(--color-green)]"
                       />
                     </div>
-                    <span className="kr-body2 font-bold text-[color:var(--color-green)]">
+                    <span className="body2 font-bold text-[color:var(--color-green)]">
                       {t('connectedStatus')}
                     </span>
                   </div>
