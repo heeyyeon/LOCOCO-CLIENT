@@ -1,5 +1,7 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
+
 import { LANGUAGES } from 'constants/language';
 
 import {
@@ -25,6 +27,8 @@ export default function CampaignLanguage({
     setLocale(newValue);
   };
 
+  const t = useTranslations('languageSelectTrigger');
+
   return (
     <div className="flex h-full items-center">
       <SelectRoot value={locale} onValueChange={handleLanguageChange}>
@@ -32,7 +36,7 @@ export default function CampaignLanguage({
           className="flex w-fit items-center gap-[0.8rem] border-none bg-none px-[3.2rem] py-[1.6rem] text-black"
           onlyChildren={true}
         >
-          <p className="inter-body1 font-[700]">Language</p>
+          <p className="inter-body1 font-[700]">{t('language')}</p>
           <SvgArrowUp size={24} />
         </SelectTrigger>
 

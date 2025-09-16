@@ -1,17 +1,19 @@
 {
+  "aabc": "aabc",
+  "abc": "abc",
   "home": {
-    "title": "Hello world!"
+    "description": "productDescription",
+    "homeSection": {
+      "title": "title"
+    },
+    "ingredients": "ingredients",
+    "productDetail22": "productDetail22"
   },
-  "gnb": {
-    "myPage": "My Page",
-    "logOut": "Log Out",
-    "login": "Log in",
-    "signUp": "Sign up",
-    "campaigns": "Campaigns",
-    "howItWorks": "How It Works"
+  "main": {
+    "kBeautyCampaigns": "K-Beauty Campaigns",
+    "openingSoon": "Opening Soon"
   },
-  "card": {
-    "goToApply": "Go To Apply",
-    "campaignThumbnailImage": "campaign thumbnail image"
+  "languageSelectTrigger": {
+    "language": "Language"
   }
 }
