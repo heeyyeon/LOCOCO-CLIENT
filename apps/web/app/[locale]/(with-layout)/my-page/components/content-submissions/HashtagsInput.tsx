@@ -1,7 +1,7 @@
 import { ErrorNotice } from '@lococo/design-system/error-notice';
 import { Input } from '@lococo/design-system/input-field';
 
-import { ContentSubmissionsFormData } from '../../types/contentSubmissions';
+import { ContentSubmissionsFormData } from '../../hooks/useContentSubmissions';
 
 interface HashtagsInputProps {
   formData: ContentSubmissionsFormData;

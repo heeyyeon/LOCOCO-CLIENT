@@ -73,7 +73,6 @@ export default function ContentSubmissions() {
 }
 
 const ContentSubmissionsForm = ({
-  formIndex,
   formData,
   errors,
   updateCampaign,
