@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 
+import { useTranslations } from 'next-intl';
 import { useRouter } from 'next/navigation';
 
 import {
@@ -11,6 +12,7 @@ import {
 
 export default function CreatorSnsLinksPage() {
   const router = useRouter();
+  const t = useTranslations('creatorSnsLinksPage');
 
   const [connectedSns, setConnectedSns] = useState<('instagram' | 'tiktok')[]>(
     []
@@ -36,15 +38,15 @@ export default function CreatorSnsLinksPage() {
 
   return (
     <SignupFormLayout
-      title="Join Lococo Creator Community!"
+      title={t('title')}
       onBack={handleBack}
       onSubmit={handleSubmit}
       isValid={hasConnectedAccount}
-      submitLabel="Join"
+      submitLabel={t('submitLabel')}
       isBackDisabled={false}
     >
       <SnsConnection
-        description="We will go through your SNS account, and let you know if you are verified."
+        description={t('snsDescription')}
         connectedSns={connectedSns}
         onConnectSns={handleConnectSns}
         hasError={isSubmitted}
