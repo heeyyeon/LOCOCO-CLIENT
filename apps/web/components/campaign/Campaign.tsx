@@ -2,31 +2,32 @@ import React from 'react';
 
 import Image from 'next/image';
 
-import { Button } from '@lococo/design-system/button';
 import { cn } from '@lococo/utils';
+
+export const CHIP_COLOR = {
+  pink: '#6B7280', // gray-500
+  red: '#EF4444', // red-500
+  green: '#22C55E', // green-500
+  blue: '#3B82F6', // blue-500
+  gray: '#6B7280', // gray-500
+} as const;
 
 interface BracketChipProps {
   text: string;
-  chipVariant: 'notOpen' | 'active' | 'rejected';
+  chipColor: keyof typeof CHIP_COLOR;
   className?: string;
 }
 
 interface CardProps {
   imageSrc: string;
   chipText: string;
-  chipVariant: 'notOpen' | 'active' | 'rejected';
+  chipColor: keyof typeof CHIP_COLOR;
   deadline: string;
   title: string;
-  buttonText: string;
-  handleButtonClick: () => void;
+  button: React.ReactNode;
 }
 
-const BracketChip = ({ text, chipVariant, className }: BracketChipProps) => {
-  const CHIP_COLOR = {
-    notOpen: '#6B7280', // gray-500
-    rejected: '#EF4444', // red-500
-    active: '#22C55E', // green-500
-  };
+const BracketChip = ({ text, chipColor, className }: BracketChipProps) => {
   return (
     <div
       className={cn(
@@ -34,7 +35,7 @@ const BracketChip = ({ text, chipVariant, className }: BracketChipProps) => {
         className
       )}
       style={{
-        backgroundColor: CHIP_COLOR[chipVariant],
+        backgroundColor: CHIP_COLOR[chipColor],
         clipPath: `polygon(
          100% 0%, 100% 8.35%, 100% 8.35%, 99.22% 8.652%, 98.583% 9.486%, 
          98.073% 10.737%, 97.678% 12.294%, 97.382% 14.043%, 97.172% 15.873%, 
@@ -58,18 +59,12 @@ const BracketChip = ({ text, chipVariant, className }: BracketChipProps) => {
 
 export default function CardCampaign({
   chipText,
-  chipVariant,
+  chipColor,
   deadline,
   imageSrc,
   title,
-  buttonText,
-  handleButtonClick,
+  button,
 }: CardProps) {
-  const buttonColor = {
-    active: 'filled',
-    rejected: 'outline',
-    notOpen: 'filled',
-  };
   return (
     <div className="relative flex w-[28.4rem] flex-col rounded-[2.4rem]">
       <Image
@@ -81,7 +76,7 @@ export default function CardCampaign({
       />
       <BracketChip
         text={chipText}
-        chipVariant={chipVariant}
+        chipColor={chipColor}
         className="absolute right-[1.6rem] top-[1.6rem]"
       />
       <div className="flex w-full flex-col gap-[0.6em] rounded-b-[1.6rem] border border-t-0 border-gray-200 bg-white p-[1.6rem]">
@@ -90,22 +85,7 @@ export default function CardCampaign({
           <p className="inter-title3">{title}</p>
         </div>
 
-        <Button
-          onClick={handleButtonClick}
-          variant={buttonColor[chipVariant] as 'filled' | 'outline' | 'text'}
-          size="sm"
-          disabled={chipVariant === 'notOpen'}
-          fontType="InterBody2"
-          color="primary"
-          className={cn(
-            'w-full',
-            chipVariant === 'notOpen' && 'border-none',
-            chipVariant === 'rejected' &&
-              'border-[#EF4444] bg-white text-[#EF4444] hover:bg-white hover:text-[#EF4444]'
-          )}
-        >
-          {buttonText}
-        </Button>
+        {button}
       </div>
     </div>
   );
