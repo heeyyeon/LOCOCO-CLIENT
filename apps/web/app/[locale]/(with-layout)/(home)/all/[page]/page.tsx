@@ -1,7 +1,7 @@
 import { getTranslations } from 'next-intl/server';
 
-import CampaignAll from '../../(home)/components/campaign-all';
-import HomeSection from '../../(home)/components/home-section';
+import CampaignAll from '../../components/campaign-all';
+import HomeSection from '../../components/home-section';
 
 export default async function AllCampaign() {
   const t = await getTranslations('main'); // main 필드에 똑같은 값이 있어서 재활용
