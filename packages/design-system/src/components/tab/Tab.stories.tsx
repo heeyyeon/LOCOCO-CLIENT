@@ -18,7 +18,7 @@ const meta: Meta<typeof Tab> = {
     selected: {
       control: { type: 'boolean' },
     },
-    handleClick: {
+    onClick: {
       action: 'clicked',
     },
   },
@@ -33,7 +33,7 @@ export const Default: Story = {
     label: 'Tab',
     value: 'Tab',
     selected: false,
-    handleClick: () => {},
+    onClick: () => {},
   },
 };
 
@@ -42,7 +42,7 @@ export const Active: Story = {
     label: 'Active Tab',
     value: 'Active Tab',
     selected: true,
-    handleClick: () => {},
+    onClick: () => {},
   },
 };
 
@@ -56,19 +56,19 @@ function MultipleTabsWrapper() {
         label="첫 번째 탭"
         value="첫 번째 탭"
         selected={value === '첫 번째 탭'}
-        handleClick={setValue}
+        onClick={() => setValue('첫 번째 탭')}
       />
       <Tab
         label="두 번째 탭"
         value="두 번째 탭"
         selected={value === '두 번째 탭'}
-        handleClick={setValue}
+        onClick={() => setValue('두 번째 탭')}
       />
       <Tab
         label="세 번째 탭"
         value="세 번째 탭"
         selected={value === '세 번째 탭'}
-        handleClick={setValue}
+        onClick={() => setValue('세 번째 탭')}
       />
     </TabContainer>
   );

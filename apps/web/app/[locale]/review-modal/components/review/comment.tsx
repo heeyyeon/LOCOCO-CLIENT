@@ -13,11 +13,11 @@ export default function Comment({ children, type }: CommentProps) {
         ) : (
           <SvgBad />
         )}
-        <span className="jp-body1 font-bold text-gray-600">
+        <span className="body1 font-bold text-gray-600">
           {type === 'positive' ? '良かったです' : '気になる点'}
         </span>
       </div>
-      <div className="jp-body2 text-gray-800">{children}</div>
+      <div className="body2 text-gray-800">{children}</div>
     </div>
   );
 }

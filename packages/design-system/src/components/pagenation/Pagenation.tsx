@@ -28,7 +28,7 @@ export function PageButton({
       type="button"
       onClick={() => handlePageChange(page)}
       className={cn(
-        'inter-title2 flex h-[3.2rem] w-[3.2rem] items-center justify-center',
+        'title2 flex h-[3.2rem] w-[3.2rem] items-center justify-center',
         isActive ? 'text-pink-500' : 'text-gray-400 hover:text-gray-600'
       )}
     >

@@ -44,10 +44,10 @@ const buttonVariants = cva(
         md: 'rounded-[3.2rem]',
       },
       fontType: {
-        InterTitle3: 'inter-title3',
-        InterBody1: 'inter-body1',
-        InterBody2: 'inter-body2',
-        InterBody4: 'inter-body4',
+        InterTitle3: 'title3',
+        InterBody1: 'body1',
+        InterBody2: 'body2',
+        InterBody4: 'body4',
       },
     },
     compoundVariants: [

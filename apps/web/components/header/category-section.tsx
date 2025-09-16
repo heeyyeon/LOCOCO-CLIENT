@@ -55,7 +55,7 @@ export function CategorySection({
               href={getUrl('', key, 'ALL', 'PRODUCT')}
               key={key}
               className={cn(
-                'jp-title2 flex h-[6rem] cursor-pointer items-center whitespace-nowrap px-[3.2rem] pb-[1rem] pt-[1rem] font-bold',
+                'title2 flex h-[6rem] cursor-pointer items-center whitespace-nowrap px-[3.2rem] pb-[1rem] pt-[1rem] font-bold',
                 isActive ? 'text-pink-500' : 'text-gray-800'
               )}
               onMouseEnter={() => handleSelectCategory(key)}

@@ -115,7 +115,7 @@ export default function Review({
         </div>
         <div className="flex items-center justify-end">
           <div className="flex items-center gap-[1.2rem]">
-            <p className="jp-title3 font-bold text-gray-800">参考になった</p>
+            <p className="title3 font-bold text-gray-800">参考になった</p>
 
             <ReactionToggle
               variant="horizontal"
@@ -125,7 +125,7 @@ export default function Review({
             >
               <div className="flex items-center gap-[0.4rem]">
                 <SvgGoodOutline className="transition-colors duration-300 group-hover:text-gray-500" />
-                <p className="en-body1 text-gray-800 transition-colors duration-300 group-hover:text-gray-500">
+                <p className="body1 text-gray-800 transition-colors duration-300 group-hover:text-gray-500">
                   {likeCount}
                 </p>
               </div>
@@ -137,7 +137,7 @@ export default function Review({
       <div className="flex w-[26.4rem] flex-col items-stretch gap-[1.2rem]">
         <div className="flex items-center gap-[1.2rem]">
           <Avatar src={profileImageUrl} />
-          <p className="en-title2 w-full text-gray-800">{authorName}</p>
+          <p className="title2 w-full text-gray-800">{authorName}</p>
           {(isMine || isAdmin) && (
             <IconButton
               onClick={handleDeleteReview}
@@ -152,7 +152,7 @@ export default function Review({
 
         <div className="flex h-full flex-col gap-[1.2rem]">
           <Star rating={Number(rating)} />
-          <div className="jp-caption1 flex gap-[0.6rem] text-gray-600">
+          <div className="caption1 flex gap-[0.6rem] text-gray-600">
             <span className="inline-flex w-[6.7rem] flex-shrink-0">
               オプション:
             </span>
@@ -161,7 +161,7 @@ export default function Review({
           {receiptUploaded && <Tag text={'レシート'} className="inline-flex" />}
         </div>
 
-        <p className="en-caption1 self-end text-gray-600">
+        <p className="caption1 self-end text-gray-600">
           {dayjs(writtenTime).format('YYYY年MM月DD日')}
         </p>
       </div>

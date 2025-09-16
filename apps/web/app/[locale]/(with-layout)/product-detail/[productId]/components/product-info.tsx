@@ -81,8 +81,8 @@ export default function ProductInfo({
       <div className="flex w-[48rem] flex-col gap-[1.2rem]">
         <div className="flex justify-between gap-[0.4rem]">
           <div className="flex flex-col gap-[0.6rem]">
-            <p className="jp-title3 font-bold text-gray-700">{brandName}</p>
-            <h1 className="jp-head3 font-bold text-gray-800">{productName}</h1>
+            <p className="title3 font-bold text-gray-700">{brandName}</p>
+            <h1 className="head3 font-bold text-gray-800">{productName}</h1>
           </div>
           <IconButton
             onClick={() => handleLikeClick(productId)}
@@ -103,27 +103,25 @@ export default function ProductInfo({
           />
         </div>
         <div className="flex flex-col gap-[0.8rem]">
-          <p className="text-red en-head2 font-bold">
-            ¥{formatJPY(normalPrice)}
-          </p>
-          <p className="jp-body2 text-gray-600"> {unit}</p>
+          <p className="text-red head2 font-bold">¥{formatJPY(normalPrice)}</p>
+          <p className="body2 text-gray-600"> {unit}</p>
           <div className="flex items-center gap-[0.4rem]">
             <SvgStar className="fill-yellow" />
-            <span className="en-body1 text-gray-800">
+            <span className="body1 text-gray-800">
               {rating}/{MAX_RATING}
             </span>
-            <span className="en-body1 text-gray-600">({reviewCount})</span>
+            <span className="body1 text-gray-600">({reviewCount})</span>
           </div>
         </div>
         {productOptions.length > 0 && (
           <Select>
             <SelectTrigger
-              className="jp-body2 text-gray-800"
+              className="body2 text-gray-800"
               disabled={productOptions.length === 0}
             >
               <SelectValue placeholder="オプション" />
             </SelectTrigger>
-            <SelectContent className="jp-body2 text-gray-800">
+            <SelectContent className="body2 text-gray-800">
               {productOptions.map((option) => (
                 <SelectItem value={option.optionName} key={option.id} disabled>
                   {option.optionName}
@@ -149,7 +147,7 @@ export default function ProductInfo({
               href={q10Url}
               target="_blank"
               rel="noopener noreferrer"
-              className="jp-title2 flex items-center gap-[0.8rem] font-bold"
+              className="title2 flex items-center gap-[0.8rem] font-bold"
             >
               <SvgPurchase /> Qoo10
             </Link>
@@ -167,7 +165,7 @@ export default function ProductInfo({
               href={oliveYoungUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="jp-title2 flex items-center gap-[0.8rem] font-bold"
+              className="title2 flex items-center gap-[0.8rem] font-bold"
             >
               <SvgPurchase /> Olive Young
             </Link>
@@ -178,7 +176,7 @@ export default function ProductInfo({
           variant="filled"
           rounded="sm"
           size="lg"
-          className="jp-title2 font-bold"
+          className="title2 font-bold"
           onClick={() => handleClickReviewBtn()}
         >
           <SvgWrite /> レビューを書く

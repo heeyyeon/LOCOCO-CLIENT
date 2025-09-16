@@ -1,29 +1,13 @@
 import * as React from 'react';
 
-import { cva } from 'class-variance-authority';
-
 import { cn } from '../../lib/utils';
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
-  fontType?: 'Inter' | 'NotoSansKR';
   rightIcon?: React.ReactNode;
   handleRightIconClick?: () => void;
 }
 
-const inputVariants = cva('w-full focus:outline-none', {
-  variants: {
-    fontType: {
-      Inter: 'inter-body3',
-      NotoSansKR: 'kr-body3',
-    },
-  },
-  defaultVariants: {
-    fontType: 'Inter',
-  },
-});
-
 export default function Input({
-  fontType = 'Inter',
   className,
   rightIcon,
   handleRightIconClick,
@@ -36,10 +20,7 @@ export default function Input({
         className
       )}
     >
-      <input
-        className={cn(inputVariants({ fontType }), className)}
-        {...props}
-      />
+      <input className={className} {...props} />
       {rightIcon && (
         <div
           onClick={handleRightIconClick}

@@ -1,13 +1,19 @@
 {
+  "aabc": "aabc",
+  "abc": "abc",
   "home": {
-    "title": "Hola mundo!"
+    "description": "Información del producto",
+    "homeSection": {
+      "title": ""
+    },
+    "ingredients": "Ingredientes",
+    "productDetail22": "Detalles del producto"
   },
-  "gnb": {
-    "myPage": "Mi Página",
-    "logOut": "Cerrar Sesión",
-    "login": "Iniciar Sesión",
-    "signUp": "Registrarse",
-    "campaigns": "Campañas",
-    "howItWorks": "Cómo Funciona"
+  "languageSelectTrigger": {
+    "language": ""
+  },
+  "main": {
+    "kBeautyCampaigns": "",
+    "openingSoon": ""
   }
 }
