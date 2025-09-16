@@ -1,30 +1,61 @@
-'use client';
+import { ComponentProps, ReactNode } from 'react';
 
-import { ReactNode } from 'react';
+import { VariantProps, cva } from 'class-variance-authority';
 
 import { cn } from '../../lib/utils';
 
-interface TabProps {
+interface TabProps
+  extends ComponentProps<'button'>,
+    VariantProps<typeof tabVariants> {
   label: string;
   value: string;
-  selected?: boolean;
-  handleClick: (value: string) => void;
+  className?: string;
+  onClick?: () => void;
 }
 
 interface TabContainerProps {
   children: ReactNode;
   className?: string;
+  variant?: 'vertical' | 'horizontal';
 }
 
-function Tab({ value, label, selected, handleClick, ...props }: TabProps) {
+const tabVariants = cva(
+  'title2 h-[4.6rem] cursor-pointer p-[0.8rem] font-[700]',
+  {
+    variants: {
+      variant: {
+        horizontal: '',
+        vertical: '',
+      },
+      selected: {
+        true: 'text-pink-500',
+        false: '',
+      },
+    },
+    compoundVariants: [
+      {
+        selected: false,
+        variant: 'horizontal',
+        className: 'text-gray-500',
+      },
+      {
+        selected: false,
+        variant: 'vertical',
+        className: 'text-gray-700',
+      },
+    ],
+    defaultVariants: {
+      variant: 'horizontal',
+      selected: false,
+    },
+  }
+);
+
+function Tab({ label, selected, variant, className, ...props }: TabProps) {
   return (
     <button
       type="button"
-      className={cn(
-        'inter-title2 h-[4.6rem] cursor-pointer bg-white p-[0.8rem] text-gray-500',
-        selected && 'text-pink-500'
-      )}
-      onClick={() => handleClick(value)}
+      className={cn(tabVariants({ selected, variant }), className)}
       {...props}
     >
       {label}
@@ -32,10 +63,18 @@ function Tab({ value, label, selected, handleClick, ...props }: TabProps) {
   );
 }
 
-function TabContainer({ children, className }: TabContainerProps) {
+function TabContainer({
+  children,
+  className,
+  variant = 'horizontal',
+}: TabContainerProps) {
   return (
     <div
-      className={cn('flex items-center justify-center gap-[1rem]', className)}
+      className={cn(
+        'flex items-center justify-center',
+        variant === 'vertical' && 'flex-col',
+        className
+      )}
     >
       {children}
     </div>

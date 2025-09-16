@@ -24,13 +24,13 @@ export default function ProductInfoTab({
           label="製品の特徴"
           value="productDetail"
           selected={activeTab === 'productDetail'}
-          handleClick={() => setActiveTab('productDetail')}
+          onClick={() => setActiveTab('productDetail')}
         ></Tab>
         <Tab
           label="原材料・成分"
           value="ingredients"
           selected={activeTab === 'ingredients'}
-          handleClick={() => setActiveTab('ingredients')}
+          onClick={() => setActiveTab('ingredients')}
         ></Tab>
       </TabContainer>
 
