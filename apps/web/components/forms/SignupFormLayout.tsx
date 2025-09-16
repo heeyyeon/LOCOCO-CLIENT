@@ -30,7 +30,7 @@ export function SignupFormLayout({
           {title}
         </h1>
 
-        <div className="bg-white p-[4.8rem]">
+        <div className="border border-gray-400 bg-white p-[4.8rem]">
           <form onSubmit={onSubmit} className="space-y-[1.6rem]">
             {submitError && (
               <div className="mb-[0.2rem]">
