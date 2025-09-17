@@ -2,6 +2,7 @@ import React from 'react';
 
 import { Button } from '@lococo/design-system/button';
 
+//TODO: 희연언니가 만든 공컴으로 수정해야함
 export default function ConnectSNS() {
   return (
     <div className="flex min-h-[calc(100vh-11.2rem)] w-full flex-col items-center gap-[3.2rem] bg-gray-100 px-[9.4rem] py-[6.4rem]">

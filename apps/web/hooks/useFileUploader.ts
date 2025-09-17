@@ -1,5 +1,6 @@
 import z from 'zod';
 
+//TODO: 서버 측에서 확인(이미지 타입, 비디오 타입) 해야함
 export const ALLOWED_IMAGE_TYPES = [
   'image/jpg',
   'image/jpeg',
