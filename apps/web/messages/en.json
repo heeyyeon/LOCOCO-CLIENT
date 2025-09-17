@@ -25,6 +25,11 @@
     "login": "Log in",
     "signUp": "Sign up"
   },
+  "confirmSignupModal": {
+    "title": "Successfully Submitted!",
+    "message": "Your application was successfully submitted.\nWe'll email you the result within 24 hours.",
+    "confirmButton": "Okay"
+  },
   "userInductionModal": {
     "title": "Creator Suggestion",
     "message": "Campaign applications are only available to creator members.\nWould you like to sign up as a creator?",

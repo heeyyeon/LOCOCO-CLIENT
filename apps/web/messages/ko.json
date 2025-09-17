@@ -9,6 +9,19 @@
     "ingredients": "성분",
     "productDetail22": "상품상세"
   },
+  "gnb": {
+    "myPage": "마이 페이지",
+    "logOut": "로그아웃",
+    "login": "로그인",
+    "signUp": "회원가입",
+    "campaigns": "캠페인",
+    "howItWorks": "작동 방식"
+  },
+  "ConfirmSignupModal": {
+    "title": "",
+    "message": "",
+    "confirmButton": ""
+  },
   "languageSelectTrigger": {
     "language": ""
   },

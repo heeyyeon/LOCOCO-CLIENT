@@ -9,6 +9,7 @@ import {
   SignupFormLayout,
   SnsConnection,
 } from '../../../../../../components/forms';
+import { ConfirmSignupModal } from '../../components/confirm-signup-modal';
 
 export default function CreatorSnsLinksPage() {
   const router = useRouter();
@@ -18,6 +19,7 @@ export default function CreatorSnsLinksPage() {
     []
   );
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isShowConfirmModal, setIsShowConfirmModal] = useState(false);
 
   const handleConnectSns = (sns: 'instagram' | 'tiktok') => {
     setConnectedSns((prev) => [...prev, sns]);
@@ -30,6 +32,12 @@ export default function CreatorSnsLinksPage() {
       setIsSubmitted(true);
       return;
     }
+
+    setIsShowConfirmModal(true);
+  };
+
+  const handleConfirmModalConfirm = () => {
+    router.push('/');
   };
 
   const handleBack = () => {
@@ -37,20 +45,28 @@ export default function CreatorSnsLinksPage() {
   };
 
   return (
-    <SignupFormLayout
-      title={t('title')}
-      onBack={handleBack}
-      onSubmit={handleSubmit}
-      isValid={hasConnectedAccount}
-      submitLabel={t('submitLabel')}
-      isBackDisabled={false}
-    >
-      <SnsConnection
-        description={t('snsDescription')}
-        connectedSns={connectedSns}
-        onConnectSns={handleConnectSns}
-        hasError={isSubmitted}
+    <>
+      <SignupFormLayout
+        title={t('title')}
+        onBack={handleBack}
+        onSubmit={handleSubmit}
+        isValid={hasConnectedAccount}
+        submitLabel={t('submitLabel')}
+        isBackDisabled={false}
+      >
+        <SnsConnection
+          description={t('snsDescription')}
+          connectedSns={connectedSns}
+          onConnectSns={handleConnectSns}
+          hasError={isSubmitted}
+        />
+      </SignupFormLayout>
+
+      <ConfirmSignupModal
+        open={isShowConfirmModal}
+        onOpenChange={setIsShowConfirmModal}
+        onConfirm={handleConfirmModalConfirm}
       />
-    </SignupFormLayout>
+    </>
   );
 }
