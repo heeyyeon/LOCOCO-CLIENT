@@ -18,7 +18,7 @@ interface BracketChipProps {
   className?: string;
 }
 
-interface CardProps {
+interface CampaignProps {
   imageSrc: string;
   chipText: string;
   chipColor: keyof typeof CHIP_COLOR;
@@ -57,14 +57,14 @@ const BracketChip = ({ text, chipColor, className }: BracketChipProps) => {
   );
 };
 
-export default function CardCampaign({
+export default function Campaign({
   chipText,
   chipColor,
   deadline,
   imageSrc,
   title,
   button,
-}: CardProps) {
+}: CampaignProps) {
   return (
     <div className="relative flex w-[28.4rem] flex-col rounded-[2.4rem]">
       <Image
