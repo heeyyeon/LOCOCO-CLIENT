@@ -44,7 +44,9 @@ export function ConfirmSignupModal({
           </div>
         </section>
 
-        <ModalButton text={t('confirmButton')} onClick={handleConfirmModal} />
+        <div className="border-t border-pink-500">
+          <ModalButton text={t('confirmButton')} onClick={handleConfirmModal} />
+        </div>
       </DialogContent>
     </Dialog>
   );
