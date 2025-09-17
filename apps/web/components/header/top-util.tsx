@@ -35,7 +35,7 @@ function TopUtilItem({
       disabled={disabled}
     >
       {icon}
-      <p className="jp-body2 text-gray-600">{label}</p>
+      <p className="body2 text-gray-600">{label}</p>
     </button>
   );
 }

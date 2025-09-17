@@ -71,7 +71,7 @@ export default function WriteReviewModal() {
   return (
     <Modal className="size-[70rem] rounded-[0.8rem]" onClose={handleClose}>
       <Modal.Header className="sticky top-0 flex justify-between">
-        <h2 className="jp-body1 font-bold text-gray-800">レビューを書く</h2>
+        <h2 className="body1 font-bold text-gray-800">レビューを書く</h2>
         <IconButton
           icon={<SvgClose />}
           size="sm"
@@ -128,7 +128,7 @@ export default function WriteReviewModal() {
           variant="filled"
           size="lg"
           color="primary"
-          className="jp-title2 w-full px-[1.6rem] py-[1.2rem]"
+          className="title2 w-full px-[1.6rem] py-[1.2rem]"
           rounded="sm"
           onClick={onSubmit}
           disabled={!isFormValid}

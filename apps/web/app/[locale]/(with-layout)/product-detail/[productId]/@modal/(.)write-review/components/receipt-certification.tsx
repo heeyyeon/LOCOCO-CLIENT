@@ -51,7 +51,7 @@ export default function ReceiptCertification({ file, onChange, error }: Props) {
       label="購入証明写真をアップロードしてください"
       className="flex-col border-b border-gray-400"
     >
-      <p className="jp-caption3 text-blue mt-[0.8rem] pb-[2.4rem]">
+      <p className="caption3 text-blue mt-[0.8rem] pb-[2.4rem]">
         レシート・オンライン購入のキャプチャなど。
       </p>
 

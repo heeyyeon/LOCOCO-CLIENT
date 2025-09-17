@@ -1,6 +1,13 @@
 {
+  "aabc": "aabc",
+  "abc": "abc",
   "home": {
-    "title": "Hola mundo!"
+    "description": "Información del producto",
+    "homeSection": {
+      "title": ""
+    },
+    "ingredients": "Ingredientes",
+    "productDetail22": "Detalles del producto"
   },
   "gnb": {
     "myPage": "Mi Página",
@@ -11,8 +18,50 @@
     "howItWorks": "Cómo Funciona"
   },
   "ConfirmSignupModal": {
-    "title": "¡Enviado Exitosamente!",
-    "message": "Su solicitud fue enviada exitosamente.<br/>Le enviaremos el resultado por correo electrónico dentro de 24 horas.",
-    "confirmButton": "De Acuerdo"
+    "title": "",
+    "message": "",
+    "confirmButton": ""
+  },
+  "languageSelectTrigger": {
+    "language": ""
+  },
+  "main": {
+    "kBeautyCampaigns": "",
+    "openingSoon": ""
+  },
+  "userInductionModal": {
+    "title": "",
+    "message": "",
+    "cancelButton": "",
+    "confirmButton": ""
+  },
+  "selectRoleModal": {
+    "title": "",
+    "welcomeTitle": "",
+    "description": "",
+    "roles": {
+      "creator": "",
+      "brand": "",
+      "user": ""
+    },
+    "loginAs": ""
+  },
+  "snsConnection": {
+    "title": "",
+    "errorMessage": "",
+    "connectedStatus": "",
+    "platforms": {
+      "instagram": "",
+      "tiktok": ""
+    },
+    "connectButtons": {
+      "instagram": "",
+      "tiktok": ""
+    }
+  },
+  "creatorSnsLinksPage": {
+    "title": "",
+    "snsDescription": "",
+    "submitLabel": ""
   }
 }

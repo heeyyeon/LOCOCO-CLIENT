@@ -21,7 +21,7 @@ interface ButtonProps
 const baseButtonStyle = 'py-[1rem] gap-[0.8rem]';
 
 const buttonVariants = cva(
-  'flex items-center transition-colors duration-300 justify-center font-bold disabled:bg-gray-200 disabled:text-gray-500 disabled:cursor-not-allowed cursor-pointer grow',
+  'flex items-center transition-colors duration-300 justify-center font-bold disabled:bg-gray-200 disabled:text-gray-500 cursor-pointer grow',
   {
     variants: {
       variant: {
@@ -44,10 +44,10 @@ const buttonVariants = cva(
         md: 'rounded-[3.2rem]',
       },
       fontType: {
-        InterTitle3: 'inter-title3',
-        InterBody1: 'inter-body1',
-        InterBody2: 'inter-body2',
-        InterBody4: 'inter-body4',
+        InterTitle3: 'title3',
+        InterBody1: 'body1',
+        InterBody2: 'body2',
+        InterBody4: 'body4',
       },
     },
     compoundVariants: [

@@ -37,7 +37,7 @@ function SelectTrigger({
     <SelectPrimitive.Trigger
       data-slot="select-trigger"
       className={cn(
-        'group flex h-[4rem] cursor-pointer items-center justify-between gap-[1rem] self-stretch border-b border-gray-500 bg-white pr-[1.2rem] text-gray-500 focus:outline-none',
+        'group flex h-[4rem] cursor-pointer items-center justify-between gap-[1rem] self-stretch border-b border-gray-500 pr-[1.2rem] text-gray-500 focus:outline-none',
         '[&:not([data-placeholder])]:border-gray-400',
         '[&[data-state=open]]:border-b-pink-500 [&[data-state=open]]:text-black',
         {
@@ -162,7 +162,7 @@ export function Select({
             <SelectItem key={option.label} value={option.label}>
               <div className="flex items-center gap-[16px]">
                 {option.icon}
-                <span className="inter-body4 font-[500] text-gray-800">
+                <span className="body4 font-[500] text-gray-800">
                   {option.label}
                 </span>
               </div>

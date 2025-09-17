@@ -1,6 +1,13 @@
 {
+  "aabc": "aabc",
+  "abc": "abc",
   "home": {
-    "title": "안녕하세요!"
+    "description": "상품정보",
+    "homeSection": {
+      "title": ""
+    },
+    "ingredients": "성분",
+    "productDetail22": "상품상세"
   },
   "gnb": {
     "myPage": "마이 페이지",
@@ -11,8 +18,50 @@
     "howItWorks": "작동 방식"
   },
   "ConfirmSignupModal": {
-    "title": "성공적으로 제출되었습니다!",
-    "message": "신청서가 성공적으로 제출되었습니다.<br/>24시간 이내에 결과를 이메일로 보내드리겠습니다.",
-    "confirmButton": "확인"
+    "title": "",
+    "message": "",
+    "confirmButton": ""
+  },
+  "languageSelectTrigger": {
+    "language": ""
+  },
+  "main": {
+    "kBeautyCampaigns": "",
+    "openingSoon": ""
+  },
+  "userInductionModal": {
+    "title": "",
+    "message": "",
+    "cancelButton": "",
+    "confirmButton": ""
+  },
+  "selectRoleModal": {
+    "title": "",
+    "welcomeTitle": "",
+    "description": "",
+    "roles": {
+      "creator": "",
+      "brand": "",
+      "user": ""
+    },
+    "loginAs": ""
+  },
+  "snsConnection": {
+    "title": "",
+    "errorMessage": "",
+    "connectedStatus": "",
+    "platforms": {
+      "instagram": "",
+      "tiktok": ""
+    },
+    "connectButtons": {
+      "instagram": "",
+      "tiktok": ""
+    }
+  },
+  "creatorSnsLinksPage": {
+    "title": "",
+    "snsDescription": "",
+    "submitLabel": ""
   }
 }
