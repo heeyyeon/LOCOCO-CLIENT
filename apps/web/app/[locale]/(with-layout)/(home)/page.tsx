@@ -1,8 +1,8 @@
 import { getTranslations } from 'next-intl/server';
 
-import HomeBanner from './(home)/components/home-banner';
-import HomeSection from './(home)/components/home-section';
-import HomeSectionCampaign from './(home)/components/home-section-campaign';
+import HomeBanner from './components/home-banner';
+import HomeSection from './components/home-section';
+import HomeSectionCampaign from './components/home-section-campaign';
 
 export default async function Main() {
   const t = await getTranslations('main');
