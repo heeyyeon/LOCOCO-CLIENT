@@ -24,6 +24,11 @@ export function SelectRoleModal({
 }: SelectRoleModalProps) {
   const t = useTranslations('SelectRoleModal');
 
+  const handleSelectRole = (role: Role) => {
+    onSelectRole(role);
+    onOpenChange(false);
+  };
+
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent
@@ -65,10 +70,7 @@ export function SelectRoleModal({
                   color="primary"
                   size="md"
                   className="w-full"
-                  onClick={() => {
-                    onSelectRole(role);
-                    onOpenChange(false);
-                  }}
+                  onClick={() => handleSelectRole(role)}
                 >
                   {t('loginAs')} {t(`roles.${role}`)}
                 </Button>
