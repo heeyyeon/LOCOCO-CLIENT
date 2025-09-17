@@ -1,13 +1,51 @@
 {
+  "aabc": "aabc",
+  "abc": "abc",
   "home": {
-    "title": "Hello world!"
+    "description": "productDescription",
+    "homeSection": {
+      "title": "title"
+    },
+    "ingredients": "ingredients",
+    "productDetail22": "productDetail22"
   },
+  "languageSelectTrigger": {
+    "language": "Language"
+  },
+  "main": {
+    "kBeautyCampaigns": "K-Beauty Campaigns",
+    "openingSoon": "Opening Soon"
+  },
+  "campaigns": {},
   "gnb": {
+    "campaigns": "campaigns",
+    "howItWorks": "how it works",
     "myPage": "My Page",
     "logOut": "Log Out",
     "login": "Log in",
-    "signUp": "Sign up",
-    "campaigns": "Campaigns",
-    "howItWorks": "How It Works"
+    "signUp": "Sign up"
+  },
+  "card": {
+    "card": "card",
+    "campaignThumbnailImage": "campaign thumbnail image",
+    "goToApply": "Go To Apply"
+  },
+  "snsConnection": {
+    "title": "SNS Link",
+    "errorMessage": "Please add your account link at least one.",
+    "connectedStatus": "Connected!",
+    "platforms": {
+      "instagram": "Instagram",
+      "tiktok": "Tiktok"
+    },
+    "connectButtons": {
+      "instagram": "Connect with Instagram",
+      "tiktok": "Connect with Tiktok"
+    }
+  },
+  "creatorSnsLinksPage": {
+    "title": "Join Lococo Creator Community!",
+    "snsDescription": "We will go through your SNS account, and let you know if you are verified.",
+    "submitLabel": "Join"
   }
 }

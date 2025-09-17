@@ -60,3 +60,10 @@ export const CATEGORY_NAME = {
   EYE_MAKEUP: EYE_MAKEUP.name,
   LIP_MAKEUP: LIP_MAKEUP.name,
 } as const;
+
+export const CATEGORY_NAME_NEW = {
+  ALL: 'ALL',
+  SKINCARE: 'Skincare',
+  SUNCARE: 'Suncare',
+  MAKE_UP: 'Makeup',
+} as const;

@@ -53,7 +53,7 @@ export default function CardProduct({
         {ranking && <Badge rank={ranking} />}
       </div>
       <div className="flex h-[4.4rem] items-center justify-between border-b-[0.1rem] border-dashed border-pink-500">
-        <p className="jp-body1 font-[700]">{brandName}</p>
+        <p className="body1 font-[700]">{brandName}</p>
         <IconButton
           onClick={(e) => handleLikeClick(productId, e)}
           size="md"
@@ -70,11 +70,11 @@ export default function CardProduct({
         />
       </div>
       <div className="flex h-[4.4rem] items-center border-b-[0.1rem] border-dashed border-pink-500">
-        <p className="jp-body2 w-full truncate font-[500]" title={productName}>
+        <p className="body2 w-full truncate font-[500]" title={productName}>
           {productName}
         </p>
       </div>
-      <div className="en-caption1 flex h-[4.4rem] items-center justify-between border-b-[0.1rem] border-pink-500 text-gray-600">
+      <div className="caption1 flex h-[4.4rem] items-center justify-between border-b-[0.1rem] border-pink-500 text-gray-600">
         <p>{unit}</p>
         <div className="flex items-center">
           <SvgStar size={16} className="fill-yellow" />

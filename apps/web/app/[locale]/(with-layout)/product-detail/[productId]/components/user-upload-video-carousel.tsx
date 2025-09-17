@@ -57,7 +57,7 @@ export default function UserUploadVideoCarousel() {
 
   return (
     <div className="flex flex-col gap-[3.2rem]">
-      <h2 className="text-jp-head2 inline-flex items-center gap-[1.2rem] font-bold">
+      <h2 className="head2 inline-flex items-center gap-[1.2rem] font-bold">
         動画レビュー
       </h2>
       <div className="relative h-[35.2rem] w-full">
@@ -123,7 +123,7 @@ export default function UserUploadVideoCarousel() {
         ) : (
           <div className="flex h-full flex-col items-center justify-center gap-[2.4rem]">
             <SvgImgVideo size={100} className="fill-pink-300" />
-            <p className="jp-body1 font-[700]">
+            <p className="body1 font-[700]">
               登録された動画レビューはありません。
             </p>
           </div>
