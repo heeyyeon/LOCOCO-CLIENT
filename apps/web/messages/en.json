@@ -21,11 +21,31 @@
     "campaigns": "campaigns",
     "howItWorks": "how it works",
     "myPage": "My Page",
-    "logOut": "Log Out"
+    "logOut": "Log Out",
+    "login": "Log in",
+    "signUp": "Sign up"
   },
   "card": {
     "card": "card",
     "campaignThumbnailImage": "campaign thumbnail image",
     "goToApply": "Go To Apply"
+  },
+  "snsConnection": {
+    "title": "SNS Link",
+    "errorMessage": "Please add your account link at least one.",
+    "connectedStatus": "Connected!",
+    "platforms": {
+      "instagram": "Instagram",
+      "tiktok": "Tiktok"
+    },
+    "connectButtons": {
+      "instagram": "Connect with Instagram",
+      "tiktok": "Connect with Tiktok"
+    }
+  },
+  "creatorSnsLinksPage": {
+    "title": "Join Lococo Creator Community!",
+    "snsDescription": "We will go through your SNS account, and let you know if you are verified.",
+    "submitLabel": "Join"
   }
 }

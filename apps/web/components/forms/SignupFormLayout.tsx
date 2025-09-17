@@ -11,6 +11,7 @@ interface SignupFormLayoutProps {
   onSubmit?: () => void;
   isValid?: boolean;
   submitLabel: string;
+  isBackDisabled?: boolean;
 }
 
 export function SignupFormLayout({
@@ -20,6 +21,7 @@ export function SignupFormLayout({
   onBack,
   onSubmit,
   submitLabel,
+  isBackDisabled = true,
 }: SignupFormLayoutProps) {
   return (
     <main className="bg-gray-100 py-[6.4rem]">
@@ -28,7 +30,7 @@ export function SignupFormLayout({
           {title}
         </h1>
 
-        <div className="bg-white p-[4.8rem]">
+        <div className="border border-gray-400 bg-white p-[4.8rem]">
           <form onSubmit={onSubmit} className="space-y-[1.6rem]">
             {submitError && (
               <div className="mb-[0.2rem]">
@@ -42,12 +44,12 @@ export function SignupFormLayout({
         <div className="flex h-[6rem] justify-between gap-[1.6rem] pt-[3.2rem]">
           <Button
             type="button"
-            variant="filled"
+            variant={isBackDisabled ? 'filled' : 'outline'}
             color="primary"
             size="md"
             onClick={onBack}
             rounded="md"
-            disabled={true}
+            disabled={isBackDisabled}
           >
             Back
           </Button>
