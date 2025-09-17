@@ -62,7 +62,7 @@ export function SelectRoleModal({
             <h1 className="inter-head3 mb-[0.4rem] font-bold text-pink-500">
               {t('welcomeTitle')}
             </h1>
-            <p className="inter-body3 font-medium text-gray-800">
+            <p className="inter-body3 whitespace-pre-line font-medium text-gray-800">
               {t('description')}
             </p>
           </header>

@@ -28,7 +28,7 @@
   "SelectRoleModal": {
     "title": "Choose Your Role",
     "welcomeTitle": "Welcome to Lococo!",
-    "description": "Select your role to sign in. You won't be able to change this later.",
+    "description": "Select your role to sign in.\nYou won't be able to change this later.",
     "roles": {
       "creator": "Creator",
       "brand": "Brand",
