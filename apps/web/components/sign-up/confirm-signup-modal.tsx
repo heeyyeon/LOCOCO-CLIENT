@@ -19,7 +19,7 @@ export function ConfirmSignupModal({
   onOpenChange,
   onConfirm,
 }: ConfirmSignupModalProps) {
-  const confirmSignupModal = useTranslations('ConfirmSignupModal');
+  const t = useTranslations('confirmSignupModal');
 
   const handleConfirmModal = () => {
     onConfirm();
@@ -32,27 +32,19 @@ export function ConfirmSignupModal({
         className="w-full max-w-[55rem] overflow-hidden rounded-[3.2rem] p-0"
         showCloseButton={false}
       >
-        <DialogTitle className="sr-only">
-          {confirmSignupModal('title')}
-        </DialogTitle>
+        <DialogTitle className="sr-only">{t('title')}</DialogTitle>
 
-        <ModalHeader text={confirmSignupModal('title')} />
+        <ModalHeader text={t('title')} />
 
         <section className="bg-white px-[4rem] py-[7rem]">
           <div className="text-center">
-            <p
-              className="inter-body3 font-medium text-gray-800"
-              dangerouslySetInnerHTML={{
-                __html: confirmSignupModal('message'),
-              }}
-            />
+            <p className="body3 whitespace-pre-line font-medium text-gray-800">
+              {t('message')}
+            </p>
           </div>
         </section>
 
-        <ModalButton
-          text={confirmSignupModal('confirmButton')}
-          onClick={handleConfirmModal}
-        />
+        <ModalButton text={t('confirmButton')} onClick={handleConfirmModal} />
       </DialogContent>
     </Dialog>
   );

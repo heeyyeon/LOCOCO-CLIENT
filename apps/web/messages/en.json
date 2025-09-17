@@ -25,9 +25,9 @@
     "login": "Log in",
     "signUp": "Sign up"
   },
-  "ConfirmSignupModal": {
+  "confirmSignupModal": {
     "title": "Successfully Submitted!",
-    "message": "Your application was successfully submitted.<br/>We'll email you the result within 24 hours.",
+    "message": "Your application was successfully submitted.\nWe'll email you the result within 24 hours.",
     "confirmButton": "Okay"
   },
   "userInductionModal": {
