@@ -1,6 +1,7 @@
 import { Tab, TabContainer } from '@lococo/design-system/tab';
 import { SvgAvatarCircle } from '@lococo/icons';
 
+// TODO 대체 예정 레이아웃 용도
 export default function SideBar() {
   return (
     <div className="mr-[2.4rem] mt-[1.6rem] flex w-[16.8rem] flex-col gap-[1.6rem]">

@@ -1,13 +1,18 @@
 import React from 'react';
 
+import { getTranslations } from 'next-intl/server';
+
 import Card from 'components/card/Card';
 import { getChipVariantByDate } from 'components/card/utils/getChipVariantByDate';
 import { campaignDummyData } from 'mocks/campaignData';
 
-export default function BrandCampaign() {
+export default async function BrandCampaign() {
+  const t = await getTranslations('brandMyPage');
   return (
     <main>
-      <h3>My Campaign</h3>
+      <h3 className="title1 my-[1.6rem] font-[700] text-gray-800">
+        {t('myCampaign')}
+      </h3>
       <section className="grid grid-cols-3 gap-x-[4rem] gap-y-[3.2rem]">
         {campaignDummyData.map((campaign) => (
           <Card

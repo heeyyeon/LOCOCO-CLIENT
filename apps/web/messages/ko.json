@@ -15,5 +15,13 @@
   "main": {
     "kBeautyCampaigns": "",
     "openingSoon": ""
+  },
+  "brandMyPageSideBar": {
+    "myCampaign": "나의 캠페인",
+    "editProfile": "프로필 편집",
+    "makeNewCampaign": "새 캠페인 만들기",
+    "checkApplicants": "지원자 확인",
+    "checkContents": "컨텐츠 확인",
+    "dashboard": "대시보드"
   }
 }
