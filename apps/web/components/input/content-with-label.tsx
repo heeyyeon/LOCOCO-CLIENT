@@ -24,7 +24,7 @@ export default function ContentWithLabel({
       {...props}
     >
       <label
-        className={cn('jp-title2 font-bold text-gray-800', labelClassName)}
+        className={cn('title2 font-bold text-gray-800', labelClassName)}
         htmlFor={htmlFor}
       >
         {required && <span className="text-pink-500">*</span>}

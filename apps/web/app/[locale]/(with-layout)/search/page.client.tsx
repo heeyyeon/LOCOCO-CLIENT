@@ -44,7 +44,7 @@ export default function SearchPageClient({
       />
       {validatedParams.keyword && (
         <div className="mx-auto w-[1366px] px-[11.9rem] py-[6rem]">
-          <p className="jp-head2 text-gray-800">
+          <p className="head2 text-gray-800">
             「
             <span className="inline-block max-w-[80rem] truncate align-bottom">
               {validatedParams.keyword}

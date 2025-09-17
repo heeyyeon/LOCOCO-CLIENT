@@ -8,7 +8,7 @@ export default function LoginButton() {
       <span className="absolute left-[2rem] flex items-center">
         <SvgGoogle size={20} />
       </span>
-      <span className="inter-body1 flex w-full justify-center pl-[2rem] font-bold text-[#1F1F1F]">
+      <span className="body1 flex w-full justify-center pl-[2rem] font-bold text-[#1F1F1F]">
         Continue with Google
       </span>
     </button>

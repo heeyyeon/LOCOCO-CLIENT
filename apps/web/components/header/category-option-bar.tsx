@@ -37,7 +37,7 @@ export function CategoryOptionBar({
                 <Link
                   href={getUrl('', selectedCategoryKey, option, 'PRODUCT')}
                   className={cn(
-                    'jp-body2 cursor-pointer whitespace-nowrap px-[2.4rem] py-[1rem] hover:text-pink-500',
+                    'body2 cursor-pointer whitespace-nowrap px-[2.4rem] py-[1rem] hover:text-pink-500',
                     isActive ? 'font-bold text-pink-500' : 'text-gray-600'
                   )}
                   onClick={() => handleSelectOption(option)}

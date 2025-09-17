@@ -9,6 +9,7 @@ export { SvgArrowRight } from './ArrowRight';
 export { SvgArrowUp } from './ArrowUp';
 export { SvgBad } from './Bad';
 export { SvgCheck } from './Check';
+export { SvgCheckBg } from './CheckBg';
 export { SvgCheckNonBg } from './CheckNonBg';
 export { SvgClose } from './Close';
 export { SvgDelete } from './Delete';

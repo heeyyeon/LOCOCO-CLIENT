@@ -124,261 +124,104 @@
 }
 
 @layer utilities {
-  /* 커스텀 유틸리티 클래스 */
-  .jp-head1 {
-    font-family: var(--font-noto-sans-jp);
-    font-size: var(--text-jp-head1);
-    line-height: 140%;
+  html[lang='ko'] {
+    --font-primary: var(--font-noto-sans-kr);
+    --text-head1: var(--text-noto-sans-kr-head1);
+    --text-head2: var(--text-noto-sans-kr-head2);
+    --text-head3: var(--text-noto-sans-kr-head3);
+    --text-title1: var(--text-noto-sans-kr-title1);
+    --text-title2: var(--text-noto-sans-kr-title2);
+    --text-title3: var(--text-noto-sans-kr-title3);
+    --text-body1: var(--text-noto-sans-kr-body1);
+    --text-body2: var(--text-noto-sans-kr-body2);
+    --text-body3: var(--text-noto-sans-kr-body3);
+    --text-body4: var(--text-noto-sans-kr-body4);
+    --text-caption: var(--text-noto-sans-kr-caption);
   }
-  .jp-head2 {
-    font-family: var(--font-noto-sans-jp);
-    font-size: var(--text-jp-head2);
-    line-height: 140%;
+
+  html:not([lang='ko']) {
+    --font-primary: var(--font-inter);
+    --text-head1: var(--text-inter-head1);
+    --text-head2: var(--text-inter-head2);
+    --text-head3: var(--text-inter-head3);
+    --text-title1: var(--text-inter-title1);
+    --text-title2: var(--text-inter-title2);
+    --text-title3: var(--text-inter-title3);
+    --text-body1: var(--text-inter-body1);
+    --text-body2: var(--text-inter-body2);
+    --text-body3: var(--text-inter-body3);
+    --text-body4: var(--text-inter-body4);
+    --text-caption: var(--text-inter-caption);
   }
-  .jp-head3 {
-    font-family: var(--font-noto-sans-jp);
-    font-size: var(--text-jp-head3);
+
+  /* 타이포그래피 클래스 - 한 번만 정의 */
+  .head1 {
+    font-family: var(--font-primary);
+    font-size: var(--text-head1);
+    line-height: 150%;
+  }
+  .head2 {
+    font-family: var(--font-primary);
+    font-size: var(--text-head2);
+    line-height: 150%;
+  }
+  .head3 {
+    font-family: var(--font-primary);
+    font-size: var(--text-head3);
     line-height: 150%;
   }
 
-  /* JP Title */
-  .jp-title1 {
-    font-family: var(--font-noto-sans-jp);
-    font-size: var(--text-jp-title1);
+  .title1 {
+    font-family: var(--font-primary);
+    font-size: var(--text-title1);
     line-height: 150%;
   }
-  .jp-title2 {
-    font-family: var(--font-noto-sans-jp);
-    font-size: var(--text-jp-title2);
+  .title2 {
+    font-family: var(--font-primary);
+    font-size: var(--text-title2);
     line-height: 150%;
   }
-  .jp-title3 {
-    font-family: var(--font-noto-sans-jp);
-    font-size: var(--text-jp-title3);
-    line-height: 150%;
-  }
-
-  /* JP Body */
-  .jp-body1 {
-    font-family: var(--font-noto-sans-jp);
-    font-size: var(--text-jp-body1);
-    line-height: 160%;
-  }
-  .jp-body2 {
-    font-family: var(--font-noto-sans-jp);
-    font-size: var(--text-jp-body2);
-    line-height: 160%;
-  }
-
-  /* JP Caption */
-  .jp-caption1 {
-    font-family: var(--font-noto-sans-jp);
-    font-size: var(--text-jp-caption1);
-    line-height: 160%;
-  }
-  .jp-caption2 {
-    font-family: var(--font-noto-sans-jp);
-    font-size: var(--text-jp-caption2);
-    line-height: 160%;
-  }
-  .jp-caption3 {
-    font-family: var(--font-noto-sans-jp);
-    font-size: var(--text-jp-caption3);
-    line-height: 160%;
-  }
-
-  /* EN Heading */
-  .en-head1 {
-    font-family: var(--font-pretendard);
-    font-size: var(--text-en-head1);
-    line-height: 150%;
-  }
-  .en-head2 {
-    font-family: var(--font-pretendard);
-    font-size: var(--text-en-head2);
+  .title3 {
+    font-family: var(--font-primary);
+    font-size: var(--text-title3);
     line-height: 150%;
   }
 
-  /* EN Title */
-  .en-title1 {
-    font-family: var(--font-pretendard);
-    font-size: var(--text-en-title1);
+  .body1 {
+    font-family: var(--font-primary);
+    font-size: var(--text-body1);
     line-height: 150%;
   }
-  .en-title2 {
-    font-family: var(--font-pretendard);
-    font-size: var(--text-en-title2);
+  .body2 {
+    font-family: var(--font-primary);
+    font-size: var(--text-body2);
     line-height: 150%;
   }
-  .en-title3 {
-    font-family: var(--font-pretendard);
-    font-size: var(--text-en-title3);
+  .body3 {
+    font-family: var(--font-primary);
+    font-size: var(--text-body3);
     line-height: 150%;
   }
-
-  /* EN Body */
-  .en-body1 {
-    font-family: var(--font-pretendard);
-    font-size: var(--text-en-body1);
-    line-height: 100%;
-  }
-  .en-body2 {
-    font-family: var(--font-pretendard);
-    font-size: var(--text-en-body2);
-    line-height: 100%;
-  }
-
-  /* EN Caption */
-  .en-caption1 {
-    font-family: var(--font-pretendard);
-    font-size: var(--text-en-caption1);
+  .body4 {
+    font-family: var(--font-primary);
+    font-size: var(--text-body4);
     line-height: 150%;
   }
 
-  /*Inter head*/
-  .inter-head1 {
-    font-family: var(--font-inter);
-    font-size: var(--text-inter-head1);
-    line-height: 140%;
-  }
-  .inter-head2 {
-    font-family: var(--font-inter);
-    font-size: var(--text-inter-head2);
-    line-height: 140%;
-  }
-  .inter-head3 {
-    font-family: var(--font-inter);
-    font-size: var(--text-inter-head3);
-    line-height: 140%;
-  }
-
-  /*Inter title*/
-  .inter-title1 {
-    font-family: var(--font-inter);
-    font-size: var(--text-inter-title1);
-    line-height: 150%;
-  }
-  .inter-title2 {
-    font-family: var(--font-inter);
-    font-size: var(--text-inter-title2);
-    line-height: 150%;
-  }
-  .inter-title3 {
-    font-family: var(--font-inter);
-    font-size: var(--text-inter-title3);
-    line-height: 150%;
-  }
-
-  /*Inter body*/
-  .inter-body1 {
-    font-family: var(--font-inter);
-    font-size: var(--text-inter-body1);
-    line-height: 150%;
-  }
-  .inter-body2 {
-    font-family: var(--font-inter);
-    font-size: var(--text-inter-body2);
-    line-height: 150%;
-  }
-  .inter-body3 {
-    font-family: var(--font-inter);
-    font-size: var(--text-inter-body3);
-    line-height: 150%;
-  }
-  .inter-body4 {
-    font-family: var(--font-inter);
-    font-size: var(--text-inter-body4);
-    line-height: 150%;
-  }
-
-  /*Inter caption*/
-  .inter-caption1 {
-    font-family: var(--font-inter);
-    font-size: var(--text-inter-caption);
-    line-height: 160%;
-  }
-  .inter-caption2 {
-    font-family: var(--font-inter);
-    font-size: var(--text-inter-caption);
-    line-height: 160%;
-  }
-  .inter-caption3 {
-    font-family: var(--font-inter);
-    font-size: var(--text-inter-caption);
+  .caption,
+  .caption1,
+  .caption2,
+  .caption3 {
+    font-family: var(--font-primary);
+    font-size: var(--text-caption);
     line-height: 160%;
   }
 
-  /*Noto Sans KR head*/
-  .kr-head1 {
-    font-family: var(--font-noto-sans-kr);
-    font-size: var(--text-noto-sans-kr-head1);
-    line-height: 150%;
-  }
-  .kr-head2 {
-    font-family: var(--font-noto-sans-kr);
-    font-size: var(--text-noto-sans-kr-head2);
-    line-height: 150%;
-  }
-  .kr-head3 {
-    font-family: var(--font-noto-sans-kr);
-    font-size: var(--text-noto-sans-kr-head3);
-    line-height: 150%;
-  }
-
-  /*Noto Sans KR title*/
-  .kr-title1 {
-    font-family: var(--font-noto-sans-kr);
-    font-size: var(--text-noto-sans-kr-title1);
-    line-height: 150%;
-  }
-  .kr-title2 {
-    font-family: var(--font-noto-sans-kr);
-    font-size: var(--text-noto-sans-kr-title2);
-    line-height: 150%;
-  }
-  .kr-title3 {
-    font-family: var(--font-noto-sans-kr);
-    font-size: var(--text-noto-sans-kr-title3);
-    line-height: 150%;
-  }
-
-  /*Noto Sans KR body*/
-  .kr-body1 {
-    font-family: var(--font-noto-sans-kr);
-    font-size: var(--text-noto-sans-kr-body1);
-    line-height: 150%;
-  }
-  .kr-body2 {
-    font-family: var(--font-noto-sans-kr);
-    font-size: var(--text-noto-sans-kr-body2);
-    line-height: 150%;
-  }
-  .kr-body3 {
-    font-family: var(--font-noto-sans-kr);
-    font-size: var(--text-noto-sans-kr-body3);
-    line-height: 150%;
-  }
-  .kr-body4 {
-    font-family: var(--font-noto-sans-kr);
-    font-size: var(--text-noto-sans-kr-body4);
-    line-height: 150%;
-  }
-
-  /*Noto Sans KR caption*/
-  .kr-caption1 {
-    font-family: var(--font-noto-sans-kr);
-    font-size: var(--text-noto-sans-kr-caption);
-    line-height: 160%;
-  }
-  .kr-caption2 {
-    font-family: var(--font-noto-sans-kr);
-    font-size: var(--text-noto-sans-kr-caption);
-    line-height: 160%;
-  }
-  .kr-caption3 {
-    font-family: var(--font-noto-sans-kr);
-    font-size: var(--text-noto-sans-kr-caption);
-    line-height: 160%;
+  /* line-height 조정이 필요한 경우 */
+  html:not([lang='ko']) .head1,
+  html:not([lang='ko']) .head2,
+  html:not([lang='ko']) .head3 {
+    line-height: 140%; /* Inter는 head에서 140% */
   }
 
   .shadow-button {

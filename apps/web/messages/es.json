@@ -1,22 +1,19 @@
 {
+  "aabc": "aabc",
+  "abc": "abc",
   "home": {
-    "title": "Hola mundo!"
+    "description": "Información del producto",
+    "homeSection": {
+      "title": ""
+    },
+    "ingredients": "Ingredientes",
+    "productDetail22": "Detalles del producto"
   },
-  "gnb": {
-    "myPage": "Mi Página",
-    "logOut": "Cerrar Sesión",
-    "login": "Iniciar Sesión",
-    "signUp": "Registrarse",
-    "campaigns": "Campañas",
-    "howItWorks": "Cómo Funciona"
+  "languageSelectTrigger": {
+    "language": ""
   },
-  "UserInductionModal": {
-    "title": "Sugerencia de Creador",
-    "message": [
-      "Las aplicaciones de campaña solo están disponibles para miembros creadores.",
-      "¿Te gustaría registrarte como creador?"
-    ],
-    "cancelButton": "No",
-    "confirmButton": "Sí"
+  "main": {
+    "kBeautyCampaigns": "",
+    "openingSoon": ""
   }
 }

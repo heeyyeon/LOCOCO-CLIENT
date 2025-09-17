@@ -9,7 +9,9 @@
     "start": "next start",
     "prettier": "prettier --write .",
     "lint": "next lint --max-warnings 0",
-    "check-types": "tsc --noEmit"
+    "check-types": "tsc --noEmit",
+    "translate:download": "node --env-file .env.local translate/download.js",
+    "translate:upload": "node --env-file .env.local translate/upload.js"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.1.1",
@@ -21,12 +23,15 @@
     "dayjs": "^1.11.13",
     "design-system:build": "link:@lococo/design-system:build",
     "es-toolkit": "^1.39.6",
+    "google-auth-library": "^10.3.0",
+    "google-spreadsheet": "^5.0.2",
     "install": "^0.13.0",
     "next": "^15.3.5",
     "next-intl": "^4.3.5",
     "overlay-kit": "^1.8.4",
     "postcss": "^8.5.6",
     "react": "^19.1.0",
+    "react-daum-postcode": "^3.2.0",
     "react-dom": "^19.1.0",
     "react-hook-form": "^7.60.0",
     "swiper": "^11.2.10",

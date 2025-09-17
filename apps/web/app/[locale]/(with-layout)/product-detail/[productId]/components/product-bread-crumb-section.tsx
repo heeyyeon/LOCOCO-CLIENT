@@ -32,7 +32,7 @@ export default function ProductBreadCrumbSection({
     <>
       {middleCategory && (
         <Breadcrumb className="flex h-[5.2rem] min-w-[1366px] items-center self-stretch bg-gray-100 opacity-80">
-          <BreadcrumbList className="jp-body2 mx-auto w-[1366px] px-[11.9rem] text-gray-600">
+          <BreadcrumbList className="body2 mx-auto w-[1366px] px-[11.9rem] text-gray-600">
             <BreadcrumbItem className="flex aspect-square h-[4.4rem] w-[4.4rem] items-center justify-center p-[1rem]">
               <SvgHomeFill />
             </BreadcrumbItem>
