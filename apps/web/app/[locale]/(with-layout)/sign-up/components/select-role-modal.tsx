@@ -1,4 +1,5 @@
 import { useTranslations } from 'next-intl';
+import { useRouter } from 'next/navigation';
 
 import { Button } from '@lococo/design-system/button';
 import {
@@ -22,6 +23,7 @@ export function SelectRoleModal({
   onOpenChange,
   onSelectRole,
 }: SelectRoleModalProps) {
+  const router = useRouter();
   const t = useTranslations('selectRoleModal');
 
   const roleTextMap: Record<Role, string> = {
@@ -33,6 +35,8 @@ export function SelectRoleModal({
   const handleSelectRole = (role: Role) => {
     onSelectRole(role);
     onOpenChange(false);
+
+    router.push(`/login-google?mode=signup&role=${role}`);
   };
 
   return (
