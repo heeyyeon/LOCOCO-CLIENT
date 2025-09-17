@@ -2,15 +2,15 @@ import React, { useState } from 'react';
 
 import { useTranslations } from 'next-intl';
 
-import { DragDropArea } from 'components/drag-drop/DragDropArea';
+import DragDropArea from 'components/drag-drop/DargDropArea';
 
 import { ErrorNotice } from '@lococo/design-system/error-notice';
 
-import { ContentSubmissionsFormData } from '../../hooks/useContentSubmissions';
+import { ContentSubmissionsFormData } from '../../hooks/use-content-submissions';
 
 interface CampaignProductMediaInputProps {
   formData: ContentSubmissionsFormData;
-  errors: { campaignProductMedia: string | undefined };
+  errors: string | undefined;
   updateCampaignProductMedia: (campaignProductMedia: File[]) => void;
 }
 
@@ -83,9 +83,7 @@ export default function CampaignProductMediaInput({
         maxFiles={12}
         inputFileId="campaign-product-media-upload-area"
       />
-      {errors.campaignProductMedia && (
-        <ErrorNotice message={errors.campaignProductMedia} />
-      )}
+      {errors && <ErrorNotice message={errors} />}
     </section>
   );
 }

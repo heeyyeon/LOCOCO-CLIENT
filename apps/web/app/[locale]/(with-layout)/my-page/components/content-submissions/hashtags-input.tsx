@@ -3,11 +3,11 @@ import { useTranslations } from 'next-intl';
 import { ErrorNotice } from '@lococo/design-system/error-notice';
 import { Input } from '@lococo/design-system/input-field';
 
-import { ContentSubmissionsFormData } from '../../hooks/useContentSubmissions';
+import { ContentSubmissionsFormData } from '../../hooks/use-content-submissions';
 
 interface HashtagsInputProps {
   formData: ContentSubmissionsFormData;
-  errors: { captionAndHashtags: string | undefined };
+  errors: string | undefined;
   updateCaptionAndHashtags: (captionAndHashtags: string) => void;
 }
 
@@ -28,9 +28,7 @@ export default function HashtagsInput({
         onChange={(e) => updateCaptionAndHashtags(e.target.value)}
         className="w-full"
       />
-      {errors.captionAndHashtags && (
-        <ErrorNotice message={errors.captionAndHashtags} />
-      )}
+      {errors && <ErrorNotice message={errors} />}
     </section>
   );
 }

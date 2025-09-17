@@ -5,12 +5,12 @@ import React, { useState } from 'react';
 import { Button } from '@lococo/design-system/button';
 
 import { SaveFormModal } from '../../@modal/(.)save-form-modal/SaveFormModal';
-import { useProfile } from '../../hooks/useProfile';
-import BasicInformation from './BasicInformation';
-import HomeAddress from './HomeAddress';
-import PersonalInformation from './PersonalInformation';
-import ProfilePhoto from './ProfilePhoto';
-import Skin from './Skin';
+import { useProfile } from '../../hooks/use-profile';
+import BasicInformation from './basic-information';
+import HomeAddress from './home-address';
+import PersonalInformation from './personal-information';
+import ProfilePhoto from './profile-photo';
+import Skin from './skin';
 
 export default function EditProfile() {
   const {
@@ -41,9 +41,9 @@ export default function EditProfile() {
     checkIdAvailability,
     trigger,
   } = useProfile();
-  const [openSaveFormModal, setOpenSaveFormModal] = useState(false);
+  const [isSaveFormModalOpen, setIsSaveFormModalOpen] = useState(false);
   const handleSubmitForm = async () => {
-    setOpenSaveFormModal(true);
+    setIsSaveFormModalOpen(true);
     const isValid = await trigger();
     console.log(formData);
     if (isFormValid && isValid) {
@@ -55,8 +55,8 @@ export default function EditProfile() {
   return (
     <>
       <SaveFormModal
-        open={openSaveFormModal}
-        onOpenChange={setOpenSaveFormModal}
+        open={isSaveFormModalOpen}
+        onOpenChange={setIsSaveFormModalOpen}
       />
       <div className="flex w-full flex-col items-center gap-[3.2rem] bg-gray-100 px-[9.4rem] py-[6.4rem]">
         <div className="flex w-[84rem] items-center justify-between gap-[4.8rem] border border-gray-400 bg-white p-[4.8rem]">

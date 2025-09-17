@@ -4,8 +4,7 @@ import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 
 import { Button } from '@lococo/design-system/button';
-import { SvgAvatar } from '@lococo/icons';
-import { SvgCamera } from '@lococo/icons';
+import { SvgAvatar, SvgCamera } from '@lococo/icons';
 
 import { ALLOWED_IMAGE_TYPES } from '../../../../../../hooks/useFileUploader';
 

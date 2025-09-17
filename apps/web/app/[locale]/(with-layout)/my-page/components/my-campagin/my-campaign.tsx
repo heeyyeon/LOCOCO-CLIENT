@@ -6,8 +6,8 @@ import { Button } from '@lococo/design-system/button';
 import { cn } from '@lococo/utils';
 
 import { AddressModal } from '../../@modal/(.)address-modal/AddressModal';
+import Campaign, { CHIP_COLOR } from '../../components/campagin/campaign';
 import { mockupCampaign } from '../../constant/mockup';
-import Campaign, { CHIP_COLOR } from '../campagin/Campaign';
 
 type CampaignConfig = {
   chipColor: string;

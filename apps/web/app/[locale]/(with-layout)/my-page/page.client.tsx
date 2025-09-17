@@ -5,9 +5,9 @@ import React, { useState } from 'react';
 import { useTranslations } from 'next-intl';
 
 import SideBar from '../../../../components/side-bar/side-bar';
-import ConnectSNS from './components/connect-sns/ConnectSns';
-import ContentSubmissions from './components/content-submissions/ContentSubmissions';
-import EditProfile from './components/edit-profile/EditProfile';
+import ConnectSNS from './components/connect-sns/connect-sns';
+import ContentSubmissions from './components/content-submissions/content-submissions';
+import EditProfile from './components/edit-profile/edit-profile';
 import MyCampaign from './components/my-campagin/my-campaign';
 import { mockup } from './constant/mockup';
 

@@ -2,11 +2,11 @@ import { useTranslations } from 'next-intl';
 
 import { Select } from '@lococo/design-system/select';
 
-import { ContentSubmissionsFormData } from '../../hooks/useContentSubmissions';
+import { ContentSubmissionsFormData } from '../../hooks/use-content-submissions';
 
 interface CampaignSelectProps {
   formData: ContentSubmissionsFormData;
-  errors: { campaign: string };
+  errors: string | undefined;
   updateCampaign: (campaign: string) => void;
 }
 
@@ -24,8 +24,8 @@ export default function CampaignSelect({
         onValueChange={(value) => updateCampaign(value)}
         placeholder={t('selectCampaign')}
         value={formData.campaign}
-        isError={!!errors.campaign}
-        errorText={errors.campaign}
+        isError={!!errors}
+        errorText={errors}
       />
     </section>
   );

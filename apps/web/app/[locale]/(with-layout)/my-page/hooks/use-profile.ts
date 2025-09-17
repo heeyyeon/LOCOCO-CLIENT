@@ -9,7 +9,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 
 import { createSingleImageValidator } from '../../../../../hooks/useFileUploader';
-import { PROFILE_TEXT_ERROR_MESSAGE_KEYS } from '../constant/editProfile';
+import { PROFILE_TEXT_ERROR_MESSAGE_KEYS } from '../constant/edit-profile';
 
 export type ProfileFormData = {
   id: string;
@@ -220,8 +220,9 @@ export const useProfile = (userId?: number, onSuccess?: () => void) => {
   const onSubmit = async (formData: ProfileFormData) => {
     try {
       //TODO: 1. 프로필 이미지 presigned URL 요청 및 업로드
-      let profileImageUrl: string = '';
+      const profileImageUrl: string = '';
       if (formData.profileImage) {
+        // TODO: Implement image upload logic
       }
 
       //TODO: 2. 프로필 수정 요청

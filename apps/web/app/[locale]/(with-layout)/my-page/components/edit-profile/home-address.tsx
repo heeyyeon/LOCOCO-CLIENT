@@ -4,12 +4,19 @@ import { ErrorNotice } from '@lococo/design-system/error-notice';
 import { Input } from '@lococo/design-system/input-field';
 import { Select } from '@lococo/design-system/select';
 
-import type { ProfileFormData } from '../../hooks/useProfile';
+import type { ProfileFormData } from '../../hooks/use-profile';
 import InputWrapper from '../input-wrapper';
 
 interface HomeAddressProps {
   formData: ProfileFormData;
-  errors: any;
+  errors: {
+    country?: string;
+    state?: string;
+    city?: string;
+    addressLine1?: string;
+    addressLine2?: string;
+    zip?: string;
+  };
   updateCountry: (value: string) => void;
   updateState: (value: string) => void;
   updateCity: (value: string) => void;

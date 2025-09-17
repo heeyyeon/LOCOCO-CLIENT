@@ -23,7 +23,7 @@ interface DragDropAreaProps {
   inputFileId?: string;
 }
 
-export const DragDropArea = ({
+export default function DragDropArea({
   imageFiles,
   videoFiles,
   handleImageFilesChange,
@@ -31,7 +31,7 @@ export const DragDropArea = ({
   maxFiles = 10,
   className,
   inputFileId = 'drag-drop-file-input',
-}: DragDropAreaProps) => {
+}: DragDropAreaProps) {
   const t = useTranslations('fileUploader');
   const [isDragOver, setIsDragOver] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
@@ -247,4 +247,4 @@ export const DragDropArea = ({
       {errorMessage && <ErrorNotice message={errorMessage} />}
     </>
   );
-};
+}

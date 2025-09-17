@@ -79,9 +79,9 @@ export const useAddress = (userId?: number, onSuccess?: () => void) => {
     setValue('zip', zip, { shouldValidate: true });
   };
 
-  const onSubmit = async (_formData: AddressFormData) => {
+  const onSubmit = async (formData: AddressFormData) => {
     //TODO: 주소 API 호출
-    if (userId && onSuccess) {
+    if (userId && onSuccess && formData) {
       onSuccess();
     }
   };

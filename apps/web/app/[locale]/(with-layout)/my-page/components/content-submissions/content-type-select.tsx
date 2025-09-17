@@ -3,15 +3,14 @@ import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 
 import { ErrorNotice } from '@lococo/design-system/error-notice';
-import { SvgInstagram } from '@lococo/icons';
-import { SvgTiktok } from '@lococo/icons';
+import { SvgInstagram, SvgTiktok } from '@lococo/icons';
 import { cn } from '@lococo/utils';
 
-import { ContentSubmissionsFormData } from '../../hooks/useContentSubmissions';
+import { ContentSubmissionsFormData } from '../../hooks/use-content-submissions';
 
 interface ContentTypeSelectProps {
   formData: ContentSubmissionsFormData;
-  errors: { contentType: string | undefined };
+  errors: string | undefined;
   updateContentType: (contentType: string) => void;
 }
 
@@ -66,7 +65,7 @@ export default function ContentTypeSelect({
           </button>
         ))}
       </div>
-      {errors.contentType && <ErrorNotice message={errors.contentType} />}
+      {errors && <ErrorNotice message={errors} />}
     </section>
   );
 }
