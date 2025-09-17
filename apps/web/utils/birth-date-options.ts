@@ -21,10 +21,7 @@ export const birthDateOptions = () => {
 
   const years = Array.from({ length: 100 }, (_, i) => {
     const year = currentYear - i;
-    return {
-      label: `${dayjs().year(year).format('YYYY')}`,
-      value: `${year}`,
-    };
+    return { label: `${year}`, value: `${year}` };
   });
 
   return { months, days, years };
