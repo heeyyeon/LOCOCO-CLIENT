@@ -7,6 +7,7 @@ export { SvgArrowLeft } from './ArrowLeft';
 export { SvgArrowOutward } from './ArrowOutward';
 export { SvgArrowRight } from './ArrowRight';
 export { SvgArrowUp } from './ArrowUp';
+export { SvgAvatarCircle } from './AvatarCircle';
 export { SvgBad } from './Bad';
 export { SvgCheck } from './Check';
 export { SvgCheckBg } from './CheckBg';
