@@ -267,7 +267,11 @@ export const useProfile = (userId?: number, onSuccess?: () => void) => {
 
   const compatibleErrors = {
     id: errors.id?.message,
-    birth: errors.birth?.message,
+    birth: {
+      year: errors.birth?.year?.message,
+      month: errors.birth?.month?.message,
+      date: errors.birth?.date?.message,
+    },
     birthYear: errors.birth?.year?.message,
     birthMonth: errors.birth?.month?.message,
     birthDate: errors.birth?.date?.message,
@@ -275,7 +279,10 @@ export const useProfile = (userId?: number, onSuccess?: () => void) => {
     firstName: errors.firstName?.message,
     lastName: errors.lastName?.message,
     email: errors.email?.message,
-    phone: errors.phone?.message,
+    phone: {
+      countryCode: errors.phone?.countryCode?.message,
+      phoneNumber: errors.phone?.phoneNumber?.message,
+    },
     phoneCountryCode: errors.phone?.countryCode?.message,
     phoneNumber: errors.phone?.phoneNumber?.message,
     contentLanguage: errors.contentLanguage?.message,

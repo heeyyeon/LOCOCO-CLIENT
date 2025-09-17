@@ -42,7 +42,11 @@ export default function HomeAddress({
         <p className="title2 text-gray-800">{t('title')}</p>
         <p className="caption3 text-gray-500">{t('description')}</p>
       </div>
-      <InputWrapper label={t('country')} required>
+      <InputWrapper
+        label={t('country')}
+        required
+        notice={errors.country && <ErrorNotice message={errors.country} />}
+      >
         {
           //TODO: 국가 목록 추가
         }
@@ -51,8 +55,6 @@ export default function HomeAddress({
           onValueChange={(value) => updateCountry(value)}
           placeholder={t('country')}
           value={formData.country}
-          isError={errors.country}
-          errorText={errors.country}
         />
       </InputWrapper>
       <InputWrapper
