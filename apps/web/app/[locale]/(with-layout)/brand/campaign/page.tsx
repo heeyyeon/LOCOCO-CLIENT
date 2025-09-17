@@ -6,7 +6,7 @@ import { campaignDummyData } from 'mocks/campaignData';
 
 export default function BrandCampaign() {
   return (
-    <main className="min-w-[120rem]">
+    <main>
       <h3>My Campaign</h3>
       <section className="grid grid-cols-3 gap-x-[4rem] gap-y-[3.2rem]">
         {campaignDummyData.map((campaign) => (
@@ -25,9 +25,10 @@ export default function BrandCampaign() {
             currentApplicants={campaign.currentApplicants}
             productThumbnailSrc={campaign.productThumbnailSrc}
             campaignId={campaign.campaignId}
-            hoverOption="hover"
+            hoverOption="always"
+            className="w-[28.4rem]"
           />
-        ))}{' '}
+        ))}
       </section>
     </main>
   );
