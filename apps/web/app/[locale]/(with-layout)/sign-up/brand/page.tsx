@@ -14,8 +14,9 @@ import {
   SignupFormLayout,
   TextFormField,
 } from '../../../../../components/forms';
-import { ConfirmSignupModal } from '../../../../../components/sign-up/confirm-signup-modal';
 import { useAddressSearch } from '../../../../../hooks/useAddressSearch';
+// TODO: 브랜드용 가입 확인 모달로 수정 필요
+import { ConfirmSignupModal } from '../components/confirm-signup-modal';
 import { type BrandSignupForm, brandSignupSchema } from './hooks/signup';
 
 export default function BrandSignupPage() {

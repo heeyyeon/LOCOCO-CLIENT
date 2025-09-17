@@ -9,7 +9,7 @@ import {
   SignupFormLayout,
   SnsConnection,
 } from '../../../../../../components/forms';
-import { ConfirmSignupModal } from '../../../../../../components/sign-up/confirm-signup-modal';
+import { ConfirmSignupModal } from '../../components/confirm-signup-modal';
 
 export default function CreatorSnsLinksPage() {
   const router = useRouter();
