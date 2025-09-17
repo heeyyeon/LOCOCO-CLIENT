@@ -15,12 +15,13 @@ interface CardProps {
   chipVariant: 'expired' | 'active' | 'approved' | 'declined' | 'progress';
   brand: string;
   title: string;
-  label: string;
+  label?: string;
   maxApplicants: number;
   currentApplicants: number;
   productThumbnailSrc: string;
   campaignId: number;
   className?: string;
+  hoverOption?: 'hover' | 'always';
 }
 
 export default function Card({
@@ -34,12 +35,15 @@ export default function Card({
   campaignId,
   chipVariant,
   className,
+  hoverOption = 'hover',
 }: CardProps) {
   const card = useTranslations('card');
+
   return (
     <div
       className={cn(
-        'group relative h-[33.1rem] w-[36rem] overflow-hidden rounded-[2.4rem]',
+        'relative w-[36rem] overflow-hidden rounded-[2.4rem]',
+        hoverOption === 'hover' ? 'group h-[33.1rem]' : '',
         className
       )}
     >
@@ -54,24 +58,39 @@ export default function Card({
         chipVariant={chipVariant}
         className="absolute right-[1.6rem] top-[1.6rem]"
       />
-      <div className="absolute bottom-0 flex h-[11.5rem] w-full flex-col justify-between bg-white p-[1.6rem] transition-all duration-300 group-hover:h-[17.9rem]">
+      <div
+        className={cn(
+          'flex w-full flex-col bg-white p-[1.6rem]',
+          hoverOption === 'hover' &&
+            'absolute bottom-0 h-[11.5rem] transition-all duration-300 group-hover:h-[17.9rem]'
+        )}
+      >
         <div className="flex flex-col gap-[0.8rem]">
           <div>
             <p className="body4">{brand}</p>
             <p className="title3">{title}</p>
           </div>
-          <div className="flex items-center gap-[0.8rem]">
-            <InfoChip text={label} />
-            <InfoChip
-              icon={true}
-              text={`${currentApplicants}/${maxApplicants}`}
-            />
-          </div>
+          {label && (
+            <div className="flex items-center gap-[0.8rem]">
+              <InfoChip text={label} />
+              <InfoChip
+                icon={true}
+                text={`${currentApplicants}/${maxApplicants}`}
+              />
+            </div>
+          )}
         </div>
-        <div>
+
+        <div
+          className={cn(
+            'mt-[1.6rem]',
+            hoverOption === 'hover' &&
+              'opacity-0 transition-opacity duration-300 group-hover:opacity-100'
+          )}
+        >
           <Link
             href={`/campaign/${campaignId}`}
-            className="body2 flex h-[4.8rem] w-[32.8rem] items-center justify-center rounded-[3.2rem] bg-pink-100 font-[700] text-pink-500 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+            className="body2 flex h-[4.8rem] w-[32.8rem] items-center justify-center rounded-[3.2rem] bg-pink-100 font-[700] text-pink-500"
           >
             {card('goToApply')}
           </Link>
