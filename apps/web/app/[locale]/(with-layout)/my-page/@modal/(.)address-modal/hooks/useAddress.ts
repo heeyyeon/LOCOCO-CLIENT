@@ -19,7 +19,7 @@ export type AddressFormData = {
 };
 
 export const useAddress = (userId?: number, onSuccess?: () => void) => {
-  const t = useTranslations('myPage.editProfile');
+  const t = useTranslations('myPage.addressModal');
 
   const addressSchema = z.object({
     country: z.string().min(1, t(ADDRESS_TEXT_ERROR_MESSAGE_KEYS.COUNTRY)),

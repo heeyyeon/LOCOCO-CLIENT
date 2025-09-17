@@ -22,7 +22,7 @@ interface AddressModalProps {
 }
 
 export function AddressModal({ open, onOpenChange }: AddressModalProps) {
-  const t = useTranslations('addressModal');
+  const t = useTranslations('myPage.addressModal');
   const {
     formData,
     errors,

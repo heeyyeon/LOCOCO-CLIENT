@@ -77,11 +77,8 @@ export const useProfile = (userId?: number, onSuccess?: () => void) => {
     addressLine1: z
       .string()
       .min(1, t(PROFILE_TEXT_ERROR_MESSAGE_KEYS.ADDRESS_LINE_1)),
-    addressLine2: z
-      .string()
-      .min(1, t(PROFILE_TEXT_ERROR_MESSAGE_KEYS.ADDRESS_LINE_2))
-      .optional(),
-    zip: z.string().min(1, t(PROFILE_TEXT_ERROR_MESSAGE_KEYS.ZIP)).optional(),
+    addressLine2: z.string().optional(),
+    zip: z.string().optional(),
     profileImage: createSingleImageValidator(
       t(PROFILE_TEXT_ERROR_MESSAGE_KEYS.PROFILE_IMAGE)
     ).optional(),

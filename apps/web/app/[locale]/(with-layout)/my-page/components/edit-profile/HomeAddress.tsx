@@ -1,10 +1,22 @@
 import { useTranslations } from 'next-intl';
 
+import { ErrorNotice } from '@lococo/design-system/error-notice';
 import { Input } from '@lococo/design-system/input-field';
 import { Select } from '@lococo/design-system/select';
 
 import type { ProfileFormData } from '../../hooks/useProfile';
 import InputWrapper from '../input-wrapper';
+
+interface HomeAddressProps {
+  formData: ProfileFormData;
+  errors: any;
+  updateCountry: (value: string) => void;
+  updateState: (value: string) => void;
+  updateCity: (value: string) => void;
+  updateAddressLine1: (value: string) => void;
+  updateAddressLine2: (value: string) => void;
+  updateZip: (value: string) => void;
+}
 
 export default function HomeAddress({
   formData,
@@ -15,16 +27,7 @@ export default function HomeAddress({
   updateAddressLine1,
   updateAddressLine2,
   updateZip,
-}: {
-  formData: ProfileFormData;
-  errors: any;
-  updateCountry: (value: string) => void;
-  updateState: (value: string) => void;
-  updateCity: (value: string) => void;
-  updateAddressLine1: (value: string) => void;
-  updateAddressLine2: (value: string) => void;
-  updateZip: (value: string) => void;
-}) {
+}: HomeAddressProps) {
   const t = useTranslations('myPage.editProfile.homeAddress');
   return (
     <section className="flex w-full flex-col gap-[1.6rem]">
@@ -33,54 +36,69 @@ export default function HomeAddress({
         <p className="caption3 text-gray-500">{t('description')}</p>
       </div>
       <InputWrapper label={t('country')} required>
+        {
+          //TODO: 국가 목록 추가
+        }
         <Select
           options={[{ label: 'United States' }, { label: 'Canada' }]}
           onValueChange={(value) => updateCountry(value)}
           placeholder={t('country')}
           value={formData.country}
+          isError={errors.country}
+          errorText={errors.country}
         />
-        {errors.country && (
-          <p className="text-sm text-red-500">{errors.country}</p>
-        )}
       </InputWrapper>
-      <InputWrapper label={t('state')} required>
+      <InputWrapper
+        label={t('state')}
+        required
+        notice={errors.state && <ErrorNotice message={errors.state} />}
+      >
         <Input
           value={formData.state}
           onChange={(e) => updateState(e.target.value)}
         />
-        {errors.state && <p className="text-sm text-red-500">{errors.state}</p>}
       </InputWrapper>
-      <InputWrapper label={t('city')} required>
+      <InputWrapper
+        label={t('city')}
+        required
+        notice={errors.city && <ErrorNotice message={errors.city} />}
+      >
         <Input
           value={formData.city}
           onChange={(e) => updateCity(e.target.value)}
         />
-        {errors.city && <p className="text-sm text-red-500">{errors.city}</p>}
       </InputWrapper>
-      <InputWrapper label={t('addressLine1')} required>
+      <InputWrapper
+        label={t('addressLine1')}
+        required
+        notice={
+          errors.addressLine1 && <ErrorNotice message={errors.addressLine1} />
+        }
+      >
         <Input
           value={formData.addressLine1}
           onChange={(e) => updateAddressLine1(e.target.value)}
         />
-        {errors.addressLine1 && (
-          <p className="text-sm text-red-500">{errors.addressLine1}</p>
-        )}
       </InputWrapper>
-      <InputWrapper label={t('addressLine2')} required>
+      <InputWrapper
+        label={t('addressLine2')}
+        notice={
+          errors.addressLine2 && <ErrorNotice message={errors.addressLine2} />
+        }
+      >
         <Input
           value={formData.addressLine2}
           onChange={(e) => updateAddressLine2(e.target.value)}
         />
-        {errors.addressLine2 && (
-          <p className="text-sm text-red-500">{errors.addressLine2}</p>
-        )}
       </InputWrapper>
-      <InputWrapper label={t('zip')} required>
+      <InputWrapper
+        label={t('zip')}
+        notice={errors.zip && <ErrorNotice message={errors.zip} />}
+      >
         <Input
           value={formData.zip}
           onChange={(e) => updateZip(e.target.value)}
         />
-        {errors.zip && <p className="text-sm text-red-500">{errors.zip}</p>}
       </InputWrapper>
     </section>
   );

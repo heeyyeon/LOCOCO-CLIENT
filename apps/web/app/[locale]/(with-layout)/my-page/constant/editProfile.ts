@@ -22,8 +22,6 @@ export const PROFILE_TEXT_ERROR_MESSAGE_KEYS = {
   STATE: 'stateRequired',
   CITY: 'cityRequired',
   ADDRESS_LINE_1: 'addressLine1Required',
-  ADDRESS_LINE_2: 'addressLine2Required',
-  ZIP: 'zipRequired',
   CONTENT_LANGUAGE: 'contentLanguageRequired',
   SKIN_TYPE: 'skinTypeRequired',
   SKIN_TONE: 'skinToneRequired',
