@@ -22,7 +22,7 @@ export function SelectRoleModal({
   onOpenChange,
   onSelectRole,
 }: SelectRoleModalProps) {
-  const t = useTranslations('SelectRoleModal');
+  const t = useTranslations('selectRoleModal');
 
   const roleTextMap: Record<Role, string> = {
     creator: t('roles.creator'),

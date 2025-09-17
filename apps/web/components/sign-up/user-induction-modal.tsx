@@ -21,7 +21,7 @@ export function UserInductionModal({
   onCancel,
   onConfirm,
 }: UserInductionModalProps) {
-  const userInductionModal = useTranslations('UserInductionModal');
+  const userInductionModal = useTranslations('userInductionModal');
 
   const handleCancelModal = () => {
     onCancel();

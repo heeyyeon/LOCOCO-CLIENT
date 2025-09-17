@@ -25,7 +25,7 @@
     "login": "Log in",
     "signUp": "Sign up"
   },
-  "UserInductionModal": {
+  "userInductionModal": {
     "title": "Creator Suggestion",
     "message": [
       "Campaign applications are only available to creator members.",
@@ -34,7 +34,7 @@
     "cancelButton": "No",
     "confirmButton": "Yes"
   },
-  "SelectRoleModal": {
+  "selectRoleModal": {
     "title": "Choose Your Role",
     "welcomeTitle": "Welcome to Lococo!",
     "description": "Select your role to sign in.\nYou won't be able to change this later.",
