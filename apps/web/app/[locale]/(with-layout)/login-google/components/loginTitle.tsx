@@ -5,10 +5,10 @@ export default function LoginTitle({
 }) {
   return (
     <section className="text-center">
-      <h1 className="inter-head3 mb-[1.6rem] font-bold text-pink-500">
+      <h1 className="head3 mb-[1.6rem] font-bold text-pink-500">
         Welcome to Lococo!
       </h1>
-      <div className="inter-caption2 font-medium text-gray-800">
+      <div className="caption2 font-medium text-gray-800">
         {authType === 'login' ? (
           <p>Log in to your Google account right away</p>
         ) : (

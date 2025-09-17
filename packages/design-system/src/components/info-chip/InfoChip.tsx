@@ -20,8 +20,8 @@ const infoChipVariants = cva('inline-flex items-center gap-[0.5rem] border', {
       blue: 'border-blue text-blue',
     },
     size: {
-      md: 'rounded-[1.6rem] px-2 py-1 inter-caption1',
-      lg: 'rounded-[2.4rem] py-[0.6rem] px-[1.6rem] inter-body1',
+      md: 'rounded-[1.6rem] px-2 py-1 caption1',
+      lg: 'rounded-[2.4rem] py-[0.6rem] px-[1.6rem] body1',
     },
   },
 });
