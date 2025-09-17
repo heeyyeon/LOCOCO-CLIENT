@@ -10,6 +10,7 @@ export { SvgArrowUp } from './ArrowUp';
 export { SvgBad } from './Bad';
 export { SvgCamera } from './Camera';
 export { SvgCheck } from './Check';
+export { SvgCheckBg } from './CheckBg';
 export { SvgCheckNonBg } from './CheckNonBg';
 export { SvgClose } from './Close';
 export { SvgDelete } from './Delete';
