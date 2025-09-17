@@ -1,6 +1,5 @@
 'use client';
 
-import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 import { useRouter } from 'next/navigation';
@@ -15,13 +14,10 @@ import {
   TextFormField,
 } from '../../../../../components/forms';
 import { useAddressSearch } from '../../../../../hooks/useAddressSearch';
-// TODO: 브랜드용 가입 확인 모달로 수정 필요
-import { ConfirmSignupModal } from '../components/confirm-signup-modal';
 import { type BrandSignupForm, brandSignupSchema } from './hooks/signup';
 
 export default function BrandSignupPage() {
   const router = useRouter();
-  const [isShowConfirmModal, setIsShowConfirmModal] = useState(false);
 
   const form = useForm<BrandSignupForm>({
     resolver: zodResolver(brandSignupSchema),
@@ -37,10 +33,6 @@ export default function BrandSignupPage() {
     });
 
   const handleSubmit = () => {
-    setIsShowConfirmModal(true);
-  };
-
-  const handleConfirmModalConfirm = () => {
     router.push('/');
   };
 
@@ -121,12 +113,6 @@ export default function BrandSignupPage() {
           </FormSection>
         </div>
       </SignupFormLayout>
-
-      <ConfirmSignupModal
-        open={isShowConfirmModal}
-        onOpenChange={setIsShowConfirmModal}
-        onConfirm={handleConfirmModalConfirm}
-      />
     </>
   );
 }
