@@ -21,7 +21,7 @@ export function UserInductionModal({
   onCancel,
   onConfirm,
 }: UserInductionModalProps) {
-  const userInductionModal = useTranslations('userInductionModal');
+  const t = useTranslations('userInductionModal');
 
   const handleCancelModal = () => {
     onCancel();
@@ -39,33 +39,29 @@ export function UserInductionModal({
         className="w-full max-w-[55rem] overflow-hidden rounded-[3.2rem] p-0"
         showCloseButton={false}
       >
-        <DialogTitle className="sr-only">
-          {userInductionModal('title')}
-        </DialogTitle>
+        <DialogTitle className="sr-only">{t('title')}</DialogTitle>
 
-        <ModalHeader text={userInductionModal('title')} />
+        <ModalHeader text={t('title')} />
 
         <section className="bg-white px-[4rem] py-[7rem]">
           <div className="text-center">
             <div className="inter-body3 font-medium text-gray-800">
-              {userInductionModal
-                .raw('message')
-                .map((line: string, index: number) => (
-                  <div key={index}>{line}</div>
-                ))}
+              {t.raw('message').map((line: string, index: number) => (
+                <div key={index}>{line}</div>
+              ))}
             </div>
           </div>
         </section>
 
         <div className="flex items-center border-t border-pink-500">
           <ModalButton
-            text={userInductionModal('cancelButton')}
+            text={t('cancelButton')}
             variant="left"
             onClick={handleCancelModal}
           />
           <div className="h-[5.6rem] w-[2px] bg-pink-500" />
           <ModalButton
-            text={userInductionModal('confirmButton')}
+            text={t('confirmButton')}
             variant="right"
             onClick={handleConfirmModal}
           />
