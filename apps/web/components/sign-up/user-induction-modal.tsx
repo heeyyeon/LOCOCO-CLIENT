@@ -45,10 +45,8 @@ export function UserInductionModal({
 
         <section className="bg-white px-[4rem] py-[7rem]">
           <div className="text-center">
-            <div className="inter-body3 font-medium text-gray-800">
-              {t.raw('message').map((line: string, index: number) => (
-                <div key={index}>{line}</div>
-              ))}
+            <div className="inter-body3 whitespace-pre-line font-medium text-gray-800">
+              {t('message')}
             </div>
           </div>
         </section>
