@@ -24,6 +24,12 @@ export function SelectRoleModal({
 }: SelectRoleModalProps) {
   const t = useTranslations('SelectRoleModal');
 
+  const roleTextMap: Record<Role, string> = {
+    creator: t('roles.creator'),
+    brand: t('roles.brand'),
+    user: t('roles.user'),
+  };
+
   const handleSelectRole = (role: Role) => {
     onSelectRole(role);
     onOpenChange(false);
@@ -62,7 +68,7 @@ export function SelectRoleModal({
           </header>
 
           <div className="space-y-[1.2rem]">
-            {(['creator', 'brand', 'user'] as const).map((role) => {
+            {(Object.keys(roleTextMap) as Role[]).map((role) => {
               return (
                 <Button
                   key={role}
@@ -72,7 +78,7 @@ export function SelectRoleModal({
                   className="w-full"
                   onClick={() => handleSelectRole(role)}
                 >
-                  {t('loginAs')} {t(`roles.${role}`)}
+                  {t('loginAs')} {roleTextMap[role]}
                 </Button>
               );
             })}
