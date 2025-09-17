@@ -28,6 +28,27 @@
     "openingSoon": "Opening Soon"
   },
   "myPage": {
+    "addressModal": {
+      "country": "Country",
+      "title": "Address",
+      "description": "Please check your home address for product delivery.",
+      "state": "State/Region/Province",
+      "city": "City/Town",
+      "addressLine1": "Address Line 1",
+      "addressLine2": "Address Line 2",
+      "edit": "Edit",
+      "getDelivery": "Get the delivery",
+      "zip": "Zip/Postal Code",
+      "countryRequired": "Country is required",
+      "stateRequired": "State is required",
+      "cityRequired": "City is required",
+      "addressLine1Required": "Address line 1 is required"
+    },
+    "saveFormModal": {
+      "title": "Saved successfully",
+      "description": "Your changes have been saved.",
+      "save": "Okay"
+    },
     "menus": {
       "myCampaign": "My Campaign",
       "editProfile": "Edit Profile",
@@ -49,8 +70,6 @@
       "stateRequired": "State is required",
       "cityRequired": "City is required",
       "addressLine1Required": "Address line 1 is required",
-      "addressLine2Required": "Address line 2 is required",
-      "zipRequired": "Zip is required",
       "contentLanguageRequired": "Content language is required",
       "skinTypeRequired": "Skin type is required",
       "skinToneRequired": "Skin tone is required",
