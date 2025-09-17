@@ -15,5 +15,40 @@
   "main": {
     "kBeautyCampaigns": "",
     "openingSoon": ""
+  },
+  "userInductionModal": {
+    "title": "",
+    "message": "",
+    "cancelButton": "",
+    "confirmButton": ""
+  },
+  "selectRoleModal": {
+    "title": "",
+    "welcomeTitle": "",
+    "description": "",
+    "roles": {
+      "creator": "",
+      "brand": "",
+      "user": ""
+    },
+    "loginAs": ""
+  },
+  "snsConnection": {
+    "title": "",
+    "errorMessage": "",
+    "connectedStatus": "",
+    "platforms": {
+      "instagram": "",
+      "tiktok": ""
+    },
+    "connectButtons": {
+      "instagram": "",
+      "tiktok": ""
+    }
+  },
+  "creatorSnsLinksPage": {
+    "title": "",
+    "snsDescription": "",
+    "submitLabel": ""
   }
 }

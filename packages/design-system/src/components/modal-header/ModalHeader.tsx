@@ -15,7 +15,7 @@ export default function ModalHeader({
   return (
     <div
       className={cn(
-        'relative flex w-[55rem] items-center justify-center rounded-t-[3.2rem] border-b border-pink-500 bg-white p-[1.6rem]'
+        'relative flex w-[55rem] items-center justify-center rounded-t-[3.2rem] border-b border-pink-500 bg-white p-[1.6rem] font-bold'
       )}
       {...props}
     >
