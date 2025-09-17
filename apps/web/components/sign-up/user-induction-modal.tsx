@@ -45,7 +45,7 @@ export function UserInductionModal({
 
         <section className="bg-white px-[4rem] py-[7rem]">
           <div className="text-center">
-            <div className="inter-body3 whitespace-pre-line font-medium text-gray-800">
+            <div className="body3 whitespace-pre-line font-medium text-gray-800">
               {t('message')}
             </div>
           </div>
