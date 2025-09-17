@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 import { useRouter } from 'next/navigation';
@@ -13,11 +14,13 @@ import {
   SignupFormLayout,
   TextFormField,
 } from '../../../../../components/forms';
+import { ConfirmSignupModal } from '../../../../../components/sign-up/confirm-signup-modal';
 import { useAddressSearch } from '../../../../../hooks/useAddressSearch';
 import { type BrandSignupForm, brandSignupSchema } from './hooks/signup';
 
 export default function BrandSignupPage() {
   const router = useRouter();
+  const [isShowConfirmModal, setIsShowConfirmModal] = useState(false);
 
   const form = useForm<BrandSignupForm>({
     resolver: zodResolver(brandSignupSchema),
@@ -33,7 +36,11 @@ export default function BrandSignupPage() {
     });
 
   const handleSubmit = () => {
-    // TODO: 가입 확인 모달 연결하기
+    setIsShowConfirmModal(true);
+  };
+
+  const handleConfirmModalConfirm = () => {
+    router.push('/');
   };
 
   return (
@@ -113,6 +120,12 @@ export default function BrandSignupPage() {
           </FormSection>
         </div>
       </SignupFormLayout>
+
+      <ConfirmSignupModal
+        open={isShowConfirmModal}
+        onOpenChange={setIsShowConfirmModal}
+        onConfirm={handleConfirmModalConfirm}
+      />
     </>
   );
 }
