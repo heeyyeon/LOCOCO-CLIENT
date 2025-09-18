@@ -4,6 +4,7 @@ import HomeBanner from './(home)/components/home-banner';
 import HomeSection from './(home)/components/home-section';
 import HomeSectionCampaign from './(home)/components/home-section-campaign';
 import ApplicantInfo from './brand/component/applicant-info';
+import ApplicantTableHeader from './brand/component/application-table-header';
 
 export default async function Main() {
   const t = await getTranslations('main');
@@ -219,9 +220,14 @@ export default async function Main() {
           <HomeSectionCampaign kindOfCard="openingSoon" seeMore={false} />
         </HomeSection>
       </div>
-      {applicantDummyData.map((data) => (
-        <ApplicantInfo key={data.id} {...data} />
-      ))}
+      <table>
+        <ApplicantTableHeader />
+        <tbody>
+          {applicantDummyData.map((data) => (
+            <ApplicantInfo key={data.id} {...data} />
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }

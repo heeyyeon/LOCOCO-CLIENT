@@ -63,66 +63,64 @@ export default function ApplicantInfo({
 
   return (
     <tr className="flex h-[12rem] w-[93.6rem] items-center border-b border-gray-400">
-      <Checkbox
-        checked={status === 'selected'}
-        onCheckedChange={handleCheckboxChange}
-        className="ml-[1.6rem] mr-[1.4rem] h-[2.4rem] w-[2.4rem] flex-shrink-0"
-      />
-      {/* 크리에이터 정보 */}
-      <div className="mr-[2.4rem] flex-shrink-0">
+      {/* 체크박스 */}
+      <td className="ml-[1.6rem] mr-[1.4rem]">
+        <Checkbox
+          checked={status === 'selected'}
+          onCheckedChange={handleCheckboxChange}
+          className="h-[2.4rem] w-[2.4rem] flex-shrink-0"
+        />
+      </td>
+
+      {/* 크리에이터 프로필 이미지 */}
+      <td className="mr-[2.4rem] flex-shrink-0">
         <Image width={72} height={72} src={profileImage} alt={userName} />
-      </div>
-      <div className="flex items-center gap-[3.2rem]">
-        {/* 크리에이터 */}
-        <td className="flex w-[14.8rem] flex-col gap-[0.4rem]">
-          <p className="body1 text-gray-800">{userName}</p>
-          <p className="body3 text-gray-600">{snsId}</p>
-        </td>
+      </td>
 
-        {/* 팔로워 숫자 */}
-        <td className="flex w-[14.8rem] flex-col gap-[0.4rem]">
-          <div className="flex items-center gap-[0.8rem]">
-            <Image
-              src={profileImage}
-              alt="instagram logo"
-              width={24}
-              height={24}
-            />
-            <span className="body3 text-gray-800">
-              {formatNumber(instagramFollower)}
-            </span>
-          </div>
-          <div className="flex items-center gap-[0.8rem]">
-            <Image
-              src={profileImage}
-              alt="tiktok logo"
-              width={24}
-              height={24}
-            />
-            <span className="body3 text-gray-800">
-              {formatNumber(tiktokFollower)}
-            </span>
-          </div>
-        </td>
+      {/* 크리에이터 이름/아이디 */}
+      <td className="mr-[3.2rem] flex w-[14.8rem] flex-col gap-[0.4rem]">
+        <p className="body1 text-gray-800">{userName}</p>
+        <p className="body3 text-gray-600">{snsId}</p>
+      </td>
 
-        {/* 참여 캠페인 수 */}
-        <td className="w-[14.8rem]">
-          <span className="body3 text-gray-600">{joinedCampaign}</span>
-        </td>
-
-        {/* 지원 날짜 */}
-        <td className="w-[14.8rem]">
-          <span className="body3 text-gray-600">{applicationDate}</span>
-        </td>
-
-        {/* 승인 현황 */}
-        <td className="w-[14.8rem]">
-          <InfoChip
-            text={getApprovalStatusStyle(approvalStatus).text}
-            color={getApprovalStatusStyle(approvalStatus).color}
+      {/* 팔로워 숫자 */}
+      <td className="mr-[3.2rem] flex w-[14.8rem] flex-col gap-[0.4rem]">
+        <div className="flex items-center gap-[0.8rem]">
+          <Image
+            src={profileImage}
+            alt="instagram logo"
+            width={24}
+            height={24}
           />
-        </td>
-      </div>
+          <span className="body3 text-gray-800">
+            {formatNumber(instagramFollower)}
+          </span>
+        </div>
+        <div className="flex items-center gap-[0.8rem]">
+          <Image src={profileImage} alt="tiktok logo" width={24} height={24} />
+          <span className="body3 text-gray-800">
+            {formatNumber(tiktokFollower)}
+          </span>
+        </div>
+      </td>
+
+      {/* 참여 캠페인 수 */}
+      <td className="mr-[3.2rem] w-[14.8rem]">
+        <span className="body3 text-gray-600">{joinedCampaign}</span>
+      </td>
+
+      {/* 지원 날짜 */}
+      <td className="mr-[3.2rem] w-[14.8rem]">
+        <span className="body3 text-gray-600">{applicationDate}</span>
+      </td>
+
+      {/* 승인 현황 */}
+      <td className="w-fit">
+        <InfoChip
+          text={getApprovalStatusStyle(approvalStatus).text}
+          color={getApprovalStatusStyle(approvalStatus).color}
+        />
+      </td>
     </tr>
   );
 }
