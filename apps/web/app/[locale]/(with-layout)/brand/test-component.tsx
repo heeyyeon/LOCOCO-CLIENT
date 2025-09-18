@@ -215,7 +215,7 @@ export default function TestComponent() {
   } = useApplicantSelect(applicantDummyData);
 
   return (
-    <div>
+    <div className="bg-white">
       <p>total : {totalCount}</p>
       <p>selected : {selectedCount}</p>
       <button onClick={() => handleSelectAll(selectedCount !== totalCount)}>

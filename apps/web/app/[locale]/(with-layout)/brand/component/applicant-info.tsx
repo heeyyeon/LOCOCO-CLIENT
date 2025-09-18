@@ -64,27 +64,29 @@ export default function ApplicantInfo({
   };
 
   return (
-    <tr className="flex h-[12rem] w-[93.6rem] items-center border-b border-gray-400">
+    <tr
+      className={`flex h-[12rem] w-[93.6rem] items-center border-b border-gray-400 ${
+        status === 'selected' ? 'bg-pink-100' : ''
+      }`}
+    >
       {/* 체크박스 */}
-      <td className="ml-[1.6rem] mr-[1.4rem]">
+      <td className="ml-[1.6rem] mr-[1.4rem] bg-transparent">
         <Checkbox
-          checked={status === 'selected'}
+          checked={status === 'selected' || status === 'selectedBlock'}
+          disabled={status === 'block' || status === 'selectedBlock'}
           onCheckedChange={handleCheckboxChange}
-          className="h-[2.4rem] w-[2.4rem] flex-shrink-0"
+          className="h-[2.4rem] w-[2.4rem] flex-shrink-0 rounded-[0.6rem]"
         />
       </td>
-
       {/* 크리에이터 프로필 이미지 */}
       <td className="mr-[2.4rem] flex-shrink-0">
         <Image width={72} height={72} src={profileImage} alt={userName} />
       </td>
-
       {/* 크리에이터 이름/아이디 */}
       <td className="mr-[3.2rem] flex w-[14.8rem] flex-col gap-[0.4rem]">
         <p className="body1 text-gray-800">{userName}</p>
         <p className="body3 text-gray-600">{snsId}</p>
       </td>
-
       {/* 팔로워 숫자 */}
       <td className="mr-[3.2rem] flex w-[14.8rem] flex-col gap-[0.4rem]">
         <div className="flex items-center gap-[0.8rem]">
@@ -105,17 +107,14 @@ export default function ApplicantInfo({
           </span>
         </div>
       </td>
-
       {/* 참여 캠페인 수 */}
       <td className="mr-[3.2rem] w-[14.8rem]">
         <span className="body3 text-gray-600">{joinedCampaign}</span>
       </td>
-
       {/* 지원 날짜 */}
       <td className="mr-[3.2rem] w-[14.8rem]">
         <span className="body3 text-gray-600">{applicationDate}</span>
       </td>
-
       {/* 승인 현황 */}
       <td className="w-fit">
         <InfoChip
