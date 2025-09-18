@@ -68,7 +68,7 @@ export function TextFormField({
         {!error && successMessage && (
           <div className="mt-[0.2rem] flex items-center gap-[0.8rem]">
             <SvgCheckRound size={16} className="fill-green" />
-            <span className="inter-caption3 text-green font-normal">
+            <span className="caption3 text-green font-normal">
               {successMessage}
             </span>
           </div>

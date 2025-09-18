@@ -35,7 +35,7 @@ export function SelectFormField({
 }: SelectFormFieldProps) {
   return (
     <div className={cn('flex items-center justify-between', className)}>
-      <label className="kr-body1 flex items-center font-bold text-gray-700">
+      <label className="body1 flex items-center font-bold text-gray-700">
         {required && (
           <span className="bg-red mr-[0.8rem] h-[0.6rem] w-[0.6rem] rounded-full" />
         )}
