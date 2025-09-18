@@ -34,10 +34,7 @@ export const personalDetailsSchema = z.object({
     .string()
     .trim()
     .min(1, 'Phone Number is required.')
-    .refine(
-      (value) => isValidPhoneNumber(value, 'international'),
-      'Please enter a valid phone number.'
-    ),
+    .refine(isValidPhoneNumber, 'Please enter a valid phone number.'),
   contentLanguage: z.string().min(1, 'Content Language is required.'),
 });
 
