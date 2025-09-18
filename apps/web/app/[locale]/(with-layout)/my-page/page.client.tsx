@@ -25,7 +25,6 @@ export default function PageClient() {
     contentSubmissions: t('contentSubmissions'),
   };
 
-  // URL 파라미터를 메뉴 텍스트로 변환
   const getActiveMenuFromTab = (tab: string | null) => {
     switch (tab) {
       case 'my-campaign':
@@ -44,8 +43,6 @@ export default function PageClient() {
   const activeMenu = getActiveMenuFromTab(searchParams.get('tab'));
 
   const handleClickTab = (tab: string) => {
-    console.log('handleClickTab', tab);
-    // 메뉴 텍스트를 URL 파라미터로 변환
     const getTabFromMenu = (menuText: string) => {
       switch (menuText) {
         case MENU.myCampaign:

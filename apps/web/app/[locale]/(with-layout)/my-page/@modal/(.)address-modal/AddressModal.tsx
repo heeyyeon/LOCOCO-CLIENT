@@ -64,8 +64,8 @@ export function AddressModal({ open, onOpenChange }: AddressModalProps) {
 
   const handleEditModal = () => {
     onOpenChange(false);
-    // 프로필 수정 페이지로 이동
     router.push('/my-page?tab=edit-profile&returnTo=address-modal');
+    handleSubmit();
   };
 
   const handleGetDeliveryModal = () => {

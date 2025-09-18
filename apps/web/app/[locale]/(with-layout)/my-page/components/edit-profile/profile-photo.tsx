@@ -24,8 +24,6 @@ export default function ProfilePhoto({
 
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
     const selectedFile = e.target.files?.[0];
-    console.log(selectedFile);
-    console.log(ALLOWED_IMAGE_TYPES.includes(selectedFile?.type || ''));
     if (selectedFile && ALLOWED_IMAGE_TYPES.includes(selectedFile.type)) {
       onChange(selectedFile);
     }
