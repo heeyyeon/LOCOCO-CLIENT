@@ -2,79 +2,83 @@ import { z } from 'zod';
 
 import { isValidPhoneNumber } from '../../../../../../utils/format-phone-number';
 
-export const communityNameSchema = z.object({
-  id: z
-    .string()
-    .trim()
-    .min(1, 'ID is required.')
-    .max(15, 'Use up to 15 characters.')
-    .regex(
-      /^[a-z0-9._]+$/,
-      'This ID is unavailable. Please check the ID form.'
-    ),
-});
+type TranslationFunction = (key: string) => string;
 
-export const personalDetailsSchema = z.object({
-  birthMonth: z.string().min(1, 'Birth is required.'),
-  birthDay: z.string().min(1, 'Birth is required.'),
-  birthYear: z.string().min(1, 'Birth is required.'),
-  gender: z.string().min(1, 'Gender is required.'),
-  firstName: z
-    .string()
-    .trim()
-    .min(1, 'First name is required.')
-    .max(20, 'Use up to 20 characters.'),
-  lastName: z
-    .string()
-    .trim()
-    .min(1, 'Last name is required.')
-    .max(20, 'Use up to 20 characters.'),
-  phoneCountryCode: z.string().min(1, 'Phone Number is required.'),
-  phoneNumber: z
-    .string()
-    .trim()
-    .min(1, 'Phone Number is required.')
-    .refine(isValidPhoneNumber, 'Please enter a valid phone number.'),
-  contentLanguage: z.string().min(1, 'Content Language is required.'),
-});
+export const communityNameSchema = (t: TranslationFunction) =>
+  z.object({
+    id: z
+      .string()
+      .trim()
+      .min(1, t('idRequired'))
+      .max(15, t('idMaxLength'))
+      .regex(/^[a-z0-9._]+$/, t('idInvalidFormat')),
+  });
 
-export const homeAddressSchema = z.object({
-  country: z.string().min(1, 'Country is required.'),
-  stateRegion: z
-    .string()
-    .trim()
-    .min(1, 'State/Region/Province is required.')
-    .max(20, 'Use up to 20 characters.'),
-  city: z
-    .string()
-    .trim()
-    .min(1, 'City / Town is required.')
-    .max(20, 'Use up to 20 characters.'),
-  addressLine1: z
-    .string()
-    .trim()
-    .min(1, 'Address Line 1 is required.')
-    .max(20, 'Use up to 20 characters.'),
-  addressLine2: z
-    .string()
-    .trim()
-    .max(20, 'Use up to 20 characters.')
-    .optional(),
-  zipCode: z.string().trim().max(20, 'Use up to 20 characters.').optional(),
-});
+export const personalDetailsSchema = (t: TranslationFunction) =>
+  z.object({
+    birthMonth: z.string().min(1, t('birthRequired')),
+    birthDay: z.string().min(1, t('birthRequired')),
+    birthYear: z.string().min(1, t('birthRequired')),
+    gender: z.string().min(1, t('genderRequired')),
+    firstName: z
+      .string()
+      .trim()
+      .min(1, t('firstNameRequired'))
+      .max(20, t('firstNameMaxLength')),
+    lastName: z
+      .string()
+      .trim()
+      .min(1, t('lastNameRequired'))
+      .max(20, t('lastNameMaxLength')),
+    phoneCountryCode: z.string().min(1, t('phoneNumberRequired')),
+    phoneNumber: z
+      .string()
+      .trim()
+      .min(1, t('phoneNumberRequired'))
+      .refine(isValidPhoneNumber, t('phoneNumberInvalid')),
+    contentLanguage: z.string().min(1, t('contentLanguageRequired')),
+  });
 
-export const skinInfoSchema = z.object({
-  skinType: z.string().min(1, 'Skin Type is required.'),
-  skinTone: z.string().min(1, 'Skin Tone is required.'),
-});
+export const homeAddressSchema = (t: TranslationFunction) =>
+  z.object({
+    country: z.string().min(1, t('countryRequired')),
+    stateRegion: z
+      .string()
+      .trim()
+      .min(1, t('stateRequired'))
+      .max(20, t('stateMaxLength')),
+    city: z
+      .string()
+      .trim()
+      .min(1, t('cityRequired'))
+      .max(20, t('cityMaxLength')),
+    addressLine1: z
+      .string()
+      .trim()
+      .min(1, t('addressLine1Required'))
+      .max(20, t('addressLine1MaxLength')),
+    addressLine2: z
+      .string()
+      .trim()
+      .max(20, t('addressLine2MaxLength'))
+      .optional(),
+    zipCode: z.string().trim().max(20, t('zipCodeMaxLength')).optional(),
+  });
 
-export const creatorSignupSchema = z
-  .object({
-    ...communityNameSchema.shape,
-    ...personalDetailsSchema.shape,
-    ...homeAddressSchema.shape,
-    ...skinInfoSchema.shape,
-  })
-  .strict();
+export const skinInfoSchema = (t: TranslationFunction) =>
+  z.object({
+    skinType: z.string().min(1, t('skinTypeRequired')),
+    skinTone: z.string().min(1, t('skinToneRequired')),
+  });
 
-export type CreatorSignupForm = z.infer<typeof creatorSignupSchema>;
+export const creatorSignupSchema = (t: TranslationFunction) =>
+  z
+    .object({
+      ...communityNameSchema(t).shape,
+      ...personalDetailsSchema(t).shape,
+      ...homeAddressSchema(t).shape,
+      ...skinInfoSchema(t).shape,
+    })
+    .strict();
+
+export type CreatorSignupForm = z.infer<ReturnType<typeof creatorSignupSchema>>;
