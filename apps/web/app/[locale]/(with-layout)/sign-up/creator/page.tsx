@@ -6,11 +6,10 @@ import { useParams, useRouter } from 'next/navigation';
 
 import { zodResolver } from '@hookform/resolvers/zod';
 
-import { SignupFormLayout } from '../../../../../components/forms';
-import { CommunityName } from './components/community-name';
-import { HomeAddress } from './components/home-address';
-import { PersonalDetails } from './components/personal-details';
-import { SkinInfo } from './components/skin-info';
+import {
+  CreatorFormSections,
+  SignupFormLayout,
+} from '../../../../../components/forms';
 import { type CreatorSignupForm, creatorSignupSchema } from './hooks/signup';
 
 export default function CreatorSignupPage() {
@@ -52,16 +51,11 @@ export default function CreatorSignupPage() {
       isValid={form.formState.isValid}
       submitLabel="Next"
     >
-      <CommunityName
+      <CreatorFormSections
         form={form}
-        handleCheckAvailability={handleCheckAvailability}
+        locale={locale}
+        onCheckAvailability={handleCheckAvailability}
       />
-
-      <PersonalDetails form={form} />
-
-      <HomeAddress form={form} locale={locale} />
-
-      <SkinInfo form={form} />
     </SignupFormLayout>
   );
 }
