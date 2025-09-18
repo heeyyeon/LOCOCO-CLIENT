@@ -41,9 +41,9 @@ export default function SideBar({
         <SvgAvatar size={98} className="rounded-full" />
       )}
       <div className="flex w-full flex-col items-start gap-[0.8rem] self-stretch">
-        <p className="inter-title2 no-wrap text-nowrap text-gray-800">{name}</p>
-        <p className="inter-caption2 text-gray-800">{email}</p>
-        <p className="inter-caption2 text-gray-800">{instagram}</p>
+        <p className="title2 no-wrap text-nowrap text-gray-800">{name}</p>
+        <p className="caption2 text-gray-800">{email}</p>
+        <p className="caption2 text-gray-800">{instagram}</p>
         {level && <InfoChip text={level} color="default" size="md" icon />}
       </div>
       <div className="h-[1px] w-full bg-gray-400" />
@@ -55,7 +55,6 @@ export default function SideBar({
             variant="text"
             color={activeMenu === item ? 'primary' : 'secondary'}
             size="md"
-            fontType="InterBody1"
             className="px-0"
             onClick={() => handleClickTab(item)}
           >
