@@ -13,6 +13,8 @@ interface TextFormFieldProps {
   register: UseFormRegisterReturn;
   error?: string;
   className?: string;
+  rightContent?: React.ReactNode;
+  onRightContentClick?: () => void;
   showSearchIcon?: boolean;
   handleClickSearch?: () => void;
 }
@@ -24,6 +26,8 @@ export function TextFormField({
   register,
   error,
   className,
+  rightContent,
+  onRightContentClick,
   showSearchIcon = false,
   handleClickSearch,
 }: TextFormFieldProps) {
@@ -38,7 +42,16 @@ export function TextFormField({
       <div className="flex flex-col">
         <div className="relative">
           <Input {...register} placeholder={placeholder} />
-          {showSearchIcon && (
+
+          {rightContent && (
+            <div
+              onClick={onRightContentClick}
+              className="absolute right-2 top-1/2 flex -translate-y-1/2 cursor-pointer items-center justify-center"
+            >
+              {rightContent}
+            </div>
+          )}
+          {!rightContent && showSearchIcon && (
             <button
               type="button"
               onClick={handleClickSearch}
