@@ -11,19 +11,6 @@ import { useApplicantSelect } from './hooks/useApplicantSelect';
 export default function TestComponent() {
   const applicantDummyData: ApplicantData[] = [
     {
-      id: '1',
-      status: 'default' as const,
-      profileImage:
-        'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face',
-      userName: 'Mia Rodriguez',
-      snsId: '@miabeauty',
-      instagramFollower: 34200,
-      tiktokFollower: 34500,
-      joinedCampaign: 4,
-      applicationDate: 'Jun 12, 2025',
-      approvalStatus: '대기중',
-    },
-    {
       id: '2',
       status: 'selected' as const,
       profileImage:
