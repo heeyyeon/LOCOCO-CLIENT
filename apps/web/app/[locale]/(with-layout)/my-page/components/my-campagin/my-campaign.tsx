@@ -38,7 +38,7 @@ const getCampaignConfig = (
       buttonColor: 'secondary',
       buttonClassName: '',
       handleButtonClick: () => {
-        // TODO: 내가 지원한 캠페인 상세 페이지로 이동
+        //TODO: 버튼 클릭 시, 내가 지원한 캠페인 상세 페이지로 이동
       },
     },
     approved: {
@@ -56,7 +56,8 @@ const getCampaignConfig = (
       buttonColor: 'primary',
       buttonClassName: '',
       handleButtonClick: () => {
-        // TODO: 리뷰 업로드 페이지로 이동
+        //TODO: 버튼 클릭 시, 리뷰 업로드 창으로 이동
+        // 브랜드가 1차 리뷰 submit 하면 버튼이 revision requested로 바뀜
       },
     },
     active_review_uploaded: {
@@ -66,27 +67,41 @@ const getCampaignConfig = (
       buttonColor: 'primary',
       buttonClassName: '',
       handleButtonClick: () => {
-        // TODO: 리뷰 업로드 페이지로 이동
+        //TODO: 버튼 클릭 시, 리뷰 업로드 창으로 이동
+        // 브랜드가 1차 리뷰 submit 하면 버튼이 revision requested로 바뀜
       },
     },
     active_revision_requested: {
       chipColor: 'green',
-      buttonText: 'Upload 1st Review',
+      buttonText: 'Revision Requested',
       buttonVariant: 'filled',
       buttonColor: 'primary',
       buttonClassName: '',
       handleButtonClick: () => {
-        // TODO: 리뷰 업로드 페이지로 이동
+        //TODO: 버튼 클릭 시, 리뷰 업로드 창으로 이동
+        // 브랜드가 note 달아서 전달하면 바로 view notes로 버튼 바뀜
       },
     },
     active_revision_confirmed: {
       chipColor: 'green',
-      buttonText: 'Upload 1st Review',
+      buttonText: 'View Notes',
       buttonVariant: 'filled',
       buttonColor: 'primary',
       buttonClassName: '',
       handleButtonClick: () => {
-        // TODO: 리뷰 업로드 페이지로 이동
+        //TODO: 버튼 클릭 시, 리뷰 업로드 창으로 이동
+        // 이 버튼은 한 번이라도 누르기만 하면, 바로 upload 2nd review로 바뀜
+      },
+    },
+    active_upload_2nd_review: {
+      chipColor: 'green',
+      buttonText: 'Upload 2nd Review',
+      buttonVariant: 'filled',
+      buttonColor: 'primary',
+      buttonClassName: '',
+      handleButtonClick: () => {
+        //TODO: 버튼 클릭 시, 리뷰 업로드 창으로 이동
+        // 크리에이터가 최종 리뷰 제출하면, view results로 바뀜
       },
     },
     completed: {
@@ -96,7 +111,7 @@ const getCampaignConfig = (
       buttonColor: 'primary',
       buttonClassName: '',
       handleButtonClick: () => {
-        // TODO: 크리에이터가 업로드한 리뷰 페이지로 이동
+        //TODO: 크리에이터가 최종 제출한 리뷰 업로드 페이지로 이동
       },
     },
     expired_address: {
@@ -106,7 +121,7 @@ const getCampaignConfig = (
       buttonColor: 'primary',
       buttonClassName: '',
       handleButtonClick: () => {
-        // TODO: 내가 지원한 캠페인 상세 페이지로 이동
+        //TODO: 클릭 시, 내가 지원한 캠페인 상세 페이지로 이동
       },
     },
     expired_review: {
@@ -116,7 +131,7 @@ const getCampaignConfig = (
       buttonColor: 'primary',
       buttonClassName: '',
       handleButtonClick: () => {
-        // TODO: 내가 지원한 캠페인 상세 페이지로 이동
+        //TODO: 클릭 시, 내가 지원한 캠페인 상세 페이지로 이동
       },
     },
     rejected: {
@@ -127,7 +142,7 @@ const getCampaignConfig = (
       buttonClassName:
         'border-[#EF4444] bg-white text-[#EF4444] hover:bg-white hover:text-[#EF4444]',
       handleButtonClick: () => {
-        // TODO: 내가 지원한 캠페인 상세 페이지로 이동
+        //TODO: 클릭 시, 내가 지원한 캠페인 상세 페이지로 이동
       },
     },
   };
