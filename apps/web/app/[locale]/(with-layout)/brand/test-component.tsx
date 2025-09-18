@@ -222,10 +222,11 @@ export default function TestComponent() {
         {selectedCount === totalCount ? '전체 해제' : '전체 선택'}
       </button>
       <table>
-        <ApplicantTableHeader />
+        <ApplicantTableHeader mode="recruiting" />
         <tbody>
           {applicants.map((data) => (
             <ApplicantInfo
+              mode="recruiting"
               key={data.id}
               {...data}
               onSelect={(selected) => handleSelectApplicant(data.id, selected)}

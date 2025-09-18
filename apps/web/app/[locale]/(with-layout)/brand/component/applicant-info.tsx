@@ -4,6 +4,8 @@ import Image from 'next/image';
 
 import { ApplicantStatus } from 'types/applicant';
 
+import { SvgArrowRight } from '@lococo/icons';
+
 import Checkbox from '../../../../../../../packages/design-system/src/components/checkbox/Checkbox';
 import InfoChip from '../../../../../../../packages/design-system/src/components/info-chip/InfoChip';
 
@@ -17,6 +19,7 @@ interface ApplicantInfoProps {
   joinedCampaign: number;
   applicationDate: string;
   approvalStatus: string;
+  mode: 'recruiting' | 'selected';
   onSelect?: (selected: boolean) => void;
 }
 
@@ -58,6 +61,7 @@ export default function ApplicantInfo({
   applicationDate,
   approvalStatus,
   onSelect,
+  mode,
 }: ApplicantInfoProps) {
   const handleCheckboxChange = (checked: boolean) => {
     onSelect?.(checked);
@@ -65,19 +69,21 @@ export default function ApplicantInfo({
 
   return (
     <tr
-      className={`flex h-[12rem] w-[93.6rem] items-center border-b border-gray-400 ${
+      className={`relative flex h-[12rem] w-[93.6rem] items-center border-b border-gray-400 ${
         status === 'selected' ? 'bg-pink-100' : ''
       }`}
     >
       {/* 체크박스 */}
-      <td className="ml-[1.6rem] mr-[1.4rem] bg-transparent">
-        <Checkbox
-          checked={status === 'selected' || status === 'selectedBlock'}
-          disabled={status === 'block' || status === 'selectedBlock'}
-          onCheckedChange={handleCheckboxChange}
-          className="h-[2.4rem] w-[2.4rem] flex-shrink-0 rounded-[0.6rem]"
-        />
-      </td>
+      {mode === 'recruiting' && (
+        <td className="ml-[1.6rem] mr-[1.4rem] bg-transparent">
+          <Checkbox
+            checked={status === 'selected' || status === 'selectedBlock'}
+            disabled={status === 'block' || status === 'selectedBlock'}
+            onCheckedChange={handleCheckboxChange}
+            className="h-[2.4rem] w-[2.4rem] flex-shrink-0 rounded-[0.6rem]"
+          />
+        </td>
+      )}
 
       {/* 크리에이터 프로필 이미지 */}
       <td className="mr-[2.4rem] flex-shrink-0">
@@ -134,6 +140,11 @@ export default function ApplicantInfo({
           color={getApprovalStatusStyle(approvalStatus).color}
         />
       </td>
+      {mode === 'selected' && (
+        <td className="absolute right-[1.6rem]">
+          <SvgArrowRight />
+        </td>
+      )}
     </tr>
   );
 }
