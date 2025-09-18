@@ -20,7 +20,7 @@ export const SKIN_TYPES = [
   { label: 'Others', value: 'others' },
 ];
 
-export const SKIN_TONE_DATA = [
+export const SKIN_TONE = [
   { label: 'Shade 1', value: 'shade 1', color: '#F1DDD2' },
   { label: 'Shade 2', value: 'shade 2', color: '#F4D6CB' },
   { label: 'Shade 3', value: 'shade 3', color: '#EBC9BA' },
