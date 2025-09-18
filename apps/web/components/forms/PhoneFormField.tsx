@@ -8,7 +8,7 @@ import { cn } from '@lococo/utils';
 import {
   formatPhoneNumber,
   removePhoneNumberFormat,
-} from '../../utils/formatPhoneNumber';
+} from '../../utils/format-phone-number';
 
 interface PhoneFormFieldProps {
   label: string;
@@ -17,6 +17,7 @@ interface PhoneFormFieldProps {
   register: UseFormRegisterReturn;
   error?: string;
   className?: string;
+  format?: 'domestic' | 'international';
 }
 
 export function PhoneFormField({
@@ -26,12 +27,13 @@ export function PhoneFormField({
   register,
   error,
   className,
+  format = 'domestic',
 }: PhoneFormFieldProps) {
   const [formattedPhoneNumber, setFormattedPhoneNumber] = useState('');
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = e.target.value;
-    const formattedValue = formatPhoneNumber(inputValue);
+    const formattedValue = formatPhoneNumber(inputValue, format);
 
     setFormattedPhoneNumber(formattedValue);
 
