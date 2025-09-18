@@ -17,7 +17,6 @@ interface PhoneFormFieldProps {
   register: UseFormRegisterReturn;
   error?: string;
   className?: string;
-  format?: 'domestic' | 'international';
 }
 
 export function PhoneFormField({
@@ -27,13 +26,12 @@ export function PhoneFormField({
   register,
   error,
   className,
-  format = 'domestic',
 }: PhoneFormFieldProps) {
   const [formattedPhoneNumber, setFormattedPhoneNumber] = useState('');
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = e.target.value;
-    const formattedValue = formatPhoneNumber(inputValue, format);
+    const formattedValue = formatPhoneNumber(inputValue);
 
     setFormattedPhoneNumber(formattedValue);
 
