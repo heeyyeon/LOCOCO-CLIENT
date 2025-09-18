@@ -3,7 +3,7 @@ import { UseFormRegisterReturn } from 'react-hook-form';
 
 import { ErrorNotice } from '@lococo/design-system/error-notice';
 import { Input } from '@lococo/design-system/input';
-import { SvgSearch } from '@lococo/icons';
+import { SvgCheckRound, SvgSearch } from '@lococo/icons';
 import { cn } from '@lococo/utils';
 
 interface TextFormFieldProps {
@@ -12,6 +12,7 @@ interface TextFormFieldProps {
   placeholder?: string;
   register: UseFormRegisterReturn;
   error?: string;
+  successMessage?: string;
   className?: string;
   rightContent?: React.ReactNode;
   onRightContentClick?: () => void;
@@ -25,6 +26,7 @@ export function TextFormField({
   placeholder,
   register,
   error,
+  successMessage,
   className,
   rightContent,
   onRightContentClick,
@@ -63,6 +65,14 @@ export function TextFormField({
           )}
         </div>
         {error && <ErrorNotice message={error} />}
+        {!error && successMessage && (
+          <div className="mt-[0.2rem] flex items-center gap-[0.8rem]">
+            <SvgCheckRound size={16} className="fill-green" />
+            <span className="inter-caption3 text-green font-normal">
+              {successMessage}
+            </span>
+          </div>
+        )}
       </div>
     </div>
   );
