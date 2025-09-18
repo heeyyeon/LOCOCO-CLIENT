@@ -120,7 +120,6 @@ export function PersonalDetails({ form }: PersonalDetailsProps) {
           <TextFormField
             label="First name"
             required
-            placeholder="ex: John"
             register={form.register('firstName')}
             error={form.formState.errors.firstName?.message}
           />
@@ -128,7 +127,6 @@ export function PersonalDetails({ form }: PersonalDetailsProps) {
           <TextFormField
             label="Last name"
             required
-            placeholder="ex: Doe"
             register={form.register('lastName')}
             error={form.formState.errors.lastName?.message}
           />
