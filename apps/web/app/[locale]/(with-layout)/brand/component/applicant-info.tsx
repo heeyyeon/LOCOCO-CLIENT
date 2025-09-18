@@ -2,7 +2,8 @@
 
 import Image from 'next/image';
 
-import InfoChip from 'node_modules/@lococo/design-system/src/components/info-chip/InfoChip';
+import Checkbox from '../../../../../../../packages/design-system/src/components/checkbox/Checkbox';
+import InfoChip from '../../../../../../../packages/design-system/src/components/info-chip/InfoChip';
 
 interface ApplicantInfoProps {
   status: 'default' | 'selected' | 'nonSelected';
@@ -28,20 +29,20 @@ const formatNumber = (num: number): string => {
 };
 
 // 승인 상태 스타일 매핑
-const getApprovalStatusStyle = (status: string) => {
-  const statusMap: Record<string, { text: string; className: string }> = {
-    대기중: { text: '대기중', className: 'bg-gray-100 text-gray-600' },
-    승인: { text: '승인', className: 'bg-green-100 text-green-600' },
-    거절: { text: '거절', className: 'bg-red-100 text-red-600' },
-    검토중: { text: '검토중', className: 'bg-blue-100 text-blue-600' },
+const getApprovalStatusStyle = (
+  status: string
+): { text: string; color: 'default' | 'green' | 'red' | 'blue' } => {
+  const statusMap: Record<
+    string,
+    { text: string; color: 'default' | 'green' | 'red' | 'blue' }
+  > = {
+    대기중: { text: '대기중', color: 'default' },
+    승인: { text: '승인', color: 'green' },
+    거절: { text: '거절', color: 'red' },
+    검토중: { text: '검토중', color: 'blue' },
   };
 
-  return (
-    statusMap[status] || {
-      text: status,
-      className: 'bg-gray-100 text-gray-600',
-    }
-  );
+  return statusMap[status] || { text: status, color: 'default' };
 };
 
 export default function ApplicantInfo({
@@ -56,17 +57,16 @@ export default function ApplicantInfo({
   approvalStatus,
   onSelect,
 }: ApplicantInfoProps) {
-  const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    onSelect?.(e.target.checked);
+  const handleCheckboxChange = (checked: boolean) => {
+    onSelect?.(checked);
   };
 
   return (
     <tr className="flex h-[12rem] w-[93.6rem] items-center border-b border-gray-400">
-      <input
-        type="checkbox"
+      <Checkbox
         checked={status === 'selected'}
-        onChange={handleCheckboxChange}
-        className="ml-[1.6rem] mr-[1.4rem] h-[2.4rem] w-[2.4rem] rounded-[0.1rem] border-gray-400"
+        onCheckedChange={handleCheckboxChange}
+        className="ml-[1.6rem] mr-[1.4rem] h-[2.4rem] w-[2.4rem] flex-shrink-0"
       />
       {/* 크리에이터 정보 */}
       <div className="mr-[2.4rem] flex-shrink-0">
@@ -82,13 +82,23 @@ export default function ApplicantInfo({
         {/* 팔로워 숫자 */}
         <td className="flex w-[14.8rem] flex-col gap-[0.4rem]">
           <div className="flex items-center gap-[0.8rem]">
-            <Image src={''} alt="instagram logo" width={24} height={24} />
+            <Image
+              src={profileImage}
+              alt="instagram logo"
+              width={24}
+              height={24}
+            />
             <span className="body3 text-gray-800">
               {formatNumber(instagramFollower)}
             </span>
           </div>
           <div className="flex items-center gap-[0.8rem]">
-            <Image src={''} alt="tiktok logo" width={24} height={24} />
+            <Image
+              src={profileImage}
+              alt="tiktok logo"
+              width={24}
+              height={24}
+            />
             <span className="body3 text-gray-800">
               {formatNumber(tiktokFollower)}
             </span>
@@ -109,7 +119,7 @@ export default function ApplicantInfo({
         <td className="w-[14.8rem]">
           <InfoChip
             text={getApprovalStatusStyle(approvalStatus).text}
-            color={'green'}
+            color={getApprovalStatusStyle(approvalStatus).color}
           />
         </td>
       </div>
