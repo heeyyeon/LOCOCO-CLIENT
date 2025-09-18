@@ -1,5 +1,7 @@
 import { UseFormReturn } from 'react-hook-form';
 
+import { useTranslations } from 'next-intl';
+
 import {
   FormSection,
   SelectFormField,
@@ -14,18 +16,16 @@ interface HomeAddressProps {
 }
 
 export function HomeAddress({ form, locale }: HomeAddressProps) {
+  const t = useTranslations('creatorSignup.homeAddress');
   const countries = countryNameOptions(locale);
 
   return (
     <div className="mt-[4.8rem]">
-      <FormSection
-        title="Home Address"
-        description="Please provide your home address for product delivery."
-      >
+      <FormSection title={t('title')} description={t('description')}>
         <SelectFormField
-          label="Country"
+          label={t('countryLabel')}
           required
-          placeholder="Country"
+          placeholder={t('countryPlaceholder')}
           options={countries}
           onValueChange={(value) =>
             form.setValue('country', value, { shouldValidate: true })
@@ -34,39 +34,39 @@ export function HomeAddress({ form, locale }: HomeAddressProps) {
         />
 
         <TextFormField
-          label="State/Region/Province"
+          label={t('stateLabel')}
           required
-          placeholder="ex: Illinois"
+          placeholder={t('statePlaceholder')}
           register={form.register('stateRegion')}
           error={form.formState.errors.stateRegion?.message}
         />
 
         <TextFormField
-          label="City / Town"
+          label={t('cityLabel')}
           required
-          placeholder="ex: Chicago"
+          placeholder={t('cityPlaceholder')}
           register={form.register('city')}
           error={form.formState.errors.city?.message}
         />
 
         <TextFormField
-          label="Address Line 1"
+          label={t('addressLine1Label')}
           required
-          placeholder="ex: 233 S Wacker Dr"
+          placeholder={t('addressLine1Placeholder')}
           register={form.register('addressLine1')}
           error={form.formState.errors.addressLine1?.message}
         />
 
         <TextFormField
-          label="Address Line 2"
-          placeholder="ex: Apt 25B"
+          label={t('addressLine2Label')}
+          placeholder={t('addressLine2Placeholder')}
           register={form.register('addressLine2')}
           error={form.formState.errors.addressLine2?.message}
         />
 
         <TextFormField
-          label="Zip/Post Code"
-          placeholder="ex: 60606"
+          label={t('zipCodeLabel')}
+          placeholder={t('zipCodePlaceholder')}
           register={form.register('zipCode')}
           error={form.formState.errors.zipCode?.message}
         />

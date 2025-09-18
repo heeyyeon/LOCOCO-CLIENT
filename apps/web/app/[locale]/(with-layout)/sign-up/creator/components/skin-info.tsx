@@ -1,5 +1,7 @@
 import { UseFormReturn } from 'react-hook-form';
 
+import { useTranslations } from 'next-intl';
+
 import {
   FormSection,
   SelectFormField,
@@ -15,6 +17,7 @@ interface SkinInfoProps {
 }
 
 export function SkinInfo({ form }: SkinInfoProps) {
+  const t = useTranslations('creatorSignup.skinInfo');
   const SKIN_TONES = SKIN_TONE.map((tone) => ({
     label: tone.label,
     value: tone.value,
@@ -28,16 +31,13 @@ export function SkinInfo({ form }: SkinInfoProps) {
 
   return (
     <div className="mt-[4.8rem]">
-      <FormSection
-        title="Additional Information"
-        description="Tell us about you more!"
-      >
+      <FormSection title={t('title')} description={t('description')}>
         <div className="space-y-[1.6rem]">
           <SelectFormField
-            label="Skin Type"
+            label={t('skinTypeLabel')}
             required
             variant="reverse"
-            placeholder="Skin Type"
+            placeholder={t('skinTypePlaceholder')}
             options={SKIN_TYPES}
             onValueChange={(value) =>
               form.setValue('skinType', value, { shouldValidate: true })
@@ -46,10 +46,10 @@ export function SkinInfo({ form }: SkinInfoProps) {
           />
 
           <SelectFormField
-            label="Skin Tone"
+            label={t('skinToneLabel')}
             variant="reverse"
             required
-            placeholder="Skin Tone"
+            placeholder={t('skinTonePlaceholder')}
             options={SKIN_TONES}
             onValueChange={(value) =>
               form.setValue('skinTone', value, { shouldValidate: true })

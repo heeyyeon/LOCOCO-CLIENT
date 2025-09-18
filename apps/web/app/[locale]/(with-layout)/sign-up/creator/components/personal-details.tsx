@@ -1,5 +1,7 @@
 import { UseFormReturn } from 'react-hook-form';
 
+import { useTranslations } from 'next-intl';
+
 import { ErrorNotice } from '@lococo/design-system/error-notice';
 import { Input } from '@lococo/design-system/input';
 import { Select } from '@lococo/design-system/select';
@@ -24,21 +26,19 @@ interface PersonalDetailsProps {
 }
 
 export function PersonalDetails({ form }: PersonalDetailsProps) {
+  const t = useTranslations('creatorSignup.personalDetails');
   const { months, days, years } = birthDateOptions();
   const countryCodes = countryPhoneCodeOptions();
 
   return (
     <div className="mt-[4.8rem]">
-      <FormSection
-        title="Personal Details"
-        description="Please write your date of birth without any additional information."
-      >
+      <FormSection title={t('title')} description={t('description')}>
         <div className="space-y-[1.6rem]">
-          <SelectFormField label="Birth" required>
+          <SelectFormField label={t('birthLabel')} required>
             <div className="flex flex-col">
               <div className="flex gap-[2.4rem]">
                 <Select
-                  placeholder="Month"
+                  placeholder={t('monthPlaceholder')}
                   options={months}
                   onValueChange={(selectedLabel) => {
                     const selectedMonth = months.find(
@@ -55,7 +55,7 @@ export function PersonalDetails({ form }: PersonalDetailsProps) {
                   size="small"
                 />
                 <Select
-                  placeholder="Day"
+                  placeholder={t('dayPlaceholder')}
                   options={days}
                   onValueChange={(selectedLabel) => {
                     const selectedDay = days.find(
@@ -72,7 +72,7 @@ export function PersonalDetails({ form }: PersonalDetailsProps) {
                   size="small"
                 />
                 <Select
-                  placeholder="Year"
+                  placeholder={t('yearPlaceholder')}
                   options={years}
                   onValueChange={(selectedLabel) => {
                     const selectedYear = years.find(
@@ -107,9 +107,9 @@ export function PersonalDetails({ form }: PersonalDetailsProps) {
           </SelectFormField>
 
           <SelectFormField
-            label="Gender"
+            label={t('genderLabel')}
             required
-            placeholder="Gender"
+            placeholder={t('genderPlaceholder')}
             options={GENDERS}
             onValueChange={(value) =>
               form.setValue('gender', value, { shouldValidate: true })
@@ -118,24 +118,26 @@ export function PersonalDetails({ form }: PersonalDetailsProps) {
           />
 
           <TextFormField
-            label="First name"
+            label={t('firstNameLabel')}
             required
+            placeholder={t('firstNamePlaceholder')}
             register={form.register('firstName')}
             error={form.formState.errors.firstName?.message}
           />
 
           <TextFormField
-            label="Last name"
+            label={t('lastNameLabel')}
             required
+            placeholder={t('lastNamePlaceholder')}
             register={form.register('lastName')}
             error={form.formState.errors.lastName?.message}
           />
 
-          <SelectFormField label="Phone Number" required>
+          <SelectFormField label={t('phoneNumberLabel')} required>
             <div className="flex flex-col">
               <div className="flex gap-[2.4rem]">
                 <Select
-                  placeholder="+XX"
+                  placeholder={t('phoneCountryPlaceholder')}
                   options={countryCodes}
                   onValueChange={(selectedLabel) => {
                     const selectedCountryCode = countryCodes.find(
@@ -153,7 +155,7 @@ export function PersonalDetails({ form }: PersonalDetailsProps) {
                 />
                 <Input
                   type="default"
-                  placeholder="ex: XXXXXXXXXX"
+                  placeholder={t('phoneNumberPlaceholder')}
                   className="h-[4rem] w-[26.4rem]"
                   maxLength={12}
                   {...form.register('phoneNumber', {
@@ -178,9 +180,9 @@ export function PersonalDetails({ form }: PersonalDetailsProps) {
           </SelectFormField>
 
           <SelectFormField
-            label="Content Language"
+            label={t('contentLanguageLabel')}
             required
-            placeholder="Content Language"
+            placeholder={t('contentLanguagePlaceholder')}
             options={CONTENT_LANGUAGES}
             onValueChange={(value) =>
               form.setValue('contentLanguage', value, {
