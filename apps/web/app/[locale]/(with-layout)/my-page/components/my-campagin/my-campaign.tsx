@@ -1,6 +1,8 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+
+import { useSearchParams } from 'next/navigation';
 
 import { Button } from '@lococo/design-system/button';
 import { cn } from '@lococo/utils';
@@ -160,7 +162,22 @@ const getCampaignConfig = (
 };
 
 export default function MyCampaign() {
+  const searchParams = useSearchParams();
   const [isAddressModalOpen, setIsAddressModalOpen] = useState(false);
+
+  // URL 파라미터로 AddressModal 열기
+  useEffect(() => {
+    const openAddressModal = searchParams.get('openAddressModal');
+    console.log('MyCampaign - openAddressModal:', openAddressModal);
+    if (openAddressModal === 'true') {
+      console.log('Opening AddressModal...');
+      setIsAddressModalOpen(true);
+      // URL에서 파라미터 제거
+      const url = new URL(window.location.href);
+      url.searchParams.delete('openAddressModal');
+      window.history.replaceState({}, '', url.toString());
+    }
+  }, [searchParams]);
 
   const handleConfirmAddressButtonClick = () => {
     setIsAddressModalOpen(true);

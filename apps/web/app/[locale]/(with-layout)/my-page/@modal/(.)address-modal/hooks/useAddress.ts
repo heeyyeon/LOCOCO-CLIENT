@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 
 import { useTranslations } from 'next-intl';
@@ -18,7 +19,11 @@ export type AddressFormData = {
   zip?: string;
 };
 
-export const useAddress = (userId?: number, onSuccess?: () => void) => {
+export const useAddress = (
+  userId?: number,
+  onSuccess?: () => void,
+  addressData?: AddressFormData
+) => {
   const t = useTranslations('myPage.addressModal');
 
   const addressSchema = z.object({
@@ -35,12 +40,13 @@ export const useAddress = (userId?: number, onSuccess?: () => void) => {
   const {
     handleSubmit,
     setValue,
+    reset,
     formState: { errors, isValid },
     watch,
     trigger,
   } = useForm<AddressFormData>({
     resolver: zodResolver(addressSchema),
-    defaultValues: {
+    defaultValues: addressData || {
       country: '',
       state: '',
       city: '',
@@ -51,6 +57,12 @@ export const useAddress = (userId?: number, onSuccess?: () => void) => {
 
     mode: 'onChange',
   });
+
+  useEffect(() => {
+    if (addressData) {
+      reset(addressData);
+    }
+  }, [addressData, reset]);
 
   const formData = watch();
 

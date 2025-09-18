@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { useTranslations } from 'next-intl';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 import {
   Dialog,
@@ -17,9 +18,15 @@ interface SaveFormModalProps {
 
 export function SaveFormModal({ open, onOpenChange }: SaveFormModalProps) {
   const t = useTranslations('myPage.saveFormModal');
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const returnTo = searchParams.get('returnTo');
 
   const handleSaveFormModal = () => {
     onOpenChange(false);
+    if (returnTo === 'address-modal') {
+      router.push('/my-page?tab=my-campaign&openAddressModal=true');
+    }
   };
 
   return (

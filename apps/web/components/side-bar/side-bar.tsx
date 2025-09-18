@@ -55,7 +55,7 @@ export default function SideBar({
             variant="text"
             color={activeMenu === item ? 'primary' : 'secondary'}
             size="md"
-            className="px-0"
+            className="text-nowrap px-0"
             onClick={() => handleClickTab(item)}
           >
             {item}

@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 
 import { useTranslations } from 'next-intl';
+import { useRouter } from 'next/navigation';
 
 import {
   Dialog,
@@ -13,6 +14,7 @@ import { ModalButton } from '@lococo/design-system/modal-button';
 import { ModalHeader } from '@lococo/design-system/modal-header';
 import { Select } from '@lococo/design-system/select';
 
+import { useProfile } from '../../hooks/use-profile';
 import InputWrapper from './components/InputWrapper';
 import { useAddress } from './hooks/useAddress';
 
@@ -22,7 +24,30 @@ interface AddressModalProps {
 }
 
 export function AddressModal({ open, onOpenChange }: AddressModalProps) {
+  const router = useRouter();
   const t = useTranslations('myPage.addressModal');
+
+  const { formData: profileData } = useProfile();
+
+  const addressData = useMemo(
+    () => ({
+      country: profileData.country || '',
+      state: profileData.state || '',
+      city: profileData.city || '',
+      addressLine1: profileData.addressLine1 || '',
+      addressLine2: profileData.addressLine2 || '',
+      zip: profileData.zip || '',
+    }),
+    [
+      profileData.country,
+      profileData.state,
+      profileData.city,
+      profileData.addressLine1,
+      profileData.addressLine2,
+      profileData.zip,
+    ]
+  );
+
   const {
     formData,
     errors,
@@ -35,20 +60,20 @@ export function AddressModal({ open, onOpenChange }: AddressModalProps) {
     handleSubmit,
     isFormValid,
     trigger,
-  } = useAddress();
+  } = useAddress(undefined, undefined, addressData);
+
   const handleEditModal = () => {
-    trigger();
-    if (isFormValid) {
-      handleSubmit();
-    }
+    onOpenChange(false);
+    // 프로필 수정 페이지로 이동
+    router.push('/my-page?tab=edit-profile&returnTo=address-modal');
   };
 
   const handleGetDeliveryModal = () => {
     trigger();
+    // TODO: 모달 닫히고 마이페이지의 캠페인 카드 버튼이 confirm address에서 upload 1st review로 바뀜
     if (isFormValid) {
-      handleSubmit();
+      onOpenChange(false);
     }
-    onOpenChange(false);
   };
 
   return (
@@ -61,7 +86,7 @@ export function AddressModal({ open, onOpenChange }: AddressModalProps) {
 
         <ModalHeader text="Missing required fields" />
 
-        <section className="flex flex-col gap-[1.6rem] bg-white p-[4rem]">
+        <section className="flex h-[52rem] flex-col gap-[1.6rem] overflow-y-auto bg-white p-[4rem]">
           <div className="flex flex-col gap-[0.4rem]">
             <p className="title2 text-gray-800">{t('title')}</p>
             <p className="caption3 text-gray-500">{t('description')}</p>

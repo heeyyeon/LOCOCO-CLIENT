@@ -43,12 +43,11 @@ export default function EditProfile() {
   } = useProfile();
   const [isSaveFormModalOpen, setIsSaveFormModalOpen] = useState(false);
   const handleSubmitForm = async () => {
-    setIsSaveFormModalOpen(true);
     const isValid = await trigger();
-    console.log(formData);
+
     if (isFormValid && isValid) {
       handleSubmit();
-      console.log('submit');
+      setIsSaveFormModalOpen(true);
     }
   };
 

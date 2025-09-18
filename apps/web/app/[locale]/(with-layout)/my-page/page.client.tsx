@@ -1,8 +1,9 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 
 import { useTranslations } from 'next-intl';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 import SideBar from '../../../../components/side-bar/side-bar';
 import ConnectSNS from './components/connect-sns/connect-sns';
@@ -12,6 +13,9 @@ import MyCampaign from './components/my-campagin/my-campaign';
 import { mockup } from './constant/mockup';
 
 export default function PageClient() {
+  const searchParams = useSearchParams();
+  const params = new URLSearchParams(searchParams.toString());
+  const router = useRouter();
   const t = useTranslations('myPage.menus');
 
   const MENU = {
@@ -21,9 +25,44 @@ export default function PageClient() {
     contentSubmissions: t('contentSubmissions'),
   };
 
-  const [activeMenu, setActiveMenu] = useState<string>(MENU.myCampaign);
+  // URL 파라미터를 메뉴 텍스트로 변환
+  const getActiveMenuFromTab = (tab: string | null) => {
+    switch (tab) {
+      case 'my-campaign':
+        return MENU.myCampaign;
+      case 'edit-profile':
+        return MENU.editProfile;
+      case 'connect-sns':
+        return MENU.connectSNS;
+      case 'content-submissions':
+        return MENU.contentSubmissions;
+      default:
+        return MENU.myCampaign;
+    }
+  };
+
+  const activeMenu = getActiveMenuFromTab(searchParams.get('tab'));
+
   const handleClickTab = (tab: string) => {
-    setActiveMenu(tab);
+    console.log('handleClickTab', tab);
+    // 메뉴 텍스트를 URL 파라미터로 변환
+    const getTabFromMenu = (menuText: string) => {
+      switch (menuText) {
+        case MENU.myCampaign:
+          return 'my-campaign';
+        case MENU.editProfile:
+          return 'edit-profile';
+        case MENU.connectSNS:
+          return 'connect-sns';
+        case MENU.contentSubmissions:
+          return 'content-submissions';
+        default:
+          return 'my-campaign';
+      }
+    };
+
+    params.set('tab', getTabFromMenu(tab));
+    router.push(`/my-page?${params.toString()}`);
   };
 
   return (
