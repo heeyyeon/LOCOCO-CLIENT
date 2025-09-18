@@ -41,6 +41,7 @@ export { SvgPurchase } from './Purchase';
 export { SvgRemove } from './Remove';
 export { SvgSearch } from './Search';
 export { SvgSend } from './Send';
+export { SvgSkinTone } from './SkinTone';
 export { SvgStar } from './Star';
 export { SvgVector } from './Vector';
 export { SvgVector469 } from './Vector469';
