@@ -63,5 +63,83 @@
     "title": "",
     "snsDescription": "",
     "submitLabel": ""
+  },
+  "creatorSignup": {
+    "title": "",
+    "communityName": {
+      "title": "",
+      "description": "",
+      "idLabel": "",
+      "idPlaceholder": "",
+      "checkAvailabilityButton": ""
+    },
+    "personalDetails": {
+      "title": "",
+      "description": "",
+      "birthLabel": "",
+      "monthPlaceholder": "",
+      "dayPlaceholder": "",
+      "yearPlaceholder": "",
+      "genderLabel": "",
+      "genderPlaceholder": "",
+      "firstNameLabel": "",
+      "firstNamePlaceholder": "",
+      "lastNameLabel": "",
+      "lastNamePlaceholder": "",
+      "phoneNumberLabel": "",
+      "phoneCountryPlaceholder": "",
+      "phoneNumberPlaceholder": "",
+      "contentLanguageLabel": "",
+      "contentLanguagePlaceholder": ""
+    },
+    "homeAddress": {
+      "title": "",
+      "description": "",
+      "countryLabel": "",
+      "countryPlaceholder": "",
+      "stateLabel": "",
+      "statePlaceholder": "",
+      "cityLabel": "",
+      "cityPlaceholder": "",
+      "addressLine1Label": "",
+      "addressLine1Placeholder": "",
+      "addressLine2Label": "",
+      "addressLine2Placeholder": "",
+      "zipCodeLabel": "",
+      "zipCodePlaceholder": ""
+    },
+    "skinInfo": {
+      "title": "",
+      "description": "",
+      "skinTypeLabel": "",
+      "skinTypePlaceholder": "",
+      "skinToneLabel": "",
+      "skinTonePlaceholder": ""
+    },
+    "validation": {
+      "idRequired": "",
+      "idMaxLength": "",
+      "idInvalidFormat": "",
+      "birthRequired": "",
+      "genderRequired": "",
+      "firstNameRequired": "",
+      "firstNameMaxLength": "",
+      "lastNameRequired": "",
+      "lastNameMaxLength": "",
+      "phoneNumberRequired": "",
+      "phoneNumberInvalid": "",
+      "contentLanguageRequired": "",
+      "countryRequired": "",
+      "stateRequired": "",
+      "stateMaxLength": "",
+      "cityRequired": "",
+      "cityMaxLength": "",
+      "addressLine1Required": "",
+      "addressLine1MaxLength": "",
+      "addressLine2MaxLength": "",
+      "zipCodeMaxLength": "",
+      "skinTypeRequired": "",
+      "skinToneRequired": ""
+    }
   }
 }

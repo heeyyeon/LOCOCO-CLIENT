@@ -69,5 +69,83 @@
     "title": "Join Lococo Creator Community!",
     "snsDescription": "We will go through your SNS account, and let you know if you are verified.",
     "submitLabel": "Join"
+  },
+  "creatorSignup": {
+    "title": "Join Lococo Creator Community!",
+    "communityName": {
+      "title": "Community Name",
+      "description": "(ID must be between 1 and 15 characters long and can only contain letters, numbers, periods (.), and underscores (_)).",
+      "idLabel": "ID",
+      "idPlaceholder": "ex: ilovelococo",
+      "checkAvailabilityButton": "Check availability"
+    },
+    "personalDetails": {
+      "title": "Personal Details",
+      "description": "Please write your date of birth without any additional information.",
+      "birthLabel": "Birth",
+      "monthPlaceholder": "Month",
+      "dayPlaceholder": "Day",
+      "yearPlaceholder": "Year",
+      "genderLabel": "Gender",
+      "genderPlaceholder": "Gender",
+      "firstNameLabel": "First name",
+      "firstNamePlaceholder": "ex: John",
+      "lastNameLabel": "Last name",
+      "lastNamePlaceholder": "ex: Doe",
+      "phoneNumberLabel": "Phone Number",
+      "phoneCountryPlaceholder": "+XX",
+      "phoneNumberPlaceholder": "ex: XXXXXXXXXX",
+      "contentLanguageLabel": "Content Language",
+      "contentLanguagePlaceholder": "Content Language"
+    },
+    "homeAddress": {
+      "title": "Home Address",
+      "description": "Please provide your home address for product delivery.",
+      "countryLabel": "Country",
+      "countryPlaceholder": "Country",
+      "stateLabel": "State/Region/Province",
+      "statePlaceholder": "ex: Illinois",
+      "cityLabel": "City / Town",
+      "cityPlaceholder": "ex: Chicago",
+      "addressLine1Label": "Address Line 1",
+      "addressLine1Placeholder": "ex: 233 S Wacker Dr",
+      "addressLine2Label": "Address Line 2",
+      "addressLine2Placeholder": "ex: Apt 25B",
+      "zipCodeLabel": "Zip/Post Code",
+      "zipCodePlaceholder": "ex: 60606"
+    },
+    "skinInfo": {
+      "title": "Additional Information",
+      "description": "Tell us about you more!",
+      "skinTypeLabel": "Skin Type",
+      "skinTypePlaceholder": "Skin Type",
+      "skinToneLabel": "Skin Tone",
+      "skinTonePlaceholder": "Skin Tone"
+    },
+    "validation": {
+      "idRequired": "ID is required.",
+      "idMaxLength": "Use up to 15 characters.",
+      "idInvalidFormat": "This ID is unavailable. Please check the ID form.",
+      "birthRequired": "Birth is required.",
+      "genderRequired": "Gender is required.",
+      "firstNameRequired": "First name is required.",
+      "firstNameMaxLength": "Use up to 20 characters.",
+      "lastNameRequired": "Last name is required.",
+      "lastNameMaxLength": "Use up to 20 characters.",
+      "phoneNumberRequired": "Phone Number is required.",
+      "phoneNumberInvalid": "Please enter a valid phone number.",
+      "contentLanguageRequired": "Content Language is required.",
+      "countryRequired": "Country is required.",
+      "stateRequired": "State/Region/Province is required.",
+      "stateMaxLength": "Use up to 20 characters.",
+      "cityRequired": "City / Town is required.",
+      "cityMaxLength": "Use up to 20 characters.",
+      "addressLine1Required": "Address Line 1 is required.",
+      "addressLine1MaxLength": "Use up to 20 characters.",
+      "addressLine2MaxLength": "Use up to 20 characters.",
+      "zipCodeMaxLength": "Use up to 20 characters.",
+      "skinTypeRequired": "Skin Type is required.",
+      "skinToneRequired": "Skin Tone is required."
+    }
   }
 }
