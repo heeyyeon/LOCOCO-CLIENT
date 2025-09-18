@@ -2,11 +2,13 @@
 
 import Image from 'next/image';
 
+import { ApplicantStatus } from 'types/applicant';
+
 import Checkbox from '../../../../../../../packages/design-system/src/components/checkbox/Checkbox';
 import InfoChip from '../../../../../../../packages/design-system/src/components/info-chip/InfoChip';
 
 interface ApplicantInfoProps {
-  status: 'default' | 'selected' | 'nonSelected';
+  status: ApplicantStatus;
   profileImage: string;
   userName: string;
   snsId: string;

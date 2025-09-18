@@ -1,17 +1,6 @@
 import { useState } from 'react';
 
-export interface ApplicantData {
-  id: string;
-  status: 'default' | 'selected' | 'nonSelected';
-  profileImage: string;
-  userName: string;
-  snsId: string;
-  instagramFollower: number;
-  tiktokFollower: number;
-  joinedCampaign: number;
-  applicationDate: string;
-  approvalStatus: string;
-}
+import { ApplicantData } from 'types/applicant';
 
 export const useApplicantSelect = (initialData: ApplicantData[]) => {
   const [applicants, setApplicants] = useState<ApplicantData[]>(initialData);
