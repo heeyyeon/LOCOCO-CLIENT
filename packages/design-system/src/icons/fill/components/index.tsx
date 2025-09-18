@@ -10,6 +10,7 @@ export { SvgArrowUp } from './ArrowUp';
 export { SvgBad } from './Bad';
 export { SvgCheck } from './Check';
 export { SvgCheckNonBg } from './CheckNonBg';
+export { SvgCheckRound } from './CheckRound';
 export { SvgClose } from './Close';
 export { SvgDelete } from './Delete';
 export { SvgDivider } from './Divider';
