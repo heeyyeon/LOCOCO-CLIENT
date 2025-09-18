@@ -162,7 +162,7 @@ export function Select({
             <SelectItem key={option.label} value={option.label}>
               <div className="flex items-center gap-[16px]">
                 {option.icon}
-                <span className="inter-body4 font-[500] text-gray-800">
+                <span className="body4 font-[500] text-gray-800">
                   {option.label}
                 </span>
               </div>
