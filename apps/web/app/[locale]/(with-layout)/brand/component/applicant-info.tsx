@@ -91,7 +91,7 @@ export default function ApplicantInfo({
       <td className="mr-[3.2rem] flex w-[14.8rem] flex-col gap-[0.4rem]">
         <div className="flex items-center gap-[0.8rem]">
           <Image
-            src={profileImage}
+            src="/instagram.svg"
             alt="instagram logo"
             width={24}
             height={24}
@@ -101,7 +101,7 @@ export default function ApplicantInfo({
           </span>
         </div>
         <div className="flex items-center gap-[0.8rem]">
-          <Image src={profileImage} alt="tiktok logo" width={24} height={24} />
+          <Image src="/tiktok.svg" alt="tiktok logo" width={24} height={24} />
           <span className="body3 text-gray-800">
             {formatNumber(tiktokFollower)}
           </span>
