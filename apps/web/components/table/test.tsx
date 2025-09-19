@@ -9,28 +9,22 @@ export default function Test() {
 
   const tableData = [
     [
-      <div className="flex items-center gap-[0.8rem]">
-        <img
-          src="/profile1.jpg"
-          alt="profile"
-          className="h-8 w-8 rounded-full"
-        />
+      <div key="profile-1" className="flex items-center gap-[0.8rem]">
         <span>Mia Rodriguez</span>
       </div>,
-      <span>34.2K</span>,
-      <span className="rounded bg-green-100 px-2 py-1">승인</span>,
+      <span key="followers-1">34.2K</span>,
+      <span key="status-1" className="rounded bg-green-100 px-2 py-1">
+        승인
+      </span>,
     ],
     [
-      <div className="flex items-center gap-[0.8rem]">
-        <img
-          src="/profile2.jpg"
-          alt="profile"
-          className="h-8 w-8 rounded-full"
-        />
+      <div key="profile-2" className="flex items-center gap-[0.8rem]">
         <span>Alex Thompson</span>
       </div>,
-      <span>128.5K</span>,
-      <span className="rounded bg-yellow-100 px-2 py-1">대기중</span>,
+      <span key="followers-2">128.5K</span>,
+      <span key="status-2" className="rounded bg-yellow-100 px-2 py-1">
+        대기중
+      </span>,
     ],
   ];
 
