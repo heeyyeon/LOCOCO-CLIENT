@@ -16,7 +16,7 @@ export default function TableBody({ data, widths }: TableBodyProps) {
           {row.map((cell, cellIndex) => (
             <td
               key={cellIndex}
-              className={`${widths[cellIndex]} flex justify-start`}
+              className={`${widths[cellIndex]} flex justify-start truncate`}
             >
               {cell}
             </td>
