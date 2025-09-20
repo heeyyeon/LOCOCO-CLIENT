@@ -2,14 +2,12 @@
 
 import React, { useState } from 'react';
 
-import { useLocale } from 'next-intl';
 import { useParams } from 'next/navigation';
 
 import { useQuery } from '@tanstack/react-query';
 import CampaignFilters from 'components/campaign/campaign-filter';
 import CampaignGrid from 'components/campaign/campaign-grid';
 import { useRouter } from 'i18n/navigation';
-import { campaignDummyData } from 'mocks/campaignData';
 import { LanguageKey } from 'types/language';
 
 import { Pagenation } from '@lococo/design-system/pagenation';
@@ -17,6 +15,7 @@ import { Pagenation } from '@lococo/design-system/pagenation';
 import { CategoryKey } from '../../../../../types/category';
 import { getCampaignsByCategory } from '../apis';
 import { campaignKeys } from '../query';
+import { CampaignApiResponse } from './home-section-campaign';
 
 export default function CampaignAll() {
   const [campaignCategory, setCampaignCategory] = useState<CategoryKey>('ALL');
@@ -32,15 +31,13 @@ export default function CampaignAll() {
     router.push(`/all/${page}`);
   };
 
-  const locale = useLocale();
-
-  const { data } = useQuery({
+  const { data } = useQuery<CampaignApiResponse>({
     queryKey: [
       campaignKeys.byCategoryPaginated(
         campaignCategory,
         'popular',
-        locale,
-        currentPage,
+        campaignLanguage,
+        currentPage - 1,
         12
       ),
     ],
@@ -48,13 +45,14 @@ export default function CampaignAll() {
       getCampaignsByCategory({
         section: 'KBeauty',
         category: campaignCategory,
-        page: currentPage,
+        page: currentPage - 1,
         size: 12,
-        locale: locale,
+        locale: campaignLanguage,
       }),
   });
 
   // TODO API 응답 필드 보고 카테고리 필터 추가 후 렌더링
+  const campaigns = data?.data?.campaigns?.slice(0, 6) || [];
 
   return (
     <div className="flex w-full flex-col gap-[1.6rem]">
@@ -65,7 +63,7 @@ export default function CampaignAll() {
         setCampaignLanguage={setCampaignLanguage}
         showSeeMore={false}
       />
-      <CampaignGrid campaigns={campaignDummyData} />
+      <CampaignGrid campaigns={campaigns} />
       <div className="mb-[6.4rem] mt-[4.8rem] flex w-full items-center justify-center">
         <Pagenation
           currentPage={currentPage}
