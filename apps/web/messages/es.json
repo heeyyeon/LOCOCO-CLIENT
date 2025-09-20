@@ -28,14 +28,6 @@
     "fileTooLarge": "",
     "notAllowedFileType": ""
   },
-  "gnb": {
-    "campaigns": "",
-    "howItWorks": "",
-    "login": "",
-    "logOut": "",
-    "myPage": "",
-    "signUp": ""
-  },
   "home": {
     "description": "Información del producto",
     "homeSection": {
