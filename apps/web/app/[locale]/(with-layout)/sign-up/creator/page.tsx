@@ -20,7 +20,7 @@ export default function CreatorSignupPage() {
 
   const form = useForm<CreatorSignupForm>({
     resolver: zodResolver(creatorSignupSchema(t)),
-    mode: 'onChange',
+    mode: 'onBlur',
     defaultValues: {
       id: '',
       birthMonth: '',

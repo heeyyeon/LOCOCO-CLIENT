@@ -21,7 +21,7 @@ export default function BrandSignupPage() {
 
   const form = useForm<BrandSignupForm>({
     resolver: zodResolver(brandSignupSchema),
-    mode: 'onChange',
+    mode: 'onBlur',
   });
 
   const { isOpen, openAddressSearch, closeAddressSearch, handleComplete } =
