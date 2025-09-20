@@ -14,7 +14,7 @@ import {
   TextFormField,
 } from '../../../../../components/forms';
 import { useAddressSearch } from '../../../../../hooks/useAddressSearch';
-import { type BrandSignupForm, brandSignupSchema } from './hooks/signup';
+import { type BrandSignupForm, brandSignupSchema } from './utils/signup';
 
 export default function BrandSignupPage() {
   const router = useRouter();
