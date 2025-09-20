@@ -7,6 +7,10 @@ settings:
 importers:
 
   .:
+    dependencies:
+      google-auth-library:
+        specifier: ^10.3.0
+        version: 10.3.0
     devDependencies:
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^5.2.2

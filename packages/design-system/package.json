@@ -25,6 +25,7 @@
     "./pagenation": "./src/components/pagenation/index.ts",
     "./image-upload": "./src/components/image-upload/index.ts",
     "./image-preview": "./src/components/image-preview/index.ts",
+    "./input-field": "./src/components/input-field/index.ts",
     "./styles.css": "./dist/index.css"
   },
   "scripts": {
