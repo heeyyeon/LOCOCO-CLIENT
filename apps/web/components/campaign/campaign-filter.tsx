@@ -1,11 +1,11 @@
 'use client';
 
-import CampaignLanguage, {
-  LocaleType,
-} from 'app/[locale]/(with-layout)/(home)/components/campaign-language';
+import CampaignLanguage from 'app/[locale]/(with-layout)/(home)/components/campaign-language';
 import { CATEGORY_NAME_NEW } from 'constants/category';
+import { CATEGORY_KEYS } from 'constants/tab-category';
 import { Link } from 'i18n/navigation';
-import { CATEGORY_KEYS, CategoryKey } from 'types/category';
+import { LanguageKey } from 'types/language';
+import { CategoryKey } from 'types/tab-category';
 
 import { Tab, TabContainer } from '@lococo/design-system/tab';
 import { SvgAdd } from '@lococo/icons';
@@ -13,8 +13,8 @@ import { SvgAdd } from '@lococo/icons';
 interface CampaignFiltersProps {
   campaignCategory: CategoryKey;
   setCampaignCategory: (value: CategoryKey) => void;
-  campaignLanguage: LocaleType;
-  setCampaignLanguage: (value: LocaleType) => void;
+  campaignLanguage: LanguageKey;
+  setCampaignLanguage: (value: LanguageKey) => void;
   showSeeMore?: boolean;
 }
 

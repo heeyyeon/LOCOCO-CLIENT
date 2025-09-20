@@ -8,16 +8,15 @@ import { useParams } from 'next/navigation';
 import { useQuery } from '@tanstack/react-query';
 import CampaignFilters from 'components/campaign/campaign-filter';
 import CampaignGrid from 'components/campaign/campaign-grid';
-import { CATEGORY_NAME_NEW } from 'constants/category';
 import { useRouter } from 'i18n/navigation';
 import { campaignDummyData } from 'mocks/campaignData';
+import { LanguageKey } from 'types/language';
 
 import { Pagenation } from '@lococo/design-system/pagenation';
 
 import { CategoryKey } from '../../../../../types/category';
 import { getCampaignsByCategory } from '../apis';
 import { campaignKeys } from '../query';
-import { LocaleType } from './campaign-language';
 
 export default function CampaignAll() {
   const [campaignCategory, setCampaignCategory] = useState<CategoryKey>('ALL');
@@ -27,7 +26,7 @@ export default function CampaignAll() {
   const pageParam = Array.isArray(params.page) ? params.page[0] : params.page;
   const currentPage = pageParam ? parseInt(pageParam) : 1;
 
-  const [campaignLanguage, setCampaignLanguage] = useState<LocaleType>('en');
+  const [campaignLanguage, setCampaignLanguage] = useState<LanguageKey>('EN');
 
   const handlePageChange = (page: number) => {
     router.push(`/all/${page}`);

@@ -2,16 +2,14 @@
 
 import { useState } from 'react';
 
-import { useLocale } from 'next-intl';
-
 import { useQuery } from '@tanstack/react-query';
 import CampaignFilters from 'components/campaign/campaign-filter';
 import CampaignGrid from 'components/campaign/campaign-grid';
-import { CategoryKey } from 'types/category';
+import { LanguageKey } from 'types/language';
+import { CategoryKey } from 'types/tab-category';
 
 import { getCampaignsByCategory } from '../apis';
 import { campaignKeys } from '../query';
-import { LocaleType } from './campaign-language';
 
 interface HomeSectionCampaignProps {
   kindOfCard: 'KBeauty' | 'openingSoon';
@@ -53,19 +51,19 @@ export default function HomeSectionCampaign({
   seeMore = false,
 }: HomeSectionCampaignProps) {
   const [campaignCategory, setCampaignCategory] = useState<CategoryKey>('ALL');
-  const [campaignLanguage, setCampaignLanguage] = useState<LocaleType>('en');
-
-  const locale = useLocale();
+  const [campaignLanguage, setCampaignLanguage] = useState<LanguageKey>('EN');
 
   const { data } = useQuery<CampaignApiResponse>({
-    queryKey: [campaignKeys.byCategory(campaignCategory, kindOfCard, locale)],
+    queryKey: [
+      campaignKeys.byCategory(campaignCategory, kindOfCard, campaignLanguage),
+    ],
     queryFn: async () =>
       await getCampaignsByCategory({
         section: kindOfCard,
         category: campaignCategory,
         page: 0,
         size: 6,
-        locale,
+        locale: campaignLanguage,
       }),
   });
 
