@@ -33,7 +33,7 @@ export default function BrandSignupPage() {
     });
 
   const handleSubmit = () => {
-    // TODO: 가입 확인 모달 연결하기
+    router.push('/');
   };
 
   return (
