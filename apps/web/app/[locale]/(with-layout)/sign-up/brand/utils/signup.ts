@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-import { isValidPhoneNumber } from '../../../../../../utils/formatPhoneNumber';
+import { isValidPhoneNumber } from '../../../../../../utils/format-phone-number';
 
 export const brandSignupSchema = z
   .object({

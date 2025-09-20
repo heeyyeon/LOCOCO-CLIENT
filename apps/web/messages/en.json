@@ -1,6 +1,129 @@
 {
   "aabc": "aabc",
   "abc": "abc",
+  "brandMyPage": {
+    "myCampaign": "My Campaigns"
+  },
+  "brandMyPageSideBar": {
+    "checkApplicants": "View Applicants ",
+    "checkContents": "View Contents",
+    "dashboard": "Dashboard ",
+    "editProfile": "Edit Profile ",
+    "makeNewCampaign": "Create a new campaign  ",
+    "myCampaign": "My Campaigns"
+  },
+  "card": {
+    "campaignThumbnailImage": "campaign thumbnail image",
+    "card": "Card",
+    "goToApply": "Apply Now "
+  },
+  "confirmSignupModal": {
+    "confirmButton": "Okay",
+    "message": "Your application was successfully submitted.\nWe'll email you the result within 24 hours.",
+    "title": "Successfully Submitted!"
+  },
+  "ConfirmSignupModal": {
+    "confirmButton": "",
+    "message": "",
+    "title": ""
+  },
+  "creatorSignup": {
+    "communityName": {
+      "checkAvailabilityButton": "Check availability",
+      "description": "(ID must be between 1 and 15 characters long and can only contain letters, numbers, periods (.), and underscores (_)).",
+      "idLabel": "ID",
+      "idPlaceholder": "ex: ilovelococo",
+      "title": "Community Name"
+    },
+    "homeAddress": {
+      "addressLine1Label": "Address Line 1",
+      "addressLine1Placeholder": "ex: 233 S Wacker Dr",
+      "addressLine2Label": "Address Line 2",
+      "addressLine2Placeholder": "ex: Apt 25B",
+      "cityLabel": "City / Town",
+      "cityPlaceholder": "ex: Chicago",
+      "countryLabel": "Country",
+      "countryPlaceholder": "Country",
+      "description": "Please provide your home address for product delivery.",
+      "stateLabel": "State/Region/Province",
+      "statePlaceholder": "ex: Illinois",
+      "title": "Home Address",
+      "zipCodeLabel": "Zip/Post Code",
+      "zipCodePlaceholder": "ex: 60606"
+    },
+    "personalDetails": {
+      "birthLabel": "Birth",
+      "contentLanguageLabel": "Content Language",
+      "contentLanguagePlaceholder": "Content Language",
+      "dayPlaceholder": "Day",
+      "description": "Please write your date of birth without any additional information.",
+      "firstNameLabel": "First name",
+      "firstNamePlaceholder": "ex: John",
+      "genderLabel": "Gender",
+      "genderPlaceholder": "Gender",
+      "lastNameLabel": "Last name",
+      "lastNamePlaceholder": "ex: Doe",
+      "monthPlaceholder": "Month",
+      "phoneCountryPlaceholder": "#NAME?",
+      "phoneNumberLabel": "Phone Number",
+      "phoneNumberPlaceholder": "ex: XXXXXXXXXX",
+      "title": "Personal Details",
+      "yearPlaceholder": "Year"
+    },
+    "skinInfo": {
+      "description": "Tell us about you more!",
+      "skinToneLabel": "Skin Tone",
+      "skinTonePlaceholder": "Skin Tone",
+      "skinTypeLabel": "Skin Type",
+      "skinTypePlaceholder": "Skin Type",
+      "title": "Additional Information"
+    },
+    "title": "Join Lococo Creator Community!",
+    "validation": {
+      "addressLine1MaxLength": "Use up to 20 characters.",
+      "addressLine1Required": "Address Line 1 is required.",
+      "addressLine2MaxLength": "Use up to 20 characters.",
+      "birthRequired": "Birth is required.",
+      "cityMaxLength": "Use up to 20 characters.",
+      "cityRequired": "City / Town is required.",
+      "contentLanguageRequired": "Content Language is required.",
+      "countryRequired": "Country is required.",
+      "firstNameMaxLength": "Use up to 20 characters.",
+      "firstNameRequired": "First name is required.",
+      "genderRequired": "Gender is required.",
+      "idInvalidFormat": "This ID is unavailable. Please check the ID form.",
+      "idMaxLength": "Use up to 15 characters.",
+      "idRequired": "ID is required.",
+      "lastNameMaxLength": "Use up to 20 characters.",
+      "lastNameRequired": "Last name is required.",
+      "phoneNumberInvalid": "Please enter a valid phone number.",
+      "phoneNumberRequired": "Phone Number is required.",
+      "skinToneRequired": "Skin Tone is required.",
+      "skinTypeRequired": "Skin Type is required.",
+      "stateMaxLength": "Use up to 20 characters.",
+      "stateRequired": "State/Region/Province is required.",
+      "zipCodeMaxLength": "Use up to 20 characters."
+    }
+  },
+  "creatorSnsLinksPage": {
+    "snsDescription": "We will go through your SNS account, and let you know if you are verified.",
+    "submitLabel": "Join",
+    "title": "Join Lococo Creator Community!"
+  },
+  "fileUploader": {
+    "cannotUploadFile": "Cannot upload file",
+    "emptyFile": "Empty file",
+    "fileTooLarge": "File too large",
+    "notAllowedFileType": "Not allowed file type"
+  },
+  "gnb": {
+    "campaigns": "campaigns",
+    "howItWorks": "how it works",
+    "login": "Log in",
+    "logOut": "Log Out",
+    "myPage": "My Page",
+    "signUp": "Sign up"
+  },
   "home": {
     "description": "productDescription",
     "homeSection": {
@@ -16,58 +139,177 @@
     "kBeautyCampaigns": "K-Beauty Campaigns",
     "openingSoon": "Opening Soon"
   },
-  "campaigns": {},
-  "gnb": {
-    "campaigns": "campaigns",
-    "howItWorks": "how it works",
-    "myPage": "My Page",
-    "logOut": "Log Out",
-    "login": "Log in",
-    "signUp": "Sign up"
-  },
-  "confirmSignupModal": {
-    "title": "Successfully Submitted!",
-    "message": "Your application was successfully submitted.\nWe'll email you the result within 24 hours.",
-    "confirmButton": "Okay"
-  },
-  "userInductionModal": {
-    "title": "Creator Suggestion",
-    "message": "Campaign applications are only available to creator members.\nWould you like to sign up as a creator?",
-    "cancelButton": "No",
-    "confirmButton": "Yes"
+  "myPage": {
+    "addressModal": {
+      "addressLine1": "Address Line 1",
+      "addressLine1Required": "Address line 1 is required",
+      "addressLine2": "Address Line 2",
+      "city": "City/Town",
+      "cityRequired": "City is required",
+      "country": "Country",
+      "countryRequired": "Country is required",
+      "description": "Please check your home address for product delivery.",
+      "edit": "Edit",
+      "getDelivery": "Get the delivery",
+      "state": "State/Region/Province",
+      "stateRequired": "State is required",
+      "title": "Address",
+      "zip": "Zip/Postal Code"
+    },
+    "contentSubmissions": {
+      "campaignProductMediaInput": {
+        "description": "Drag and drop or click to upload the file.",
+        "selectFile": "Select File",
+        "title": "Campaign Product Media"
+      },
+      "campaignSelect": {
+        "description": "Please select a campaign",
+        "selectCampaign": "Select a Campaign",
+        "title": "Select a Campaign"
+      },
+      "contentTypeSelect": {
+        "instagramPost": "Instagram Post",
+        "instagramReels": "Instagram Reels",
+        "selectContentType": "Select a Content Type",
+        "tiktokVideo": "Tiktok Video",
+        "title": "Content Type"
+      },
+      "hashtagsInput": {
+        "description": "Please paste the exact caption and hashtags you used on",
+        "title": "Submit Your Caption & Hashtags"
+      }
+    },
+    "editProfile": {
+      "addressLine1Required": "Address line 1 is required",
+      "basicInformation": {
+        "id": "ID",
+        "idCheck": "Check availability",
+        "idCheckSuccess": "ID Check Success",
+        "title": "Basic Information"
+      },
+      "cityRequired": "City is required",
+      "contentLanguageRequired": "Content language is required",
+      "countryCodeRequired": "Country code is required",
+      "countryRequired": "Country is required",
+      "dateRequired": "Date is required",
+      "emailRequired": "Email is required",
+      "firstNameRequired": "First name is required",
+      "genderRequired": "Gender is required",
+      "homeAddress": {
+        "addressLine1": "Address Line 1",
+        "addressLine2": "Address Line 2",
+        "city": "City / Town",
+        "country": "Country",
+        "description": "Please provide your home address for product delivery.",
+        "state": "State/Region/Province",
+        "title": "Home Address",
+        "zip": "Zip/Postal Code"
+      },
+      "idRequired": "ID is required",
+      "lastNameRequired": "Last name is required",
+      "monthRequired": "Month is required",
+      "personalInformation": {
+        "birth": "Birth",
+        "contentLanguage": "Content Language",
+        "countryCode": "Country Code",
+        "date": "Date",
+        "email": "Email",
+        "firstName": "First Name",
+        "gender": "Gender",
+        "lastName": "Last Name",
+        "month": "Month",
+        "phoneNumber": "Phone Number",
+        "title": "Personal Information",
+        "year": "Year"
+      },
+      "phoneNumberRequired": "Phone number is required",
+      "profileImageRequired": "Profile image is required",
+      "profilePhoto": {
+        "changePhoto": "Change Photo",
+        "title": "Profile Photo"
+      },
+      "skin": {
+        "description": "Tell us about you more!",
+        "skinTone": "Skin Tone",
+        "skinToneOptions": {
+          "shade1": "Shade 1",
+          "shade10": "Shade 10",
+          "shade11": "Shade 11",
+          "shade12": "Shade 12",
+          "shade13": "Shade 13",
+          "shade14": "Shade 14",
+          "shade15": "Shade 15",
+          "shade16": "Shade 16",
+          "shade17": "Shade 17",
+          "shade18": "Shade 18",
+          "shade19": "Shade 19",
+          "shade2": "Shade 2",
+          "shade20": "Shade 20",
+          "shade3": "Shade 3",
+          "shade4": "Shade 4",
+          "shade5": "Shade 5",
+          "shade6": "Shade 6",
+          "shade7": "Shade 7",
+          "shade8": "Shade 8",
+          "shade9": "Shade 9"
+        },
+        "skinType": "Skin Type",
+        "skinTypeOptions": {
+          "combination": "Combination",
+          "dry": "Dry",
+          "normal": "Normal",
+          "oily": "Oily",
+          "others": "Others",
+          "sensitive": "Sensitive"
+        },
+        "title": "Skin"
+      },
+      "skinToneRequired": "Skin tone is required",
+      "skinTypeRequired": "Skin type is required",
+      "stateRequired": "State is required",
+      "yearRequired": "Year is required"
+    },
+    "menus": {
+      "connectSNS": "Connect SNS",
+      "contentSubmissions": "Content Submissions",
+      "editProfile": "Edit Profile",
+      "myCampaign": "My Campaign"
+    },
+    "saveFormModal": {
+      "description": "Your changes have been saved.",
+      "save": "Okay",
+      "title": "Saved successfully"
+    }
   },
   "selectRoleModal": {
-    "title": "Choose Your Role",
-    "welcomeTitle": "Welcome to Lococo!",
     "description": "Select your role to sign in.\nYou won't be able to change this later.",
+    "loginAs": "Log in as a",
     "roles": {
-      "creator": "Creator",
       "brand": "Brand",
+      "creator": "Creator",
       "user": "User"
     },
-    "loginAs": "Log in as a"
-  },
-  "card": {
-    "card": "card",
-    "campaignThumbnailImage": "campaign thumbnail image",
-    "goToApply": "Go To Apply"
+    "title": "Choose Your Role",
+    "welcomeTitle": "Welcome to Lococo!"
   },
   "snsConnection": {
-    "title": "SNS Link",
-    "errorMessage": "Please add your account link at least one.",
+    "connectButtons": {
+      "instagram": "Connect with Instagram",
+      "tiktok": "Connect with Tiktok"
+    },
     "connectedStatus": "Connected!",
+    "errorMessage": "Please add your account link at least one.",
     "platforms": {
       "instagram": "Instagram",
       "tiktok": "Tiktok"
     },
-    "connectButtons": {
-      "instagram": "Connect with Instagram",
-      "tiktok": "Connect with Tiktok"
-    }
+    "title": "SNS Link"
   },
-  "creatorSnsLinksPage": {
-    "title": "Join Lococo Creator Community!",
-    "snsDescription": "We will go through your SNS account, and let you know if you are verified.",
-    "submitLabel": "Join"
-  }
+  "userInductionModal": {
+    "cancelButton": "No",
+    "confirmButton": "Yes",
+    "message": "Campaign applications are only available to creator members.\nWould you like to sign up as a creator?",
+    "title": "Creator Suggestion"
+  },
+  "": ""
 }
