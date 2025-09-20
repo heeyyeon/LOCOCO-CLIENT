@@ -10,7 +10,7 @@ import CampaignGrid from 'components/campaign/campaign-grid';
 import { campaignDummyData } from 'mocks/campaignData';
 import { CategoryValue } from 'types/category';
 
-import { getProductsByCategory } from '../apis';
+import { getCampaignsByCategory } from '../apis';
 import { campaignKeys } from '../query';
 import { LocaleType } from './campaign-language';
 
@@ -32,7 +32,7 @@ export default function HomeSectionCampaign({
   const { data } = useQuery({
     queryKey: [campaignKeys.byCategory(campaignCategory, kindOfCard, locale)],
     queryFn: () =>
-      getProductsByCategory({
+      getCampaignsByCategory({
         section: kindOfCard,
         category: campaignCategory,
         page: 0,

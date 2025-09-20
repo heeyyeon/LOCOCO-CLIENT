@@ -10,12 +10,14 @@ export const campaignKeys = {
   byCategoryPaginated: (
     category: CategoryValue,
     section: string,
-    locale: string
+    locale: string,
+    page: number,
+    size: number
   ) =>
     [
       ...campaignKeys.lists(locale),
       'category',
       'paginated',
-      { category, section },
+      { category, section, page, size },
     ] as const,
 };

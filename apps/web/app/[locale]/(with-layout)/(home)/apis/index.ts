@@ -9,7 +9,7 @@ interface GetCampaignProps {
   locale: string;
 }
 
-export const getProductsByCategory = async ({
+export const getCampaignsByCategory = async ({
   section,
   category,
   page,
@@ -22,5 +22,6 @@ export const getProductsByCategory = async ({
     endPoint: `/api/campaigns${section === 'openingSoon' ? '/upcoming' : ''}?lang=${langParam}&category=${category}&page=${page}&size=${size}`,
     method: 'GET',
   });
+
   return response;
 };

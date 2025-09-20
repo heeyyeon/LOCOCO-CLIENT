@@ -2,8 +2,10 @@
 
 import React, { useState } from 'react';
 
+import { useLocale } from 'next-intl';
 import { useParams } from 'next/navigation';
 
+import { useQuery } from '@tanstack/react-query';
 import CampaignFilters from 'components/campaign/campaign-filter';
 import CampaignGrid from 'components/campaign/campaign-grid';
 import { useRouter } from 'i18n/navigation';
@@ -12,6 +14,8 @@ import { campaignDummyData } from 'mocks/campaignData';
 import { Pagenation } from '@lococo/design-system/pagenation';
 
 import { CategoryValue } from '../../../../../types/category';
+import { getCampaignsByCategory } from '../apis';
+import { campaignKeys } from '../query';
 import { LocaleType } from './campaign-language';
 
 export default function CampaignAll() {
@@ -28,6 +32,28 @@ export default function CampaignAll() {
   const handlePageChange = (page: number) => {
     router.push(`/all/${page}`);
   };
+
+  const locale = useLocale();
+
+  const { data } = useQuery({
+    queryKey: [
+      campaignKeys.byCategoryPaginated(
+        campaignCategory,
+        'popular',
+        locale,
+        currentPage,
+        12
+      ),
+    ],
+    queryFn: () =>
+      getCampaignsByCategory({
+        section: 'KBeauty',
+        category: campaignCategory,
+        page: currentPage,
+        size: 12,
+        locale: locale,
+      }),
+  });
 
   // TODO API 응답 필드 보고 카테고리 필터 추가 후 렌더링
 
