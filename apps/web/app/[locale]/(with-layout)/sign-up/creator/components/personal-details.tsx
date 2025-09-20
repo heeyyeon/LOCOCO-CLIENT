@@ -19,7 +19,7 @@ import {
   birthDateOptions,
   countryPhoneCodeOptions,
 } from '../../../../../../utils';
-import { type CreatorSignupForm } from '../hooks/signup';
+import { type CreatorSignupForm } from '../utils/signup';
 
 interface PersonalDetailsProps {
   form: UseFormReturn<CreatorSignupForm>;

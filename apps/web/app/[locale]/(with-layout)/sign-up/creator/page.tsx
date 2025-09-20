@@ -11,7 +11,7 @@ import {
   CreatorFormSections,
   SignupFormLayout,
 } from '../../../../../components/forms';
-import { type CreatorSignupForm, creatorSignupSchema } from './hooks/signup';
+import { type CreatorSignupForm, creatorSignupSchema } from './utils/signup';
 
 export default function CreatorSignupPage() {
   const router = useRouter();

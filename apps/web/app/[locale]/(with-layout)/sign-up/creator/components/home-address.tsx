@@ -8,7 +8,7 @@ import {
   TextFormField,
 } from '../../../../../../components/forms';
 import { countryNameOptions } from '../../../../../../utils';
-import { type CreatorSignupForm } from '../hooks/signup';
+import { type CreatorSignupForm } from '../utils/signup';
 
 interface HomeAddressProps {
   form: UseFormReturn<CreatorSignupForm>;

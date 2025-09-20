@@ -10,7 +10,7 @@ import {
   SKIN_TONE,
   SKIN_TYPES,
 } from '../../../../../../constants/creator-options';
-import { type CreatorSignupForm } from '../hooks/signup';
+import { type CreatorSignupForm } from '../utils/signup';
 
 interface SkinInfoProps {
   form: UseFormReturn<CreatorSignupForm>;

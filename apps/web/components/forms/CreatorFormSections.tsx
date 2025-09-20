@@ -6,7 +6,7 @@ import {
   PersonalDetails,
   SkinInfo,
 } from '../../app/[locale]/(with-layout)/sign-up/creator/components';
-import { type CreatorSignupForm } from '../../app/[locale]/(with-layout)/sign-up/creator/hooks/signup';
+import { type CreatorSignupForm } from '../../app/[locale]/(with-layout)/sign-up/creator/utils/signup';
 
 interface CreatorFormSectionsProps {
   form: UseFormReturn<CreatorSignupForm>;

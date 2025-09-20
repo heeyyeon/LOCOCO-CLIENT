@@ -5,7 +5,7 @@ import { useTranslations } from 'next-intl';
 import { Button } from '@lococo/design-system/button';
 
 import { FormSection, TextFormField } from '../../../../../../components/forms';
-import { type CreatorSignupForm } from '../hooks/signup';
+import { type CreatorSignupForm } from '../utils/signup';
 
 interface CommunityNameProps {
   form: UseFormReturn<CreatorSignupForm>;
