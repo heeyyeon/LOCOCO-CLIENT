@@ -2,213 +2,314 @@
   "aabc": "aabc",
   "abc": "abc",
   "brandMyPage": {
-    "myCampaign": ""
+    "myCampaign": "Mis Campañas"
   },
   "brandMyPageSideBar": {
-    "checkApplicants": "",
-    "checkContents": "",
-    "dashboard": "",
-    "editProfile": "",
-    "makeNewCampaign": "",
-    "myCampaign": ""
+    "checkApplicants": "Revisar Solicitantes",
+    "checkContents": "Revisar Contenidos",
+    "dashboard": "Tablero de campañas",
+    "editProfile": "Editar perfil",
+    "makeNewCampaign": "Crear una nueva campaña",
+    "myCampaign": "Mis Campañas"
   },
   "card": {
-    "campaignThumbnailImage": "",
-    "card": "",
-    "goToApply": ""
+    "campaignThumbnailImage": "Imagen en miniatura de la campaña",
+    "card": "Tarjeta ",
+    "goToApply": "Aplica ahora"
   },
-  "creatorSnsLinksPage": {
-    "snsDescription": "",
-    "submitLabel": "",
-    "title": ""
-  },
-  "fileUploader": {
-    "cannotUploadFile": "",
-    "emptyFile": "",
-    "fileTooLarge": "",
-    "notAllowedFileType": ""
-  },
-  "home": {
-    "description": "Información del producto",
-    "homeSection": {
-      "title": ""
-    },
-    "ingredients": "Ingredientes",
-    "productDetail22": "Detalles del producto"
-  },
-  "gnb": {
-    "myPage": "Mi Página",
-    "logOut": "Cerrar Sesión",
-    "login": "Iniciar Sesión",
-    "signUp": "Registrarse",
-    "campaigns": "Campañas",
-    "howItWorks": "Cómo Funciona"
+  "confirmSignupModal": {
+    "confirmButton": "Está bien",
+    "message": "Tu solicitud se ha enviado con éxito.\nTe enviaremos el resultado por correo electrónico en un plazo de 24 horas.",
+    "title": "¡Enviado con éxito!"
   },
   "ConfirmSignupModal": {
-    "title": "",
+    "confirmButton": "",
     "message": "",
-    "confirmButton": ""
+    "title": ""
+  },
+  "creatorSignup": {
+    "communityName": {
+      "checkAvailabilityButton": "Comprobar disponibilidad",
+      "description": "(La ID debe tener entre 1 y 15 caracteres y solo puede contener letras, números, puntos (.) y guiones bajos (_)).",
+      "idLabel": "ID",
+      "idPlaceholder": "ej: ilovelococo",
+      "title": "Nombre de la comunidad"
+    },
+    "homeAddress": {
+      "addressLine1Label": "Línea de dirección 1",
+      "addressLine1Placeholder": "ej: 233 S Wacker Dr",
+      "addressLine2Label": "Línea de dirección 2",
+      "addressLine2Placeholder": "ej: Apt 25B",
+      "cityLabel": "Ciudad / Pueblo",
+      "cityPlaceholder": "ej: Chicago",
+      "countryLabel": "País",
+      "countryPlaceholder": "País",
+      "description": "Por favor, proporcione su dirección para la entrega del producto.",
+      "stateLabel": "Estado/Región/Provincia",
+      "statePlaceholder": "ej: Illinois",
+      "title": "Dirección de domicilio",
+      "zipCodeLabel": "Código postal",
+      "zipCodePlaceholder": "ej: 60606"
+    },
+    "personalDetails": {
+      "birthLabel": "Fecha de nacimiento",
+      "contentLanguageLabel": "Idioma del contenido",
+      "contentLanguagePlaceholder": "Idioma del contenido",
+      "dayPlaceholder": "Día",
+      "description": "Por favor, escriba su fecha de nacimiento sin información adicional.",
+      "firstNameLabel": "Nombre",
+      "firstNamePlaceholder": "ej: John",
+      "genderLabel": "Género",
+      "genderPlaceholder": "Género",
+      "lastNameLabel": "Apellido",
+      "lastNamePlaceholder": "ej: Doe",
+      "monthPlaceholder": "Mes",
+      "phoneCountryPlaceholder": "",
+      "phoneNumberLabel": "Número de teléfono",
+      "phoneNumberPlaceholder": "ej: XXXXXXXXXX",
+      "title": "Detalles personales",
+      "yearPlaceholder": "Año"
+    },
+    "skinInfo": {
+      "description": "¡Cuéntanos más sobre ti!",
+      "skinToneLabel": "Tono de piel",
+      "skinTonePlaceholder": "Tono de piel",
+      "skinTypeLabel": "Tipo de piel",
+      "skinTypePlaceholder": "Tipo de piel",
+      "title": "Información adicional"
+    },
+    "title": "¡Únete a la Comunidad de Creadores de Lococo!",
+    "validation": {
+      "addressLine1MaxLength": "Puede usar hasta 20 caracteres.",
+      "addressLine1Required": "La línea de dirección 1 es obligatoria.",
+      "addressLine2MaxLength": "Puedes usar hasta 20 caracteres.",
+      "birthRequired": "La fecha de nacimiento es obligatoria.",
+      "cityMaxLength": "Puede usar hasta 20 caracteres.",
+      "cityRequired": "La ciudad/pueblo es obligatoria.",
+      "contentLanguageRequired": "El idioma del contenido es obligatorio.",
+      "countryRequired": "El país es obligatorio.",
+      "firstNameMaxLength": "Puedes usar hasta 20 caracteres.",
+      "firstNameRequired": "El nombre es obligatorio.",
+      "genderRequired": "El género es obligatorio.",
+      "idInvalidFormat": "Este ID no está disponible. Por favor, revisa el formato del ID.",
+      "idMaxLength": "Puede utilizar hasta 15 caracteres.",
+      "idRequired": "El ID es obligatorio.",
+      "lastNameMaxLength": "Puedes usar hasta 20 caracteres.",
+      "lastNameRequired": "El apellido es obligatorio.",
+      "phoneNumberInvalid": "Por favor, introduce un número de teléfono válido.",
+      "phoneNumberRequired": "El número de teléfono es obligatorio.",
+      "skinToneRequired": "El tono de piel es obligatorio.",
+      "skinTypeRequired": "El tipo de piel es obligatorio.",
+      "stateMaxLength": "Puede utilizar hasta 20 caracteres.",
+      "stateRequired": "El estado/región/provincia es obligatorio.",
+      "zipCodeMaxLength": "Puede utilizar hasta 20 caracteres."
+    }
+  },
+  "creatorSnsLinksPage": {
+    "snsDescription": "Revisaremos su cuenta de redes sociales y le informaremos si está verificada.",
+    "submitLabel": "Unirse",
+    "title": "¡Únase a la Comunidad de Creadores de Lococo!"
+  },
+  "fileUploader": {
+    "cannotUploadFile": "No se puede subir el archivo.",
+    "emptyFile": "El archivo está vacío.",
+    "fileTooLarge": "El archivo es demasiado grande.",
+    "notAllowedFileType": "Tipo de archivo no permitido."
+  },
+  "gnb": {
+    "campaigns": "Campañas",
+    "howItWorks": "Cómo funciona",
+    "login": "Iniciar sesión",
+    "logOut": "Cerrar sesión",
+    "myPage": "Mi página",
+    "signUp": "Registrarse"
+  },
+  "home": {
+    "description": "Descripción del producto",
+    "homeSection": {
+      "title": "Título"
+    },
+    "ingredients": "Ingredientes",
+    "productDetail22": "Detalles del producto 22"
   },
   "languageSelectTrigger": {
-    "language": ""
+    "language": "Idioma"
   },
   "main": {
-    "kBeautyCampaigns": "",
-    "openingSoon": ""
+    "kBeautyCampaigns": "Campañas de K-Beauty",
+    "openingSoon": "Próximamente"
   },
   "myPage": {
     "addressModal": {
-      "addressLine1": "",
-      "addressLine1Required": "",
-      "addressLine2": "",
-      "city": "",
-      "cityRequired": "",
-      "country": "",
-      "countryRequired": "",
-      "description": "",
-      "edit": "",
-      "getDelivery": "",
-      "state": "",
-      "stateRequired": "",
-      "title": "",
-      "zip": ""
+      "addressLine1": "Línea de dirección 1",
+      "addressLine1Required": "La línea de dirección 1 es obligatoria.",
+      "addressLine2": "Línea de dirección 2",
+      "city": "Ciudad/Pueblo",
+      "cityRequired": "La ciudad es obligatoria.",
+      "country": "País",
+      "countryRequired": "El país es obligatorio.",
+      "description": "Por favor, verifique su dirección para la entrega del producto.",
+      "edit": "Editar",
+      "getDelivery": "Recibir la entrega",
+      "state": "Estado/Región/Provincia",
+      "stateRequired": "El estado es obligatorio.",
+      "title": "Dirección",
+      "zip": "Código postal"
     },
     "contentSubmissions": {
       "campaignProductMediaInput": {
-        "description": "",
-        "selectFile": "",
-        "title": ""
+        "description": "Arrastra y suelta o haz clic para subir el archivo.",
+        "selectFile": "Seleccionar archivo",
+        "title": "Medios del producto de la campaña"
       },
       "campaignSelect": {
-        "description": "",
-        "selectCampaign": "",
-        "title": ""
+        "description": "Por favor, seleccione una campaña.",
+        "selectCampaign": "Seleccionar una campaña",
+        "title": "Seleccionar una campaña"
       },
       "contentTypeSelect": {
-        "instagramPost": "",
-        "instagramReels": "",
-        "selectContentType": "",
-        "tiktokVideo": "",
-        "title": ""
+        "instagramPost": "Publicación en Instagram",
+        "instagramReels": "Reels de Instagram",
+        "selectContentType": "Seleccione un tipo de contenido",
+        "tiktokVideo": "Video de TikTok",
+        "title": "Tipo de contenido"
       },
       "hashtagsInput": {
-        "description": "",
-        "title": ""
+        "description": "Pegue exactamente el pie de foto y los hashtags que utilizó.",
+        "title": "Envíe su pie de foto y hashtags"
       }
     },
     "editProfile": {
-      "addressLine1Required": "",
+      "addressLine1Required": "La línea de dirección 1 es obligatoria.",
       "basicInformation": {
-        "id": "",
-        "idCheck": "",
-        "idCheckSuccess": "",
-        "title": ""
+        "id": "ID",
+        "idCheck": "Comprobar disponibilidad",
+        "idCheckSuccess": "Verificación de ID exitosa",
+        "title": "Información básica"
       },
-      "cityRequired": "",
-      "contentLanguageRequired": "",
-      "countryCodeRequired": "",
-      "countryRequired": "",
-      "dateRequired": "",
-      "emailRequired": "",
-      "firstNameRequired": "",
-      "genderRequired": "",
+      "cityRequired": "La ciudad es obligatoria.",
+      "contentLanguageRequired": "El idioma del contenido es obligatorio.",
+      "countryCodeRequired": "El código de país es obligatorio.",
+      "countryRequired": "El país es obligatorio.",
+      "dateRequired": "La fecha es obligatoria.",
+      "emailRequired": "El correo electrónico es obligatorio.",
+      "firstNameRequired": "El nombre es obligatorio.",
+      "genderRequired": "El género es obligatorio.",
       "homeAddress": {
-        "addressLine1": "",
-        "addressLine2": "",
-        "city": "",
-        "country": "",
-        "description": "",
-        "state": "",
-        "title": "",
-        "zip": ""
+        "addressLine1": "Línea de dirección 1",
+        "addressLine2": "Línea de dirección 2",
+        "city": "Ciudad/Pueblo",
+        "country": "País",
+        "description": "Por favor, proporcione su dirección para la entrega del producto.",
+        "state": "Estado/Región/Provincia",
+        "title": "Dirección de domicilio",
+        "zip": "Código postal"
       },
-      "idRequired": "",
-      "lastNameRequired": "",
-      "monthRequired": "",
+      "idRequired": "El ID es obligatorio.",
+      "lastNameRequired": "El apellido es obligatorio.",
+      "monthRequired": "El mes es obligatorio.",
       "personalInformation": {
-        "birth": "",
-        "contentLanguage": "",
-        "countryCode": "",
-        "date": "",
-        "email": "",
-        "firstName": "",
-        "gender": "",
-        "lastName": "",
-        "month": "",
-        "phoneNumber": "",
-        "title": "",
-        "year": ""
+        "birth": "Fecha de nacimiento",
+        "contentLanguage": "Idioma del contenido",
+        "countryCode": "Código de país",
+        "date": "Fecha",
+        "email": "Correo electrónico",
+        "firstName": "Nombre",
+        "gender": "Género",
+        "lastName": "Apellido",
+        "month": "Mes",
+        "phoneNumber": "Número de teléfono",
+        "title": "Información personal",
+        "year": "Año"
       },
-      "phoneNumberRequired": "",
-      "profileImageRequired": "",
+      "phoneNumberRequired": "El número de teléfono es obligatorio.",
+      "profileImageRequired": "La foto de perfil es obligatoria.",
       "profilePhoto": {
-        "changePhoto": "",
-        "title": ""
+        "changePhoto": "Cambiar foto",
+        "title": "Foto de perfil"
       },
       "skin": {
-        "description": "",
-        "skinTone": "",
+        "description": "¡Cuéntanos más sobre ti!",
+        "skinTone": "Tono de piel",
         "skinToneOptions": {
-          "shade1": "",
-          "shade10": "",
-          "shade11": "",
-          "shade12": "",
-          "shade13": "",
-          "shade14": "",
-          "shade15": "",
-          "shade16": "",
-          "shade17": "",
-          "shade18": "",
-          "shade19": "",
-          "shade2": "",
-          "shade20": "",
-          "shade3": "",
-          "shade4": "",
-          "shade5": "",
-          "shade6": "",
-          "shade7": "",
-          "shade8": "",
-          "shade9": ""
+          "shade1": "Tono 1",
+          "shade10": "Tono 10",
+          "shade11": "Tono 11",
+          "shade12": "Tono 12",
+          "shade13": "Tono 13",
+          "shade14": "Tono 14",
+          "shade15": "Tono 15",
+          "shade16": "Tono 16",
+          "shade17": "Tono 17",
+          "shade18": "Tono 18",
+          "shade19": "Tono 19",
+          "shade2": "Tono 2",
+          "shade20": "Tono 20",
+          "shade3": "Tono 3",
+          "shade4": "Tono 4",
+          "shade5": "Tono 5",
+          "shade6": "Tono 6",
+          "shade7": "Tono 7",
+          "shade8": "Tono 8",
+          "shade9": "Tono 9"
         },
-        "skinType": "",
+        "skinType": "Tipo de piel",
         "skinTypeOptions": {
-          "combination": "",
-          "dry": "",
-          "normal": "",
-          "oily": "",
-          "others": "",
-          "sensitive": ""
+          "combination": "Mixta",
+          "dry": "Seca",
+          "normal": "Normal",
+          "oily": "Grasa",
+          "others": "Otros",
+          "sensitive": "Sensible"
         },
-        "title": ""
+        "title": "Piel"
       },
-      "skinToneRequired": "",
-      "skinTypeRequired": "",
-      "stateRequired": "",
-      "yearRequired": ""
+      "skinToneRequired": "El tono de piel es obligatorio.",
+      "skinTypeRequired": "El tipo de piel es obligatorio.",
+      "stateRequired": "El estado es obligatorio.",
+      "yearRequired": "El año es obligatorio."
     },
     "menus": {
-      "connectSNS": "",
-      "contentSubmissions": "",
-      "editProfile": "",
-      "myCampaign": ""
+      "connectSNS": "Conectar SNS",
+      "contentSubmissions": "Envíos de contenido",
+      "editProfile": "Editar perfil",
+      "myCampaign": "Mi campaña"
     },
     "saveFormModal": {
-      "description": "",
-      "save": "",
-      "title": ""
+      "description": "Tus cambios han sido guardados.",
+      "save": "Vale",
+      "title": "Guardado con éxito"
     }
+  },
+  "selectRoleModal": {
+    "description": "Seleccione su rol para iniciar sesión. No podrá cambiarlo más tarde.",
+    "loginAs": "Iniciar sesión como:",
+    "roles": {
+      "brand": "Marca",
+      "creator": "Creador",
+      "user": "Usuario"
+    },
+    "title": "Elija su rol",
+    "welcomeTitle": "¡Bienvenido a Lococo!"
   },
   "snsConnection": {
     "connectButtons": {
-      "instagram": "",
-      "tiktok": ""
+      "instagram": "Conectar con Instagram",
+      "tiktok": "Conectar con TikTok"
     },
-    "connectedStatus": "",
-    "errorMessage": "",
+    "connectedStatus": "¡Conectado!",
+    "errorMessage": "Por favor, añada al menos un enlace de cuenta.",
     "platforms": {
-      "instagram": "",
-      "tiktok": ""
+      "instagram": "Instagram",
+      "tiktok": "TikTok"
     },
-    "title": ""
-  }
+    "title": "Enlace de SNS"
+  },
+  "userInductionModal": {
+    "cancelButton": "No",
+    "confirmButton": "Sí",
+    "message": "Las solicitudes de campaña solo están disponibles para miembros creadores. ¿Desea registrarse como creador?",
+    "title": "Sugerencia de creador"
+  },
+  "": ""
 }

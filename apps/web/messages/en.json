@@ -2,20 +2,108 @@
   "aabc": "aabc",
   "abc": "abc",
   "brandMyPage": {
-    "myCampaign": "My Campaign"
+    "myCampaign": "My Campaigns"
   },
   "brandMyPageSideBar": {
-    "checkApplicants": "",
-    "checkContents": "",
-    "dashboard": "",
-    "editProfile": "",
-    "makeNewCampaign": "",
-    "myCampaign": ""
+    "checkApplicants": "View Applicants ",
+    "checkContents": "View Contents",
+    "dashboard": "Dashboard ",
+    "editProfile": "Edit Profile ",
+    "makeNewCampaign": "Create a new campaign  ",
+    "myCampaign": "My Campaigns"
   },
   "card": {
     "campaignThumbnailImage": "campaign thumbnail image",
-    "card": "card",
-    "goToApply": "Go To Apply"
+    "card": "Card",
+    "goToApply": "Apply Now "
+  },
+  "confirmSignupModal": {
+    "confirmButton": "Okay",
+    "message": "Your application was successfully submitted.\nWe'll email you the result within 24 hours.",
+    "title": "Successfully Submitted!"
+  },
+  "ConfirmSignupModal": {
+    "confirmButton": "",
+    "message": "",
+    "title": ""
+  },
+  "creatorSignup": {
+    "communityName": {
+      "checkAvailabilityButton": "Check availability",
+      "description": "(ID must be between 1 and 15 characters long and can only contain letters, numbers, periods (.), and underscores (_)).",
+      "idLabel": "ID",
+      "idPlaceholder": "ex: ilovelococo",
+      "title": "Community Name"
+    },
+    "homeAddress": {
+      "addressLine1Label": "Address Line 1",
+      "addressLine1Placeholder": "ex: 233 S Wacker Dr",
+      "addressLine2Label": "Address Line 2",
+      "addressLine2Placeholder": "ex: Apt 25B",
+      "cityLabel": "City / Town",
+      "cityPlaceholder": "ex: Chicago",
+      "countryLabel": "Country",
+      "countryPlaceholder": "Country",
+      "description": "Please provide your home address for product delivery.",
+      "stateLabel": "State/Region/Province",
+      "statePlaceholder": "ex: Illinois",
+      "title": "Home Address",
+      "zipCodeLabel": "Zip/Post Code",
+      "zipCodePlaceholder": "ex: 60606"
+    },
+    "personalDetails": {
+      "birthLabel": "Birth",
+      "contentLanguageLabel": "Content Language",
+      "contentLanguagePlaceholder": "Content Language",
+      "dayPlaceholder": "Day",
+      "description": "Please write your date of birth without any additional information.",
+      "firstNameLabel": "First name",
+      "firstNamePlaceholder": "ex: John",
+      "genderLabel": "Gender",
+      "genderPlaceholder": "Gender",
+      "lastNameLabel": "Last name",
+      "lastNamePlaceholder": "ex: Doe",
+      "monthPlaceholder": "Month",
+      "phoneCountryPlaceholder": "#NAME?",
+      "phoneNumberLabel": "Phone Number",
+      "phoneNumberPlaceholder": "ex: XXXXXXXXXX",
+      "title": "Personal Details",
+      "yearPlaceholder": "Year"
+    },
+    "skinInfo": {
+      "description": "Tell us about you more!",
+      "skinToneLabel": "Skin Tone",
+      "skinTonePlaceholder": "Skin Tone",
+      "skinTypeLabel": "Skin Type",
+      "skinTypePlaceholder": "Skin Type",
+      "title": "Additional Information"
+    },
+    "title": "Join Lococo Creator Community!",
+    "validation": {
+      "addressLine1MaxLength": "Use up to 20 characters.",
+      "addressLine1Required": "Address Line 1 is required.",
+      "addressLine2MaxLength": "Use up to 20 characters.",
+      "birthRequired": "Birth is required.",
+      "cityMaxLength": "Use up to 20 characters.",
+      "cityRequired": "City / Town is required.",
+      "contentLanguageRequired": "Content Language is required.",
+      "countryRequired": "Country is required.",
+      "firstNameMaxLength": "Use up to 20 characters.",
+      "firstNameRequired": "First name is required.",
+      "genderRequired": "Gender is required.",
+      "idInvalidFormat": "This ID is unavailable. Please check the ID form.",
+      "idMaxLength": "Use up to 15 characters.",
+      "idRequired": "ID is required.",
+      "lastNameMaxLength": "Use up to 20 characters.",
+      "lastNameRequired": "Last name is required.",
+      "phoneNumberInvalid": "Please enter a valid phone number.",
+      "phoneNumberRequired": "Phone Number is required.",
+      "skinToneRequired": "Skin Tone is required.",
+      "skinTypeRequired": "Skin Type is required.",
+      "stateMaxLength": "Use up to 20 characters.",
+      "stateRequired": "State/Region/Province is required.",
+      "zipCodeMaxLength": "Use up to 20 characters."
+    }
   },
   "creatorSnsLinksPage": {
     "snsDescription": "We will go through your SNS account, and let you know if you are verified.",
@@ -193,6 +281,17 @@
       "title": "Saved successfully"
     }
   },
+  "selectRoleModal": {
+    "description": "Select your role to sign in.\nYou won't be able to change this later.",
+    "loginAs": "Log in as a",
+    "roles": {
+      "brand": "Brand",
+      "creator": "Creator",
+      "user": "User"
+    },
+    "title": "Choose Your Role",
+    "welcomeTitle": "Welcome to Lococo!"
+  },
   "snsConnection": {
     "connectButtons": {
       "instagram": "Connect with Instagram",
@@ -205,5 +304,12 @@
       "tiktok": "Tiktok"
     },
     "title": "SNS Link"
-  }
+  },
+  "userInductionModal": {
+    "cancelButton": "No",
+    "confirmButton": "Yes",
+    "message": "Campaign applications are only available to creator members.\nWould you like to sign up as a creator?",
+    "title": "Creator Suggestion"
+  },
+  "": ""
 }
