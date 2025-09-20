@@ -3,15 +3,16 @@
 import CampaignLanguage, {
   LocaleType,
 } from 'app/[locale]/(with-layout)/(home)/components/campaign-language';
+import { CATEGORY_NAME_NEW } from 'constants/category';
 import { Link } from 'i18n/navigation';
-import { CATEGORY_VALUES, CategoryValue } from 'types/category';
+import { CATEGORY_KEYS, CategoryKey } from 'types/category';
 
 import { Tab, TabContainer } from '@lococo/design-system/tab';
 import { SvgAdd } from '@lococo/icons';
 
 interface CampaignFiltersProps {
-  campaignCategory: CategoryValue;
-  setCampaignCategory: (value: CategoryValue) => void;
+  campaignCategory: CategoryKey;
+  setCampaignCategory: (value: CategoryKey) => void;
   campaignLanguage: LocaleType;
   setCampaignLanguage: (value: LocaleType) => void;
   showSeeMore?: boolean;
@@ -36,13 +37,13 @@ export default function CampaignFilters({
   return (
     <div className="flex h-[5.6rem] w-full items-center justify-between">
       <TabContainer variant="horizontal">
-        {CATEGORY_VALUES.map((CATEGORY_VALUE) => (
+        {CATEGORY_KEYS.map((CATEGORY_KEY) => (
           <Tab
-            key={CATEGORY_VALUE}
-            label={CATEGORY_VALUE}
-            value={CATEGORY_VALUE}
-            selected={campaignCategory === CATEGORY_VALUE}
-            onClick={() => setCampaignCategory(CATEGORY_VALUE)}
+            key={CATEGORY_KEY}
+            label={CATEGORY_NAME_NEW[CATEGORY_KEY]}
+            value={CATEGORY_KEY}
+            selected={campaignCategory === CATEGORY_KEY}
+            onClick={() => setCampaignCategory(CATEGORY_KEY)}
           />
         ))}
       </TabContainer>

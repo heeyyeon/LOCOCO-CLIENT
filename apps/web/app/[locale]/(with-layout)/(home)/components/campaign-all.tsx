@@ -8,19 +8,19 @@ import { useParams } from 'next/navigation';
 import { useQuery } from '@tanstack/react-query';
 import CampaignFilters from 'components/campaign/campaign-filter';
 import CampaignGrid from 'components/campaign/campaign-grid';
+import { CATEGORY_NAME_NEW } from 'constants/category';
 import { useRouter } from 'i18n/navigation';
 import { campaignDummyData } from 'mocks/campaignData';
 
 import { Pagenation } from '@lococo/design-system/pagenation';
 
-import { CategoryValue } from '../../../../../types/category';
+import { CategoryKey } from '../../../../../types/category';
 import { getCampaignsByCategory } from '../apis';
 import { campaignKeys } from '../query';
 import { LocaleType } from './campaign-language';
 
 export default function CampaignAll() {
-  const [campaignCategory, setCampaignCategory] =
-    useState<CategoryValue>('ALL');
+  const [campaignCategory, setCampaignCategory] = useState<CategoryKey>('ALL');
 
   const router = useRouter();
   const params = useParams();

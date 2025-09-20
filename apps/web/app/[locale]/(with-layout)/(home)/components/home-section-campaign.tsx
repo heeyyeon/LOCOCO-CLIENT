@@ -7,7 +7,7 @@ import { useLocale } from 'next-intl';
 import { useQuery } from '@tanstack/react-query';
 import CampaignFilters from 'components/campaign/campaign-filter';
 import CampaignGrid from 'components/campaign/campaign-grid';
-import { CategoryValue } from 'types/category';
+import { CategoryKey } from 'types/category';
 
 import { getCampaignsByCategory } from '../apis';
 import { campaignKeys } from '../query';
@@ -52,8 +52,7 @@ export default function HomeSectionCampaign({
   kindOfCard,
   seeMore = false,
 }: HomeSectionCampaignProps) {
-  const [campaignCategory, setCampaignCategory] =
-    useState<CategoryValue>('ALL');
+  const [campaignCategory, setCampaignCategory] = useState<CategoryKey>('ALL');
   const [campaignLanguage, setCampaignLanguage] = useState<LocaleType>('en');
 
   const locale = useLocale();

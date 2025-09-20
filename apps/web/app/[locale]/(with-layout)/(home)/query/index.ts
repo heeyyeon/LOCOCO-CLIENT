@@ -1,14 +1,14 @@
-import { CategoryValue } from 'types/category';
+import { CategoryKey } from 'types/category';
 
 export const campaignKeys = {
   all: ['campaigns'] as const,
   lists: (locale: string) => [...campaignKeys.all, 'list', locale] as const,
 
-  byCategory: (category: CategoryValue, section: string, locale: string) =>
+  byCategory: (category: CategoryKey, section: string, locale: string) =>
     [...campaignKeys.lists(locale), 'category', { category, section }] as const,
 
   byCategoryPaginated: (
-    category: CategoryValue,
+    category: CategoryKey,
     section: string,
     locale: string,
     page: number,

@@ -1,11 +1,11 @@
 import { apiRequest } from 'app/api/apiRequest';
-import { CategoryValue } from 'types/category';
+import { CategoryKey } from 'types/category';
 
 import { CampaignApiResponse } from '../components/home-section-campaign';
 
 interface GetCampaignProps {
   section: 'KBeauty' | 'openingSoon';
-  category: CategoryValue;
+  category: CategoryKey;
   page: number;
   size: number;
   locale: string;
