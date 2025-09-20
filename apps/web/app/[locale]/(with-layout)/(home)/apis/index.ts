@@ -1,6 +1,8 @@
 import { apiRequest } from 'app/api/apiRequest';
 import { CategoryValue } from 'types/category';
 
+import { CampaignApiResponse } from '../components/home-section-campaign';
+
 interface GetCampaignProps {
   section: 'KBeauty' | 'openingSoon';
   category: CategoryValue;
@@ -15,13 +17,12 @@ export const getCampaignsByCategory = async ({
   page,
   size,
   locale,
-}: GetCampaignProps) => {
+}: GetCampaignProps): Promise<CampaignApiResponse> => {
   const langParam = locale.toUpperCase();
 
-  const response = await apiRequest({
+  const response = await apiRequest<CampaignApiResponse>({
     endPoint: `/api/campaigns${section === 'openingSoon' ? '/upcoming' : ''}?lang=${langParam}&category=${category}&page=${page}&size=${size}`,
     method: 'GET',
   });
-
   return response;
 };

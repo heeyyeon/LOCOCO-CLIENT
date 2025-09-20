@@ -7,7 +7,6 @@ import { useLocale } from 'next-intl';
 import { useQuery } from '@tanstack/react-query';
 import CampaignFilters from 'components/campaign/campaign-filter';
 import CampaignGrid from 'components/campaign/campaign-grid';
-import { campaignDummyData } from 'mocks/campaignData';
 import { CategoryValue } from 'types/category';
 
 import { getCampaignsByCategory } from '../apis';
@@ -17,6 +16,36 @@ import { LocaleType } from './campaign-language';
 interface HomeSectionCampaignProps {
   kindOfCard: 'KBeauty' | 'openingSoon';
   seeMore?: boolean;
+}
+
+export interface CampaignApiResponse {
+  success: boolean;
+  status: number;
+  message: string;
+  data: {
+    campaigns: Campaign[];
+    pageInfo: PageInfo;
+  };
+}
+
+interface PageInfo {
+  pageNumber: number;
+  pageSize: number;
+  numberOfElements: number;
+  isLast: boolean;
+}
+
+export interface Campaign {
+  campaignId: number;
+  campaignType: string;
+  language: string;
+  brandName: string;
+  campaignImageUrl: string;
+  campaignName: string;
+  applicantNumber: number;
+  recruitmentNumber: number;
+  endTime: string;
+  chipStatus: 'disabled' | 'default' | 'approved' | 'declined' | 'progress';
 }
 
 export default function HomeSectionCampaign({
@@ -29,10 +58,10 @@ export default function HomeSectionCampaign({
 
   const locale = useLocale();
 
-  const { data } = useQuery({
+  const { data } = useQuery<CampaignApiResponse>({
     queryKey: [campaignKeys.byCategory(campaignCategory, kindOfCard, locale)],
-    queryFn: () =>
-      getCampaignsByCategory({
+    queryFn: async () =>
+      await getCampaignsByCategory({
         section: kindOfCard,
         category: campaignCategory,
         page: 0,
@@ -41,10 +70,10 @@ export default function HomeSectionCampaign({
       }),
   });
 
-  console.log(data);
+  console.log(data?.data?.campaigns);
 
-  // TODO kindOfCard로 api 호출 -> 위의 훅들 기반으로 호출하고 인자로 size 넘겨주기(여기선 6) + API 응답 필드 보고 카테고리 필터 추가
-  const campaigns = campaignDummyData?.slice(0, 6) || [];
+  // TODO 카테고리 필터 추가
+  const campaigns = data?.data?.campaigns?.slice(0, 6) || [];
 
   return (
     <div className="flex w-full flex-col gap-[1.6rem]">
