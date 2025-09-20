@@ -2,8 +2,8 @@
 
 import { useForm } from 'react-hook-form';
 
-import { useTranslations } from 'next-intl';
-import { useParams, useRouter } from 'next/navigation';
+import { useLocale, useTranslations } from 'next-intl';
+import { useRouter } from 'next/navigation';
 
 import { zodResolver } from '@hookform/resolvers/zod';
 
@@ -15,8 +15,7 @@ import { type CreatorSignupForm, creatorSignupSchema } from './utils/signup';
 
 export default function CreatorSignupPage() {
   const router = useRouter();
-  const params = useParams();
-  const locale = params.locale as string;
+  const locale = useLocale();
   const t = useTranslations('creatorSignup.validation');
 
   const form = useForm<CreatorSignupForm>({
