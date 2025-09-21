@@ -1,15 +1,9 @@
 'use client';
 
-import { useState } from 'react';
-
-import { useQuery } from '@tanstack/react-query';
 import CampaignFilters from 'components/campaign/campaign-filter';
 import CampaignGrid from 'components/campaign/campaign-grid';
-import { LanguageKey } from 'types/language';
-import { CategoryKey } from 'types/tab-category';
 
-import { getCampaignsByCategory } from '../apis';
-import { campaignKeys } from '../query';
+import { useHomeCampaigns } from '../hooks/useCampain';
 
 interface HomeSectionCampaignProps {
   kindOfCard: 'KBeauty' | 'openingSoon';
@@ -50,28 +44,14 @@ export default function HomeSectionCampaign({
   kindOfCard,
   seeMore = false,
 }: HomeSectionCampaignProps) {
-  const [campaignCategory, setCampaignCategory] = useState<CategoryKey>('ALL');
-  const [campaignLanguage, setCampaignLanguage] = useState<LanguageKey>('EN');
-
-  const { data, isLoading } = useQuery<CampaignApiResponse>({
-    queryKey: [
-      campaignKeys.byCategory(campaignCategory, kindOfCard, campaignLanguage),
-    ],
-    queryFn: async () =>
-      await getCampaignsByCategory({
-        section: kindOfCard,
-        category: campaignCategory,
-        page: 0,
-        size: 6,
-        locale: campaignLanguage,
-      }),
-  });
-
-  console.log(data?.data?.campaigns);
-
-  const campaigns = isLoading
-    ? undefined
-    : data?.data?.campaigns?.slice(0, 6) || [];
+  const {
+    isLoading,
+    campaignCategory,
+    setCampaignCategory,
+    campaignLanguage,
+    setCampaignLanguage,
+    campaigns,
+  } = useHomeCampaigns(kindOfCard);
 
   return (
     <div className="flex w-full flex-col gap-[1.6rem]">

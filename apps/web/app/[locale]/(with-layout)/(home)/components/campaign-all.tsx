@@ -1,63 +1,26 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 
-import { useParams } from 'next/navigation';
-
-import { useQuery } from '@tanstack/react-query';
 import CampaignFilters from 'components/campaign/campaign-filter';
 import CampaignGrid from 'components/campaign/campaign-grid';
-import { useRouter } from 'i18n/navigation';
-import { LanguageKey } from 'types/language';
 
 import { Pagenation } from '@lococo/design-system/pagenation';
 
-import { CategoryKey } from '../../../../../types/category';
-import { getCampaignsByCategory } from '../apis';
-import { campaignKeys } from '../query';
-import { CampaignApiResponse } from './home-section-campaign';
+import { useCampaignsPaginated } from '../hooks/useCampain';
 
 export default function CampaignAll() {
-  const [campaignCategory, setCampaignCategory] = useState<CategoryKey>('ALL');
-  const [campaignLanguage, setCampaignLanguage] = useState<LanguageKey>('EN');
-
-  const router = useRouter();
-  const params = useParams();
-  const pageParam = Array.isArray(params.page) ? params.page[0] : params.page;
-
-  const currentPage = pageParam ? parseInt(pageParam) : 1;
-
-  const serverPage = currentPage - 1;
-
-  const handlePageChange = (page: number) => {
-    router.push(`/all/${page}`);
-  };
-
-  const { data, isLoading } = useQuery<CampaignApiResponse>({
-    queryKey: [
-      campaignKeys.byCategoryPaginated(
-        campaignCategory,
-        'popular',
-        campaignLanguage,
-        serverPage,
-        12
-      ),
-    ],
-    queryFn: () =>
-      getCampaignsByCategory({
-        section: 'KBeauty',
-        category: campaignCategory,
-        page: serverPage,
-        size: 12,
-        locale: campaignLanguage,
-      }),
-  });
-
-  const campaigns = data?.data?.campaigns || [];
-
-  const totalPages = data?.data?.pageInfo
-    ? Math.ceil((data.data.pageInfo.numberOfElements || 0) / 12)
-    : 1;
+  const {
+    campaignCategory,
+    setCampaignCategory,
+    campaignLanguage,
+    setCampaignLanguage,
+    campaigns,
+    isLoading,
+    currentPage,
+    totalPages,
+    handlePageChange,
+  } = useCampaignsPaginated();
 
   return (
     <div className="flex w-full flex-col gap-[1.6rem]">
