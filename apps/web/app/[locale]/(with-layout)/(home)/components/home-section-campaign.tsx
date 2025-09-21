@@ -70,7 +70,9 @@ export default function HomeSectionCampaign({
   console.log(data?.data?.campaigns);
 
   // TODO 카테고리 필터 추가
-  const campaigns = data?.data?.campaigns?.slice(0, 6) || [];
+  const campaigns = data?.data?.campaigns
+    ? data.data.campaigns.slice(0, 6)
+    : undefined;
 
   return (
     <div className="flex w-full flex-col gap-[1.6rem]">
