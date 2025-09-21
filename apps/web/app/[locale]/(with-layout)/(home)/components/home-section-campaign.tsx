@@ -53,7 +53,7 @@ export default function HomeSectionCampaign({
   const [campaignCategory, setCampaignCategory] = useState<CategoryKey>('ALL');
   const [campaignLanguage, setCampaignLanguage] = useState<LanguageKey>('EN');
 
-  const { data } = useQuery<CampaignApiResponse>({
+  const { data, isLoading } = useQuery<CampaignApiResponse>({
     queryKey: [
       campaignKeys.byCategory(campaignCategory, kindOfCard, campaignLanguage),
     ],
@@ -70,9 +70,9 @@ export default function HomeSectionCampaign({
   console.log(data?.data?.campaigns);
 
   // TODO 카테고리 필터 추가
-  const campaigns = data?.data?.campaigns
-    ? data.data.campaigns.slice(0, 6)
-    : undefined;
+  const campaigns = isLoading
+    ? undefined
+    : data?.data?.campaigns?.slice(0, 6) || [];
 
   return (
     <div className="flex w-full flex-col gap-[1.6rem]">
@@ -83,7 +83,7 @@ export default function HomeSectionCampaign({
         setCampaignLanguage={setCampaignLanguage}
         showSeeMore={seeMore}
       />
-      <CampaignGrid campaigns={campaigns} />
+      <CampaignGrid campaigns={campaigns} isLoading={isLoading} />
     </div>
   );
 }
