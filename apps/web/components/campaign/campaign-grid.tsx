@@ -15,7 +15,7 @@ export default function CampaignGrid({
     return (
       <div className="flex min-h-[33.1rem] items-center justify-center">
         <div className="text-center">
-          <p className="text-gray-400">Loading...</p>
+          <p className="title1 font-[700] text-pink-500">Loading...</p>
         </div>
       </div>
     );
@@ -25,7 +25,9 @@ export default function CampaignGrid({
     return (
       <div className="flex min-h-[33.1rem] items-center justify-center">
         <div className="text-center">
-          <p className="text-lg text-gray-500">No campaigns available</p>
+          <p className="title1 font-[700] text-pink-500">
+            No campaigns available
+          </p>
         </div>
       </div>
     );

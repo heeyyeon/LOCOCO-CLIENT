@@ -2,7 +2,7 @@
 
 import { useTranslations } from 'next-intl';
 
-import { LANGUAGES } from 'constants/language';
+import { LANGUAGE_KEYS } from 'constants/language';
 import { LanguageKey } from 'types/language';
 
 import {
@@ -40,7 +40,7 @@ export default function CampaignLanguage({
         </SelectTrigger>
 
         <SelectContent className="body4 mt-[1.6rem] w-[11rem]" align="center">
-          {Object.keys(LANGUAGES).map((lang) => (
+          {LANGUAGE_KEYS.map((lang) => (
             <SelectItem
               key={lang}
               value={lang}

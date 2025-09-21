@@ -69,7 +69,6 @@ export default function HomeSectionCampaign({
 
   console.log(data?.data?.campaigns);
 
-  // TODO 카테고리 필터 추가
   const campaigns = isLoading
     ? undefined
     : data?.data?.campaigns?.slice(0, 6) || [];

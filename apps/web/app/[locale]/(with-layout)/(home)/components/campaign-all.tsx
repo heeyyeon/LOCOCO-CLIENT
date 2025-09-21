@@ -19,25 +19,27 @@ import { CampaignApiResponse } from './home-section-campaign';
 
 export default function CampaignAll() {
   const [campaignCategory, setCampaignCategory] = useState<CategoryKey>('ALL');
+  const [campaignLanguage, setCampaignLanguage] = useState<LanguageKey>('EN');
 
   const router = useRouter();
   const params = useParams();
   const pageParam = Array.isArray(params.page) ? params.page[0] : params.page;
+
   const currentPage = pageParam ? parseInt(pageParam) : 1;
 
-  const [campaignLanguage, setCampaignLanguage] = useState<LanguageKey>('EN');
+  const serverPage = currentPage - 1;
 
   const handlePageChange = (page: number) => {
     router.push(`/all/${page}`);
   };
 
-  const { data } = useQuery<CampaignApiResponse>({
+  const { data, isLoading } = useQuery<CampaignApiResponse>({
     queryKey: [
       campaignKeys.byCategoryPaginated(
         campaignCategory,
         'popular',
         campaignLanguage,
-        currentPage - 1,
+        serverPage,
         12
       ),
     ],
@@ -45,14 +47,17 @@ export default function CampaignAll() {
       getCampaignsByCategory({
         section: 'KBeauty',
         category: campaignCategory,
-        page: currentPage - 1,
+        page: serverPage,
         size: 12,
         locale: campaignLanguage,
       }),
   });
 
-  // TODO API 응답 필드 보고 카테고리 필터 추가 후 렌더링
-  const campaigns = data?.data?.campaigns?.slice(0, 6) || [];
+  const campaigns = data?.data?.campaigns || [];
+
+  const totalPages = data?.data?.pageInfo
+    ? Math.ceil((data.data.pageInfo.numberOfElements || 0) / 12)
+    : 1;
 
   return (
     <div className="flex w-full flex-col gap-[1.6rem]">
@@ -63,11 +68,11 @@ export default function CampaignAll() {
         setCampaignLanguage={setCampaignLanguage}
         showSeeMore={false}
       />
-      <CampaignGrid campaigns={campaigns} />
+      <CampaignGrid campaigns={campaigns} isLoading={isLoading} />
       <div className="mb-[6.4rem] mt-[4.8rem] flex w-full items-center justify-center">
         <Pagenation
           currentPage={currentPage}
-          totalPages={20}
+          totalPages={totalPages}
           handlePageChange={handlePageChange}
         />
       </div>
