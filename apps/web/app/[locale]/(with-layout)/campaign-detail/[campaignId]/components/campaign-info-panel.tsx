@@ -67,7 +67,7 @@ export default function CampaignInfoPanel({
   const data = campaignData || defaultData;
 
   return (
-    <div className="flex h-[636px] w-[45.6rem] overflow-y-auto overflow-x-hidden bg-white">
+    <div className="scrollbar-hide flex h-[636px] w-[45.6rem] overflow-x-hidden bg-white">
       <div className="flex flex-col gap-[12px] md:gap-[16px]">
         {/* Campaign Product Info */}
         <div className="flex flex-col gap-[8px] pt-[8px]">
