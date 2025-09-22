@@ -4,8 +4,10 @@ import SideBar from 'components/side-bar/side-bar';
 
 export default async function Layout({
   children,
+  modal,
 }: {
   children: React.ReactNode;
+  modal: React.ReactNode;
 }) {
   const t = await getTranslations('myPage.menus');
   const menuItems = [
@@ -24,6 +26,7 @@ export default async function Layout({
         defaultActiveMenu="my-campaign"
       />
       {children}
+      {modal}
     </div>
   );
 }
