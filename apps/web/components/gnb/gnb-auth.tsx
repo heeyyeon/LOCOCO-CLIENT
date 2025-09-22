@@ -68,7 +68,7 @@ export default function GnbAuth() {
       ) : (
         <>
           <button onClick={handleLogin} className="px-[1.6rem] py-[1rem]">
-            {t('logIn')}
+            {t('login')}
           </button>
           <button
             onClick={handleSignup}
