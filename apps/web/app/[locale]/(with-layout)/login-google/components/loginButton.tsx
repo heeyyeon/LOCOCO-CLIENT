@@ -1,8 +1,12 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
+
 import { SvgGoogle } from '@lococo/icons';
 
 export default function LoginButton() {
+  const t = useTranslations('loginGoogle');
+
   const handleGoogleLogin = () => {
     window.location.href = `${process.env.NEXT_PUBLIC_API_SERVER_URL}/api/auth/google/redirect`;
   };
@@ -16,7 +20,7 @@ export default function LoginButton() {
         <SvgGoogle size={20} />
       </span>
       <span className="body1 flex w-full justify-center pl-[2rem] font-bold text-[#1F1F1F]">
-        Continue with Google
+        {t('continueWithGoogle')}
       </span>
     </button>
   );
