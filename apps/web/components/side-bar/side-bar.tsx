@@ -37,7 +37,7 @@ export default function SideBar({
     router.push(`?tab=${item.value}`);
   };
   return (
-    <div className="flex w-auto flex-col items-start gap-[1.6rem] pl-[11.9rem] pt-[1.6rem]">
+    <div className="mr-[2.4rem] mt-[1.6rem] flex w-[16.8rem] flex-col gap-[1.6rem]">
       {profileImage ? (
         <Image
           src={profileImage}
@@ -50,9 +50,11 @@ export default function SideBar({
         <SvgAvatar size={98} className="rounded-full" />
       )}
       <div className="flex w-full flex-col items-start gap-[0.8rem] self-stretch">
-        <p className="title2 no-wrap text-nowrap text-gray-800">{name}</p>
-        <p className="caption2 text-gray-800">{email}</p>
-        <p className="caption2 text-gray-800">{instagram}</p>
+        <span className="title2 text-nowrap font-[700] text-gray-800">
+          {name}
+        </span>
+        <span className="caption2 font-[700] text-gray-800">{email}</span>
+        <span className="caption2 font-[700] text-gray-800">{instagram}</span>
         {level && <InfoChip text={level} color="default" size="md" icon />}
       </div>
       <div className="h-[1px] w-full bg-gray-400" />
