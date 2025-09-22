@@ -4,14 +4,10 @@ import { apiRequest } from 'app/api/apiRequest';
 
 import { PROFILE_KEYS } from '../../../../my-page/constant/queryKey';
 
-// 인증 토큰
-const AUTH_TOKEN =
-  'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyIiwiaWF0IjoxNzU4NTA4MTgyLCJleHAiOjE3NTkxMTI5ODIsImlkIjoyLCJyb2xlIjoiUk9MRV9DUkVBVE9SIiwibGluZUlkIjoiMiJ9.ofs0VciJfzWoERuHYQ-nOehSLirEiWsJUOfs_Wwt0xA';
-
 const fetchAddress = async (): Promise<ApiResponseCreatorAddressInfo> => {
   const headers: HeadersInit = {
     'Content-Type': 'application/json',
-    Authorization: `Bearer ${AUTH_TOKEN}`,
+    Authorization: `Bearer ${process.env.NEXT_PUBLIC_AUTH_TOKEN}`,
   };
 
   const response = await apiRequest<ApiResponseCreatorAddressInfo>({
