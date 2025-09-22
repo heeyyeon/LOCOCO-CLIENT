@@ -1,23 +1,21 @@
 'use client';
 
 import CampaignCarousel from './components/campaign-carousel';
-
-// import CampaignInfoPanel from './components/campaign-info-panel';
+import CampaignDetailImageWrapper from './components/campaign-detail-image-wrapper';
+import CampaignInfoPanel from './components/campaign-info-panel';
 
 export default function CampaignDetailPage() {
   return (
-    <div className="mt-[0.3rem] flex">
+    <div className="mt-[0.3rem] flex flex-col items-center gap-[2.4rem]">
       {/* Main Campaign Image with Gallery */}
-      <div className="relative mx-auto flex w-full min-w-[112.8rem] justify-center gap-[2.4rem]">
+      <div className="flex w-[112.8rem] flex-col">
         {/* Campaign Gallery with Swiper */}
-        <CampaignCarousel campaignName="Glass Skin Glow Serum Campaign" />
-
-        {/* Campaign Info Panel */}
-        {/* <CampaignInfoPanel /> */}
+        <div className="flex justify-center gap-[2.4rem]">
+          <CampaignCarousel campaignName="Glass Skin Glow Serum Campaign" />
+          <CampaignInfoPanel />
+        </div>
+        <CampaignDetailImageWrapper />
       </div>
-
-      {/* TODO: Mobile */}
-      {/* <div className="h-[820px] lg:hidden" /> */}
     </div>
   );
 }
