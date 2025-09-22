@@ -64,7 +64,7 @@
       "lastNameLabel": "성",
       "lastNamePlaceholder": "예: Doe",
       "monthPlaceholder": "월",
-      "phoneCountryPlaceholder": "",
+      "phoneCountryPlaceholder": "+XX",
       "phoneNumberLabel": "전화번호",
       "phoneNumberPlaceholder": "예: XXXXXXXXXX",
       "title": "개인 정보",
@@ -134,6 +134,13 @@
   },
   "languageSelectTrigger": {
     "language": "언어"
+  },
+  "loginGoogle": {
+    "continueWithGoogle": "구글로 로그인하기 ",
+    "loginMessage": "지금 바로 Google 계정으로 로그인하세요.",
+    "signupMessage": "Google로 회원가입 후, 크리에이터·유저·브랜드 중 하나로 선택해 가입하실 수 있습니다.",
+    "signupNote": "캠페인 지원은 크리에이터만 가능합니다.",
+    "title": "Lococo에 오신 것을 환영합니다!"
   },
   "main": {
     "kBeautyCampaigns": "K-뷰티 캠페인",
@@ -310,6 +317,5 @@
     "confirmButton": "예",
     "message": "캠페인 신청은 크리에이터 회원만 가능합니다. \n크리에이터로 가입하시겠습니까?",
     "title": "크리에이터 제안"
-  },
-  "": ""
+  }
 }
