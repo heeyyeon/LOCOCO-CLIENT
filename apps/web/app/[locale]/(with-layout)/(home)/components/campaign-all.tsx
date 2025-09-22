@@ -7,7 +7,7 @@ import CampaignGrid from 'components/campaign/campaign-grid';
 
 import { Pagenation } from '@lococo/design-system/pagenation';
 
-import { useCampaignsPaginated } from '../hooks/useCampain';
+import { useCampaignsPaginated } from '../hooks/useCampaign';
 
 export default function CampaignAll() {
   const {

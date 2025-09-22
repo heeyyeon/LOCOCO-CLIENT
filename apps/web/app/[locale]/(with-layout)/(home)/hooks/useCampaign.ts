@@ -35,17 +35,15 @@ export const useCampaignsBase = ({
   const serverPage = enablePagination ? currentPage - 1 : page;
 
   const { data, isLoading } = useQuery<CampaignApiResponse>({
-    queryKey: [
-      enablePagination
-        ? campaignKeys.byCategoryPaginated(
-            campaignCategory,
-            'popular',
-            campaignLanguage,
-            serverPage,
-            size
-          )
-        : campaignKeys.byCategory(campaignCategory, section, campaignLanguage),
-    ],
+    queryKey: enablePagination
+      ? campaignKeys.byCategoryPaginated(
+          campaignCategory,
+          section,
+          campaignLanguage,
+          serverPage,
+          size
+        )
+      : campaignKeys.byCategory(campaignCategory, section, campaignLanguage),
     queryFn: () =>
       getCampaignsByCategory({
         section,

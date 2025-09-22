@@ -3,7 +3,7 @@
 import CampaignFilters from 'components/campaign/campaign-filter';
 import CampaignGrid from 'components/campaign/campaign-grid';
 
-import { useHomeCampaigns } from '../hooks/useCampain';
+import { useHomeCampaigns } from '../hooks/useCampaign';
 
 interface HomeSectionCampaignProps {
   kindOfCard: 'KBeauty' | 'openingSoon';
