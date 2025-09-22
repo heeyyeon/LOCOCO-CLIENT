@@ -3,11 +3,9 @@ import { getTranslations } from 'next-intl/server';
 import HomeBanner from './(home)/components/home-banner';
 import HomeSection from './(home)/components/home-section';
 import HomeSectionCampaign from './(home)/components/home-section-campaign';
-import TestComponent from './brand/test-component';
 
 export default async function Main() {
   const t = await getTranslations('main');
-  // 더미 데이터 생성
 
   return (
     <div className="flex w-full flex-col bg-pink-100">
@@ -23,7 +21,6 @@ export default async function Main() {
           <HomeSectionCampaign kindOfCard="openingSoon" seeMore={false} />
         </HomeSection>
       </div>
-      <TestComponent />
     </div>
   );
 }
