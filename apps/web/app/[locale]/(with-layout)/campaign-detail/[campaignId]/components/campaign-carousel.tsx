@@ -14,7 +14,9 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 
 import { cn } from '@lococo/utils';
 
-interface CampaignGalleryProps {
+import '../style/campaign-main-carousel.css';
+
+interface CampaignCarouselProps {
   images?: string[];
   campaignName?: string;
 }
@@ -52,7 +54,7 @@ export default function CampaignCarousel({
           className="left-[2.4rem] h-[40.8rem] w-[72px]"
         >
           {galleryImages.map((imageUrl, index) => (
-            <SwiperSlide key={imageUrl}>
+            <SwiperSlide key={imageUrl} className="thumbnail-slide">
               <Image
                 src={imageUrl}
                 alt={`${campaignName} thumbnail`}
