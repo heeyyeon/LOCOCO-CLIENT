@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 
 import { useAuth } from 'hooks/use-auth';
-import { useRouter } from 'i18n/navigation';
+import { Link, useRouter } from 'i18n/navigation';
 
 import { SvgProfileIcon } from '@lococo/icons';
 
@@ -41,15 +41,20 @@ export default function GnbAuth() {
     router.push('/login-google?mode=signup');
   };
 
+  // TODO Link태그 href 경로 논의 필요
+
   return (
     <div className="flex h-[5.6rem] items-center gap-4">
       {isLoggedIn ? (
         <DropdownMenu>
           <DropdownMenuTrigger asChild className="relative">
-            <button className="flex h-[5.6rem] items-center gap-[1rem] px-[1rem] py-[1.6rem] text-black">
+            <Link
+              href={'/myPage'}
+              className="flex h-[5.6rem] items-center gap-[1rem] px-[1rem] py-[1.6rem] text-black"
+            >
               <SvgProfileIcon size={20} />
               <span>유저이름</span>
-            </button>
+            </Link>
           </DropdownMenuTrigger>
 
           <DropdownMenuContent
@@ -63,7 +68,7 @@ export default function GnbAuth() {
       ) : (
         <>
           <button onClick={handleLogin} className="px-[1.6rem] py-[1rem]">
-            {t('login')}
+            {t('logIn')}
           </button>
           <button
             onClick={handleSignup}
