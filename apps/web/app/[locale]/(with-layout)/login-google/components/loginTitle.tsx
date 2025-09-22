@@ -1,11 +1,11 @@
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 
-export default function LoginTitle({
+export default async function LoginTitle({
   authType = 'login',
 }: {
   authType?: 'login' | 'signup';
 }) {
-  const t = useTranslations('loginGoogle');
+  const t = await getTranslations('loginGoogle');
 
   return (
     <section className="text-center">
