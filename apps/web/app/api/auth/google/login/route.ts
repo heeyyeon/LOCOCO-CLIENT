@@ -22,15 +22,19 @@ export async function GET(request: NextRequest) {
     const response = await fetch(backendUrl.toString(), { method: 'GET' });
 
     if (response.ok) {
-      const authData = await response.json();
-      const { accessToken } = authData.data || {};
+      try {
+        const authData = await response.json();
+        const { accessToken } = authData.data || {};
 
-      if (accessToken) {
-        await setCookie('AccessToken', accessToken);
+        if (accessToken) {
+          await setCookie('AccessToken', accessToken);
 
-        return NextResponse.redirect(
-          new URL('/login-google/loading', request.url)
-        );
+          return NextResponse.redirect(
+            new URL('/login-google/loading', request.url)
+          );
+        }
+      } catch {
+        // JSON 파싱 실패 시 로그인 페이지로 리다이렉트
       }
     }
   } catch {
