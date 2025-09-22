@@ -25,7 +25,7 @@ export async function GET(request: NextRequest) {
 
       if (accessToken) {
         const redirectResponse = NextResponse.redirect(
-          new URL('/', request.url)
+          new URL('/login-google/loading', request.url)
         );
 
         redirectResponse.cookies.set('AccessToken', accessToken, {
