@@ -37,6 +37,7 @@ export default function CampaignGrid({ campaigns }: CampaignGridProps) {
           currentApplicants={campaign.currentApplicants}
           productThumbnailSrc={campaign.productThumbnailSrc}
           campaignId={campaign.campaignId}
+          hoverOption="hover"
         />
       ))}
     </div>

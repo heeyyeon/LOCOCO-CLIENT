@@ -2,6 +2,8 @@
 
 import { useForm } from 'react-hook-form';
 
+import { useRouter } from 'next/navigation';
+
 import { zodResolver } from '@hookform/resolvers/zod';
 
 import { AddressSearchModal } from '../../../../../components/address/AddressSearchModal';
@@ -12,12 +14,14 @@ import {
   TextFormField,
 } from '../../../../../components/forms';
 import { useAddressSearch } from '../../../../../hooks/useAddressSearch';
-import { type BrandSignupForm, brandSignupSchema } from './hooks/signup';
+import { type BrandSignupForm, brandSignupSchema } from './utils/signup';
 
 export default function BrandSignupPage() {
+  const router = useRouter();
+
   const form = useForm<BrandSignupForm>({
     resolver: zodResolver(brandSignupSchema),
-    mode: 'onChange',
+    mode: 'onBlur',
   });
 
   const { isOpen, openAddressSearch, closeAddressSearch, handleComplete } =
@@ -29,7 +33,7 @@ export default function BrandSignupPage() {
     });
 
   const handleSubmit = () => {
-    // TODO: 가입 확인 모달 연결하기
+    router.push('/');
   };
 
   return (
@@ -41,10 +45,11 @@ export default function BrandSignupPage() {
       />
       <SignupFormLayout
         title="Join Lococo Creator Community!"
-        onBack={() => window.history.back()}
+        onBack={() => router.back()}
         onSubmit={form.handleSubmit(handleSubmit)}
         isValid={form.formState.isValid}
         submitLabel="Join"
+        isBackDisabled={true}
       >
         <FormSection
           title="브랜드 정보"
