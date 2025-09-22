@@ -31,8 +31,6 @@ export default function CampaignCarousel({
     '/images/swiper1.png',
     '/images/swiper2.png',
     '/images/swiper3.png',
-    '/images/swiper4.png',
-    '/images/swiper5.png',
   ];
 
   const galleryImages = images || defaultImages;
