@@ -164,13 +164,10 @@ export default function CampaignInfoPanel({
               <div className="flex gap-[4px]">
                 <SvgCheckNonBg size={24} />
                 <div className="flex gap-[8px]">
-                  <p className="body1 text-gray-700">Instagram</p>
+                  <p className="text-inter-body1 text-gray-700">Instagram</p>
                   <div className="flex flex-col gap-[8px]">
-                    <p className="body3 text-gray-700">
+                    <p className="text-inter-body3 text-gray-700">
                       {data.deliverables.instagram.reels}
-                    </p>
-                    <p className="body3 text-gray-700">
-                      {data.deliverables.instagram.stories}
                     </p>
                   </div>
                 </div>
@@ -179,9 +176,9 @@ export default function CampaignInfoPanel({
               <div className="flex gap-[4px]">
                 <SvgCheckNonBg size={24} />
                 <div className="flex gap-[8px]">
-                  <p className="body1 text-gray-700">Instagram</p>
+                  <p className="text-inter-body1 text-gray-700">Instagram</p>
                   <div className="flex flex-col gap-[8px]">
-                    <p className="body3 text-gray-700">
+                    <p className="text-inter-body3 text-gray-700">
                       {data.deliverables.instagram.videos}
                     </p>
                   </div>
@@ -235,7 +232,9 @@ export default function CampaignInfoPanel({
                   ) : (
                     <SvgLanguage size={24} />
                   )}
-                  <p className="body3 text-gray-700">{requirement}</p>
+                  <p className="text-inter-body3 text-gray-700">
+                    {requirement}
+                  </p>
                 </div>
               ))}
             </div>
