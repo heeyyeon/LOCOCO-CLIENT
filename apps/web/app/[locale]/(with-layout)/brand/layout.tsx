@@ -1,3 +1,5 @@
+import { getTranslations } from 'next-intl/server';
+
 import SideBar from 'components/side-bar/side-bar';
 
 export interface MenuItem {
@@ -5,16 +7,21 @@ export interface MenuItem {
   value: string;
 }
 
-const menuItems: MenuItem[] = [
-  { label: '나의 캠페인', value: 'campaign' },
-  { label: '프로필 편집', value: 'profile' },
-  { label: '새 캠페인 만들기', value: 'create-campaign' },
-  { label: '지원자 확인', value: 'applicants' },
-  { label: '컨텐츠 확인', value: 'content' },
-  { label: '대시보드', value: 'dashboard' },
-];
+export default async function layout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const t = await getTranslations('brandMyPageSideBar');
 
-export default function layout({ children }: { children: React.ReactNode }) {
+  const menuItems: MenuItem[] = [
+    { label: t('myCampaign'), value: 'campaign' },
+    { label: t('editProfile'), value: 'profile' },
+    { label: t('makeNewCampaign'), value: 'create-campaign' },
+    { label: t('checkApplicants'), value: 'applicants' },
+    { label: t('checkContents'), value: 'content' },
+    { label: t('dashboard'), value: 'dashboard' },
+  ];
   return (
     <div className="mx-auto flex w-[112.8rem]">
       <SideBar
