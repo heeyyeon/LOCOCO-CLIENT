@@ -31,7 +31,7 @@ export function PersonalDetails({ form }: PersonalDetailsProps) {
   const countryCodes = countryPhoneCodeOptions();
 
   return (
-    <div className="mt-[4.8rem]">
+    <div className="mt-[4.8rem] w-full">
       <FormSection title={t('title')} description={t('description')}>
         <div className="space-y-[1.6rem]">
           <SelectFormField label={t('birthLabel')} required>
