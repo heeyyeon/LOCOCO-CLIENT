@@ -23,12 +23,15 @@ export const useRoleSetup = (options?: UseRoleSetupOptions) => {
           await setUserRole(storedRole);
           clearRoleFromLocalStorage();
 
-          if (storedRole === 'creator') {
-            router.push('/sign-up/creator');
-          } else if (storedRole === 'brand') {
-            router.push('/sign-up/brand');
-          } else if (storedRole === 'user') {
-            options?.onUserRoleSet?.();
+          const roleRoutes = {
+            creator: () => router.push('/sign-up/creator'),
+            brand: () => router.push('/sign-up/brand'),
+            user: () => options?.onUserRoleSet?.(),
+          };
+
+          const routeHandler = roleRoutes[storedRole];
+          if (routeHandler) {
+            routeHandler();
           }
         } catch {
           clearRoleFromLocalStorage();
