@@ -14,14 +14,14 @@ import {
   TextFormField,
 } from '../../../../../components/forms';
 import { useAddressSearch } from '../../../../../hooks/useAddressSearch';
-import { type BrandSignupForm, brandSignupSchema } from './hooks/signup';
+import { type BrandSignupForm, brandSignupSchema } from './utils/signup';
 
 export default function BrandSignupPage() {
   const router = useRouter();
 
   const form = useForm<BrandSignupForm>({
     resolver: zodResolver(brandSignupSchema),
-    mode: 'onChange',
+    mode: 'onBlur',
   });
 
   const { isOpen, openAddressSearch, closeAddressSearch, handleComplete } =
@@ -33,7 +33,7 @@ export default function BrandSignupPage() {
     });
 
   const handleSubmit = () => {
-    // TODO: 가입 확인 모달 연결하기
+    router.push('/');
   };
 
   return (
