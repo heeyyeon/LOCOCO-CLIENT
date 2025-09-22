@@ -64,7 +64,7 @@
       "lastNameLabel": "Apellido",
       "lastNamePlaceholder": "ej: Doe",
       "monthPlaceholder": "Mes",
-      "phoneCountryPlaceholder": "",
+      "phoneCountryPlaceholder": "+XX",
       "phoneNumberLabel": "Número de teléfono",
       "phoneNumberPlaceholder": "ej: XXXXXXXXXX",
       "title": "Detalles personales",
@@ -134,6 +134,13 @@
   },
   "languageSelectTrigger": {
     "language": "Idioma"
+  },
+  "loginGoogle": {
+    "continueWithGoogle": "Continuar con Google",
+    "loginMessage": "Inicia sesión en tu cuenta de Google ahora mismo.",
+    "signupMessage": "Después de registrarte con Google, podrás elegir unirte como Creador, Usuario o Marca.",
+    "signupNote": "Ten en cuenta que solo los Creadores pueden postularse a campañas.",
+    "title": "¡Bienvenido a Lococo!"
   },
   "main": {
     "kBeautyCampaigns": "Campañas de K-Beauty",
@@ -310,6 +317,5 @@
     "confirmButton": "Sí",
     "message": "Las solicitudes de campaña solo están disponibles para miembros creadores. ¿Desea registrarse como creador?",
     "title": "Sugerencia de creador"
-  },
-  "": ""
+  }
 }
