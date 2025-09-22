@@ -22,11 +22,6 @@
     "message": "Your application was successfully submitted.\nWe'll email you the result within 24 hours.",
     "title": "Successfully Submitted!"
   },
-  "ConfirmSignupModal": {
-    "confirmButton": "",
-    "message": "",
-    "title": ""
-  },
   "creatorSignup": {
     "communityName": {
       "checkAvailabilityButton": "Check availability",
@@ -310,6 +305,13 @@
     "confirmButton": "Yes",
     "message": "Campaign applications are only available to creator members.\nWould you like to sign up as a creator?",
     "title": "Creator Suggestion"
+  },
+  "loginGoogle": {
+    "title": "Welcome to Lococo!",
+    "loginMessage": "Log in to your Google account right away",
+    "signupMessage": "After signing up with Google, you can choose to join as a Creator, User, or Brand.",
+    "signupNote": "Please note that only Creators can apply for campaigns.",
+    "continueWithGoogle": "Continue with Google"
   },
   "": ""
 }
