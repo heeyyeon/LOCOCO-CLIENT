@@ -8,7 +8,11 @@ import {
   getRoleFromLocalStorage,
 } from '../utils/role-storage';
 
-export const useRoleSetup = () => {
+interface UseRoleSetupOptions {
+  onUserRoleSet?: () => void;
+}
+
+export const useRoleSetup = (options?: UseRoleSetupOptions) => {
   const router = useRouter();
 
   useEffect(() => {
@@ -23,6 +27,8 @@ export const useRoleSetup = () => {
             router.push('/sign-up/creator');
           } else if (storedRole === 'brand') {
             router.push('/sign-up/brand');
+          } else if (storedRole === 'user') {
+            options?.onUserRoleSet?.();
           }
         } catch {
           clearRoleFromLocalStorage();
@@ -31,5 +37,5 @@ export const useRoleSetup = () => {
     };
 
     handleSetup();
-  }, [router]);
+  }, [router, options]);
 };
