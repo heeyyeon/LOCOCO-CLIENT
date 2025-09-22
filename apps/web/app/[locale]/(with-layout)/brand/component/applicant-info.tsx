@@ -8,6 +8,7 @@ import { SvgArrowRight } from '@lococo/icons';
 
 import Checkbox from '../../../../../../../packages/design-system/src/components/checkbox/Checkbox';
 import InfoChip from '../../../../../../../packages/design-system/src/components/info-chip/InfoChip';
+import { formatNumberCompact } from '../../../../../utils/format-number-compact';
 
 interface ApplicantInfoProps {
   status: ApplicantStatus;
@@ -22,16 +23,6 @@ interface ApplicantInfoProps {
   mode: 'recruiting' | 'selected';
   onSelect?: (selected: boolean) => void;
 }
-
-// 숫자 포맷팅 함수
-const formatNumber = (num: number): string => {
-  if (num >= 1000000) {
-    return `${(num / 1000000).toFixed(1)}M`;
-  } else if (num >= 1000) {
-    return `${(num / 1000).toFixed(1)}K`;
-  }
-  return num.toString();
-};
 
 // 승인 상태 스타일 매핑
 const getApprovalStatusStyle = (
@@ -111,13 +102,13 @@ export default function ApplicantInfo({
             height={24}
           />
           <span className="body3 text-gray-800">
-            {formatNumber(instagramFollower)}
+            {formatNumberCompact(instagramFollower)}
           </span>
         </div>
         <div className="flex items-center gap-[0.8rem]">
           <Image src="/tiktok.svg" alt="tiktok logo" width={24} height={24} />
           <span className="body3 text-gray-800">
-            {formatNumber(tiktokFollower)}
+            {formatNumberCompact(tiktokFollower)}
           </span>
         </div>
       </td>
