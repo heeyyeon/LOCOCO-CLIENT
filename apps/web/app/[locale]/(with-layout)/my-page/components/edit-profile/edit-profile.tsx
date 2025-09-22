@@ -1,55 +1,185 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useForm } from 'react-hook-form';
 
 import { Button } from '@lococo/design-system/button';
 
+import {
+  CommunityName,
+  HomeAddress,
+  PersonalDetails,
+  SkinInfo,
+} from '../../../../(with-layout)/sign-up/creator/components';
+import { type CreatorSignupForm } from '../../../../(with-layout)/sign-up/creator/utils/signup';
 import { SaveFormModal } from '../../@modal/(.)save-form-modal/SaveFormModal';
-import { useProfile } from '../../hooks/use-profile';
-import BasicInformation from './basic-information';
-import HomeAddress from './home-address';
-import PersonalInformation from './personal-information';
+import {
+  useCheckIdAvailability,
+  useProfile,
+  useUpdateProfile,
+} from '../../hooks/use-profile-api';
 import ProfilePhoto from './profile-photo';
-import Skin from './skin';
 
 export default function EditProfile() {
-  const {
-    formData,
-    errors,
-    reset,
-    updateId,
-    updateBirth,
-    updateGender,
-    updateFirstName,
-    updateLastName,
-    updateEmail,
-    updatePhone,
-    updateContentLanguage,
-    updateCountry,
-    updateState,
-    updateCity,
-    updateAddressLine1,
-    updateAddressLine2,
-    updateZip,
-    updateProfileImage,
-    handleSubmit,
-    isFormValid,
-    isIdChecked,
-    idCheckError,
-    updateSkinType,
-    updateSkinTone,
-    checkIdAvailability,
-    trigger,
-  } = useProfile();
   const [isSaveFormModalOpen, setIsSaveFormModalOpen] = useState(false);
-  const handleSubmitForm = async () => {
-    const isValid = await trigger();
+  const [profileImage, setProfileImage] = useState<File | null>(null);
 
-    if (isFormValid && isValid) {
-      handleSubmit();
-      setIsSaveFormModalOpen(true);
+  const form = useForm<CreatorSignupForm>({
+    defaultValues: {
+      id: '',
+      birthMonth: '',
+      birthDay: '',
+      birthYear: '',
+      gender: '',
+      firstName: '',
+      lastName: '',
+      phoneCountryCode: '',
+      phoneNumber: '',
+      contentLanguage: '',
+      country: '',
+      stateRegion: '',
+      city: '',
+      addressLine1: '',
+      addressLine2: '',
+      zipCode: '',
+      skinType: '',
+      skinTone: '',
+    },
+    mode: 'onChange',
+  });
+
+  const profileQuery = useProfile();
+  const updateProfileMutation = useUpdateProfile();
+  const checkIdMutation = useCheckIdAvailability();
+
+  useEffect(() => {
+    if (profileQuery.data?.data) {
+      const profileData = profileQuery.data.data;
+      const {
+        creatorAddressInfo,
+        creatorBasicInfo,
+        creatorContactInfo,
+        creatorFaceInfo,
+      } = profileData;
+      // firstName에서 first/last name 분리
+      const fullName = creatorBasicInfo.creatorName || '';
+      const nameParts = fullName.trim().split(' ');
+      const firstName = nameParts[0] || '';
+      const lastName = nameParts.slice(1).join(' ') || '';
+
+      form.reset({
+        id: creatorBasicInfo.creatorName || '',
+        birthMonth: '', // API에 없음
+        birthDay: '', // API에 없음
+        birthYear: '', // API에 없음
+        gender: '', // API에 없음
+        firstName: firstName,
+        lastName: lastName,
+        phoneCountryCode: creatorContactInfo.countryCode || '',
+        phoneNumber: creatorContactInfo.phoneNumber || '',
+        contentLanguage: profileData.contentLanguage || '',
+        country: creatorAddressInfo.country || '',
+        stateRegion: creatorAddressInfo.stateOrProvince || '',
+        city: creatorAddressInfo.cityOrTown || '',
+        addressLine1: creatorAddressInfo.addressLine1 || '',
+        addressLine2: creatorAddressInfo.addressLine2 || '',
+        zipCode: creatorAddressInfo.postalCode || '',
+        skinType: creatorFaceInfo.skinType || '',
+        skinTone: creatorFaceInfo.skinTone || '',
+      });
+
+      if (creatorBasicInfo.profileImageUrl) {
+        fetch(creatorBasicInfo.profileImageUrl)
+          .then((response) => response.blob())
+          .then((blob) => {
+            const file = new File([blob], 'profile-image.jpg', {
+              type: blob.type,
+            });
+            setProfileImage(file);
+          })
+          .catch((error) => {
+            console.error('프로필 이미지 로드 실패:', error);
+            setProfileImage(null);
+          });
+      }
+    }
+  }, [profileQuery.data, form]);
+
+  const handleSubmitForm = async () => {
+    const isValid = await form.trigger();
+
+    if (form.formState.isValid && isValid) {
+      const formData = form.getValues();
+
+      // 프로필 이미지 업로드 (있는 경우)
+      let profileImageUrl = null;
+      if (profileImage) {
+        // TODO: 프로필 이미지 presigned URL 요청 및 업로드
+        // profileImageUrl = await uploadProfileImage(profileImage);
+      }
+
+      try {
+        // 프로필 업데이트 API 호출
+        await updateProfileMutation.mutateAsync({ formData, profileImageUrl });
+
+        setIsSaveFormModalOpen(true);
+      } catch (error) {
+        console.error('프로필 수정 실패:', error);
+      }
     }
   };
+
+  const handleCheckAvailability = async () => {
+    const id = form.getValues('id');
+    if (!id.trim()) {
+      form.setError('id', { message: 'ID is required' });
+      return;
+    }
+
+    try {
+      const isAvailable = await checkIdMutation.mutateAsync(id);
+      if (isAvailable) {
+        console.log('ID 사용 가능:', id);
+        // TODO: 성공 메시지 표시
+      } else {
+        form.setError('id', { message: '이미 사용 중인 ID입니다.' });
+      }
+    } catch (error) {
+      console.error('ID 중복 체크 실패:', error);
+      form.setError('id', { message: 'ID 중복 체크에 실패했습니다.' });
+    }
+  };
+
+  // 초기 로딩 상태
+  if (profileQuery.isLoading) {
+    return (
+      <div className="flex w-full flex-col items-center justify-center gap-[3.2rem] bg-gray-100 px-[9.4rem] py-[6.4rem]">
+        <div className="text-lg text-gray-600">
+          프로필 데이터를 불러오는 중...
+        </div>
+      </div>
+    );
+  }
+
+  // 에러 상태
+  if (profileQuery.error) {
+    return (
+      <div className="flex w-full flex-col items-center justify-center gap-[3.2rem] bg-gray-100 px-[9.4rem] py-[6.4rem]">
+        <div className="text-lg text-red-600">
+          {profileQuery.error.message ||
+            '프로필 데이터를 불러오는데 실패했습니다.'}
+        </div>
+        <Button
+          variant="filled"
+          color="primary"
+          size="lg"
+          onClick={() => profileQuery.refetch()}
+        >
+          다시 시도
+        </Button>
+      </div>
+    );
+  }
 
   return (
     <>
@@ -61,46 +191,21 @@ export default function EditProfile() {
         <div className="flex w-[84rem] items-center justify-between gap-[4.8rem] border border-gray-400 bg-white p-[4.8rem]">
           <div className="flex w-full flex-col items-start gap-[4.8rem]">
             <ProfilePhoto
-              value={formData.profileImage}
-              onChange={updateProfileImage}
-              error={errors.profileImage}
-            />
-            <BasicInformation
-              errors={errors.id}
-              value={formData.id}
-              onChange={updateId}
-              isIdChecked={isIdChecked}
-              idCheckError={idCheckError}
-              onCheckAvailability={checkIdAvailability}
-            />
-            <PersonalInformation
-              formData={formData}
-              errors={errors}
-              updateBirth={updateBirth}
-              updateGender={updateGender}
-              updateFirstName={updateFirstName}
-              updateLastName={updateLastName}
-              updatePhone={updatePhone}
-              updateContentLanguage={updateContentLanguage}
-              updateEmail={updateEmail}
+              value={profileImage}
+              onChange={setProfileImage}
+              error={undefined}
             />
 
-            <HomeAddress
-              formData={formData}
-              errors={errors}
-              updateCountry={updateCountry}
-              updateState={updateState}
-              updateCity={updateCity}
-              updateAddressLine1={updateAddressLine1}
-              updateAddressLine2={updateAddressLine2}
-              updateZip={updateZip}
+            <CommunityName
+              form={form}
+              handleCheckAvailability={handleCheckAvailability}
             />
-            <Skin
-              formData={formData}
-              errors={errors}
-              updateSkinType={updateSkinType}
-              updateSkinTone={updateSkinTone}
-            />
+
+            <PersonalDetails form={form} />
+
+            <HomeAddress form={form} locale="ko" />
+
+            <SkinInfo form={form} />
           </div>
         </div>
         <div className="flex w-[84rem] items-center justify-between gap-[1.6rem]">
@@ -109,7 +214,7 @@ export default function EditProfile() {
             color="primary"
             size="lg"
             className="w-[41.2rem]"
-            onClick={() => reset()}
+            onClick={() => form.reset()}
           >
             Cancel
           </Button>
