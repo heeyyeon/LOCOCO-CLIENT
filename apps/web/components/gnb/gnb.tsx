@@ -6,7 +6,7 @@ import GnbMenu from './gnb-menu';
 
 export default function Gnb() {
   return (
-    <header className="body1 flex h-[7.2rem] w-screen min-w-[112.8rem] justify-center font-[700]">
+    <header className="body1 flex h-[7.2rem] w-full min-w-[112.8rem] justify-center font-[700]">
       <div className="flex w-[112.8rem] justify-between">
         <Image
           src="/images/logo.png"
