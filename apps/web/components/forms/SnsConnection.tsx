@@ -1,5 +1,7 @@
 import { useTranslations } from 'next-intl';
 
+import { useConnectSns } from 'hooks/use-connect-sns';
+
 import { Button } from '@lococo/design-system/button';
 import { ErrorNotice } from '@lococo/design-system/error-notice';
 import { SvgCheckBg, SvgCheckNonBg } from '@lococo/icons';
@@ -11,8 +13,6 @@ export type SnsPlatform = 'instagram' | 'tiktok';
 interface SnsConnectionSectionProps {
   title?: string;
   description?: string;
-  connectedSns: SnsPlatform[];
-  onConnectSns: (sns: SnsPlatform) => void;
   hasError?: boolean;
   errorMessage?: string;
   platforms?: SnsPlatform[];
@@ -23,14 +23,29 @@ const DEFAULT_PLATFORMS: SnsPlatform[] = ['instagram', 'tiktok'];
 
 export function SnsConnection({
   description,
-  connectedSns,
-  onConnectSns,
   hasError = false,
   platforms = DEFAULT_PLATFORMS,
   className,
 }: SnsConnectionSectionProps) {
   const t = useTranslations('snsConnection');
+
+  const { data: connectSnsData } = useConnectSns();
+
+  const connectedSns: SnsPlatform[] = [];
+  if (connectSnsData?.data?.isInstaConnected) {
+    connectedSns.push('instagram');
+  }
+  if (connectSnsData?.data?.isTiktokConnected) {
+    connectedSns.push('tiktok');
+  }
+
   const hasConnectedAccount = connectedSns.length > 0;
+
+  const handleConnectSns = async (sns: SnsPlatform) => {
+    if (sns === 'tiktok') {
+    } else if (sns === 'instagram') {
+    }
+  };
 
   return (
     <div className={className}>
@@ -71,7 +86,7 @@ export function SnsConnection({
                   </div>
                 ) : (
                   <Button
-                    onClick={() => onConnectSns(platform)}
+                    onClick={() => handleConnectSns(platform)}
                     variant="outline"
                     color="primary"
                     size="sm"
