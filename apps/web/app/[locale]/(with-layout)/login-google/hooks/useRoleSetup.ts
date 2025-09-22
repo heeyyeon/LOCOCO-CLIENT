@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 
+import { useLocale } from 'next-intl';
 import { useRouter } from 'next/navigation';
 
 import { setUserRole } from '../utils/role-api';
@@ -14,6 +15,7 @@ interface UseRoleSetupOptions {
 
 export const useRoleSetup = (options?: UseRoleSetupOptions) => {
   const router = useRouter();
+  const locale = useLocale();
 
   useEffect(() => {
     const handleSetup = async () => {
@@ -24,8 +26,8 @@ export const useRoleSetup = (options?: UseRoleSetupOptions) => {
           clearRoleFromLocalStorage();
 
           const roleRoutes = {
-            creator: () => router.push('/sign-up/creator'),
-            brand: () => router.push('/sign-up/brand'),
+            creator: () => router.replace(`/${locale}/sign-up/creator`),
+            brand: () => router.replace(`/${locale}/sign-up/brand`),
             user: () => options?.onUserRoleSet?.(),
           };
 
@@ -35,10 +37,11 @@ export const useRoleSetup = (options?: UseRoleSetupOptions) => {
           }
         } catch {
           clearRoleFromLocalStorage();
+          router.replace(`/${locale}`);
         }
       }
     };
 
     handleSetup();
-  }, [router, options]);
+  }, [router, options, locale]);
 };
