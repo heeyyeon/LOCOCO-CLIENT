@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 
+import { setCookie } from '../../../../../utils/action/cookie';
+
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
   const code = searchParams.get('code');
@@ -24,15 +26,11 @@ export async function GET(request: NextRequest) {
       const { accessToken } = authData.data || {};
 
       if (accessToken) {
-        const redirectResponse = NextResponse.redirect(
+        await setCookie('AccessToken', accessToken);
+
+        return NextResponse.redirect(
           new URL('/login-google/loading', request.url)
         );
-
-        redirectResponse.cookies.set('AccessToken', accessToken, {
-          httpOnly: true,
-        });
-
-        return redirectResponse;
       }
     }
   } catch {
