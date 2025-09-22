@@ -30,9 +30,9 @@ export default function CampaignCarousel({
   const [activeThumbIndex, setActiveThumbIndex] = useState(0);
 
   const defaultImages = [
-    '/images/swiper3.png',
     '/images/swiper1.png',
     '/images/swiper2.png',
+    '/images/swiper3.png',
   ];
 
   const galleryImages = images || defaultImages;
