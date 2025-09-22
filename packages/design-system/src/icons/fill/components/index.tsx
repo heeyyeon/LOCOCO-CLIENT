@@ -19,6 +19,7 @@ export { SvgDelete } from './Delete';
 export { SvgDivider } from './Divider';
 export { SvgEllipsis } from './Ellipsis';
 export { SvgErrorFill } from './ErrorFill';
+export { SvgGift } from './Gift';
 export { SvgGoodFill } from './GoodFill';
 export { SvgGoodOutline } from './GoodOutline';
 export { SvgGoogle } from './Google';
