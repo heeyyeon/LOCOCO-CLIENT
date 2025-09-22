@@ -6,6 +6,7 @@ import HomeSectionCampaign from './(home)/components/home-section-campaign';
 
 export default async function Main() {
   const t = await getTranslations('main');
+
   return (
     <div className="flex w-full flex-col bg-pink-100">
       <HomeBanner />
