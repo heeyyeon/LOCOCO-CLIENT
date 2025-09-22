@@ -14,17 +14,25 @@ export default function Checkbox({
       data-slot="checkbox"
       style={{
         backgroundColor:
-          props.checked && !props.disabled ? '#ff488f' : 'transparent',
+          props.checked && !props.disabled
+            ? '#ff488f'
+            : props.disabled
+              ? '#f5f5f5'
+              : 'transparent',
       }}
       className={cn(
         'flex h-[2.4rem] w-[2.4rem] items-center justify-center border border-gray-400 data-[state=checked]:border-none',
+        props.disabled && 'border-gray-300',
         className
       )}
       {...props}
     >
       <CheckboxPrimitive.Indicator
         data-slot="checkbox-indicator"
-        className="flex h-[2.4rem] w-[2.4rem] items-center justify-center rounded-[0.6rem] transition-none data-[disabled]:bg-gray-200"
+        className={cn(
+          'flex h-[2.4rem] w-[2.4rem] items-center justify-center rounded-[0.6rem] transition-none',
+          props.disabled && 'bg-gray-200'
+        )}
       >
         <SvgCheck
           className={cn('fill-white', props.disabled && 'fill-gray-500')}

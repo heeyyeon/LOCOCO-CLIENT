@@ -1,8 +1,8 @@
 export type ApplicantStatus =
-  | 'default'
-  | 'selected'
-  | 'block'
-  | 'selectedBlock';
+  | 'default' // 기본
+  | 'selected' // 선택된
+  | 'block' // 선택안된 disabled
+  | 'selectedBlock'; // 선택된 disabled
 
 export interface ApplicantData {
   id: string;
@@ -14,5 +14,5 @@ export interface ApplicantData {
   tiktokFollower: number;
   joinedCampaign: number;
   applicationDate: string;
-  approvalStatus: string;
+  approvalStatus: 'PENDING' | 'APPROVED' | 'REJECTED';
 }

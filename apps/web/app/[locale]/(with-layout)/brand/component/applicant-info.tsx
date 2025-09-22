@@ -18,7 +18,7 @@ interface ApplicantInfoProps {
   tiktokFollower: number;
   joinedCampaign: number;
   applicationDate: string;
-  approvalStatus: string;
+  approvalStatus: 'PENDING' | 'APPROVED' | 'REJECTED';
   mode: 'recruiting' | 'selected';
   onSelect?: (selected: boolean) => void;
 }
@@ -41,10 +41,9 @@ const getApprovalStatusStyle = (
     string,
     { text: string; color: 'default' | 'green' | 'red' | 'blue' }
   > = {
-    대기중: { text: '대기중', color: 'default' },
-    승인: { text: '승인', color: 'green' },
-    거절: { text: '거절', color: 'red' },
-    검토중: { text: '검토중', color: 'blue' },
+    PENDING: { text: '대기중', color: 'default' },
+    APPROVED: { text: '승인', color: 'green' },
+    REJECTED: { text: '거절', color: 'red' },
   };
 
   return statusMap[status] || { text: status, color: 'default' };

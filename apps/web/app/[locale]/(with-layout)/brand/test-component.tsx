@@ -21,7 +21,7 @@ export default function TestComponent() {
       tiktokFollower: 89200,
       joinedCampaign: 7,
       applicationDate: 'Jun 11, 2025',
-      approvalStatus: '승인',
+      approvalStatus: 'APPROVED',
     },
     {
       id: '3',
@@ -34,7 +34,7 @@ export default function TestComponent() {
       tiktokFollower: 92100,
       joinedCampaign: 3,
       applicationDate: 'Jun 10, 2025',
-      approvalStatus: '검토중',
+      approvalStatus: 'REJECTED',
     },
     {
       id: '4',
@@ -47,7 +47,7 @@ export default function TestComponent() {
       tiktokFollower: 78300,
       joinedCampaign: 2,
       applicationDate: 'Jun 09, 2025',
-      approvalStatus: '거절',
+      approvalStatus: 'REJECTED',
     },
     {
       id: '5',
@@ -60,7 +60,7 @@ export default function TestComponent() {
       tiktokFollower: 203400,
       joinedCampaign: 9,
       applicationDate: 'Jun 08, 2025',
-      approvalStatus: '대기중',
+      approvalStatus: 'PENDING',
     },
     {
       id: '6',
@@ -73,7 +73,7 @@ export default function TestComponent() {
       tiktokFollower: 112300,
       joinedCampaign: 5,
       applicationDate: 'Jun 07, 2025',
-      approvalStatus: '승인',
+      approvalStatus: 'APPROVED',
     },
     {
       id: '7',
@@ -86,7 +86,7 @@ export default function TestComponent() {
       tiktokFollower: 189600,
       joinedCampaign: 12,
       applicationDate: 'Jun 06, 2025',
-      approvalStatus: '승인',
+      approvalStatus: 'APPROVED',
     },
     {
       id: '8',
@@ -99,7 +99,7 @@ export default function TestComponent() {
       tiktokFollower: 67800,
       joinedCampaign: 3,
       applicationDate: 'Jun 05, 2025',
-      approvalStatus: '검토중',
+      approvalStatus: 'REJECTED',
     },
     {
       id: '9',
@@ -112,7 +112,7 @@ export default function TestComponent() {
       tiktokFollower: 85400,
       joinedCampaign: 6,
       applicationDate: 'Jun 04, 2025',
-      approvalStatus: '대기중',
+      approvalStatus: 'PENDING',
     },
     {
       id: '10',
@@ -125,7 +125,7 @@ export default function TestComponent() {
       tiktokFollower: 156700,
       joinedCampaign: 8,
       applicationDate: 'Jun 03, 2025',
-      approvalStatus: '승인',
+      approvalStatus: 'APPROVED',
     },
     {
       id: '11',
@@ -138,7 +138,7 @@ export default function TestComponent() {
       tiktokFollower: 45600,
       joinedCampaign: 4,
       applicationDate: 'Jun 02, 2025',
-      approvalStatus: '거절',
+      approvalStatus: 'REJECTED',
     },
     {
       id: '12',
@@ -151,7 +151,7 @@ export default function TestComponent() {
       tiktokFollower: 134500,
       joinedCampaign: 7,
       applicationDate: 'Jun 01, 2025',
-      approvalStatus: '검토중',
+      approvalStatus: 'REJECTED',
     },
     {
       id: '13',
@@ -164,7 +164,7 @@ export default function TestComponent() {
       tiktokFollower: 223400,
       joinedCampaign: 11,
       applicationDate: 'May 31, 2025',
-      approvalStatus: '승인',
+      approvalStatus: 'APPROVED',
     },
     {
       id: '14',
@@ -177,7 +177,7 @@ export default function TestComponent() {
       tiktokFollower: 89200,
       joinedCampaign: 5,
       applicationDate: 'May 30, 2025',
-      approvalStatus: '대기중',
+      approvalStatus: 'PENDING',
     },
     {
       id: '15',
@@ -190,7 +190,7 @@ export default function TestComponent() {
       tiktokFollower: 178900,
       joinedCampaign: 9,
       applicationDate: 'May 29, 2025',
-      approvalStatus: '검토중',
+      approvalStatus: 'REJECTED',
     },
   ];
   const {
