@@ -3,8 +3,15 @@
 import { SvgGoogle } from '@lococo/icons';
 
 export default function LoginButton() {
+  const handleGoogleLogin = () => {
+    window.location.href = `${process.env.NEXT_PUBLIC_API_SERVER_URL}/api/auth/google/redirect`;
+  };
+
   return (
-    <button className="group relative mt-[8rem] flex h-[4.8rem] w-[29.6rem] cursor-pointer items-center rounded-[2.4rem] border border-[#747775] bg-white py-[1.2rem] hover:border-[#747775] hover:bg-[#F7F8F8]">
+    <button
+      onClick={handleGoogleLogin}
+      className="group relative mt-[8rem] flex h-[4.8rem] w-[29.6rem] cursor-pointer items-center rounded-[2.4rem] border border-[#747775] bg-white py-[1.2rem] hover:border-[#747775] hover:bg-[#F7F8F8]"
+    >
       <span className="absolute left-[2rem] flex items-center">
         <SvgGoogle size={20} />
       </span>
