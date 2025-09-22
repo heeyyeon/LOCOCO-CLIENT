@@ -1,34 +1,50 @@
+'use client';
+
 import React from 'react';
 
 import Image from 'next/image';
+import { useSearchParams } from 'next/navigation';
 
-import { Button } from '@lococo/design-system/button';
+import { MenuItem } from 'app/[locale]/(with-layout)/brand/layout';
+import { usePathname, useRouter } from 'i18n/navigation';
+
 import { InfoChip } from '@lococo/design-system/info-chip';
+import { Tab, TabContainer } from '@lococo/design-system/tab';
 import { SvgAvatar } from '@lococo/icons';
 
 interface SideBarProps {
-  profileImage?: string;
   name?: string;
   email?: string;
-  instagram?: string;
   level?: string;
-  menus: string[];
-  activeMenu: string;
-  handleClickTab: (tab: string) => void;
+  profileImage?: string;
+  instagram?: string;
+  menus: MenuItem[];
+  defaultActiveMenu: string;
 }
 
 export default function SideBar({
-  activeMenu,
-  handleClickTab,
   profileImage,
   name,
   email,
   instagram,
   level,
   menus,
+  defaultActiveMenu,
 }: SideBarProps) {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const pathname = usePathname();
+
+  const activeMenu = searchParams.get('tab') || defaultActiveMenu;
+
+  const handleClickTab = (item: MenuItem) => {
+    const pathParts = pathname.split('/');
+    pathParts[pathParts.length - 1] = item.value;
+    router.push(pathParts.join('/'));
+  };
+
   return (
-    <div className="flex w-auto flex-col items-start gap-[1.6rem] pl-[11.9rem] pt-[1.6rem]">
+    <div className="mr-[2.4rem] mt-[1.6rem] flex w-[16.8rem] flex-col gap-[1.6rem]">
       {profileImage ? (
         <Image
           src={profileImage}
@@ -41,27 +57,29 @@ export default function SideBar({
         <SvgAvatar size={98} className="rounded-full" />
       )}
       <div className="flex w-full flex-col items-start gap-[0.8rem] self-stretch">
-        <p className="title2 no-wrap text-nowrap text-gray-800">{name}</p>
-        <p className="caption2 text-gray-800">{email}</p>
-        <p className="caption2 text-gray-800">{instagram}</p>
+        <span className="title2 text-nowrap font-[700] text-gray-800">
+          {name}
+        </span>
+        <span className="caption2 font-[700] text-gray-800">{email}</span>
+        <span className="caption2 font-[700] text-gray-800">{instagram}</span>
         {level && <InfoChip text={level} color="default" size="md" icon />}
       </div>
       <div className="h-[1px] w-full bg-gray-400" />
 
-      <div className="align-self-stretch flex flex-col items-start justify-start">
-        {menus.map((item) => (
-          <Button
-            key={item}
-            variant="text"
-            color={activeMenu === item ? 'primary' : 'secondary'}
-            size="md"
-            className="text-nowrap px-0"
-            onClick={() => handleClickTab(item)}
-          >
-            {item}
-          </Button>
-        ))}
-      </div>
+      <nav>
+        <TabContainer variant="vertical" className="flex w-full items-start">
+          {menus.map((menu) => (
+            <Tab
+              key={menu.value}
+              label={menu.label}
+              value={menu.value}
+              selected={activeMenu === menu.value}
+              className="p-0"
+              onClick={() => handleClickTab(menu)}
+            />
+          ))}
+        </TabContainer>
+      </nav>
     </div>
   );
 }

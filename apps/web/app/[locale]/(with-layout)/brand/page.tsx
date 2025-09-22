@@ -8,7 +8,7 @@ export default async function page({
   const { locale } = await params;
 
   redirect({
-    href: '/my-page/my-campaign',
+    href: '/brand/campaign',
     locale: locale,
   });
 }

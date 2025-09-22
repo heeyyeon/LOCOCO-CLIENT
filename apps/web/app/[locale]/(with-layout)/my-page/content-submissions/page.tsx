@@ -4,11 +4,11 @@ import React from 'react';
 
 import { Button } from '@lococo/design-system/button';
 
-import { useContentSubmissions } from '../../hooks/use-content-submissions';
-import CampaignProductMediaInput from './campaign-product-media-input';
-import CampaignSelect from './campaign-select';
-import ContentTypeSelect from './content-type-select';
-import HashtagsInput from './hashtags-input';
+import CampaignProductMediaInput from '../components/content-submissions/campaign-product-media-input';
+import CampaignSelect from '../components/content-submissions/campaign-select';
+import ContentTypeSelect from '../components/content-submissions/content-type-select';
+import HashtagsInput from '../components/content-submissions/hashtags-input';
+import { useContentSubmissions } from '../hooks/use-content-submissions';
 
 interface ContentSubmissionsFormProps {
   formIndex: number;
