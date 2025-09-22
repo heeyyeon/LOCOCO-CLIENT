@@ -14,6 +14,8 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 
 import { cn } from '@lococo/utils';
 
+import '../style/campaign-main-carousel.css';
+
 interface CampaignGalleryProps {
   images?: string[];
   campaignName?: string;
@@ -28,9 +30,9 @@ export default function CampaignCarousel({
   const [activeThumbIndex, setActiveThumbIndex] = useState(0);
 
   const defaultImages = [
+    '/images/swiper3.png',
     '/images/swiper1.png',
     '/images/swiper2.png',
-    '/images/swiper3.png',
   ];
 
   const galleryImages = images || defaultImages;
@@ -49,7 +51,7 @@ export default function CampaignCarousel({
           slidesPerView={5}
           watchSlidesProgress={true}
           modules={[Thumbs]}
-          className="left-[2.4rem] h-[40.8rem] w-[72px]"
+          className="left-[2.4rem] flex h-[40.8rem] w-[72px] flex-col items-center"
         >
           {galleryImages.map((imageUrl, index) => (
             <SwiperSlide key={imageUrl}>
@@ -60,7 +62,8 @@ export default function CampaignCarousel({
                 height={72}
                 className={cn(
                   'h-full w-full cursor-pointer rounded-[16px] object-cover',
-                  activeThumbIndex === index && 'border-2 border-pink-500'
+                  activeThumbIndex === index && 'border-2 border-pink-500',
+                  'thumbnail-slide'
                 )}
               />
             </SwiperSlide>
