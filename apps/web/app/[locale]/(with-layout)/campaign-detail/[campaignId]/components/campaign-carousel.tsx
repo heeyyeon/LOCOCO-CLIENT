@@ -17,21 +17,14 @@ import { cn } from '@lococo/utils';
 import '../style/campaign-main-carousel.css';
 
 interface CampaignCarouselProps {
-  images?: string[];
+  images: string[];
 }
 
 export default function CampaignCarousel({ images }: CampaignCarouselProps) {
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);
   const mainSwiperRef = useRef<SwiperType | null>(null);
   const [activeThumbIndex, setActiveThumbIndex] = useState(0);
-
-  // const defaultImages = [
-  //   '/images/swiper1.png',
-  //   '/images/swiper2.png',
-  //   '/images/swiper3.png',
-  // ];
-
-  const galleryImages = images || [];
+  const galleryImages = images;
 
   return (
     <div className="relative flex h-fit w-full max-w-[64.8rem] flex-1 gap-[12px] md:gap-[16px] lg:gap-[24px]">

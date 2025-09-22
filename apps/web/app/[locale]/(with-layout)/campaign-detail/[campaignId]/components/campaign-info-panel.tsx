@@ -1,6 +1,6 @@
 'use client';
 
-import { useFormatter } from 'next-intl';
+import { useFormatter, useTranslations } from 'next-intl';
 
 import dayjs from 'dayjs';
 
@@ -45,7 +45,9 @@ export default function CampaignInfoPanel({
   eligibilityRequirements,
   campaignStatusCode,
 }: CampaignInfoPanelProps) {
+  const t = useTranslations('campaignDetail');
   const format = useFormatter();
+
   // const timeZone = useTimeZone();
 
   // const defaultData = {
@@ -103,11 +105,10 @@ export default function CampaignInfoPanel({
             <div className="flex flex-col gap-[20px]">
               <div className="flex flex-col gap-[4px]">
                 <h2 className="text-inter-title2 font-bold text-gray-800">
-                  {/* TODO: translate */}
-                  Campaign Schedule
+                  {t('campaignSchedule')}
                 </h2>
                 <p className="text-inter-caption text-gray-600">
-                  All times are displayed in your local time.
+                  {t('localTimeNotice')}
                 </p>
               </div>
             </div>
@@ -122,7 +123,7 @@ export default function CampaignInfoPanel({
 
                 <div className="flex flex-col gap-[4px]">
                   <p className="text-inter-body1 font-bold text-gray-700">
-                    Application Period
+                    {t('applicationPeriod')}
                   </p>
                   <p className="text-inter-body3 text-gray-700">
                     {format.dateTime(dayjs(applyStartDate).toDate(), {
@@ -150,7 +151,7 @@ export default function CampaignInfoPanel({
                 </div>
                 <div className="flex flex-col gap-[4px] pb-[24px]">
                   <p className="text-inter-body1 font-bold text-gray-700">
-                    Content Submission Period
+                    {t('contentSubmissionPeriod')}
                   </p>
                   <p className="text-inter-body3 text-gray-700">
                     {format.dateTime(dayjs(reviewSubmissionDeadline).toDate(), {
@@ -170,7 +171,7 @@ export default function CampaignInfoPanel({
                 </div>
                 <div className="flex flex-col gap-[4px]">
                   <p className="text-inter-body1 font-bold text-gray-700">
-                    Result Announcement
+                    {t('resultAnnouncement')}
                   </p>
                   <p className="text-inter-body3 text-gray-700">
                     {format.dateTime(dayjs(creatorAnnouncementDate).toDate(), {
@@ -190,7 +191,7 @@ export default function CampaignInfoPanel({
         <CampaignInfoGrayBorderBox>
           <div className="flex flex-col gap-[16px]">
             <h2 className="text-inter-title2 font-bold text-gray-800">
-              Deliverable Requirements
+              {t('deliverableRequirements')}
             </h2>
 
             {/* Instagram Requirements */}
@@ -229,7 +230,7 @@ export default function CampaignInfoPanel({
         <CampaignInfoGrayBorderBox>
           <div className="flex flex-col gap-[16px]">
             <h3 className="text-inter-title2 font-bold text-gray-800">
-              Rewards & Compensation
+              {t('rewardsAndCompensation')}
             </h3>
 
             <div className="flex flex-col gap-[8px]">
@@ -247,7 +248,7 @@ export default function CampaignInfoPanel({
         <CampaignInfoGrayBorderBox>
           <div className="flex flex-col gap-[16px]">
             <h3 className="text-inter-title2 font-bold text-gray-800">
-              Eligibility Requirements
+              {t('eligibilityRequirements')}
             </h3>
 
             <div className="flex flex-col gap-[8px]">
