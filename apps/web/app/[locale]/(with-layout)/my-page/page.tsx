@@ -1,11 +1,8 @@
-import React from 'react';
+import { redirect } from 'i18n/navigation';
 
-import PageClient from './page.client';
-
-export default function MyPage() {
-  return (
-    <div className="w-full">
-      <PageClient />
-    </div>
-  );
+export default function page({ params }: { params: { locale: string } }) {
+  redirect({
+    href: '/my-page/my-campaign',
+    locale: params.locale,
+  });
 }

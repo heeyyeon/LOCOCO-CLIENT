@@ -4,13 +4,13 @@ import React, { useState } from 'react';
 
 import { Button } from '@lococo/design-system/button';
 
-import { SaveFormModal } from '../../@modal/(.)save-form-modal/SaveFormModal';
-import { useProfile } from '../../hooks/use-profile';
-import BasicInformation from './basic-information';
-import HomeAddress from './home-address';
-import PersonalInformation from './personal-information';
-import ProfilePhoto from './profile-photo';
-import Skin from './skin';
+import { SaveFormModal } from '../@modal/(.)save-form-modal/SaveFormModal';
+import BasicInformation from '../components/edit-profile/basic-information';
+import HomeAddress from '../components/edit-profile/home-address';
+import PersonalInformation from '../components/edit-profile/personal-information';
+import ProfilePhoto from '../components/edit-profile/profile-photo';
+import Skin from '../components/edit-profile/skin';
+import { useProfile } from '../hooks/use-profile';
 
 export default function EditProfile() {
   const {

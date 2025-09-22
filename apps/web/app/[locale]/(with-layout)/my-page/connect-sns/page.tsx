@@ -1,8 +1,10 @@
+'use client';
+
 import React, { useState } from 'react';
 
 import { useTranslations } from 'next-intl';
 
-import { SnsConnection } from '../../../../../../components/forms/SnsConnection';
+import { SnsConnection } from 'components/forms';
 
 export default function ConnectSNS() {
   const t = useTranslations('creatorSnsLinksPage');

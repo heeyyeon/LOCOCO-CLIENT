@@ -17,7 +17,12 @@ const menuItems: MenuItem[] = [
 export default function layout({ children }: { children: React.ReactNode }) {
   return (
     <div className="mx-auto flex w-[112.8rem]">
-      <SideBar name="Chanel" email="Chanel1233@naver.com" menus={menuItems} />
+      <SideBar
+        name="Chanel"
+        email="Chanel1233@naver.com"
+        menus={menuItems}
+        defaultActiveMenu="campaign"
+      />
       {children}
     </div>
   );

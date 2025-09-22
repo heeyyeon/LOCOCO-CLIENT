@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
 
 import { MenuItem } from 'app/[locale]/(with-layout)/brand/layout';
-import { useRouter } from 'i18n/navigation';
+import { usePathname, useRouter } from 'i18n/navigation';
 
 import { InfoChip } from '@lococo/design-system/info-chip';
 import { Tab, TabContainer } from '@lococo/design-system/tab';
@@ -19,6 +19,7 @@ interface SideBarProps {
   profileImage?: string;
   instagram?: string;
   menus: MenuItem[];
+  defaultActiveMenu: string;
 }
 
 export default function SideBar({
@@ -28,14 +29,20 @@ export default function SideBar({
   instagram,
   level,
   menus,
+  defaultActiveMenu,
 }: SideBarProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const activeMenu = searchParams.get('tab') || 'campaign';
+  const pathname = usePathname();
+
+  const activeMenu = searchParams.get('tab') || defaultActiveMenu;
 
   const handleClickTab = (item: MenuItem) => {
-    router.push(`?tab=${item.value}`);
+    const pathParts = pathname.split('/');
+    pathParts[pathParts.length - 1] = item.value;
+    router.push(pathParts.join('/'));
   };
+
   return (
     <div className="mr-[2.4rem] mt-[1.6rem] flex w-[16.8rem] flex-col gap-[1.6rem]">
       {profileImage ? (
