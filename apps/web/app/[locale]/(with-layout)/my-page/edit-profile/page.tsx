@@ -33,7 +33,6 @@ export default function EditProfile() {
   const [isSaveFormModalOpen, setIsSaveFormModalOpen] = useState(false);
   const [profileImage, setProfileImage] = useState<File | null>(null);
   const [profileImageError, setProfileImageError] = useState<string>('');
-  const [gender, setGender] = useState<string>('');
   const t = useTranslations('creatorSignup.validation');
   const form = useForm<CreatorSignupForm>({
     resolver: zodResolver(creatorSignupSchema(t)),
@@ -78,19 +77,20 @@ export default function EditProfile() {
       // firstName에서 first/last name 분리
       const fullName = creatorBasicInfo.creatorName || '';
       const nameParts = fullName.trim().split(' ');
-      const firstName = nameParts[0] || '';
-      const lastName = nameParts.slice(1).join(' ') || '';
+
+      const firstName = creatorBasicInfo.firstName || nameParts[0] || '';
+      const lastName =
+        creatorBasicInfo.lastName || nameParts.slice(1).join(' ') || '';
       const fullBirthDate = creatorBasicInfo.birthDate || '';
       const birthMonth = fullBirthDate.split('-')[1] || '';
       const birthDay = fullBirthDate.split('-')[2] || '';
       const birthYear = fullBirthDate.split('-')[0] || '';
-      setGender(creatorBasicInfo.gender || '');
       form.reset({
         id: creatorBasicInfo.creatorName || '',
         birthMonth: birthMonth,
         birthDay: birthDay,
         birthYear: birthYear,
-
+        gender: creatorBasicInfo.gender || '',
         firstName: firstName,
         lastName: lastName,
         phoneCountryCode: creatorContactInfo.countryCode || '',
@@ -148,7 +148,7 @@ export default function EditProfile() {
   const handleSubmitForm = async () => {
     const isValid = await form.trigger();
 
-    if (true) {
+    if (isValid) {
       const formData = form.getValues();
       const profileImageUrl = profileImage
         ? await presignedUrlMutation.mutateAsync()

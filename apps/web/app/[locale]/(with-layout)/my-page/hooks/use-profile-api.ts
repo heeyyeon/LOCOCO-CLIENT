@@ -90,14 +90,46 @@ export const useCheckIdAvailability = () => {
 };
 
 export const usePresignedUrl = ({ file }: { file: File }) => {
+  const putPresignedUrlApi = async ({
+    presignedUrl,
+  }: {
+    presignedUrl: string;
+  }): Promise<string> => {
+    const response = await fetch(presignedUrl, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': file.type,
+      },
+      body: file,
+    });
+
+    if (!response.ok) {
+      throw new Error('이미지 업로드에 실패했습니다.');
+    }
+    const url = new URL(presignedUrl);
+    return `${url.protocol}//${url.host}${url.pathname}`;
+  };
+  type ApiResponseCreatorProfileImageResponse = {
+    data: {
+      profileImageUrl: string;
+    };
+  };
   const presignedUrlApi = async (): Promise<string> => {
-    const response = await apiRequest<string>({
+    const response = await apiRequest<ApiResponseCreatorProfileImageResponse>({
       endPoint: '/api/creator/profile/image',
       method: 'POST',
       headers,
       data: {
         mediaType: file.type,
       },
+    }).then((response) => {
+      if (response && response.data?.profileImageUrl) {
+        putPresignedUrlApi({
+          presignedUrl: response.data.profileImageUrl,
+        });
+        return response.data.profileImageUrl;
+      }
+      throw new Error('Presigned URL 발급에 실패했습니다.');
     });
     return response;
   };
