@@ -3,7 +3,6 @@
 import React from 'react';
 
 import Image from 'next/image';
-import { useSearchParams } from 'next/navigation';
 
 import { MenuItem } from 'app/[locale]/(with-layout)/brand/layout';
 import { usePathname, useRouter } from 'i18n/navigation';
@@ -32,10 +31,18 @@ export default function SideBar({
   defaultActiveMenu,
 }: SideBarProps) {
   const router = useRouter();
-  const searchParams = useSearchParams();
   const pathname = usePathname();
 
-  const activeMenu = searchParams.get('tab') || defaultActiveMenu;
+  const getActiveMenu = () => {
+    if (pathname.includes('/my-page/')) {
+      const pathAfterMyPage = pathname.split('/my-page/')[1];
+      const menuFromPath = pathAfterMyPage?.split('/')[0];
+      return menuFromPath || defaultActiveMenu;
+    }
+    return defaultActiveMenu;
+  };
+
+  const activeMenu = getActiveMenu();
 
   const handleClickTab = (item: MenuItem) => {
     const pathParts = pathname.split('/');

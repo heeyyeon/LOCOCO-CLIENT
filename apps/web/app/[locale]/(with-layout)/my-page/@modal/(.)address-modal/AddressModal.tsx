@@ -22,11 +22,10 @@ export function AddressModal({ open, onOpenChange }: AddressModalProps) {
   const router = useRouter();
   const t = useTranslations('myPage.addressModal');
   const { data: address } = useFetchAddress();
-  console.log(address);
 
   const handleEditModal = () => {
     onOpenChange(false);
-    router.push('/my-page?tab=edit-profile&returnTo=address-modal');
+    router.push('/my-page/edit-profile?returnTo=address-modal');
   };
 
   const handleGetDeliveryModal = () => {
