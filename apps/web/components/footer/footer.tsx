@@ -2,10 +2,6 @@ import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import logoQuality from 'public/images/logo-high-quality.png';
-// TODO: 디자인 제공 인스타그램 svg fill 속성 문제로 direct svg import
-import instagramFooter from 'public/instagram-footer.svg';
-
 import { SvgArrowRight, SvgMail, SvgX } from '@lococo/icons';
 
 export default function Footer() {
@@ -19,11 +15,13 @@ export default function Footer() {
           </p>
           <div className="flex items-center gap-[1.6rem]">
             <SvgMail className="h-[3.2rem] w-[3.2rem] text-gray-600" />
+            {/* TODO: 디자인 제공 인스타그램 svg fill 속성 문제로 direct svg import */}
             <Image
-              src={instagramFooter}
+              src="/instagram-footer.svg"
               alt="instagram"
-              className="h-[2.8rem] w-[2.8rem]"
-            ></Image>
+              width={28}
+              height={28}
+            />
             <SvgX className="h-[3.2rem] w-[3.2rem] text-gray-600" />
           </div>
         </div>
@@ -34,6 +32,7 @@ export default function Footer() {
             <p>{t('copyright')}</p>
           </div>
           <div className="text-inter-body4 flex gap-[2.4rem] text-gray-600">
+            {/* TODO: 추후 각 링크 추가 */}
             <div className="flex flex-col">
               <Link
                 href={'/'}
@@ -72,7 +71,13 @@ export default function Footer() {
         </div>
       </div>
 
-      <Image src={logoQuality} alt="logo" className="w-full" />
+      <Image
+        src="/images/logo-high-quality.png"
+        alt="logo"
+        className="w-full"
+        width={800}
+        height={200}
+      />
     </footer>
   );
 }
