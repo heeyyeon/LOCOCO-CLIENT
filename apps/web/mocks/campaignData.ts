@@ -85,7 +85,7 @@ export const campaignDummyData: CampaignData[] = [
     chipVariant: 'active',
     userApplicationState: null,
     brand: 'SK-II',
-    title: 'SK-II 페이셜 트리트먼트 에센스 리뷰어',
+    title: '페이셜 트리트먼트 에센스 리뷰어',
     label: '스킨케어',
     maxApplicants: 40,
     currentApplicants: 15,

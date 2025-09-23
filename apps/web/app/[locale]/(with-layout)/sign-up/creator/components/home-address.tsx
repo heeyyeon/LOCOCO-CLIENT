@@ -27,6 +27,7 @@ export function HomeAddress({ form, locale }: HomeAddressProps) {
           required
           placeholder={t('countryPlaceholder')}
           options={countries}
+          value={form.watch('country')}
           onValueChange={(value) =>
             form.setValue('country', value, { shouldValidate: true })
           }

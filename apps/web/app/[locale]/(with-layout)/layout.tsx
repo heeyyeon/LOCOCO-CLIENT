@@ -7,9 +7,11 @@ export default async function WithLayoutLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="mx-auto flex min-h-screen w-screen flex-col">
+    <div className="mx-auto flex min-h-screen w-full flex-col px-[1rem]">
       <Gnb />
-      <div className="flex w-full flex-1 flex-col">{children}</div>
+      <div className="flex w-full min-w-[112.8rem] flex-1 flex-col">
+        {children}
+      </div>
       <Footer />
     </div>
   );

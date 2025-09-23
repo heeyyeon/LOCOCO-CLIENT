@@ -39,6 +39,7 @@ export function SkinInfo({ form }: SkinInfoProps) {
             variant="reverse"
             placeholder={t('skinTypePlaceholder')}
             options={SKIN_TYPES}
+            value={form.watch('skinType')}
             onValueChange={(value) =>
               form.setValue('skinType', value, { shouldValidate: true })
             }
@@ -51,6 +52,7 @@ export function SkinInfo({ form }: SkinInfoProps) {
             required
             placeholder={t('skinTonePlaceholder')}
             options={SKIN_TONES}
+            value={form.watch('skinTone')}
             onValueChange={(value) =>
               form.setValue('skinTone', value, { shouldValidate: true })
             }

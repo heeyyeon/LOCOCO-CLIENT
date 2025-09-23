@@ -1,11 +1,14 @@
-import React from 'react';
+import { redirect } from 'i18n/navigation';
 
-import PageClient from './page.client';
+export default async function page({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
 
-export default function MyPage() {
-  return (
-    <div className="w-full">
-      <PageClient />
-    </div>
-  );
+  redirect({
+    href: '/my-page/my-campaign',
+    locale: locale,
+  });
 }
