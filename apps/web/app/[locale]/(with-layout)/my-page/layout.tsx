@@ -1,6 +1,6 @@
 import { getTranslations } from 'next-intl/server';
 
-import SideBar from 'components/side-bar/side-bar';
+import SideBar from '../../../../components/side-bar/side-bar';
 
 export default async function Layout({
   children,

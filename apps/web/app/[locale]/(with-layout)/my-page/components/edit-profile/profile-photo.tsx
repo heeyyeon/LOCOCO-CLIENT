@@ -4,28 +4,43 @@ import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 
 import { Button } from '@lococo/design-system/button';
+import { ErrorNotice } from '@lococo/design-system/error-notice';
 import { SvgAvatar, SvgCamera } from '@lococo/icons';
 
-import { ALLOWED_IMAGE_TYPES } from '../../../../../../hooks/useFileUploader';
+import {
+  FILE_ERROR_MESSAGE_KEYS,
+  isImageFile,
+} from '../../../../../../hooks/useFileUploader';
 
 interface ProfilePhotoProps {
   value?: File | null;
   onChange: (profileImage: File | null) => void;
-  error?: string;
+  error: string;
+  setProfileImageError: (error: string) => void;
 }
 
 export default function ProfilePhoto({
   value,
   onChange,
   error,
+  setProfileImageError,
 }: ProfilePhotoProps) {
   const t = useTranslations('myPage.editProfile.profilePhoto');
-  const [profileImage, setProfileImage] = useState<string>();
+  const tFileUploader = useTranslations('fileUploader');
+  const [profileImage, setProfileImage] = useState<string | undefined>();
 
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
     const selectedFile = e.target.files?.[0];
-    if (selectedFile && ALLOWED_IMAGE_TYPES.includes(selectedFile.type)) {
-      onChange(selectedFile);
+    if (selectedFile) {
+      if (isImageFile(selectedFile)) {
+        onChange(selectedFile);
+        setProfileImageError('');
+      } else {
+        onChange(null);
+        setProfileImageError(
+          tFileUploader(FILE_ERROR_MESSAGE_KEYS.NOT_ALLOWED_FILE_TYPE)
+        );
+      }
     } else {
       onChange(null);
     }
@@ -80,7 +95,7 @@ export default function ProfilePhoto({
           >
             {t('changePhoto')}
           </Button>
-          {error && <p className="text-sm text-red-500">{error}</p>}
+          {error && <ErrorNotice message={error} />}
         </div>
       </div>
     </section>

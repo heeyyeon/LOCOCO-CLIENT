@@ -3,6 +3,11 @@
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 
+import { useTranslations } from 'next-intl';
+
+import { zodResolver } from '@hookform/resolvers/zod';
+import LoadingSvg from 'components/loading/loading-svg';
+
 import { Button } from '@lococo/design-system/button';
 
 import {
@@ -11,11 +16,15 @@ import {
   PersonalDetails,
   SkinInfo,
 } from '../../sign-up/creator/components';
-import { type CreatorSignupForm } from '../../sign-up/creator/utils/signup';
+import {
+  type CreatorSignupForm,
+  creatorSignupSchema,
+} from '../../sign-up/creator/utils/signup';
 import { SaveFormModal } from '../@modal/(.)save-form-modal/SaveFormModal';
 import ProfilePhoto from '../components/edit-profile/profile-photo';
 import {
   useCheckIdAvailability,
+  usePresignedUrl,
   useProfile,
   useUpdateProfile,
 } from '../hooks/use-profile-api';
@@ -23,8 +32,12 @@ import {
 export default function EditProfile() {
   const [isSaveFormModalOpen, setIsSaveFormModalOpen] = useState(false);
   const [profileImage, setProfileImage] = useState<File | null>(null);
-
+  const [profileImageError, setProfileImageError] = useState<string>('');
+  const [gender, setGender] = useState<string>('');
+  const t = useTranslations('creatorSignup.validation');
   const form = useForm<CreatorSignupForm>({
+    resolver: zodResolver(creatorSignupSchema(t)),
+    mode: 'onBlur',
     defaultValues: {
       id: '',
       birthMonth: '',
@@ -45,12 +58,13 @@ export default function EditProfile() {
       skinType: '',
       skinTone: '',
     },
-    mode: 'onChange',
   });
 
   const profileQuery = useProfile();
   const updateProfileMutation = useUpdateProfile();
-  const checkIdMutation = useCheckIdAvailability();
+  const presignedUrlMutation = usePresignedUrl({
+    file: profileImage || new File([], 'profile-image.jpg'),
+  });
 
   useEffect(() => {
     if (profileQuery.data?.data) {
@@ -66,13 +80,17 @@ export default function EditProfile() {
       const nameParts = fullName.trim().split(' ');
       const firstName = nameParts[0] || '';
       const lastName = nameParts.slice(1).join(' ') || '';
-
+      const fullBirthDate = creatorBasicInfo.birthDate || '';
+      const birthMonth = fullBirthDate.split('-')[1] || '';
+      const birthDay = fullBirthDate.split('-')[2] || '';
+      const birthYear = fullBirthDate.split('-')[0] || '';
+      setGender(creatorBasicInfo.gender || '');
       form.reset({
         id: creatorBasicInfo.creatorName || '',
-        birthMonth: '', // API에 없음
-        birthDay: '', // API에 없음
-        birthYear: '', // API에 없음
-        gender: '', // API에 없음
+        birthMonth: birthMonth,
+        birthDay: birthDay,
+        birthYear: birthYear,
+
         firstName: firstName,
         lastName: lastName,
         phoneCountryCode: creatorContactInfo.countryCode || '',
@@ -105,31 +123,8 @@ export default function EditProfile() {
     }
   }, [profileQuery.data, form]);
 
-  const handleSubmitForm = async () => {
-    const isValid = await form.trigger();
-
-    if (form.formState.isValid && isValid) {
-      const formData = form.getValues();
-
-      // 프로필 이미지 업로드 (있는 경우)
-      let profileImageUrl = null;
-      if (profileImage) {
-        // TODO: 프로필 이미지 presigned URL 요청 및 업로드
-        // profileImageUrl = await uploadProfileImage(profileImage);
-      }
-
-      try {
-        // 프로필 업데이트 API 호출
-        await updateProfileMutation.mutateAsync({ formData, profileImageUrl });
-
-        setIsSaveFormModalOpen(true);
-      } catch (error) {
-        console.error('프로필 수정 실패:', error);
-      }
-    }
-  };
-
   const handleCheckAvailability = async () => {
+    const checkIdMutation = useCheckIdAvailability();
     const id = form.getValues('id');
     if (!id.trim()) {
       form.setError('id', { message: 'ID is required' });
@@ -150,35 +145,29 @@ export default function EditProfile() {
     }
   };
 
-  // 초기 로딩 상태
-  if (profileQuery.isLoading) {
+  const handleSubmitForm = async () => {
+    const isValid = await form.trigger();
+
+    if (true) {
+      const formData = form.getValues();
+      const profileImageUrl = profileImage
+        ? await presignedUrlMutation.mutateAsync()
+        : null;
+      await updateProfileMutation.mutateAsync({ formData, profileImageUrl });
+      setIsSaveFormModalOpen(true);
+    }
+  };
+
+  if (profileQuery.isPending) {
     return (
-      <div className="flex w-full flex-col items-center justify-center gap-[3.2rem] bg-gray-100 px-[9.4rem] py-[6.4rem]">
-        <div className="text-lg text-gray-600">
-          프로필 데이터를 불러오는 중...
-        </div>
+      <div className="flex h-[50rem] w-full items-center justify-center">
+        <LoadingSvg />
       </div>
     );
   }
 
-  // 에러 상태
   if (profileQuery.error) {
-    return (
-      <div className="flex w-full flex-col items-center justify-center gap-[3.2rem] bg-gray-100 px-[9.4rem] py-[6.4rem]">
-        <div className="text-lg text-red-600">
-          {profileQuery.error.message ||
-            '프로필 데이터를 불러오는데 실패했습니다.'}
-        </div>
-        <Button
-          variant="filled"
-          color="primary"
-          size="lg"
-          onClick={() => profileQuery.refetch()}
-        >
-          다시 시도
-        </Button>
-      </div>
-    );
+    throw profileQuery.error;
   }
 
   return (
@@ -193,7 +182,8 @@ export default function EditProfile() {
             <ProfilePhoto
               value={profileImage}
               onChange={setProfileImage}
-              error={undefined}
+              error={profileImageError}
+              setProfileImageError={setProfileImageError}
             />
 
             <CommunityName
