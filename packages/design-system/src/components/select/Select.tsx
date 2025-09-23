@@ -125,7 +125,7 @@ function SelectItem({
   );
 }
 
-interface SelectOption {
+export interface SelectOption {
   label: string;
   icon?: ReactNode;
 }
