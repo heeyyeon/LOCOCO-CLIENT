@@ -2,7 +2,10 @@
 
 import { useLocale } from 'next-intl';
 
-import { LANGUAGES } from 'constants/language';
+import {
+  GNB_LANGUAGES,
+  GNB_LANGUAGE_KEYS,
+} from 'constants/language';
 import { usePathname, useRouter } from 'i18n/navigation';
 
 import {
@@ -33,14 +36,14 @@ export default function GnbLanguage() {
         </SelectTrigger>
 
         <SelectContent className="body4 mt-[2rem] w-[8.4rem]" align="center">
-          {LANGUAGES.map((lang) => (
+          {GNB_LANGUAGE_KEYS.map((lang) => (
             <SelectItem
-              key={lang.value}
-              value={lang.value}
+              key={lang}
+              value={lang}
               className="flex h-[4.4rem] w-[8.4rem] justify-center p-0 text-center"
               hover
             >
-              {lang.label}
+              {GNB_LANGUAGES[lang]}
             </SelectItem>
           ))}
         </SelectContent>

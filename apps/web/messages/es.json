@@ -12,6 +12,19 @@
     "makeNewCampaign": "Crear una nueva campaña",
     "myCampaign": "Mis Campañas"
   },
+  "campaignDetail": {
+    "applicationPeriod": "",
+    "campaignSchedule": "",
+    "contentSubmissionPeriod": "",
+    "deliverableRequirements": "",
+    "eligibilityRequirements": "",
+    "localTimeNotice": "",
+    "resultAnnouncement": "",
+    "rewardsAndCompensation": ""
+  },
+  "campaignFilter": {
+    "seeMore": ""
+  },
   "card": {
     "campaignThumbnailImage": "Imagen en miniatura de la campaña",
     "card": "Tarjeta ",
@@ -120,6 +133,7 @@
     "campaigns": "Campañas",
     "howItWorks": "Cómo funciona",
     "login": "Iniciar sesión",
+    "logIn": "",
     "logOut": "Cerrar sesión",
     "myPage": "Mi página",
     "signUp": "Registrarse"
