@@ -1,13 +1,14 @@
-import { ChangeEvent, InputHTMLAttributes } from 'react';
+import { ChangeEvent, InputHTMLAttributes, MouseEvent } from 'react';
 
 import { SvgClose } from '../../icons';
+import { cn } from '../../lib/utils';
 
 interface ImagePreviewProps
   extends Omit<InputHTMLAttributes<HTMLInputElement>, 'type'> {
   src?: string;
   alt?: string;
   handleFileChange?: (e: ChangeEvent<HTMLInputElement>) => void;
-  handleRemoveFile?: () => void;
+  handleRemoveFile?: (e: MouseEvent<HTMLButtonElement>) => void;
   id?: string;
 }
 
@@ -16,10 +17,16 @@ export default function ImagePreview({
   alt = 'image',
   handleFileChange,
   handleRemoveFile,
+  className,
   ...props
 }: ImagePreviewProps) {
   return (
-    <div className="relative h-[7.2rem] w-[7.2rem] rounded-[1.6rem] border border-gray-200">
+    <div
+      className={cn(
+        'relative h-[7.2rem] w-[7.2rem] rounded-[1.6rem] border border-gray-200',
+        className
+      )}
+    >
       <img
         src={src}
         alt={alt}

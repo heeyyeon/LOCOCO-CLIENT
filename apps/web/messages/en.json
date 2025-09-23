@@ -309,8 +309,15 @@
     },
     "title": "Choose Your Role",
     "welcomeTitle": "Welcome to Lococo!"
+    "title": "Choose Your Role",
+    "welcomeTitle": "Welcome to Lococo!"
   },
   "snsConnection": {
+    "connectButtons": {
+      "instagram": "Connect with Instagram",
+      "tiktok": "Connect with Tiktok"
+    },
+    "connectedStatus": "Connected!",
     "connectButtons": {
       "instagram": "Connect with Instagram",
       "tiktok": "Connect with Tiktok"

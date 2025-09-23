@@ -78,7 +78,7 @@ interface FooterProps {
 
 export default function Footer() {
   return (
-    <footer className="px-auto bottom-0 flex w-full min-w-[1366px] flex-col items-center justify-center bg-pink-100">
+    <footer className="px-auto bottom-0 hidden w-full min-w-[1366px] flex-col items-center justify-center bg-pink-100">
       <div className="mx-auto flex w-[1366px] gap-4 px-4 py-16 md:gap-8 lg:gap-[12rem]">
         <FooterLeft title={FOOTER.title} desc={FOOTER.desc} />
         <FooterRight menu={FOOTER.menu} />

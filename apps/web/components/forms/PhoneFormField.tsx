@@ -8,7 +8,7 @@ import { cn } from '@lococo/utils';
 import {
   formatPhoneNumber,
   removePhoneNumberFormat,
-} from '../../utils/formatPhoneNumber';
+} from '../../utils/format-phone-number';
 
 interface PhoneFormFieldProps {
   label: string;

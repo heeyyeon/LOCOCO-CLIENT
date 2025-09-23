@@ -51,6 +51,7 @@ export default function CampaignGrid({
           applicantNumber={campaign.applicantNumber}
           campaignImageUrl={campaign.campaignImageUrl}
           campaignId={campaign.campaignId}
+          hoverOption="hover"
         />
       ))}
     </div>

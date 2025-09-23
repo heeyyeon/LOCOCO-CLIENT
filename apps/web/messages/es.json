@@ -12,6 +12,39 @@
     "makeNewCampaign": "Crear una nueva campaña",
     "myCampaign": "Mis Campañas"
   },
+  "card": {
+    "campaignThumbnailImage": "Imagen en miniatura de la campaña",
+    "card": "Tarjeta ",
+    "goToApply": "Aplica ahora"
+  },
+  "confirmSignupModal": {
+    "confirmButton": "Está bien",
+    "message": "Tu solicitud se ha enviado con éxito.\nTe enviaremos el resultado por correo electrónico en un plazo de 24 horas.",
+    "title": "¡Enviado con éxito!"
+  },
+  "ConfirmSignupModal": {
+    "confirmButton": "",
+    "message": "",
+    "title": ""
+  },
+  "creatorSignup": {
+    "communityName": {
+      "checkAvailabilityButton": "Comprobar disponibilidad",
+      "description": "(La ID debe tener entre 1 y 15 caracteres y solo puede contener letras, números, puntos (.) y guiones bajos (_)).",
+      "idLabel": "ID",
+      "idPlaceholder": "ej: ilovelococo",
+      "title": "Nombre de la comunidad"
+  "brandMyPage": {
+    "myCampaign": "Mis Campañas"
+  },
+  "brandMyPageSideBar": {
+    "checkApplicants": "Revisar Solicitantes",
+    "checkContents": "Revisar Contenidos",
+    "dashboard": "Tablero de campañas",
+    "editProfile": "Editar perfil",
+    "makeNewCampaign": "Crear una nueva campaña",
+    "myCampaign": "Mis Campañas"
+  },
   "campaignDetail": {
     "applicationPeriod": "",
     "campaignSchedule": "",
@@ -142,6 +175,13 @@
     },
     "ingredients": "Ingredientes",
     "productDetail22": "Detalles del producto 22"
+  "home": {
+    "description": "Descripción del producto",
+    "homeSection": {
+      "title": "Título"
+    },
+    "ingredients": "Ingredientes",
+    "productDetail22": "Detalles del producto 22"
   },
   "languageSelectTrigger": {
     "language": "Idioma"
@@ -154,6 +194,8 @@
     "title": "¡Bienvenido a Lococo!"
   },
   "main": {
+    "kBeautyCampaigns": "Campañas de K-Beauty",
+    "openingSoon": "Próximamente"
     "kBeautyCampaigns": "Campañas de K-Beauty",
     "openingSoon": "Próximamente"
   },
@@ -302,11 +344,18 @@
   "selectRoleModal": {
     "description": "Seleccione su rol para iniciar sesión. No podrá cambiarlo más tarde.",
     "loginAs": "Iniciar sesión como:",
+    "description": "Seleccione su rol para iniciar sesión. No podrá cambiarlo más tarde.",
+    "loginAs": "Iniciar sesión como:",
     "roles": {
       "brand": "Marca",
       "creator": "Creador",
       "user": "Usuario"
+      "brand": "Marca",
+      "creator": "Creador",
+      "user": "Usuario"
     },
+    "title": "Elija su rol",
+    "welcomeTitle": "¡Bienvenido a Lococo!"
     "title": "Elija su rol",
     "welcomeTitle": "¡Bienvenido a Lococo!"
   },
@@ -317,7 +366,15 @@
     },
     "connectedStatus": "¡Conectado!",
     "errorMessage": "Por favor, añada al menos un enlace de cuenta.",
+    "connectButtons": {
+      "instagram": "Conectar con Instagram",
+      "tiktok": "Conectar con TikTok"
+    },
+    "connectedStatus": "¡Conectado!",
+    "errorMessage": "Por favor, añada al menos un enlace de cuenta.",
     "platforms": {
+      "instagram": "Instagram",
+      "tiktok": "TikTok"
       "instagram": "Instagram",
       "tiktok": "TikTok"
     },
