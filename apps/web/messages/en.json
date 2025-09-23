@@ -22,6 +22,9 @@
     "resultAnnouncement": "Result Announcement",
     "rewardsAndCompensation": "Rewards & Compensation"
   },
+  "campaignFilter": {
+    "seeMore": "See More"
+  },
   "card": {
     "campaignThumbnailImage": "campaign thumbnail image",
     "card": "Card",
@@ -309,15 +312,8 @@
     },
     "title": "Choose Your Role",
     "welcomeTitle": "Welcome to Lococo!"
-    "title": "Choose Your Role",
-    "welcomeTitle": "Welcome to Lococo!"
   },
   "snsConnection": {
-    "connectButtons": {
-      "instagram": "Connect with Instagram",
-      "tiktok": "Connect with Tiktok"
-    },
-    "connectedStatus": "Connected!",
     "connectButtons": {
       "instagram": "Connect with Instagram",
       "tiktok": "Connect with Tiktok"
@@ -335,8 +331,5 @@
     "confirmButton": "Yes",
     "message": "Campaign applications are only available to creator members.\nWould you like to sign up as a creator?",
     "title": "Creator Suggestion"
-  },
-  "campaignFilter": {
-    "seeMore": "See More"
   }
 }
