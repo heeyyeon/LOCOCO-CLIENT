@@ -17,18 +17,18 @@ export default async function BrandCampaign() {
         {campaignDummyData.map((campaign) => (
           <Card
             key={campaign.campaignId}
-            dueDate={campaign.dueDate}
+            endTime={campaign.dueDate}
             chipVariant={
               campaign.userApplicationState
                 ? campaign.userApplicationState
                 : getChipVariantByDate(campaign.dueDate)
             }
-            brand={campaign.brand}
-            title={campaign.title}
-            label={campaign.label}
-            maxApplicants={campaign.maxApplicants}
-            currentApplicants={campaign.currentApplicants}
-            productThumbnailSrc={campaign.productThumbnailSrc}
+            brandName={campaign.brand}
+            campaignName={campaign.title}
+            campaignType={campaign.label}
+            recruitmentNumber={campaign.maxApplicants}
+            applicantNumber={campaign.currentApplicants}
+            campaignImageUrl={campaign.productThumbnailSrc}
             campaignId={campaign.campaignId}
             hoverOption="always"
             className="w-[28.4rem]"

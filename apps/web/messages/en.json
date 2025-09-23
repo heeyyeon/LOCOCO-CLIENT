@@ -12,6 +12,19 @@
     "makeNewCampaign": "Create a new campaign  ",
     "myCampaign": "My Campaigns"
   },
+  "campaignDetail": {
+    "applicationPeriod": "Application Period",
+    "campaignSchedule": "Campaign Schedule",
+    "contentSubmissionPeriod": "Content Submission Period",
+    "deliverableRequirements": "Deliverable Requirements",
+    "eligibilityRequirements": "Eligibility Requirements",
+    "localTimeNotice": "All times are displayed in your local time.",
+    "resultAnnouncement": "Result Announcement",
+    "rewardsAndCompensation": "Rewards & Compensation"
+  },
+  "campaignFilter": {
+    "seeMore": "See More"
+  },
   "card": {
     "campaignThumbnailImage": "campaign thumbnail image",
     "card": "Card",

@@ -23,6 +23,8 @@ export type CategoryOptionEng =
 export type CategoryValue =
   (typeof CATEGORY_NAME_NEW)[keyof typeof CATEGORY_NAME_NEW];
 
+export type CategoryKey = keyof typeof CATEGORY_NAME_NEW;
+
 export const CATEGORY_KEYS = Object.keys(
   CATEGORY_NAME_NEW
 ) as (keyof typeof CATEGORY_NAME_NEW)[];

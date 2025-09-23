@@ -1,19 +1,22 @@
 'use client';
 
-import CampaignLanguage, {
-  LocaleType,
-} from 'app/[locale]/(with-layout)/(home)/components/campaign-language';
+import { useTranslations } from 'next-intl';
+
+import CampaignLanguage from 'app/[locale]/(with-layout)/(home)/components/campaign-language';
+import { CATEGORY_NAME_NEW } from 'constants/category';
+import { CATEGORY_KEYS } from 'constants/tab-category';
 import { Link } from 'i18n/navigation';
-import { CATEGORY_VALUES, CategoryValue } from 'types/category';
+import { LanguageKey } from 'types/language';
+import { CategoryKey } from 'types/tab-category';
 
 import { Tab, TabContainer } from '@lococo/design-system/tab';
 import { SvgAdd } from '@lococo/icons';
 
 interface CampaignFiltersProps {
-  campaignCategory: CategoryValue;
-  setCampaignCategory: (value: CategoryValue) => void;
-  campaignLanguage: LocaleType;
-  setCampaignLanguage: (value: LocaleType) => void;
+  campaignCategory: CategoryKey;
+  setCampaignCategory: (value: CategoryKey) => void;
+  campaignLanguage: LanguageKey;
+  setCampaignLanguage: (value: LanguageKey) => void;
   showSeeMore?: boolean;
 }
 
@@ -33,16 +36,17 @@ export default function CampaignFilters({
   setCampaignLanguage,
   showSeeMore = false,
 }: CampaignFiltersProps) {
+  const t = useTranslations('campaignFilter');
   return (
     <div className="flex h-[5.6rem] w-full items-center justify-between">
       <TabContainer variant="horizontal">
-        {CATEGORY_VALUES.map((CATEGORY_VALUE) => (
+        {CATEGORY_KEYS.map((CATEGORY_KEY) => (
           <Tab
-            key={CATEGORY_VALUE}
-            label={CATEGORY_VALUE}
-            value={CATEGORY_VALUE}
-            selected={campaignCategory === CATEGORY_VALUE}
-            onClick={() => setCampaignCategory(CATEGORY_VALUE)}
+            key={CATEGORY_KEY}
+            label={CATEGORY_NAME_NEW[CATEGORY_KEY]}
+            value={CATEGORY_KEY}
+            selected={campaignCategory === CATEGORY_KEY}
+            onClick={() => setCampaignCategory(CATEGORY_KEY)}
           />
         ))}
       </TabContainer>
@@ -56,7 +60,7 @@ export default function CampaignFilters({
             href={'/all/1'}
             className="flex cursor-pointer items-center gap-[0.8rem] px-[3.2rem] py-[1.6rem]"
           >
-            <p className="body1 font-[700]">See More</p>
+            <p className="body1 font-[700]">{t('seeMore')}</p>
             <SvgAdd size={24} />
           </Link>
         )}

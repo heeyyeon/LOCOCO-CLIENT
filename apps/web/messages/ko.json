@@ -12,6 +12,19 @@
     "makeNewCampaign": "새 캠페인 만들기",
     "myCampaign": "나의 캠페인"
   },
+  "campaignDetail": {
+    "applicationPeriod": "",
+    "campaignSchedule": "",
+    "contentSubmissionPeriod": "",
+    "deliverableRequirements": "",
+    "eligibilityRequirements": "",
+    "localTimeNotice": "",
+    "resultAnnouncement": "",
+    "rewardsAndCompensation": ""
+  },
+  "campaignFilter": {
+    "seeMore": ""
+  },
   "card": {
     "campaignThumbnailImage": "캠페인 썸네일 이미지",
     "card": "카드",

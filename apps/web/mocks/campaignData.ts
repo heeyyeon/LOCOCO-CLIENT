@@ -2,7 +2,7 @@ export type UserApplicationState = 'approved' | 'declined' | 'progress' | null;
 
 interface CampaignData {
   dueDate: string;
-  chipVariant: 'expired' | 'active';
+  chipVariant: 'disabled' | 'default' | 'approved' | 'declined' | 'progress';
   userApplicationState: UserApplicationState;
   brand: string;
   title: string;
@@ -17,7 +17,7 @@ interface CampaignData {
 export const campaignDummyData: CampaignData[] = [
   {
     dueDate: '2025-09-30',
-    chipVariant: 'active',
+    chipVariant: 'approved',
     userApplicationState: null,
     brand: 'Dior',
     title: '루즈 디올 립스틱 컬러 체험단',
@@ -30,7 +30,7 @@ export const campaignDummyData: CampaignData[] = [
   },
   {
     dueDate: '2025-08-15',
-    chipVariant: 'expired',
+    chipVariant: 'disabled',
     userApplicationState: null,
     brand: 'Chanel',
     title: '샤넬 No.5 퍼퓸 체험단 모집',
@@ -43,7 +43,7 @@ export const campaignDummyData: CampaignData[] = [
   },
   {
     dueDate: '2025-10-15',
-    chipVariant: 'active',
+    chipVariant: 'approved',
     userApplicationState: 'approved',
     brand: 'Estée Lauder',
     title: '더블 웨어 파운데이션 리뷰어',
@@ -56,7 +56,7 @@ export const campaignDummyData: CampaignData[] = [
   },
   {
     dueDate: '2025-09-20',
-    chipVariant: 'active',
+    chipVariant: 'approved',
     userApplicationState: 'declined',
     brand: 'Urban Decay',
     title: '네이키드 아이섀도우 팔레트 체험단',
@@ -69,7 +69,7 @@ export const campaignDummyData: CampaignData[] = [
   },
   {
     dueDate: '2025-07-30',
-    chipVariant: 'expired',
+    chipVariant: 'disabled',
     userApplicationState: 'progress',
     brand: 'La Mer',
     title: '라 메르 크림 드 라 메르 체험단',
@@ -82,7 +82,7 @@ export const campaignDummyData: CampaignData[] = [
   },
   {
     dueDate: '2025-11-01',
-    chipVariant: 'active',
+    chipVariant: 'approved',
     userApplicationState: null,
     brand: 'SK-II',
     title: '페이셜 트리트먼트 에센스 리뷰어',
@@ -95,7 +95,7 @@ export const campaignDummyData: CampaignData[] = [
   },
   {
     dueDate: '2025-09-25',
-    chipVariant: 'active',
+    chipVariant: 'approved',
     userApplicationState: null,
     brand: 'Laneige',
     title: '라네즈 워터 슬리핑 마스크 체험단',
@@ -108,7 +108,7 @@ export const campaignDummyData: CampaignData[] = [
   },
   {
     dueDate: '2025-10-10',
-    chipVariant: 'active',
+    chipVariant: 'approved',
     userApplicationState: null,
     brand: 'Charlotte Tilbury',
     title: '필로우 토크 립스틱 컬렉션 체험단',
