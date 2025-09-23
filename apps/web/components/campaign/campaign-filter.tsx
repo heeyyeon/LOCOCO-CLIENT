@@ -1,5 +1,7 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
+
 import CampaignLanguage from 'app/[locale]/(with-layout)/(home)/components/campaign-language';
 import { CATEGORY_NAME_NEW } from 'constants/category';
 import { CATEGORY_KEYS } from 'constants/tab-category';
@@ -34,6 +36,7 @@ export default function CampaignFilters({
   setCampaignLanguage,
   showSeeMore = false,
 }: CampaignFiltersProps) {
+  const t = useTranslations('campaignFilter');
   return (
     <div className="flex h-[5.6rem] w-full items-center justify-between">
       <TabContainer variant="horizontal">
@@ -57,7 +60,7 @@ export default function CampaignFilters({
             href={'/all/1'}
             className="flex cursor-pointer items-center gap-[0.8rem] px-[3.2rem] py-[1.6rem]"
           >
-            <p className="body1 font-[700]">See More</p>
+            <p className="body1 font-[700]">{t('seeMore')}</p>
             <SvgAdd size={24} />
           </Link>
         )}
