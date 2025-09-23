@@ -3,7 +3,7 @@ import React from 'react';
 interface InputWrapperProps {
   label: string;
   required?: boolean;
-  children: React.ReactNode;
+  children?: React.ReactNode;
   notice?: React.ReactNode;
 }
 
