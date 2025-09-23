@@ -7,7 +7,7 @@ export const birthDateOptions = () => {
     const month = i + 1;
     return {
       label: `${month.toString().padStart(2, '0')}`,
-      value: `${month}`,
+      value: `${month.toString().padStart(2, '0')}`,
     };
   });
 
@@ -15,7 +15,7 @@ export const birthDateOptions = () => {
     const day = i + 1;
     return {
       label: `${day.toString().padStart(2, '0')}`,
-      value: `${day}`,
+      value: `${day.toString().padStart(2, '0')}`,
     };
   });
 
