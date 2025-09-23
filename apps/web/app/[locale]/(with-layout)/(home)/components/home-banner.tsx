@@ -3,7 +3,7 @@ import React from 'react';
 export default function HomeBanner() {
   return (
     <div className="w-full bg-white">
-      <div className="flex min-w-[1366px] justify-center">
+      <div className="flex min-w-[112.8rem] justify-center">
         <video
           src="/video/home-banner-video.mp4"
           width={1366}
