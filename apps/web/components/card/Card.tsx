@@ -39,13 +39,12 @@ export default function Card({
 }: CardProps) {
   const card = useTranslations('card');
 
-  const isValidUrl = (url: string) => {
-    try {
-      new URL(url);
-      return true;
-    } catch {
-      return false;
-    }
+  const isValidImageUrl = (url: string) => {
+    return (
+      url &&
+      url.trim() !== '' &&
+      (url.startsWith('http') || url.startsWith('/'))
+    );
   };
 
   const fallbackImage = '/next.svg';
@@ -60,7 +59,10 @@ export default function Card({
       <Image
         width={360}
         height={216}
-        src={isValidUrl(campaignImageUrl) ? campaignImageUrl : fallbackImage}
+        unoptimized={true}
+        src={
+          isValidImageUrl(campaignImageUrl) ? campaignImageUrl : fallbackImage
+        }
         alt={`${campaignName}${card('campaignThumbnailImage')}`}
       />
       <BracketChip

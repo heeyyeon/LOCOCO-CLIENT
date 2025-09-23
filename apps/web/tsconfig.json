@@ -9,18 +9,27 @@
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
-      "@lococo/icons": ["../../packages/design-system/src/icons"],
-      "@lococo/utils": ["../../packages/design-system/src/lib/utils"],
-      "@typescript-swagger/*": ["swagger-codegen/*"]
+      "@lococo/icons": [
+        "../../packages/design-system/src/icons"
+      ],
+      "@lococo/utils": [
+        "../../packages/design-system/src/lib/utils"
+      ],
+      "@typescript-swagger/*": [
+        "swagger-codegen/*"
+      ]
     }
   },
   "include": [
     "**/*.ts",
     "**/*.tsx",
     ".eslint.config.js",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
     "next-env.d.ts",
     "next.config.js",
     ".next/types/**/*.ts"
-  ],
-  "exclude": ["node_modules"]
+  ]
 }
