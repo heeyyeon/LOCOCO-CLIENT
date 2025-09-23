@@ -9,8 +9,8 @@ import { SvgAvatar, SvgCamera } from '@lococo/icons';
 import { ALLOWED_IMAGE_TYPES } from '../../../../../../hooks/useFileUploader';
 
 interface ProfilePhotoProps {
-  value?: File;
-  onChange: (profileImage: File | undefined) => void;
+  value?: File | null;
+  onChange: (profileImage: File | null) => void;
   error?: string;
 }
 
@@ -26,6 +26,8 @@ export default function ProfilePhoto({
     const selectedFile = e.target.files?.[0];
     if (selectedFile && ALLOWED_IMAGE_TYPES.includes(selectedFile.type)) {
       onChange(selectedFile);
+    } else {
+      onChange(null);
     }
     e.target.value = '';
   };
@@ -45,7 +47,7 @@ export default function ProfilePhoto({
 
   return (
     <section className="flex w-full flex-col gap-[2.5rem]">
-      <p className="title2 text-gray-800">{t('title')}</p>
+      <h2 className="title2 font-bold text-gray-800">{t('title')}</h2>
       <div className="flex w-full flex-col items-center gap-[3.2rem]">
         {profileImage ? (
           <Image

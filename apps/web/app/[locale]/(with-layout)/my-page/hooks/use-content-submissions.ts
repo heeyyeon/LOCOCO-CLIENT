@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect } from 'react';
 import { useFieldArray, useForm } from 'react-hook-form';
 
 import { useTranslations } from 'next-intl';
@@ -12,9 +13,11 @@ import {
   createMultipleMediaValidator,
 } from '../../../../../hooks/useFileUploader';
 import { CONTENT_SUBMISSION_TEXT_ERROR_MESSAGE } from '../constant/content-submission';
+import { useFetchCampaignReview } from './use-campaign-review';
 
 export type ContentSubmissionsFormData = {
   campaign: string;
+  campaignId?: number;
   contentType: string;
   campaignProductMedia: File[];
   captionAndHashtags: string;
@@ -29,9 +32,10 @@ export const useContentSubmissions = (
   onSuccess?: () => void
 ) => {
   const t = useTranslations('fileUploader');
+  const { data: campaignList } = useFetchCampaignReview();
 
-  // TODO: API에서 캠페인 목록을 가져와서 campaign 설정
-  const campaignCount = 3;
+  // API에서 받은 캠페인 개수 또는 기본값 3
+  const campaignCount = campaignList?.data?.length || 0;
 
   const contentSubmissionsSchema = z.object({
     submissions: z.array(
@@ -39,6 +43,7 @@ export const useContentSubmissions = (
         campaign: z
           .string()
           .min(1, CONTENT_SUBMISSION_TEXT_ERROR_MESSAGE.CAMPAIGN),
+        campaignId: z.number().optional(),
         contentType: z
           .string()
           .min(1, CONTENT_SUBMISSION_TEXT_ERROR_MESSAGE.CONTENT_TYPE),
@@ -66,6 +71,7 @@ export const useContentSubmissions = (
     defaultValues: {
       submissions: Array.from({ length: campaignCount }, () => ({
         campaign: '',
+        campaignId: undefined,
         contentType: '',
         campaignProductMedia: [],
         captionAndHashtags: '',
@@ -80,6 +86,23 @@ export const useContentSubmissions = (
   });
 
   const formData = watch();
+
+  useEffect(() => {
+    if (campaignList?.data && campaignList.data.length > 0) {
+      const campaignData = campaignList.data;
+
+      campaignData.forEach((campaign, index) => {
+        if (index < campaignCount) {
+          setValue(`submissions.${index}.campaign`, campaign.title, {
+            shouldValidate: true,
+          });
+          setValue(`submissions.${index}.campaignId`, campaign.campaignId, {
+            shouldValidate: true,
+          });
+        }
+      });
+    }
+  }, [campaignList, setValue, campaignCount]);
 
   const updateCampaign = (index: number, campaign: string) => {
     setValue(`submissions.${index}.campaign`, campaign, {
@@ -117,6 +140,7 @@ export const useContentSubmissions = (
 
   const getFormData = (index: number) => ({
     campaign: formData.submissions[index]?.campaign || '',
+    campaignId: formData.submissions[index]?.campaignId,
     contentType: formData.submissions[index]?.contentType || '',
     campaignProductMedia:
       formData.submissions[index]?.campaignProductMedia || [],

@@ -1,6 +1,6 @@
 import { useTranslations } from 'next-intl';
 
-import { useConnectSns } from 'hooks/use-connect-sns';
+import { useConnectSns, useConnectTiktok } from 'hooks/use-connect-sns';
 
 import { Button } from '@lococo/design-system/button';
 import { ErrorNotice } from '@lococo/design-system/error-notice';
@@ -42,8 +42,14 @@ export function SnsConnection({
   const hasConnectedAccount = connectedSns.length > 0;
 
   const handleConnectSns = async (sns: SnsPlatform) => {
-    if (sns === 'tiktok') {
-    } else if (sns === 'instagram') {
+    try {
+      if (sns === 'tiktok') {
+        await useConnectTiktok();
+      } else if (sns === 'instagram') {
+        // Instagram 연결 로직 추가 필요
+      }
+    } catch (error) {
+      console.error('SNS 연결 실패:', error);
     }
   };
 

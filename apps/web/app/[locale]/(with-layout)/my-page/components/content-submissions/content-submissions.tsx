@@ -69,26 +69,33 @@ export default function ContentSubmissions() {
           updateCaptionAndHashtags={updateCaptionAndHashtags}
         />
       ))}
-      <div className="flex w-[84rem] items-center justify-between gap-[1.6rem]">
-        <Button
-          variant="outline"
-          color="primary"
-          size="lg"
-          className="w-[41.2rem]"
-          onClick={resetAllForms}
-        >
-          Cancel
-        </Button>
-        <Button
-          variant="filled"
-          color="primary"
-          size="lg"
-          className="w-[41.2rem]"
-          onClick={handleSubmitForm}
-        >
-          Save
-        </Button>
-      </div>
+      {fields.length === 0 && (
+        <div className="flex w-[84rem] items-center justify-between gap-[1.6rem]">
+          리뷰할 데이터가 없습니다.
+        </div>
+      )}
+      {fields.length > 0 && (
+        <div className="flex w-[84rem] items-center justify-between gap-[1.6rem]">
+          <Button
+            variant="outline"
+            color="primary"
+            size="lg"
+            className="w-[41.2rem]"
+            onClick={resetAllForms}
+          >
+            Cancel
+          </Button>
+          <Button
+            variant="filled"
+            color="primary"
+            size="lg"
+            className="w-[41.2rem]"
+            onClick={handleSubmitForm}
+          >
+            Save
+          </Button>
+        </div>
+      )}
     </div>
   );
 }
