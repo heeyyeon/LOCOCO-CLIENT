@@ -8,7 +8,7 @@ export default function CampaignDetailImageWrapper({
   images,
 }: CampaignDetailImageWrapperProps) {
   return (
-    <div className="mt-[3.2rem] flex w-full flex-col items-center gap-[1rem]">
+    <div className="mt-[3.2rem] flex w-full flex-col items-center">
       {images.map((image) => (
         <Image
           src={image}
