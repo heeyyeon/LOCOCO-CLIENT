@@ -32,7 +32,7 @@ export default function CampaignLanguage({
     <div className="flex h-full items-center">
       <SelectRoot value={locale} onValueChange={handleLanguageChange}>
         <SelectTrigger
-          className="flex w-fit items-center gap-[0.8rem] border-none bg-none px-[3.2rem] py-[1.6rem] text-black"
+          className="flex w-fit items-center gap-[0.8rem] border-none bg-pink-100 bg-none px-[3.2rem] py-[1.6rem] text-black"
           onlyChildren={true}
         >
           <p className="body1 font-[700]">{t('language')}</p>
