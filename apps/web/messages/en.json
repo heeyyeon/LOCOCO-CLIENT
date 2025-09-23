@@ -12,6 +12,19 @@
     "makeNewCampaign": "Create a new campaign  ",
     "myCampaign": "My Campaigns"
   },
+  "campaignDetail": {
+    "applicationPeriod": "Application Period",
+    "campaignSchedule": "Campaign Schedule",
+    "contentSubmissionPeriod": "Content Submission Period",
+    "deliverableRequirements": "Deliverable Requirements",
+    "eligibilityRequirements": "Eligibility Requirements",
+    "localTimeNotice": "All times are displayed in your local time.",
+    "resultAnnouncement": "Result Announcement",
+    "rewardsAndCompensation": "Rewards & Compensation"
+  },
+  "campaignFilter": {
+    "seeMore": "See More"
+  },
   "card": {
     "campaignThumbnailImage": "campaign thumbnail image",
     "card": "Card",
@@ -21,11 +34,6 @@
     "confirmButton": "Okay",
     "message": "Your application was successfully submitted.\nWe'll email you the result within 24 hours.",
     "title": "Successfully Submitted!"
-  },
-  "ConfirmSignupModal": {
-    "confirmButton": "",
-    "message": "",
-    "title": ""
   },
   "creatorSignup": {
     "communityName": {
@@ -64,7 +72,7 @@
       "lastNameLabel": "Last name",
       "lastNamePlaceholder": "ex: Doe",
       "monthPlaceholder": "Month",
-      "phoneCountryPlaceholder": "#NAME?",
+      "phoneCountryPlaceholder": "+XX",
       "phoneNumberLabel": "Phone Number",
       "phoneNumberPlaceholder": "ex: XXXXXXXXXX",
       "title": "Personal Details",
@@ -120,6 +128,7 @@
     "campaigns": "campaigns",
     "howItWorks": "how it works",
     "login": "Log in",
+    "logIn": "",
     "logOut": "Log Out",
     "myPage": "My Page",
     "signUp": "Sign up"
@@ -134,6 +143,13 @@
   },
   "languageSelectTrigger": {
     "language": "Language"
+  },
+  "loginGoogle": {
+    "continueWithGoogle": "Continue with Google",
+    "loginMessage": "Log in to your Google account right away",
+    "signupMessage": "After signing up with Google, you can choose to join as a Creator, User, or Brand.",
+    "signupNote": "Please note that only Creators can apply for campaigns.",
+    "title": "Welcome to Lococo!"
   },
   "main": {
     "kBeautyCampaigns": "K-Beauty Campaigns",
@@ -311,5 +327,15 @@
     "message": "Campaign applications are only available to creator members.\nWould you like to sign up as a creator?",
     "title": "Creator Suggestion"
   },
-  "": ""
+  "footer": {
+    "slogan": "Where Creators Meet Real K-Beauty",
+    "copyright": "Lococo. All rights reserved.",
+    "links": {
+      "campaigns": "Campaigns",
+      "howItWorks": "How It Works",
+      "campaignGuideline": "Campaign Guideline",
+      "privacyPolicy": "Privacy Policy",
+      "FAQ": "FAQ"
+    }
+  }
 }

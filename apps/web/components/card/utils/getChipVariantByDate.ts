@@ -5,7 +5,7 @@ export const getChipVariantByDate = (dueDate: string) => {
 
   const today = dayjs();
 
-  return targetDate.isBefore(today, 'day') ? 'expired' : 'active';
+  return targetDate.isBefore(today, 'day') ? 'disabled' : 'default';
 };
 
 export const formatBracketDate = (dateString: string): string => {

@@ -18,6 +18,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".eslint.config.js",
+    ".next/types/**/*.ts",
     "next-env.d.ts",
     "next.config.js",
     ".next/types/**/*.ts"
