@@ -326,5 +326,16 @@
     "confirmButton": "Yes",
     "message": "Campaign applications are only available to creator members.\nWould you like to sign up as a creator?",
     "title": "Creator Suggestion"
+  },
+  "footer": {
+    "slogan": "Where Creators Meet Real K-Beauty",
+    "copyright": "Lococo. All rights reserved.",
+    "links": {
+      "campaigns": "Campaigns",
+      "howItWorks": "How It Works",
+      "campaignGuideline": "Campaign Guideline",
+      "privacyPolicy": "Privacy Policy",
+      "FAQ": "FAQ"
+    }
   }
 }
