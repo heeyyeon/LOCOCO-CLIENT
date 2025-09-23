@@ -326,5 +326,15 @@
     "confirmButton": "Yes",
     "message": "Campaign applications are only available to creator members.\nWould you like to sign up as a creator?",
     "title": "Creator Suggestion"
+  },
+  "campaignDetail": {
+    "campaignSchedule": "Campaign Schedule",
+    "localTimeNotice": "All times are displayed in your local time.",
+    "applicationPeriod": "Application Period",
+    "contentSubmissionPeriod": "Content Submission Period",
+    "deliverableRequirements": "Deliverable Requirements",
+    "eligibilityRequirements": "Eligibility Requirements",
+    "rewardsAndCompensation": "Rewards & Compensation",
+    "resultAnnouncement": "Result Announcement"
   }
 }

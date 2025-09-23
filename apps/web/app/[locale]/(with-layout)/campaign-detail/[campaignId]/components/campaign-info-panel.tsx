@@ -1,5 +1,9 @@
 'use client';
 
+import { useFormatter, useTranslations } from 'next-intl';
+
+import dayjs from 'dayjs';
+
 import { Button } from '@lococo/design-system/button';
 import { InfoChip } from '@lococo/design-system/info-chip';
 import {
@@ -12,59 +16,69 @@ import {
 import CampaignInfoGrayBorderBox from './campaign-info-gray-border-box';
 
 interface CampaignInfoPanelProps {
-  campaignData?: {
-    brand: string;
-    title: string;
-    type: string;
-    schedule: {
-      applicationPeriod: string;
-      contentSubmissionPeriod: string;
-      resultAnnouncement: string;
-    };
-    deliverables: {
-      instagram: {
-        reels: string;
-        stories: string;
-        videos: string;
-      };
-      hashtags: string[];
-    };
-    rewards: string[];
-    eligibility: string[];
-  };
+  title: string;
+  campaignType: string;
+  brandName: string;
+  language: string;
+  applyStartDate: string;
+  applyDeadline: string;
+  creatorAnnouncementDate: string;
+  reviewSubmissionDeadline: string;
+  deliverableRequirements: string[];
+  participationRewards: string[];
+  eligibilityRequirements: string[];
+  //TODO: 추후 백엔드와 논의 후 ENUM으로 변경
+  campaignStatusCode: string;
 }
 
 export default function CampaignInfoPanel({
-  campaignData,
+  title,
+  campaignType,
+  brandName,
+  //language,
+  applyStartDate,
+  applyDeadline,
+  creatorAnnouncementDate,
+  reviewSubmissionDeadline,
+  deliverableRequirements,
+  participationRewards,
+  eligibilityRequirements,
+  campaignStatusCode,
 }: CampaignInfoPanelProps) {
-  const defaultData = {
-    brand: 'UIQ',
-    title: 'Glass Skin Glow Serum Campaign',
-    type: 'Giveaway',
-    schedule: {
-      applicationPeriod: 'Feb 15, 9:00 AM - Feb 15, 23:59 PM',
-      contentSubmissionPeriod: 'Feb 16, 12:00 PM',
-      resultAnnouncement: 'Feb 16, 12:00 PM',
-    },
-    deliverables: {
-      instagram: {
-        reels: '1 Reels(30-60 seconds)',
-        stories: 'Stories(3-5 posts)',
-        videos: '2 videos showcashing before/after',
-      },
-      hashtags: ['#GlassSkinGlow', '#Beauty_Of_UIQ', '#K-Beauty'],
-    },
-    rewards: [
-      'Free Giveaway',
-      'Bonus Rewards for contents with a view over 10K',
-    ],
-    eligibility: [
-      'Beauty/ Skincare content creators',
-      'Contents should be made in English',
-    ],
-  };
+  const t = useTranslations('campaignDetail');
+  const format = useFormatter();
 
-  const data = campaignData || defaultData;
+  // const timeZone = useTimeZone();
+
+  // const defaultData = {
+  //   brand: 'UIQ',
+  //   title: 'Glass Skin Glow Serum Campaign',
+  //   type: 'Giveaway',
+  //   schedule: {
+  //     applicationPeriod: 'Feb 15, 9:00 AM - Feb 15, 23:59 PM',
+  //     contentSubmissionPeriod: 'Feb 16, 12:00 PM',
+  //     resultAnnouncement: 'Feb 16, 12:00 PM',
+  //   },
+  //   deliverables: {
+  //     instagram: {
+  //       reels: '1 Reels(30-60 seconds)',
+  //       stories: 'Stories(3-5 posts)',
+  //       videos: '2 videos showcashing before/after',
+  //     },
+  //     hashtags: ['#GlassSkinGlow', '#Beauty_Of_UIQ', '#K-Beauty'],
+  //   },
+  //   rewards: [
+  //     'Free Giveaway',
+  //     'Bonus Rewards for contents with a view over 10K',
+  //   ],
+  //   eligibility: [
+  //     'Beauty/ Skincare content creators',
+  //     'Contents should be made in English',
+  //   ],
+  // };
+
+  // TODO: 백엔드 데이터 누락, 추가시 삭제
+  const hashtags = ['#GlassSkinGlow', '#Beauty_Of_UIQ', '#K-Beauty'];
 
   return (
     <div className="scrollbar-hide flex h-[636px] w-[45.6rem] overflow-x-hidden bg-white">
@@ -73,14 +87,14 @@ export default function CampaignInfoPanel({
         <div className="flex flex-col gap-[8px] pt-[8px]">
           <div className="flex flex-col">
             <p className="text-inter-title2 font-bold text-gray-700">
-              {data.brand}
+              {brandName}
             </p>
             <h1 className="text-inter-head3 font-bold text-gray-800">
-              {data.title}
+              {title}
             </h1>
           </div>
           <InfoChip
-            text={data.type}
+            text={campaignType}
             className="text-inter-caption w-fit font-bold text-gray-700"
           />
         </div>
@@ -91,11 +105,10 @@ export default function CampaignInfoPanel({
             <div className="flex flex-col gap-[20px]">
               <div className="flex flex-col gap-[4px]">
                 <h2 className="text-inter-title2 font-bold text-gray-800">
-                  {/* TODO: translate */}
-                  Campaign Schedule
+                  {t('campaignSchedule')}
                 </h2>
                 <p className="text-inter-caption text-gray-600">
-                  All times are displayed in your local time.
+                  {t('localTimeNotice')}
                 </p>
               </div>
             </div>
@@ -110,10 +123,22 @@ export default function CampaignInfoPanel({
 
                 <div className="flex flex-col gap-[4px]">
                   <p className="text-inter-body1 font-bold text-gray-700">
-                    Application Period
+                    {t('applicationPeriod')}
                   </p>
                   <p className="text-inter-body3 text-gray-700">
-                    {data.schedule.applicationPeriod}
+                    {format.dateTime(dayjs(applyStartDate).toDate(), {
+                      month: 'short',
+                      day: 'numeric',
+                      hour: 'numeric',
+                      minute: '2-digit',
+                    })}
+                    ~
+                    {format.dateTime(dayjs(applyDeadline).toDate(), {
+                      month: 'short',
+                      day: 'numeric',
+                      hour: 'numeric',
+                      minute: '2-digit',
+                    })}
                   </p>
                 </div>
               </div>
@@ -126,10 +151,15 @@ export default function CampaignInfoPanel({
                 </div>
                 <div className="flex flex-col gap-[4px] pb-[24px]">
                   <p className="text-inter-body1 font-bold text-gray-700">
-                    Content Submission Period
+                    {t('contentSubmissionPeriod')}
                   </p>
                   <p className="text-inter-body3 text-gray-700">
-                    {data.schedule.contentSubmissionPeriod}
+                    {format.dateTime(dayjs(reviewSubmissionDeadline).toDate(), {
+                      month: 'short',
+                      day: 'numeric',
+                      hour: 'numeric',
+                      minute: '2-digit',
+                    })}
                   </p>
                 </div>
               </div>
@@ -141,10 +171,15 @@ export default function CampaignInfoPanel({
                 </div>
                 <div className="flex flex-col gap-[4px]">
                   <p className="text-inter-body1 font-bold text-gray-700">
-                    Result Announcement
+                    {t('resultAnnouncement')}
                   </p>
                   <p className="text-inter-body3 text-gray-700">
-                    {data.schedule.resultAnnouncement}
+                    {format.dateTime(dayjs(creatorAnnouncementDate).toDate(), {
+                      month: 'short',
+                      day: 'numeric',
+                      hour: 'numeric',
+                      minute: '2-digit',
+                    })}
                   </p>
                 </div>
               </div>
@@ -156,39 +191,31 @@ export default function CampaignInfoPanel({
         <CampaignInfoGrayBorderBox>
           <div className="flex flex-col gap-[16px]">
             <h2 className="text-inter-title2 font-bold text-gray-800">
-              Deliverable Requirements
+              {t('deliverableRequirements')}
             </h2>
 
             {/* Instagram Requirements */}
             <div className="flex flex-col gap-[8px]">
-              <div className="flex gap-[4px]">
-                <SvgCheckNonBg size={24} />
-                <div className="flex gap-[8px]">
-                  <p className="text-inter-body1 text-gray-700">Instagram</p>
-                  <div className="flex flex-col gap-[8px]">
-                    <p className="text-inter-body3 text-gray-700">
-                      {data.deliverables.instagram.reels}
-                    </p>
+              {deliverableRequirements.map((requirement) => (
+                <div className="flex gap-[4px]" key={requirement}>
+                  <SvgCheckNonBg size={24} />
+                  <div className="flex gap-[8px]">
+                    <div className="flex flex-col gap-[8px]">
+                      <p
+                        className="text-inter-body3 text-gray-700"
+                        key={requirement}
+                      >
+                        {requirement}
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div>
-
-              <div className="flex gap-[4px]">
-                <SvgCheckNonBg size={24} />
-                <div className="flex gap-[8px]">
-                  <p className="text-inter-body1 text-gray-700">Instagram</p>
-                  <div className="flex flex-col gap-[8px]">
-                    <p className="text-inter-body3 text-gray-700">
-                      {data.deliverables.instagram.videos}
-                    </p>
-                  </div>
-                </div>
-              </div>
+              ))}
             </div>
 
             {/* Hashtags */}
             <div className="flex items-center gap-[4px]">
-              {data.deliverables.hashtags.map((hashtag, index) => (
+              {hashtags.map((hashtag, index) => (
                 <InfoChip
                   key={index}
                   text={hashtag}
@@ -203,11 +230,11 @@ export default function CampaignInfoPanel({
         <CampaignInfoGrayBorderBox>
           <div className="flex flex-col gap-[16px]">
             <h3 className="text-inter-title2 font-bold text-gray-800">
-              Rewards & Compensation
+              {t('rewardsAndCompensation')}
             </h3>
 
             <div className="flex flex-col gap-[8px]">
-              {data.rewards.map((reward, index) => (
+              {participationRewards.map((reward, index) => (
                 <div key={index} className="flex items-center gap-[4px]">
                   <SvgGift size={24} />
                   <p className="text-inter-body3 text-gray-700">{reward}</p>
@@ -221,11 +248,11 @@ export default function CampaignInfoPanel({
         <CampaignInfoGrayBorderBox>
           <div className="flex flex-col gap-[16px]">
             <h3 className="text-inter-title2 font-bold text-gray-800">
-              Eligibility Requirements
+              {t('eligibilityRequirements')}
             </h3>
 
             <div className="flex flex-col gap-[8px]">
-              {data.eligibility.map((requirement, index) => (
+              {eligibilityRequirements.map((requirement, index) => (
                 <div key={index} className="flex items-center gap-[4px]">
                   {index === 0 ? (
                     <SvgProfileIcon size={24} />
@@ -250,7 +277,7 @@ export default function CampaignInfoPanel({
             rounded="md"
             className="h-[64px] w-[456px]"
           >
-            Apply Now!
+            {campaignStatusCode}
           </Button>
         </div>
       </div>
