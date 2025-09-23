@@ -65,5 +65,5 @@ export const CATEGORY_NAME_NEW = {
   ALL: 'ALL',
   SKINCARE: 'Skincare',
   SUNCARE: 'Suncare',
-  MAKE_UP: 'Makeup',
+  MAKEUP: 'Makeup',
 } as const;
