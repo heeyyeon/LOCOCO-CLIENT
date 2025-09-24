@@ -3,6 +3,7 @@ import {
   CreatorInfoResponse,
   CreatorRegisterRequest,
   CreatorRegisterResponse,
+  CreatorSnsStatusResponse,
 } from '../types/creator-form';
 
 export const registerCreatorInfo = async (
@@ -22,17 +23,10 @@ export const getCreatorInfo = async (): Promise<CreatorInfoResponse> => {
   });
 };
 
-export const getCreatorSnsStatus = async (): Promise<{
-  success: boolean;
-  status: number;
-  message: string;
-  data: {
-    isInstaConnected: boolean;
-    isTiktokConnected: boolean;
+export const getCreatorSnsStatus =
+  async (): Promise<CreatorSnsStatusResponse> => {
+    return apiRequest<CreatorSnsStatusResponse>({
+      endPoint: '/api/creator/register/sns-status',
+      method: 'GET',
+    });
   };
-}> => {
-  return apiRequest({
-    endPoint: '/api/creator/register/sns-status',
-    method: 'GET',
-  });
-};
