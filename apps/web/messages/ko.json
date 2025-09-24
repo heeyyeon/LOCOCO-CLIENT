@@ -13,17 +13,17 @@
     "myCampaign": "나의 캠페인"
   },
   "campaignDetail": {
-    "applicationPeriod": "",
-    "campaignSchedule": "",
-    "contentSubmissionPeriod": "",
-    "deliverableRequirements": "",
-    "eligibilityRequirements": "",
-    "localTimeNotice": "",
-    "resultAnnouncement": "",
-    "rewardsAndCompensation": ""
+    "applicationPeriod": "지원 기간",
+    "campaignSchedule": "캠페인 일정",
+    "contentSubmissionPeriod": "콘텐츠 제출 기간",
+    "deliverableRequirements": "제출물 요건",
+    "eligibilityRequirements": "지원 자격 요건",
+    "localTimeNotice": "모든 시간은 사용자의 현지 시간으로 표시됩니다",
+    "resultAnnouncement": "결과 발표",
+    "rewardsAndCompensation": "보상 및 혜택"
   },
   "campaignFilter": {
-    "seeMore": ""
+    "seeMore": "더 보기"
   },
   "card": {
     "campaignThumbnailImage": "캠페인 썸네일 이미지",
@@ -128,6 +128,17 @@
     "emptyFile": "파일이 비어 있습니다.",
     "fileTooLarge": "파일 크기가 너무 큽니다.",
     "notAllowedFileType": "허용되지 않는 파일 형식입니다."
+  },
+  "footer": {
+    "copyright": "Lococo. All rights reserved.",
+    "links": {
+      "campaignGuideline": "캠페인 가이드라인",
+      "campaigns": "캠페인",
+      "FAQ": "자주 묻는 질문 (FAQ)",
+      "howItWorks": "이용 방법",
+      "privacyPolicy": "개인정보 처리방침"
+    },
+    "slogan": "Where Creators Meet Real K-Beauty"
   },
   "gnb": {
     "campaigns": "캠페인",

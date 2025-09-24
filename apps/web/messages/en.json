@@ -124,11 +124,22 @@
     "fileTooLarge": "File too large",
     "notAllowedFileType": "Not allowed file type"
   },
+  "footer": {
+    "copyright": "Lococo. All rights reserved.",
+    "links": {
+      "campaignGuideline": "Campaign Guideline",
+      "campaigns": "Campaigns",
+      "FAQ": "FAQ",
+      "howItWorks": "How It Works",
+      "privacyPolicy": "Privacy Policy"
+    },
+    "slogan": "Where Creators Meet Real K-Beauty"
+  },
   "gnb": {
     "campaigns": "campaigns",
     "howItWorks": "how it works",
     "login": "Log in",
-    "logIn": "",
+    "logIn": "Log in",
     "logOut": "Log Out",
     "myPage": "My Page",
     "signUp": "Sign up"
@@ -326,16 +337,5 @@
     "confirmButton": "Yes",
     "message": "Campaign applications are only available to creator members.\nWould you like to sign up as a creator?",
     "title": "Creator Suggestion"
-  },
-  "footer": {
-    "slogan": "Where Creators Meet Real K-Beauty",
-    "copyright": "Lococo. All rights reserved.",
-    "links": {
-      "campaigns": "Campaigns",
-      "howItWorks": "How It Works",
-      "campaignGuideline": "Campaign Guideline",
-      "privacyPolicy": "Privacy Policy",
-      "FAQ": "FAQ"
-    }
   }
 }
