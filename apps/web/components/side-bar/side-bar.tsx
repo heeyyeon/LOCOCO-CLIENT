@@ -14,7 +14,7 @@ import { SvgAvatar } from '@lococo/icons';
 interface SideBarProps {
   name?: string;
   email?: string;
-  level?: string;
+  userType?: string;
   profileImage?: string;
   instagram?: string;
   menus: MenuItem[];
@@ -26,7 +26,7 @@ export default function SideBar({
   name,
   email,
   instagram,
-  level,
+  userType,
   menus,
   defaultActiveMenu,
 }: SideBarProps) {
@@ -69,7 +69,9 @@ export default function SideBar({
         </span>
         <span className="caption2 font-[700] text-gray-800">{email}</span>
         <span className="caption2 font-[700] text-gray-800">{instagram}</span>
-        {level && <InfoChip text={level} color="default" size="md" icon />}
+        {userType && (
+          <InfoChip text={userType} color="default" size="md" icon />
+        )}
       </div>
       <div className="h-[1px] w-full bg-gray-400" />
 
