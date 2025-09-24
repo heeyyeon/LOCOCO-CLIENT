@@ -1,5 +1,6 @@
 import { apiRequest } from '../../../../../api/apiRequest';
 import {
+  CreatorCompleteResponse,
   CreatorInfoResponse,
   CreatorRegisterRequest,
   CreatorRegisterResponse,
@@ -28,5 +29,13 @@ export const getCreatorSnsStatus =
     return apiRequest<CreatorSnsStatusResponse>({
       endPoint: '/api/creator/register/sns-status',
       method: 'GET',
+    });
+  };
+
+export const completeCreatorSignup =
+  async (): Promise<CreatorCompleteResponse> => {
+    return apiRequest<CreatorCompleteResponse>({
+      endPoint: '/api/creator/register/complete',
+      method: 'POST',
     });
   };
