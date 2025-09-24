@@ -5,7 +5,7 @@ import type {
   DuplicateCheckResult,
 } from '../types/duplicate-check';
 
-export const checkCreatorIdAvailability = async (
+export const checkIdAvailability = async (
   id: string
 ): Promise<DuplicateCheckResult> => {
   const response = await apiRequest<DuplicateCheckResponse>({

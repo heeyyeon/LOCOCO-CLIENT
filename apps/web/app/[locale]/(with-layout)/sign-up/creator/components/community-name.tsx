@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { UseFormReturn } from 'react-hook-form';
 
 import { useTranslations } from 'next-intl';
@@ -5,18 +6,43 @@ import { useTranslations } from 'next-intl';
 import { Button } from '@lococo/design-system/button';
 
 import { FormSection, TextFormField } from '../../../../../../components/forms';
+import { checkIdAvailability } from '../apis/duplicate-check';
 import { type CreatorSignupForm } from '../utils/signup';
 
 interface CommunityNameProps {
   form: UseFormReturn<CreatorSignupForm>;
-  handleCheckAvailability: () => void;
 }
 
-export function CommunityName({
-  form,
-  handleCheckAvailability,
-}: CommunityNameProps) {
+export function CommunityName({ form }: CommunityNameProps) {
   const t = useTranslations('creatorSignup.communityName');
+
+  const [availabilityMessage, setAvailabilityMessage] = useState<{
+    type: 'success' | 'error' | null;
+    message: string;
+  }>({ type: null, message: '' });
+
+  const handleCheckAvailability = async () => {
+    const isValid = await form.trigger('id');
+    if (!isValid) {
+      return;
+    }
+
+    const id = form.getValues('id');
+
+    try {
+      const result = await checkIdAvailability(id);
+
+      setAvailabilityMessage({
+        type: result.success ? 'success' : 'error',
+        message: result.success ? t('idAvailable') : t('idTaken'),
+      });
+    } catch {
+      setAvailabilityMessage({
+        type: 'error',
+        message: t('idTaken'),
+      });
+    }
+  };
 
   return (
     <FormSection title={t('title')} description={t('description')}>
@@ -26,6 +52,11 @@ export function CommunityName({
         placeholder={t('idPlaceholder')}
         register={form.register('id')}
         error={form.formState.errors.id?.message}
+        successMessage={
+          availabilityMessage?.type === 'success'
+            ? availabilityMessage.message
+            : undefined
+        }
         rightContent={
           <Button
             type="button"
