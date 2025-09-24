@@ -20,13 +20,14 @@ export function HomeAddress({ form, locale }: HomeAddressProps) {
   const countries = countryNameOptions(locale);
 
   return (
-    <div className="mt-[4.8rem]">
+    <div className="mt-[4.8rem] w-full">
       <FormSection title={t('title')} description={t('description')}>
         <SelectFormField
           label={t('countryLabel')}
           required
           placeholder={t('countryPlaceholder')}
           options={countries}
+          value={form.watch('country')}
           onValueChange={(value) =>
             form.setValue('country', value, { shouldValidate: true })
           }

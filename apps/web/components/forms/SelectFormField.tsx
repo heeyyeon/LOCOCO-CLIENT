@@ -21,6 +21,7 @@ interface SelectFormFieldProps {
   size?: 'small' | 'default';
   children?: React.ReactNode;
   variant?: 'default' | 'reverse';
+  value?: string;
 }
 
 export function SelectFormField({
@@ -34,6 +35,7 @@ export function SelectFormField({
   size = 'default',
   children,
   variant = 'default',
+  value,
 }: SelectFormFieldProps) {
   return (
     <div className={cn('flex items-center justify-between', className)}>
@@ -50,6 +52,11 @@ export function SelectFormField({
           <Select
             placeholder={placeholder}
             options={options!}
+            value={
+              value
+                ? options!.find((option) => option.value === value)?.label
+                : undefined
+            }
             onValueChange={(selectedLabel) => {
               const selectedOption = options!.find(
                 (option) => option.label === selectedLabel
