@@ -5,25 +5,20 @@ import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { useRouter } from 'next/navigation';
 
-import {
-  SignupFormLayout,
-  SnsConnection,
-} from '../../../../../../components/forms';
+import { SignupFormLayout, SnsConnection } from 'components/forms';
+import LoadingSvg from 'components/loading/loading-svg';
+
 import { ConfirmSignupModal } from '../../components/confirm-signup-modal';
+import { useSnsStatus } from './hooks/useSnsStatus';
 
 export default function CreatorSnsLinksPage() {
   const router = useRouter();
   const t = useTranslations('creatorSnsLinksPage');
 
-  const [connectedSns, setConnectedSns] = useState<('instagram' | 'tiktok')[]>(
-    []
-  );
+  const { connectedSns, isLoading, handleConnectSns } = useSnsStatus();
+
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isShowConfirmModal, setIsShowConfirmModal] = useState(false);
-
-  const handleConnectSns = (sns: 'instagram' | 'tiktok') => {
-    setConnectedSns((prev) => [...prev, sns]);
-  };
 
   const hasConnectedAccount = connectedSns.length > 0;
 
@@ -43,6 +38,14 @@ export default function CreatorSnsLinksPage() {
   const handleBack = () => {
     router.back();
   };
+
+  if (isLoading) {
+    return (
+      <div className="flex h-[50rem] w-full items-center justify-center">
+        <LoadingSvg />
+      </div>
+    );
+  }
 
   return (
     <>

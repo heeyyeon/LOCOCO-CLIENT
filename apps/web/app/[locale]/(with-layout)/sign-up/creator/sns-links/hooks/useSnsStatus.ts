@@ -6,29 +6,43 @@ export const useSnsStatus = () => {
   const [isInstaConnected, setIsInstaConnected] = useState(false);
   const [isTiktokConnected, setIsTiktokConnected] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [connectedSns, setConnectedSns] = useState<('instagram' | 'tiktok')[]>(
+    []
+  );
 
   useEffect(() => {
     const fetchSnsStatus = async () => {
-      try {
-        const response = await getCreatorSnsStatus();
+      const response = await getCreatorSnsStatus();
 
-        if (response.success && response.data) {
-          setIsInstaConnected(response.data.isInstaConnected);
-          setIsTiktokConnected(response.data.isTiktokConnected);
-        }
-      } catch (error) {
-        console.error('Failed to fetch SNS status:', error);
-      } finally {
-        setIsLoading(false);
+      if (response.success && response.data) {
+        setIsInstaConnected(response.data.isInstaConnected);
+        setIsTiktokConnected(response.data.isTiktokConnected);
       }
+
+      setIsLoading(false);
     };
 
     fetchSnsStatus();
   }, []);
 
+  useEffect(() => {
+    if (!isLoading) {
+      const connected: ('instagram' | 'tiktok')[] = [];
+      if (isInstaConnected) connected.push('instagram');
+      if (isTiktokConnected) connected.push('tiktok');
+      setConnectedSns(connected);
+    }
+  }, [isInstaConnected, isTiktokConnected, isLoading]);
+
+  const handleConnectSns = (sns: 'instagram' | 'tiktok') => {
+    setConnectedSns((prev) => [...prev, sns]);
+  };
+
   return {
     isInstaConnected,
     isTiktokConnected,
     isLoading,
+    connectedSns,
+    handleConnectSns,
   };
 };
