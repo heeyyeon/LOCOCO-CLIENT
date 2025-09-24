@@ -47,3 +47,13 @@ export interface CreatorInfoResponse {
     skinTone: string;
   };
 }
+
+export interface CreatorSnsStatusResponse {
+  success: boolean;
+  status: number;
+  message: string;
+  data: {
+    isInstaConnected: boolean;
+    isTiktokConnected: boolean;
+  };
+}
