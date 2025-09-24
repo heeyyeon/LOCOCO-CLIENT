@@ -2,7 +2,10 @@ import React from 'react';
 
 import Image from 'next/image';
 
-type SocialPlatform = 'instagram-post' | 'instagram-reels' | 'tiktok-video';
+export type SocialPlatform =
+  | 'instagram-post'
+  | 'instagram-reels'
+  | 'tiktok-video';
 
 interface SocialChipConfig {
   icon: string;
@@ -10,7 +13,7 @@ interface SocialChipConfig {
   alt: string;
 }
 
-const SOCIAL_CONFIGS: Record<SocialPlatform, SocialChipConfig> = {
+export const SOCIAL_CONFIGS: Record<SocialPlatform, SocialChipConfig> = {
   'instagram-post': {
     icon: '/instagram.svg',
     label: 'Instagram Post',
@@ -30,7 +33,7 @@ const SOCIAL_CONFIGS: Record<SocialPlatform, SocialChipConfig> = {
 
 interface SocialChipProps {
   type: SocialPlatform;
-  onClick?: () => void;
+  onClick: (type: SocialPlatform) => void;
   className?: string;
   selected?: boolean;
 }
@@ -48,7 +51,7 @@ export default function SocialChip({
       className={`border-1 flex items-center gap-[0.6rem] rounded-[2.4rem] px-[1.2rem] py-[1rem] ${
         selected ? 'border-pink-500 bg-pink-100' : 'border-gray-400'
       } ${className}`}
-      onClick={onClick}
+      onClick={() => onClick(type)}
       aria-label={config.label}
     >
       <Image src={config.icon} alt={config.alt} width={20} height={20} />

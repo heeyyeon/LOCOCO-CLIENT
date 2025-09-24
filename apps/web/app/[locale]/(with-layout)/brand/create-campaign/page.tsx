@@ -10,13 +10,20 @@ import CampaignInfo from '../component/create-campaign/campaign-info';
 import CampaignStartInfo from '../component/create-campaign/campaign-start-info';
 import CampaignWinnerAnnounce from '../component/create-campaign/campaign-winner-announce';
 import DynamicInput from '../component/create-campaign/dynamic-inpt';
-import SocialChip from '../component/create-campaign/social-chip';
+import SocialChip, {
+  SOCIAL_CONFIGS,
+  SocialPlatform,
+} from '../component/create-campaign/social-chip';
 import { useDynamicInputs } from '../hooks/useDynamicInput';
+import { usePlatformCheck } from '../hooks/usePlatformCheck';
 
 export default function CreateCampaign() {
   const joinConditions = useDynamicInputs(['']);
   const submitConditions = useDynamicInputs(['']);
   const joinReward = useDynamicInputs(['']);
+
+  const firstContents = usePlatformCheck();
+  const secondContents = usePlatformCheck();
   return (
     <div className="flex min-h-[260.4rem] w-[84rem] flex-col gap-[4.8rem] bg-white px-[9.6rem] py-[4.8rem]">
       <h3>캠페인 정보</h3>
@@ -64,15 +71,25 @@ export default function CreateCampaign() {
       >
         <InputWrapper label="첫번째 컨텐츠" required />
         <div className="flex gap-[1.2rem]">
-          <SocialChip type="instagram-post" selected />
-          <SocialChip type="instagram-reels" />
-          <SocialChip type="tiktok-video" />
+          {(Object.keys(SOCIAL_CONFIGS) as SocialPlatform[]).map((platform) => (
+            <SocialChip
+              key={platform}
+              type={platform}
+              selected={firstContents.selectStatus[platform]}
+              onClick={firstContents.toggleChip}
+            />
+          ))}
         </div>
         <InputWrapper label="두번째 컨텐츠" />
         <div className="flex gap-[1.2rem]">
-          <SocialChip type="instagram-post" selected />
-          <SocialChip type="instagram-reels" />
-          <SocialChip type="tiktok-video" />
+          {(Object.keys(SOCIAL_CONFIGS) as SocialPlatform[]).map((platform) => (
+            <SocialChip
+              key={platform}
+              type={platform}
+              selected={secondContents.selectStatus[platform]}
+              onClick={secondContents.toggleChip}
+            />
+          ))}
         </div>
       </FormSection>
       <CampaignUploadMedia />
