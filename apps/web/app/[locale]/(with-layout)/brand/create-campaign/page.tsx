@@ -1,7 +1,10 @@
 'use client';
 
+import { useState } from 'react';
+
 import { FormSection } from 'components/forms';
 
+import CampaignProductMediaInput from '../../my-page/components/content-submissions/campaign-product-media-input';
 import InputWrapper from '../../my-page/components/input-wrapper';
 import CampaignDueDate from '../component/create-campaign/campaign-due-date';
 import CampaignEndInfo from '../component/create-campaign/campaign-end-info';
@@ -9,12 +12,18 @@ import CampaignInfo from '../component/create-campaign/campaign-info';
 import CampaignStartInfo from '../component/create-campaign/campaign-start-info';
 import CampaignWinnerAnnounce from '../component/create-campaign/campaign-winner-announce';
 import DynamicInput from '../component/create-campaign/dynamic-inpt';
+import SocialChip from '../component/create-campaign/social-chip';
 import { useDynamicInputs } from '../hooks/useDynamicInput';
 
 export default function CreateCampaign() {
   const joinConditions = useDynamicInputs(['']);
   const submitConditions = useDynamicInputs(['']);
   const joinReward = useDynamicInputs(['']);
+
+  const [thumbnailFiles, setThumbnailFiles] = useState<File[]>([]);
+  const [detailFiles, setDetailFiles] = useState<File[]>([]);
+  const [thumbnailError, setThumbnailError] = useState<string | undefined>();
+  const [detailError, setDetailError] = useState<string | undefined>();
   return (
     <div className="flex min-h-[260.4rem] w-[84rem] flex-col gap-[4.8rem] bg-white px-[9.6rem] py-[4.8rem]">
       <h3>캠페인 정보</h3>
@@ -56,18 +65,24 @@ export default function CreateCampaign() {
           handleRemoveField={joinReward.removeField}
         />
       </FormSection>
-
       <FormSection
         title="컨텐츠 플랫폼 선택"
         description="(최대 2개까지 선택 가능합니다.)"
       >
         <InputWrapper label="첫번째 컨텐츠" required />
-        <div>버튼들</div>
+        <div className="flex gap-[1.2rem]">
+          <SocialChip type="instagram-post" selected />
+          <SocialChip type="instagram-reels" />
+          <SocialChip type="tiktok-video" />
+        </div>
         <InputWrapper label="두번째 컨텐츠" />
-        <div>버튼들</div>
+        <div className="flex gap-[1.2rem]">
+          <SocialChip type="instagram-post" selected />
+          <SocialChip type="instagram-reels" />
+          <SocialChip type="tiktok-video" />
+        </div>
       </FormSection>
-      <div></div>
-      <div></div>
+
       <div></div>
       <div></div>
     </div>
