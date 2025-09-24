@@ -1,6 +1,6 @@
 import { getTranslations } from 'next-intl/server';
 
-import ClientSideBar from './components/client-sidebar';
+import ClientSideBar from './components/client-sidebar/client-sidebar';
 
 export default async function Layout({
   children,

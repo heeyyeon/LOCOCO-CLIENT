@@ -56,7 +56,7 @@ export default function ContentSubmissions() {
   };
 
   return (
-    <div className="flex w-full flex-col items-center gap-[3.2rem] bg-gray-100 px-[9.4rem] py-[6.4rem]">
+    <div className="flex min-h-[calc(100vh-11.2rem)] w-full flex-col items-center gap-[3.2rem] bg-gray-100 px-[9.4rem] py-[6.4rem]">
       {fields.map((field, index) => (
         <ContentSubmissionsForm
           key={field.id}
@@ -70,7 +70,7 @@ export default function ContentSubmissions() {
         />
       ))}
       {fields.length === 0 && (
-        <div className="flex w-[84rem] items-center justify-between gap-[1.6rem]">
+        <div className="flex items-center justify-between gap-[1.6rem]">
           리뷰할 데이터가 없습니다.
         </div>
       )}
