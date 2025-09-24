@@ -40,10 +40,6 @@ export default function CreatorSignupPage() {
     router.push('/sign-up/creator/sns-links');
   };
 
-  const handleCheckAvailability = () => {
-    // TODO: ID 중복 확인 API 호출
-  };
-
   return (
     <SignupFormLayout
       title="Join Lococo Creator Community!"
@@ -52,11 +48,7 @@ export default function CreatorSignupPage() {
       isValid={form.formState.isValid}
       submitLabel="Next"
     >
-      <CreatorFormSections
-        form={form}
-        locale={locale}
-        onCheckAvailability={handleCheckAvailability}
-      />
+      <CreatorFormSections form={form} locale={locale} />
     </SignupFormLayout>
   );
 }

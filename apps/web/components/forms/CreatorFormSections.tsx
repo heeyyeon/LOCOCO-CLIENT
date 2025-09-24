@@ -12,14 +12,12 @@ import { type CreatorSignupForm } from '../../app/[locale]/(with-layout)/sign-up
 interface CreatorFormSectionsProps {
   form: UseFormReturn<CreatorSignupForm>;
   locale: string;
-  onCheckAvailability: () => void;
   userData?: Partial<CreatorSignupForm>;
 }
 
 export function CreatorFormSections({
   form,
   locale,
-  onCheckAvailability,
   userData,
 }: CreatorFormSectionsProps) {
   const { reset } = form;
@@ -32,10 +30,7 @@ export function CreatorFormSections({
 
   return (
     <>
-      <CommunityName
-        form={form}
-        handleCheckAvailability={onCheckAvailability}
-      />
+      <CommunityName form={form} />
 
       <PersonalDetails form={form} />
 
