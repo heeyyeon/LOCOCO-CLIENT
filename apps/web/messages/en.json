@@ -41,7 +41,10 @@
       "description": "(ID must be between 1 and 15 characters long and can only contain letters, numbers, periods (.), and underscores (_)).",
       "idLabel": "ID",
       "idPlaceholder": "ex: ilovelococo",
-      "title": "Community Name"
+      "title": "Community Name",
+      "idRequired": "Please check the ID availability.",
+      "idTaken": "Sorry, this ID is already taken.",
+      "idAvailable": "Great! This ID is available."
     },
     "homeAddress": {
       "addressLine1Label": "Address Line 1",
