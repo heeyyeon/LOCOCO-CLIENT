@@ -57,3 +57,12 @@ export interface CreatorSnsStatusResponse {
     isTiktokConnected: boolean;
   };
 }
+
+export interface CreatorCompleteResponse {
+  success: boolean;
+  status: number;
+  message: string;
+  data: {
+    loginStatus: string;
+  };
+}
