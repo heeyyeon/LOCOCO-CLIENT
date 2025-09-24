@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react';
 
-import { getCreatorSnsStatus } from '../../apis/creator-form';
+import {
+  completeCreatorSignup,
+  getCreatorSnsStatus,
+} from '../../apis/creator-form';
 
 export const useSnsStatus = () => {
   const [isInstaConnected, setIsInstaConnected] = useState(false);
@@ -38,11 +41,17 @@ export const useSnsStatus = () => {
     setConnectedSns((prev) => [...prev, sns]);
   };
 
+  const handleCompleteSignup = async () => {
+    const response = await completeCreatorSignup();
+    return response;
+  };
+
   return {
     isInstaConnected,
     isTiktokConnected,
     isLoading,
     connectedSns,
     handleConnectSns,
+    handleCompleteSignup,
   };
 };
