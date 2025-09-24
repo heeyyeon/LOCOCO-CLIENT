@@ -1,10 +1,8 @@
 'use client';
 
-import { useState } from 'react';
-
+import CampaignUploadMedia from 'components/campaign/campaign-upload-media';
 import { FormSection } from 'components/forms';
 
-import CampaignProductMediaInput from '../../my-page/components/content-submissions/campaign-product-media-input';
 import InputWrapper from '../../my-page/components/input-wrapper';
 import CampaignDueDate from '../component/create-campaign/campaign-due-date';
 import CampaignEndInfo from '../component/create-campaign/campaign-end-info';
@@ -19,11 +17,6 @@ export default function CreateCampaign() {
   const joinConditions = useDynamicInputs(['']);
   const submitConditions = useDynamicInputs(['']);
   const joinReward = useDynamicInputs(['']);
-
-  const [thumbnailFiles, setThumbnailFiles] = useState<File[]>([]);
-  const [detailFiles, setDetailFiles] = useState<File[]>([]);
-  const [thumbnailError, setThumbnailError] = useState<string | undefined>();
-  const [detailError, setDetailError] = useState<string | undefined>();
   return (
     <div className="flex min-h-[260.4rem] w-[84rem] flex-col gap-[4.8rem] bg-white px-[9.6rem] py-[4.8rem]">
       <h3>캠페인 정보</h3>
@@ -82,52 +75,7 @@ export default function CreateCampaign() {
           <SocialChip type="tiktok-video" />
         </div>
       </FormSection>
-      <FormSection
-        title="컨텐츠 썸네일 사진"
-        description={`캠페인 상세페이지 썸네일에 보여질 사진들입니다. 고화질 사진을 첨부해주세요.
-          사진은 최대 5장까지 업로드 가능합니다.`}
-      >
-        <CampaignProductMediaInput
-          formData={{
-            campaign: '',
-            contentType: '',
-            campaignProductMedia: thumbnailFiles,
-            captionAndHashtags: '',
-          }}
-          errors={thumbnailError}
-          updateCampaignProductMedia={(files) => {
-            if (files.length > 5) {
-              setThumbnailError('사진은 최대 5장까지 업로드 가능합니다.');
-            } else {
-              setThumbnailError(undefined);
-              setThumbnailFiles(files);
-            }
-          }}
-        />
-      </FormSection>
-      <FormSection
-        title="컨텐츠 상세페이지 사진"
-        description={`캠페인 상세페이지에 보여질 사진들입니다. 고화질 사진을 첨부해주세요.
-          사진은 최대 15장까지 업로드 가능합니다.`}
-      >
-        <CampaignProductMediaInput
-          formData={{
-            campaign: '',
-            contentType: '',
-            campaignProductMedia: detailFiles,
-            captionAndHashtags: '',
-          }}
-          errors={detailError}
-          updateCampaignProductMedia={(files) => {
-            if (files.length > 15) {
-              setDetailError('사진은 최대 15장까지 업로드 가능합니다.');
-            } else {
-              setDetailError(undefined);
-              setDetailFiles(files);
-            }
-          }}
-        />
-      </FormSection>
+      <CampaignUploadMedia />
       <div></div>
       <div></div>
     </div>
