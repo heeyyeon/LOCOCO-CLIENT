@@ -1,6 +1,6 @@
-import type { ComponentProps, ReactNode } from 'react';
+import { ComponentProps, ReactNode } from 'react';
 
-import { type VariantProps, cva } from 'class-variance-authority';
+import { VariantProps, cva } from 'class-variance-authority';
 
 import { cn } from '../../lib/utils';
 
@@ -8,50 +8,54 @@ interface TabProps
   extends ComponentProps<'button'>,
     VariantProps<typeof tabVariants> {
   label: string;
+  value: string;
   className?: string;
+  onClick?: () => void;
 }
 
 interface TabContainerProps {
   children: ReactNode;
   className?: string;
+  variant?: 'vertical' | 'horizontal';
 }
 
 const tabVariants = cva(
-  'inline-flex w-auto items-center justify-center gap-2.5 bg-white px-[2rem] py-[2rem] font-bold cursor-pointer',
+  'title2 h-[4.6rem] cursor-pointer p-[0.8rem] font-[700]',
   {
     variants: {
       variant: {
-        primary: 'h-11 jp-title3  text-gray-500 leading-normal',
-        secondary: 'h-14 jp-title2  text-gray-800 leading-relaxed',
+        horizontal: '',
+        vertical: '',
       },
-      active: {
-        true: 'border-b-2 border-solid',
-        false: 'border-b border-solid border-gray-300',
+      selected: {
+        true: 'text-pink-500',
+        false: '',
       },
     },
     compoundVariants: [
       {
-        active: true,
-        variant: 'primary',
-        className: 'text-pink-500 border-pink-500',
+        selected: false,
+        variant: 'horizontal',
+        className: 'text-gray-500',
       },
       {
-        active: true,
-        variant: 'secondary',
-        className: 'text-gray-800 border-gray-800',
+        selected: false,
+        variant: 'vertical',
+        className: 'text-gray-700',
       },
     ],
     defaultVariants: {
-      variant: 'primary',
-      active: false,
+      variant: 'horizontal',
+      selected: false,
     },
   }
 );
-function Tab({ label, active, variant, className, ...props }: TabProps) {
+
+function Tab({ label, selected, variant, className, ...props }: TabProps) {
   return (
     <button
       type="button"
-      className={cn(tabVariants({ active, variant }), className)}
+      className={cn(tabVariants({ selected, variant }), className)}
       {...props}
     >
       {label}
@@ -59,11 +63,16 @@ function Tab({ label, active, variant, className, ...props }: TabProps) {
   );
 }
 
-function TabContainer({ children, className }: TabContainerProps) {
+function TabContainer({
+  children,
+  className,
+  variant = 'horizontal',
+}: TabContainerProps) {
   return (
     <div
       className={cn(
-        'inline-flex items-center justify-start overflow-hidden',
+        'flex items-center justify-center',
+        variant === 'vertical' && 'flex-col',
         className
       )}
     >

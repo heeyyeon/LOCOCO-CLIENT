@@ -1,11 +1,9 @@
 import { useEffect, useState } from 'react';
 
-import { useRouter } from 'next/navigation';
-
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { PRODUCT_QUERIES } from 'app/(with-layout)/(home)/components/home-section-product';
 import { apiRequest } from 'app/api/apiRequest';
 import { useAuth } from 'hooks/use-auth';
+import { useRouter } from 'i18n/navigation';
 
 interface UseProductLikeProps {
   initialIsLiked: boolean;
@@ -39,7 +37,7 @@ export function useProductLike({ initialIsLiked }: UseProductLikeProps) {
       setIsLiked(context?.isPreviousLiked || false);
     },
     onSettled: () => {
-      queryClient.invalidateQueries({ queryKey: PRODUCT_QUERIES.ALL });
+      queryClient.invalidateQueries({ queryKey: undefined });
     },
   });
 

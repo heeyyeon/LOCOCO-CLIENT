@@ -64,8 +64,52 @@
   /* EN caption */
   --text-en-caption1: 1.2rem;
 
+  /*Inter head*/
+  --text-inter-head1: 4rem;
+  --text-inter-head2: 3.2rem;
+  --text-inter-head3: 2.8rem;
+
+  /*Inter title*/
+  --text-inter-title1: 2.4rem;
+  --text-inter-title2: 2rem;
+  --text-inter-title3: 1.8rem;
+
+  /*Inter body*/
+  --text-inter-body1: 1.6rem;
+  --text-inter-body2: 1.4rem;
+  --text-inter-body3: 1.6rem;
+  --text-inter-body4: 1.4rem;
+
+  /*Inter caption*/
+  --text-inter-caption: 1.2rem;
+
+  /*Noto Sans KR head*/
+  --text-noto-sans-kr-head1: 3.8rem;
+  --text-noto-sans-kr-head2: 3rem;
+  --text-noto-sans-kr-head3: 2.6rem;
+
+  /*Noto Sans KR title*/
+  --text-noto-sans-kr-title1: 2.3rem;
+  --text-noto-sans-kr-title2: 1.9rem;
+  --text-noto-sans-kr-title3: 1.7rem;
+
+  /*Noto Sans KR body*/
+  --text-noto-sans-kr-body1: 1.5rem;
+  --text-noto-sans-kr-body2: 1.3rem;
+  --text-noto-sans-kr-body3: 1.5rem;
+  --text-noto-sans-kr-body4: 1.3rem;
+
+  /*Noto Sans KR caption*/
+  --text-noto-sans-kr-caption: 1.2rem;
+
   /* 추후 커스텀 브레이크포인트 추가 */
   /* --breakpoint-lg: 133.6rem; */
+
+  /*inter body*/
+  --text-inter-body3: 1.6rem;
+
+  /*noto Sans KR body*/
+  --text-noto-sans-kr-body3: 1.5rem;
 }
 
 @layer base {
@@ -80,115 +124,104 @@
 }
 
 @layer utilities {
-  /* 커스텀 유틸리티 클래스 */
-  .jp-head1 {
-    font-family: var(--font-noto-sans-jp);
-    font-size: var(--text-jp-head1);
-    line-height: 140%;
+  html[lang='ko'] {
+    --font-primary: var(--font-noto-sans-kr);
+    --text-head1: var(--text-noto-sans-kr-head1);
+    --text-head2: var(--text-noto-sans-kr-head2);
+    --text-head3: var(--text-noto-sans-kr-head3);
+    --text-title1: var(--text-noto-sans-kr-title1);
+    --text-title2: var(--text-noto-sans-kr-title2);
+    --text-title3: var(--text-noto-sans-kr-title3);
+    --text-body1: var(--text-noto-sans-kr-body1);
+    --text-body2: var(--text-noto-sans-kr-body2);
+    --text-body3: var(--text-noto-sans-kr-body3);
+    --text-body4: var(--text-noto-sans-kr-body4);
+    --text-caption: var(--text-noto-sans-kr-caption);
   }
-  .jp-head2 {
-    font-family: var(--font-noto-sans-jp);
-    font-size: var(--text-jp-head2);
-    line-height: 140%;
+
+  html:not([lang='ko']) {
+    --font-primary: var(--font-inter);
+    --text-head1: var(--text-inter-head1);
+    --text-head2: var(--text-inter-head2);
+    --text-head3: var(--text-inter-head3);
+    --text-title1: var(--text-inter-title1);
+    --text-title2: var(--text-inter-title2);
+    --text-title3: var(--text-inter-title3);
+    --text-body1: var(--text-inter-body1);
+    --text-body2: var(--text-inter-body2);
+    --text-body3: var(--text-inter-body3);
+    --text-body4: var(--text-inter-body4);
+    --text-caption: var(--text-inter-caption);
   }
-  .jp-head3 {
-    font-family: var(--font-noto-sans-jp);
-    font-size: var(--text-jp-head3);
+
+  /* 타이포그래피 클래스 - 한 번만 정의 */
+  .head1 {
+    font-family: var(--font-primary);
+    font-size: var(--text-head1);
+    line-height: 150%;
+  }
+  .head2 {
+    font-family: var(--font-primary);
+    font-size: var(--text-head2);
+    line-height: 150%;
+  }
+  .head3 {
+    font-family: var(--font-primary);
+    font-size: var(--text-head3);
     line-height: 150%;
   }
 
-  /* JP Title */
-  .jp-title1 {
-    font-family: var(--font-noto-sans-jp);
-    font-size: var(--text-jp-title1);
+  .title1 {
+    font-family: var(--font-primary);
+    font-size: var(--text-title1);
     line-height: 150%;
   }
-  .jp-title2 {
-    font-family: var(--font-noto-sans-jp);
-    font-size: var(--text-jp-title2);
+  .title2 {
+    font-family: var(--font-primary);
+    font-size: var(--text-title2);
     line-height: 150%;
   }
-  .jp-title3 {
-    font-family: var(--font-noto-sans-jp);
-    font-size: var(--text-jp-title3);
+  .title3 {
+    font-family: var(--font-primary);
+    font-size: var(--text-title3);
     line-height: 150%;
   }
 
-  /* JP Body */
-  .jp-body1 {
-    font-family: var(--font-noto-sans-jp);
-    font-size: var(--text-jp-body1);
+  .body1 {
+    font-family: var(--font-primary);
+    font-size: var(--text-body1);
+    line-height: 150%;
+  }
+  .body2 {
+    font-family: var(--font-primary);
+    font-size: var(--text-body2);
+    line-height: 150%;
+  }
+  .body3 {
+    font-family: var(--font-primary);
+    font-size: var(--text-body3);
+    line-height: 150%;
+  }
+  .body4 {
+    font-family: var(--font-primary);
+    font-size: var(--text-body4);
+    line-height: 150%;
+  }
+
+  .caption,
+  .caption1,
+  .caption2,
+  .caption3 {
+    font-family: var(--font-primary);
+    font-size: var(--text-caption);
     line-height: 160%;
   }
-  .jp-body2 {
-    font-family: var(--font-noto-sans-jp);
-    font-size: var(--text-jp-body2);
-    line-height: 160%;
-  }
 
-  /* JP Caption */
-  .jp-caption1 {
-    font-family: var(--font-noto-sans-jp);
-    font-size: var(--text-jp-caption1);
-    line-height: 160%;
-  }
-  .jp-caption2 {
-    font-family: var(--font-noto-sans-jp);
-    font-size: var(--text-jp-caption2);
-    line-height: 160%;
-  }
-  .jp-caption3 {
-    font-family: var(--font-noto-sans-jp);
-    font-size: var(--text-jp-caption3);
-    line-height: 160%;
-  }
-
-  /* EN Heading */
-  .en-head1 {
-    font-family: var(--font-pretendard);
-    font-size: var(--text-en-head1);
-    line-height: 150%;
-  }
-  .en-head2 {
-    font-family: var(--font-pretendard);
-    font-size: var(--text-en-head2);
-    line-height: 150%;
-  }
-
-  /* EN Title */
-  .en-title1 {
-    font-family: var(--font-pretendard);
-    font-size: var(--text-en-title1);
-    line-height: 150%;
-  }
-  .en-title2 {
-    font-family: var(--font-pretendard);
-    font-size: var(--text-en-title2);
-    line-height: 150%;
-  }
-  .en-title3 {
-    font-family: var(--font-pretendard);
-    font-size: var(--text-en-title3);
-    line-height: 150%;
-  }
-
-  /* EN Body */
-  .en-body1 {
-    font-family: var(--font-pretendard);
-    font-size: var(--text-en-body1);
-    line-height: 100%;
-  }
-  .en-body2 {
-    font-family: var(--font-pretendard);
-    font-size: var(--text-en-body2);
-    line-height: 100%;
-  }
-
-  /* EN Caption */
-  .en-caption1 {
-    font-family: var(--font-pretendard);
-    font-size: var(--text-en-caption1);
-    line-height: 150%;
+  /* line-height 조정이 필요한 경우 */
+  html:not([lang='ko']) .head1,
+  html:not([lang='ko']) .head2,
+  html:not([lang='ko']) .head3 {
+    line-height: 140%; /* Inter는 head에서 140% */
   }
 
   .shadow-button {

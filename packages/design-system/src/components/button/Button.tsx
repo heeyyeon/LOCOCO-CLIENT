@@ -1,6 +1,8 @@
-import { Slot } from '@radix-ui/react-slot';
-import { cva, VariantProps } from 'class-variance-authority';
 import { ButtonHTMLAttributes, ReactNode, forwardRef } from 'react';
+
+import { Slot } from '@radix-ui/react-slot';
+import { VariantProps, cva } from 'class-variance-authority';
+
 import { cn } from '../../lib/utils';
 
 interface ButtonProps
@@ -8,36 +10,44 @@ interface ButtonProps
     VariantProps<typeof buttonVariants> {
   iconLeft?: ReactNode;
   iconRight?: ReactNode;
-  rounded?: boolean;
   color: 'primary' | 'secondary';
   variant: 'filled' | 'outline' | 'text';
   size: 'lg' | 'md' | 'sm';
   asChild?: boolean;
+  rounded?: 'none' | 'sm' | 'md';
+  fontType?: 'InterTitle3' | 'InterBody1' | 'InterBody2' | 'InterBody4';
 }
 
-const baseButtonStyle = 'px-[3.2rem] py-[1rem] gap-[0.8rem]';
+const baseButtonStyle = 'py-[1rem] gap-[0.8rem]';
 
 const buttonVariants = cva(
-  'flex items-center transition-colors duration-300 justify-center font-bold disabled:bg-gray-200 disabled:text-gray-500 disabled:cursor-not-allowed cursor-pointer grow',
+  'flex items-center transition-colors duration-300 justify-center font-bold disabled:bg-gray-200 disabled:text-gray-500 cursor-pointer grow',
   {
     variants: {
       variant: {
         filled: '',
-        outline: 'bg-transparent border-b',
+        outline: 'bg-white border border-pink-500 text-pink-500',
         text: 'bg-transparent',
       },
       color: {
         primary: '',
         secondary: '',
       },
-      rounded: {
-        true: 'rounded-[0.8rem]',
-        false: '',
-      },
       size: {
-        lg: `h-[6rem] ${baseButtonStyle}`,
-        md: `h-[5.2rem] ${baseButtonStyle}`,
-        sm: `h-[3.2rem] px-[1.6rem] py-[1rem] gap-[0.8rem]`,
+        lg: `h-[6.4rem] px-[3.2rem] ${baseButtonStyle}`,
+        md: `h-[5.6rem] px-[3.2rem] ${baseButtonStyle}`,
+        sm: `h-[4.8rem] px-[2.4rem] ${baseButtonStyle}`,
+      },
+      rounded: {
+        none: 'rounded-none',
+        sm: 'rounded-[0.8rem]',
+        md: 'rounded-[3.2rem]',
+      },
+      fontType: {
+        InterTitle3: 'title3',
+        InterBody1: 'body1',
+        InterBody2: 'body2',
+        InterBody4: 'body4',
       },
     },
     compoundVariants: [
@@ -54,8 +64,7 @@ const buttonVariants = cva(
       {
         variant: 'outline',
         color: 'primary',
-        class:
-          'border-pink-500 text-pink-500 hover:bg-pink-100 hover:text-pink-500 hover:border-pink-500',
+        class: 'hover:bg-pink-100',
       },
       {
         variant: 'text',
@@ -72,7 +81,7 @@ const buttonVariants = cva(
       variant: 'filled',
       color: 'primary',
       size: 'md',
-      rounded: false,
+      rounded: 'md',
     },
   }
 );
@@ -87,7 +96,8 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       iconRight,
       children,
       className,
-      rounded = false,
+      rounded = 'md',
+      fontType = 'InterBody1',
       asChild = false,
       disabled,
       ...props
@@ -110,7 +120,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         disabled={disabled}
         ref={ref}
         className={cn(
-          buttonVariants({ variant, color, size, rounded }),
+          buttonVariants({ variant, color, size, rounded, fontType }),
           className
         )}
         {...props}
