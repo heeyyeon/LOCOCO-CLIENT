@@ -1,11 +1,10 @@
 import React from 'react';
 
+import InputWrapper from 'app/[locale]/(with-layout)/my-page/components/input-wrapper';
 import { dateOptions } from 'utils';
 import { timeOptions } from 'utils/time-options';
 
 import { Select } from '@lococo/design-system/select';
-
-import InputWrapper from '../../my-page/components/input-wrapper';
 
 export default function CampaignDueDate() {
   const { AM_PM, HOURS, MINUTES } = timeOptions();
