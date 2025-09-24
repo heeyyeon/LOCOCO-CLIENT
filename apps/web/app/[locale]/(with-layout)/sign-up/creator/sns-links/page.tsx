@@ -15,20 +15,25 @@ export default function CreatorSnsLinksPage() {
   const router = useRouter();
   const t = useTranslations('creatorSnsLinksPage');
 
-  const { connectedSns, isLoading, handleConnectSns } = useSnsStatus();
+  const { connectedSns, isLoading, handleConnectSns, handleCompleteSignup } =
+    useSnsStatus();
 
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isShowConfirmModal, setIsShowConfirmModal] = useState(false);
 
   const hasConnectedAccount = connectedSns.length > 0;
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (!hasConnectedAccount) {
       setIsSubmitted(true);
       return;
     }
 
-    setIsShowConfirmModal(true);
+    const response = await handleCompleteSignup();
+
+    if (response.success) {
+      setIsShowConfirmModal(true);
+    }
   };
 
   const handleConfirmModalConfirm = () => {
