@@ -13,17 +13,17 @@
     "myCampaign": "Mis Campañas"
   },
   "campaignDetail": {
-    "applicationPeriod": "",
-    "campaignSchedule": "",
-    "contentSubmissionPeriod": "",
-    "deliverableRequirements": "",
-    "eligibilityRequirements": "",
-    "localTimeNotice": "",
-    "resultAnnouncement": "",
-    "rewardsAndCompensation": ""
+    "applicationPeriod": "Período de aplicación",
+    "campaignSchedule": "Cronograma de la campaña",
+    "contentSubmissionPeriod": "Período de envío de contenidos",
+    "deliverableRequirements": "Requisitos de entrega",
+    "eligibilityRequirements": "Requisitos de elegibilidad",
+    "localTimeNotice": "Todos los horarios se muestran en tu hora local",
+    "resultAnnouncement": "Anuncio de resultados",
+    "rewardsAndCompensation": "Recompensas y compensación"
   },
   "campaignFilter": {
-    "seeMore": ""
+    "seeMore": "Ver más"
   },
   "card": {
     "campaignThumbnailImage": "Imagen en miniatura de la campaña",
@@ -129,11 +129,22 @@
     "fileTooLarge": "El archivo es demasiado grande.",
     "notAllowedFileType": "Tipo de archivo no permitido."
   },
+  "footer": {
+    "copyright": "Lococo. Todos los derechos reservados.",
+    "links": {
+      "campaignGuideline": "Guía de Campaña",
+      "campaigns": "Campañas",
+      "FAQ": "Preguntas Frecuentes (FAQ)",
+      "howItWorks": "Cómo Funciona",
+      "privacyPolicy": "Política de Privacidad"
+    },
+    "slogan": "Donde los Creadores se Encuentran con la Verdadera K-Beauty"
+  },
   "gnb": {
     "campaigns": "Campañas",
     "howItWorks": "Cómo funciona",
     "login": "Iniciar sesión",
-    "logIn": "",
+    "logIn": "Iniciar sesión",
     "logOut": "Cerrar sesión",
     "myPage": "Mi página",
     "signUp": "Registrarse"
