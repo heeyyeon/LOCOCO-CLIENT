@@ -61,6 +61,7 @@ export const homeAddressSchema = (t: TranslationFunction) =>
       .string()
       .trim()
       .max(20, t('addressLine2MaxLength'))
+      .nullable()
       .optional(),
     zipCode: z.string().trim().max(20, t('zipCodeMaxLength')).optional(),
   });
