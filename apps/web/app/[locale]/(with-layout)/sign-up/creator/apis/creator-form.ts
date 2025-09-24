@@ -21,3 +21,18 @@ export const getCreatorInfo = async (): Promise<CreatorInfoResponse> => {
     method: 'GET',
   });
 };
+
+export const getCreatorSnsStatus = async (): Promise<{
+  success: boolean;
+  status: number;
+  message: string;
+  data: {
+    isInstaConnected: boolean;
+    isTiktokConnected: boolean;
+  };
+}> => {
+  return apiRequest({
+    endPoint: '/api/creator/register/sns-status',
+    method: 'GET',
+  });
+};
