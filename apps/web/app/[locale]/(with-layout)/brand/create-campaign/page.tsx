@@ -82,7 +82,52 @@ export default function CreateCampaign() {
           <SocialChip type="tiktok-video" />
         </div>
       </FormSection>
-
+      <FormSection
+        title="컨텐츠 썸네일 사진"
+        description={`캠페인 상세페이지 썸네일에 보여질 사진들입니다. 고화질 사진을 첨부해주세요.
+          사진은 최대 5장까지 업로드 가능합니다.`}
+      >
+        <CampaignProductMediaInput
+          formData={{
+            campaign: '',
+            contentType: '',
+            campaignProductMedia: thumbnailFiles,
+            captionAndHashtags: '',
+          }}
+          errors={thumbnailError}
+          updateCampaignProductMedia={(files) => {
+            if (files.length > 5) {
+              setThumbnailError('사진은 최대 5장까지 업로드 가능합니다.');
+            } else {
+              setThumbnailError(undefined);
+              setThumbnailFiles(files);
+            }
+          }}
+        />
+      </FormSection>
+      <FormSection
+        title="컨텐츠 상세페이지 사진"
+        description={`캠페인 상세페이지에 보여질 사진들입니다. 고화질 사진을 첨부해주세요.
+          사진은 최대 15장까지 업로드 가능합니다.`}
+      >
+        <CampaignProductMediaInput
+          formData={{
+            campaign: '',
+            contentType: '',
+            campaignProductMedia: detailFiles,
+            captionAndHashtags: '',
+          }}
+          errors={detailError}
+          updateCampaignProductMedia={(files) => {
+            if (files.length > 15) {
+              setDetailError('사진은 최대 15장까지 업로드 가능합니다.');
+            } else {
+              setDetailError(undefined);
+              setDetailFiles(files);
+            }
+          }}
+        />
+      </FormSection>
       <div></div>
       <div></div>
     </div>

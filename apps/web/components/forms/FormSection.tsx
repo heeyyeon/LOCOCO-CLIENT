@@ -19,7 +19,9 @@ export function FormSection({
     <div className={cn('space-y-[1.6rem]', className)}>
       <div>
         <h2 className="title2 font-bold text-gray-800">{title}</h2>
-        <p className="body4 mt-[0.4rem] text-gray-500">{description}</p>
+        <p className="body4 mt-[0.4rem] whitespace-pre-line text-gray-500">
+          {description}
+        </p>
       </div>
       <div className="space-y-4">{children}</div>
     </div>
