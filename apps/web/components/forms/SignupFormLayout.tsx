@@ -23,7 +23,6 @@ export function SignupFormLayout({
   onSubmit,
   submitLabel,
   isBackDisabled = true,
-  isSubmitting = false,
 }: SignupFormLayoutProps) {
   return (
     <main className="bg-gray-100 py-[6.4rem]">
@@ -62,7 +61,6 @@ export function SignupFormLayout({
             size="md"
             onClick={onSubmit}
             rounded="md"
-            disabled={isSubmitting}
           >
             {submitLabel}
           </Button>
