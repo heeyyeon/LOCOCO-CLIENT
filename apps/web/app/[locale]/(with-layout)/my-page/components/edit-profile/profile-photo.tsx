@@ -65,13 +65,14 @@ export default function ProfilePhoto({
       <h2 className="title2 font-bold text-gray-800">{t('title')}</h2>
       <div className="flex w-full flex-col items-center gap-[3.2rem]">
         {profileImage ? (
-          <Image
-            src={profileImage}
-            alt="profile photo"
-            width={72}
-            height={72}
-            className="rounded-full"
-          />
+          <div className="relative h-[7.2rem] w-[7.2rem] overflow-hidden rounded-full">
+            <Image
+              src={profileImage}
+              alt="profile photo"
+              fill
+              className="object-cover"
+            />
+          </div>
         ) : (
           <SvgAvatar size={72} className="rounded-full" />
         )}
