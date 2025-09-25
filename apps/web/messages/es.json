@@ -4,6 +4,89 @@
   "brandMyPage": {
     "myCampaign": "Mis Campañas"
   },
+  "brandMyPageCreateCampaign": {
+    "basicInfo": {
+      "category": "",
+      "creatorCount": "",
+      "creatorCountPlaceholder": "",
+      "language": "",
+      "title": "",
+      "titlePlaceholder": "",
+      "type": ""
+    },
+    "buttons": {
+      "publish": "",
+      "save": ""
+    },
+    "conditions": {
+      "inputPlaceholder": "",
+      "joinConditionDescription": "",
+      "joinConditionTitle": "",
+      "rewardDescription": "",
+      "rewardTitle": "",
+      "submitConditionDescription": "",
+      "submitConditionTitle": ""
+    },
+    "media": {
+      "detailDescription": "",
+      "detailTitle": "",
+      "thumbnailDescription": "",
+      "thumbnailTitle": ""
+    },
+    "options": {
+      "category": {
+        "MAKEUP": "",
+        "SKINCARE": "",
+        "SUNCARE": ""
+      },
+      "language": {
+        "EN": "",
+        "ES": ""
+      },
+      "type": {
+        "CONTENTS": "",
+        "EXCLUSIVE": "",
+        "GIVEAWAY": ""
+      }
+    },
+    "pageTitle": "",
+    "platform": {
+      "description": "",
+      "firstContent": "",
+      "secondContent": "",
+      "title": ""
+    },
+    "schedule": {
+      "announceDate": "",
+      "announceTime": "",
+      "dueDate": "",
+      "dueTime": "",
+      "endDate": "",
+      "endTime": "",
+      "placeholders": {
+        "amPm": "",
+        "day": "",
+        "hour": "",
+        "minute": "",
+        "month": "",
+        "year": ""
+      },
+      "startDate": "",
+      "startTime": ""
+    },
+    "validation": {
+      "conditionRequired": "",
+      "creatorCountRequired": "",
+      "detailMaxFiles": "",
+      "firstContentMaxExceeded": "",
+      "firstContentMinRequired": "",
+      "rewardRequired": "",
+      "secondContentMaxExceeded": "",
+      "secondContentRequiresFirst": "",
+      "thumbnailMaxFiles": "",
+      "titleRequired": ""
+    }
+  },
   "brandMyPageSideBar": {
     "checkApplicants": "Revisar Solicitantes",
     "checkContents": "Revisar Contenidos",
@@ -35,17 +118,46 @@
     "message": "Tu solicitud se ha enviado con éxito.\nTe enviaremos el resultado por correo electrónico en un plazo de 24 horas.",
     "title": "¡Enviado con éxito!"
   },
-  "ConfirmSignupModal": {
-    "confirmButton": "",
-    "message": "",
-    "title": ""
+  "creatorOptions": {
+    "contentLanguage": {
+      "ENGLISH": "",
+      "ENGLISH_AND_SPANISH": "",
+      "SPANISH": ""
+    },
+    "gender": {
+      "FEMALE": "",
+      "MALE": "",
+      "NON_BINARY": "",
+      "PREFER_NOT_TO_SAY": ""
+    },
+    "skinTone": {
+      "SHADE_1": "",
+      "SHADE_2": "",
+      "SHADE_3": "",
+      "SHADE_4": ""
+    },
+    "skinType": {
+      "COMBINATION": "",
+      "DRY": "",
+      "NORMAL": "",
+      "OILY": "",
+      "OTHERS": "",
+      "SENSITIVE": ""
+    }
   },
   "creatorSignup": {
+    "button": {
+      "back": "",
+      "next": ""
+    },
     "communityName": {
       "checkAvailabilityButton": "Comprobar disponibilidad",
       "description": "(La ID debe tener entre 1 y 15 caracteres y solo puede contener letras, números, puntos (.) y guiones bajos (_)).",
+      "idAvailable": "",
       "idLabel": "ID",
       "idPlaceholder": "ej: ilovelococo",
+      "idRequired": "",
+      "idTaken": "",
       "title": "Nombre de la comunidad"
     },
     "homeAddress": {
@@ -63,6 +175,11 @@
       "title": "Dirección de domicilio",
       "zipCodeLabel": "Código postal",
       "zipCodePlaceholder": "ej: 60606"
+    },
+    "layout": {
+      "back": "",
+      "next": "",
+      "title": ""
     },
     "personalDetails": {
       "birthLabel": "Fecha de nacimiento",
@@ -104,6 +221,7 @@
       "firstNameMaxLength": "Puedes usar hasta 20 caracteres.",
       "firstNameRequired": "El nombre es obligatorio.",
       "genderRequired": "El género es obligatorio.",
+      "idAvailabilityCheck": "",
       "idInvalidFormat": "Este ID no está disponible. Por favor, revisa el formato del ID.",
       "idMaxLength": "Puede utilizar hasta 15 caracteres.",
       "idRequired": "El ID es obligatorio.",
@@ -206,9 +324,18 @@
         "tiktokVideo": "Video de TikTok",
         "title": "Tipo de contenido"
       },
+      "empty": {
+        "title": ""
+      },
       "hashtagsInput": {
         "description": "Pegue exactamente el pie de foto y los hashtags que utilizó.",
         "title": "Envíe su pie de foto y hashtags"
+      },
+      "saveSubmitModal": {
+        "firstDescription": "",
+        "save": "",
+        "secondDescription": "",
+        "title": ""
       }
     },
     "editProfile": {
@@ -306,6 +433,12 @@
       "contentSubmissions": "Envíos de contenido",
       "editProfile": "Editar perfil",
       "myCampaign": "Mi campaña"
+    },
+    "myCampaign": {
+      "empty": {
+        "title": ""
+      },
+      "title": ""
     },
     "saveFormModal": {
       "description": "Tus cambios han sido guardados.",

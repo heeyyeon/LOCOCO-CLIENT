@@ -4,6 +4,89 @@
   "brandMyPage": {
     "myCampaign": "내 캠페인 "
   },
+  "brandMyPageCreateCampaign": {
+    "basicInfo": {
+      "category": "카테고리",
+      "creatorCount": "모집 예정 크리에이터 수",
+      "creatorCountPlaceholder": "숫자를 입력하세요",
+      "language": "캠페인 진행 언어",
+      "title": "캠페인 제목",
+      "titlePlaceholder": "캠페인 제목을 입력하세요",
+      "type": "캠페인 종류"
+    },
+    "buttons": {
+      "publish": "캠페인 발행하기",
+      "save": "저장하기"
+    },
+    "conditions": {
+      "inputPlaceholder": "text",
+      "joinConditionDescription": "캠페인에 참여할 수 있는 크리에이터의 조건을 설명해주세요",
+      "joinConditionTitle": "참여 크리에이터 조건",
+      "rewardDescription": "캠페인에 참여할 수 있는 크리에이터의 조건을 설명해주세요",
+      "rewardTitle": "크리에이터 참여 보상",
+      "submitConditionDescription": "캠페인에 참여할 수 있는 크리에이터의 조건을 설명해주세요",
+      "submitConditionTitle": "크리에이터 제출 컨텐츠 조건"
+    },
+    "media": {
+      "detailDescription": "캠페인 상세페이지에 보여질 사진들입니다. 고화질 사진을 첨부해주세요.\n사진은 최대 15장까지 업로드 가능합니다.",
+      "detailTitle": "컨텐츠 상세페이지 사진",
+      "thumbnailDescription": "캠페인 상세페이지 썸네일에 보여질 사진들입니다. 고화질 사진을 첨부해주세요.\n사진은 최대 5장까지 업로드 가능합니다.",
+      "thumbnailTitle": "컨텐츠 썸네일 사진"
+    },
+    "options": {
+      "category": {
+        "MAKEUP": "메이크업",
+        "SKINCARE": "스킨케어",
+        "SUNCARE": "선케어"
+      },
+      "language": {
+        "EN": "영어",
+        "ES": "스페인어"
+      },
+      "type": {
+        "CONTENTS": "컨텐츠",
+        "EXCLUSIVE": "독점",
+        "GIVEAWAY": "기브어웨이"
+      }
+    },
+    "pageTitle": "캠페인 정보",
+    "platform": {
+      "description": "(최대 2개까지 선택 가능합니다.)",
+      "firstContent": "첫번째 컨텐츠",
+      "secondContent": "두번째 컨텐츠",
+      "title": "컨텐츠 플랫폼 선택"
+    },
+    "schedule": {
+      "announceDate": "캠페인 당첨자 발표일",
+      "announceTime": "캠페인 당첨자 발표 시각",
+      "dueDate": "2차 컨텐츠 최종 제출일",
+      "dueTime": "2차 컨텐츠 최종 제출 시각",
+      "endDate": "캠페인 지원 종료일",
+      "endTime": "캠페인 지원 종료 시각",
+      "placeholders": {
+        "amPm": "AM/PM",
+        "day": "일",
+        "hour": "시",
+        "minute": "분",
+        "month": "월",
+        "year": "년"
+      },
+      "startDate": "캠페인 지원 시작일",
+      "startTime": "캠페인 지원 시작 시각"
+    },
+    "validation": {
+      "conditionRequired": "조건을 입력해주세요",
+      "creatorCountRequired": "모집 예정 크리에이터 수는 필수입니다",
+      "detailMaxFiles": "상세 사진은 최대 15장까지 업로드 가능합니다",
+      "firstContentMaxExceeded": "첫 번째 컨텐츠는 최대 2개까지 선택 가능합니다",
+      "firstContentMinRequired": "첫 번째 컨텐츠는 최소 1개 이상 선택해야 합니다",
+      "rewardRequired": "보상을 입력해주세요",
+      "secondContentMaxExceeded": "두 번째 컨텐츠는 최대 2개까지 선택 가능합니다",
+      "secondContentRequiresFirst": "두 번째 컨텐츠를 선택하려면 첫 번째 컨텐츠를 먼저 선택해야 합니다",
+      "thumbnailMaxFiles": "썸네일은 최대 5장까지 업로드 가능합니다",
+      "titleRequired": "캠페인 제목은 필수입니다"
+    }
+  },
   "brandMyPageSideBar": {
     "checkApplicants": "지원자 확인",
     "checkContents": "컨텐츠 확인",
@@ -35,17 +118,46 @@
     "message": "신청이 성공적으로 제출되었습니다. \n결과는 24시간 이내에 이메일로 보내드리겠습니다.",
     "title": "성공적으로 제출되었습니다!"
   },
-  "ConfirmSignupModal": {
-    "confirmButton": "",
-    "message": "",
-    "title": ""
+  "creatorOptions": {
+    "contentLanguage": {
+      "ENGLISH": "",
+      "ENGLISH_AND_SPANISH": "",
+      "SPANISH": ""
+    },
+    "gender": {
+      "FEMALE": "",
+      "MALE": "",
+      "NON_BINARY": "",
+      "PREFER_NOT_TO_SAY": ""
+    },
+    "skinTone": {
+      "SHADE_1": "",
+      "SHADE_2": "",
+      "SHADE_3": "",
+      "SHADE_4": ""
+    },
+    "skinType": {
+      "COMBINATION": "",
+      "DRY": "",
+      "NORMAL": "",
+      "OILY": "",
+      "OTHERS": "",
+      "SENSITIVE": ""
+    }
   },
   "creatorSignup": {
+    "button": {
+      "back": "",
+      "next": ""
+    },
     "communityName": {
       "checkAvailabilityButton": "중복 확인 ",
       "description": "(ID는 1자에서 15자 사이여야 하며, 문자, 숫자, 마침표(.), 밑줄(_)만 사용할 수 있습니다.)",
+      "idAvailable": "",
       "idLabel": "ID",
       "idPlaceholder": "ex: ilovelococo",
+      "idRequired": "",
+      "idTaken": "",
       "title": "커뮤니티 이름"
     },
     "homeAddress": {
@@ -63,6 +175,11 @@
       "title": "집 주소",
       "zipCodeLabel": "우편 번호 ",
       "zipCodePlaceholder": "ex: 60606"
+    },
+    "layout": {
+      "back": "",
+      "next": "",
+      "title": ""
     },
     "personalDetails": {
       "birthLabel": "생년월일",
@@ -104,6 +221,7 @@
       "firstNameMaxLength": "최대 20자까지 입력할 수 있습니다. ",
       "firstNameRequired": "이름은 필수입니다. ",
       "genderRequired": "성별은 필수입니다. ",
+      "idAvailabilityCheck": "",
       "idInvalidFormat": "이 ID는 사용할 수 없습니다. ID 형식을 확인해 주세요.",
       "idMaxLength": "최대 15자까지 사용할 수 있습니다.",
       "idRequired": "ID는 필수 입력 항목입니다.",
@@ -206,9 +324,18 @@
         "tiktokVideo": "틱톡 영상",
         "title": "콘텐츠 유형"
       },
+      "empty": {
+        "title": ""
+      },
       "hashtagsInput": {
         "description": "사용한 캡션과 해시태그를 그대로 붙여 넣어 주세요.",
         "title": "캡션 & 해시태그 제출하기"
+      },
+      "saveSubmitModal": {
+        "firstDescription": "",
+        "save": "",
+        "secondDescription": "",
+        "title": ""
       }
     },
     "editProfile": {
@@ -306,6 +433,12 @@
       "contentSubmissions": "컨텐츠 제출 ",
       "editProfile": "프로필 편집",
       "myCampaign": "내 캠페인"
+    },
+    "myCampaign": {
+      "empty": {
+        "title": ""
+      },
+      "title": ""
     },
     "saveFormModal": {
       "description": "변경 사항이 저장되었습니다.",
