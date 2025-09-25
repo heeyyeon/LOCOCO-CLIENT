@@ -1,16 +1,18 @@
 import { useEffect } from 'react';
-import { useFieldArray, useFormContext } from 'react-hook-form';
+import { useFieldArray, useFormContext, useWatch } from 'react-hook-form';
 
 export function useDynamicInputs(fieldPath: string) {
-  const { control, watch } = useFormContext();
+  const { control } = useFormContext();
 
   const { fields, append, remove, update } = useFieldArray({
     control,
     name: fieldPath,
   });
 
-  const currentValue = watch(fieldPath);
-
+  const currentValue = useWatch({
+    control,
+    name: fieldPath,
+  });
   useEffect(() => {
     if (currentValue && currentValue.length > 0 && fields.length === 0) {
       console.log(`Syncing fields for ${fieldPath}`);
