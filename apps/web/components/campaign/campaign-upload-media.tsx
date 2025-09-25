@@ -1,15 +1,22 @@
 'use client';
 
-import { useState } from 'react';
-
 import { FormSection } from 'components/forms';
 
 import { DragDropArea } from './drag-drop';
 
-export default function CampaignUploadMedia() {
-  const [thumbnailFiles, setThumbnailFiles] = useState<File[]>([]);
-  const [detailFiles, setDetailFiles] = useState<File[]>([]);
+interface CampaignUploadMediaProps {
+  thumbnailFiles: File[];
+  detailFiles: File[];
+  setThumbnailFiles: (thumbnailFiles: File[]) => void;
+  setDetailFiles: (detailFiles: File[]) => void;
+}
 
+export default function CampaignUploadMedia({
+  thumbnailFiles,
+  detailFiles,
+  setDetailFiles,
+  setThumbnailFiles,
+}: CampaignUploadMediaProps) {
   return (
     <div className="flex w-full flex-col gap-[4.8rem]">
       <FormSection

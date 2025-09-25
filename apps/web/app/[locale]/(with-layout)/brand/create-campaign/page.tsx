@@ -2,6 +2,7 @@
 
 import CampaignUploadMedia from 'components/campaign/campaign-upload-media';
 import { FormSection } from 'components/forms';
+import { useCampaignUploadMedia } from 'hooks/useCampaignUploadMedia';
 
 import InputWrapper from '../../my-page/components/input-wrapper';
 import CampaignDueDate from '../component/create-campaign/campaign-due-date';
@@ -24,9 +25,11 @@ export default function CreateCampaign() {
 
   const firstContents = usePlatformCheck();
   const secondContents = usePlatformCheck();
+
+  const campaignUploadState = useCampaignUploadMedia();
   return (
     <div className="flex min-h-[260.4rem] w-[84rem] flex-col gap-[4.8rem] bg-white px-[9.6rem] py-[4.8rem]">
-      <h3>캠페인 정보</h3>
+      <h3 className="title2 font-[700] text-gray-800">캠페인 정보</h3>
       <CampaignInfo />
       <CampaignStartInfo />
       <CampaignEndInfo />
@@ -77,6 +80,7 @@ export default function CreateCampaign() {
               type={platform}
               selected={firstContents.selectStatus[platform]}
               onClick={firstContents.toggleChip}
+              disabled={firstContents.isDisabled(platform)}
             />
           ))}
         </div>
@@ -88,11 +92,17 @@ export default function CreateCampaign() {
               type={platform}
               selected={secondContents.selectStatus[platform]}
               onClick={secondContents.toggleChip}
+              disabled={secondContents.isDisabled(platform)}
             />
           ))}
         </div>
       </FormSection>
-      <CampaignUploadMedia />
+      <CampaignUploadMedia
+        thumbnailFiles={campaignUploadState.thumbnailFiles}
+        detailFiles={campaignUploadState.detailFiles}
+        setThumbnailFiles={campaignUploadState.setThumbnailFiles}
+        setDetailFiles={campaignUploadState.setDetailFiles}
+      />
       <div></div>
       <div></div>
     </div>

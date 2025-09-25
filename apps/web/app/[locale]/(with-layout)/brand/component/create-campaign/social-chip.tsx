@@ -36,6 +36,7 @@ interface SocialChipProps {
   onClick: (type: SocialPlatform) => void;
   className?: string;
   selected?: boolean;
+  disabled?: boolean;
 }
 
 export default function SocialChip({
@@ -43,16 +44,19 @@ export default function SocialChip({
   onClick,
   className = '',
   selected = false,
+  disabled = false,
 }: SocialChipProps) {
   const config = SOCIAL_CONFIGS[type];
 
   return (
     <button
       className={`border-1 flex items-center gap-[0.6rem] rounded-[2.4rem] px-[1.2rem] py-[1rem] ${
+        disabled ? 'cursor-not-allowed' : ''
+      } ${
         selected ? 'border-pink-500 bg-pink-100' : 'border-gray-400'
       } ${className}`}
-      onClick={() => onClick(type)}
-      aria-label={config.label}
+      onClick={() => !disabled && onClick(type)}
+      disabled={disabled}
     >
       <Image src={config.icon} alt={config.alt} width={20} height={20} />
       <span className={`body1 font-[700] ${selected ? 'text-pink-500' : ''}`}>

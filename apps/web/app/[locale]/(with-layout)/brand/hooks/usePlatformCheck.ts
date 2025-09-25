@@ -11,12 +11,21 @@ export const usePlatformCheck = () => {
     'tiktok-video': false,
   });
 
+  const selectedCount = Object.values(selectStatus).filter(Boolean).length;
+
   const toggleChip = (type: SocialPlatform) => {
-    setSelectStatus((prev) => ({
-      ...prev,
-      [type]: !prev[type],
-    }));
+    if (selectStatus[type] || selectedCount < 2) {
+      setSelectStatus((prev) => ({
+        ...prev,
+        [type]: !prev[type],
+      }));
+    }
   };
 
-  return { selectStatus, toggleChip };
+  const isDisabled = (type: SocialPlatform) => {
+    const selectedCount = Object.values(selectStatus).filter(Boolean).length;
+    return !selectStatus[type] && selectedCount >= 2;
+  };
+
+  return { selectStatus, toggleChip, selectedCount, isDisabled };
 };
