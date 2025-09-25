@@ -11,16 +11,19 @@ import { useCreatorForm } from './hooks/useCreatorForm';
 export default function CreatorSignupPage() {
   const locale = useLocale();
   const t = useTranslations('creatorSignup.layout');
-  const { form, isSubmitting, handleBack, handleNext } = useCreatorForm();
+  const { form, handleBack, handleNext } = useCreatorForm();
+
+  const handleSubmit = form.handleSubmit((data) => {
+    handleNext(data);
+  });
 
   return (
     <SignupFormLayout
       title={t('title')}
       onBack={handleBack}
-      onSubmit={form.handleSubmit(handleNext)}
+      onSubmit={handleSubmit}
       isValid={form.formState.isValid}
       submitLabel={t('next')}
-      isSubmitting={isSubmitting}
     >
       <CreatorFormSections form={form} locale={locale} />
     </SignupFormLayout>

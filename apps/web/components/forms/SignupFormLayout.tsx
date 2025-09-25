@@ -26,7 +26,7 @@ export function SignupFormLayout({
   submitLabel,
   isBackDisabled = true,
 }: SignupFormLayoutProps) {
-  const t = useTranslations('creatorSignup.button');
+  const t = useTranslations('creatorSignup.layout');
   return (
     <main className="bg-gray-100 py-[6.4rem]">
       <div className="mx-auto max-w-[74.4rem] px-4">
@@ -58,7 +58,7 @@ export function SignupFormLayout({
             {t('back')}
           </Button>
           <Button
-            type="submit"
+            type="button"
             variant="filled"
             color="primary"
             size="md"
