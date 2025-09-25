@@ -114,6 +114,10 @@
       "stateMaxLength": "Use up to 20 characters.",
       "stateRequired": "State/Region/Province is required.",
       "zipCodeMaxLength": "Use up to 20 characters."
+    },
+    "button": {
+      "next": "Next",
+      "back": "Back"
     }
   },
   "creatorSnsLinksPage": {
