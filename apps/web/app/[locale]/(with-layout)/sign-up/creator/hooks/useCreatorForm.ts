@@ -43,13 +43,39 @@ export const useCreatorForm = () => {
     },
   });
 
+  const cleanFormData = (
+    data: Partial<CreatorSignupForm>
+  ): CreatorSignupForm => {
+    return {
+      id: data.id || '',
+      birthMonth: data.birthMonth || '',
+      birthDay: data.birthDay || '',
+      birthYear: data.birthYear || '',
+      gender: data.gender || '',
+      firstName: data.firstName || '',
+      lastName: data.lastName || '',
+      phoneCountryCode: data.phoneCountryCode || '',
+      phoneNumber: data.phoneNumber || '',
+      contentLanguage: data.contentLanguage || '',
+      country: data.country || '',
+      stateRegion: data.stateRegion || '',
+      city: data.city || '',
+      addressLine1: data.addressLine1 || '',
+      addressLine2: data.addressLine2 || '',
+      zipCode: data.zipCode || '',
+      skinType: data.skinType || '',
+      skinTone: data.skinTone || '',
+    };
+  };
+
   useEffect(() => {
     const fetchUserData = async () => {
       const response = await getCreatorInfo();
 
       if (response.success && response.data) {
         const formData = transformApiToForm(response.data);
-        form.reset(formData);
+        const cleanedFormData = cleanFormData(formData);
+        form.reset(cleanedFormData);
       }
     };
 
@@ -61,9 +87,10 @@ export const useCreatorForm = () => {
   };
 
   const handleNext = async (data: CreatorSignupForm) => {
+    const cleanedData = cleanFormData(data);
     setIsSubmitting(true);
 
-    const apiData = transformFormToApi(data);
+    const apiData = transformFormToApi(cleanedData);
     const response = await registerCreatorInfo(apiData);
 
     if (response.success) {
