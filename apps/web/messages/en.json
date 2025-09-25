@@ -173,6 +173,9 @@
       "zip": "Zip/Postal Code"
     },
     "contentSubmissions": {
+      "empty": {
+        "title": "There is no content to review."
+      },
       "campaignProductMediaInput": {
         "description": "Drag and drop or click to upload the file.",
         "selectFile": "Select File",
@@ -193,6 +196,12 @@
       "hashtagsInput": {
         "description": "Please paste the exact caption and hashtags you used on",
         "title": "Submit Your Caption & Hashtags"
+      },
+      "saveSubmitModal": {
+        "firstDescription": "Your first submission has been received. The brand will review it and send a brand’s note.",
+        "secondDescription": "Your final submission has been received. Thank you for your submission.",
+        "save": "Okay",
+        "title": "Submitted successfully"
       }
     },
     "editProfile": {
@@ -295,6 +304,11 @@
       "description": "Your changes have been saved.",
       "save": "Okay",
       "title": "Saved successfully"
+    },
+    "myCampaign": {
+      "empty": {
+        "title": "There is no campaign has been applied."
+      }
     }
   },
   "selectRoleModal": {
