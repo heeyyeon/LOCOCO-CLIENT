@@ -35,17 +35,46 @@
     "message": "신청이 성공적으로 제출되었습니다. \n결과는 24시간 이내에 이메일로 보내드리겠습니다.",
     "title": "성공적으로 제출되었습니다!"
   },
-  "ConfirmSignupModal": {
-    "confirmButton": "",
-    "message": "",
-    "title": ""
+  "creatorOptions": {
+    "contentLanguage": {
+      "ENGLISH": "",
+      "ENGLISH_AND_SPANISH": "",
+      "SPANISH": ""
+    },
+    "gender": {
+      "FEMALE": "",
+      "MALE": "",
+      "NON_BINARY": "",
+      "PREFER_NOT_TO_SAY": ""
+    },
+    "skinTone": {
+      "SHADE_1": "",
+      "SHADE_2": "",
+      "SHADE_3": "",
+      "SHADE_4": ""
+    },
+    "skinType": {
+      "COMBINATION": "",
+      "DRY": "",
+      "NORMAL": "",
+      "OILY": "",
+      "OTHERS": "",
+      "SENSITIVE": ""
+    }
   },
   "creatorSignup": {
+    "button": {
+      "back": "",
+      "next": ""
+    },
     "communityName": {
       "checkAvailabilityButton": "중복 확인 ",
       "description": "(ID는 1자에서 15자 사이여야 하며, 문자, 숫자, 마침표(.), 밑줄(_)만 사용할 수 있습니다.)",
+      "idAvailable": "",
       "idLabel": "ID",
       "idPlaceholder": "ex: ilovelococo",
+      "idRequired": "",
+      "idTaken": "",
       "title": "커뮤니티 이름"
     },
     "homeAddress": {
@@ -206,9 +235,18 @@
         "tiktokVideo": "틱톡 영상",
         "title": "콘텐츠 유형"
       },
+      "empty": {
+        "title": ""
+      },
       "hashtagsInput": {
         "description": "사용한 캡션과 해시태그를 그대로 붙여 넣어 주세요.",
         "title": "캡션 & 해시태그 제출하기"
+      },
+      "saveSubmitModal": {
+        "firstDescription": "",
+        "save": "",
+        "secondDescription": "",
+        "title": ""
       }
     },
     "editProfile": {
@@ -306,6 +344,12 @@
       "contentSubmissions": "컨텐츠 제출 ",
       "editProfile": "프로필 편집",
       "myCampaign": "내 캠페인"
+    },
+    "myCampaign": {
+      "empty": {
+        "title": ""
+      },
+      "title": ""
     },
     "saveFormModal": {
       "description": "변경 사항이 저장되었습니다.",
