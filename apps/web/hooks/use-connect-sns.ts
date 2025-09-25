@@ -10,15 +10,10 @@ import {
   ApiResponseVoid,
 } from 'swagger-codegen/data-contracts';
 
-const headers: HeadersInit = {
-  'Content-Type': 'application/json',
-  Authorization: `Bearer ${process.env.NEXT_PUBLIC_AUTH_TOKEN}`,
-};
 const fetchConnectSns =
   async (): Promise<ApiResponseCreatorSnsConnectedResponse> => {
     const response = await apiRequest<ApiResponseCreatorSnsConnectedResponse>({
       endPoint: '/api/creator/register/sns-status',
-      headers,
     });
 
     if (!response.success) {
@@ -38,7 +33,6 @@ export const useConnectSns = () => {
 export const useConnectTiktok = async () => {
   const response = await apiRequest<ApiResponseVoid>({
     endPoint: '/api/auth/sns/tiktok/connect',
-    headers,
   });
   window.open(response.data, '_blank');
   if (!response.success) {
@@ -109,7 +103,7 @@ export const useOAuthCallback = () => {
   const handleTiktokCallback = async (code: string, state: string) => {
     const response = await apiRequest<ApiResponseVoid>({
       endPoint: '/api/auth/sns/tiktok/callback',
-      headers,
+
       params: { code, state },
     });
 
@@ -123,7 +117,7 @@ export const useOAuthCallback = () => {
   const handleInstagramCallback = async (code: string, state: string) => {
     const response = await apiRequest<ApiResponseVoid>({
       endPoint: '/api/auth/sns/instagram/callback',
-      headers,
+
       params: { code, state },
     });
 

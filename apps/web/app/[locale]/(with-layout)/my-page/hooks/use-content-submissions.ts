@@ -264,16 +264,10 @@ export const useContentSubmissions = (onSuccess?: () => void) => {
   };
 };
 
-const headers = {
-  'Content-Type': 'application/json',
-  Authorization: `Bearer ${process.env.NEXT_PUBLIC_AUTH_TOKEN}`,
-};
-
 const getMediaPresignedUrls = async (file: File[]): Promise<string[]> => {
   const response = await apiRequest<ApiResponseReviewMediaResponse>({
     endPoint: '/api/reviews/media',
     method: 'POST',
-    headers: headers,
     data: {
       mediaType: file.map((file) => file.type),
     },
@@ -310,7 +304,6 @@ const submitReviewApi = async (campaignId: number, data: any) => {
   const response = await apiRequest<ApiResponseReviewReceiptResponse>({
     endPoint: `/api/campaignReviews/${campaignId}/first`,
     method: 'POST',
-    headers: headers,
     data: data,
   });
 
