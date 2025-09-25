@@ -89,6 +89,11 @@
       "skinTypePlaceholder": "Skin Type",
       "title": "Additional Information"
     },
+    "layout": {
+      "title": "Join Lococo Creator Community!",
+      "next": "Next",
+      "back": "Back"
+    },
     "title": "Join Lococo Creator Community!",
     "validation": {
       "addressLine1MaxLength": "Use up to 20 characters.",
@@ -114,10 +119,6 @@
       "stateMaxLength": "Use up to 20 characters.",
       "stateRequired": "State/Region/Province is required.",
       "zipCodeMaxLength": "Use up to 20 characters."
-    },
-    "button": {
-      "next": "Next",
-      "back": "Back"
     }
   },
   "creatorSnsLinksPage": {
