@@ -30,7 +30,7 @@ import { usePlatformSelection } from '../hooks/usePlatformSelection';
 export default function CreateCampaign() {
   const methods = useForm<CampaignFormData>({
     resolver: zodResolver(createCampaignSchema),
-    mode: 'onBlur',
+    mode: 'onChange',
     shouldFocusError: false,
     defaultValues: {
       title: '',
@@ -109,7 +109,9 @@ export default function CreateCampaign() {
       detailFiles: data.detailFiles,
     });
   };
+
   const t = useTranslations('brandMyPageCreateCampaign');
+
   return (
     <FormProvider {...methods}>
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -160,8 +162,8 @@ export default function CreateCampaign() {
                 )}
               </div>
               {errors.firstContents && (
-                <p className="caption3 text-red font-[400]">
-                  {t('errorMessage.firstContents')}
+                <p className="body2 text-red font-[500]">
+                  {t(`errorMessage.${errors.firstContents.message}`)}
                 </p>
               )}
               <InputWrapper label={t('platform.secondContent')} />
@@ -178,6 +180,11 @@ export default function CreateCampaign() {
                   )
                 )}
               </div>
+              {errors.secondContents && (
+                <p className="body2 text-red font-[500]">
+                  {t(`errorMessage.${errors.secondContents.message}`)}
+                </p>
+              )}
             </FormSection>
             <CampaignUploadMedia />
           </div>

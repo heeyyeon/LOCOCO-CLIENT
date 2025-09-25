@@ -34,7 +34,7 @@ export default function CampaignUploadMedia() {
         />
         {errors.thumbnailFiles && (
           <p className="text-red caption3 font-[400]">
-            {t('errorMessage.campaignMediaThumbnail')}
+            {t(`errorMessage.${errors.thumbnailFiles.message}`)}
           </p>
         )}
       </FormSection>
@@ -50,7 +50,7 @@ export default function CampaignUploadMedia() {
         />
         {errors.detailFiles && (
           <p className="text-red caption3 font-[400]">
-            {t('errorMessage.campaignMediaDetail')}
+            {t(`errorMessage.${errors.detailFiles.message}`)}
           </p>
         )}
       </FormSection>

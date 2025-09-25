@@ -48,7 +48,9 @@ export default function CampaignEndInfo() {
           errors.endDate?.day ||
           errors.endDate?.year) && (
           <p className="text-red caption3 font-[400]">
-            {t('errorMessage.campaignEndDay')}
+            {t(
+              `errorMessage.${errors.endDate.month?.message || errors.endDate.day?.message || errors.endDate.year?.message}`
+            )}
           </p>
         )}
       </SelectFormField>
@@ -76,7 +78,9 @@ export default function CampaignEndInfo() {
         </div>
         {(errors.endTime?.hour || errors.endTime?.minute) && (
           <p className="text-red caption3 font-[400]">
-            {t('errorMessage.campaignEndTime')}
+            {t(
+              `errorMessage.${errors.endTime.hour?.message || errors.endTime.minute?.message}`
+            )}
           </p>
         )}
       </SelectFormField>

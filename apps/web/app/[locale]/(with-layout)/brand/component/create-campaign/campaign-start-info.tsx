@@ -16,10 +16,10 @@ export default function CampaignStartInfo() {
     formState: { errors },
   } = useFormContext<CampaignFormData>();
 
-  const t = useTranslations('brandMyPageCreateCampaign.schedule');
+  const t = useTranslations('brandMyPageCreateCampaign');
   return (
     <section className="flex w-[64.8rem] flex-col gap-[1.6rem]">
-      <SelectFormField label={t('startDate')} required>
+      <SelectFormField label={t('schedule.startDate')} required>
         <div className="flex gap-[2.4rem]">
           <RHFSelect
             name="startDate.month"
@@ -44,12 +44,14 @@ export default function CampaignStartInfo() {
           errors.startDate?.day ||
           errors.startDate?.year) && (
           <p className="text-red caption3 font-[400]">
-            {t('errorMessage.campaignStartDay')}
+            {t(
+              `errorMessage.${errors.startDate.month?.message || errors.startDate.day?.message || errors.startDate.year?.message}`
+            )}
           </p>
         )}
       </SelectFormField>
 
-      <SelectFormField label={t('startTime')} required>
+      <SelectFormField label={t('schedule.startTime')} required>
         <div className="flex gap-[2.4rem]">
           <RHFSelect
             name="startTime.period"
@@ -70,11 +72,11 @@ export default function CampaignStartInfo() {
             size="small"
           />
         </div>
-        {(errors.startTime?.period ||
-          errors.startTime?.hour ||
-          errors.startTime?.minute) && (
+        {(errors.startTime?.hour || errors.startTime?.minute) && (
           <p className="text-red caption3 font-[400]">
-            {t('errorMessage.campaignStartDay')}
+            {t(
+              `errorMessage.${errors.startTime.hour?.message || errors.startTime.minute?.message}`
+            )}
           </p>
         )}
       </SelectFormField>

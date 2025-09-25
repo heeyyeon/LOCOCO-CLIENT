@@ -48,7 +48,9 @@ export default function CampaignDueDate() {
           errors.dueDate?.day ||
           errors.dueDate?.year) && (
           <p className="text-red caption3 font-[400]">
-            {t('errorMessage.campaignDueDay')}
+            {t(
+              `errorMessage.${errors.dueDate.month?.message || errors.dueDate.day?.message || errors.dueDate.year?.message}`
+            )}
           </p>
         )}
       </InputWrapper>
@@ -97,7 +99,9 @@ export default function CampaignDueDate() {
         </div>
         {(errors.dueTime?.hour || errors.dueTime?.minute) && (
           <p className="text-red caption3 font-[400]">
-            {t('errorMessage.campaignDueTime')}
+            {t(
+              `errorMessage.${errors.dueTime.hour?.message || errors.dueTime.minute?.message}`
+            )}
           </p>
         )}
       </InputWrapper>

@@ -48,7 +48,9 @@ export default function CampaignWinnerAnnounce() {
           errors.announceDate?.day ||
           errors.announceDate?.year) && (
           <p className="text-red caption3 font-[400]">
-            {t('errorMessage.campaignAnnounceDay')}
+            {t(
+              `errorMessage.${errors.announceDate.month?.message || errors.announceDate.day?.message || errors.announceDate.year?.message}`
+            )}
           </p>
         )}
       </SelectFormField>
@@ -76,7 +78,9 @@ export default function CampaignWinnerAnnounce() {
         </div>
         {(errors.announceTime?.hour || errors.announceTime?.minute) && (
           <p className="text-red caption3 font-[400]">
-            {t('errorMessage.campaignAnnounceTime')}
+            {t(
+              `errorMessage.${errors.announceTime.hour?.message || errors.announceTime.minute?.message}`
+            )}
           </p>
         )}
       </SelectFormField>
