@@ -4,9 +4,6 @@ import {
 } from '../types/creator-form';
 import { type CreatorSignupForm } from './signup';
 
-/**
- * API 응답 데이터를 폼 데이터 형식으로 변환
- */
 export const transformApiToForm = (
   apiData: CreatorInfoResponse['data']
 ): CreatorSignupForm => {
@@ -22,14 +19,18 @@ export const transformApiToForm = (
     city: apiData.cityOrTown,
     addressLine2: apiData.addressLine2 || '',
     zipCode: apiData.postalCode || '',
-
-    ...apiData,
+    gender: apiData.gender || '',
+    firstName: apiData.firstName || '',
+    lastName: apiData.lastName || '',
+    phoneNumber: apiData.phoneNumber || '',
+    contentLanguage: apiData.contentLanguage || '',
+    country: apiData.country || '',
+    addressLine1: apiData.addressLine1 || '',
+    skinType: apiData.skinType || '',
+    skinTone: apiData.skinTone || '',
   };
 };
 
-/**
- * 폼 데이터를 API 요청 형식으로 변환
- */
 export const transformFormToApi = (
   formData: CreatorSignupForm
 ): CreatorRegisterRequest => {
@@ -41,7 +42,14 @@ export const transformFormToApi = (
     cityOrTown: formData.city,
     addressLine2: formData.addressLine2 || null,
     postalCode: formData.zipCode || null,
-
-    ...formData,
+    gender: formData.gender,
+    firstName: formData.firstName,
+    lastName: formData.lastName,
+    phoneNumber: formData.phoneNumber,
+    contentLanguage: formData.contentLanguage,
+    country: formData.country,
+    addressLine1: formData.addressLine1,
+    skinType: formData.skinType,
+    skinTone: formData.skinTone,
   };
 };
