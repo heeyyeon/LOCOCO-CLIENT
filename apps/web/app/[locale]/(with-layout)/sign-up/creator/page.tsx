@@ -10,7 +10,7 @@ import { useCreatorForm } from './hooks/useCreatorForm';
 
 export default function CreatorSignupPage() {
   const locale = useLocale();
-  const t = useTranslations('creatorSignup.button');
+  const t = useTranslations('creatorSignup.layout');
   const { form, isSubmitting, handleBack, handleNext } = useCreatorForm();
 
   return (
