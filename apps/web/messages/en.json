@@ -308,7 +308,8 @@
     "myCampaign": {
       "empty": {
         "title": "There is no campaign has been applied."
-      }
+      },
+      "title": "My Campaign"
     }
   },
   "selectRoleModal": {
