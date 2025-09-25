@@ -1,20 +1,35 @@
-import { useState } from 'react';
+import { useEffect } from 'react';
+import { useFieldArray, useFormContext } from 'react-hook-form';
 
-export function useDynamicInputs(initialValue: string[] = ['']) {
-  const [fields, setFields] = useState<string[]>(initialValue);
+export function useDynamicInputs(fieldPath: string) {
+  const { control, watch } = useFormContext();
+
+  const { fields, append, remove, update } = useFieldArray({
+    control,
+    name: fieldPath,
+  });
+
+  const currentValue = watch(fieldPath);
+
+  useEffect(() => {
+    if (currentValue && currentValue.length > 0 && fields.length === 0) {
+      console.log(`Syncing fields for ${fieldPath}`);
+      currentValue.forEach(() => append(''));
+    }
+  }, [currentValue, fields.length, append, fieldPath]);
 
   const addField = () => {
-    setFields((prev) => [...prev, '']);
+    append('');
   };
 
   const removeField = (index: number) => {
     if (fields.length > 1) {
-      setFields((prev) => prev.filter((_, i) => i !== index));
+      remove(index);
     }
   };
 
   const updateField = (index: number, value: string) => {
-    setFields((prev) => prev.map((item, i) => (i === index ? value : item)));
+    update(index, value);
   };
 
   return {

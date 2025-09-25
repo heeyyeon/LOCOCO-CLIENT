@@ -1,22 +1,18 @@
 'use client';
 
+import { useFormContext } from 'react-hook-form';
+
 import { FormSection } from 'components/forms';
+import { CampaignFormData } from 'schema/create-campaign-schema';
 
 import { DragDropArea } from './drag-drop';
 
-interface CampaignUploadMediaProps {
-  thumbnailFiles: File[];
-  detailFiles: File[];
-  setThumbnailFiles: (thumbnailFiles: File[]) => void;
-  setDetailFiles: (detailFiles: File[]) => void;
-}
+export default function CampaignUploadMedia() {
+  const { watch, setValue } = useFormContext<CampaignFormData>();
 
-export default function CampaignUploadMedia({
-  thumbnailFiles,
-  detailFiles,
-  setDetailFiles,
-  setThumbnailFiles,
-}: CampaignUploadMediaProps) {
+  const thumbnailFiles = watch('thumbnailFiles') || [];
+  const detailFiles = watch('detailFiles') || [];
+
   return (
     <div className="flex w-full flex-col gap-[4.8rem]">
       <FormSection
@@ -26,7 +22,7 @@ export default function CampaignUploadMedia({
       >
         <DragDropArea
           files={thumbnailFiles}
-          onFilesChange={setThumbnailFiles}
+          onFilesChange={(files) => setValue('thumbnailFiles', files)}
           maxFiles={5}
         />
       </FormSection>
@@ -38,7 +34,7 @@ export default function CampaignUploadMedia({
       >
         <DragDropArea
           files={detailFiles}
-          onFilesChange={setDetailFiles}
+          onFilesChange={(files) => setValue('detailFiles', files)}
           maxFiles={15}
         />
       </FormSection>

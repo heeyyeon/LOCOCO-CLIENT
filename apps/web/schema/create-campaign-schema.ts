@@ -1,6 +1,8 @@
 import { SOCIAL_PLATFORMS } from 'app/[locale]/(with-layout)/brand/component/create-campaign/social-chip';
 import { z } from 'zod';
 
+const isBrowser = typeof window !== 'undefined';
+
 export const createCampaignSchema = z
   .object({
     title: z.string().min(1, 'title 에러 메세지'),
@@ -60,12 +62,16 @@ export const createCampaignSchema = z
     secondContents: z.record(z.enum(SOCIAL_PLATFORMS), z.boolean()),
 
     // 파일 업로드
-    thumbnailFiles: z
-      .array(z.instanceof(File))
-      .max(5, '썸네일은 최대 5장까지 업로드 가능합니다'),
-    detailFiles: z
-      .array(z.instanceof(File))
-      .max(15, '상세 사진은 최대 15장까지 업로드 가능합니다'),
+    thumbnailFiles: isBrowser
+      ? z
+          .array(z.instanceof(File))
+          .max(5, '썸네일은 최대 5장까지 업로드 가능합니다')
+      : z.array(z.any()).max(5, '썸네일은 최대 5장까지 업로드 가능합니다'),
+    detailFiles: isBrowser
+      ? z
+          .array(z.instanceof(File))
+          .max(15, '상세 사진은 최대 15장까지 업로드 가능합니다')
+      : z.array(z.any()).max(15, '상세 사진은 최대 15장까지 업로드 가능합니다'),
   })
   .refine(
     (data) => {
