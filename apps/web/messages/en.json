@@ -344,5 +344,32 @@
     "confirmButton": "Yes",
     "message": "Campaign applications are only available to creator members.\nWould you like to sign up as a creator?",
     "title": "Creator Suggestion"
+  },
+  "creatorOptions": {
+    "gender": {
+      "MALE": "Male",
+      "FEMALE": "Female",
+      "NON_BINARY": "Non-binary",
+      "PREFER_NOT_TO_SAY": "Prefer not to say"
+    },
+    "contentLanguage": {
+      "ENGLISH": "English",
+      "SPANISH": "Spanish",
+      "ENGLISH_AND_SPANISH": "English & Spanish"
+    },
+    "skinType": {
+      "NORMAL": "Normal",
+      "DRY": "Dry",
+      "OILY": "Oily",
+      "COMBINATION": "Combination",
+      "SENSITIVE": "Sensitive",
+      "OTHERS": "Others"
+    },
+    "skinTone": {
+      "SHADE_1": "Shade 1",
+      "SHADE_2": "Shade 2",
+      "SHADE_3": "Shade 3",
+      "SHADE_4": "Shade 4"
+    }
   }
 }
