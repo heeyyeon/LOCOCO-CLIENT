@@ -61,6 +61,7 @@ export default function EditProfile() {
 
   const profileQuery = useProfile();
   const updateProfileMutation = useUpdateProfile();
+  const checkIdMutation = useCheckIdAvailability();
   const presignedUrlMutation = usePresignedUrl({
     file: profileImage || new File([], 'profile-image.jpg'),
   });
@@ -124,7 +125,6 @@ export default function EditProfile() {
   }, [profileQuery.data, form]);
 
   const handleCheckAvailability = async () => {
-    const checkIdMutation = useCheckIdAvailability();
     const id = form.getValues('id');
     if (!id.trim()) {
       form.setError('id', { message: 'ID is required' });
@@ -134,7 +134,6 @@ export default function EditProfile() {
     try {
       const isAvailable = await checkIdMutation.mutateAsync(id);
       if (isAvailable) {
-        console.log('ID 사용 가능:', id);
         // TODO: 성공 메시지 표시
       } else {
         form.setError('id', { message: '이미 사용 중인 ID입니다.' });

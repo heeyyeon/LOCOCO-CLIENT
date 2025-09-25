@@ -272,7 +272,6 @@ const getMediaPresignedUrls = async (file: File[]): Promise<string[]> => {
       mediaType: file.map((file) => file.type),
     },
   });
-  console.log(response);
 
   if (!response.data?.mediaUrl) {
     throw new Error('Presigned URL 발급에 실패했습니다.');
@@ -306,7 +305,6 @@ interface ReviewData {
 }
 
 const submitReviewApi = async (campaignId: number, data: ReviewData) => {
-  console.log(data);
   const response = await apiRequest<ApiResponseReviewReceiptResponse>({
     endPoint: `/api/campaignReviews/${campaignId}/first`,
     method: 'POST',

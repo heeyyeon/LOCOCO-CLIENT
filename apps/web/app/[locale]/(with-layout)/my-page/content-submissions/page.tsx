@@ -41,7 +41,7 @@ interface ContentSubmissionsFormProps {
 }
 
 export default function ContentSubmissions() {
-  const [openSaveSubmitModal, setOpenSaveSubmitModal] = useState(false);
+  const [isSaveSubmitModalOpen, setIsSaveSubmitModalOpen] = useState(false);
   const {
     fields,
     getFormData,
@@ -64,7 +64,7 @@ export default function ContentSubmissions() {
     const isValid = await validateAllForms();
     if (isAllFormsValid && isValid) {
       handleSubmitAll();
-      setOpenSaveSubmitModal(true);
+      setIsSaveSubmitModalOpen(true);
     }
   };
   if (isPending) {
@@ -83,8 +83,8 @@ export default function ContentSubmissions() {
     <>
       {
         <SaveSubmitModal
-          open={openSaveSubmitModal}
-          onOpenChange={setOpenSaveSubmitModal}
+          open={isSaveSubmitModalOpen}
+          onOpenChange={setIsSaveSubmitModalOpen}
           final={false}
         />
       }
