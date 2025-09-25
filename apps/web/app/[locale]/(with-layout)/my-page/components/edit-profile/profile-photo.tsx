@@ -31,19 +31,20 @@ export default function ProfilePhoto({
 
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
     const selectedFile = e.target.files?.[0];
-    if (selectedFile) {
-      if (isImageFile(selectedFile)) {
-        onChange(selectedFile);
-        setProfileImageError('');
-      } else {
-        onChange(null);
-        setProfileImageError(
-          tFileUploader(FILE_ERROR_MESSAGE_KEYS.NOT_ALLOWED_FILE_TYPE)
-        );
-      }
-    } else {
-      onChange(null);
+
+    if (!selectedFile) {
+      return;
     }
+
+    if (isImageFile(selectedFile)) {
+      onChange(selectedFile);
+      setProfileImageError('');
+      return;
+    }
+
+    setProfileImageError(
+      tFileUploader(FILE_ERROR_MESSAGE_KEYS.NOT_ALLOWED_FILE_TYPE)
+    );
     e.target.value = '';
   };
 

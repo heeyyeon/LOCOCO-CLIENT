@@ -108,6 +108,7 @@ export const usePresignedUrl = ({ file }: { file: File }) => {
       profileImageUrl: string;
     };
   };
+
   const presignedUrlApi = async (): Promise<string> => {
     const response = await apiRequest<ApiResponseCreatorProfileImageResponse>({
       endPoint: '/api/creator/profile/image',
@@ -116,16 +117,14 @@ export const usePresignedUrl = ({ file }: { file: File }) => {
       data: {
         mediaType: file.type,
       },
-    }).then((response) => {
-      if (response && response.data?.profileImageUrl) {
-        putPresignedUrlApi({
-          presignedUrl: response.data.profileImageUrl,
-        });
-        return response.data.profileImageUrl;
-      }
-      throw new Error('Presigned URL 발급에 실패했습니다.');
     });
-    return response;
+    if (response && response.data?.profileImageUrl) {
+      const url = await putPresignedUrlApi({
+        presignedUrl: response.data.profileImageUrl,
+      });
+      return url;
+    }
+    throw new Error('Presigned URL 발급에 실패했습니다.');
   };
   return useMutation({
     mutationFn: presignedUrlApi,

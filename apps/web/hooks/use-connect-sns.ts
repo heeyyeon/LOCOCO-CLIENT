@@ -53,7 +53,7 @@ export const useOAuthCallback = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const queryClient = useQueryClient();
-
+  const { refetch } = useConnectSns();
   useEffect(() => {
     const code = searchParams.get('code');
     const state = searchParams.get('state');
@@ -83,18 +83,17 @@ export const useOAuthCallback = () => {
         await handleTiktokCallback(code, state);
       } else if (snsType === 'instagram') {
         await handleInstagramCallback(code, state);
+        await refetch();
       }
 
       // 성공 후 SNS 연결 상태 새로고침
       queryClient.invalidateQueries({
         queryKey: CONNECT_SNS_KEYS.CONNECT_SNS(),
       });
-
-      // URL에서 OAuth 파라미터 제거하고 원래 페이지로 리다이렉트
-      router.replace('/my-page?tab=connect-sns&success=true');
     } catch (error) {
       console.error('OAuth 콜백 처리 실패:', error);
-      router.replace('/my-page?tab=connect-sns&error=callback_failed');
+    } finally {
+      router.replace('/my-page/connect-sns');
     }
   };
 

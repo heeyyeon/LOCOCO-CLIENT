@@ -5,16 +5,8 @@ import { CAMPAIGN_REVIEW_KEYS } from '../constant/queryKey';
 
 const fetchCampaignReview =
   async (): Promise<ApiResponseListCampaignParticipatedResponse> => {
-    const headers: HeadersInit = {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${process.env.NEXT_PUBLIC_AUTH_TOKEN}`,
-    };
-
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_SERVER_URL}/api/campaignReviews/my/participation`,
-      {
-        headers,
-      }
+      `${process.env.NEXT_PUBLIC_API_SERVER_URL}/api/campaignReviews/my/participation`
     );
 
     if (!response.ok) {

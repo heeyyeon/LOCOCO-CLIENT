@@ -76,7 +76,7 @@ export default function ContentSubmissions() {
   }
 
   if (isError) {
-    throw isError;
+    throw new Error('콘텐츠 제출 실패');
   }
 
   return (
