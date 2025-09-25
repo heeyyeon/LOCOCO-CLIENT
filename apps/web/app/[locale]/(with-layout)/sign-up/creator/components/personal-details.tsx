@@ -31,7 +31,7 @@ export function PersonalDetails({ form }: PersonalDetailsProps) {
   const countryCodes = countryPhoneCodeOptions();
 
   return (
-    <div className="mt-[4.8rem]">
+    <div className="mt-[4.8rem] w-full">
       <FormSection title={t('title')} description={t('description')}>
         <div className="space-y-[1.6rem]">
           <SelectFormField label={t('birthLabel')} required>
@@ -40,6 +40,7 @@ export function PersonalDetails({ form }: PersonalDetailsProps) {
                 <Select
                   placeholder={t('monthPlaceholder')}
                   options={months}
+                  value={form.watch('birthMonth')}
                   onValueChange={(selectedLabel) => {
                     const selectedMonth = months.find(
                       (option) => option.label === selectedLabel
@@ -57,6 +58,7 @@ export function PersonalDetails({ form }: PersonalDetailsProps) {
                 <Select
                   placeholder={t('dayPlaceholder')}
                   options={days}
+                  value={form.watch('birthDay')}
                   onValueChange={(selectedLabel) => {
                     const selectedDay = days.find(
                       (option) => option.label === selectedLabel
@@ -74,6 +76,7 @@ export function PersonalDetails({ form }: PersonalDetailsProps) {
                 <Select
                   placeholder={t('yearPlaceholder')}
                   options={years}
+                  value={form.watch('birthYear')}
                   onValueChange={(selectedLabel) => {
                     const selectedYear = years.find(
                       (option) => option.label === selectedLabel
@@ -111,6 +114,7 @@ export function PersonalDetails({ form }: PersonalDetailsProps) {
             required
             placeholder={t('genderPlaceholder')}
             options={GENDERS}
+            value={form.watch('gender')}
             onValueChange={(value) =>
               form.setValue('gender', value, { shouldValidate: true })
             }
@@ -139,6 +143,7 @@ export function PersonalDetails({ form }: PersonalDetailsProps) {
                 <Select
                   placeholder={t('phoneCountryPlaceholder')}
                   options={countryCodes}
+                  value={form.watch('phoneCountryCode')}
                   onValueChange={(selectedLabel) => {
                     const selectedCountryCode = countryCodes.find(
                       (option) => option.label === selectedLabel
@@ -184,6 +189,7 @@ export function PersonalDetails({ form }: PersonalDetailsProps) {
             required
             placeholder={t('contentLanguagePlaceholder')}
             options={CONTENT_LANGUAGES}
+            value={form.watch('contentLanguage')}
             onValueChange={(value) =>
               form.setValue('contentLanguage', value, {
                 shouldValidate: true,

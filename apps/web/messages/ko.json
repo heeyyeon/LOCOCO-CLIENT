@@ -12,6 +12,19 @@
     "makeNewCampaign": "새 캠페인 만들기",
     "myCampaign": "나의 캠페인"
   },
+  "campaignDetail": {
+    "applicationPeriod": "지원 기간",
+    "campaignSchedule": "캠페인 일정",
+    "contentSubmissionPeriod": "콘텐츠 제출 기간",
+    "deliverableRequirements": "제출물 요건",
+    "eligibilityRequirements": "지원 자격 요건",
+    "localTimeNotice": "모든 시간은 사용자의 현지 시간으로 표시됩니다",
+    "resultAnnouncement": "결과 발표",
+    "rewardsAndCompensation": "보상 및 혜택"
+  },
+  "campaignFilter": {
+    "seeMore": "더 보기"
+  },
   "card": {
     "campaignThumbnailImage": "캠페인 썸네일 이미지",
     "card": "카드",
@@ -116,14 +129,25 @@
     "fileTooLarge": "파일 크기가 너무 큽니다.",
     "notAllowedFileType": "허용되지 않는 파일 형식입니다."
   },
+  "footer": {
+    "copyright": "Lococo. All rights reserved.",
+    "links": {
+      "campaignGuideline": "캠페인 가이드라인",
+      "campaigns": "캠페인",
+      "FAQ": "자주 묻는 질문 (FAQ)",
+      "howItWorks": "이용 방법",
+      "privacyPolicy": "개인정보 처리방침"
+    },
+    "slogan": "Where Creators Meet Real K-Beauty"
+  },
   "gnb": {
     "campaigns": "캠페인",
     "howItWorks": "이용 방법",
     "login": "로그인",
+    "logIn": "로그인",
     "logOut": "로그아웃",
     "myPage": "마이페이지",
-    "signUp": "회원가입",
-    "logIn": "로그인"
+    "signUp": "회원가입"
   },
   "home": {
     "description": "제품 설명",

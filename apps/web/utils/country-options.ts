@@ -32,7 +32,7 @@ export const countryPhoneCodeOptions = () => {
       countryCode,
       callingCode: getCountryCallingCode(countryCode),
       label: `+${getCountryCallingCode(countryCode)}`,
-      value: getCountryCallingCode(countryCode),
+      value: `+${getCountryCallingCode(countryCode)}`,
     }))
     .filter((item) => {
       if (uniqueCallingCodes.has(item.callingCode)) {

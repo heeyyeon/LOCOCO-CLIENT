@@ -16,26 +16,15 @@ import { cn } from '@lococo/utils';
 
 import '../style/campaign-main-carousel.css';
 
-interface CampaignGalleryProps {
-  images?: string[];
-  campaignName?: string;
+interface CampaignCarouselProps {
+  images: string[];
 }
 
-export default function CampaignCarousel({
-  images,
-  campaignName = 'Campaign',
-}: CampaignGalleryProps) {
+export default function CampaignCarousel({ images }: CampaignCarouselProps) {
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);
   const mainSwiperRef = useRef<SwiperType | null>(null);
   const [activeThumbIndex, setActiveThumbIndex] = useState(0);
-
-  const defaultImages = [
-    '/images/swiper1.png',
-    '/images/swiper2.png',
-    '/images/swiper3.png',
-  ];
-
-  const galleryImages = images || defaultImages;
+  const galleryImages = images;
 
   return (
     <div className="relative flex h-fit w-full max-w-[64.8rem] flex-1 gap-[12px] md:gap-[16px] lg:gap-[24px]">
@@ -54,10 +43,10 @@ export default function CampaignCarousel({
           className="left-[2.4rem] flex h-[40.8rem] w-[72px] flex-col items-center"
         >
           {galleryImages.map((imageUrl, index) => (
-            <SwiperSlide key={imageUrl}>
+            <SwiperSlide key={imageUrl} className="thumbnail-slide">
               <Image
                 src={imageUrl}
-                alt={`${campaignName} thumbnail`}
+                alt={`campaign thumbnail`}
                 width={72}
                 height={72}
                 className={cn(
@@ -91,10 +80,10 @@ export default function CampaignCarousel({
             <SwiperSlide key={imageUrl}>
               <Image
                 src={imageUrl}
-                alt={`${campaignName}`}
+                alt="campaign thumbnail"
                 fill
                 className="h-auto w-full object-cover"
-                priority={idx === 0 ? true : false}
+                priority={idx === 0}
               />
             </SwiperSlide>
           ))}

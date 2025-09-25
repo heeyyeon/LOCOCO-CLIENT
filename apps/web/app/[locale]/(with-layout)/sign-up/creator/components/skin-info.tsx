@@ -30,7 +30,7 @@ export function SkinInfo({ form }: SkinInfoProps) {
   }));
 
   return (
-    <div className="mt-[4.8rem]">
+    <div className="mt-[4.8rem] w-full">
       <FormSection title={t('title')} description={t('description')}>
         <div className="space-y-[1.6rem]">
           <SelectFormField
@@ -39,6 +39,7 @@ export function SkinInfo({ form }: SkinInfoProps) {
             variant="reverse"
             placeholder={t('skinTypePlaceholder')}
             options={SKIN_TYPES}
+            value={form.watch('skinType')}
             onValueChange={(value) =>
               form.setValue('skinType', value, { shouldValidate: true })
             }
@@ -51,6 +52,7 @@ export function SkinInfo({ form }: SkinInfoProps) {
             required
             placeholder={t('skinTonePlaceholder')}
             options={SKIN_TONES}
+            value={form.watch('skinTone')}
             onValueChange={(value) =>
               form.setValue('skinTone', value, { shouldValidate: true })
             }

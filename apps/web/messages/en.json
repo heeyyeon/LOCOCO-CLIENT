@@ -12,6 +12,19 @@
     "makeNewCampaign": "Create a new campaign  ",
     "myCampaign": "My Campaigns"
   },
+  "campaignDetail": {
+    "applicationPeriod": "Application Period",
+    "campaignSchedule": "Campaign Schedule",
+    "contentSubmissionPeriod": "Content Submission Period",
+    "deliverableRequirements": "Deliverable Requirements",
+    "eligibilityRequirements": "Eligibility Requirements",
+    "localTimeNotice": "All times are displayed in your local time.",
+    "resultAnnouncement": "Result Announcement",
+    "rewardsAndCompensation": "Rewards & Compensation"
+  },
+  "campaignFilter": {
+    "seeMore": "See More"
+  },
   "card": {
     "campaignThumbnailImage": "campaign thumbnail image",
     "card": "Card",
@@ -21,11 +34,6 @@
     "confirmButton": "Okay",
     "message": "Your application was successfully submitted.\nWe'll email you the result within 24 hours.",
     "title": "Successfully Submitted!"
-  },
-  "ConfirmSignupModal": {
-    "confirmButton": "",
-    "message": "",
-    "title": ""
   },
   "creatorSignup": {
     "communityName": {
@@ -116,10 +124,22 @@
     "fileTooLarge": "File too large",
     "notAllowedFileType": "Not allowed file type"
   },
+  "footer": {
+    "copyright": "Lococo. All rights reserved.",
+    "links": {
+      "campaignGuideline": "Campaign Guideline",
+      "campaigns": "Campaigns",
+      "FAQ": "FAQ",
+      "howItWorks": "How It Works",
+      "privacyPolicy": "Privacy Policy"
+    },
+    "slogan": "Where Creators Meet Real K-Beauty"
+  },
   "gnb": {
     "campaigns": "campaigns",
     "howItWorks": "how it works",
     "login": "Log in",
+    "logIn": "Log in",
     "logOut": "Log Out",
     "myPage": "My Page",
     "signUp": "Sign up"

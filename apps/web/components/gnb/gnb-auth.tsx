@@ -1,12 +1,19 @@
 'use client';
 
+import { useState } from 'react';
+
 import { useTranslations } from 'next-intl';
 
 import { useAuth } from 'hooks/use-auth';
-import { Link } from 'i18n/navigation';
+import { Link, useRouter } from 'i18n/navigation';
 
 import { SvgProfileIcon } from '@lococo/icons';
 
+import {
+  type UserRole,
+  saveRoleToLocalStorage,
+} from '../../app/[locale]/(with-layout)/login-google/utils/role-storage';
+import { SelectRoleModal } from '../sign-up/select-role-modal';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -15,9 +22,27 @@ import {
 } from '../ui/dropdown-menu';
 
 export default function GnbAuth() {
+  const [isRoleModalOpen, setIsRoleModalOpen] = useState(false);
   const { isLoggedIn } = useAuth();
+  const router = useRouter();
   const t = useTranslations('gnb');
+
+  const handleLogin = () => {
+    router.push('/login-google?mode=login');
+  };
+
+  const handleSignup = () => {
+    setIsRoleModalOpen(true);
+  };
+
+  const handleRoleSelect = (selectedRole: UserRole) => {
+    saveRoleToLocalStorage(selectedRole);
+    setIsRoleModalOpen(false);
+    router.push('/login-google?mode=signup');
+  };
+
   // TODO Link태그 href 경로 논의 필요
+
   return (
     <div className="flex h-[5.6rem] items-center gap-4">
       {isLoggedIn ? (
@@ -42,14 +67,23 @@ export default function GnbAuth() {
         </DropdownMenu>
       ) : (
         <>
-          <Link href={'/login'} className="px-[1.6rem] py-[1rem]">
-            {t('logIn')}
-          </Link>
-          <Link href={'signup'} className="px-[1.6rem] py-[1rem] text-pink-500">
+          <button onClick={handleLogin} className="px-[1.6rem] py-[1rem]">
+            {t('login')}
+          </button>
+          <button
+            onClick={handleSignup}
+            className="px-[1.6rem] py-[1rem] text-pink-500"
+          >
             {t('signUp')}
-          </Link>
+          </button>
         </>
       )}
+
+      <SelectRoleModal
+        open={isRoleModalOpen}
+        onOpenChange={setIsRoleModalOpen}
+        onSelectRole={handleRoleSelect}
+      />
     </div>
   );
 }
