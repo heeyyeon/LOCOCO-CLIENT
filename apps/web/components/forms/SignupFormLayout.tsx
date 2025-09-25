@@ -1,5 +1,7 @@
 import React, { ReactNode } from 'react';
 
+import { useTranslations } from 'next-intl';
+
 import { Button } from '@lococo/design-system/button';
 import { ErrorNotice } from '@lococo/design-system/error-notice';
 
@@ -24,6 +26,7 @@ export function SignupFormLayout({
   submitLabel,
   isBackDisabled = true,
 }: SignupFormLayoutProps) {
+  const t = useTranslations('creatorSignup.button');
   return (
     <main className="bg-gray-100 py-[6.4rem]">
       <div className="mx-auto max-w-[74.4rem] px-4">
@@ -52,7 +55,7 @@ export function SignupFormLayout({
             rounded="md"
             disabled={isBackDisabled}
           >
-            Back
+            {t('back')}
           </Button>
           <Button
             type="submit"
