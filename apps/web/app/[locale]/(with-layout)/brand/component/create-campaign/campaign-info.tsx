@@ -15,7 +15,7 @@ export default function CampaignInfo() {
       <TextFormField
         label="캠페인 제목"
         required
-        placeholder="캠페인 제목을 입력하세요"
+        placeholder="text"
         register={register('title')}
         error={errors.title?.message}
       />
@@ -30,6 +30,44 @@ export default function CampaignInfo() {
             options={[
               { label: '영어', value: 'EN' },
               { label: '스페인어', value: 'ES' },
+            ]}
+            value={field.value}
+            onValueChange={field.onChange}
+            error={error?.message}
+          />
+        )}
+      />
+
+      <Controller
+        name="type"
+        control={control}
+        render={({ field, fieldState: { error } }) => (
+          <SelectFormField
+            label="캠페인 종류"
+            required
+            options={[
+              { label: 'EXCLUSIVE', value: 'EXCLUSIVE' },
+              { label: 'GIVEAWAY', value: 'GIVEAWAY' },
+              { label: 'CONTENTS', value: 'CONTENTS' },
+            ]}
+            value={field.value}
+            onValueChange={field.onChange}
+            error={error?.message}
+          />
+        )}
+      />
+
+      <Controller
+        name="category"
+        control={control}
+        render={({ field, fieldState: { error } }) => (
+          <SelectFormField
+            label="카테고리"
+            required
+            options={[
+              { label: 'SKINCARE', value: 'SKINCARE' },
+              { label: 'SUNCARE', value: 'SUNCARE' },
+              { label: 'MAKEUP', value: 'MAKEUP' },
             ]}
             value={field.value}
             onValueChange={field.onChange}

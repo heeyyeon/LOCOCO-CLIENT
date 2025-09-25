@@ -15,19 +15,19 @@ export default function CampaignStartInfo() {
           <RHFSelect
             name="startDate.month"
             options={months}
-            placeholder="월"
+            placeholder="Month"
             size="small"
           />
           <RHFSelect
             name="startDate.day"
             options={days}
-            placeholder="일"
+            placeholder="Day"
             size="small"
           />
           <RHFSelect
             name="startDate.year"
             options={years}
-            placeholder="년"
+            placeholder="Year"
             size="small"
           />
         </div>
@@ -44,13 +44,13 @@ export default function CampaignStartInfo() {
           <RHFSelect
             name="startTime.hour"
             options={HOURS}
-            placeholder="시"
+            placeholder="Hour"
             size="small"
           />
           <RHFSelect
             name="startTime.minute"
             options={MINUTES}
-            placeholder="분"
+            placeholder="Minute"
             size="small"
           />
         </div>

@@ -6,9 +6,9 @@ const isBrowser = typeof window !== 'undefined';
 export const createCampaignSchema = z
   .object({
     title: z.string().min(1, 'title 에러 메세지'),
-    language: z.enum(['EN', 'ES']),
-    type: z.enum(['GIVEAWAY', 'CONTENTS', 'EXCLUSIVE']),
-    category: z.enum(['SKINCARE', 'SUNCARE', 'MAKEUP']),
+    language: z.enum(['EN', 'ES', '']),
+    type: z.enum(['GIVEAWAY', 'CONTENTS', 'EXCLUSIVE', '']),
+    category: z.enum(['SKINCARE', 'SUNCARE', 'MAKEUP', '']),
     creatorCount: z.string().min(1, '크리에이터 수 에러 메세지'),
 
     startDate: z.object({

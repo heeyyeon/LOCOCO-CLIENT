@@ -32,9 +32,9 @@ export default function CreateCampaign() {
     shouldFocusError: false,
     defaultValues: {
       title: '',
-      language: 'EN',
-      type: 'GIVEAWAY',
-      category: 'MAKEUP',
+      language: '',
+      type: '',
+      category: '',
       creatorCount: '',
       startDate: { year: '', month: '', day: '' },
       startTime: { period: 'AM', hour: '', minute: '' },

@@ -23,19 +23,19 @@ export default function CampaignDueDate() {
             name="dueDate.month"
             options={months}
             size="small"
-            placeholder="월"
+            placeholder="Month"
           />
           <RHFSelect
             name="dueDate.day"
             options={days}
             size="small"
-            placeholder="일"
+            placeholder="Day"
           />
           <RHFSelect
             name="dueDate.year"
             options={years}
             size="small"
-            placeholder="년"
+            placeholder="Year"
           />
         </div>
       </InputWrapper>
@@ -64,7 +64,7 @@ export default function CampaignDueDate() {
                 options={HOURS}
                 value={field.value}
                 onValueChange={field.onChange}
-                placeholder="시"
+                placeholder="Hour"
               />
             )}
           />
@@ -77,7 +77,7 @@ export default function CampaignDueDate() {
                 options={MINUTES}
                 value={field.value}
                 onValueChange={field.onChange}
-                placeholder="분"
+                placeholder="Minute"
               />
             )}
           />

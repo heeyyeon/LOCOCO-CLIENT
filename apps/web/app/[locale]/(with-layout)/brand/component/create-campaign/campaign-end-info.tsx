@@ -18,19 +18,19 @@ export default function CampaignEndInfo() {
             name="endDate.month"
             options={months}
             size="small"
-            placeholder="월"
+            placeholder="Month"
           />
           <RHFSelect
             name="endDate.day"
             options={days}
             size="small"
-            placeholder="일"
+            placeholder="Day"
           />
           <RHFSelect
             name="endDate.year"
             options={years}
             size="small"
-            placeholder="년"
+            placeholder="Year"
           />
         </div>
       </SelectFormField>
@@ -47,13 +47,13 @@ export default function CampaignEndInfo() {
             name="endTime.hour"
             options={HOURS}
             size="small"
-            placeholder="시"
+            placeholder="Hour"
           />
           <RHFSelect
             name="endTime.minute"
             options={MINUTES}
             size="small"
-            placeholder="분"
+            placeholder="Minute"
           />
         </div>
       </SelectFormField>
