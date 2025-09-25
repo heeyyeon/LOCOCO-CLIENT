@@ -51,7 +51,12 @@ export function CommunityName({ form }: CommunityNameProps) {
         required
         placeholder={t('idPlaceholder')}
         register={form.register('id')}
-        error={form.formState.errors.id?.message}
+        error={
+          form.formState.errors.id?.message ||
+          (availabilityMessage?.type === 'error'
+            ? availabilityMessage.message
+            : undefined)
+        }
         successMessage={
           availabilityMessage?.type === 'success'
             ? availabilityMessage.message
