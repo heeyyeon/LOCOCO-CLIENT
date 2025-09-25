@@ -6,6 +6,11 @@ import { useFieldArray, useForm } from 'react-hook-form';
 import { useTranslations } from 'next-intl';
 
 import { zodResolver } from '@hookform/resolvers/zod';
+import {
+  ApiResponseReviewMediaResponse,
+  ApiResponseReviewReceiptResponse,
+} from '@typescript-swagger/data-contracts';
+import { apiRequest } from 'app/api/apiRequest';
 import { z } from 'zod';
 
 import {
@@ -27,14 +32,10 @@ export type ContentSubmissionsForm = {
   submissions: ContentSubmissionsFormData[];
 };
 
-export const useContentSubmissions = (
-  campaignId?: number,
-  onSuccess?: () => void
-) => {
+export const useContentSubmissions = (onSuccess?: () => void) => {
   const t = useTranslations('fileUploader');
-  const { data: campaignList } = useFetchCampaignReview();
+  const { data: campaignList, isPending, isError } = useFetchCampaignReview();
 
-  // API에서 받은 캠페인 개수 또는 기본값 3
   const campaignCount = campaignList?.data?.length || 0;
 
   const contentSubmissionsSchema = z.object({
@@ -69,13 +70,19 @@ export const useContentSubmissions = (
   } = useForm<ContentSubmissionsForm>({
     resolver: zodResolver(contentSubmissionsSchema),
     defaultValues: {
-      submissions: Array.from({ length: campaignCount }, () => ({
-        campaign: '',
-        campaignId: undefined,
-        contentType: '',
-        campaignProductMedia: [],
-        captionAndHashtags: '',
-      })),
+      submissions:
+        campaignCount > 0
+          ? Array.from({ length: campaignCount }, (_, index) => {
+              const campaignData = campaignList?.data?.[index];
+              return {
+                campaign: campaignData?.title || '',
+                campaignId: campaignData?.campaignId || undefined,
+                contentType: '',
+                campaignProductMedia: [],
+                captionAndHashtags: '',
+              };
+            })
+          : [],
     },
     mode: 'onChange',
   });
@@ -89,93 +96,149 @@ export const useContentSubmissions = (
 
   useEffect(() => {
     if (campaignList?.data && campaignList.data.length > 0) {
-      const campaignData = campaignList.data;
+      const newSubmissions = campaignList.data.map((campaignData) => ({
+        campaign: campaignData.title || '',
+        campaignId: campaignData.campaignId || undefined,
+        contentType: '',
+        campaignProductMedia: [],
+        captionAndHashtags: '',
+      }));
 
-      campaignData.forEach((campaign, index) => {
-        if (index < campaignCount) {
-          setValue(`submissions.${index}.campaign`, campaign.title, {
-            shouldValidate: true,
-          });
-          setValue(`submissions.${index}.campaignId`, campaign.campaignId, {
-            shouldValidate: true,
-          });
-        }
+      reset({
+        submissions: newSubmissions,
       });
     }
-  }, [campaignList, setValue, campaignCount]);
+  }, [campaignList, reset]);
 
-  const updateCampaign = (index: number, campaign: string) => {
-    setValue(`submissions.${index}.campaign`, campaign, {
-      shouldValidate: true,
-    });
+  const updateCampaign = (campaignId: number, campaign: string) => {
+    const index = formData.submissions.findIndex(
+      (sub) => sub.campaignId === campaignId
+    );
+    if (index !== -1) {
+      setValue(`submissions.${index}.campaign`, campaign, {
+        shouldValidate: true,
+      });
+    }
   };
 
-  const updateContentType = (index: number, contentType: string) => {
-    setValue(`submissions.${index}.contentType`, contentType, {
-      shouldValidate: true,
-    });
+  const updateContentType = (campaignId: number, contentType: string) => {
+    const index = formData.submissions.findIndex(
+      (sub) => sub.campaignId === campaignId
+    );
+    if (index !== -1) {
+      setValue(`submissions.${index}.contentType`, contentType, {
+        shouldValidate: true,
+      });
+    }
   };
 
   const updateCampaignProductMedia = (
-    index: number,
+    campaignId: number,
     campaignProductMedia: File[]
   ) => {
-    setValue(
-      `submissions.${index}.campaignProductMedia`,
-      campaignProductMedia,
-      {
-        shouldValidate: true,
-      }
+    const index = formData.submissions.findIndex(
+      (sub) => sub.campaignId === campaignId
     );
+    if (index !== -1) {
+      setValue(
+        `submissions.${index}.campaignProductMedia`,
+        campaignProductMedia,
+        {
+          shouldValidate: true,
+        }
+      );
+    }
   };
 
   const updateCaptionAndHashtags = (
-    index: number,
+    campaignId: number,
     captionAndHashtags: string
   ) => {
-    setValue(`submissions.${index}.captionAndHashtags`, captionAndHashtags, {
-      shouldValidate: true,
-    });
+    const index = formData.submissions.findIndex(
+      (sub) => sub.campaignId === campaignId
+    );
+    if (index !== -1) {
+      setValue(`submissions.${index}.captionAndHashtags`, captionAndHashtags, {
+        shouldValidate: true,
+      });
+    }
   };
 
-  const getFormData = (index: number) => ({
-    campaign: formData.submissions[index]?.campaign || '',
-    campaignId: formData.submissions[index]?.campaignId,
-    contentType: formData.submissions[index]?.contentType || '',
-    campaignProductMedia:
-      formData.submissions[index]?.campaignProductMedia || [],
-    captionAndHashtags: formData.submissions[index]?.captionAndHashtags || '',
-  });
+  const getFormData = (campaignId: number) => {
+    const index = formData.submissions.findIndex(
+      (sub) => sub.campaignId === campaignId
+    );
+    if (index === -1) return null;
 
-  const getErrors = (index: number) => ({
-    campaign: errors.submissions?.[index]?.campaign?.message,
-    contentType: errors.submissions?.[index]?.contentType?.message,
-    campaignProductMedia:
-      errors.submissions?.[index]?.campaignProductMedia?.message,
-    captionAndHashtags:
-      errors.submissions?.[index]?.captionAndHashtags?.message,
-  });
+    return {
+      campaign: formData.submissions[index]?.campaign || '',
+      campaignId: formData.submissions[index]?.campaignId,
+      contentType: formData.submissions[index]?.contentType || '',
+      campaignProductMedia:
+        formData.submissions[index]?.campaignProductMedia || [],
+      captionAndHashtags: formData.submissions[index]?.captionAndHashtags || '',
+    };
+  };
+
+  const getErrors = (campaignId: number) => {
+    const index = formData.submissions.findIndex(
+      (sub) => sub.campaignId === campaignId
+    );
+    if (index === -1) return {};
+
+    return {
+      campaign: errors.submissions?.[index]?.campaign?.message,
+      contentType: errors.submissions?.[index]?.contentType?.message,
+      campaignProductMedia:
+        errors.submissions?.[index]?.campaignProductMedia?.message,
+      captionAndHashtags:
+        errors.submissions?.[index]?.captionAndHashtags?.message,
+    };
+  };
 
   const onSubmit = async (data: ContentSubmissionsForm) => {
     try {
-      //TODO: 1. 모든 캠페인 제품 미디어 presigned URL 요청 및 업로드
-      //TODO: 2. 모든 콘텐츠 제출 요청
-      //TODO: 3. 콘텐츠 제출 API 호출
-      if (campaignId && data.submissions) {
-        if (onSuccess) {
-          onSuccess();
-        }
-      }
+      await Promise.all(
+        data.submissions.map(async (submission) => {
+          if (!submission.campaignId) {
+            throw new Error('캠페인 ID가 없습니다.');
+          }
+
+          let mediaUrls: string[] = [];
+
+          if (submission.campaignProductMedia.length > 0) {
+            const presignedUrls = await getMediaPresignedUrls(
+              submission.campaignProductMedia
+            );
+
+            mediaUrls = await Promise.all(
+              submission.campaignProductMedia.map(async (file, index) => {
+                return await uploadMediaToPresignedUrl(
+                  file,
+                  presignedUrls[index] || ''
+                );
+              })
+            );
+          }
+
+          const reviewData = {
+            contentType: submission.contentType,
+            mediaUrls: mediaUrls,
+            captionWithHashtags: submission.captionAndHashtags,
+          };
+
+          await submitReviewApi(submission.campaignId, reviewData);
+        })
+      );
+
+      onSuccess?.();
     } catch (error) {
       console.error('콘텐츠 제출 실패:', error);
+      throw error;
     }
   };
 
   const handleSubmitAll = handleSubmit(onSubmit);
-
-  const resetAllForms = () => {
-    reset();
-  };
 
   const validateAllForms = async () => {
     return await trigger();
@@ -185,9 +248,11 @@ export const useContentSubmissions = (
 
   return {
     fields,
+    isPending,
+    isError,
     getFormData,
     getErrors,
-    resetAllForms,
+    reset,
     handleSubmitAll,
     validateAllForms,
     isAllFormsValid,
@@ -195,5 +260,63 @@ export const useContentSubmissions = (
     updateContentType,
     updateCampaignProductMedia,
     updateCaptionAndHashtags,
+    trigger,
   };
+};
+
+const headers = {
+  'Content-Type': 'application/json',
+  Authorization: `Bearer ${process.env.NEXT_PUBLIC_AUTH_TOKEN}`,
+};
+
+const getMediaPresignedUrls = async (file: File[]): Promise<string[]> => {
+  const response = await apiRequest<ApiResponseReviewMediaResponse>({
+    endPoint: '/api/reviews/media',
+    method: 'POST',
+    headers: headers,
+    data: {
+      mediaType: file.map((file) => file.type),
+    },
+  });
+  console.log(response);
+
+  if (!response.data?.mediaUrl) {
+    throw new Error('Presigned URL 발급에 실패했습니다.');
+  }
+
+  return response.data?.mediaUrl;
+};
+
+const uploadMediaToPresignedUrl = async (
+  file: File,
+  presignedUrl: string
+): Promise<string> => {
+  const response = await fetch(presignedUrl, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': file.type,
+    },
+    body: file,
+  });
+
+  if (!response.ok) {
+    throw new Error('미디어 업로드에 실패했습니다.');
+  }
+  return response.url;
+};
+
+const submitReviewApi = async (campaignId: number, data: any) => {
+  console.log(data);
+  const response = await apiRequest<ApiResponseReviewReceiptResponse>({
+    endPoint: `/api/campaignReviews/${campaignId}/first`,
+    method: 'POST',
+    headers: headers,
+    data: data,
+  });
+
+  if (!response.success) {
+    throw new Error('리뷰 제출에 실패했습니다.');
+  }
+
+  return response.data;
 };
