@@ -73,7 +73,7 @@ export default function SideBar({
               label={menu.label}
               value={menu.value}
               selected={activeMenu === menu.value}
-              className="p-0"
+              className="flex h-fit items-start truncate px-0 py-[1.15rem]"
               onClick={() => handleClickTab(menu)}
             />
           ))}

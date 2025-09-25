@@ -13,14 +13,17 @@ import { Select } from '@lococo/design-system/select';
 import { RHFSelect } from './rhf-Select';
 
 export default function CampaignDueDate() {
-  const { control } = useFormContext<CampaignFormData>();
+  const {
+    control,
+    formState: { errors },
+  } = useFormContext<CampaignFormData>();
   const { AM_PM, HOURS, MINUTES } = timeOptions();
   const { months, years, days } = dateOptions();
-  const t = useTranslations('brandMyPageCreateCampaign.schedule');
+  const t = useTranslations('brandMyPageCreateCampaign');
 
   return (
     <section className="w-[64.8rem]">
-      <InputWrapper label={t('dueDate')} required>
+      <InputWrapper label={t('schedule.dueDate')} required>
         <div className="flex gap-[2.4rem]">
           <RHFSelect
             name="dueDate.month"
@@ -41,9 +44,16 @@ export default function CampaignDueDate() {
             placeholder="Year"
           />
         </div>
+        {(errors.dueDate?.month ||
+          errors.dueDate?.day ||
+          errors.dueDate?.year) && (
+          <p className="text-red caption3 font-[400]">
+            {t('errorMessage.campaignDueDay')}
+          </p>
+        )}
       </InputWrapper>
 
-      <InputWrapper label={t('dueTime')} required>
+      <InputWrapper label={t('schedule.dueTime')} required>
         <div className="flex gap-[2.4rem]">
           <Controller
             name="dueTime.period"
@@ -85,6 +95,11 @@ export default function CampaignDueDate() {
             )}
           />
         </div>
+        {(errors.dueTime?.hour || errors.dueTime?.minute) && (
+          <p className="text-red caption3 font-[400]">
+            {t('errorMessage.campaignDueTime')}
+          </p>
+        )}
       </InputWrapper>
     </section>
   );

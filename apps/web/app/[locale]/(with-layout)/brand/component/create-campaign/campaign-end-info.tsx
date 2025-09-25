@@ -1,10 +1,12 @@
 'use client';
 
 import React from 'react';
+import { useFormContext } from 'react-hook-form';
 
 import { useTranslations } from 'next-intl';
 
 import { SelectFormField } from 'components/forms';
+import { CampaignFormData } from 'schema/create-campaign-schema';
 import { dateOptions } from 'utils';
 import { timeOptions } from 'utils/time-options';
 
@@ -13,12 +15,15 @@ import { RHFSelect } from './rhf-Select';
 export default function CampaignEndInfo() {
   const { AM_PM, HOURS, MINUTES } = timeOptions();
   const { months, years, days } = dateOptions();
+  const {
+    formState: { errors },
+  } = useFormContext<CampaignFormData>();
 
-  const t = useTranslations('brandMyPageCreateCampaign.schedule');
+  const t = useTranslations('brandMyPageCreateCampaign');
 
   return (
     <section className="flex w-[64.8rem] flex-col gap-[1.6rem]">
-      <SelectFormField label={t('endDate')} required>
+      <SelectFormField label={t('schedule.endDate')} required>
         <div className="flex gap-[2.4rem]">
           <RHFSelect
             name="endDate.month"
@@ -39,9 +44,16 @@ export default function CampaignEndInfo() {
             placeholder="Year"
           />
         </div>
+        {(errors.endDate?.month ||
+          errors.endDate?.day ||
+          errors.endDate?.year) && (
+          <p className="text-red caption3 font-[400]">
+            {t('errorMessage.campaignEndDay')}
+          </p>
+        )}
       </SelectFormField>
 
-      <SelectFormField label={t('endTime')} required>
+      <SelectFormField label={t('schedule.endTime')} required>
         <div className="flex gap-[2.4rem]">
           <RHFSelect
             name="endTime.period"
@@ -62,6 +74,11 @@ export default function CampaignEndInfo() {
             placeholder="Minute"
           />
         </div>
+        {(errors.endTime?.hour || errors.endTime?.minute) && (
+          <p className="text-red caption3 font-[400]">
+            {t('errorMessage.campaignEndTime')}
+          </p>
+        )}
       </SelectFormField>
     </section>
   );

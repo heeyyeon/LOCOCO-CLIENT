@@ -19,11 +19,15 @@ export default function CampaignInfo() {
   return (
     <section className="flex w-[64.8rem] flex-col gap-[1.6rem]">
       <TextFormField
-        label={t('pageTitle')}
+        label={t('basicInfo.title')}
         required
-        placeholder="text"
+        placeholder={t('basicInfo.titlePlaceholder')}
         register={register('title')}
-        error={errors.title?.message}
+        error={
+          errors.title?.message
+            ? t(`errorMessage.${errors.title.message}`)
+            : undefined
+        }
       />
 
       <Controller
@@ -34,12 +38,14 @@ export default function CampaignInfo() {
             label={t('basicInfo.language')}
             required
             options={[
-              { label: '영어', value: 'EN' },
-              { label: '스페인어', value: 'ES' },
+              { label: t('options.language.EN'), value: 'EN' },
+              { label: t('options.language.ES'), value: 'ES' },
             ]}
             value={field.value}
             onValueChange={field.onChange}
-            error={error?.message}
+            error={
+              error?.message ? t(`errorMessage.${error.message}`) : undefined
+            }
           />
         )}
       />
@@ -52,13 +58,15 @@ export default function CampaignInfo() {
             label={t('basicInfo.type')}
             required
             options={[
-              { label: 'EXCLUSIVE', value: 'EXCLUSIVE' },
-              { label: 'GIVEAWAY', value: 'GIVEAWAY' },
-              { label: 'CONTENTS', value: 'CONTENTS' },
+              { label: t('options.type.EXCLUSIVE'), value: 'EXCLUSIVE' },
+              { label: t('options.type.GIVEAWAY'), value: 'GIVEAWAY' },
+              { label: t('options.type.CONTENTS'), value: 'CONTENTS' },
             ]}
             value={field.value}
             onValueChange={field.onChange}
-            error={error?.message}
+            error={
+              error?.message ? t(`errorMessage.${error.message}`) : undefined
+            }
           />
         )}
       />
@@ -71,13 +79,15 @@ export default function CampaignInfo() {
             label={t('basicInfo.category')}
             required
             options={[
-              { label: 'SKINCARE', value: 'SKINCARE' },
-              { label: 'SUNCARE', value: 'SUNCARE' },
-              { label: 'MAKEUP', value: 'MAKEUP' },
+              { label: t('options.category.SKINCARE'), value: 'SKINCARE' },
+              { label: t('options.category.SUNCARE'), value: 'SUNCARE' },
+              { label: t('options.category.MAKEUP'), value: 'MAKEUP' },
             ]}
             value={field.value}
             onValueChange={field.onChange}
-            error={error?.message}
+            error={
+              error?.message ? t(`errorMessage.${error.message}`) : undefined
+            }
           />
         )}
       />
@@ -87,7 +97,11 @@ export default function CampaignInfo() {
         required
         placeholder={t('basicInfo.creatorCountPlaceholder')}
         register={register('creatorCount')}
-        error={errors.creatorCount?.message}
+        error={
+          errors.creatorCount?.message
+            ? t(`errorMessage.${errors.creatorCount.message}`)
+            : undefined
+        }
       />
     </section>
   );

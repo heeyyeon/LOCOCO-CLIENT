@@ -1,10 +1,12 @@
 'use client';
 
 import React from 'react';
+import { useFormContext } from 'react-hook-form';
 
 import { useTranslations } from 'next-intl';
 
 import { SelectFormField } from 'components/forms';
+import { CampaignFormData } from 'schema/create-campaign-schema';
 import { dateOptions } from 'utils';
 import { timeOptions } from 'utils/time-options';
 
@@ -13,12 +15,15 @@ import { RHFSelect } from './rhf-Select';
 export default function CampaignWinnerAnnounce() {
   const { AM_PM, HOURS, MINUTES } = timeOptions();
   const { months, years, days } = dateOptions();
+  const {
+    formState: { errors },
+  } = useFormContext<CampaignFormData>();
 
-  const t = useTranslations('brandMyPageCreateCampaign.schedule');
+  const t = useTranslations('brandMyPageCreateCampaign');
 
   return (
     <section className="flex w-[64.8rem] flex-col gap-[1.6rem]">
-      <SelectFormField label={t('announceDate')} required>
+      <SelectFormField label={t('schedule.announceDate')} required>
         <div className="flex gap-[2.4rem]">
           <RHFSelect
             name="announceDate.month"
@@ -39,9 +44,16 @@ export default function CampaignWinnerAnnounce() {
             size="small"
           />
         </div>
+        {(errors.announceDate?.month ||
+          errors.announceDate?.day ||
+          errors.announceDate?.year) && (
+          <p className="text-red caption3 font-[400]">
+            {t('errorMessage.campaignAnnounceDay')}
+          </p>
+        )}
       </SelectFormField>
 
-      <SelectFormField label={t('announceTime')} required>
+      <SelectFormField label={t('schedule.announceTime')} required>
         <div className="flex gap-[2.4rem]">
           <RHFSelect
             name="announceTime.period"
@@ -62,6 +74,11 @@ export default function CampaignWinnerAnnounce() {
             size="small"
           />
         </div>
+        {(errors.announceTime?.hour || errors.announceTime?.minute) && (
+          <p className="text-red caption3 font-[400]">
+            {t('errorMessage.campaignAnnounceTime')}
+          </p>
+        )}
       </SelectFormField>
     </section>
   );

@@ -82,15 +82,25 @@
         "MAKEUP": "메이크업"
       }
     },
-    "validation": {
-      "titleRequired": "캠페인 제목은 필수입니다",
-      "creatorCountRequired": "모집 예정 크리에이터 수는 필수입니다",
-      "conditionRequired": "조건을 입력해주세요",
-      "rewardRequired": "보상을 입력해주세요",
-      "firstContentMinRequired": "첫 번째 컨텐츠는 최소 1개 이상 선택해야 합니다",
-      "firstContentMaxExceeded": "첫 번째 컨텐츠는 최대 2개까지 선택 가능합니다",
-      "secondContentMaxExceeded": "두 번째 컨텐츠는 최대 2개까지 선택 가능합니다",
-      "secondContentRequiresFirst": "두 번째 컨텐츠를 선택하려면 첫 번째 컨텐츠를 먼저 선택해야 합니다",
+    "errorMessage": {
+      "campaignTitle": "캠페인 제목을 입력해주세요.",
+      "campaignLanguage": "캠페인 진행 언어를 입력해 주세요.",
+      "campaignType": "캠페인 종류를 입력해 주세요.",
+      "campaignCategory": "캠페인 카테고리를 입력해 주세요.",
+      "campaignCreatorCount": "모집 예정 크리에이터 수를 입력해 주세요.",
+      "campaignStartDay": "캠페인 지원 시작일을 입력해 주세요.",
+      "campaignStartTime": "캠페인 지원 시작 시각을 입력해 주세요.",
+      "campaignEndDay": "캠페인 지원 종료일을 입력해 주세요.",
+      "campaignEndTime": "캠페인 지원 종료 시각을 입력해 주세요.",
+      "campaignAnnounceDay": "캠페인 당첨자 발표일을 입력해 주세요.",
+      "campaignAnnounceTime": "캠페인 당첨자 시각을 입력해 주세요.",
+      "campaignDueDay": "캠페인 제목을 입력해주세요.",
+      "campaignDueTime": "캠페인 제목을 입력해주세요.",
+      "campaignPlatformSelect": "컨텐츠 플랫폼을 선택해 주세요.",
+      "campaignMediaThumbnail": "컨텐츠 썸네일 사진을 업로드해 주세요.",
+      "campaignMediaDetail": "컨텐츠 상세페이지 사진을 업로드해 주세요.",
+      "firstContentMaxExceeded": "컨텐츠는 최대 2개까지 선택 가능합니다",
+      "secondContentMaxExceeded": "컨텐츠는 최대 2개까지 선택 가능합니다",
       "thumbnailMaxFiles": "썸네일은 최대 5장까지 업로드 가능합니다",
       "detailMaxFiles": "상세 사진은 최대 15장까지 업로드 가능합니다"
     }

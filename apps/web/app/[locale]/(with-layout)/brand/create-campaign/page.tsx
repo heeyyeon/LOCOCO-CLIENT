@@ -160,8 +160,8 @@ export default function CreateCampaign() {
                 )}
               </div>
               {errors.firstContents && (
-                <p className="body2 text-red font-[500]">
-                  {errors.firstContents.message}
+                <p className="caption3 text-red font-[400]">
+                  {t('errorMessage.firstContents')}
                 </p>
               )}
               <InputWrapper label={t('platform.secondContent')} />

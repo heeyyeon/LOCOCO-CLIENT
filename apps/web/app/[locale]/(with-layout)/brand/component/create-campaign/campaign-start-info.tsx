@@ -1,6 +1,9 @@
+import { useFormContext } from 'react-hook-form';
+
 import { useTranslations } from 'next-intl';
 
 import { SelectFormField } from 'components/forms';
+import { CampaignFormData } from 'schema/create-campaign-schema';
 import { dateOptions } from 'utils';
 import { timeOptions } from 'utils/time-options';
 
@@ -9,6 +12,9 @@ import { RHFSelect } from './rhf-Select';
 export default function CampaignStartInfo() {
   const { AM_PM, HOURS, MINUTES } = timeOptions();
   const { months, years, days } = dateOptions();
+  const {
+    formState: { errors },
+  } = useFormContext<CampaignFormData>();
 
   const t = useTranslations('brandMyPageCreateCampaign.schedule');
   return (
@@ -34,6 +40,13 @@ export default function CampaignStartInfo() {
             size="small"
           />
         </div>
+        {(errors.startDate?.month ||
+          errors.startDate?.day ||
+          errors.startDate?.year) && (
+          <p className="text-red caption3 font-[400]">
+            {t('errorMessage.campaignStartDay')}
+          </p>
+        )}
       </SelectFormField>
 
       <SelectFormField label={t('startTime')} required>
@@ -57,6 +70,13 @@ export default function CampaignStartInfo() {
             size="small"
           />
         </div>
+        {(errors.startTime?.period ||
+          errors.startTime?.hour ||
+          errors.startTime?.minute) && (
+          <p className="text-red caption3 font-[400]">
+            {t('errorMessage.campaignStartDay')}
+          </p>
+        )}
       </SelectFormField>
     </section>
   );
