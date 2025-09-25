@@ -299,7 +299,13 @@ const uploadMediaToPresignedUrl = async (
   return response.url;
 };
 
-const submitReviewApi = async (campaignId: number, data: any) => {
+interface ReviewData {
+  contentType: string;
+  mediaUrls: string[];
+  captionWithHashtags: string;
+}
+
+const submitReviewApi = async (campaignId: number, data: ReviewData) => {
   console.log(data);
   const response = await apiRequest<ApiResponseReviewReceiptResponse>({
     endPoint: `/api/campaignReviews/${campaignId}/first`,

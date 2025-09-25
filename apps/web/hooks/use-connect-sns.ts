@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 
 import { useRouter, useSearchParams } from 'next/navigation';
 
-import { useQuery, useQueryClient } from '@tanstack/react-query';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { apiRequest } from 'app/api/apiRequest';
 import { CONNECT_SNS_KEYS } from 'constants/query-key';
 import {
@@ -30,7 +30,7 @@ export const useConnectSns = () => {
   });
 };
 
-export const useConnectTiktok = async () => {
+const connectTiktokApi = async (): Promise<ApiResponseVoid> => {
   const response = await apiRequest<ApiResponseVoid>({
     endPoint: '/api/auth/sns/tiktok/connect',
   });
@@ -40,6 +40,12 @@ export const useConnectTiktok = async () => {
   }
 
   return response;
+};
+
+export const useConnectTiktok = () => {
+  return useMutation({
+    mutationFn: connectTiktokApi,
+  });
 };
 
 // OAuth 콜백 처리 훅

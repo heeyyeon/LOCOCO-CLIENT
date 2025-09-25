@@ -31,6 +31,7 @@ export function SnsConnection({
   const t = useTranslations('snsConnection');
 
   const { data: connectSnsData, isPending } = useConnectSns();
+  const { mutateAsync: connectTiktok } = useConnectTiktok();
 
   const connectedSns: SnsPlatform[] = [];
   if (connectSnsData?.data?.isInstaConnected) {
@@ -45,7 +46,7 @@ export function SnsConnection({
   const handleConnectSns = async (sns: SnsPlatform) => {
     try {
       if (sns === 'tiktok') {
-        await useConnectTiktok();
+        await connectTiktok();
       } else if (sns === 'instagram') {
         // Instagram 연결 로직 추가 필요
       }
