@@ -12,6 +12,89 @@
     "makeNewCampaign": "새 캠페인 만들기",
     "myCampaign": "나의 캠페인"
   },
+  "brandMyPageCreateCampaign": {
+    "pageTitle": "캠페인 정보",
+    "basicInfo": {
+      "title": "캠페인 제목",
+      "titlePlaceholder": "캠페인 제목을 입력하세요",
+      "language": "캠페인 진행 언어",
+      "type": "캠페인 종류",
+      "category": "카테고리",
+      "creatorCount": "모집 예정 크리에이터 수",
+      "creatorCountPlaceholder": "숫자를 입력하세요"
+    },
+    "schedule": {
+      "startDate": "캠페인 지원 시작일",
+      "startTime": "캠페인 지원 시작 시각",
+      "endDate": "캠페인 지원 종료일",
+      "endTime": "캠페인 지원 종료 시각",
+      "announceDate": "캠페인 당첨자 발표일",
+      "announceTime": "캠페인 당첨자 발표 시각",
+      "dueDate": "2차 컨텐츠 최종 제출일",
+      "dueTime": "2차 컨텐츠 최종 제출 시각",
+      "placeholders": {
+        "month": "월",
+        "day": "일",
+        "year": "년",
+        "amPm": "AM/PM",
+        "hour": "시",
+        "minute": "분"
+      }
+    },
+    "conditions": {
+      "joinConditionTitle": "참여 크리에이터 조건",
+      "joinConditionDescription": "캠페인에 참여할 수 있는 크리에이터의 조건을 설명해주세요",
+      "submitConditionTitle": "크리에이터 제출 컨텐츠 조건",
+      "submitConditionDescription": "캠페인에 참여할 수 있는 크리에이터의 조건을 설명해주세요",
+      "rewardTitle": "크리에이터 참여 보상",
+      "rewardDescription": "캠페인에 참여할 수 있는 크리에이터의 조건을 설명해주세요",
+      "inputPlaceholder": "text"
+    },
+    "platform": {
+      "title": "컨텐츠 플랫폼 선택",
+      "description": "(최대 2개까지 선택 가능합니다.)",
+      "firstContent": "첫번째 컨텐츠",
+      "secondContent": "두번째 컨텐츠"
+    },
+    "media": {
+      "thumbnailTitle": "컨텐츠 썸네일 사진",
+      "thumbnailDescription": "캠페인 상세페이지 썸네일에 보여질 사진들입니다. 고화질 사진을 첨부해주세요.\n사진은 최대 5장까지 업로드 가능합니다.",
+      "detailTitle": "컨텐츠 상세페이지 사진",
+      "detailDescription": "캠페인 상세페이지에 보여질 사진들입니다. 고화질 사진을 첨부해주세요.\n사진은 최대 15장까지 업로드 가능합니다."
+    },
+    "buttons": {
+      "save": "저장하기",
+      "publish": "캠페인 발행하기"
+    },
+    "options": {
+      "language": {
+        "EN": "영어",
+        "ES": "스페인어"
+      },
+      "type": {
+        "GIVEAWAY": "기브어웨이",
+        "CONTENTS": "컨텐츠",
+        "EXCLUSIVE": "독점"
+      },
+      "category": {
+        "SKINCARE": "스킨케어",
+        "SUNCARE": "선케어",
+        "MAKEUP": "메이크업"
+      }
+    },
+    "validation": {
+      "titleRequired": "캠페인 제목은 필수입니다",
+      "creatorCountRequired": "모집 예정 크리에이터 수는 필수입니다",
+      "conditionRequired": "조건을 입력해주세요",
+      "rewardRequired": "보상을 입력해주세요",
+      "firstContentMinRequired": "첫 번째 컨텐츠는 최소 1개 이상 선택해야 합니다",
+      "firstContentMaxExceeded": "첫 번째 컨텐츠는 최대 2개까지 선택 가능합니다",
+      "secondContentMaxExceeded": "두 번째 컨텐츠는 최대 2개까지 선택 가능합니다",
+      "secondContentRequiresFirst": "두 번째 컨텐츠를 선택하려면 첫 번째 컨텐츠를 먼저 선택해야 합니다",
+      "thumbnailMaxFiles": "썸네일은 최대 5장까지 업로드 가능합니다",
+      "detailMaxFiles": "상세 사진은 최대 15장까지 업로드 가능합니다"
+    }
+  },
   "campaignDetail": {
     "applicationPeriod": "지원 기간",
     "campaignSchedule": "캠페인 일정",

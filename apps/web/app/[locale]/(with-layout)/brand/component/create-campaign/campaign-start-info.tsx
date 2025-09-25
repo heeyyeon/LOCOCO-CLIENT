@@ -1,3 +1,5 @@
+import { useTranslations } from 'next-intl';
+
 import { SelectFormField } from 'components/forms';
 import { dateOptions } from 'utils';
 import { timeOptions } from 'utils/time-options';
@@ -8,9 +10,10 @@ export default function CampaignStartInfo() {
   const { AM_PM, HOURS, MINUTES } = timeOptions();
   const { months, years, days } = dateOptions();
 
+  const t = useTranslations('brandMyPageCreateCampaign.schedule');
   return (
     <section className="flex w-[64.8rem] flex-col gap-[1.6rem]">
-      <SelectFormField label="캠페인 지원 시작일" required>
+      <SelectFormField label={t('startDate')} required>
         <div className="flex gap-[2.4rem]">
           <RHFSelect
             name="startDate.month"
@@ -33,7 +36,7 @@ export default function CampaignStartInfo() {
         </div>
       </SelectFormField>
 
-      <SelectFormField label="캠페인 지원 시작 시각" required>
+      <SelectFormField label={t('startTime')} required>
         <div className="flex gap-[2.4rem]">
           <RHFSelect
             name="startTime.period"

@@ -96,6 +96,18 @@ export const createCampaignSchema = z
       message: '두 번째 컨텐츠는 최대 2개까지 선택 가능합니다', // 2차 SNS 플랫폼 선택 에러 메세지
       path: ['secondContents'],
     }
+  )
+  .refine(
+    (data) => {
+      const firstSelected = Object.values(data.firstContents).filter(
+        Boolean
+      ).length;
+      return firstSelected >= 1;
+    },
+    {
+      message: '첫 번째 컨텐츠는 최소 1개 이상 선택해야 합니다',
+      path: ['firstContents'],
+    }
   );
 
 export type CampaignFormData = z.infer<typeof createCampaignSchema>;

@@ -2,6 +2,8 @@
 
 import { FormProvider, useForm } from 'react-hook-form';
 
+import { useTranslations } from 'next-intl';
+
 import { zodResolver } from '@hookform/resolvers/zod';
 import CampaignUploadMedia from 'components/campaign/campaign-upload-media';
 import { FormSection } from 'components/forms';
@@ -62,7 +64,10 @@ export default function CreateCampaign() {
     },
   });
 
-  const { handleSubmit } = methods;
+  const {
+    handleSubmit,
+    formState: { errors },
+  } = methods;
 
   const firstContents = usePlatformSelection(methods, 'firstContents');
   const secondContents = usePlatformSelection(methods, 'secondContents');
@@ -104,40 +109,43 @@ export default function CreateCampaign() {
       detailFiles: data.detailFiles,
     });
   };
+  const t = useTranslations('brandMyPageCreateCampaign');
   return (
     <FormProvider {...methods}>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="bg-gray-100">
           <div className="flex min-h-[260.4rem] w-[84rem] flex-col gap-[4.8rem] bg-white px-[9.6rem] py-[4.8rem]">
-            <h3 className="title2 font-[700] text-gray-800">캠페인 정보</h3>
+            <h3 className="title2 font-[700] text-gray-800">
+              {t('pageTitle')}
+            </h3>
             <CampaignInfo />
             <CampaignStartInfo />
             <CampaignEndInfo />
             <CampaignWinnerAnnounce />
             <CampaignDueDate />
             <FormSection
-              title="참여 크리에이터 조건"
-              description="캠페인에 참여할 수 있는 크리에이터의 조건을 설명해주세요"
+              title={t('conditions.joinConditionTitle')}
+              description={t('conditions.joinConditionDescription')}
             >
               <DynamicInput fieldName="joinConditions" />
             </FormSection>
             <FormSection
-              title="크리에이터 제출 컨텐츠 조건"
-              description="캠페인에 참여할 수 있는 크리에이터의 조건을 설명해주세요"
+              title={t('conditions.submitConditionTitle')}
+              description={t('conditions.submitConditionDescription')}
             >
               <DynamicInput fieldName="submitConditions" />
             </FormSection>
             <FormSection
-              title="크리에이터 참여 보상"
-              description="캠페인에 참여할 수 있는 크리에이터의 조건을 설명해주세요"
+              title={t('conditions.rewardTitle')}
+              description={t('conditions.rewardDescription')}
             >
               <DynamicInput fieldName="joinRewards" />
             </FormSection>
             <FormSection
-              title="컨텐츠 플랫폼 선택"
-              description="(최대 2개까지 선택 가능합니다.)"
+              title={t('platform.title')}
+              description={t('platform.description')}
             >
-              <InputWrapper label="첫번째 컨텐츠" required />
+              <InputWrapper label={t('platform.firstContent')} required />
               <div className="flex gap-[1.2rem]">
                 {(Object.keys(SOCIAL_CONFIGS) as SocialPlatform[]).map(
                   (platform) => (
@@ -151,7 +159,12 @@ export default function CreateCampaign() {
                   )
                 )}
               </div>
-              <InputWrapper label="두번째 컨텐츠" />
+              {errors.firstContents && (
+                <p className="body2 text-red font-[500]">
+                  {errors.firstContents.message}
+                </p>
+              )}
+              <InputWrapper label={t('platform.secondContent')} />
               <div className="flex gap-[1.2rem]">
                 {(Object.keys(SOCIAL_CONFIGS) as SocialPlatform[]).map(
                   (platform) => (
@@ -179,7 +192,7 @@ export default function CreateCampaign() {
                 console.log('저장하기 클릭');
               }}
             >
-              저장하기
+              {t('buttons.save')}
             </Button>
             <Button
               type="submit"
@@ -188,7 +201,7 @@ export default function CreateCampaign() {
               color="primary"
               className="w-[41.2rem]"
             >
-              캠페인 발행하기
+              {t('buttons.publish')}
             </Button>
           </div>
         </div>

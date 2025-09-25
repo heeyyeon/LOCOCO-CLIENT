@@ -1,4 +1,8 @@
+'use client';
+
 import { Controller, useFormContext } from 'react-hook-form';
+
+import { useTranslations } from 'next-intl';
 
 import { SelectFormField, TextFormField } from 'components/forms';
 import { CampaignFormData } from 'schema/create-campaign-schema';
@@ -10,10 +14,12 @@ export default function CampaignInfo() {
     formState: { errors },
   } = useFormContext<CampaignFormData>();
 
+  const t = useTranslations('brandMyPageCreateCampaign');
+
   return (
     <section className="flex w-[64.8rem] flex-col gap-[1.6rem]">
       <TextFormField
-        label="캠페인 제목"
+        label={t('pageTitle')}
         required
         placeholder="text"
         register={register('title')}
@@ -25,7 +31,7 @@ export default function CampaignInfo() {
         control={control}
         render={({ field, fieldState: { error } }) => (
           <SelectFormField
-            label="캠페인 진행 언어"
+            label={t('basicInfo.language')}
             required
             options={[
               { label: '영어', value: 'EN' },
@@ -43,7 +49,7 @@ export default function CampaignInfo() {
         control={control}
         render={({ field, fieldState: { error } }) => (
           <SelectFormField
-            label="캠페인 종류"
+            label={t('basicInfo.type')}
             required
             options={[
               { label: 'EXCLUSIVE', value: 'EXCLUSIVE' },
@@ -62,7 +68,7 @@ export default function CampaignInfo() {
         control={control}
         render={({ field, fieldState: { error } }) => (
           <SelectFormField
-            label="카테고리"
+            label={t('basicInfo.category')}
             required
             options={[
               { label: 'SKINCARE', value: 'SKINCARE' },
@@ -77,9 +83,9 @@ export default function CampaignInfo() {
       />
 
       <TextFormField
-        label="모집 예정 크리에이터 수"
+        label={t('basicInfo.creatorCount')}
         required
-        placeholder="숫자를 입력하세요"
+        placeholder={t('basicInfo.creatorCountPlaceholder')}
         register={register('creatorCount')}
         error={errors.creatorCount?.message}
       />

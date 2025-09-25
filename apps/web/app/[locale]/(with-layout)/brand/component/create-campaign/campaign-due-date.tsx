@@ -1,6 +1,8 @@
 import React from 'react';
 import { Controller, useFormContext } from 'react-hook-form';
 
+import { useTranslations } from 'next-intl';
+
 import InputWrapper from 'app/[locale]/(with-layout)/my-page/components/input-wrapper';
 import { CampaignFormData } from 'schema/create-campaign-schema';
 import { dateOptions } from 'utils';
@@ -14,10 +16,11 @@ export default function CampaignDueDate() {
   const { control } = useFormContext<CampaignFormData>();
   const { AM_PM, HOURS, MINUTES } = timeOptions();
   const { months, years, days } = dateOptions();
+  const t = useTranslations('brandMyPageCreateCampaign.schedule');
 
   return (
     <section className="w-[64.8rem]">
-      <InputWrapper label="2차 컨텐츠 최종 제출일" required>
+      <InputWrapper label={t('dueDate')} required>
         <div className="flex gap-[2.4rem]">
           <RHFSelect
             name="dueDate.month"
@@ -40,7 +43,7 @@ export default function CampaignDueDate() {
         </div>
       </InputWrapper>
 
-      <InputWrapper label="2차 컨텐츠 최종 제출 시각" required>
+      <InputWrapper label={t('dueTime')} required>
         <div className="flex gap-[2.4rem]">
           <Controller
             name="dueTime.period"

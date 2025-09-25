@@ -1,4 +1,8 @@
+'use client';
+
 import React from 'react';
+
+import { useTranslations } from 'next-intl';
 
 import { SelectFormField } from 'components/forms';
 import { dateOptions } from 'utils';
@@ -10,9 +14,11 @@ export default function CampaignWinnerAnnounce() {
   const { AM_PM, HOURS, MINUTES } = timeOptions();
   const { months, years, days } = dateOptions();
 
+  const t = useTranslations('brandMyPageCreateCampaign.schedule');
+
   return (
     <section className="flex w-[64.8rem] flex-col gap-[1.6rem]">
-      <SelectFormField label="캠페인 당첨자 발표일" required>
+      <SelectFormField label={t('announceDate')} required>
         <div className="flex gap-[2.4rem]">
           <RHFSelect
             name="announceDate.month"
@@ -35,7 +41,7 @@ export default function CampaignWinnerAnnounce() {
         </div>
       </SelectFormField>
 
-      <SelectFormField label="캠페인 당첨자 발표 시각" required>
+      <SelectFormField label={t('announceTime')} required>
         <div className="flex gap-[2.4rem]">
           <RHFSelect
             name="announceTime.period"
