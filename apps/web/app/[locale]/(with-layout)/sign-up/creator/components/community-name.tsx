@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { UseFormReturn } from 'react-hook-form';
 
 import { useTranslations } from 'next-intl';
@@ -6,7 +6,7 @@ import { useTranslations } from 'next-intl';
 import { Button } from '@lococo/design-system/button';
 
 import { FormSection, TextFormField } from '../../../../../../components/forms';
-import { checkIdAvailability } from '../apis/duplicate-check';
+import { useIdAvailability } from '../../queries/useIdAvailability';
 import { type CreatorSignupForm } from '../utils/signup';
 
 interface CommunityNameProps {
@@ -15,11 +15,26 @@ interface CommunityNameProps {
 
 export function CommunityName({ form }: CommunityNameProps) {
   const t = useTranslations('creatorSignup.communityName');
+  const [isCheckingEnabled, setIsCheckingEnabled] = useState(false);
+  const [hasCheckedCurrentId, setHasCheckedCurrentId] = useState(false);
 
-  const [availabilityMessage, setAvailabilityMessage] = useState<{
-    type: 'success' | 'error' | null;
-    message: string;
-  }>({ type: null, message: '' });
+  const id = form.watch('id');
+
+  const { data: availabilityResult } = useIdAvailability(
+    id || '',
+    isCheckingEnabled
+  );
+
+  useEffect(() => {
+    setHasCheckedCurrentId(false);
+    setIsCheckingEnabled(false);
+  }, [id]);
+
+  useEffect(() => {
+    if (availabilityResult && hasCheckedCurrentId) {
+      setIsCheckingEnabled(false);
+    }
+  }, [availabilityResult, hasCheckedCurrentId]);
 
   const handleCheckAvailability = async () => {
     const isValid = await form.trigger('id');
@@ -27,22 +42,31 @@ export function CommunityName({ form }: CommunityNameProps) {
       return;
     }
 
-    const id = form.getValues('id');
-
-    try {
-      const result = await checkIdAvailability(id);
-
-      setAvailabilityMessage({
-        type: result.success ? 'success' : 'error',
-        message: result.success ? t('idAvailable') : t('idTaken'),
-      });
-    } catch {
-      setAvailabilityMessage({
-        type: 'error',
-        message: t('idTaken'),
-      });
-    }
+    setIsCheckingEnabled(true);
+    setHasCheckedCurrentId(true);
   };
+
+  const getMessage = () => {
+    if (form.formState.errors.id?.message) {
+      return {
+        type: 'error' as const,
+        message: form.formState.errors.id.message,
+      };
+    }
+
+    if (hasCheckedCurrentId && availabilityResult) {
+      return {
+        type: availabilityResult.success
+          ? ('success' as const)
+          : ('error' as const),
+        message: availabilityResult.success ? t('idAvailable') : t('idTaken'),
+      };
+    }
+
+    return null;
+  };
+
+  const message = getMessage();
 
   return (
     <FormSection title={t('title')} description={t('description')}>
@@ -51,16 +75,9 @@ export function CommunityName({ form }: CommunityNameProps) {
         required
         placeholder={t('idPlaceholder')}
         register={form.register('id')}
-        error={
-          form.formState.errors.id?.message ||
-          (availabilityMessage?.type === 'error'
-            ? availabilityMessage.message
-            : undefined)
-        }
+        error={message?.type === 'error' ? message.message : undefined}
         successMessage={
-          availabilityMessage?.type === 'success'
-            ? availabilityMessage.message
-            : undefined
+          message?.type === 'success' ? message.message : undefined
         }
         rightContent={
           <Button
@@ -70,6 +87,7 @@ export function CommunityName({ form }: CommunityNameProps) {
             size="sm"
             rounded="sm"
             className="h-[3.7rem] px-[1.6rem]"
+            onClick={handleCheckAvailability}
           >
             {t('checkAvailabilityButton')}
           </Button>

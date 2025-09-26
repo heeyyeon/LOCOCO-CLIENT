@@ -17,10 +17,9 @@ export const useCreatorForm = () => {
   const router = useRouter();
   const t = useTranslations('creatorSignup.validation');
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isIdAvailable, setIsIdAvailable] = useState(false);
 
   const form = useForm<CreatorSignupForm>({
-    resolver: zodResolver(creatorSignupSchema(t, isIdAvailable)),
+    resolver: zodResolver(creatorSignupSchema(t)),
     mode: 'onBlur',
     defaultValues: {
       id: '',
@@ -104,8 +103,6 @@ export const useCreatorForm = () => {
   return {
     form,
     isSubmitting,
-    isIdAvailable,
-    setIsIdAvailable,
     handleBack,
     handleNext,
   };

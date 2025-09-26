@@ -4,20 +4,14 @@ import { isValidPhoneNumber } from '../../../../../../utils/format-phone-number'
 
 type TranslationFunction = (key: string) => string;
 
-export const communityNameSchema = (
-  t: TranslationFunction,
-  isIdAvailable: boolean = false
-) =>
+export const communityNameSchema = (t: TranslationFunction) =>
   z.object({
     id: z
       .string()
       .trim()
       .min(1, t('idRequired'))
       .max(15, t('idMaxLength'))
-      .regex(/^[a-z0-9._]+$/, t('idInvalidFormat'))
-      .refine(() => isIdAvailable, {
-        message: t('idAvailabilityCheck'),
-      }),
+      .regex(/^[a-z0-9._]+$/, t('idInvalidFormat')),
   });
 
 export const personalDetailsSchema = (t: TranslationFunction) =>
@@ -78,13 +72,10 @@ export const skinInfoSchema = (t: TranslationFunction) =>
     skinTone: z.string().min(1, t('skinToneRequired')),
   });
 
-export const creatorSignupSchema = (
-  t: TranslationFunction,
-  isIdAvailable: boolean = false
-) =>
+export const creatorSignupSchema = (t: TranslationFunction) =>
   z
     .object({
-      ...communityNameSchema(t, isIdAvailable).shape,
+      ...communityNameSchema(t).shape,
       ...personalDetailsSchema(t).shape,
       ...homeAddressSchema(t).shape,
       ...skinInfoSchema(t).shape,
