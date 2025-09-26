@@ -249,7 +249,9 @@
     "cannotUploadFile": "파일을 업로드할 수 없습니다.",
     "emptyFile": "파일이 비어 있습니다.",
     "fileTooLarge": "파일 크기가 너무 큽니다.",
-    "notAllowedFileType": "허용되지 않는 파일 형식입니다."
+    "notAllowedFileType": "허용되지 않는 파일 형식입니다.",
+    "dragDropDescription": "드래그 앤 드롭 또는 클릭하여 파일을 업로드하세요.",
+    "selectFile": "파일 선택"
   },
   "footer": {
     "copyright": "Lococo. All rights reserved.",

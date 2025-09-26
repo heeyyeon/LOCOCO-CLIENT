@@ -83,7 +83,6 @@ export default function CampaignProductMediaInput({
         handleImageFilesChange={handleImageFilesChange}
         handleVideoFilesChange={handleVideoFilesChange}
         maxFiles={12}
-        inputFileId="campaign-product-media-upload-area"
       />
       {errors && <ErrorNotice message={errors} />}
     </section>
