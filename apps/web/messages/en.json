@@ -4,6 +4,111 @@
   "brandMyPage": {
     "myCampaign": "My Campaigns"
   },
+  "brandMyPageCreateCampaign": {
+    "basicInfo": {
+      "category": "",
+      "creatorCount": "",
+      "creatorCountPlaceholder": "",
+      "language": "",
+      "title": "",
+      "titlePlaceholder": "",
+      "type": ""
+    },
+    "buttons": {
+      "publish": "",
+      "save": ""
+    },
+    "conditions": {
+      "inputPlaceholder": "",
+      "joinConditionDescription": "",
+      "joinConditionTitle": "",
+      "rewardDescription": "",
+      "rewardTitle": "",
+      "submitConditionDescription": "",
+      "submitConditionTitle": ""
+    },
+    "errorMessage": {
+      "campaignAnnounceDay": "",
+      "campaignAnnounceTime": "",
+      "campaignCategory": "",
+      "campaignCreatorCount": "",
+      "campaignDueDay": "",
+      "campaignDueTime": "",
+      "campaignEndDay": "",
+      "campaignEndTime": "",
+      "campaignLanguage": "",
+      "campaignMediaDetail": "",
+      "campaignMediaThumbnail": "",
+      "campaignPlatformSelect": "",
+      "campaignStartDay": "",
+      "campaignStartTime": "",
+      "campaignTitle": "",
+      "campaignType": "",
+      "detailMaxFiles": "",
+      "firstContentMaxExceeded": "",
+      "secondContentMaxExceeded": "",
+      "thumbnailMaxFiles": ""
+    },
+    "media": {
+      "detailDescription": "",
+      "detailTitle": "",
+      "thumbnailDescription": "",
+      "thumbnailTitle": ""
+    },
+    "options": {
+      "category": {
+        "MAKEUP": "",
+        "SKINCARE": "",
+        "SUNCARE": ""
+      },
+      "language": {
+        "EN": "",
+        "ES": ""
+      },
+      "type": {
+        "CONTENTS": "",
+        "EXCLUSIVE": "",
+        "GIVEAWAY": ""
+      }
+    },
+    "pageTitle": "",
+    "platform": {
+      "description": "",
+      "firstContent": "",
+      "secondContent": "",
+      "title": ""
+    },
+    "schedule": {
+      "announceDate": "",
+      "announceTime": "",
+      "dueDate": "",
+      "dueTime": "",
+      "endDate": "",
+      "endTime": "",
+      "placeholders": {
+        "amPm": "",
+        "day": "",
+        "hour": "",
+        "minute": "",
+        "month": "",
+        "year": ""
+      },
+      "startDate": "",
+      "startTime": ""
+    },
+    "validation": {
+      "conditionRequired": "",
+      "creatorCountRequired": "",
+      "detailMaxFiles": "",
+      "firstContentMaxExceeded": "",
+      "firstContentMinRequired": "",
+      "rewardRequired": "",
+      "secondContentMaxExceeded": "",
+      "secondContentRequiresFirst": "",
+      "thumbnailMaxFiles": "",
+      "titleRequired": ""
+    }
+  },
   "brandMyPageSideBar": {
     "checkApplicants": "View Applicants ",
     "checkContents": "View Contents",
@@ -35,12 +140,46 @@
     "message": "Your application was successfully submitted.\nWe'll email you the result within 24 hours.",
     "title": "Successfully Submitted!"
   },
+  "creatorOptions": {
+    "contentLanguage": {
+      "ENGLISH": "English",
+      "ENGLISH_AND_SPANISH": "English & Spanish",
+      "SPANISH": "Spanish"
+    },
+    "gender": {
+      "FEMALE": "Female",
+      "MALE": "Male",
+      "NON_BINARY": "Non-binary",
+      "PREFER_NOT_TO_SAY": "Prefer not to say"
+    },
+    "skinTone": {
+      "SHADE_1": "Shade 1",
+      "SHADE_2": "Shade 2",
+      "SHADE_3": "Shade 3",
+      "SHADE_4": "Shade 4"
+    },
+    "skinType": {
+      "COMBINATION": "Combination",
+      "DRY": "Dry",
+      "NORMAL": "Normal",
+      "OILY": "Oily",
+      "OTHERS": "Others",
+      "SENSITIVE": "Sensitive"
+    }
+  },
   "creatorSignup": {
+    "button": {
+      "back": "Back",
+      "next": "Next"
+    },
     "communityName": {
       "checkAvailabilityButton": "Check availability",
       "description": "(ID must be between 1 and 15 characters long and can only contain letters, numbers, periods (.), and underscores (_)).",
+      "idAvailable": "Great! This ID is available.",
       "idLabel": "ID",
       "idPlaceholder": "ex: ilovelococo",
+      "idRequired": "Please check the ID availability.",
+      "idTaken": "Sorry, this ID is already taken.",
       "title": "Community Name"
     },
     "homeAddress": {
@@ -58,6 +197,11 @@
       "title": "Home Address",
       "zipCodeLabel": "Zip/Post Code",
       "zipCodePlaceholder": "ex: 60606"
+    },
+    "layout": {
+      "back": "Back",
+      "next": "Next",
+      "title": "Join Lococo Creator Community!"
     },
     "personalDetails": {
       "birthLabel": "Birth",
@@ -99,6 +243,7 @@
       "firstNameMaxLength": "Use up to 20 characters.",
       "firstNameRequired": "First name is required.",
       "genderRequired": "Gender is required.",
+      "idAvailabilityCheck": "Please check the ID availability.",
       "idInvalidFormat": "This ID is unavailable. Please check the ID form.",
       "idMaxLength": "Use up to 15 characters.",
       "idRequired": "ID is required.",
@@ -122,7 +267,9 @@
     "cannotUploadFile": "Cannot upload file",
     "emptyFile": "Empty file",
     "fileTooLarge": "File too large",
-    "notAllowedFileType": "Not allowed file type"
+    "notAllowedFileType": "Not allowed file type",
+    "dragDropDescription": "",
+    "selectFile": ""
   },
   "footer": {
     "copyright": "Lococo. All rights reserved.",
@@ -201,9 +348,18 @@
         "tiktokVideo": "Tiktok Video",
         "title": "Content Type"
       },
+      "empty": {
+        "title": "There is no content to review."
+      },
       "hashtagsInput": {
         "description": "Please paste the exact caption and hashtags you used on",
         "title": "Submit Your Caption & Hashtags"
+      },
+      "saveSubmitModal": {
+        "firstDescription": "Your first submission has been received. The brand will review it and send a brand’s note.",
+        "save": "Okay",
+        "secondDescription": "Your final submission has been received. Thank you for your submission.",
+        "title": "Submitted successfully"
       }
     },
     "editProfile": {
@@ -301,6 +457,12 @@
       "contentSubmissions": "Content Submissions",
       "editProfile": "Edit Profile",
       "myCampaign": "My Campaign"
+    },
+    "myCampaign": {
+      "empty": {
+        "title": "There is no campaign has been applied."
+      },
+      "title": "My Campaign"
     },
     "saveFormModal": {
       "description": "Your changes have been saved.",
