@@ -27,7 +27,7 @@
       "contactPosition": "담당자 직책",
       "contactPositionPlaceholder": "ex: 대리",
       "contactPhone": "담당자 연락처",
-      "contactPhonePlaceholder": "ex: xxx-xxxx-xxxx"
+      "contactPhonePlaceholder": "ex: XXXXXXXXXXX"
     },
     "companyAddress": {
       "title": "회사 주소 정보",
