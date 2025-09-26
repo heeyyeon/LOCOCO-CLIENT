@@ -2,7 +2,7 @@ import React, { ReactNode } from 'react';
 
 interface FormSectionProps {
   title: string;
-  description: string;
+  description?: string;
   children: ReactNode;
 }
 
