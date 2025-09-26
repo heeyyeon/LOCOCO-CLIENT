@@ -1,12 +1,14 @@
-import { FormSection } from 'components/forms';
+import { FormSection, SelectFormField, TextFormField } from 'components/forms';
+import { countryPhoneCodeOptions } from 'utils';
 
 import { Button } from '@lococo/design-system/button';
 import { Input } from '@lococo/design-system/input';
+import { Select } from '@lococo/design-system/select';
 import { SvgAvatarCircle, SvgCamera } from '@lococo/icons';
 
-import InputWrapper from '../../my-page/components/input-wrapper';
-
 export default function Profile() {
+  const countryCodes = countryPhoneCodeOptions();
+
   return (
     <div className="flex flex-col gap-[3.2rem] bg-gray-100 px-[9.6rem] py-[6.4rem]">
       <div className="flex min-h-[99.4rem] w-[84rem] flex-col gap-[4.8rem] bg-white px-[9.6rem] py-[4.8rem]">
@@ -26,29 +28,46 @@ export default function Profile() {
           </div>
         </FormSection>
         <FormSection title="기본 정보">
-          <InputWrapper label="브랜드 이름" required>
-            <Input />
-          </InputWrapper>
-          <InputWrapper label="담당자 이름" required>
-            <Input />
-          </InputWrapper>
-          <InputWrapper label="담당자 연락처" required>
-            <Input />
-          </InputWrapper>
-          <InputWrapper label="Email" required>
-            <Input />
-          </InputWrapper>
+          <TextFormField label="프로필 사진" required />
+          <TextFormField label="담당자 이름" required />
+          <SelectFormField label="담당자 연락처" required>
+            <div className="flex w-full items-center justify-start gap-[2.4rem]">
+              <Select placeholder={'+xx'} options={countryCodes} size="small" />
+              <Input className="h-[4rem] w-[26.4rem]" />
+            </div>
+          </SelectFormField>
+          <TextFormField
+            label="Email"
+            required
+            placeholder="jessica.anderson@gmail.com"
+          />
+          <div className="relative">
+            <p className="caption3 absolute left-[24rem] text-gray-500">
+              이메일을 변경하려면 로코코에 문의해 주세요.
+            </p>
+          </div>
         </FormSection>
         <FormSection
           title="회사 주소 정보"
           description="제품 오배송 시, 반품을 위해서 입력받습니다."
         >
-          <InputWrapper label="회사 주소 정보" required>
-            <Input />
-          </InputWrapper>
-          <InputWrapper label="상세 주소" required>
-            <Input />
-          </InputWrapper>
+          <TextFormField
+            label="도로명주소"
+            required
+            placeholder="우편번호 검색"
+            // register={form.register('street')}
+            // error={form.formState.errors.street?.message}
+            showSearchIcon
+            // handleClickSearch={openAddressSearch}
+          />
+
+          <TextFormField
+            label="상세 주소"
+            required
+            placeholder="ex: 201호"
+            // register={form.register('detail')}
+            // error={form.formState.errors.detail?.message}
+          />
         </FormSection>
       </div>
       <div className="flex gap-[1.6rem]">
