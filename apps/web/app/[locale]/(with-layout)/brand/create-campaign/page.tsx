@@ -114,105 +114,107 @@ export default function CreateCampaign() {
 
   return (
     <FormProvider {...methods}>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="bg-gray-100">
-          <div className="flex min-h-[260.4rem] w-[84rem] flex-col gap-[4.8rem] bg-white px-[9.6rem] py-[4.8rem]">
-            <h3 className="title2 font-[700] text-gray-800">
-              {t('pageTitle')}
-            </h3>
-            <CampaignInfo />
-            <CampaignStartInfo />
-            <CampaignEndInfo />
-            <CampaignWinnerAnnounce />
-            <CampaignDueDate />
-            <FormSection
-              title={t('conditions.joinConditionTitle')}
-              description={t('conditions.joinConditionDescription')}
-            >
-              <DynamicInput fieldName="joinConditions" />
-            </FormSection>
-            <FormSection
-              title={t('conditions.submitConditionTitle')}
-              description={t('conditions.submitConditionDescription')}
-            >
-              <DynamicInput fieldName="submitConditions" />
-            </FormSection>
-            <FormSection
-              title={t('conditions.rewardTitle')}
-              description={t('conditions.rewardDescription')}
-            >
-              <DynamicInput fieldName="joinRewards" />
-            </FormSection>
-            <FormSection
-              title={t('platform.title')}
-              description={t('platform.description')}
-            >
-              <InputWrapper label={t('platform.firstContent')} required />
-              <div className="flex gap-[1.2rem]">
-                {(Object.keys(SOCIAL_CONFIGS) as SocialPlatform[]).map(
-                  (platform) => (
-                    <SocialChip
-                      key={platform}
-                      type={platform}
-                      selected={firstContents.selectStatus[platform]}
-                      onClick={firstContents.toggleChip}
-                      disabled={firstContents.isDisabled(platform)}
-                    />
-                  )
+      <div className="h-full w-full bg-gray-100 pl-[6.6rem] pt-[6.4rem]">
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <div className="bg-gray-100">
+            <div className="flex min-h-[260.4rem] w-[84rem] flex-col gap-[4.8rem] bg-white px-[9.6rem] py-[4.8rem]">
+              <h3 className="title2 font-[700] text-gray-800">
+                {t('pageTitle')}
+              </h3>
+              <CampaignInfo />
+              <CampaignStartInfo />
+              <CampaignEndInfo />
+              <CampaignWinnerAnnounce />
+              <CampaignDueDate />
+              <FormSection
+                title={t('conditions.joinConditionTitle')}
+                description={t('conditions.joinConditionDescription')}
+              >
+                <DynamicInput fieldName="joinConditions" />
+              </FormSection>
+              <FormSection
+                title={t('conditions.submitConditionTitle')}
+                description={t('conditions.submitConditionDescription')}
+              >
+                <DynamicInput fieldName="submitConditions" />
+              </FormSection>
+              <FormSection
+                title={t('conditions.rewardTitle')}
+                description={t('conditions.rewardDescription')}
+              >
+                <DynamicInput fieldName="joinRewards" />
+              </FormSection>
+              <FormSection
+                title={t('platform.title')}
+                description={t('platform.description')}
+              >
+                <InputWrapper label={t('platform.firstContent')} required />
+                <div className="flex gap-[1.2rem]">
+                  {(Object.keys(SOCIAL_CONFIGS) as SocialPlatform[]).map(
+                    (platform) => (
+                      <SocialChip
+                        key={platform}
+                        type={platform}
+                        selected={firstContents.selectStatus[platform]}
+                        onClick={firstContents.toggleChip}
+                        disabled={firstContents.isDisabled(platform)}
+                      />
+                    )
+                  )}
+                </div>
+                {errors.firstContents && (
+                  <p className="body2 text-red font-[500]">
+                    {t(`errorMessage.${errors.firstContents.message}`)}
+                  </p>
                 )}
-              </div>
-              {errors.firstContents && (
-                <p className="body2 text-red font-[500]">
-                  {t(`errorMessage.${errors.firstContents.message}`)}
-                </p>
-              )}
-              <InputWrapper label={t('platform.secondContent')} />
-              <div className="flex gap-[1.2rem]">
-                {(Object.keys(SOCIAL_CONFIGS) as SocialPlatform[]).map(
-                  (platform) => (
-                    <SocialChip
-                      key={platform}
-                      type={platform}
-                      selected={secondContents.selectStatus[platform]}
-                      onClick={secondContents.toggleChip}
-                      disabled={secondContents.isDisabled(platform)}
-                    />
-                  )
+                <InputWrapper label={t('platform.secondContent')} />
+                <div className="flex gap-[1.2rem]">
+                  {(Object.keys(SOCIAL_CONFIGS) as SocialPlatform[]).map(
+                    (platform) => (
+                      <SocialChip
+                        key={platform}
+                        type={platform}
+                        selected={secondContents.selectStatus[platform]}
+                        onClick={secondContents.toggleChip}
+                        disabled={secondContents.isDisabled(platform)}
+                      />
+                    )
+                  )}
+                </div>
+                {errors.secondContents && (
+                  <p className="body2 text-red font-[500]">
+                    {t(`errorMessage.${errors.secondContents.message}`)}
+                  </p>
                 )}
-              </div>
-              {errors.secondContents && (
-                <p className="body2 text-red font-[500]">
-                  {t(`errorMessage.${errors.secondContents.message}`)}
-                </p>
-              )}
-            </FormSection>
-            <CampaignUploadMedia />
+              </FormSection>
+              <CampaignUploadMedia />
+            </div>
+            <div className="mt-[3.2rem] flex gap-[1.6rem]">
+              <Button
+                type="button"
+                variant="outline"
+                size="lg"
+                color="secondary"
+                className="w-[41.2rem]"
+                onClick={() => {
+                  console.log('저장하기 클릭');
+                }}
+              >
+                {t('buttons.save')}
+              </Button>
+              <Button
+                type="submit"
+                variant="filled"
+                size="lg"
+                color="primary"
+                className="w-[41.2rem]"
+              >
+                {t('buttons.publish')}
+              </Button>
+            </div>
           </div>
-          <div className="flex gap-[1.6rem]">
-            <Button
-              type="button"
-              variant="outline"
-              size="lg"
-              color="secondary"
-              className="w-[41.2rem]"
-              onClick={() => {
-                console.log('저장하기 클릭');
-              }}
-            >
-              {t('buttons.save')}
-            </Button>
-            <Button
-              type="submit"
-              variant="filled"
-              size="lg"
-              color="primary"
-              className="w-[41.2rem]"
-            >
-              {t('buttons.publish')}
-            </Button>
-          </div>
-        </div>
-      </form>
+        </form>
+      </div>
     </FormProvider>
   );
 }
