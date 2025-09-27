@@ -11,20 +11,23 @@ interface InfoChipProps {
   className?: string;
 }
 
-const infoChipVariants = cva('inline-flex items-center gap-[0.5rem] border', {
-  variants: {
-    color: {
-      default: 'border-gray-400 text-gray-700',
-      green: 'border-green text-green',
-      red: 'border-red text-red',
-      blue: 'border-blue text-blue',
+const infoChipVariants = cva(
+  'inline-flex items-center gap-[0.5rem] border text-inter-caption',
+  {
+    variants: {
+      color: {
+        default: 'border-gray-400 text-gray-700',
+        green: 'border-green text-green',
+        red: 'border-red text-red',
+        blue: 'border-blue text-blue',
+      },
+      size: {
+        md: 'rounded-[1.6rem] px-2 py-1 caption1',
+        lg: 'rounded-[2.4rem] py-[0.6rem] px-[1.6rem] body1',
+      },
     },
-    size: {
-      md: 'rounded-[1.6rem] px-2 py-1 caption1',
-      lg: 'rounded-[2.4rem] py-[0.6rem] px-[1.6rem] body1',
-    },
-  },
-});
+  }
+);
 
 const ICON_SIZES = {
   md: 16,
