@@ -11,6 +11,7 @@ import { usePathname, useRouter } from 'i18n/navigation';
 import { Button } from '@lococo/design-system/button';
 import { SvgCalender, SvgDownload } from '@lococo/icons';
 
+import ApplicantsTable from './components/applicants-table';
 import CampaignSelect from './components/campaign-select';
 import { koDateRangeFormatter } from './utils/ko-date-range-formatter';
 
@@ -152,6 +153,7 @@ export default function BrandApplicantsPageClient() {
       </div>
 
       {/* <ApplicantsList /> */}
+      <ApplicantsTable />
     </div>
   );
 }
