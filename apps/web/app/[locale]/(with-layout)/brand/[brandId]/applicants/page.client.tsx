@@ -12,6 +12,7 @@ import { Button } from '@lococo/design-system/button';
 import { SvgCalender, SvgDownload } from '@lococo/icons';
 
 import CampaignSelect from './components/campaign-select';
+import { koDateRangeFormatter } from './utils/ko-date-range-formatter';
 
 interface CampaignInfo {
   campaignId: number;
@@ -139,16 +140,13 @@ export default function BrandApplicantsPageClient() {
         <div className="flex items-center gap-[0.8rem]">
           <SvgCalender className="size-[2rem] text-gray-600" />
           <p className="text-inter-body3 text-gray-600">
-            {format.dateTime(dayjs(selectedCampaign?.startDate).toDate(), {
-              year: 'numeric',
-              month: 'short',
-              day: 'numeric',
-            })}
-            -
-            {format.dateTime(dayjs(selectedCampaign?.endDate).toDate(), {
-              month: 'short',
-              day: 'numeric',
-            })}
+            {selectedCampaign?.startDate && selectedCampaign?.endDate
+              ? koDateRangeFormatter(
+                  selectedCampaign.startDate,
+                  selectedCampaign.endDate,
+                  format
+                )
+              : ''}
           </p>
         </div>
       </div>
