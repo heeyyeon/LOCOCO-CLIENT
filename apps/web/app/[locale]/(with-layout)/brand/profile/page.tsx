@@ -1,6 +1,5 @@
 'use client';
 
-import { useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 import { useTranslations } from 'next-intl';
@@ -20,9 +19,6 @@ import BasicInfo from './component/basic-info';
 import ImageSection from './component/image-section';
 
 export default function Profile() {
-  const [profileImageUrl, setProfileImageUrl] = useState<string | null>(null);
-  const fileInputRef = useRef<HTMLInputElement>(null);
-
   const {
     register,
     handleSubmit,
@@ -40,29 +36,6 @@ export default function Profile() {
       },
     });
 
-  const handleImageChange = async (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    const file = event.target.files?.[0];
-    if (!file) return;
-
-    if (!file.type.startsWith('image/')) {
-      alert('이미지 파일만 선택 가능합니다.');
-      return;
-    }
-
-    if (file.size > 5 * 1024 * 1024) {
-      alert('파일 크기는 5MB 이하여야 합니다.');
-      return;
-    }
-
-    // 업로드 중 표시용 임시 미리보기
-    const tempImageUrl = URL.createObjectURL(file);
-    setProfileImageUrl(tempImageUrl);
-  };
-  const handleImageUploadClick = () => {
-    fileInputRef.current?.click();
-  };
   const onSubmit = (data: BrandProfileEditSchema) => {
     console.log(data);
   };
@@ -78,18 +51,17 @@ export default function Profile() {
           onClose={closeAddressSearch}
         />
         <div className="flex min-h-[99.4rem] w-[84rem] flex-col gap-[4.8rem] bg-white px-[9.6rem] py-[4.8rem]">
-          <ImageSection
-            profileImageUrl={profileImageUrl}
-            fileInputRef={fileInputRef}
-            handleImageChange={handleImageChange}
-            handleImageUploadClick={handleImageUploadClick}
-          />
+          <ImageSection />
           <BasicInfo
             brandNameRegister={register('brandName')}
-            managerNameRegister={register('brandName')}
+            managerNameRegister={register('managerName')}
             phoneNumberRegister={register('phoneNumber')}
             emailRegister={register('email')}
             countryCodeValue={watch('countryCode')}
+            brandNameError={errors.brandName?.message}
+            managerNameError={errors.managerName?.message}
+            phoneNumberError={errors.phoneNumber?.message}
+            emailError={errors.email?.message}
             onCountryCodeChange={(value) => setValue('countryCode', value)}
           />
           <AddressInfo

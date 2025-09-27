@@ -15,6 +15,10 @@ interface BasicInfoProps {
   phoneNumberRegister: UseFormRegisterReturn;
   emailRegister: UseFormRegisterReturn;
   countryCodeValue: string;
+  brandNameError?: string;
+  managerNameError?: string;
+  phoneNumberError?: string;
+  emailError?: string;
   onCountryCodeChange: (value: string) => void;
 }
 
@@ -24,6 +28,10 @@ export default function BasicInfo({
   phoneNumberRegister,
   emailRegister,
   countryCodeValue,
+  brandNameError,
+  managerNameError,
+  phoneNumberError,
+  emailError,
   onCountryCodeChange,
 }: BasicInfoProps) {
   const countryCodes = countryPhoneCodeOptions();
@@ -36,13 +44,19 @@ export default function BasicInfo({
         label={t('basicInfo.brandNameFieldLabel')}
         required
         register={brandNameRegister}
+        error={brandNameError}
       />
       <TextFormField
         label={t('basicInfo.managerNameFieldLabel')}
         required
         register={managerNameRegister}
+        error={managerNameError}
       />
-      <SelectFormField label={t('basicInfo.phoneNumberFieldLabel')} required>
+      <SelectFormField
+        label={t('basicInfo.phoneNumberFieldLabel')}
+        required
+        error={phoneNumberError}
+      >
         <div className="flex w-full items-center justify-start gap-[2.4rem]">
           <Select
             placeholder={'+xx'}
@@ -59,6 +73,7 @@ export default function BasicInfo({
         required
         placeholder="jessica.anderson@gmail.com"
         register={emailRegister}
+        error={emailError}
       />
       <div className="relative">
         <p className="caption3 absolute left-[24rem] text-gray-500">

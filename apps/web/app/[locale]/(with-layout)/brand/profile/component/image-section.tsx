@@ -1,4 +1,4 @@
-import React, { Ref } from 'react';
+import React, { useRef, useState } from 'react';
 
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
@@ -8,21 +8,37 @@ import { FormSection } from 'components/forms';
 import { Button } from '@lococo/design-system/button';
 import { SvgAvatarCircle, SvgCamera } from '@lococo/icons';
 
-interface ImageSectionProps {
-  profileImageUrl: string | null;
-  fileInputRef: Ref<HTMLInputElement>;
-  handleImageChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  handleImageUploadClick: () => void;
-}
-
-export default function ImageSection({
-  profileImageUrl,
-  fileInputRef,
-  handleImageChange,
-  handleImageUploadClick,
-}: ImageSectionProps) {
+export default function ImageSection() {
   const t = useTranslations('brandMyPageEditProfile');
 
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const [profileImageUrl, setProfileImageUrl] = useState<string | null>(null);
+
+  const handleImageUploadClick = () => {
+    fileInputRef.current?.click();
+  };
+
+  const handleImageChange = async (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const file = event.target.files?.[0];
+    if (!file) return;
+
+    if (!file.type.startsWith('image/')) {
+      alert('이미지 파일만 선택 가능합니다.');
+      return;
+    }
+
+    if (file.size > 5 * 1024 * 1024) {
+      alert('파일 크기는 5MB 이하여야 합니다.');
+      return;
+    }
+
+    // 업로드 중 표시용 임시 미리보기
+    const tempImageUrl = URL.createObjectURL(file);
+    setProfileImageUrl(tempImageUrl);
+  };
   return (
     <FormSection title={t('profileImage.profileImageFormTitle')}>
       <div className="bt-[2.6rem] flex flex-col items-center gap-[3.2rem] pb-[5.5rem]">
