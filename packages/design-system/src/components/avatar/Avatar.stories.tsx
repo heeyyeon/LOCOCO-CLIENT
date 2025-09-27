@@ -19,3 +19,11 @@ export const NoImage: Story = {
 export const WithImage: Story = {
   args: { src: 'https://placehold.co/100x100' },
 };
+
+export const WithImageAndNotRounded: Story = {
+  args: { src: 'https://placehold.co/100x100', rounded: false },
+};
+
+export const WithImageAndRounded: Story = {
+  args: { src: 'https://placehold.co/100x100', rounded: true },
+};
