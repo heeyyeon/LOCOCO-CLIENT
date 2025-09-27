@@ -21,6 +21,7 @@ export default function BrandSignupPage() {
       onComplete: (data) => {
         const address = `${data.roadAddress} (${data.zonecode})`;
         form.setValue('street', address);
+        form.trigger('street');
       },
     });
 
