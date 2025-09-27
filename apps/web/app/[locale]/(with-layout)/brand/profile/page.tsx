@@ -1,6 +1,9 @@
 'use client';
 
+import { useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
+
+import Image from 'next/image';
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { AddressSearchModal } from 'components/address/AddressSearchModal';
@@ -18,7 +21,10 @@ import { Select } from '@lococo/design-system/select';
 import { SvgAvatarCircle, SvgCamera } from '@lococo/icons';
 
 export default function Profile() {
+  const [profileImageUrl, setProfileImageUrl] = useState<string | null>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
   const countryCodes = countryPhoneCodeOptions();
+
   const {
     register,
     handleSubmit,
@@ -36,6 +42,29 @@ export default function Profile() {
       },
     });
 
+  const handleImageChange = async (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const file = event.target.files?.[0];
+    if (!file) return;
+
+    if (!file.type.startsWith('image/')) {
+      alert('이미지 파일만 선택 가능합니다.');
+      return;
+    }
+
+    if (file.size > 5 * 1024 * 1024) {
+      alert('파일 크기는 5MB 이하여야 합니다.');
+      return;
+    }
+
+    // 업로드 중 표시용 임시 미리보기
+    const tempImageUrl = URL.createObjectURL(file);
+    setProfileImageUrl(tempImageUrl);
+  };
+  const handleImageUploadClick = () => {
+    fileInputRef.current?.click();
+  };
   const onSubmit = (data: BrandProfileEditSchema) => {
     console.log(data);
   };
@@ -50,13 +79,32 @@ export default function Profile() {
         <div className="flex min-h-[99.4rem] w-[84rem] flex-col gap-[4.8rem] bg-white px-[9.6rem] py-[4.8rem]">
           <FormSection title="프로필 사진">
             <div className="bt-[2.6rem] flex flex-col items-center gap-[3.2rem] pb-[5.5rem]">
-              <SvgAvatarCircle size={72} />
+              {profileImageUrl ? (
+                <div className="relative h-[7.2rem] w-[7.2rem]">
+                  <Image
+                    src={profileImageUrl}
+                    alt="프로필 이미지"
+                    fill
+                    className="rounded-[5rem] object-cover"
+                  />
+                </div>
+              ) : (
+                <SvgAvatarCircle size={72} />
+              )}
+              <input
+                ref={fileInputRef}
+                type="file"
+                accept="image/*"
+                onChange={handleImageChange}
+                className="hidden"
+              />
               <Button
                 color="secondary"
                 variant="outline"
                 size="sm"
                 rounded="sm"
                 className="flex gap-[0.8rem] px-[1.6rem] py-[0.8rem]"
+                onClick={handleImageUploadClick}
               >
                 <SvgCamera size={24} />
                 <span className="body2 font-[700]">사진 변경하기</span>
