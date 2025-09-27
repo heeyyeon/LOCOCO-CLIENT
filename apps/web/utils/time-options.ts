@@ -14,7 +14,7 @@ export const timeOptions = () => {
 
   const MINUTES = Array.from({ length: 60 }, (_, i) => ({
     label: i.toString().padStart(2, '0'),
-    value: i.toString(),
+    value: i.toString().padStart(2, '0'),
   }));
   return { AM_PM, HOURS, MINUTES };
 };
