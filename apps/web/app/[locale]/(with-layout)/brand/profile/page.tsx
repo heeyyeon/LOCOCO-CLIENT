@@ -3,6 +3,7 @@
 import { useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
 
+import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -68,6 +69,9 @@ export default function Profile() {
   const onSubmit = (data: BrandProfileEditSchema) => {
     console.log(data);
   };
+
+  const t = useTranslations('brandMyPageEditProfile');
+
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="flex flex-col gap-[3.2rem] bg-gray-100 px-[9.6rem] py-[6.4rem]">
@@ -77,13 +81,13 @@ export default function Profile() {
           onClose={closeAddressSearch}
         />
         <div className="flex min-h-[99.4rem] w-[84rem] flex-col gap-[4.8rem] bg-white px-[9.6rem] py-[4.8rem]">
-          <FormSection title="프로필 사진">
+          <FormSection title={t('profileImage.profileImageFormTitle')}>
             <div className="bt-[2.6rem] flex flex-col items-center gap-[3.2rem] pb-[5.5rem]">
               {profileImageUrl ? (
                 <div className="relative h-[7.2rem] w-[7.2rem]">
                   <Image
                     src={profileImageUrl}
-                    alt="프로필 이미지"
+                    alt={t('profileImage.profileImage')}
                     fill
                     className="rounded-[5rem] object-cover"
                   />
@@ -107,22 +111,27 @@ export default function Profile() {
                 onClick={handleImageUploadClick}
               >
                 <SvgCamera size={24} />
-                <span className="body2 font-[700]">사진 변경하기</span>
+                <span className="body2 font-[700]">
+                  {t('profileImage.profileImageEditBtn')}
+                </span>
               </Button>
             </div>
           </FormSection>
-          <FormSection title="기본 정보">
+          <FormSection title={t('basicInfo.basicInfoTitle')}>
             <TextFormField
-              label="브랜드 이름"
+              label={t('basicInfo.brandNameFieldLabel')}
               required
               register={register('brandName')}
             />
             <TextFormField
-              label="담당자 이름"
+              label={t('basicInfo.managerNameFieldLabel')}
               required
               register={register('managerName')}
             />
-            <SelectFormField label="담당자 연락처" required>
+            <SelectFormField
+              label={t('basicInfo.phoneNumberFieldLabel')}
+              required
+            >
               <div className="flex w-full items-center justify-start gap-[2.4rem]">
                 <Select
                   placeholder={'+xx'}
@@ -145,18 +154,18 @@ export default function Profile() {
             />
             <div className="relative">
               <p className="caption3 absolute left-[24rem] text-gray-500">
-                이메일을 변경하려면 로코코에 문의해 주세요.
+                {t('basicInfo.emailNotice')}
               </p>
             </div>
           </FormSection>
           <FormSection
-            title="회사 주소 정보"
-            description="제품 오배송 시, 반품을 위해서 입력받습니다."
+            title={t('addressInfo.addressInfoTitle')}
+            description={t('addressInfo.addressInfoDescription')}
           >
             <TextFormField
-              label="도로명주소"
+              label={t('addressInfo.companyAddressLabel')}
               required
-              placeholder="우편번호 검색"
+              placeholder={t('addressInfo.companyAddressPlaceholder')}
               register={register('companyAddress')}
               error={errors.companyAddress?.message}
               showSearchIcon
@@ -164,9 +173,9 @@ export default function Profile() {
             />
 
             <TextFormField
-              label="상세 주소"
+              label={t('addressInfo.detailAddressLabel')}
               required
-              placeholder="ex: 201호"
+              placeholder={t('addressInfo.detailAddressPlaceholder')}
               register={register('detailAddress')}
               error={errors.detailAddress?.message}
             />
@@ -179,7 +188,7 @@ export default function Profile() {
             size="lg"
             className="w-[41.2rem]"
           >
-            취소하기
+            {t('formButton.cancel')}
           </Button>
           <Button
             type="submit"
@@ -188,7 +197,7 @@ export default function Profile() {
             size="lg"
             className="w-[41.2rem]"
           >
-            저장하기
+            {t('formButton.save')}
           </Button>
         </div>
       </div>

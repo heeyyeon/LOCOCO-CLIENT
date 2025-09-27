@@ -109,6 +109,32 @@
       "titleRequired": "캠페인 제목은 필수입니다"
     }
   },
+  "brandMyPageEditProfile": {
+    "profileImage": {
+      "profileImageFormTitle": "프로필 사진",
+      "profileImage": "프로필 이미지",
+      "profileImageEditBtn": "사진 변경하기"
+    },
+    "basicInfo": {
+      "basicInfoTitle": "기본 정보",
+      "brandNameFieldLabel": "브랜드 이름",
+      "managerNameFieldLabel": "담당자 이름",
+      "phoneNumberFieldLabel": "담당자 연락처",
+      "emailNotice": "이메일을 변경하려면 로코코에 문의해 주세요"
+    },
+    "addressInfo": {
+      "addressInfoTitle": "회사 주소 정보",
+      "addressInfoDescription": "제품 오배송 시, 반품을 위해서 입력받습니다.",
+      "companyAddressLabel": "도로명 주소",
+      "companyAddressPlaceholder": "우편번호 검색",
+      "detailAddressLabel": "상세 주소",
+      "detailAddressPlaceholder": "ex: 201호"
+    },
+    "formButton": {
+      "cancel": "취소하기",
+      "save": "저장하기"
+    }
+  },
   "brandMyPageSideBar": {
     "checkApplicants": "지원자 확인",
     "checkContents": "컨텐츠 확인",
