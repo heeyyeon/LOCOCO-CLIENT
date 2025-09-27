@@ -2,6 +2,7 @@ import { z } from 'zod';
 
 export const brandProfileEditSchema = z.object({
   profilePhoto: z.string().min(1, '프로필 사진을 선택해주세요'),
+  brandName: z.string().min(1, '브랜드 이름을 입력해주세요'),
   managerName: z.string().min(1, '담당자 이름을 입력해주세요'),
   countryCode: z.string().min(1, '국가코드를 선택해주세요'),
   phoneNumber: z
