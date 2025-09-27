@@ -23,7 +23,7 @@ export default async function layout({
     { label: t('dashboard'), value: 'dashboard' },
   ];
   return (
-    <div className="mx-auto flex w-[132.8rem]">
+    <div className="mx-auto flex w-[112.8rem]">
       <SideBar
         name="Chanel"
         email="Chanel1233@naver.com"
