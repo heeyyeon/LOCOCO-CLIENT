@@ -12,12 +12,9 @@ export const timeOptions = () => {
     };
   });
 
-  const MINUTES = Array.from({ length: 60 }, (_, i) => {
-    const minute = i + 1;
-    return {
-      label: `${minute.toString().padStart(2, '0')}`,
-      value: minute.toString(),
-    };
-  });
+  const MINUTES = Array.from({ length: 60 }, (_, i) => ({
+    label: i.toString().padStart(2, '0'),
+    value: i.toString(),
+  }));
   return { AM_PM, HOURS, MINUTES };
 };
