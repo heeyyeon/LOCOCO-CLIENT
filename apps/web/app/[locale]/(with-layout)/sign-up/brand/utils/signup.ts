@@ -1,7 +1,5 @@
 import { z } from 'zod';
 
-import { isValidPhoneNumber } from '../../../../../../utils/format-phone-number';
-
 type TranslationFunction = (key: string) => string;
 
 export const brandSignupSchema = (t: TranslationFunction) =>
@@ -25,11 +23,7 @@ export const brandSignupSchema = (t: TranslationFunction) =>
         .min(1, t('contactPositionRequired'))
         .max(10, t('contactPositionMaxLength'))
         .regex(/^[가-힣ㄱ-ㅎㅏ-ㅣ]+$/, t('contactPositionInvalidFormat')),
-      contactPhone: z
-        .string()
-        .trim()
-        .min(1, t('contactPhoneRequired'))
-        .refine(isValidPhoneNumber, t('contactPhoneInvalid')),
+      contactPhone: z.string().trim().min(1, t('contactPhoneRequired')),
       street: z.string().trim().min(1, t('streetAddressRequired')),
       detail: z
         .string()

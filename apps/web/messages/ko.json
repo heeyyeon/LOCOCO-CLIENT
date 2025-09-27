@@ -249,7 +249,6 @@
       "idRequired": "ID는 필수 입력 항목입니다.",
       "lastNameMaxLength": "최대 20자까지 사용할 수 있습니다.",
       "lastNameRequired": "성(Last name)은 필수 입력 항목입니다.",
-      "phoneNumberInvalid": "유효한 전화번호를 입력해 주세요.",
       "phoneNumberRequired": "전화번호는 필수 입력 항목입니다.",
       "skinToneRequired": "피부 톤은 필수 입력 항목입니다.",
       "skinTypeRequired": "피부 타입은 필수 입력 항목입니다.",
@@ -502,8 +501,8 @@
   },
   "brandSignup": {
     "layout": {
-      "title": "Join Lococo Creator Community!",
-      "submit": "Join"
+      "title": "로코코 브랜드 커뮤니티에 가입하세요!",
+      "submit": "가입"
     },
     "brandInfo": {
       "title": "브랜드 정보",
@@ -536,7 +535,6 @@
       "contactPositionMaxLength": "담당자 직책은 최대 10글자입니다.",
       "contactPositionInvalidFormat": "한글만 입력해주세요",
       "contactPhoneRequired": "담당자 연락처를 입력해주세요.",
-      "contactPhoneInvalid": "올바른 휴대폰 번호를 입력해주세요.",
       "streetAddressRequired": "도로명주소를 입력해주세요.",
       "detailAddressRequired": "상세주소를 입력해주세요.",
       "detailAddressMaxLength": "상세주소는 최대 30글자입니다."
