@@ -1,4 +1,4 @@
-import { SOCIAL_PLATFORMS } from 'app/[locale]/(with-layout)/brand/component/create-campaign/social-chip';
+import { SOCIAL_PLATFORMS } from 'types/social-platform';
 import { z } from 'zod';
 
 const isBrowser = typeof window !== 'undefined';

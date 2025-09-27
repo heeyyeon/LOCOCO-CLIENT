@@ -2,6 +2,8 @@ import React from 'react';
 
 import Image from 'next/image';
 
+import { SOCIAL_PLATFORMS } from 'types/social-platform';
+
 export type SocialPlatform = (typeof SOCIAL_PLATFORMS)[number];
 
 interface SocialChipConfig {
@@ -9,12 +11,6 @@ interface SocialChipConfig {
   label: string;
   alt: string;
 }
-
-export const SOCIAL_PLATFORMS = [
-  'instagram-post',
-  'instagram-reels',
-  'tiktok-video',
-] as const;
 
 export const SOCIAL_CONFIGS: Record<SocialPlatform, SocialChipConfig> = {
   'instagram-post': {
