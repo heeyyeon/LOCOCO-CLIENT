@@ -41,7 +41,7 @@ export default function ImageSection() {
   };
   return (
     <FormSection title={t('profileImage.profileImageFormTitle')}>
-      <div className="bt-[2.6rem] flex flex-col items-center gap-[3.2rem] pb-[5.5rem]">
+      <div className="mb-[2.6rem] flex flex-col items-center gap-[3.2rem] pb-[5.5rem]">
         {profileImageUrl ? (
           <div className="relative h-[7.2rem] w-[7.2rem]">
             <Image
