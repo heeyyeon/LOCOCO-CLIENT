@@ -7,10 +7,11 @@ import {
 } from '@lococo/design-system/select';
 
 export type ApproveStatus = 'APPROVED' | 'PENDING' | 'REJECTED';
+export type ApproveStatusWithAll = ApproveStatus | 'ALL' | '';
 
 interface ApproveStatusSelectProps {
-  selectedStatus: ApproveStatus | '';
-  onStatusChange: (status: ApproveStatus | '') => void;
+  selectedStatus: ApproveStatusWithAll;
+  onStatusChange: (status: ApproveStatusWithAll) => void;
 }
 
 export default function ApproveStatusSelect({
@@ -18,6 +19,7 @@ export default function ApproveStatusSelect({
   onStatusChange,
 }: ApproveStatusSelectProps) {
   const statusOptions = [
+    { label: '전체', value: 'ALL' },
     { label: 'APPROVED', value: 'APPROVED' },
     { label: 'PENDING', value: 'PENDING' },
     { label: 'REJECTED', value: 'REJECTED' },
@@ -25,9 +27,9 @@ export default function ApproveStatusSelect({
 
   return (
     <SelectRoot
-      value={selectedStatus}
+      value={selectedStatus || undefined}
       onValueChange={(value) => {
-        onStatusChange(value as ApproveStatus | '');
+        onStatusChange(value as ApproveStatusWithAll);
       }}
     >
       <SelectTrigger className="data-[placeholder]:text-body4 w-[12rem] data-[slot]:text-[1.4rem] data-[placeholder]:text-gray-600 data-[slot]:text-gray-600">

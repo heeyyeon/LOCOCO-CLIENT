@@ -5,7 +5,10 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { useFormatter } from 'next-intl';
 import { useSearchParams } from 'next/navigation';
 
-import { type RowSelectionState } from '@tanstack/react-table';
+import {
+  type ColumnFiltersState,
+  type RowSelectionState,
+} from '@tanstack/react-table';
 import dayjs from 'dayjs';
 import { usePathname, useRouter } from 'i18n/navigation';
 
@@ -15,7 +18,7 @@ import { SvgCalender, SvgCheck, SvgDownload } from '@lococo/icons';
 
 import ApplicantsTable from './components/applicants-table';
 import ApproveStatusSelect, {
-  ApproveStatus,
+  ApproveStatusWithAll,
 } from './components/approve-status-select';
 import CampaignSelect from './components/campaign-select';
 import { koDateRangeFormatter } from './utils/ko-date-range-formatter';
@@ -76,11 +79,29 @@ export default function BrandApplicantsPageClient() {
   const [selectedCampaign, setSelectedCampaign] = useState<
     CampaignInfo | undefined
   >(undefined);
-  const [selectedApproveStatus, setSelectedApproveStatus] = useState<
-    ApproveStatus | ''
-  >('');
+  const [selectedApproveStatus, setSelectedApproveStatus] =
+    useState<ApproveStatusWithAll>('');
   const [rowSelection, setRowSelection] = useState<RowSelectionState>({});
   const [dataLength, setDataLength] = useState(0);
+  const [filteredRowIds, setFilteredRowIds] = useState<string[]>([]);
+  const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
+
+  // 승인상태 변경 시 필터 업데이트
+  const handleApproveStatusChange = useCallback(
+    (status: ApproveStatusWithAll) => {
+      setSelectedApproveStatus(status);
+
+      setRowSelection({});
+      if (status === '' || status === 'ALL') {
+        // 빈 값이거나 전체 선택이면 필터 제거
+        setColumnFilters([]);
+      } else {
+        // 승인상태 필터 설정
+        setColumnFilters([{ id: 'approveStatus', value: status }]);
+      }
+    },
+    []
+  );
 
   const latestCampaignId = [...campaignInfos]
     .sort((campaignA, campaignB) =>
@@ -163,7 +184,7 @@ export default function BrandApplicantsPageClient() {
           </div>
           <ApproveStatusSelect
             selectedStatus={selectedApproveStatus}
-            onStatusChange={setSelectedApproveStatus}
+            onStatusChange={handleApproveStatusChange}
           />
         </div>
         <div className="flex justify-between bg-gray-100 px-[1.6rem] py-[0.8rem]">
@@ -176,12 +197,12 @@ export default function BrandApplicantsPageClient() {
               }
               onCheckedChange={(checked) => {
                 if (checked) {
-                  // 모든 row 선택
+                  // 필터링된 모든 row 선택
                   const allRowsSelected: Record<string, boolean> = {};
-                  // 실제 데이터 길이에 맞춰 모든 row를 선택
-                  for (let i = 0; i < dataLength; i++) {
-                    allRowsSelected[i.toString()] = true;
-                  }
+                  // 필터링된 row ID들을 사용하여 선택
+                  filteredRowIds.forEach((rowId) => {
+                    allRowsSelected[rowId] = true;
+                  });
                   setRowSelection(allRowsSelected);
                 } else {
                   // 모든 row 해제
@@ -198,7 +219,7 @@ export default function BrandApplicantsPageClient() {
                 Object.keys(rowSelection).filter((key) => rowSelection[key])
                   .length
               }
-              / {dataLength})
+              /{dataLength})
             </label>
           </div>
           <Button
@@ -219,6 +240,9 @@ export default function BrandApplicantsPageClient() {
         rowSelection={rowSelection}
         onRowSelectionChange={setRowSelection}
         onDataLengthChange={setDataLength}
+        onFilteredRowIdsChange={setFilteredRowIds}
+        columnFilters={columnFilters}
+        onColumnFiltersChange={setColumnFilters}
       />
     </div>
   );
