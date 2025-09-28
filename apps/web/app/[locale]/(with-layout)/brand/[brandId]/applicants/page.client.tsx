@@ -330,7 +330,7 @@ export default function BrandApplicantsPageClient() {
                 (applicant) =>
                   rowSelection[applicant.creatorCampaignId.toString()] ||
                   applicant.approveStatus === 'APPROVED'
-              ).length === 0
+              ).length === 0 || approveStatusFromQuery === 'APPROVED'
             }
           >
             <SvgCheck size={20} />
