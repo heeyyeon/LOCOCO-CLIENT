@@ -1,4 +1,4 @@
-import React from 'react';
+import { useEffect } from 'react';
 
 import {
   type CellContext,
@@ -9,205 +9,18 @@ import {
   type RowSelectionState,
   flexRender,
   getCoreRowModel,
-  getFilteredRowModel,
   useReactTable,
 } from '@tanstack/react-table';
 
 import { Checkbox } from '@lococo/design-system/checkbox';
 import { cn } from '@lococo/utils';
 
+import { ApplicantData, ApproveStatus } from '../types';
 import AppliedDateColumn from './column/applied-date-column';
 import ApproveStatusColumn from './column/approve-status-column';
 import CampaignCountColumn from './column/campaign-count-column';
 import CreatorProfileColumn from './column/creator-profile-column';
 import FollowerCountColumn from './column/follower-count-column';
-
-type ApproveStatus = 'PENDING' | 'APPROVED' | 'REJECTED';
-interface ApplicantData {
-  creatorCampaignId: number;
-  creatorId: number;
-  creator: {
-    creatorFullName: string;
-    creatorNickName: string;
-    creatorProfileImageUrl: string;
-  };
-  followerCount: {
-    instagramFollower: number;
-    tiktokFollower: number;
-  };
-  participationCount: number;
-  appliedDate: string;
-  approveStatus: ApproveStatus;
-}
-
-const data: ApplicantData[] = [
-  {
-    creatorCampaignId: 1412,
-    creatorId: 3845,
-
-    creator: {
-      creatorFullName: 'James Rodriguez',
-      creatorNickName: 'echandler',
-      creatorProfileImageUrl: '/images/swiper1.png',
-    },
-    followerCount: {
-      instagramFollower: 3859,
-      tiktokFollower: 110089,
-    },
-    participationCount: 10,
-    appliedDate: '2025-09-27T12:45:01.455391',
-    approveStatus: 'APPROVED',
-  },
-
-  {
-    creatorCampaignId: 999,
-    creatorId: 213,
-
-    creator: {
-      creatorFullName: '도레미',
-      creatorNickName: '999',
-      creatorProfileImageUrl: '/images/swiper4.png',
-    },
-    followerCount: {
-      instagramFollower: 3859,
-      tiktokFollower: 110089,
-    },
-    participationCount: 10,
-    appliedDate: '2025-09-27T12:45:01.455391',
-    approveStatus: 'APPROVED',
-  },
-  {
-    creatorCampaignId: 312,
-    creatorId: 6804,
-
-    creator: {
-      creatorFullName: 'Ian Nelson',
-      creatorNickName: 'thomasschultz',
-      creatorProfileImageUrl: '/images/swiper2.png',
-    },
-
-    followerCount: {
-      instagramFollower: 45306,
-      tiktokFollower: 60255,
-    },
-
-    participationCount: 6,
-    appliedDate: '2025-06-28T12:45:01.455788',
-    approveStatus: 'PENDING',
-  },
-  {
-    creatorCampaignId: 12,
-    creatorId: 1576,
-    creator: {
-      creatorFullName: 'Ashley Miranda',
-      creatorNickName: 'patricia53',
-      creatorProfileImageUrl: '',
-    },
-    followerCount: {
-      instagramFollower: 68516,
-      tiktokFollower: 24896,
-    },
-    participationCount: 8,
-    appliedDate: '2025-08-24T12:45:01.456041',
-    approveStatus: 'REJECTED',
-  },
-  {
-    creatorCampaignId: 567,
-    creatorId: 2341,
-    creator: {
-      creatorFullName: '김민수',
-      creatorNickName: 'minsu_kim',
-      creatorProfileImageUrl: '/images/swiper3.png',
-    },
-    followerCount: {
-      instagramFollower: 125000,
-      tiktokFollower: 89000,
-    },
-    participationCount: 15,
-    appliedDate: '2025-09-15T09:30:15.123456',
-    approveStatus: 'APPROVED',
-  },
-  {
-    creatorCampaignId: 789,
-    creatorId: 4567,
-    creator: {
-      creatorFullName: 'Sarah Johnson',
-      creatorNickName: 'sarah_beauty',
-      creatorProfileImageUrl: '/images/swiper5.png',
-    },
-    followerCount: {
-      instagramFollower: 250000,
-      tiktokFollower: 180000,
-    },
-    participationCount: 12,
-    appliedDate: '2025-09-20T14:22:30.789012',
-    approveStatus: 'PENDING',
-  },
-  {
-    creatorCampaignId: 234,
-    creatorId: 7890,
-    creator: {
-      creatorFullName: '이지은',
-      creatorNickName: 'jieun_life',
-      creatorProfileImageUrl: '/images/swiper6.png',
-    },
-    followerCount: {
-      instagramFollower: 45000,
-      tiktokFollower: 32000,
-    },
-    participationCount: 7,
-    appliedDate: '2025-09-10T16:45:22.345678',
-    approveStatus: 'REJECTED',
-  },
-  {
-    creatorCampaignId: 456,
-    creatorId: 1234,
-    creator: {
-      creatorFullName: 'Michael Chen',
-      creatorNickName: 'mike_tech',
-      creatorProfileImageUrl: '',
-    },
-    followerCount: {
-      instagramFollower: 180000,
-      tiktokFollower: 220000,
-    },
-    participationCount: 20,
-    appliedDate: '2025-09-25T11:15:45.567890',
-    approveStatus: 'APPROVED',
-  },
-  {
-    creatorCampaignId: 678,
-    creatorId: 5678,
-    creator: {
-      creatorFullName: '박서연',
-      creatorNickName: 'seoyeon_fashion',
-      creatorProfileImageUrl: '',
-    },
-    followerCount: {
-      instagramFollower: 320000,
-      tiktokFollower: 280000,
-    },
-    participationCount: 18,
-    appliedDate: '2025-09-28T13:30:10.234567',
-    approveStatus: 'PENDING',
-  },
-  {
-    creatorCampaignId: 890,
-    creatorId: 9012,
-    creator: {
-      creatorFullName: 'David Wilson',
-      creatorNickName: 'david_fitness',
-      creatorProfileImageUrl: '',
-    },
-    followerCount: {
-      instagramFollower: 95000,
-      tiktokFollower: 75000,
-    },
-    participationCount: 9,
-    appliedDate: '2025-09-12T08:20:35.890123',
-    approveStatus: 'REJECTED',
-  },
-];
 
 const getWidthClass = (size: number) => {
   const widthMap: { [key: number]: string } = {
@@ -228,24 +41,6 @@ const createColumns = (): ColumnDef<ApplicantData>[] => [
     meta: {
       style: { textAlign: 'left' },
     },
-    // TODO: 최종 UI 확정 후 삭제
-    // header: ({ table }: { table: Table<ApplicantData> }) => (
-    //   <Checkbox
-    //     id="header-checkbox"
-    //     checked={table.getIsAllRowsSelected()}
-    //     onCheckedChange={(checked) => {
-    //       if (checked) {
-    //         table.getToggleAllRowsSelectedHandler()({
-    //           target: { checked: true },
-    //         } as React.ChangeEvent<HTMLInputElement>);
-    //       } else {
-    //         table.getToggleAllRowsSelectedHandler()({
-    //           target: { checked: false },
-    //         } as React.ChangeEvent<HTMLInputElement>);
-    //       }
-    //     }}
-    //   />
-    // ),
     cell: ({ row }: { row: Row<ApplicantData> }) => (
       <Checkbox
         id={`cell-checkbox-${row.id}`}
@@ -332,26 +127,26 @@ const createColumns = (): ColumnDef<ApplicantData>[] => [
 interface ApplicantsTableProps {
   rowSelection: RowSelectionState;
   onRowSelectionChange: OnChangeFn<RowSelectionState>;
-  onDataLengthChange?: (length: number) => void;
   onFilteredRowIdsChange?: (rowIds: string[]) => void;
   columnFilters: ColumnFiltersState;
   onColumnFiltersChange: OnChangeFn<ColumnFiltersState>;
+  data: ApplicantData[];
 }
 
 export default function ApplicantsTable({
   rowSelection,
   onRowSelectionChange,
-  onDataLengthChange,
+
   onFilteredRowIdsChange,
   columnFilters,
   onColumnFiltersChange,
+  data,
 }: ApplicantsTableProps) {
   const columns = createColumns();
   const table = useReactTable({
     data,
     columns,
     getCoreRowModel: getCoreRowModel(),
-    getFilteredRowModel: getFilteredRowModel(),
     onRowSelectionChange,
     onColumnFiltersChange,
     getRowId: (row) => row.creatorCampaignId.toString(),
@@ -362,16 +157,16 @@ export default function ApplicantsTable({
   });
 
   // 필터링된 데이터 길이와 row ID들을 부모에게 전달
-  React.useEffect(() => {
+  useEffect(() => {
     const filteredRows = table.getFilteredRowModel().rows;
+
     const filteredRowIds = filteredRows.map((row) => row.id);
 
-    onDataLengthChange?.(filteredRows.length);
     onFilteredRowIdsChange?.(filteredRowIds);
-  }, [table, columnFilters, onDataLengthChange, onFilteredRowIdsChange]);
+  }, [table, columnFilters, onFilteredRowIdsChange]);
 
   return (
-    <div className="relative h-[123.5rem]">
+    <div className="relative max-h-[123.5rem]">
       <table className="w-full">
         <thead className="border-b border-gray-400">
           {table.getHeaderGroups().map((hg) => (
@@ -401,25 +196,26 @@ export default function ApplicantsTable({
           ))}
         </thead>
         <tbody>
-          {table.getFilteredRowModel().rows.length === 0 && (
+          {table.getFilteredRowModel().rows.length === 0 ? (
             <tr className="h-[60rem] w-full border-b border-gray-400 px-[1.6rem] py-[2.4rem]">
               <td colSpan={5} className="text-center">
                 지원자가 없습니다.
               </td>
             </tr>
+          ) : (
+            table.getFilteredRowModel().rows.map((row) => (
+              <tr
+                key={row.original.creatorCampaignId}
+                className="h-[12rem] w-full border-b border-gray-400 px-[1.6rem] py-[2.4rem]"
+              >
+                {row.getVisibleCells().map((cell) => (
+                  <td key={cell.id} className="">
+                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                  </td>
+                ))}
+              </tr>
+            ))
           )}
-          {table.getFilteredRowModel().rows.map((row) => (
-            <tr
-              key={row.original.creatorCampaignId}
-              className="h-[12rem] w-full border-b border-gray-400 px-[1.6rem] py-[2.4rem]"
-            >
-              {row.getVisibleCells().map((cell) => (
-                <td key={cell.id} className="">
-                  {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                </td>
-              ))}
-            </tr>
-          ))}
         </tbody>
       </table>
     </div>

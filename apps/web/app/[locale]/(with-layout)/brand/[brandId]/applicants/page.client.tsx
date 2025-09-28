@@ -14,6 +14,7 @@ import { usePathname, useRouter } from 'i18n/navigation';
 
 import { Button } from '@lococo/design-system/button';
 import { Checkbox } from '@lococo/design-system/checkbox';
+import { Pagenation } from '@lococo/design-system/pagenation';
 import { SvgCalender, SvgCheck, SvgDownload } from '@lococo/icons';
 
 import ApplicantsTable from './components/applicants-table';
@@ -21,6 +22,7 @@ import ApproveStatusSelect, {
   ApproveStatusWithAll,
 } from './components/approve-status-select';
 import CampaignSelect from './components/campaign-select';
+import { useApplicants } from './hooks/use-applicants';
 import { koDateRangeFormatter } from './utils/ko-date-range-formatter';
 
 interface CampaignInfo {
@@ -61,7 +63,7 @@ const campaignInfos = [
     endDate: '2025-09-21T13:28:37Z',
   },
   {
-    campaignId: 52,
+    campaignId: 59,
     campaignTitle: '캠페인을 만들어봅시다',
     startDate: '2025-09-16T07:32:08.995Z',
     endDate: '2025-09-21T07:32:08.995Z',
@@ -76,31 +78,62 @@ export default function BrandApplicantsPageClient() {
   const searchParams = useSearchParams();
   const campaignIdQueryString = searchParams.get('campaignId');
 
+  // URL에서 page 쿼리 파라미터 읽기, 없으면 1로 기본값 설정
+  const pageFromQuery = searchParams.get('page');
+  const [page, setPage] = useState(() => {
+    const parsedPage = pageFromQuery ? parseInt(pageFromQuery, 10) : 1;
+    return parsedPage > 0 ? parsedPage : 1; // 1 이상의 값만 허용
+  });
+
   const [selectedCampaign, setSelectedCampaign] = useState<
     CampaignInfo | undefined
   >(undefined);
+
+  // URL에서 approveStatus 쿼리 파라미터 읽기
+  const approveStatusFromQuery = searchParams.get('approveStatus');
   const [selectedApproveStatus, setSelectedApproveStatus] =
-    useState<ApproveStatusWithAll>('');
+    useState<ApproveStatusWithAll>(() => {
+      return (approveStatusFromQuery as ApproveStatusWithAll) || '';
+    });
   const [rowSelection, setRowSelection] = useState<RowSelectionState>({});
-  const [dataLength, setDataLength] = useState(0);
   const [filteredRowIds, setFilteredRowIds] = useState<string[]>([]);
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
 
-  // 승인상태 변경 시 필터 업데이트
+  const { data, isFetching, isError } = useApplicants(
+    selectedCampaign?.campaignId || 0,
+    10,
+    page - 1,
+    selectedApproveStatus === '' || selectedApproveStatus === 'ALL'
+      ? undefined
+      : (selectedApproveStatus as 'PENDING' | 'APPROVED' | 'REJECTED'),
+    true
+  );
+
+  // 승인상태 변경 시 필터 업데이트 및 URL 변경
   const handleApproveStatusChange = useCallback(
     (status: ApproveStatusWithAll) => {
-      setSelectedApproveStatus(status);
+      const params = new URLSearchParams(searchParams.toString());
 
-      setRowSelection({});
+      // URL 파라미터 업데이트
       if (status === '' || status === 'ALL') {
-        // 빈 값이거나 전체 선택이면 필터 제거
+        params.delete('approveStatus');
+      } else {
+        params.set('approveStatus', status);
+      }
+
+      params.set('page', '1');
+      router.replace(`${pathname}?${params.toString()}`);
+      setSelectedApproveStatus(status);
+      setPage(1); // 페이지를 1로 리셋
+      setRowSelection({});
+
+      if (status === '' || status === 'ALL') {
         setColumnFilters([]);
       } else {
-        // 승인상태 필터 설정
         setColumnFilters([{ id: 'approveStatus', value: status }]);
       }
     },
-    []
+    [pathname, router, searchParams]
   );
 
   const latestCampaignId = [...campaignInfos]
@@ -112,15 +145,58 @@ export default function BrandApplicantsPageClient() {
   const handleCampaignChange = useCallback(
     (campaignId: string) => {
       const params = new URLSearchParams(searchParams.toString());
+      console.log(params);
       const campaign = campaignInfos.find(
         (campaign) => campaign.campaignId.toString() === campaignId
       );
       setSelectedCampaign(campaign);
       params.set('campaignId', campaignId);
+
+      params.delete('page');
+      params.delete('approveStatus');
       router.replace(`${pathname}?${params.toString()}`);
+
+      setSelectedApproveStatus('');
+      setPage(1); // 페이지를 1로 리셋
+      setRowSelection({});
     },
     [pathname, router, searchParams]
   );
+
+  const handlePageChange = (newPage: number) => {
+    const params = new URLSearchParams(searchParams.toString());
+    setPage(newPage);
+    params.set('page', newPage.toString());
+    router.replace(`${pathname}?${params.toString()}`);
+  };
+
+  // URL의 page 쿼리 파라미터 변경 시 state 동기화
+  useEffect(() => {
+    const pageFromQuery = searchParams.get('page');
+    const newPage = pageFromQuery ? parseInt(pageFromQuery, 10) : 1;
+    const validPage = newPage > 0 ? newPage : 1;
+
+    if (validPage !== page) {
+      setPage(validPage);
+    }
+  }, [searchParams, page]);
+
+  // URL의 approveStatus 쿼리 파라미터 변경 시 state 동기화
+  useEffect(() => {
+    const approveStatusFromQuery = searchParams.get('approveStatus');
+    const newApproveStatus = approveStatusFromQuery as ApproveStatusWithAll;
+
+    if (newApproveStatus !== selectedApproveStatus) {
+      setSelectedApproveStatus(newApproveStatus);
+
+      // 컬럼 필터도 동기화
+      if (newApproveStatus === '' || newApproveStatus === 'ALL') {
+        setColumnFilters([]);
+      } else {
+        setColumnFilters([{ id: 'approveStatus', value: newApproveStatus }]);
+      }
+    }
+  }, [searchParams, selectedApproveStatus]);
 
   useEffect(() => {
     // campaign값이 없고 최신 캠페인이 존재할 때 최신 캠페인 자동 지정
@@ -149,7 +225,11 @@ export default function BrandApplicantsPageClient() {
     handleCampaignChange,
   ]);
 
-  return (
+  return isFetching ? (
+    <div>Loading...</div>
+  ) : isError || !data?.data ? (
+    <div>Error</div>
+  ) : (
     <div className="flex w-full flex-col gap-[1.6rem] px-[1.6rem]">
       <div className="flex w-full justify-between">
         <CampaignSelect
@@ -168,6 +248,7 @@ export default function BrandApplicantsPageClient() {
           Export
         </Button>
       </div>
+
       <div className="flex flex-col gap-[3.2rem]">
         <div className="flex justify-between">
           <div className="flex items-center gap-[0.8rem]">
@@ -187,12 +268,15 @@ export default function BrandApplicantsPageClient() {
             onStatusChange={handleApproveStatusChange}
           />
         </div>
+
         <div className="flex justify-between bg-gray-100 px-[1.6rem] py-[0.8rem]">
           <div className="flex items-center gap-[0.8rem]">
             <Checkbox
               id="all-select"
               checked={
-                Object.keys(rowSelection).length === dataLength &&
+                Object.keys(rowSelection).length ===
+                  data?.data?.pageInfo?.numberOfElements &&
+                Object.keys(rowSelection).length > 0 &&
                 Object.values(rowSelection).every(Boolean)
               }
               onCheckedChange={(checked) => {
@@ -219,7 +303,7 @@ export default function BrandApplicantsPageClient() {
                 Object.keys(rowSelection).filter((key) => rowSelection[key])
                   .length
               }
-              /{dataLength})
+              /{data?.data?.pageInfo?.numberOfElements || 0})
             </label>
           </div>
           <Button
@@ -235,15 +319,27 @@ export default function BrandApplicantsPageClient() {
           </Button>
         </div>
       </div>
-      {/* <ApplicantsList /> */}
-      <ApplicantsTable
-        rowSelection={rowSelection}
-        onRowSelectionChange={setRowSelection}
-        onDataLengthChange={setDataLength}
-        onFilteredRowIdsChange={setFilteredRowIds}
-        columnFilters={columnFilters}
-        onColumnFiltersChange={setColumnFilters}
-      />
+
+      {data.data.applicants.length === 0 ? (
+        <div>지원자가 없습니다.</div>
+      ) : (
+        <ApplicantsTable
+          rowSelection={rowSelection}
+          onRowSelectionChange={setRowSelection}
+          onFilteredRowIdsChange={setFilteredRowIds}
+          columnFilters={columnFilters}
+          onColumnFiltersChange={setColumnFilters}
+          data={data.data.applicants}
+        />
+      )}
+
+      <div className="my-[6.4rem] flex w-full items-center justify-center">
+        <Pagenation
+          currentPage={page}
+          totalPages={data?.data.pageInfo.totalPages || 1}
+          handlePageChange={handlePageChange}
+        />
+      </div>
     </div>
   );
 }
