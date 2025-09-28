@@ -109,6 +109,32 @@
       "titleRequired": "Campaign title is required"
     }
   },
+  "brandMyPageEditProfile": {
+    "addressInfo": {
+      "addressInfoDescription": "This will be used in case of product misdelivery for returns.",
+      "addressInfoTitle": "Company Address Information",
+      "companyAddressLabel": "Street Address",
+      "companyAddressPlaceholder": "Search Postal Code",
+      "detailAddressLabel": "Detailed Address",
+      "detailAddressPlaceholder": "ex: Apt 201"
+    },
+    "basicInfo": {
+      "basicInfoTitle": "Basic Information",
+      "brandNameFieldLabel": "Brand Name",
+      "emailNotice": "To change your email, please contact Lococo",
+      "managerNameFieldLabel": "Contact Person’s Name",
+      "phoneNumberFieldLabel": "Contact Person’s Phone Number"
+    },
+    "formButton": {
+      "cancel": "Cancel",
+      "save": "Save"
+    },
+    "profileImage": {
+      "profileImage": "Profile Image",
+      "profileImageEditBtn": "Change Photo",
+      "profileImageFormTitle": "Profile Photo"
+    }
+  },
   "brandMyPageSideBar": {
     "checkApplicants": "Applicant Confirmation",
     "checkContents": "View Contents",
@@ -119,44 +145,45 @@
   },
   "brandSignup": {
     "brandInfo": {
-      "brandName": "",
-      "brandNamePlaceholder": "",
-      "contactName": "",
-      "contactNamePlaceholder": "",
-      "contactPhone": "",
-      "contactPhonePlaceholder": "",
-      "contactPosition": "",
-      "contactPositionPlaceholder": "",
-      "description": "",
-      "title": ""
+      "brandName": "Brand Name",
+      "brandNamePlaceholder": "ex: Lococo",
+      "contactName": "Contact Person’s Name",
+      "contactNamePlaceholder": "ex: Hong Gil-dong",
+      "contactPhone": "Contact Person’s Phone Number",
+      "contactPhonePlaceholder": "ex: XXXXXXXXXXX",
+      "contactPosition": "Contact Person’s Position",
+      "contactPositionPlaceholder": "ex: Assistant Manager",
+      "description": "Welcome! Please enter the information below for brand verification.",
+      "title": "Brand Information"
     },
     "companyAddress": {
-      "description": "",
-      "detailAddress": "",
-      "detailAddressPlaceholder": "",
-      "streetAddress": "",
-      "streetAddressPlaceholder": "",
-      "title": ""
+      "description": "This will be used in case of product misdelivery for returns.",
+      "detailAddress": "Detailed Address",
+      "detailAddressPlaceholder": "ex: Apt 201",
+      "streetAddress": "Street Address",
+      "streetAddressPlaceholder": "Search Postal Code",
+      "title": "Company Address Information"
     },
     "layout": {
-      "submit": "",
-      "title": ""
+      "back": "Back",
+      "submit": "Join",
+      "title": "Join Lococo Creator Community!"
     },
     "validation": {
-      "brandNameInvalidFormat": "",
-      "brandNameMaxLength": "",
-      "brandNameRequired": "",
-      "contactNameInvalidFormat": "",
-      "contactNameMaxLength": "",
-      "contactNameRequired": "",
-      "contactPhoneInvalid": "",
-      "contactPhoneRequired": "",
-      "contactPositionInvalidFormat": "",
-      "contactPositionMaxLength": "",
-      "contactPositionRequired": "",
-      "detailAddressMaxLength": "",
-      "detailAddressRequired": "",
-      "streetAddressRequired": ""
+      "brandNameInvalidFormat": "Please enter only Korean, English, and numbers.",
+      "brandNameMaxLength": "Brand name can be up to 30 characters.",
+      "brandNameRequired": "Please enter the brand name.",
+      "contactNameInvalidFormat": "Please enter in Korean only.",
+      "contactNameMaxLength": "Contact person’s name can be up to 10 characters.",
+      "contactNameRequired": "Please enter the contact person’s name.",
+      "contactPhoneInvalid": "Please enter a valid phone number.",
+      "contactPhoneRequired": "Please enter the contact person’s phone number.",
+      "contactPositionInvalidFormat": "Please enter in Korean only.",
+      "contactPositionMaxLength": "Contact person’s position can be up to 10 characters.",
+      "contactPositionRequired": "Please enter the contact person’s position.",
+      "detailAddressMaxLength": "Detailed address can be up to 30 characters.",
+      "detailAddressRequired": "Please enter the detailed address.",
+      "streetAddressRequired": "Please enter the street address."
     }
   },
   "campaignDetail": {
@@ -541,31 +568,5 @@
     "confirmButton": "Yes",
     "message": "Campaign applications are only available to creator members.\nWould you like to sign up as a creator?",
     "title": "Creator Suggestion"
-  },
-  "brandMyPageEditProfile": {
-    "profileImage": {
-      "profileImageFormTitle": "",
-      "profileImage": "",
-      "profileImageEditBtn": ""
-    },
-    "basicInfo": {
-      "basicInfoTitle": "",
-      "brandNameFieldLabel": "",
-      "managerNameFieldLabel": "",
-      "phoneNumberFieldLabel": "",
-      "emailNotice": ""
-    },
-    "addressInfo": {
-      "addressInfoTitle": "",
-      "addressInfoDescription": "",
-      "companyAddressLabel": "",
-      "companyAddressPlaceholder": "",
-      "detailAddressLabel": "",
-      "detailAddressPlaceholder": ""
-    },
-    "formButton": {
-      "cancel": "",
-      "save": ""
-    }
   }
 }
