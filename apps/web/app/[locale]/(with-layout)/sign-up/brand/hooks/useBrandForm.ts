@@ -1,9 +1,10 @@
 import { useForm } from 'react-hook-form';
 
 import { useTranslations } from 'next-intl';
-import { useRouter } from 'next/navigation';
 
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useMutation } from '@tanstack/react-query';
+import { useRouter } from 'i18n/navigation';
 
 import { registerBrandInfo } from '../apis/brand-form';
 import { transformFormToApi } from '../utils/api-transformers';
@@ -25,13 +26,19 @@ export const useBrandForm = () => {
     },
   });
 
+  const registerMutation = useMutation({
+    mutationFn: registerBrandInfo,
+    onSuccess: (response) => {
+      if (response.success) {
+        router.push('/');
+      }
+    },
+    onError: () => {},
+  });
+
   const handleSubmit = async (data: BrandSignupForm) => {
     const apiData = transformFormToApi(data);
-    const response = await registerBrandInfo(apiData);
-
-    if (response.success) {
-      router.push('/');
-    }
+    registerMutation.mutate(apiData);
   };
 
   const handleBack = () => {
@@ -42,5 +49,6 @@ export const useBrandForm = () => {
     form,
     handleSubmit,
     handleBack,
+    isSubmitting: registerMutation.isPending,
   };
 };
