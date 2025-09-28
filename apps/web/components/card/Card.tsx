@@ -112,7 +112,7 @@ export default function Card({
           )}
         >
           <Link
-            href={`/campaign/${campaignId}`}
+            href={`/campaign-detail/${campaignId}`}
             className="body2 flex h-[4.8rem] w-full items-center justify-center rounded-[3.2rem] bg-pink-100 font-[700] text-pink-500"
           >
             {card('goToApply')}
