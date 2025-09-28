@@ -12,10 +12,21 @@ import BracketChip from './BracketChip';
 
 interface CardProps {
   endTime: string;
-  chipVariant: 'disabled' | 'default' | 'approved' | 'declined' | 'progress';
+  chipVariant:
+    | 'OPEN_RESERVED'
+    | 'COMPLETED'
+    | 'default'
+    | 'disabled'
+    | 'approved'
+    | 'declined'
+    | 'progress'
+    | 'DRAFT'
+    | 'WAITING_APPROVAL'
+    | 'ACTIVE'
+    | 'ALL';
   brandName: string;
   campaignName: string;
-  campaignType: string;
+  campaignType?: string;
   recruitmentNumber: number;
   applicantNumber: number;
   campaignImageUrl: string;
@@ -51,30 +62,32 @@ export default function Card({
   return (
     <div
       className={cn(
-        'relative w-[36rem] overflow-hidden rounded-[2.4rem]',
-        hoverOption === 'hover' ? 'group h-[33.1rem]' : '',
+        'relative flex w-[36rem] flex-col overflow-hidden rounded-[2.4rem] border border-gray-200',
+        hoverOption === 'hover' ? 'group h-[33.1rem]' : 'h-[34.4rem]',
         className
       )}
     >
-      <Image
-        width={360}
-        height={216}
-        unoptimized={true}
-        src={
-          isValidImageUrl(campaignImageUrl) ? campaignImageUrl : fallbackImage
-        }
-        alt={`${campaignName}${card('campaignThumbnailImage')}`}
-      />
-      <BracketChip
-        dueDate={endTime}
-        chipVariant={chipVariant}
-        className="absolute right-[1.6rem] top-[1.6rem]"
-      />
+      <div className="relative flex-1">
+        <Image
+          fill
+          className="object-cover"
+          unoptimized={true}
+          src={
+            isValidImageUrl(campaignImageUrl) ? campaignImageUrl : fallbackImage
+          }
+          alt={`${campaignName}${card('campaignThumbnailImage')}`}
+        />
+        <BracketChip
+          dueDate={endTime}
+          chipVariant={chipVariant}
+          className="absolute right-[1.6rem] top-[1.6rem]"
+        />
+      </div>
       <div
         className={cn(
           'flex w-full flex-col bg-white p-[1.6rem]',
-          hoverOption === 'hover' &&
-            'absolute bottom-0 h-[11.5rem] transition-all duration-300 group-hover:h-[17.9rem]'
+          hoverOption === 'hover' && 'transition-all duration-300',
+          hoverOption === 'hover' ? 'h-[11.5rem] group-hover:h-[17.9rem]' : ''
         )}
       >
         <div className="flex flex-col gap-[0.8rem]">
@@ -83,7 +96,7 @@ export default function Card({
             <p className="title3 truncate">{campaignName}</p>
           </div>
           <div className="flex items-center gap-[0.8rem]">
-            <InfoChip text={campaignType} />
+            {campaignType && <InfoChip text={campaignType} />}
             <InfoChip
               icon={true}
               text={`${applicantNumber}/${recruitmentNumber}`}
