@@ -1,9 +1,15 @@
+import { useState } from 'react';
+
 import {
+  type Row,
+  RowSelectionState,
+  type Table,
   flexRender,
   getCoreRowModel,
   useReactTable,
 } from '@tanstack/react-table';
 
+import { Checkbox } from '@lococo/design-system/checkbox';
 import { cn } from '@lococo/utils';
 
 import AppliedDateColumn from './column/applied-date-column';
@@ -87,6 +93,7 @@ const data: ApplicantData[] = [
 
 const getWidthClass = (size: number) => {
   const widthMap: { [key: number]: string } = {
+    40: 'w-[30px]',
     50: 'w-[50px]',
     120: 'w-[120px]',
     148: 'w-[148px]',
@@ -97,6 +104,42 @@ const getWidthClass = (size: number) => {
 };
 
 const columns = [
+  {
+    id: 'select',
+    size: 50,
+    meta: {
+      style: { textAlign: 'left' },
+    },
+    header: ({ table }: { table: Table<ApplicantData> }) => (
+      <Checkbox
+        id="header-checkbox"
+        checked={table.getIsAllRowsSelected()}
+        onCheckedChange={(checked) => {
+          if (checked) {
+            table.getToggleAllRowsSelectedHandler()({
+              target: { checked: true },
+            } as React.ChangeEvent<HTMLInputElement>);
+          } else {
+            table.getToggleAllRowsSelectedHandler()({
+              target: { checked: false },
+            } as React.ChangeEvent<HTMLInputElement>);
+          }
+        }}
+      />
+    ),
+    cell: ({ row }: { row: Row<ApplicantData> }) => (
+      <Checkbox
+        id={`cell-checkbox-${row.id}`}
+        checked={row.getIsSelected()}
+        disabled={!row.getCanSelect()}
+        onCheckedChange={(checked) => {
+          row.getToggleSelectedHandler()({
+            target: { checked },
+          } as React.ChangeEvent<HTMLInputElement>);
+        }}
+      />
+    ),
+  },
   {
     accessorKey: 'creator',
     header: '크리에이터',
@@ -168,10 +211,16 @@ const columns = [
 ];
 
 export default function ApplicantsTable() {
+  const [rowSelection, setRowSelection] = useState<RowSelectionState>({});
   const table = useReactTable({
     data,
     columns,
     getCoreRowModel: getCoreRowModel(),
+    // 여기에 onChange와 state를 저장해주면 된다.
+    onRowSelectionChange: setRowSelection,
+    state: {
+      rowSelection,
+    },
   });
 
   return (
@@ -192,7 +241,7 @@ export default function ApplicantsTable() {
                   }
                   className={cn(
                     `${getWidthClass(header.getSize())}`,
-                    `py-[0.8rem] pr-[1.6rem] text-[1.2rem] font-bold text-gray-600`
+                    `truncate py-[0.8rem] pr-[1.6rem] text-[1.2rem] font-bold text-gray-600`
                   )}
                 >
                   {flexRender(
