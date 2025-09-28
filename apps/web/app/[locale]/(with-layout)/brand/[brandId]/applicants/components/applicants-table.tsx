@@ -40,22 +40,24 @@ const createColumns = (): ColumnDef<ApplicantData>[] => [
       style: { textAlign: 'left' },
     },
     cell: ({ row }: { row: Row<ApplicantData> }) => (
-      <Checkbox
-        id={`cell-checkbox-${row.id}`}
-        checked={
-          row.getIsSelected() || row.original.approveStatus === 'APPROVED'
-        }
-        disabled={
-          !row.getCanSelect() || row.original.approveStatus === 'APPROVED'
-        }
-        onCheckedChange={(checked) => {
-          if (row.original.approveStatus !== 'APPROVED') {
-            row.getToggleSelectedHandler()({
-              target: { checked },
-            } as React.ChangeEvent<HTMLInputElement>);
+      <div className="flex items-center justify-center">
+        <Checkbox
+          id={`cell-checkbox-${row.id}`}
+          checked={
+            row.getIsSelected() || row.original.approveStatus === 'APPROVED'
           }
-        }}
-      />
+          disabled={
+            !row.getCanSelect() || row.original.approveStatus === 'APPROVED'
+          }
+          onCheckedChange={(checked) => {
+            if (row.original.approveStatus !== 'APPROVED') {
+              row.getToggleSelectedHandler()({
+                target: { checked },
+              } as React.ChangeEvent<HTMLInputElement>);
+            }
+          }}
+        />
+      </div>
     ),
   },
   {
@@ -198,7 +200,12 @@ export default function ApplicantsTable({
             table.getFilteredRowModel().rows.map((row) => (
               <tr
                 key={row.original.creatorCampaignId}
-                className="h-[12rem] w-full border-b border-gray-400 px-[1.6rem] py-[2.4rem]"
+                className={cn(
+                  'h-[12rem] w-full border-b border-gray-400 px-[1.6rem] py-[2.4rem]',
+                  row.getIsSelected() &&
+                    row.original.approveStatus !== 'APPROVED' &&
+                    'bg-pink-100'
+                )}
               >
                 {row.getVisibleCells().map((cell) => (
                   <td key={cell.id} className="">
