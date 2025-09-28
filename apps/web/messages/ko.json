@@ -109,6 +109,32 @@
       "titleRequired": "캠페인 제목은 필수입니다"
     }
   },
+  "brandMyPageEditProfile": {
+    "addressInfo": {
+      "addressInfoDescription": "제품 오배송 시, 반품을 위해서 입력받습니다.",
+      "addressInfoTitle": "회사 주소 정보",
+      "companyAddressLabel": "도로명 주소",
+      "companyAddressPlaceholder": "우편번호 검색",
+      "detailAddressLabel": "상세 주소",
+      "detailAddressPlaceholder": "ex: 201호"
+    },
+    "basicInfo": {
+      "basicInfoTitle": "기본 정보",
+      "brandNameFieldLabel": "브랜드 이름",
+      "emailNotice": "이메일을 변경하려면 로코코에 문의해 주세요",
+      "managerNameFieldLabel": "담당자 이름",
+      "phoneNumberFieldLabel": "담당자 연락처"
+    },
+    "formButton": {
+      "cancel": "취소하기",
+      "save": "저장하기"
+    },
+    "profileImage": {
+      "profileImage": "프로필 이미지",
+      "profileImageEditBtn": "사진 변경하기",
+      "profileImageFormTitle": "프로필 사진"
+    }
+  },
   "brandMyPageSideBar": {
     "checkApplicants": "지원자 확인",
     "checkContents": "컨텐츠 확인",
@@ -139,8 +165,9 @@
       "title": "회사 주소 정보"
     },
     "layout": {
-      "submit": "Join",
-      "title": "Join Lococo Creator Community!"
+      "back": "뒤로",
+      "submit": "가입",
+      "title": "로코코 브랜드 커뮤니티에 가입하세요!"
     },
     "validation": {
       "brandNameInvalidFormat": "한글, 영어, 숫자만 입력해주세요.",
@@ -373,6 +400,10 @@
       "zip": "우편번호"
     },
     "contentSubmissions": {
+      "brandNote": {
+        "description": "",
+        "firstReview": ""
+      },
       "campaignProductMediaInput": {
         "description": "파일을 드래그 앤 드롭하거나 클릭하여 업로드하세요.",
         "selectFile": "파일 선택",
@@ -382,6 +413,10 @@
         "description": "캠페인을 선택해 주세요.",
         "selectCampaign": "캠페인 선택",
         "title": "캠페인 선택"
+      },
+      "content": {
+        "1stContent": "",
+        "2ndContent": ""
       },
       "contentTypeSelect": {
         "instagramPost": "인스타그램 게시물",
@@ -402,6 +437,10 @@
         "save": "오케이",
         "secondDescription": "최종 제출물이 접수되었습니다. 제출해 주셔서 감사합니다.",
         "title": "성공적으로 제출되었습니다."
+      },
+      "submitContentUrl": {
+        "description": "",
+        "title": ""
       }
     },
     "editProfile": {
@@ -501,8 +540,26 @@
       "myCampaign": "내 캠페인"
     },
     "myCampaign": {
+      "buttonText": {
+        "confirmAddress": "",
+        "revisionRequested": "",
+        "uploadFirstReview": "",
+        "uploadSecondReview": "",
+        "viewDetails": "",
+        "viewNote": "",
+        "viewNotes": "",
+        "viewResults": ""
+      },
       "empty": {
         "title": "신청한 캠페인이 없습니다."
+      },
+      "participationStatus": {
+        "active": "",
+        "approved": "",
+        "completed": "",
+        "expired": "",
+        "pending": "",
+        "rejected": ""
       },
       "title": "나의 캠페인"
     },
@@ -541,31 +598,5 @@
     "confirmButton": "예",
     "message": "캠페인 신청은 크리에이터 회원만 가능합니다. \n크리에이터로 가입하시겠습니까?",
     "title": "크리에이터 제안"
-  },
-  "brandMyPageEditProfile": {
-    "profileImage": {
-      "profileImageFormTitle": "프로필 사진",
-      "profileImage": "프로필 이미지",
-      "profileImageEditBtn": "사진 변경하기"
-    },
-    "basicInfo": {
-      "basicInfoTitle": "기본 정보",
-      "brandNameFieldLabel": "브랜드 이름",
-      "managerNameFieldLabel": "담당자 이름",
-      "phoneNumberFieldLabel": "담당자 연락처",
-      "emailNotice": "이메일을 변경하려면 로코코에 문의해 주세요"
-    },
-    "addressInfo": {
-      "addressInfoTitle": "회사 주소 정보",
-      "addressInfoDescription": "제품 오배송 시, 반품을 위해서 입력받습니다.",
-      "companyAddressLabel": "도로명 주소",
-      "companyAddressPlaceholder": "우편번호 검색",
-      "detailAddressLabel": "상세 주소",
-      "detailAddressPlaceholder": "ex: 201호"
-    },
-    "formButton": {
-      "cancel": "취소하기",
-      "save": "저장하기"
-    }
   }
 }

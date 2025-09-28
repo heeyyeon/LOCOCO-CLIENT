@@ -109,6 +109,32 @@
       "titleRequired": "El título de la campaña es obligatorio"
     }
   },
+  "brandMyPageEditProfile": {
+    "addressInfo": {
+      "addressInfoDescription": "Se solicita en caso de devolución por envío incorrecto del producto.",
+      "addressInfoTitle": "Información de la dirección de la empresa",
+      "companyAddressLabel": "Dirección (calle)",
+      "companyAddressPlaceholder": "Buscar código postal",
+      "detailAddressLabel": "Dirección detallada",
+      "detailAddressPlaceholder": "ej: 201"
+    },
+    "basicInfo": {
+      "basicInfoTitle": "Información básica",
+      "brandNameFieldLabel": "Nombre de la marca",
+      "emailNotice": "Para cambiar el correo electrónico, por favor contacte a Lococo",
+      "managerNameFieldLabel": "Nombre del responsable",
+      "phoneNumberFieldLabel": "Teléfono del responsable"
+    },
+    "formButton": {
+      "cancel": "Cancelar",
+      "save": "Guardar"
+    },
+    "profileImage": {
+      "profileImage": "Imagen de perfil",
+      "profileImageEditBtn": "Cambiar foto",
+      "profileImageFormTitle": "Foto de perfil"
+    }
+  },
   "brandMyPageSideBar": {
     "checkApplicants": "Confirmación de solicitantes",
     "checkContents": "Revisar Contenidos",
@@ -119,44 +145,45 @@
   },
   "brandSignup": {
     "brandInfo": {
-      "brandName": "",
-      "brandNamePlaceholder": "",
-      "contactName": "",
-      "contactNamePlaceholder": "",
-      "contactPhone": "",
-      "contactPhonePlaceholder": "",
-      "contactPosition": "",
-      "contactPositionPlaceholder": "",
-      "description": "",
-      "title": ""
+      "brandName": "Nombre de la marca",
+      "brandNamePlaceholder": "ej: Lococo",
+      "contactName": "Nombre del responsable",
+      "contactNamePlaceholder": "ej: Hong Gil-dong",
+      "contactPhone": "Teléfono del responsable",
+      "contactPhonePlaceholder": "ej: XXXXXXXXXXX",
+      "contactPosition": "Cargo del responsable",
+      "contactPositionPlaceholder": "ej: Subgerente",
+      "description": "¡Bienvenido(a)! Por favor ingrese la siguiente información para la verificación de la marca.",
+      "title": "Información de la marca"
     },
     "companyAddress": {
-      "description": "",
-      "detailAddress": "",
-      "detailAddressPlaceholder": "",
-      "streetAddress": "",
-      "streetAddressPlaceholder": "",
-      "title": ""
+      "description": "Se solicita en caso de devolución por envío incorrecto del producto.",
+      "detailAddress": "Dirección detallada",
+      "detailAddressPlaceholder": "ej: 201",
+      "streetAddress": "Dirección (calle)",
+      "streetAddressPlaceholder": "Buscar código postal",
+      "title": "Información de la dirección de la empresa"
     },
     "layout": {
-      "submit": "",
-      "title": ""
+      "back": "Atrás",
+      "submit": "Unirse",
+      "title": "¡Únete a la Comunidad de Creadores de Lococo!"
     },
     "validation": {
-      "brandNameInvalidFormat": "",
-      "brandNameMaxLength": "",
-      "brandNameRequired": "",
-      "contactNameInvalidFormat": "",
-      "contactNameMaxLength": "",
-      "contactNameRequired": "",
-      "contactPhoneInvalid": "",
-      "contactPhoneRequired": "",
-      "contactPositionInvalidFormat": "",
-      "contactPositionMaxLength": "",
-      "contactPositionRequired": "",
-      "detailAddressMaxLength": "",
-      "detailAddressRequired": "",
-      "streetAddressRequired": ""
+      "brandNameInvalidFormat": "Por favor ingrese solo en coreano, inglés y números.",
+      "brandNameMaxLength": "El nombre de la marca puede tener hasta 30 caracteres.",
+      "brandNameRequired": "Por favor ingrese el nombre de la marca.",
+      "contactNameInvalidFormat": "Por favor ingrese solo en coreano.",
+      "contactNameMaxLength": "El nombre del responsable puede tener hasta 10 caracteres.",
+      "contactNameRequired": "Por favor ingrese el nombre del responsable.",
+      "contactPhoneInvalid": "Por favor ingrese un número de teléfono válido.",
+      "contactPhoneRequired": "Por favor ingrese el teléfono del responsable.",
+      "contactPositionInvalidFormat": "Por favor ingrese solo en coreano.",
+      "contactPositionMaxLength": "El cargo del responsable puede tener hasta 10 caracteres.",
+      "contactPositionRequired": "Por favor ingrese el cargo del responsable.",
+      "detailAddressMaxLength": "La dirección detallada puede tener hasta 30 caracteres.",
+      "detailAddressRequired": "Por favor ingrese la dirección detallada.",
+      "streetAddressRequired": "Por favor ingrese la dirección (calle)."
     }
   },
   "campaignDetail": {
@@ -373,6 +400,10 @@
       "zip": "Código postal"
     },
     "contentSubmissions": {
+      "brandNote": {
+        "description": "",
+        "firstReview": ""
+      },
       "campaignProductMediaInput": {
         "description": "Arrastra y suelta o haz clic para subir el archivo.",
         "selectFile": "Seleccionar archivo",
@@ -382,6 +413,10 @@
         "description": "Por favor, seleccione una campaña.",
         "selectCampaign": "Seleccionar una campaña",
         "title": "Seleccionar una campaña"
+      },
+      "content": {
+        "1stContent": "",
+        "2ndContent": ""
       },
       "contentTypeSelect": {
         "instagramPost": "Publicación en Instagram",
@@ -402,6 +437,10 @@
         "save": "Está bien",
         "secondDescription": "Tu primer envío ha sido recibido. La marca lo revisará y enviará una nota.",
         "title": "Enviado con éxito"
+      },
+      "submitContentUrl": {
+        "description": "",
+        "title": ""
       }
     },
     "editProfile": {
@@ -501,8 +540,26 @@
       "myCampaign": "Mi campaña"
     },
     "myCampaign": {
+      "buttonText": {
+        "confirmAddress": "",
+        "revisionRequested": "",
+        "uploadFirstReview": "",
+        "uploadSecondReview": "",
+        "viewDetails": "",
+        "viewNote": "",
+        "viewNotes": "",
+        "viewResults": ""
+      },
       "empty": {
         "title": "No hay ninguna campaña solicitada."
+      },
+      "participationStatus": {
+        "active": "",
+        "approved": "",
+        "completed": "",
+        "expired": "",
+        "pending": "",
+        "rejected": ""
       },
       "title": "Mi campaña"
     },
@@ -541,31 +598,5 @@
     "confirmButton": "Sí",
     "message": "Las solicitudes de campaña solo están disponibles para miembros creadores. ¿Desea registrarse como creador?",
     "title": "Sugerencia de creador"
-  },
-  "brandMyPageEditProfile": {
-    "profileImage": {
-      "profileImageFormTitle": "",
-      "profileImage": "",
-      "profileImageEditBtn": ""
-    },
-    "basicInfo": {
-      "basicInfoTitle": "",
-      "brandNameFieldLabel": "",
-      "managerNameFieldLabel": "",
-      "phoneNumberFieldLabel": "",
-      "emailNotice": ""
-    },
-    "addressInfo": {
-      "addressInfoTitle": "",
-      "addressInfoDescription": "",
-      "companyAddressLabel": "",
-      "companyAddressPlaceholder": "",
-      "detailAddressLabel": "",
-      "detailAddressPlaceholder": ""
-    },
-    "formButton": {
-      "cancel": "",
-      "save": ""
-    }
   }
 }
