@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 import { useTranslations } from 'next-intl';
@@ -16,7 +16,12 @@ import { type CreatorSignupForm, creatorSignupSchema } from '../utils/signup';
 export const useCreatorForm = () => {
   const router = useRouter();
   const t = useTranslations('creatorSignup.validation');
+  const tCommunity = useTranslations('creatorSignup.communityName');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [idCheckStatus, setIdCheckStatus] = useState<{
+    checked: boolean;
+    available: boolean;
+  }>({ checked: false, available: false });
 
   const form = useForm<CreatorSignupForm>({
     resolver: zodResolver(creatorSignupSchema(t)),
@@ -87,6 +92,24 @@ export const useCreatorForm = () => {
   };
 
   const handleNext = async (data: CreatorSignupForm) => {
+    // ID 중복 확인을 하지 않은 경우
+    if (!idCheckStatus.checked) {
+      form.setError('id', {
+        type: 'manual',
+        message: t('idAvailabilityCheck'),
+      });
+      return false;
+    }
+
+    // ID가 사용 불가능한 경우
+    if (!idCheckStatus.available) {
+      form.setError('id', {
+        type: 'manual',
+        message: tCommunity('idTaken'),
+      });
+      return false;
+    }
+
     const cleanedData = cleanFormData(data);
     setIsSubmitting(true);
 
@@ -98,12 +121,21 @@ export const useCreatorForm = () => {
     }
 
     setIsSubmitting(false);
+    return true;
   };
+
+  const handleIdCheckResult = useCallback(
+    (checked: boolean, available: boolean) => {
+      setIdCheckStatus({ checked, available });
+    },
+    []
+  );
 
   return {
     form,
     isSubmitting,
     handleBack,
     handleNext,
+    handleIdCheckResult,
   };
 };

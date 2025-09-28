@@ -13,12 +13,14 @@ interface CreatorFormSectionsProps {
   form: UseFormReturn<CreatorSignupForm>;
   locale: string;
   userData?: Partial<CreatorSignupForm>;
+  onIdCheckResult?: (checked: boolean, available: boolean) => void;
 }
 
 export function CreatorFormSections({
   form,
   locale,
   userData,
+  onIdCheckResult,
 }: CreatorFormSectionsProps) {
   const { reset } = form;
 
@@ -30,7 +32,7 @@ export function CreatorFormSections({
 
   return (
     <>
-      <CommunityName form={form} />
+      <CommunityName form={form} onIdCheckResult={onIdCheckResult} />
 
       <PersonalDetails form={form} />
 

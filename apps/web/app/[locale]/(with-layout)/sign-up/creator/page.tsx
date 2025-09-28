@@ -11,7 +11,8 @@ import { useCreatorForm } from './hooks/useCreatorForm';
 export default function CreatorSignupPage() {
   const locale = useLocale();
   const t = useTranslations('creatorSignup.layout');
-  const { form, handleBack, handleNext } = useCreatorForm();
+  const { form, handleBack, handleNext, handleIdCheckResult } =
+    useCreatorForm();
 
   const handleSubmit = form.handleSubmit((data) => {
     handleNext(data);
@@ -25,7 +26,11 @@ export default function CreatorSignupPage() {
       isValid={form.formState.isValid}
       submitLabel={t('next')}
     >
-      <CreatorFormSections form={form} locale={locale} />
+      <CreatorFormSections
+        form={form}
+        locale={locale}
+        onIdCheckResult={handleIdCheckResult}
+      />
     </SignupFormLayout>
   );
 }

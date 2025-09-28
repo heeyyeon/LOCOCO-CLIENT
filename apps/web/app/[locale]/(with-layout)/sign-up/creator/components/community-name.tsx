@@ -11,9 +11,10 @@ import { type CreatorSignupForm } from '../utils/signup';
 
 interface CommunityNameProps {
   form: UseFormReturn<CreatorSignupForm>;
+  onIdCheckResult?: (checked: boolean, available: boolean) => void;
 }
 
-export function CommunityName({ form }: CommunityNameProps) {
+export function CommunityName({ form, onIdCheckResult }: CommunityNameProps) {
   const t = useTranslations('creatorSignup.communityName');
   const [isCheckingEnabled, setIsCheckingEnabled] = useState(false);
   const [hasCheckedCurrentId, setHasCheckedCurrentId] = useState(false);
@@ -28,13 +29,15 @@ export function CommunityName({ form }: CommunityNameProps) {
   useEffect(() => {
     setHasCheckedCurrentId(false);
     setIsCheckingEnabled(false);
-  }, [id]);
+    onIdCheckResult?.(false, false);
+  }, [id, onIdCheckResult]);
 
   useEffect(() => {
     if (availabilityResult && hasCheckedCurrentId) {
+      onIdCheckResult?.(true, availabilityResult.success);
       setIsCheckingEnabled(false);
     }
-  }, [availabilityResult, hasCheckedCurrentId]);
+  }, [availabilityResult, hasCheckedCurrentId, onIdCheckResult]);
 
   const handleCheckAvailability = async () => {
     const isValid = await form.trigger('id');
