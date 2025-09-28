@@ -12,19 +12,19 @@
 
 export interface CampaignDraftRequest {
   campaignTitle?: string;
-  language?: 'EN' | 'ES';
-  campaignType?: 'GIVEAWAY' | 'CONTENTS' | 'EXCLUSIVE';
-  campaignProductType?: 'SKINCARE' | 'SUNCARE' | 'MAKEUP';
+  language?: "EN" | "ES";
+  campaignType?: "GIVEAWAY" | "CONTENTS" | "EXCLUSIVE";
+  campaignProductType?: "SKINCARE" | "SUNCARE" | "MAKEUP";
   /**
    * @maxItems 5
    * @minItems 0
    */
-  topImages?: CampaignImageRequest[];
+  thumbnailImages?: CampaignImageRequest[];
   /**
    * @maxItems 15
    * @minItems 0
    */
-  bottomImages?: CampaignImageRequest[];
+  detailImages?: CampaignImageRequest[];
   /** @format date-time */
   applyStartDate?: string;
   /** @format date-time */
@@ -38,8 +38,8 @@ export interface CampaignDraftRequest {
   participationRewards?: string[];
   deliverableRequirements?: string[];
   eligibilityRequirements?: string[];
-  firstContentType?: 'INSTA_REELS' | 'TIKTOK_VIDEO' | 'INSTA_POST';
-  secondContentType?: 'INSTA_REELS' | 'TIKTOK_VIDEO' | 'INSTA_POST';
+  firstContentType?: "INSTA_REELS" | "TIKTOK_VIDEO" | "INSTA_POST";
+  secondContentType?: "INSTA_REELS" | "TIKTOK_VIDEO" | "INSTA_POST";
 }
 
 export interface CampaignImageRequest {
@@ -50,7 +50,7 @@ export interface CampaignImageRequest {
    * @min 0
    */
   displayOrder?: number;
-  imageType: 'TOP' | 'BOTTOM';
+  imageType: "THUMBNAIL" | "DETAIL";
 }
 
 export interface ApiResponseCampaignBasicResponse {
@@ -77,21 +77,21 @@ export interface CampaignBasicResponse {
    * 캠페인 진행 언어
    * @example "ENG"
    */
-  language: 'EN' | 'ES';
+  language: "EN" | "ES";
   /**
    * 캠페인 종류
    * @example "GIVEAWAY"
    */
-  campaignType: 'GIVEAWAY' | 'CONTENTS' | 'EXCLUSIVE';
+  campaignType: "GIVEAWAY" | "CONTENTS" | "EXCLUSIVE";
   /**
    * 캠페인 상품 카테고리
    * @example "SKINCARE"
    */
-  campaignProductType: 'SKINCARE' | 'SUNCARE' | 'MAKEUP';
+  campaignProductType: "SKINCARE" | "SUNCARE" | "MAKEUP";
   /** 상단 이미지 리스트 */
-  topImages: CampaignImageResponse[];
+  thumbnailImages: CampaignImageResponse[];
   /** 하단 이미지 리스트 */
-  bottomImages: CampaignImageResponse[];
+  detailImages: CampaignImageResponse[];
   /**
    * 크리에이터 지원 시작 일시
    * @format date-time
@@ -132,12 +132,12 @@ export interface CampaignBasicResponse {
    * 첫 번째 제출 컨텐츠
    * @example "INSTA_REELS"
    */
-  firstContentType: 'INSTA_REELS' | 'TIKTOK_VIDEO' | 'INSTA_POST';
+  firstContentType: "INSTA_REELS" | "TIKTOK_VIDEO" | "INSTA_POST";
   /**
    * 두 번째 제출 컨텐츠
    * @example "TIKTOK_VIDEO"
    */
-  secondContentType: 'INSTA_REELS' | 'TIKTOK_VIDEO' | 'INSTA_POST';
+  secondContentType: "INSTA_REELS" | "TIKTOK_VIDEO" | "INSTA_POST";
 }
 
 export interface CampaignImageResponse {
@@ -205,19 +205,24 @@ export interface ReviewReceiptResponse {
   receiptUrl: string[];
 }
 
-export interface ReviewMediaRequest {
+export interface MediaPresignedUrlRequest {
+  /** @minItems 1 */
   mediaType: string[];
 }
 
-export interface ApiResponseReviewMediaResponse {
+export interface ApiResponseMediaPresignedUrlResponse {
   success?: boolean;
   /** @format int32 */
   status?: number;
   message?: string;
-  data?: ReviewMediaResponse;
+  data?: MediaPresignedUrlResponse;
 }
 
-export interface ReviewMediaResponse {
+export interface MediaPresignedUrlResponse {
+  /**
+   * presignedUrl 리스트
+   * @example ["https://s3.ap-northeast-2.amazonaws.com/...","https://s3.ap-northeast-2.amazonaws.com/..."]
+   */
   mediaUrl: string[];
 }
 
@@ -291,52 +296,60 @@ export interface CreatorRegisterCompleteResponse {
    * 로그인 상태
    * @example "LOGIN"
    */
-  loginStatus: 'LOGIN' | 'INFO_REQUIRED' | 'SNS_REQUIRED' | 'REGISTER';
+  loginStatus: "LOGIN" | "INFO_REQUIRED" | "SNS_REQUIRED" | "REGISTER";
 }
 
-export interface CampaignMediaRequest {
-  mediaType: string[];
+export interface CreatorProfileImageRequest {
+  mediaType: string;
 }
 
-export interface ApiResponseCampaignMediaResponse {
+export interface ApiResponseCreatorProfileImageResponse {
   success?: boolean;
   /** @format int32 */
   status?: number;
   message?: string;
-  data?: CampaignMediaResponse;
+  data?: CreatorProfileImageResponse;
 }
 
-export interface CampaignMediaResponse {
-  mediaUrl: string[];
+export interface CreatorProfileImageResponse {
+  /** 크리에이터 프로필 이미지 URL */
+  profileImageUrl: string;
 }
 
 export interface SecondReviewUploadRequest {
   /**
-   * 콘텐츠 포맷
-   * @example "INSTA_REELS"
-   */
-  contentType: 'INSTA_REELS' | 'TIKTOK_VIDEO' | 'INSTA_POST';
-  /**
-   * 캠페인 리뷰 이미지 URL 리스트
-   * @maxItems 2147483647
+   * 첫번째 2차 미디어 URL 리스트
    * @minItems 1
-   * @example ["https://s3.example.com/review/img1.jpg","https://s3.example.com/review/img2.jpg"]
    */
-  imageUrls: string[];
+  firstMediaUrls: string[];
   /**
-   * 캡션+해시태그 (최대 2200자)
+   * 첫번째 2차 캡션+해시태그 (최대 2200자)
    * @minLength 0
    * @maxLength 2200
    * @example "Hydrating mask review 💧 #hydration #mask #skincare"
    */
-  captionWithHashtags: string;
+  firstCaptionWithHashtags: string;
   /**
-   * 게시물 URL
+   * 첫번째 2차 게시물 URL
    * @minLength 0
    * @maxLength 1024
    * @example "https://www.instagram.com/p/XXXXXXXX/"
    */
-  postUrl: string;
+  firstPostUrl: string;
+  /** 두번째 2차 미디어 URL 리스트(옵션) */
+  secondMediaUrls?: string[];
+  /**
+   * 두번째 2차 캡션+해시태그(옵션)
+   * @minLength 0
+   * @maxLength 2200
+   */
+  secondCaptionWithHashtags?: string;
+  /**
+   * 두번째 2차 게시물 URL(옵션)
+   * @minLength 0
+   * @maxLength 1024
+   */
+  secondPostUrl?: string;
 }
 
 export interface ApiResponseReviewUploadResponse {
@@ -358,24 +371,30 @@ export interface ReviewUploadResponse {
 
 export interface FirstReviewUploadRequest {
   /**
-   * 콘텐츠 포맷
-   * @example "INSTA_REELS"
-   */
-  contentType: 'INSTA_REELS' | 'TIKTOK_VIDEO' | 'INSTA_POST';
-  /**
-   * 캠페인 리뷰 이미지 URL 리스트 (최소 1장)
-   * @maxItems 2147483647
+   * 첫번째 1차 미디어 URL 리스트(이미지 또는 영상)
    * @minItems 1
-   * @example ["https://s3.example.com/review/img1.jpg","https://s3.example.com/review/img2.jpg"]
+   * @example ["https://s3.example.com/review/2025/09/.../img1.jpg"]
    */
-  imageUrls: string[];
+  firstMediaUrls: string[];
   /**
-   * 캡션 + 해시태그 (최대 2200자)
+   * 첫번째 캡션 + 해시태그 (최대 2200자)
    * @minLength 0
    * @maxLength 2200
    * @example "Hydrating mask review 💧 #hydration #mask #skincare"
    */
-  captionWithHashtags: string;
+  firstCaptionWithHashtags: string;
+  /**
+   * 두번째 1차 미디어 URL 리스트(선택)
+   * @example ["https://s3.example.com/review/2025/09/.../img1.jpg"]
+   */
+  secondMediaUrls?: string[];
+  /**
+   * 두번째 1차 캡션+해시태그(선택)
+   * @minLength 0
+   * @maxLength 2200
+   * @example "Hydrating mask review 💧 #hydration #mask #skincare"
+   */
+  secondCaptionWithHashtags?: string;
 }
 
 export interface BrandProfileImageRequest {
@@ -411,7 +430,7 @@ export interface BrandNoteRevisionResponse {
   /** @example "태그를 더 추가하세요." */
   brandNote: string;
   /** @example "DRAFT" */
-  status: 'DRAFT' | 'PUBLISHED';
+  status: "DRAFT" | "PUBLISHED";
   /**
    * @format date-time
    * @example "2025-09-18T10:30:00Z"
@@ -420,45 +439,101 @@ export interface BrandNoteRevisionResponse {
 }
 
 export interface CampaignPublishRequest {
-  /** @minLength 1 */
-  campaignTitle: string;
-  language: 'EN' | 'ES';
-  campaignType: 'GIVEAWAY' | 'CONTENTS' | 'EXCLUSIVE';
-  campaignProductType: 'SKINCARE' | 'SUNCARE' | 'MAKEUP';
   /**
+   * 캠페인 제목
+   * @minLength 1
+   * @example "로코코 신제품"
+   */
+  campaignTitle: string;
+  /**
+   * 캠페인 언어 설정
+   * @example "EN 또는 ES"
+   */
+  language: "EN" | "ES";
+  /**
+   * 캠페인 타입
+   * @example "GIVEAWAY 또는 CONTENTS 또는 EXCLUSIVE"
+   */
+  campaignType: "GIVEAWAY" | "CONTENTS" | "EXCLUSIVE";
+  /**
+   * 캠페인 상품 타입
+   * @example "SKINCARE 또는 SUNCARE 또는 MAKEUP"
+   */
+  campaignProductType: "SKINCARE" | "SUNCARE" | "MAKEUP";
+  /**
+   * 썸네일 이미지 목록 (최소 1개, 최대 5개)
    * @maxItems 5
    * @minItems 0
    */
-  topImages: CampaignImageRequest[];
+  thumbnailImages: CampaignImageRequest[];
   /**
+   * 상세 이미지 목록 (최대 15개)
    * @maxItems 15
    * @minItems 0
    */
-  bottomImages?: CampaignImageRequest[];
-  /** @format date-time */
+  detailImages?: CampaignImageRequest[];
+  /**
+   * 신청 시작일
+   * @format date-time
+   * @example "2024-12-01T00:00:00Z"
+   */
   applyStartDate: string;
-  /** @format date-time */
+  /**
+   * 신청 마감일
+   * @format date-time
+   * @example "2024-12-15T23:59:59Z"
+   */
   applyDeadline: string;
-  /** @format date-time */
+  /**
+   * 크리에이터 발표일
+   * @format date-time
+   * @example "2024-12-20T00:00:00Z"
+   */
   creatorAnnouncementDate: string;
-  /** @format date-time */
+  /**
+   * 리뷰 제출 마감일
+   * @format date-time
+   * @example "2025-01-15T23:59:59Z"
+   */
   reviewSubmissionDeadline: string;
   /**
+   * 모집 인원 수
    * @format int32
    * @min 1
+   * @example 10
    */
   recruitmentNumber: number;
-  /** @minItems 1 */
+  /**
+   * 참여 혜택 목록
+   * @minItems 1
+   * @example ["신제품 무료 제공","배송비 무료"]
+   */
   participationRewards: string[];
-  /** @minItems 1 */
+  /**
+   * 컨텐츠 요구사항 목록
+   * @minItems 1
+   * @example ["인스타그램 피드 포스팅","스토리 업로드"]
+   */
   deliverableRequirements: string[];
+  /**
+   * 참여 자격 요건 목록
+   * @example ["팔로워 1000명 이상","뷰티 관심분야"]
+   */
   eligibilityRequirements?: string[];
-  firstContentType: 'INSTA_REELS' | 'TIKTOK_VIDEO' | 'INSTA_POST';
-  secondContentType: 'INSTA_REELS' | 'TIKTOK_VIDEO' | 'INSTA_POST';
+  /**
+   * 첫 번째 컨텐츠 플랫폼
+   * @example "INSTAGRAM_REELS 또는 INSTAGRAM_POST 또는 TIKTOK_VIDEO"
+   */
+  firstContentType: "INSTA_REELS" | "TIKTOK_VIDEO" | "INSTA_POST";
+  /**
+   * 두 번째 컨텐츠 플랫폼
+   * @example "INSTAGRAM_REELS 또는 INSTAGRAM_POST 또는 TIKTOK_VIDEO"
+   */
+  secondContentType: "INSTA_REELS" | "TIKTOK_VIDEO" | "INSTA_POST";
 }
 
 export interface RoleUpdateRequest {
-  role: 'PENDING' | 'CUSTOMER' | 'CREATOR' | 'BRAND' | 'ADMIN';
+  role: "PENDING" | "CUSTOMER" | "CREATOR" | "BRAND" | "ADMIN";
 }
 
 export interface ApiResponseRoleUpdateResponse {
@@ -472,10 +547,10 @@ export interface ApiResponseRoleUpdateResponse {
 export interface RoleUpdateResponse {
   accessToken?: string;
   refreshToken?: string;
-  role?: 'PENDING' | 'CUSTOMER' | 'CREATOR' | 'BRAND' | 'ADMIN';
+  role?: "PENDING" | "CUSTOMER" | "CREATOR" | "BRAND" | "ADMIN";
   /** @format int64 */
   userId?: number;
-  loginStatus?: 'LOGIN' | 'INFO_REQUIRED' | 'SNS_REQUIRED' | 'REGISTER';
+  loginStatus?: "LOGIN" | "INFO_REQUIRED" | "SNS_REQUIRED" | "REGISTER";
 }
 
 export interface TestLoginRequest {
@@ -518,7 +593,7 @@ export interface CustomerMyPageRequest {
    * 성별
    * @example "MALE"
    */
-  gender?: 'MALE' | 'FEMALE' | 'NON_BINARY' | 'PREFER_NOT_TO_SAY';
+  gender?: "MALE" | "FEMALE" | "NON_BINARY" | "PREFER_NOT_TO_SAY";
   /**
    * 이름
    * @minLength 1
@@ -549,7 +624,7 @@ export interface CustomerMyPageRequest {
    * 콘텐츠 언어
    * @example "ENGLISH"
    */
-  contentLanguage?: 'ENGLISH' | 'SPANISH' | 'ENGLISH_AND_SPANISH';
+  contentLanguage?: "ENGLISH" | "SPANISH" | "ENGLISH_AND_SPANISH";
   /**
    * 구글 로그인시 받은 email
    * @example "lococo@example.com"
@@ -599,32 +674,32 @@ export interface CustomerMyPageRequest {
    * 피부 타입 (드롭다운 6개)
    * @example "COMBINATION"
    */
-  skinType?: 'NORMAL' | 'DRY' | 'OILY' | 'COMBINATION' | 'SENSITIVE' | 'OTHER';
+  skinType?: "NORMAL" | "DRY" | "OILY" | "COMBINATION" | "SENSITIVE" | "OTHER";
   /**
    * 피부 톤 (드롭다운 20개)
    * @example "SHADE_12"
    */
   skinTone?:
-    | 'SHADE_1'
-    | 'SHADE_2'
-    | 'SHADE_3'
-    | 'SHADE_4'
-    | 'SHADE_5'
-    | 'SHADE_6'
-    | 'SHADE_7'
-    | 'SHADE_8'
-    | 'SHADE_9'
-    | 'SHADE_10'
-    | 'SHADE_11'
-    | 'SHADE_12'
-    | 'SHADE_13'
-    | 'SHADE_14'
-    | 'SHADE_15'
-    | 'SHADE_16'
-    | 'SHADE_17'
-    | 'SHADE_18'
-    | 'SHADE_19'
-    | 'SHADE_20';
+    | "SHADE_1"
+    | "SHADE_2"
+    | "SHADE_3"
+    | "SHADE_4"
+    | "SHADE_5"
+    | "SHADE_6"
+    | "SHADE_7"
+    | "SHADE_8"
+    | "SHADE_9"
+    | "SHADE_10"
+    | "SHADE_11"
+    | "SHADE_12"
+    | "SHADE_13"
+    | "SHADE_14"
+    | "SHADE_15"
+    | "SHADE_16"
+    | "SHADE_17"
+    | "SHADE_18"
+    | "SHADE_19"
+    | "SHADE_20";
 }
 
 export interface CreatorInfoUpdateRequest {
@@ -644,7 +719,7 @@ export interface CreatorInfoUpdateRequest {
    * 성별
    * @example "MALE"
    */
-  gender: 'MALE' | 'FEMALE' | 'NON_BINARY' | 'PREFER_NOT_TO_SAY';
+  gender: "MALE" | "FEMALE" | "NON_BINARY" | "PREFER_NOT_TO_SAY";
   /**
    * 이름
    * @minLength 1
@@ -675,7 +750,7 @@ export interface CreatorInfoUpdateRequest {
    * 콘텐츠 언어
    * @example "ENGLISH"
    */
-  contentLanguage: 'ENGLISH' | 'SPANISH' | 'ENGLISH_AND_SPANISH';
+  contentLanguage: "ENGLISH" | "SPANISH" | "ENGLISH_AND_SPANISH";
   /**
    * 국가
    * @minLength 1
@@ -721,35 +796,40 @@ export interface CreatorInfoUpdateRequest {
    * 피부 타입 (드롭다운 6개)
    * @example "COMBINATION"
    */
-  skinType: 'NORMAL' | 'DRY' | 'OILY' | 'COMBINATION' | 'SENSITIVE' | 'OTHER';
+  skinType: "NORMAL" | "DRY" | "OILY" | "COMBINATION" | "SENSITIVE" | "OTHER";
   /**
    * 피부 톤 (드롭다운 20개)
    * @example "SHADE_12"
    */
   skinTone:
-    | 'SHADE_1'
-    | 'SHADE_2'
-    | 'SHADE_3'
-    | 'SHADE_4'
-    | 'SHADE_5'
-    | 'SHADE_6'
-    | 'SHADE_7'
-    | 'SHADE_8'
-    | 'SHADE_9'
-    | 'SHADE_10'
-    | 'SHADE_11'
-    | 'SHADE_12'
-    | 'SHADE_13'
-    | 'SHADE_14'
-    | 'SHADE_15'
-    | 'SHADE_16'
-    | 'SHADE_17'
-    | 'SHADE_18'
-    | 'SHADE_19'
-    | 'SHADE_20';
+    | "SHADE_1"
+    | "SHADE_2"
+    | "SHADE_3"
+    | "SHADE_4"
+    | "SHADE_5"
+    | "SHADE_6"
+    | "SHADE_7"
+    | "SHADE_8"
+    | "SHADE_9"
+    | "SHADE_10"
+    | "SHADE_11"
+    | "SHADE_12"
+    | "SHADE_13"
+    | "SHADE_14"
+    | "SHADE_15"
+    | "SHADE_16"
+    | "SHADE_17"
+    | "SHADE_18"
+    | "SHADE_19"
+    | "SHADE_20";
 }
 
 export interface CreatorMyPageUpdateRequest {
+  /**
+   * 크리에이터 프로필 이미지(발급받은 프리사인 URL)
+   * @example "https://s3.amazonaws.com/bucket/..."
+   */
+  profileImageUrl?: string;
   /**
    * 크리에이터 이름 (최대 30자, 영문/숫자/마침표/언더바만)
    * @minLength 0
@@ -768,6 +848,17 @@ export interface CreatorMyPageUpdateRequest {
    * @example "Anderson"
    */
   lastName?: string;
+  /**
+   * 생년월일(YYYY-MM-DD)
+   * @pattern ^\d{4}-\d{2}-\d{2}$
+   * @example "2001-10-19"
+   */
+  birthDate?: string;
+  /**
+   * 성별
+   * @example "FEMALE"
+   */
+  gender?: "MALE" | "FEMALE" | "NON_BINARY" | "PREFER_NOT_TO_SAY";
   /**
    * 국가번호 (선택, 최대 5자)
    * @minLength 0
@@ -826,37 +917,37 @@ export interface CreatorMyPageUpdateRequest {
    * 피부 타입 (드롭다운 6개)
    * @example "COMBINATION"
    */
-  skinType?: 'NORMAL' | 'DRY' | 'OILY' | 'COMBINATION' | 'SENSITIVE' | 'OTHER';
+  skinType?: "NORMAL" | "DRY" | "OILY" | "COMBINATION" | "SENSITIVE" | "OTHER";
   /**
    * 피부 톤 (드롭다운 20개)
    * @example "SHADE_12"
    */
   skinTone?:
-    | 'SHADE_1'
-    | 'SHADE_2'
-    | 'SHADE_3'
-    | 'SHADE_4'
-    | 'SHADE_5'
-    | 'SHADE_6'
-    | 'SHADE_7'
-    | 'SHADE_8'
-    | 'SHADE_9'
-    | 'SHADE_10'
-    | 'SHADE_11'
-    | 'SHADE_12'
-    | 'SHADE_13'
-    | 'SHADE_14'
-    | 'SHADE_15'
-    | 'SHADE_16'
-    | 'SHADE_17'
-    | 'SHADE_18'
-    | 'SHADE_19'
-    | 'SHADE_20';
+    | "SHADE_1"
+    | "SHADE_2"
+    | "SHADE_3"
+    | "SHADE_4"
+    | "SHADE_5"
+    | "SHADE_6"
+    | "SHADE_7"
+    | "SHADE_8"
+    | "SHADE_9"
+    | "SHADE_10"
+    | "SHADE_11"
+    | "SHADE_12"
+    | "SHADE_13"
+    | "SHADE_14"
+    | "SHADE_15"
+    | "SHADE_16"
+    | "SHADE_17"
+    | "SHADE_18"
+    | "SHADE_19"
+    | "SHADE_20";
   /**
    * 콘텐츠 언어
    * @example "ENGLISH"
    */
-  contentLanguage?: 'ENGLISH' | 'SPANISH' | 'ENGLISH_AND_SPANISH';
+  contentLanguage?: "ENGLISH" | "SPANISH" | "ENGLISH_AND_SPANISH";
 }
 
 export interface ApiResponseCreatorMyPageResponse {
@@ -922,16 +1013,15 @@ export interface CreatorBasicInfo {
    */
   lastName: string;
   /**
-   * 생년월일
-   * @format date
-   * @example "2002-08-21"
+   * 성별
+   * @example "FEMALE"
+   */
+  gender: "MALE" | "FEMALE" | "NON_BINARY" | "PREFER_NOT_TO_SAY";
+  /**
+   * 생년월일(YYYY-MM-DD)
+   * @example "1999-10-19"
    */
   birthDate: string;
-  /**
-   * 성별
-   * @example "MALE"
-   */
-  gender: 'MALE' | 'FEMALE' | 'NON_BINARY' | 'PREFER_NOT_TO_SAY';
 }
 
 export interface CreatorContactInfo {
@@ -957,32 +1047,32 @@ export interface CreatorFaceInfo {
    * 피부 타입 (드롭다운 6개)
    * @example "COMBINATION"
    */
-  skinType: 'NORMAL' | 'DRY' | 'OILY' | 'COMBINATION' | 'SENSITIVE' | 'OTHER';
+  skinType: "NORMAL" | "DRY" | "OILY" | "COMBINATION" | "SENSITIVE" | "OTHER";
   /**
    * 피부톤 (드롭다운 20개)
    * @example "SHADE_1"
    */
   skinTone:
-    | 'SHADE_1'
-    | 'SHADE_2'
-    | 'SHADE_3'
-    | 'SHADE_4'
-    | 'SHADE_5'
-    | 'SHADE_6'
-    | 'SHADE_7'
-    | 'SHADE_8'
-    | 'SHADE_9'
-    | 'SHADE_10'
-    | 'SHADE_11'
-    | 'SHADE_12'
-    | 'SHADE_13'
-    | 'SHADE_14'
-    | 'SHADE_15'
-    | 'SHADE_16'
-    | 'SHADE_17'
-    | 'SHADE_18'
-    | 'SHADE_19'
-    | 'SHADE_20';
+    | "SHADE_1"
+    | "SHADE_2"
+    | "SHADE_3"
+    | "SHADE_4"
+    | "SHADE_5"
+    | "SHADE_6"
+    | "SHADE_7"
+    | "SHADE_8"
+    | "SHADE_9"
+    | "SHADE_10"
+    | "SHADE_11"
+    | "SHADE_12"
+    | "SHADE_13"
+    | "SHADE_14"
+    | "SHADE_15"
+    | "SHADE_16"
+    | "SHADE_17"
+    | "SHADE_18"
+    | "SHADE_19"
+    | "SHADE_20";
 }
 
 export interface CreatorMyPageResponse {
@@ -1004,17 +1094,17 @@ export interface CreatorMyPageResponse {
    * 크리에이터 타입
    * @example "VIP"
    */
-  creatorType: 'NORMAL' | 'PRO';
+  creatorType: "NORMAL" | "PRO";
   /**
    * 크리에이터 승인 상태
    * @example "NOT_APPROVED"
    */
-  creatorStatus: 'NOT_APPROVED' | 'APPROVED';
+  creatorStatus: "NOT_APPROVED" | "APPROVED";
   /**
    * 콘텐츠 언어
    * @example "ENGLISH"
    */
-  contentLanguage: 'ENGLISH' | 'SPANISH' | 'ENGLISH_AND_SPANISH';
+  contentLanguage: "ENGLISH" | "SPANISH" | "ENGLISH_AND_SPANISH";
 }
 
 export interface BrandInfoUpdateRequest {
@@ -1035,7 +1125,7 @@ export interface BrandInfoUpdateRequest {
   managerPosition: string;
   /**
    * @minLength 0
-   * @maxLength 10
+   * @maxLength 11
    * @pattern ^[0-9]+$
    */
   phoneNumber: string;
@@ -1066,7 +1156,7 @@ export interface BrandMyPageUpdateRequest {
   managerName?: string;
   /**
    * @minLength 0
-   * @maxLength 10
+   * @maxLength 11
    * @pattern ^[0-9]+$
    */
   phoneNumber?: string;
@@ -1406,21 +1496,21 @@ export interface ProductDetailResponse {
   ingredients: string;
   oliveYoungUrl: string;
   q10Url: string;
-  middleCategory: 'FACIAL_CARE' | 'FACE_MAKEUP' | 'EYE_MAKEUP' | 'LIP_MAKEUP';
+  middleCategory: "FACIAL_CARE" | "FACE_MAKEUP" | "EYE_MAKEUP" | "LIP_MAKEUP";
   subCategory:
-    | 'TONER'
-    | 'MOISTURIZER'
-    | 'ESSENCE_SERUM'
-    | 'CREAM'
-    | 'FOUNDATION'
-    | 'POWDER_COMPACT'
-    | 'CONCEALER'
-    | 'BLUSHER'
-    | 'EYEBROW'
-    | 'EYESHADOW'
-    | 'EYELINER'
-    | 'LIPSTICK'
-    | 'LIP_TINT';
+    | "TONER"
+    | "MOISTURIZER"
+    | "ESSENCE_SERUM"
+    | "CREAM"
+    | "FOUNDATION"
+    | "POWDER_COMPACT"
+    | "CONCEALER"
+    | "BLUSHER"
+    | "EYEBROW"
+    | "EYESHADOW"
+    | "EYELINER"
+    | "LIPSTICK"
+    | "LIP_TINT";
 }
 
 export interface ProductOptionResponse {
@@ -1568,7 +1658,7 @@ export interface CustomerMyPageResponse {
    * 성별
    * @example "MALE"
    */
-  gender?: 'MALE' | 'FEMALE' | 'NON_BINARY' | 'PREFER_NOT_TO_SAY';
+  gender?: "MALE" | "FEMALE" | "NON_BINARY" | "PREFER_NOT_TO_SAY";
   /**
    * 국가번호 (선택, 최대 5자)
    * @example "+1"
@@ -1583,7 +1673,7 @@ export interface CustomerMyPageResponse {
    * 콘텐츠 언어
    * @example "ENGLISH"
    */
-  contentLanguage?: 'ENGLISH' | 'SPANISH' | 'ENGLISH_AND_SPANISH';
+  contentLanguage?: "ENGLISH" | "SPANISH" | "ENGLISH_AND_SPANISH";
   /**
    * 국가
    * @example "US"
@@ -1618,32 +1708,32 @@ export interface CustomerMyPageResponse {
    * 피부 타입 (드롭다운 6개)
    * @example "COMBINATION"
    */
-  skinType?: 'NORMAL' | 'DRY' | 'OILY' | 'COMBINATION' | 'SENSITIVE' | 'OTHER';
+  skinType?: "NORMAL" | "DRY" | "OILY" | "COMBINATION" | "SENSITIVE" | "OTHER";
   /**
    * 피부 톤 (드롭다운 20개)
    * @example "SHADE_12"
    */
   skinTone?:
-    | 'SHADE_1'
-    | 'SHADE_2'
-    | 'SHADE_3'
-    | 'SHADE_4'
-    | 'SHADE_5'
-    | 'SHADE_6'
-    | 'SHADE_7'
-    | 'SHADE_8'
-    | 'SHADE_9'
-    | 'SHADE_10'
-    | 'SHADE_11'
-    | 'SHADE_12'
-    | 'SHADE_13'
-    | 'SHADE_14'
-    | 'SHADE_15'
-    | 'SHADE_16'
-    | 'SHADE_17'
-    | 'SHADE_18'
-    | 'SHADE_19'
-    | 'SHADE_20';
+    | "SHADE_1"
+    | "SHADE_2"
+    | "SHADE_3"
+    | "SHADE_4"
+    | "SHADE_5"
+    | "SHADE_6"
+    | "SHADE_7"
+    | "SHADE_8"
+    | "SHADE_9"
+    | "SHADE_10"
+    | "SHADE_11"
+    | "SHADE_12"
+    | "SHADE_13"
+    | "SHADE_14"
+    | "SHADE_15"
+    | "SHADE_16"
+    | "SHADE_17"
+    | "SHADE_18"
+    | "SHADE_19"
+    | "SHADE_20";
 }
 
 export interface ApiResponseCreatorSnsConnectedResponse {
@@ -1682,7 +1772,7 @@ export interface CreatorInfoResponse {
    * 성별
    * @example "FEMALE"
    */
-  gender?: 'MALE' | 'FEMALE' | 'NON_BINARY' | 'PREFER_NOT_TO_SAY';
+  gender?: "MALE" | "FEMALE" | "NON_BINARY" | "PREFER_NOT_TO_SAY";
   /**
    * 이름
    * @example "Jessica"
@@ -1707,7 +1797,7 @@ export interface CreatorInfoResponse {
    * 콘텐츠 언어
    * @example "ENGLISH"
    */
-  contentLanguage: 'ENGLISH' | 'SPANISH' | 'ENGLISH_AND_SPANISH';
+  contentLanguage: "ENGLISH" | "SPANISH" | "ENGLISH_AND_SPANISH";
   /**
    * 국가(드롭다운 선택)
    * @example "US"
@@ -1742,32 +1832,32 @@ export interface CreatorInfoResponse {
    * 피부 타입 (드롭다운 6개)
    * @example "COMBINATION"
    */
-  skinType: 'NORMAL' | 'DRY' | 'OILY' | 'COMBINATION' | 'SENSITIVE' | 'OTHER';
+  skinType: "NORMAL" | "DRY" | "OILY" | "COMBINATION" | "SENSITIVE" | "OTHER";
   /**
    * 피부톤 (드롭다운 20개)
    * @example "SHADE_1"
    */
   skinTone:
-    | 'SHADE_1'
-    | 'SHADE_2'
-    | 'SHADE_3'
-    | 'SHADE_4'
-    | 'SHADE_5'
-    | 'SHADE_6'
-    | 'SHADE_7'
-    | 'SHADE_8'
-    | 'SHADE_9'
-    | 'SHADE_10'
-    | 'SHADE_11'
-    | 'SHADE_12'
-    | 'SHADE_13'
-    | 'SHADE_14'
-    | 'SHADE_15'
-    | 'SHADE_16'
-    | 'SHADE_17'
-    | 'SHADE_18'
-    | 'SHADE_19'
-    | 'SHADE_20';
+    | "SHADE_1"
+    | "SHADE_2"
+    | "SHADE_3"
+    | "SHADE_4"
+    | "SHADE_5"
+    | "SHADE_6"
+    | "SHADE_7"
+    | "SHADE_8"
+    | "SHADE_9"
+    | "SHADE_10"
+    | "SHADE_11"
+    | "SHADE_12"
+    | "SHADE_13"
+    | "SHADE_14"
+    | "SHADE_15"
+    | "SHADE_16"
+    | "SHADE_17"
+    | "SHADE_18"
+    | "SHADE_19"
+    | "SHADE_20";
 }
 
 export interface ApiResponseCreatorMyCampaignListResponse {
@@ -1802,22 +1892,22 @@ export interface CreatorMyCampaignResponse {
    * 소셜 클립 콘텐츠 종류
    * @example "INSTA_REELS"
    */
-  contentType?: 'INSTA_REELS' | 'TIKTOK_VIDEO' | 'INSTA_POST';
+  contentType?: "INSTA_REELS" | "TIKTOK_VIDEO" | "INSTA_POST";
   /**
    * 참여 상태
    * @example "APPROVED_ADDRESS_CONFIRMED"
    */
   participationStatus?:
-    | 'PENDING'
-    | 'APPROVED'
-    | 'REJECTED'
-    | 'APPROVED_ADDRESS_CONFIRMED'
-    | 'APPROVED_FIRST_REVIEW_DONE'
-    | 'APPROVED_REVISION_REQUESTED'
-    | 'APPROVED_REVISION_CONFIRMED'
-    | 'APPROVED_SECOND_REVIEW_DONE'
-    | 'APPROVED_ADDRESS_NOT_CONFIRMED'
-    | 'APPROVED_REVIEW_NOT_CONFIRMED';
+    | "PENDING"
+    | "APPROVED"
+    | "REJECTED"
+    | "APPROVED_ADDRESS_CONFIRMED"
+    | "APPROVED_FIRST_REVIEW_DONE"
+    | "APPROVED_REVISION_REQUESTED"
+    | "APPROVED_REVISION_CONFIRMED"
+    | "APPROVED_SECOND_REVIEW_DONE"
+    | "APPROVED_ADDRESS_NOT_CONFIRMED"
+    | "APPROVED_REVIEW_NOT_CONFIRMED";
 }
 
 export interface ApiResponseCreatorAddressInfo {
@@ -1854,12 +1944,12 @@ export interface MainPageCampaignResponse {
    * 캠페인 타입
    * @example "GIVEAWAY"
    */
-  campaignType: 'GIVEAWAY' | 'CONTENTS' | 'EXCLUSIVE';
+  campaignType: "GIVEAWAY" | "CONTENTS" | "EXCLUSIVE";
   /**
    * 캠페인 언어
    * @example "ENG"
    */
-  language: 'EN' | 'ES';
+  language: "EN" | "ES";
   /**
    * 브랜드명
    * @example "Anua"
@@ -1909,27 +1999,83 @@ export interface ApiResponseCampaignDetailResponse {
 }
 
 export interface CampaignDetailResponse {
-  /** @format int64 */
-  campaignId?: number;
-  campaignType?: 'GIVEAWAY' | 'CONTENTS' | 'EXCLUSIVE';
-  title?: string;
-  brandImageUrl?: string;
-  brandName?: string;
-  language?: 'EN' | 'ES';
-  /** @format date-time */
-  applyStartDate?: string;
-  /** @format date-time */
-  applyDeadline?: string;
-  /** @format date-time */
-  creatorAnnouncementDate?: string;
-  /** @format date-time */
-  reviewSubmissionDeadline?: string;
-  deliverableRequirements?: string[];
-  participationRewards?: string[];
-  eligibilityRequirements?: string[];
-  topImages?: CampaignImageResponse[];
-  bottomImages?: CampaignImageResponse[];
-  campaignStatusCode?: string;
+  /**
+   * 캠페인 id
+   * @format int64
+   * @example 1
+   */
+  campaignId: number;
+  /**
+   * 캠페인 종류
+   * @example "GIVEAWAY"
+   */
+  campaignType: "GIVEAWAY" | "CONTENTS" | "EXCLUSIVE";
+  /**
+   * 캠페인 제목
+   * @example "캠페인aa"
+   */
+  title: string;
+  /**
+   * 브랜드 이름
+   * @example "브랜드A"
+   */
+  brandName: string;
+  /**
+   * 캠페인 언어
+   * @example "EN / ES"
+   */
+  language: "EN" | "ES";
+  /**
+   * 캠페인 지원 시작 날짜
+   * @format date-time
+   * @example "2025-09-16T07:32:08.995Z"
+   */
+  applyStartDate: string;
+  /**
+   * 캠페인 지원 마감 날짜
+   * @format date-time
+   * @example "2025-09-16T07:32:08.995Z"
+   */
+  applyDeadline: string;
+  /**
+   * 크리에이터 발표 날짜
+   * @format date-time
+   * @example "2025-09-16T07:32:08.995Z"
+   */
+  creatorAnnouncementDate: string;
+  /**
+   * 2차 리뷰 제출 마감일
+   * @format date-time
+   * @example "2025-09-16T07:32:08.995Z"
+   */
+  reviewSubmissionDeadline: string;
+  /** 크리에이터 컨텐츠 제출 요구사항 리스트 */
+  deliverableRequirements: string[];
+  /** 크리에이터 참요 조건 리스트 */
+  participationRewards: string[];
+  /** 크리에이터 자격 요건 리스트 */
+  eligibilityRequirements: string[];
+  /** 상단 이미지 목록 리스트 */
+  thumbnailImages: CampaignImageResponse[];
+  /** 하단 이미지 목록 리스트 */
+  detailImages: CampaignImageResponse[];
+  /** 사용자가 보는 현재 캠페인 상태 */
+  userSpecificCampaignStatus: string;
+  /**
+   * 캠페인이 PRO 크리에이터 대상 캠페인인지 여부
+   * @example true
+   */
+  isProCampaign: boolean;
+  /**
+   * 현재 상세페이지를 조회하고 있는 사용자의 권한 정보
+   * @example "CUSTOMER , BRAND, CREATOR, ADMIN, null(비로그인 사용자"
+   */
+  currentUserRole: string;
+  /**
+   * 현재 사용자가 크리에이터라면, 크리에이터의 등급 정보
+   * @example "NOT_APPROVED, PRO, NORMAL"
+   */
+  creatorRoleInfo: string;
 }
 
 export interface ApiResponseMainPageUpcomingCampaignListResponse {
@@ -1956,12 +2102,12 @@ export interface MainPageUpcomingCampaignResponse {
    * 캠페인 타입
    * @example "GIVEAWAY"
    */
-  campaignType: 'GIVEAWAY' | 'CONTENTS' | 'EXCLUSIVE';
+  campaignType: "GIVEAWAY" | "CONTENTS" | "EXCLUSIVE";
   /**
    * 캠페인 언어
    * @example "ENG"
    */
-  language: 'EN' | 'ES';
+  language: "EN" | "ES";
   /**
    * 브랜드명
    * @example "Anua"
@@ -2022,6 +2168,40 @@ export interface CampaignParticipatedResponse {
    * @example "Summer Hydration Campaign"
    */
   title: string;
+  /**
+   * 브랜드가 지정한 1번째 리뷰 컨텐츠 타입(캠페인 설정)
+   * @example "INSTA_REELS"
+   */
+  firstContentPlatform: "INSTA_REELS" | "TIKTOK_VIDEO" | "INSTA_POST";
+  /**
+   * 브랜드가 지정한 2번째 리뷰 컨텐츠 타입(없을 수 있음)
+   * @example "TIKTOK_VIDEO"
+   */
+  secondContentPlatform?: "INSTA_REELS" | "TIKTOK_VIDEO" | "INSTA_POST";
+  /**
+   * 현재 업로드해야 할 리뷰 라운드
+   * @example "FIRST"
+   */
+  nowReviewRound: "FIRST" | "SECOND";
+  /**
+   * 브랜드 노트(있다면 반환)
+   * @example "Please focus on the product's hydrating effects."
+   */
+  brandNote?: string;
+  /**
+   * 브랜드 노트 작성 시간(있다면 반환)
+   * @format date-time
+   * @example "2023-10-05T14:48:00Z"
+   */
+  revisionRequestedAt?: string;
+}
+
+export interface ApiResponseCampaignParticipatedResponse {
+  success?: boolean;
+  /** @format int32 */
+  status?: number;
+  message?: string;
+  data?: CampaignParticipatedResponse;
 }
 
 export interface ApiResponseBrandMyPageResponse {
@@ -2147,6 +2327,59 @@ export interface BrandMyCampaignResponse {
   campaignStatus: string;
 }
 
+export interface ApiResponseCampaignReviewDetailListResponse {
+  success?: boolean;
+  /** @format int32 */
+  status?: number;
+  message?: string;
+  data?: CampaignReviewDetailListResponse;
+}
+
+export interface CampaignReviewDetailListResponse {
+  /**
+   * 캠페인 ID
+   * @format int64
+   * @example 11
+   */
+  campaignId: number;
+  /**
+   * 캠페인 제목
+   * @example "Summer Hydration Campaign"
+   */
+  title: string;
+  /**
+   * 조회한 리뷰 라운드 (몇차 리뷰인지)
+   * @example "FIRST"
+   */
+  reviewRound: "FIRST" | "SECOND";
+  /** 해당 라운드의 리뷰 목록 (최신순) */
+  reviews: CampaignReviewDetailResponse[];
+}
+
+export interface CampaignReviewDetailResponse {
+  /**
+   * 소셜 클립 컨텐츠 종류
+   * @example "TIKTOK_VIDEO"
+   */
+  contentType: "INSTA_REELS" | "TIKTOK_VIDEO" | "INSTA_POST";
+  /**
+   * 리뷰 미디어 URL 리스트(이미지 또는 영상)
+   * @minItems 1
+   * @example ["https://s3.amazonaws.com/bucket/image...","https://s3.amazonaws.com/bucket/video..."]
+   */
+  mediaUrls: string[];
+  /**
+   * 캡션(해시태그 포함)
+   * @example "Enjoying the summer vibes! #SummerHydration #StayCool"
+   */
+  captionWithHashtags: string;
+  /**
+   * 게시물 URL (1차 리뷰 반환시에는 비어있음)
+   * @example "https://www.instagram.com/p/ExamplePost/"
+   */
+  postUrl?: string;
+}
+
 export interface ApiResponseCampaignApplicantListResponse {
   success?: boolean;
   /** @format int32 */
@@ -2172,50 +2405,60 @@ export interface CampaignApplicantResponse {
   /**
    * 크리에이터 id
    * @format int64
-   * @example 1
+   * @example 3845
    */
   creatorId: number;
-  /** 크리에이터 프로필 이미지 */
-  creatorProfileImageUrl: string;
-  /**
-   * 크리에이터 풀네임
-   * @example "PARK JAMES"
-   */
-  creatorFullName: string;
-  /**
-   * 크리에이터 닉네임
-   * @example "@rookie21"
-   */
-  creatorNickName: string;
-  /**
-   * 인스타그램 팔로워 수
-   * @format int32
-   * @example 111111111
-   */
-  instagramFollower: number;
-  /**
-   * 틱톡 팔로워 수
-   * @format int32
-   * @example 2222222
-   */
-  tiktokFollower: number;
+  /** 크리에이터 기본 정보 */
+  creator: CreatorInfo;
+  /** 팔로워 수 정보 */
+  followerCount: FollowerCount;
   /**
    * 크리에이터가 참여한 총 캠페인 수
    * @format int32
-   * @example 5
+   * @example 10
    */
   participationCount: number;
   /**
    * 크리에이터가 캠페인에 지원한 날짜
    * @format date-time
-   * @example "2025-09-16T00:21:04Z"
+   * @example "2025-09-27T12:45:01.455391"
    */
   appliedDate: string;
   /**
    * 승인 상태
-   * @example "PENDING/APPROVED/REJECTED"
+   * @example "PENDING"
    */
   approveStatus: string;
+}
+
+export interface CreatorInfo {
+  /**
+   * 크리에이터 풀네임
+   * @example "James Rodriguez"
+   */
+  creatorFullName: string;
+  /**
+   * 크리에이터 닉네임
+   * @example "echandler"
+   */
+  creatorNickName: string;
+  /** 크리에이터 프로필 이미지 */
+  creatorProfileImageUrl: string;
+}
+
+export interface FollowerCount {
+  /**
+   * 인스타그램 팔로워 수
+   * @format int32
+   * @example 3859
+   */
+  instagramFollower: number;
+  /**
+   * 틱톡 팔로워 수
+   * @format int32
+   * @example 110089
+   */
+  tiktokFollower: number;
 }
 
 export interface ApiResponseBrandMyCampaignInfoListResponse {
@@ -2257,6 +2500,125 @@ export interface BrandMyCampaignInfoResponse {
   endDate: string;
 }
 
+export interface ApiResponseListBrandIssuedCampaignResponse {
+  success?: boolean;
+  /** @format int32 */
+  status?: number;
+  message?: string;
+  data?: BrandIssuedCampaignResponse[];
+}
+
+export interface BrandIssuedCampaignResponse {
+  /**
+   * 생성한 캠페인 ID
+   * @format int64
+   * @example 11
+   */
+  campaignId: number;
+  /**
+   * 생성한 캠페인 제목
+   * @example "Summer Hydration Campaign"
+   */
+  title: string;
+  /**
+   * 브랜드가 지정한 1번째 리뷰 컨텐츠 타입(캠페인 설정)
+   * @example "INSTA_REELS"
+   */
+  firstContentPlatform: "INSTA_REELS" | "TIKTOK_VIDEO" | "INSTA_POST";
+  /**
+   * 브랜드가 지정한 2번째 리뷰 컨텐츠 타입(없을 수 있음)
+   * @example "TIKTOK_VIDEO"
+   */
+  secondContentPlatform?: "INSTA_REELS" | "TIKTOK_VIDEO" | "INSTA_POST";
+  /** 브랜드 노트(본인이 작성한 내용이 있다면 반환, 리스트에서는 보통 null) */
+  brandNote?: string;
+  /**
+   * 브랜드 노트 작성 시간(본인이 작성한 내용이 있다면 반환, 리스트에서는 보통 null)
+   * @format date-time
+   * @example "2023-10-05T14:48:00Z"
+   */
+  revisionRequestedAt?: string;
+}
+
+export interface ApiResponseBrandDashboardCampaignListResponse {
+  success?: boolean;
+  /** @format int32 */
+  status?: number;
+  message?: string;
+  data?: BrandDashboardCampaignListResponse;
+}
+
+export interface BrandDashboardCampaignListResponse {
+  /** 브랜드 대시보드 캠페인 리스트 */
+  campaigns: BrandDashboardCampaignResponse[];
+  /** 페이징 정보 */
+  pageInfo: PageableResponse;
+}
+
+export interface BrandDashboardCampaignResponse {
+  /**
+   * 캠페인 ID
+   * @format int64
+   * @example 1
+   */
+  campaignId: number;
+  /** 캠페인 썸네일 이미지 URL */
+  thumbnailUrl: string;
+  /**
+   * 캠페인 제목
+   * @example "Glow Serum Launch"
+   */
+  title: string;
+  /**
+   * 캠페인 시작일
+   * @format date-time
+   * @example "2026-12-28T00:00:00Z"
+   */
+  startDate: string;
+  /**
+   * 캠페인 종료일
+   * @format date-time
+   * @example "2026-12-28T23:59:59Z"
+   */
+  endDate: string;
+  /**
+   * 캠페인 상태
+   * @example "RECRUITING"
+   */
+  status:
+    | "DRAFT"
+    | "WAITING_APPROVAL"
+    | "OPEN_RESERVED"
+    | "RECRUITING"
+    | "RECRUITMENT_CLOSED"
+    | "IN_REVIEW"
+    | "COMPLETED";
+  /**
+   * 참여 크리에이터 수
+   * @format int32
+   * @example 100
+   */
+  participantCreatorCount: number;
+  /**
+   * 인스타그램 포스트 수
+   * @format int64
+   * @example 22
+   */
+  instaPostCount: number;
+  /**
+   * 인스타그램 릴스 수
+   * @format int64
+   * @example 22
+   */
+  instaReelsCount: number;
+  /**
+   * 틱톡 비디오 수
+   * @format int64
+   * @example 22
+   */
+  tiktokVideoCount: number;
+}
+
 export interface ApiResponseTikTokConnectionResponse {
   success?: boolean;
   /** @format int32 */
@@ -2268,6 +2630,18 @@ export interface ApiResponseTikTokConnectionResponse {
 export interface TikTokConnectionResponse {
   connected?: boolean;
   tikTokUserId?: string;
+}
+
+export interface ApiResponseInstagramConnectionResponse {
+  success?: boolean;
+  /** @format int32 */
+  status?: number;
+  message?: string;
+  data?: InstagramConnectionResponse;
+}
+
+export interface InstagramConnectionResponse {
+  instagramUserId?: string;
 }
 
 export interface AfterLoginUserNameResponse {
@@ -2294,7 +2668,7 @@ export interface ApiResponseLineLoginResponse {
 export interface LineLoginResponse {
   accessToken: string;
   refreshToken: string;
-  loginStatus: 'LOGIN' | 'INFO_REQUIRED' | 'SNS_REQUIRED' | 'REGISTER';
+  loginStatus: "LOGIN" | "INFO_REQUIRED" | "SNS_REQUIRED" | "REGISTER";
 }
 
 export interface ApiResponseGoogleLoginResponse {
@@ -2308,6 +2682,6 @@ export interface ApiResponseGoogleLoginResponse {
 export interface GoogleLoginResponse {
   accessToken: string;
   refreshToken: string;
-  loginStatus: 'LOGIN' | 'INFO_REQUIRED' | 'SNS_REQUIRED' | 'REGISTER';
-  role: 'PENDING' | 'CUSTOMER' | 'CREATOR' | 'BRAND' | 'ADMIN';
+  loginStatus: "LOGIN" | "INFO_REQUIRED" | "SNS_REQUIRED" | "REGISTER";
+  role: "PENDING" | "CUSTOMER" | "CREATOR" | "BRAND" | "ADMIN";
 }

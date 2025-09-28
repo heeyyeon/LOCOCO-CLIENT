@@ -15,11 +15,13 @@ import {
   ApiResponseCreatorInfoResponse,
   ApiResponseCreatorMyCampaignListResponse,
   ApiResponseCreatorMyPageResponse,
+  ApiResponseCreatorProfileImageResponse,
   ApiResponseCreatorRegisterCompleteResponse,
   ApiResponseCreatorSnsConnectedResponse,
   ApiResponseVoid,
   CreatorInfoUpdateRequest,
   CreatorMyPageUpdateRequest,
+  CreatorProfileImageRequest,
 } from "./data-contracts";
 import { ContentType, HttpClient, RequestParams } from "./http-client";
 
@@ -56,6 +58,27 @@ export class Creator<
       path: `/api/creator/profile/${campaignId}/address`,
       method: "POST",
       secure: true,
+      ...params,
+    });
+  /**
+   * No description
+   *
+   * @tags CREATOR
+   * @name CreateProfileImagePresignedUrl1
+   * @summary 크리에이터 프로필 이미지 presignedUrl 발급
+   * @request POST:/api/creator/profile/image
+   * @secure
+   */
+  createProfileImagePresignedUrl1 = (
+    data: CreatorProfileImageRequest,
+    params: RequestParams = {},
+  ) =>
+    this.request<ApiResponseCreatorProfileImageResponse, any>({
+      path: `/api/creator/profile/image`,
+      method: "POST",
+      body: data,
+      secure: true,
+      type: ContentType.Json,
       ...params,
     });
   /**
