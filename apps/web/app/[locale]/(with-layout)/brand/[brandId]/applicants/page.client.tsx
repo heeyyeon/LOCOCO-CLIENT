@@ -5,13 +5,18 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { useFormatter } from 'next-intl';
 import { useSearchParams } from 'next/navigation';
 
+import { type RowSelectionState } from '@tanstack/react-table';
 import dayjs from 'dayjs';
 import { usePathname, useRouter } from 'i18n/navigation';
 
 import { Button } from '@lococo/design-system/button';
-import { SvgCalender, SvgDownload } from '@lococo/icons';
+import { Checkbox } from '@lococo/design-system/checkbox';
+import { SvgCalender, SvgCheck, SvgDownload } from '@lococo/icons';
 
 import ApplicantsTable from './components/applicants-table';
+import ApproveStatusSelect, {
+  ApproveStatus,
+} from './components/approve-status-select';
 import CampaignSelect from './components/campaign-select';
 import { koDateRangeFormatter } from './utils/ko-date-range-formatter';
 
@@ -71,6 +76,11 @@ export default function BrandApplicantsPageClient() {
   const [selectedCampaign, setSelectedCampaign] = useState<
     CampaignInfo | undefined
   >(undefined);
+  const [selectedApproveStatus, setSelectedApproveStatus] = useState<
+    ApproveStatus | ''
+  >('');
+  const [rowSelection, setRowSelection] = useState<RowSelectionState>({});
+  const [dataLength, setDataLength] = useState(0);
 
   const latestCampaignId = [...campaignInfos]
     .sort((campaignA, campaignB) =>
@@ -137,23 +147,79 @@ export default function BrandApplicantsPageClient() {
           Export
         </Button>
       </div>
-      <div className="flex justify-between">
-        <div className="flex items-center gap-[0.8rem]">
-          <SvgCalender className="size-[2rem] text-gray-600" />
-          <p className="text-inter-body3 text-gray-600">
-            {selectedCampaign?.startDate && selectedCampaign?.endDate
-              ? koDateRangeFormatter(
-                  selectedCampaign.startDate,
-                  selectedCampaign.endDate,
-                  format
-                )
-              : ''}
-          </p>
+      <div className="flex flex-col gap-[3.2rem]">
+        <div className="flex justify-between">
+          <div className="flex items-center gap-[0.8rem]">
+            <SvgCalender className="size-[2rem] text-gray-600" />
+            <p className="text-inter-body3 text-gray-600">
+              {selectedCampaign?.startDate && selectedCampaign?.endDate
+                ? koDateRangeFormatter(
+                    selectedCampaign.startDate,
+                    selectedCampaign.endDate,
+                    format
+                  )
+                : ''}
+            </p>
+          </div>
+          <ApproveStatusSelect
+            selectedStatus={selectedApproveStatus}
+            onStatusChange={setSelectedApproveStatus}
+          />
+        </div>
+        <div className="flex justify-between bg-gray-100 px-[1.6rem] py-[0.8rem]">
+          <div className="flex items-center gap-[0.8rem]">
+            <Checkbox
+              id="all-select"
+              checked={
+                Object.keys(rowSelection).length === dataLength &&
+                Object.values(rowSelection).every(Boolean)
+              }
+              onCheckedChange={(checked) => {
+                if (checked) {
+                  // 모든 row 선택
+                  const allRowsSelected: Record<string, boolean> = {};
+                  // 실제 데이터 길이에 맞춰 모든 row를 선택
+                  for (let i = 0; i < dataLength; i++) {
+                    allRowsSelected[i.toString()] = true;
+                  }
+                  setRowSelection(allRowsSelected);
+                } else {
+                  // 모든 row 해제
+                  setRowSelection({});
+                }
+              }}
+            />
+            <label
+              htmlFor="all-select"
+              className="text-inter-body1 cursor-pointer font-bold text-gray-600"
+            >
+              전체 선택하기(
+              {
+                Object.keys(rowSelection).filter((key) => rowSelection[key])
+                  .length
+              }
+              / {dataLength})
+            </label>
+          </div>
+          <Button
+            variant="outline"
+            color="primary"
+            size="sm"
+            rounded="md"
+            className="grow-0"
+            disabled={true}
+          >
+            <SvgCheck size={20} />
+            <span className="text-[1.4rem]">승인하기</span>
+          </Button>
         </div>
       </div>
-
       {/* <ApplicantsList /> */}
-      <ApplicantsTable />
+      <ApplicantsTable
+        rowSelection={rowSelection}
+        onRowSelectionChange={setRowSelection}
+        onDataLengthChange={setDataLength}
+      />
     </div>
   );
 }

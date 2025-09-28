@@ -1,9 +1,11 @@
-import { useState } from 'react';
+import React from 'react';
 
 import {
+  type CellContext,
+  type ColumnDef,
+  type OnChangeFn,
   type Row,
-  RowSelectionState,
-  type Table,
+  type RowSelectionState,
   flexRender,
   getCoreRowModel,
   useReactTable,
@@ -103,30 +105,31 @@ const getWidthClass = (size: number) => {
   return widthMap[size] || `w-[${size}px]`;
 };
 
-const columns = [
+const createColumns = (): ColumnDef<ApplicantData>[] => [
   {
     id: 'select',
     size: 50,
     meta: {
       style: { textAlign: 'left' },
     },
-    header: ({ table }: { table: Table<ApplicantData> }) => (
-      <Checkbox
-        id="header-checkbox"
-        checked={table.getIsAllRowsSelected()}
-        onCheckedChange={(checked) => {
-          if (checked) {
-            table.getToggleAllRowsSelectedHandler()({
-              target: { checked: true },
-            } as React.ChangeEvent<HTMLInputElement>);
-          } else {
-            table.getToggleAllRowsSelectedHandler()({
-              target: { checked: false },
-            } as React.ChangeEvent<HTMLInputElement>);
-          }
-        }}
-      />
-    ),
+    // TODO: 최종 UI 확정 후 삭제
+    // header: ({ table }: { table: Table<ApplicantData> }) => (
+    //   <Checkbox
+    //     id="header-checkbox"
+    //     checked={table.getIsAllRowsSelected()}
+    //     onCheckedChange={(checked) => {
+    //       if (checked) {
+    //         table.getToggleAllRowsSelectedHandler()({
+    //           target: { checked: true },
+    //         } as React.ChangeEvent<HTMLInputElement>);
+    //       } else {
+    //         table.getToggleAllRowsSelectedHandler()({
+    //           target: { checked: false },
+    //         } as React.ChangeEvent<HTMLInputElement>);
+    //       }
+    //     }}
+    //   />
+    // ),
     cell: ({ row }: { row: Row<ApplicantData> }) => (
       <Checkbox
         id={`cell-checkbox-${row.id}`}
@@ -144,7 +147,9 @@ const columns = [
     accessorKey: 'creator',
     header: '크리에이터',
     size: 244, // 컬럼 너비 설정
-    cell: ({ getValue }: { getValue: () => ApplicantData['creator'] }) => {
+    cell: ({
+      getValue,
+    }: CellContext<ApplicantData, ApplicantData['creator']>) => {
       const row = getValue();
       return CreatorProfileColumn({
         creatorProfileImageUrl: row.creatorProfileImageUrl,
@@ -162,9 +167,7 @@ const columns = [
     size: 148,
     cell: ({
       getValue,
-    }: {
-      getValue: () => ApplicantData['followerCount'];
-    }) => {
+    }: CellContext<ApplicantData, ApplicantData['followerCount']>) => {
       const row = getValue();
       return FollowerCountColumn({
         instagramFollower: row.instagramFollower,
@@ -179,7 +182,7 @@ const columns = [
     meta: {
       style: { textAlign: 'left' },
     },
-    cell: ({ getValue }: { getValue: () => number }) => {
+    cell: ({ getValue }: CellContext<ApplicantData, number>) => {
       const row = getValue();
       return CampaignCountColumn({ campaignCount: row });
     },
@@ -191,7 +194,7 @@ const columns = [
       style: { textAlign: 'left' },
     },
     size: 148,
-    cell: ({ getValue }: { getValue: () => string }) => {
+    cell: ({ getValue }: CellContext<ApplicantData, string>) => {
       const row = getValue();
       return AppliedDateColumn({ appliedDate: row });
     },
@@ -203,25 +206,39 @@ const columns = [
     meta: {
       style: { textAlign: 'center' },
     },
-    cell: ({ getValue }: { getValue: () => ApproveStatus }) => {
+    cell: ({ getValue }: CellContext<ApplicantData, ApproveStatus>) => {
       const row = getValue();
       return ApproveStatusColumn({ approvalStatus: row });
     },
   },
 ];
 
-export default function ApplicantsTable() {
-  const [rowSelection, setRowSelection] = useState<RowSelectionState>({});
+interface ApplicantsTableProps {
+  rowSelection: RowSelectionState;
+  onRowSelectionChange: OnChangeFn<RowSelectionState>;
+  onDataLengthChange?: (length: number) => void;
+}
+
+export default function ApplicantsTable({
+  rowSelection,
+  onRowSelectionChange,
+  onDataLengthChange,
+}: ApplicantsTableProps) {
+  const columns = createColumns();
   const table = useReactTable({
     data,
     columns,
     getCoreRowModel: getCoreRowModel(),
-    // 여기에 onChange와 state를 저장해주면 된다.
-    onRowSelectionChange: setRowSelection,
+    onRowSelectionChange,
     state: {
       rowSelection,
     },
   });
+
+  // 실제 데이터 길이를 부모에게 전달
+  React.useEffect(() => {
+    onDataLengthChange?.(data.length);
+  }, [onDataLengthChange]);
 
   return (
     <div className="relative h-[60rem]">

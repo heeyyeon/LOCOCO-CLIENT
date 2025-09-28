@@ -21,7 +21,7 @@ export default function Checkbox({
               : 'transparent',
       }}
       className={cn(
-        'flex h-[2.4rem] w-[2.4rem] items-center justify-center rounded-[0.6rem] border border-gray-400 data-[state=checked]:border-none',
+        'flex h-[2.4rem] w-[2.4rem] cursor-pointer items-center justify-center rounded-[0.6rem] border border-gray-400 data-[state=checked]:border-none',
         props.disabled && 'border-gray-300',
         className
       )}

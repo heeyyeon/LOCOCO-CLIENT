@@ -153,7 +153,13 @@ export function Select({
   return (
     <div>
       <SelectRoot {...selectProps}>
-        <SelectTrigger className={className} size={size}>
+        <SelectTrigger
+          className={cn(
+            'data-[placeholder]:text-body4 data-[slot]:text-[1.4rem] data-[placeholder]:text-gray-800 data-[slot]:text-gray-800',
+            className
+          )}
+          size={size}
+        >
           <SelectValue placeholder={placeholder} />
         </SelectTrigger>
 
