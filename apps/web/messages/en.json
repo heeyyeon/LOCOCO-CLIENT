@@ -6,94 +6,158 @@
   },
   "brandMyPageCreateCampaign": {
     "basicInfo": {
-      "category": "",
-      "creatorCount": "",
-      "creatorCountPlaceholder": "",
-      "language": "",
-      "title": "",
-      "titlePlaceholder": "",
-      "type": ""
+      "category": "Category",
+      "creatorCount": "Number of Creators Required",
+      "creatorCountPlaceholder": "Enter a number",
+      "language": "Campaign Language",
+      "title": "Campaign Title",
+      "titlePlaceholder": "Enter campaign title",
+      "type": "Campaign Type"
     },
     "buttons": {
-      "publish": "",
-      "save": ""
+      "publish": "Publish Campaign",
+      "save": "Save"
     },
     "conditions": {
-      "inputPlaceholder": "",
-      "joinConditionDescription": "",
-      "joinConditionTitle": "",
-      "rewardDescription": "",
-      "rewardTitle": "",
-      "submitConditionDescription": "",
-      "submitConditionTitle": ""
+      "inputPlaceholder": "Text",
+      "joinConditionDescription": "Please describe the conditions for creators eligible to participate in this campaign",
+      "joinConditionTitle": "Creator Eligibility Requirements",
+      "rewardDescription": "Please describe the conditions for creators eligible to participate in this campaign",
+      "rewardTitle": "Creator Rewards",
+      "submitConditionDescription": "Please describe the conditions for creators eligible to participate in this campaign",
+      "submitConditionTitle": "Creator Content Submission Requirements"
+    },
+    "errorMessage": {
+      "campaignAnnounceDay": "Please enter the campaign winner announcement date.",
+      "campaignAnnounceTime": "Please enter the campaign winner announcement time.",
+      "campaignCategory": "Please enter the campaign category.",
+      "campaignCreatorCount": "Please enter the number of creators to recruit.",
+      "campaignDueDay": "Please enter the campaign title.",
+      "campaignDueTime": "Please enter the campaign title.",
+      "campaignEndDay": "Please enter the campaign application deadline date.",
+      "campaignEndTime": "Please enter the campaign application deadline time.",
+      "campaignLanguage": "Please enter the campaign language.",
+      "campaignMediaDetail": "Please upload content detail page images.",
+      "campaignMediaThumbnail": "Please upload content thumbnail images.",
+      "campaignPlatformSelect": "Please select the content platform.",
+      "campaignStartDay": "Please enter the campaign application start date.",
+      "campaignStartTime": "Please enter the campaign application start time.",
+      "campaignTitle": "Please enter the campaign title.",
+      "campaignType": "Please enter the campaign type.",
+      "detailMaxFiles": "You can upload up to 15 detail images.",
+      "firstContentMaxExceeded": "You can select up to 2 contents.",
+      "secondContentMaxExceeded": "You can select up to 2 contents.",
+      "thumbnailMaxFiles": "You can upload up to 5 thumbnails."
     },
     "media": {
-      "detailDescription": "",
-      "detailTitle": "",
-      "thumbnailDescription": "",
-      "thumbnailTitle": ""
+      "detailDescription": "These are the images shown on the campaign detail page. Please upload high-resolution images. Up to 15 images can be uploaded.",
+      "detailTitle": "Content Detail Page Images",
+      "thumbnailDescription": "These are the images shown as campaign thumbnails. Please upload high-resolution images. Up to 5 images can be uploaded.",
+      "thumbnailTitle": "Content Thumbnail Images"
     },
     "options": {
       "category": {
-        "MAKEUP": "",
-        "SKINCARE": "",
-        "SUNCARE": ""
+        "MAKEUP": "Makeup",
+        "SKINCARE": "Skincare",
+        "SUNCARE": "Sun Care"
       },
       "language": {
-        "EN": "",
-        "ES": ""
+        "EN": "English",
+        "ES": "Spanish"
       },
       "type": {
-        "CONTENTS": "",
-        "EXCLUSIVE": "",
-        "GIVEAWAY": ""
+        "CONTENTS": "Content",
+        "EXCLUSIVE": "Exclusive",
+        "GIVEAWAY": "Giveaway"
       }
     },
-    "pageTitle": "",
+    "pageTitle": "Campaign Information",
     "platform": {
-      "description": "",
-      "firstContent": "",
-      "secondContent": "",
-      "title": ""
+      "description": "(You may select up to 2.)",
+      "firstContent": "First Content",
+      "secondContent": "Second Content",
+      "title": "Select Content Platform"
     },
     "schedule": {
-      "announceDate": "",
-      "announceTime": "",
-      "dueDate": "",
-      "dueTime": "",
-      "endDate": "",
-      "endTime": "",
+      "announceDate": "Campaign Winner Announcement Date",
+      "announceTime": "Campaign Winner Announcement Time",
+      "dueDate": "Final Submission Date for Second Content",
+      "dueTime": "Final Submission Time for Second Content",
+      "endDate": "Campaign Application Deadline Date",
+      "endTime": "Campaign Application Deadline Time",
       "placeholders": {
-        "amPm": "",
-        "day": "",
-        "hour": "",
-        "minute": "",
-        "month": "",
-        "year": ""
+        "amPm": "AM/PM",
+        "day": "Day",
+        "hour": "Hour",
+        "minute": "Minute",
+        "month": "Month",
+        "year": "Year"
       },
-      "startDate": "",
-      "startTime": ""
+      "startDate": "Campaign Application Start Date",
+      "startTime": "Campaign Application Start Time"
     },
     "validation": {
-      "conditionRequired": "",
-      "creatorCountRequired": "",
-      "detailMaxFiles": "",
-      "firstContentMaxExceeded": "",
-      "firstContentMinRequired": "",
-      "rewardRequired": "",
-      "secondContentMaxExceeded": "",
-      "secondContentRequiresFirst": "",
-      "thumbnailMaxFiles": "",
-      "titleRequired": ""
+      "conditionRequired": "Please enter conditions",
+      "creatorCountRequired": "Number of creators to recruit is required",
+      "detailMaxFiles": "You may upload up to 15 detail images",
+      "firstContentMaxExceeded": "You may select up to 2 first contents",
+      "firstContentMinRequired": "You must select at least 1 first content",
+      "rewardRequired": "Please enter rewards",
+      "secondContentMaxExceeded": "You can select up to 2 second contents",
+      "secondContentRequiresFirst": "You must select the first content before selecting the second content",
+      "thumbnailMaxFiles": "You can upload up to 5 thumbnails",
+      "titleRequired": "Campaign title is required"
     }
   },
   "brandMyPageSideBar": {
-    "checkApplicants": "View Applicants ",
+    "checkApplicants": "Applicant Confirmation",
     "checkContents": "View Contents",
     "dashboard": "Dashboard ",
     "editProfile": "Edit Profile ",
     "makeNewCampaign": "Create a new campaign  ",
     "myCampaign": "My Campaigns"
+  },
+  "brandSignup": {
+    "brandInfo": {
+      "brandName": "",
+      "brandNamePlaceholder": "",
+      "contactName": "",
+      "contactNamePlaceholder": "",
+      "contactPhone": "",
+      "contactPhonePlaceholder": "",
+      "contactPosition": "",
+      "contactPositionPlaceholder": "",
+      "description": "",
+      "title": ""
+    },
+    "companyAddress": {
+      "description": "",
+      "detailAddress": "",
+      "detailAddressPlaceholder": "",
+      "streetAddress": "",
+      "streetAddressPlaceholder": "",
+      "title": ""
+    },
+    "layout": {
+      "submit": "",
+      "title": ""
+    },
+    "validation": {
+      "brandNameInvalidFormat": "",
+      "brandNameMaxLength": "",
+      "brandNameRequired": "",
+      "contactNameInvalidFormat": "",
+      "contactNameMaxLength": "",
+      "contactNameRequired": "",
+      "contactPhoneInvalid": "",
+      "contactPhoneRequired": "",
+      "contactPositionInvalidFormat": "",
+      "contactPositionMaxLength": "",
+      "contactPositionRequired": "",
+      "detailAddressMaxLength": "",
+      "detailAddressRequired": "",
+      "streetAddressRequired": ""
+    }
   },
   "campaignDetail": {
     "applicationPeriod": "Application Period",
@@ -243,9 +307,11 @@
   },
   "fileUploader": {
     "cannotUploadFile": "Cannot upload file",
+    "dragDropDescription": "Drag and drop or click to upload a file.",
     "emptyFile": "Empty file",
     "fileTooLarge": "File too large",
-    "notAllowedFileType": "Not allowed file type"
+    "notAllowedFileType": "Not allowed file type",
+    "selectFile": "Choose File"
   },
   "footer": {
     "copyright": "Lococo. All rights reserved.",
@@ -475,5 +541,31 @@
     "confirmButton": "Yes",
     "message": "Campaign applications are only available to creator members.\nWould you like to sign up as a creator?",
     "title": "Creator Suggestion"
+  },
+  "brandMyPageEditProfile": {
+    "profileImage": {
+      "profileImageFormTitle": "",
+      "profileImage": "",
+      "profileImageEditBtn": ""
+    },
+    "basicInfo": {
+      "basicInfoTitle": "",
+      "brandNameFieldLabel": "",
+      "managerNameFieldLabel": "",
+      "phoneNumberFieldLabel": "",
+      "emailNotice": ""
+    },
+    "addressInfo": {
+      "addressInfoTitle": "",
+      "addressInfoDescription": "",
+      "companyAddressLabel": "",
+      "companyAddressPlaceholder": "",
+      "detailAddressLabel": "",
+      "detailAddressPlaceholder": ""
+    },
+    "formButton": {
+      "cancel": "",
+      "save": ""
+    }
   }
 }
