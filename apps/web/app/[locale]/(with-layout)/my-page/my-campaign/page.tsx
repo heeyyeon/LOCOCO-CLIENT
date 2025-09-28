@@ -3,10 +3,11 @@
 import React, { useEffect, useState } from 'react';
 
 import { useTranslations } from 'next-intl';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
 
 import LoadingSvg from 'components/loading/loading-svg';
 
+import Pagenation from '../../../../../../../packages/design-system/src/components/pagenation/Pagenation';
 import { AddressModal } from '../@modal/(.)address-modal/AddressModal';
 import Card from '../components/card/Card';
 import Empty from '../components/empty/Empty';
@@ -14,9 +15,10 @@ import useMyCampaign from '../hooks/use-my-campaign';
 
 export default function MyCampaign() {
   const t = useTranslations('myPage.myCampaign');
-  const router = useRouter();
   const searchParams = useSearchParams();
   const [isAddressModalOpen, setIsAddressModalOpen] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
 
   useEffect(() => {
     const openAddressModal = searchParams.get('openAddressModal');
@@ -29,13 +31,30 @@ export default function MyCampaign() {
     }
   }, [searchParams]);
 
-  const { data: campaignList, isPending, isError } = useMyCampaign();
+  const {
+    data: campaignData,
+    isPending,
+    isError,
+  } = useMyCampaign({
+    page: currentPage - 1, // API는 0-based, UI는 1-based
+    size: 9,
+  });
+
+  // totalPages 업데이트
+  useEffect(() => {
+    if (campaignData?.totalPages) {
+      setTotalPages(campaignData.totalPages);
+    }
+  }, [campaignData?.totalPages]);
+
   if (isPending) {
     return <LoadingSvg />;
   }
-  if (isError || !campaignList?.length) {
+  if (isError || !campaignData?.campaigns?.length) {
     return <Empty translationKey="myPage.myCampaign.empty" />;
   }
+
+  const campaignList = campaignData.campaigns;
   console.log(campaignList);
   return (
     <div className="mx-auto flex w-auto flex-col items-center justify-center pb-[6.4rem]">
@@ -46,9 +65,7 @@ export default function MyCampaign() {
         {campaignList?.map((campaign) => {
           const mapLinkAndButtonText = {
             PENDING: {
-              handleButtonClick: () => {
-                router.push(`/campaign/${campaign.campaignId}`);
-              },
+              handleButtonClick: () => {},
               buttonText: t('buttonText.viewDetails'),
             },
             APPROVED: {
@@ -58,62 +75,35 @@ export default function MyCampaign() {
               buttonText: t('buttonText.confirmAddress'),
             },
             REJECTED: {
-              handleButtonClick: () => {
-                router.push(`/campaign/${campaign.campaignId}`);
-              },
+              handleButtonClick: () => {},
               buttonText: t('buttonText.viewDetails'),
             },
             APPROVED_ADDRESS_CONFIRMED: {
-              handleButtonClick: () => {
-                router.push(
-                  `/my-page/content-submissions?campaignId=${campaign.campaignId}`
-                );
-              },
+              handleButtonClick: () => {},
               buttonText: t('buttonText.uploadFirstReview'),
             },
             APPROVED_FIRST_REVIEW_DONE: {
-              handleButtonClick: () => {
-                router.push(
-                  `/my-page/content-submissions?campaignId=${campaign.campaignId}`
-                );
-              },
+              handleButtonClick: () => {},
               buttonText: t('buttonText.revisionRequested'),
             },
             APPROVED_REVISION_REQUESTED: {
-              handleButtonClick: () => {
-                // 브랜드 노트 보기 모달 또는 페이지로 이동
-                router.push(
-                  `/my-page/content-submissions?campaignId=${campaign.campaignId}&viewNotes=true`
-                );
-              },
+              handleButtonClick: () => {},
               buttonText: t('buttonText.viewNotes'),
             },
             APPROVED_REVISION_CONFIRMED: {
-              handleButtonClick: () => {
-                router.push(
-                  `/my-page/content-submissions?campaignId=${campaign.campaignId}`
-                );
-              },
+              handleButtonClick: () => {},
               buttonText: t('buttonText.uploadSecondReview'),
             },
             APPROVED_SECOND_REVIEW_DONE: {
-              handleButtonClick: () => {
-                router.push(
-                  `/my-page/content-submissions?campaignId=${campaign.campaignId}&viewResults=true`
-                );
-              },
+              handleButtonClick: () => {},
               buttonText: t('buttonText.viewResults'),
             },
             APPROVED_ADDRESS_NOT_CONFIRMED: {
-              handleButtonClick: () => {
-                router.push(`/campaign/${campaign.campaignId}`);
-              },
+              handleButtonClick: () => {},
               buttonText: t('buttonText.viewDetails'),
             },
             APPROVED_REVIEW_NOT_CONFIRMED: {
-              handleButtonClick: () => {
-                router.push(`/campaign/${campaign.campaignId}`);
-              },
+              handleButtonClick: () => {},
               buttonText: t('buttonText.viewDetails'),
             },
           };
@@ -140,6 +130,11 @@ export default function MyCampaign() {
       <AddressModal
         open={isAddressModalOpen}
         onOpenChange={setIsAddressModalOpen}
+      />
+      <Pagenation
+        currentPage={currentPage}
+        totalPages={totalPages}
+        handlePageChange={setCurrentPage}
       />
     </div>
   );
