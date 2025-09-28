@@ -2,19 +2,21 @@
 
 import { useTranslations } from 'next-intl';
 
-import { AddressSearchModal } from '../../../../../components/address/AddressSearchModal';
+import { AddressSearchModal } from 'components/address/AddressSearchModal';
 import {
   FormSection,
   PhoneFormField,
   SignupFormLayout,
   TextFormField,
-} from '../../../../../components/forms';
-import { useAddressSearch } from '../../../../../hooks/useAddressSearch';
+} from 'components/forms';
+import LoadingSvg from 'components/loading/loading-svg';
+import { useAddressSearch } from 'hooks/useAddressSearch';
+
 import { useBrandForm } from './hooks/useBrandForm';
 
 export default function BrandSignupPage() {
   const t = useTranslations('brandSignup');
-  const { form, handleSubmit, handleBack } = useBrandForm();
+  const { form, handleSubmit, handleBack, isSubmitting } = useBrandForm();
 
   const { isOpen, openAddressSearch, closeAddressSearch, handleComplete } =
     useAddressSearch({
@@ -24,6 +26,14 @@ export default function BrandSignupPage() {
         form.trigger('street');
       },
     });
+
+  if (isSubmitting) {
+    return (
+      <div className="flex min-h-screen w-full items-center justify-center">
+        <LoadingSvg />
+      </div>
+    );
+  }
 
   return (
     <>
