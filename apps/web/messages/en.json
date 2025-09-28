@@ -117,6 +117,48 @@
     "makeNewCampaign": "Create a new campaign  ",
     "myCampaign": "My Campaigns"
   },
+  "brandSignup": {
+    "brandInfo": {
+      "brandName": "",
+      "brandNamePlaceholder": "",
+      "contactName": "",
+      "contactNamePlaceholder": "",
+      "contactPhone": "",
+      "contactPhonePlaceholder": "",
+      "contactPosition": "",
+      "contactPositionPlaceholder": "",
+      "description": "",
+      "title": ""
+    },
+    "companyAddress": {
+      "description": "",
+      "detailAddress": "",
+      "detailAddressPlaceholder": "",
+      "streetAddress": "",
+      "streetAddressPlaceholder": "",
+      "title": ""
+    },
+    "layout": {
+      "submit": "",
+      "title": ""
+    },
+    "validation": {
+      "brandNameInvalidFormat": "",
+      "brandNameMaxLength": "",
+      "brandNameRequired": "",
+      "contactNameInvalidFormat": "",
+      "contactNameMaxLength": "",
+      "contactNameRequired": "",
+      "contactPhoneInvalid": "",
+      "contactPhoneRequired": "",
+      "contactPositionInvalidFormat": "",
+      "contactPositionMaxLength": "",
+      "contactPositionRequired": "",
+      "detailAddressMaxLength": "",
+      "detailAddressRequired": "",
+      "streetAddressRequired": ""
+    }
+  },
   "campaignDetail": {
     "applicationPeriod": "Application Period",
     "campaignSchedule": "Campaign Schedule",
@@ -265,10 +307,10 @@
   },
   "fileUploader": {
     "cannotUploadFile": "Cannot upload file",
+    "dragDropDescription": "Drag and drop or click to upload a file.",
     "emptyFile": "Empty file",
     "fileTooLarge": "File too large",
     "notAllowedFileType": "Not allowed file type",
-    "dragDropDescription": "Drag and drop or click to upload a file.",
     "selectFile": "Choose File"
   },
   "footer": {
@@ -499,5 +541,31 @@
     "confirmButton": "Yes",
     "message": "Campaign applications are only available to creator members.\nWould you like to sign up as a creator?",
     "title": "Creator Suggestion"
+  },
+  "brandMyPageEditProfile": {
+    "profileImage": {
+      "profileImageFormTitle": "",
+      "profileImage": "",
+      "profileImageEditBtn": ""
+    },
+    "basicInfo": {
+      "basicInfoTitle": "",
+      "brandNameFieldLabel": "",
+      "managerNameFieldLabel": "",
+      "phoneNumberFieldLabel": "",
+      "emailNotice": ""
+    },
+    "addressInfo": {
+      "addressInfoTitle": "",
+      "addressInfoDescription": "",
+      "companyAddressLabel": "",
+      "companyAddressPlaceholder": "",
+      "detailAddressLabel": "",
+      "detailAddressPlaceholder": ""
+    },
+    "formButton": {
+      "cancel": "",
+      "save": ""
+    }
   }
 }

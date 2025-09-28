@@ -117,6 +117,48 @@
     "makeNewCampaign": "Crear una nueva campaña",
     "myCampaign": "Mis Campañas"
   },
+  "brandSignup": {
+    "brandInfo": {
+      "brandName": "",
+      "brandNamePlaceholder": "",
+      "contactName": "",
+      "contactNamePlaceholder": "",
+      "contactPhone": "",
+      "contactPhonePlaceholder": "",
+      "contactPosition": "",
+      "contactPositionPlaceholder": "",
+      "description": "",
+      "title": ""
+    },
+    "companyAddress": {
+      "description": "",
+      "detailAddress": "",
+      "detailAddressPlaceholder": "",
+      "streetAddress": "",
+      "streetAddressPlaceholder": "",
+      "title": ""
+    },
+    "layout": {
+      "submit": "",
+      "title": ""
+    },
+    "validation": {
+      "brandNameInvalidFormat": "",
+      "brandNameMaxLength": "",
+      "brandNameRequired": "",
+      "contactNameInvalidFormat": "",
+      "contactNameMaxLength": "",
+      "contactNameRequired": "",
+      "contactPhoneInvalid": "",
+      "contactPhoneRequired": "",
+      "contactPositionInvalidFormat": "",
+      "contactPositionMaxLength": "",
+      "contactPositionRequired": "",
+      "detailAddressMaxLength": "",
+      "detailAddressRequired": "",
+      "streetAddressRequired": ""
+    }
+  },
   "campaignDetail": {
     "applicationPeriod": "Período de aplicación",
     "campaignSchedule": "Cronograma de la campaña",
@@ -265,10 +307,10 @@
   },
   "fileUploader": {
     "cannotUploadFile": "No se puede subir el archivo.",
+    "dragDropDescription": "Arrastra y suelta o haz clic para subir un archivo.",
     "emptyFile": "El archivo está vacío.",
     "fileTooLarge": "El archivo es demasiado grande.",
     "notAllowedFileType": "Tipo de archivo no permitido.",
-    "dragDropDescription": "Arrastra y suelta o haz clic para subir un archivo.",
     "selectFile": "Seleccionar archivo"
   },
   "footer": {
@@ -499,5 +541,31 @@
     "confirmButton": "Sí",
     "message": "Las solicitudes de campaña solo están disponibles para miembros creadores. ¿Desea registrarse como creador?",
     "title": "Sugerencia de creador"
+  },
+  "brandMyPageEditProfile": {
+    "profileImage": {
+      "profileImageFormTitle": "",
+      "profileImage": "",
+      "profileImageEditBtn": ""
+    },
+    "basicInfo": {
+      "basicInfoTitle": "",
+      "brandNameFieldLabel": "",
+      "managerNameFieldLabel": "",
+      "phoneNumberFieldLabel": "",
+      "emailNotice": ""
+    },
+    "addressInfo": {
+      "addressInfoTitle": "",
+      "addressInfoDescription": "",
+      "companyAddressLabel": "",
+      "companyAddressPlaceholder": "",
+      "detailAddressLabel": "",
+      "detailAddressPlaceholder": ""
+    },
+    "formButton": {
+      "cancel": "",
+      "save": ""
+    }
   }
 }
