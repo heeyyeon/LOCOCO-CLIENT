@@ -15,11 +15,11 @@ export default function CampaignListEmpty({
   return (
     <section
       className={cn(
-        'flex h-[69.4rem] w-[112.8rem] items-center justify-center gap-[3.2rem]',
+        'flex h-[69.4rem] w-[112.8rem] flex-col items-center justify-center gap-[3.2rem]',
         className
       )}
     >
-      <SvgEmptyImage size={120} />
+      <SvgEmptyImage size={120} className="fill-pink-300" />
       <p className="title2 font-[700] text-gray-700">{emptyMessage}</p>
     </section>
   );

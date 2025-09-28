@@ -18,6 +18,7 @@ export { SvgClose } from './Close';
 export { SvgDelete } from './Delete';
 export { SvgDivider } from './Divider';
 export { SvgEllipsis } from './Ellipsis';
+export { SvgEmptyImage } from './EmptyImage';
 export { SvgErrorFill } from './ErrorFill';
 export { SvgGift } from './Gift';
 export { SvgGoodFill } from './GoodFill';
