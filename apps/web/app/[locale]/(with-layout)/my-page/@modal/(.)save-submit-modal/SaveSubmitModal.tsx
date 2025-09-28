@@ -3,6 +3,7 @@
 import React from 'react';
 
 import { useTranslations } from 'next-intl';
+import { useRouter } from 'next/navigation';
 
 import {
   Dialog,
@@ -23,9 +24,11 @@ export function SaveSubmitModal({
   onOpenChange,
   final,
 }: SaveSubmitModalProps) {
+  const router = useRouter();
   const t = useTranslations('myPage.contentSubmissions.saveSubmitModal');
   const handleSaveSubmitModal = () => {
     onOpenChange(false);
+    router.back();
   };
 
   return (

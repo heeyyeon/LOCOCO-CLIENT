@@ -9,15 +9,17 @@ interface HashtagsInputProps {
   formData: ContentSubmissionsFormData;
   errors: string | undefined;
   updateCaptionAndHashtags: (
-    campaignId: number,
+    fieldId: string,
     captionAndHashtags: string
   ) => void;
+  fieldId: string;
 }
 
 export default function HashtagsInput({
   formData,
   errors,
   updateCaptionAndHashtags,
+  fieldId,
 }: HashtagsInputProps) {
   const t = useTranslations('myPage.contentSubmissions.hashtagsInput');
   return (
@@ -28,10 +30,7 @@ export default function HashtagsInput({
       </div>
       <Input
         value={formData.captionAndHashtags}
-        onChange={(e) =>
-          formData.campaignId &&
-          updateCaptionAndHashtags(formData.campaignId, e.target.value)
-        }
+        onChange={(e) => updateCaptionAndHashtags(fieldId, e.target.value)}
         className="w-full"
       />
       {errors && <ErrorNotice message={errors} />}

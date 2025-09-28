@@ -7,8 +7,8 @@ export const PROFILE_KEYS = {
 
 export const CAMPAIGN_REVIEW_KEYS = {
   all: ['campaignReview'] as const,
-  campaignReview: () =>
-    [...CAMPAIGN_REVIEW_KEYS.all, 'campaignReview'] as const,
+  campaignReview: (campaignId: number, round: string) =>
+    [...CAMPAIGN_REVIEW_KEYS.all, campaignId, round] as const,
   myCampaigns: (params: { page?: number; size?: number } = {}) =>
     [...CAMPAIGN_REVIEW_KEYS.all, 'myCampaigns', params] as const,
 };

@@ -94,14 +94,20 @@ export class CampaignReview<
    *
    * @tags CAMPAIGN REVIEW
    * @name GetMyReviewables
-   * @summary 리뷰 업로드 가능한 정보 조회 - 크리에이터가 참여중인 캠페인 관련 정보 조회 (리스트 반환)
+   * @summary 리뷰 업로드 가능한 캠페인 목록 조회 - 모든 참여중인 캠페인
    * @request GET:/api/campaignReviews/my/participation
    * @secure
    */
-  getMyReviewables = (params: RequestParams = {}) =>
+  getMyReviewables = (
+    query?: {
+      round?: "FIRST" | "SECOND";
+    },
+    params: RequestParams = {},
+  ) =>
     this.request<ApiResponseListCampaignParticipatedResponse, any>({
       path: `/api/campaignReviews/my/participation`,
       method: "GET",
+      query: query,
       secure: true,
       ...params,
     });
@@ -110,14 +116,21 @@ export class CampaignReview<
    *
    * @tags CAMPAIGN REVIEW
    * @name GetMyReviewableCampaign
-   * @summary 리뷰 업로드 가능 정보 단건 조회 - 크리에이터가 참여 중인 특정 캠페인
+   * @summary 리뷰 업로드 가능 정보 조회 - 특정 캠페인의 특정 라운드 또는 전체
    * @request GET:/api/campaignReviews/my/participation/{campaignId}
    * @secure
    */
-  getMyReviewableCampaign = (campaignId: number, params: RequestParams = {}) =>
+  getMyReviewableCampaign = (
+    campaignId: number,
+    query?: {
+      round?: "FIRST" | "SECOND";
+    },
+    params: RequestParams = {},
+  ) =>
     this.request<ApiResponseCampaignParticipatedResponse, any>({
       path: `/api/campaignReviews/my/participation/${campaignId}`,
       method: "GET",
+      query: query,
       secure: true,
       ...params,
     });

@@ -993,6 +993,12 @@ export interface CreatorAddressInfo {
 
 export interface CreatorBasicInfo {
   /**
+   * 크리에이터 ID
+   * @format int64
+   * @example 123
+   */
+  creatorId: number;
+  /**
    * 프로필 이미지 URL
    * @example "https://s3.example.com/profile/us-user-1001.jpg"
    */
@@ -1022,6 +1028,16 @@ export interface CreatorBasicInfo {
    * @example "1999-10-19"
    */
   birthDate: string;
+  /**
+   * 이메일
+   * @example "chanel@gmail.com"
+   */
+  email: string;
+  /**
+   * 크리에이터 레벨
+   * @example "PRO / NORMAL"
+   */
+  creatorLevel: string;
 }
 
 export interface CreatorContactInfo {
@@ -1869,13 +1885,13 @@ export interface ApiResponseCreatorMyCampaignListResponse {
 }
 
 export interface CreatorMyCampaignListResponse {
+  /** 크리에이터 기본 정보 */
+  basicInfo: CreatorBasicInfo;
   campaigns: CreatorMyCampaignResponse[];
   pageInfo: PageableResponse;
 }
 
 export interface CreatorMyCampaignResponse {
-  /** 크리에이터 기본 정보 */
-  basicInfo: CreatorBasicInfo;
   /**
    * 캠페인 ID
    * @format int64
@@ -1884,30 +1900,40 @@ export interface CreatorMyCampaignResponse {
   /** 캠페인 이름 */
   title?: string;
   /**
+   * 캠페인 대표 이미지 URL
+   * @example "https://example.com/campaign-image.jpg"
+   */
+  campaignImageUrl?: string;
+  /**
    * 리뷰 제출 데드라인
    * @format date-time
    */
   reviewSubmissionDeadline?: string;
   /**
-   * 소셜 클립 콘텐츠 종류
-   * @example "INSTA_REELS"
+   * 다음 액션
+   * @example "UPLOAD_FIRST_REVIEW"
    */
-  contentType?: "INSTA_REELS" | "TIKTOK_VIDEO" | "INSTA_POST";
+  nextAction?:
+    | "VIEW_DETAILS"
+    | "CONFIRM_ADDRESS"
+    | "UPLOAD_FIRST_REVIEW"
+    | "REVISION_REQUESTED"
+    | "VIEW_NOTES"
+    | "UPLOAD_SECOND_REVIEW"
+    | "VIEW_RESULTS"
+    | "BRAND_APPROVAL_WAITING";
   /**
-   * 참여 상태
+   * 참여 상태 (내부용)
+   * @deprecated
    * @example "APPROVED_ADDRESS_CONFIRMED"
    */
   participationStatus?:
     | "PENDING"
     | "APPROVED"
-    | "REJECTED"
-    | "APPROVED_ADDRESS_CONFIRMED"
-    | "APPROVED_FIRST_REVIEW_DONE"
-    | "APPROVED_REVISION_REQUESTED"
-    | "APPROVED_REVISION_CONFIRMED"
-    | "APPROVED_SECOND_REVIEW_DONE"
-    | "APPROVED_ADDRESS_NOT_CONFIRMED"
-    | "APPROVED_REVIEW_NOT_CONFIRMED";
+    | "ACTIVE"
+    | "COMPLETED"
+    | "EXPIRED"
+    | "REJECTED";
 }
 
 export interface ApiResponseCreatorAddressInfo {
@@ -2168,21 +2194,21 @@ export interface CampaignParticipatedResponse {
    * @example "Summer Hydration Campaign"
    */
   title: string;
+  /** 컨텐츠 타입별 리뷰 상태 목록 */
+  reviewContents?: ReviewContentStatus[];
+}
+
+export interface ReviewContentStatus {
   /**
-   * 브랜드가 지정한 1번째 리뷰 컨텐츠 타입(캠페인 설정)
+   * 컨텐츠 타입
    * @example "INSTA_REELS"
    */
-  firstContentPlatform: "INSTA_REELS" | "TIKTOK_VIDEO" | "INSTA_POST";
-  /**
-   * 브랜드가 지정한 2번째 리뷰 컨텐츠 타입(없을 수 있음)
-   * @example "TIKTOK_VIDEO"
-   */
-  secondContentPlatform?: "INSTA_REELS" | "TIKTOK_VIDEO" | "INSTA_POST";
+  contentType?: "INSTA_REELS" | "TIKTOK_VIDEO" | "INSTA_POST";
   /**
    * 현재 업로드해야 할 리뷰 라운드
    * @example "FIRST"
    */
-  nowReviewRound: "FIRST" | "SECOND";
+  nowReviewRound?: "FIRST" | "SECOND";
   /**
    * 브랜드 노트(있다면 반환)
    * @example "Please focus on the product's hydrating effects."
@@ -2194,6 +2220,13 @@ export interface CampaignParticipatedResponse {
    * @example "2023-10-05T14:48:00Z"
    */
   revisionRequestedAt?: string;
+  /**
+   * 기존 리뷰의 캡션과 해시태그(있다면 반환)
+   * @example "Great product! #sponsored #beauty"
+   */
+  captionWithHashtags?: string;
+  /** 기존 리뷰의 미디어 URL 목록(있다면 반환) */
+  mediaUrls?: string[];
 }
 
 export interface ApiResponseCampaignParticipatedResponse {
@@ -2325,59 +2358,6 @@ export interface BrandMyCampaignResponse {
    * @example "DRAFT"
    */
   campaignStatus: string;
-}
-
-export interface ApiResponseCampaignReviewDetailListResponse {
-  success?: boolean;
-  /** @format int32 */
-  status?: number;
-  message?: string;
-  data?: CampaignReviewDetailListResponse;
-}
-
-export interface CampaignReviewDetailListResponse {
-  /**
-   * 캠페인 ID
-   * @format int64
-   * @example 11
-   */
-  campaignId: number;
-  /**
-   * 캠페인 제목
-   * @example "Summer Hydration Campaign"
-   */
-  title: string;
-  /**
-   * 조회한 리뷰 라운드 (몇차 리뷰인지)
-   * @example "FIRST"
-   */
-  reviewRound: "FIRST" | "SECOND";
-  /** 해당 라운드의 리뷰 목록 (최신순) */
-  reviews: CampaignReviewDetailResponse[];
-}
-
-export interface CampaignReviewDetailResponse {
-  /**
-   * 소셜 클립 컨텐츠 종류
-   * @example "TIKTOK_VIDEO"
-   */
-  contentType: "INSTA_REELS" | "TIKTOK_VIDEO" | "INSTA_POST";
-  /**
-   * 리뷰 미디어 URL 리스트(이미지 또는 영상)
-   * @minItems 1
-   * @example ["https://s3.amazonaws.com/bucket/image...","https://s3.amazonaws.com/bucket/video..."]
-   */
-  mediaUrls: string[];
-  /**
-   * 캡션(해시태그 포함)
-   * @example "Enjoying the summer vibes! #SummerHydration #StayCool"
-   */
-  captionWithHashtags: string;
-  /**
-   * 게시물 URL (1차 리뷰 반환시에는 비어있음)
-   * @example "https://www.instagram.com/p/ExamplePost/"
-   */
-  postUrl?: string;
 }
 
 export interface ApiResponseCampaignApplicantListResponse {
@@ -2538,6 +2518,51 @@ export interface BrandIssuedCampaignResponse {
    * @example "2023-10-05T14:48:00Z"
    */
   revisionRequestedAt?: string;
+}
+
+export interface ApiResponseCampaignReviewDetailListResponse {
+  success?: boolean;
+  /** @format int32 */
+  status?: number;
+  message?: string;
+  data?: CampaignReviewDetailListResponse;
+}
+
+export interface CampaignReviewDetailListResponse {
+  /**
+   * 캠페인 ID
+   * @format int64
+   * @example 11
+   */
+  campaignId: number;
+  /**
+   * 캠페인 제목
+   * @example "Summer Hydration Campaign"
+   */
+  title: string;
+  /**
+   * 조회한 리뷰 라운드 (몇차 리뷰인지)
+   * @example "FIRST"
+   */
+  reviewRound: "FIRST" | "SECOND";
+  /**
+   * 콘텐츠 플랫폼
+   * @example "INSTA_REELS"
+   */
+  contentType: "INSTA_REELS" | "TIKTOK_VIDEO" | "INSTA_POST";
+  /** 크리에이터가 업로드한 리뷰 이미지 URL 리스트 */
+  reviewImages: string[];
+  /** 크리에이터가 작성한 캡션 및 해시태그 */
+  captionWithHashtags: string;
+  /** 브랜드 노트 내용 */
+  brandNote?: string;
+  /**
+   * 브랜드 노트 검수 마감일
+   * @format date-time
+   */
+  brandNoteDeadline: string;
+  /** 2차 리뷰 완료 시 실제 게시물 URL */
+  postUrl?: string;
 }
 
 export interface ApiResponseBrandDashboardCampaignListResponse {

@@ -176,7 +176,7 @@ export class Creator<
    *
    * @tags CREATOR
    * @name GetMyCampaigns
-   * @summary 크리에이터 마이페이지 내가 참여중/참여한 캠페인 목록 조회 [무한 스크롤]
+   * @summary 크리에이터 마이페이지 내가 참여중/참여한 캠페인 목록 조회 [페이지네이션]
    * @request GET:/api/creator/profile/campaigns
    * @secure
    */

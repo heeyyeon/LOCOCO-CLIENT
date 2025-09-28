@@ -10,20 +10,18 @@ import BracketChip, { getChipText, getChipVariant } from './Barket';
 interface CardProps {
   endTime: string;
   brandName: string;
-  campaignImageUrl: string;
-  campaignId: number;
   className?: string;
   deadline: string;
   participationStatus: string;
   handleButtonClick?: () => void;
   buttonText?: string;
+  campaignImageUrl?: string;
 }
 
 export default function Card({
   deadline,
   brandName,
   campaignImageUrl,
-  campaignId,
   className,
   participationStatus,
   handleButtonClick,
@@ -38,8 +36,8 @@ export default function Card({
       (url.startsWith('http') || url.startsWith('/'))
     );
   };
-
   const fallbackImage = '/next.svg';
+
   return (
     <div
       className={cn(
@@ -53,7 +51,9 @@ export default function Card({
           height={208}
           unoptimized={true}
           src={
-            isValidImageUrl(campaignImageUrl) ? campaignImageUrl : fallbackImage
+            isValidImageUrl(campaignImageUrl || '')
+              ? campaignImageUrl || ''
+              : fallbackImage
           }
           alt={`${brandName}${card('campaignThumbnailImage')}`}
           className="h-full w-full object-cover"

@@ -1,24 +1,32 @@
 import { useQuery } from '@tanstack/react-query';
-import { ApiResponseListCampaignParticipatedResponse } from '@typescript-swagger/data-contracts';
+import { ApiResponseCampaignParticipatedResponse } from '@typescript-swagger/data-contracts';
+import { apiRequest } from 'app/api/apiRequest';
 
 import { CAMPAIGN_REVIEW_KEYS } from '../constant/queryKey';
 
-const fetchCampaignReview =
-  async (): Promise<ApiResponseListCampaignParticipatedResponse> => {
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_SERVER_URL}/api/campaignReviews/my/participation`
-    );
+const fetchCampaignReview = async (
+  campaignId: number,
+  round?: string
+): Promise<ApiResponseCampaignParticipatedResponse> => {
+  const response = await apiRequest<ApiResponseCampaignParticipatedResponse>({
+    endPoint: `/api/campaignReviews/my/participation/${campaignId}`,
+    method: 'GET',
+    params: {
+      campaignId: campaignId.toString(),
+      round: round || '',
+    },
+  });
 
-    if (!response.ok) {
-      throw new Error('프로필 데이터를 불러오는데 실패했습니다.');
-    }
+  if (!response.success) {
+    throw new Error('캠페인 리뷰 데이터를 불러오는데 실패했습니다.');
+  }
 
-    return response.json();
-  };
+  return response;
+};
 
-export const useFetchCampaignReview = () => {
+export const useFetchCampaignReview = (campaignId: number, round: string) => {
   return useQuery({
-    queryKey: CAMPAIGN_REVIEW_KEYS.campaignReview(),
-    queryFn: fetchCampaignReview,
+    queryKey: CAMPAIGN_REVIEW_KEYS.campaignReview(campaignId, round),
+    queryFn: () => fetchCampaignReview(campaignId, round),
   });
 };

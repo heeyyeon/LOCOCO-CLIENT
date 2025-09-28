@@ -329,26 +329,6 @@ export class Brand<
    * No description
    *
    * @tags BRAND
-   * @name GetCreatorCampaignReview
-   * @summary 브랜드 마이페이지 - 본인이 발행한 특정 캠페인의 참여자 리뷰 단건 조회
-   * @request GET:/api/brands/my/campaigns/{campaignId}/creators/{creatorId}/review
-   * @secure
-   */
-  getCreatorCampaignReview = (
-    campaignId: number,
-    creatorId: number,
-    params: RequestParams = {},
-  ) =>
-    this.request<ApiResponseCampaignReviewDetailListResponse, any>({
-      path: `/api/brands/my/campaigns/${campaignId}/creators/${creatorId}/review`,
-      method: "GET",
-      secure: true,
-      ...params,
-    });
-  /**
-   * No description
-   *
-   * @tags BRAND
    * @name GetCampaignApplicants
    * @summary 캠페인 지원자 확인 뷰 - 캠페인 지원자 리스트 조회
    * @request GET:/api/brands/my/campaigns/{campaignId}/applicants
@@ -421,6 +401,25 @@ export class Brand<
   getDraftCampaign = (campaignId: number, params: RequestParams = {}) =>
     this.request<ApiResponseCampaignBasicResponse, any>({
       path: `/api/brands/my/campaigns/drafts/${campaignId}`,
+      method: "GET",
+      secure: true,
+      ...params,
+    });
+  /**
+   * No description
+   *
+   * @tags BRAND
+   * @name GetCreatorCampaignReview
+   * @summary 브랜드 마이페이지 - 본인이 발행한 특정 캠페인의 참여자 리뷰 단건 조회
+   * @request GET:/api/brands/my/campaigns/creators/{campaignReviewId}/review
+   * @secure
+   */
+  getCreatorCampaignReview = (
+    campaignReviewId: number,
+    params: RequestParams = {},
+  ) =>
+    this.request<ApiResponseCampaignReviewDetailListResponse, any>({
+      path: `/api/brands/my/campaigns/creators/${campaignReviewId}/review`,
       method: "GET",
       secure: true,
       ...params,

@@ -2,45 +2,51 @@
 
 import React, { useState } from 'react';
 
+import { useRouter, useSearchParams } from 'next/navigation';
+
 import LoadingSvg from 'components/loading/loading-svg';
 
 import { Button } from '@lococo/design-system/button';
 
 import { SaveSubmitModal } from '../@modal/(.)save-submit-modal/SaveSubmitModal';
+import BrandNote from '../components/content-submissions/brand-note';
 import CampaignProductMediaInput from '../components/content-submissions/campaign-product-media-input';
 import CampaignSelect from '../components/content-submissions/campaign-select';
 import ContentTypeSelect from '../components/content-submissions/content-type-select';
 import HashtagsInput from '../components/content-submissions/hashtags-input';
+import SubmitContentUrl from '../components/content-submissions/submit-content-url';
 import Empty from '../components/empty/Empty';
-import { useContentSubmissions } from '../hooks/use-content-submissions';
+import {
+  ContentSubmissionsFormData,
+  useContentSubmissions,
+} from '../hooks/use-content-submissions';
 
 interface ContentSubmissionsFormProps {
-  formData: {
-    campaign: string;
-    campaignId: number | undefined;
-    contentType: string;
-    campaignProductMedia: File[];
-    captionAndHashtags: string;
-  };
+  formData: ContentSubmissionsFormData;
   errors: {
     campaign?: string;
-    contentType?: string;
     campaignProductMedia?: string;
     captionAndHashtags?: string;
+    postUrl?: string;
   };
-  updateCampaign: (campaignId: number, campaign: string) => void;
-  updateContentType: (campaignId: number, contentType: string) => void;
   updateCampaignProductMedia: (
-    campaignId: number,
+    fieldId: string,
     campaignProductMedia: File[]
   ) => void;
   updateCaptionAndHashtags: (
-    campaignId: number,
+    fieldId: string,
     captionAndHashtags: string
   ) => void;
+  updatePostUrl: (fieldId: string, postUrl: string) => void;
+  updateCampaign: (fieldId: string, campaign: string) => void;
+  index: number;
+  fieldId: string;
 }
 
 export default function ContentSubmissions() {
+  const searchParams = useSearchParams();
+  const campaignId = searchParams.get('campaignId');
+  const round = searchParams.get('round');
   const [isSaveSubmitModalOpen, setIsSaveSubmitModalOpen] = useState(false);
   const {
     fields,
@@ -49,16 +55,17 @@ export default function ContentSubmissions() {
     handleSubmitAll,
     validateAllForms,
     isAllFormsValid,
-    reset,
     updateCampaign,
-    updateContentType,
     updateCampaignProductMedia,
     updateCaptionAndHashtags,
+    updatePostUrl,
     isPending,
     isError,
     trigger,
-  } = useContentSubmissions();
-
+    watchData,
+  } = useContentSubmissions(Number(campaignId), round as string);
+  console.log(fields);
+  const router = useRouter();
   const handleSubmitForm = async () => {
     trigger();
     const isValid = await validateAllForms();
@@ -88,24 +95,34 @@ export default function ContentSubmissions() {
           final={false}
         />
       }
-      <div className="flex min-h-[calc(100vh-11.2rem)] w-full flex-col items-center gap-[3.2rem] bg-gray-100 px-[9.4rem] py-[6.4rem]">
+      <div className="flex min-h-[calc(100vh-11.2rem)] w-full flex-col items-center gap-[8.4rem] bg-gray-100 px-[9.4rem] py-[6.4rem]">
         {fields.length > 0 ? (
           fields.map((field) => {
-            const formData = getFormData(field.campaignId || 0);
-            const errors = getErrors(field.campaignId || 0);
+            const fieldIndex = fields.findIndex((f) => f.id === field.id);
+            const submissionData = watchData.submissions[fieldIndex];
+            if (!submissionData) return null;
 
-            if (!formData) return null;
+            const formDataForComponent = getFormData(field.id);
+            const errors = getErrors(field.id);
+            if (!formDataForComponent) return null;
 
             return (
-              <ContentSubmissionsForm
-                key={field.id}
-                formData={formData}
-                errors={errors}
-                updateCampaign={updateCampaign}
-                updateContentType={updateContentType}
-                updateCampaignProductMedia={updateCampaignProductMedia}
-                updateCaptionAndHashtags={updateCaptionAndHashtags}
-              />
+              <div key={field.id} className="flex w-full flex-col gap-[1.6rem]">
+                <ContentSubmissionsForm
+                  formData={formDataForComponent}
+                  errors={errors}
+                  updateCampaign={updateCampaign}
+                  updateCampaignProductMedia={updateCampaignProductMedia}
+                  updateCaptionAndHashtags={updateCaptionAndHashtags}
+                  updatePostUrl={updatePostUrl}
+                  index={fieldIndex}
+                  fieldId={field.id}
+                />
+
+                {submissionData.brandNote && (
+                  <BrandNote text={submissionData.brandNote} />
+                )}
+              </div>
             );
           })
         ) : (
@@ -118,9 +135,9 @@ export default function ContentSubmissions() {
               color="primary"
               size="lg"
               className="w-[41.2rem]"
-              onClick={() => reset()}
+              onClick={() => router.back()}
             >
-              Cancel
+              Back
             </Button>
             <Button
               variant="filled"
@@ -141,36 +158,48 @@ export default function ContentSubmissions() {
 function ContentSubmissionsForm({
   formData,
   errors,
-  updateCampaign,
-  updateContentType,
   updateCampaignProductMedia,
   updateCaptionAndHashtags,
+  updatePostUrl,
+  updateCampaign,
+  index,
+  fieldId,
 }: ContentSubmissionsFormProps) {
   return (
-    <div className="flex w-[84rem] items-center justify-between gap-[4.8rem] border border-gray-400 bg-white p-[4.8rem]">
-      <div className="flex w-full flex-col items-start gap-[4.8rem]">
-        <CampaignSelect
-          formData={formData}
-          errors={errors.campaign}
-          updateCampaign={updateCampaign}
-        />
+    <>
+      <div className="flex w-[84rem] items-center justify-between gap-[4.8rem] border border-gray-400 bg-white p-[4.8rem]">
+        <div className="flex w-full flex-col items-start gap-[4.8rem]">
+          <CampaignSelect
+            formData={formData}
+            errors={errors.campaign}
+            updateCampaign={updateCampaign}
+            index={index}
+            fieldId={fieldId}
+          />
+          <ContentTypeSelect formData={formData} errors={undefined} />
+          <CampaignProductMediaInput
+            formData={formData}
+            errors={errors.campaignProductMedia}
+            updateCampaignProductMedia={updateCampaignProductMedia}
+            fieldId={fieldId}
+          />
+          <HashtagsInput
+            formData={formData}
+            errors={errors.captionAndHashtags}
+            updateCaptionAndHashtags={updateCaptionAndHashtags}
+            fieldId={fieldId}
+          />
 
-        <ContentTypeSelect
-          formData={formData}
-          errors={errors.contentType}
-          updateContentType={updateContentType}
-        />
-        <CampaignProductMediaInput
-          formData={formData}
-          errors={errors.campaignProductMedia}
-          updateCampaignProductMedia={updateCampaignProductMedia}
-        />
-        <HashtagsInput
-          formData={formData}
-          errors={errors.captionAndHashtags}
-          updateCaptionAndHashtags={updateCaptionAndHashtags}
-        />
+          {formData.nowReviewRound === 'SECOND' && (
+            <SubmitContentUrl
+              formData={formData}
+              errors={errors.postUrl}
+              updatePostUrl={updatePostUrl}
+              fieldId={fieldId}
+            />
+          )}
+        </div>
       </div>
-    </div>
+    </>
   );
 }

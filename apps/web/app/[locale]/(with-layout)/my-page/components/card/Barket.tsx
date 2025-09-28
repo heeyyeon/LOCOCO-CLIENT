@@ -2,52 +2,23 @@ import { useTranslations } from 'next-intl';
 
 import { cn } from '@lococo/utils';
 
-export const getChipVariant = (
-  participationStatus: string
-): BracketChipProps['chipVariant'] => {
-  switch (participationStatus) {
-    case 'PENDING':
-      return 'pending'; // 대기 - 핑크색
-    case 'APPROVED':
-      return 'approved'; // 승인 - 초록색
-    case 'REJECTED':
-      return 'rejected'; // 거절 - 빨간색
-    case 'APPROVED_ADDRESS_CONFIRMED':
-    case 'APPROVED_FIRST_REVIEW_DONE':
-    case 'APPROVED_REVISION_REQUESTED':
-    case 'APPROVED_REVISION_CONFIRMED':
-      return 'active'; // 진행 중 - 초록색
-    case 'APPROVED_SECOND_REVIEW_DONE':
-      return 'completed'; // 완료 - 빨간색
-    case 'APPROVED_ADDRESS_NOT_CONFIRMED':
-    case 'APPROVED_REVIEW_NOT_CONFIRMED':
-      return 'expired'; // 만료 - 회색
-    default:
-      return 'pending'; // 기본값
-  }
-};
-
-export const getChipText = (participationStatus: string): string => {
+const useGetChipText = (participationStatus: string) => {
   const t = useTranslations('myPage.myCampaign.participationStatus');
   switch (participationStatus) {
     case 'PENDING':
       return t('pending');
     case 'APPROVED':
       return t('approved');
+    case 'ACTIVE':
+      return t('active');
+    case 'COMPLETED':
+      return t('completed');
+    case 'EXPIRED':
+      return t('expired');
     case 'REJECTED':
       return t('rejected');
-    case 'APPROVED_ADDRESS_CONFIRMED':
-    case 'APPROVED_FIRST_REVIEW_DONE':
-    case 'APPROVED_REVISION_REQUESTED':
-    case 'APPROVED_REVISION_CONFIRMED':
-      return t('active');
-    case 'APPROVED_SECOND_REVIEW_DONE':
-      return t('completed');
-    case 'APPROVED_ADDRESS_NOT_CONFIRMED':
-    case 'APPROVED_REVIEW_NOT_CONFIRMED':
-      return t('expired');
     default:
-      return t('pending');
+      return t('rejected');
   }
 };
 
@@ -61,9 +32,7 @@ interface BracketChipProps {
     | 'rejected'
     | 'progress'
     | 'expired'
-    | 'active'
-    | 'active_review_uploaded'
-    | 'approved_address_confirmed';
+    | 'active';
   className?: string;
 }
 
@@ -79,12 +48,10 @@ export default function BracketChip({
     completed: 'bg-red',
     progress: 'bg-blue',
     active: 'bg-green',
-    active_review_uploaded: 'bg-green',
     expired: 'bg-gray-500',
     not_open: 'bg-gray-500',
     pending: 'bg-pink-500',
     rejected: 'bg-red',
-    approved_address_confirmed: 'bg-green',
   };
   return (
     <div
@@ -110,7 +77,7 @@ export default function BracketChip({
        )`,
       }}
     >
-      {text}
+      {useGetChipText(text)}
     </div>
   );
 }

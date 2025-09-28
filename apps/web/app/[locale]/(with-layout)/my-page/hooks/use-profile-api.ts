@@ -35,7 +35,6 @@ export const useUpdateProfile = () => {
     const response = await apiRequest<ApiResponseCreatorMyPageResponse>({
       endPoint: '/api/creator/profile',
       method: 'PATCH',
-
       data: {
         ...formData,
         profileImageUrl,
@@ -68,7 +67,6 @@ export const useCheckIdAvailability = () => {
     const response = await apiRequest<ApiResponseCreatorMyPageResponse>({
       endPoint: '/api/creator/check-id',
       method: 'POST',
-
       data: { id },
     });
 
@@ -113,7 +111,6 @@ export const usePresignedUrl = ({ file }: { file: File }) => {
     const response = await apiRequest<ApiResponseCreatorProfileImageResponse>({
       endPoint: '/api/creator/profile/image',
       method: 'POST',
-
       data: {
         mediaType: file.type,
       },

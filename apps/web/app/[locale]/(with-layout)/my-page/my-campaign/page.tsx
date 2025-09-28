@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 
 import { useTranslations } from 'next-intl';
-import { useSearchParams } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 import LoadingSvg from 'components/loading/loading-svg';
 
@@ -15,6 +15,7 @@ import useMyCampaign from '../hooks/use-my-campaign';
 
 export default function MyCampaign() {
   const t = useTranslations('myPage.myCampaign');
+  const router = useRouter();
   const searchParams = useSearchParams();
   const [isAddressModalOpen, setIsAddressModalOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
@@ -40,7 +41,6 @@ export default function MyCampaign() {
     size: 9,
   });
 
-  // totalPages 업데이트
   useEffect(() => {
     if (campaignData?.totalPages) {
       setTotalPages(campaignData.totalPages);
@@ -59,7 +59,7 @@ export default function MyCampaign() {
   }
 
   const campaignList = campaignData.campaigns;
-  console.log(campaignList);
+
   return (
     <div className="mx-auto flex w-auto flex-col items-center justify-center pb-[6.4rem]">
       <p className="title1 w-[93.8rem] py-[1.6rem] text-start font-bold text-gray-800">
@@ -68,47 +68,51 @@ export default function MyCampaign() {
       <div className="grid w-[93.8rem] grid-cols-3 gap-[4rem] gap-y-[3.2rem]">
         {campaignList?.map((campaign) => {
           const mapLinkAndButtonText = {
-            PENDING: {
+            VIEW_DETAILS: {
               handleButtonClick: () => {},
               buttonText: t('buttonText.viewDetails'),
             },
-            APPROVED: {
+            CONFIRM_ADDRESS: {
               handleButtonClick: () => {
                 setIsAddressModalOpen(true);
               },
               buttonText: t('buttonText.confirmAddress'),
             },
-            REJECTED: {
-              handleButtonClick: () => {},
-              buttonText: t('buttonText.viewDetails'),
-            },
-            APPROVED_ADDRESS_CONFIRMED: {
-              handleButtonClick: () => {},
+            UPLOAD_FIRST_REVIEW: {
+              handleButtonClick: () => {
+                router.push(
+                  `/my-page/content-submissions?campaignId=${campaign.campaignId}&reviewRound=FIRST`
+                );
+              },
               buttonText: t('buttonText.uploadFirstReview'),
             },
-            APPROVED_FIRST_REVIEW_DONE: {
-              handleButtonClick: () => {},
+            REVISION_REQUESTED: {
+              handleButtonClick: () => {
+                router.push(
+                  `/my-page/content-submissions?campaignId=${campaign.campaignId}&reviewRound=FIRST`
+                );
+              },
               buttonText: t('buttonText.revisionRequested'),
             },
-            APPROVED_REVISION_REQUESTED: {
-              handleButtonClick: () => {},
+            VIEW_NOTES: {
+              handleButtonClick: () => {
+                router.push(
+                  `/my-page/content-submissions?campaignId=${campaign.campaignId}&reviewRound=SECOND`
+                );
+              },
               buttonText: t('buttonText.viewNotes'),
             },
-            APPROVED_REVISION_CONFIRMED: {
-              handleButtonClick: () => {},
+            UPLOAD_SECOND_REVIEW: {
+              handleButtonClick: () => {
+                router.push(
+                  `/my-page/content-submissions?campaignId=${campaign.campaignId}&reviewRound=SECOND`
+                );
+              },
               buttonText: t('buttonText.uploadSecondReview'),
             },
-            APPROVED_SECOND_REVIEW_DONE: {
+            VIEW_RESULTS: {
               handleButtonClick: () => {},
               buttonText: t('buttonText.viewResults'),
-            },
-            APPROVED_ADDRESS_NOT_CONFIRMED: {
-              handleButtonClick: () => {},
-              buttonText: t('buttonText.viewDetails'),
-            },
-            APPROVED_REVIEW_NOT_CONFIRMED: {
-              handleButtonClick: () => {},
-              buttonText: t('buttonText.viewDetails'),
             },
           };
 
@@ -117,16 +121,16 @@ export default function MyCampaign() {
             endTime: campaign.reviewSubmissionDeadline || '',
             brandName: campaign.title || '',
             deadline: campaign.reviewSubmissionDeadline || '',
-            campaignImageUrl: campaign.basicInfo.profileImageUrl,
+            campaignImageUrl: campaign.campaignImageUrl,
             participationStatus: campaign.participationStatus || '',
             handleButtonClick:
               mapLinkAndButtonText[
-                campaign.participationStatus as keyof typeof mapLinkAndButtonText
-              ].handleButtonClick,
+                campaign.nextAction as keyof typeof mapLinkAndButtonText
+              ]?.handleButtonClick,
             buttonText:
               mapLinkAndButtonText[
-                campaign.participationStatus as keyof typeof mapLinkAndButtonText
-              ].buttonText,
+                campaign.nextAction as keyof typeof mapLinkAndButtonText
+              ]?.buttonText,
           };
           return <Card key={campaign.campaignId} {...card} />;
         })}

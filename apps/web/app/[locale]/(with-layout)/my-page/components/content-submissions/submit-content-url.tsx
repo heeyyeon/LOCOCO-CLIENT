@@ -8,17 +8,15 @@ import { ContentSubmissionsFormData } from '../../hooks/use-content-submissions'
 interface SubmitContentUrlProps {
   formData: ContentSubmissionsFormData;
   errors: string | undefined;
-  updatePostUrl: (
-    campaignId: number,
-    postUrl: string,
-    contentLevel?: string
-  ) => void;
+  updatePostUrl: (fieldId: string, postUrl: string) => void;
+  fieldId: string;
 }
 
 export default function SubmitContentUrl({
   formData,
   errors,
   updatePostUrl,
+  fieldId,
 }: SubmitContentUrlProps) {
   const t = useTranslations('myPage.contentSubmissions.submitContentUrl');
   return (
@@ -29,14 +27,7 @@ export default function SubmitContentUrl({
       </div>
       <Input
         value={formData.postUrl}
-        onChange={(e) =>
-          formData.campaignId &&
-          updatePostUrl(
-            formData.campaignId,
-            e.target.value,
-            formData.contentLevel
-          )
-        }
+        onChange={(e) => updatePostUrl(fieldId, e.target.value)}
         className="w-full"
       />
       {errors && <ErrorNotice message={errors} />}

@@ -7,7 +7,7 @@ import { useTranslations } from 'next-intl';
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import {
-  ApiResponseReviewMediaResponse,
+  ApiResponseMediaPresignedUrlResponse,
   ApiResponseReviewReceiptResponse,
 } from '@typescript-swagger/data-contracts';
 import { apiRequest } from 'app/api/apiRequest';
@@ -21,33 +21,52 @@ import { CONTENT_SUBMISSION_TEXT_ERROR_MESSAGE } from '../constant/content-submi
 import { useFetchCampaignReview } from './use-campaign-review';
 
 export type ContentSubmissionsFormData = {
+  formId: string;
   campaign: string;
-  campaignId?: number;
-  contentType: string;
+  campaignId: number;
   campaignProductMedia: File[];
   captionAndHashtags: string;
+  postUrl?: string;
+  contentPlatform?: string;
+  nowReviewRound?: string;
+  revisionRequestedAt?: string;
+  brandNote?: string;
 };
 
 export type ContentSubmissionsForm = {
   submissions: ContentSubmissionsFormData[];
 };
 
-export const useContentSubmissions = (onSuccess?: () => void) => {
-  const t = useTranslations('fileUploader');
-  const { data: campaignList, isPending, isError } = useFetchCampaignReview();
+interface CombinedReviewData {
+  firstMediaUrls?: File[];
+  firstCaptionWithHashtags?: string;
+  firstPostUrl?: string;
+  secondMediaUrls?: File[];
+  secondCaptionWithHashtags?: string;
+  secondPostUrl?: string;
+}
 
-  const campaignCount = campaignList?.data?.length || 0;
+export const useContentSubmissions = (
+  campaignId?: number,
+  reviewRound?: string,
+  onSuccess?: () => void
+) => {
+  const t = useTranslations('fileUploader');
+
+  const {
+    data: campaignList,
+    isPending,
+    isError,
+  } = useFetchCampaignReview(campaignId as number, reviewRound as string);
 
   const contentSubmissionsSchema = z.object({
     submissions: z.array(
       z.object({
+        formId: z.string(),
         campaign: z
           .string()
           .min(1, CONTENT_SUBMISSION_TEXT_ERROR_MESSAGE.CAMPAIGN),
-        campaignId: z.number().optional(),
-        contentType: z
-          .string()
-          .min(1, CONTENT_SUBMISSION_TEXT_ERROR_MESSAGE.CONTENT_TYPE),
+        campaignId: z.number(),
         campaignProductMedia: createMultipleMediaValidator(
           t(FILE_ERROR_MESSAGE_KEYS.NOT_ALLOWED_FILE_TYPE),
           t(FILE_ERROR_MESSAGE_KEYS.EMPTY_FILE)
@@ -55,6 +74,11 @@ export const useContentSubmissions = (onSuccess?: () => void) => {
         captionAndHashtags: z
           .string()
           .min(1, CONTENT_SUBMISSION_TEXT_ERROR_MESSAGE.CAPTION_AND_HASHTAGS),
+        contentPlatform: z.string().optional(),
+        nowReviewRound: z.string().optional(),
+        revisionRequestedAt: z.string().optional(),
+        postUrl: z.string().optional(),
+        brandNote: z.string().optional(),
       })
     ),
   });
@@ -70,19 +94,7 @@ export const useContentSubmissions = (onSuccess?: () => void) => {
   } = useForm<ContentSubmissionsForm>({
     resolver: zodResolver(contentSubmissionsSchema),
     defaultValues: {
-      submissions:
-        campaignCount > 0
-          ? Array.from({ length: campaignCount }, (_, index) => {
-              const campaignData = campaignList?.data?.[index];
-              return {
-                campaign: campaignData?.title || '',
-                campaignId: campaignData?.campaignId || undefined,
-                contentType: '',
-                campaignProductMedia: [],
-                captionAndHashtags: '',
-              };
-            })
-          : [],
+      submissions: [],
     },
     mode: 'onChange',
   });
@@ -95,145 +107,154 @@ export const useContentSubmissions = (onSuccess?: () => void) => {
   const formData = watch();
 
   useEffect(() => {
-    if (campaignList?.data && campaignList.data.length > 0) {
-      const newSubmissions = campaignList.data.map((campaignData) => ({
-        campaign: campaignData.title || '',
-        campaignId: campaignData.campaignId || undefined,
-        contentType: '',
-        campaignProductMedia: [],
-        captionAndHashtags: '',
-      }));
+    if (
+      campaignList?.data?.reviewContents &&
+      campaignList.data.reviewContents.length > 0
+    ) {
+      const newSubmissions: ContentSubmissionsFormData[] = [];
+
+      campaignList.data.reviewContents.forEach(
+        (reviewContent, index: number) => {
+          if (reviewContent) {
+            const submission: ContentSubmissionsFormData = {
+              formId: `form-${campaignId}-${index}`,
+              campaign: campaignList.data?.title || '',
+              campaignId: campaignId || 0,
+              campaignProductMedia: [],
+              captionAndHashtags: reviewContent.captionWithHashtags || '',
+              contentPlatform: reviewContent.contentType || '',
+              nowReviewRound: reviewContent.nowReviewRound || '',
+              revisionRequestedAt: reviewContent.revisionRequestedAt || '',
+              postUrl: '',
+              brandNote: reviewContent.brandNote || '',
+            };
+
+            newSubmissions.push(submission);
+          }
+        }
+      );
 
       reset({
         submissions: newSubmissions,
       });
     }
-  }, [campaignList, reset]);
+  }, [campaignList, reset, campaignId]);
 
-  const updateCampaign = (campaignId: number, campaign: string) => {
-    const index = formData.submissions.findIndex(
-      (sub) => sub.campaignId === campaignId
-    );
-    if (index !== -1) {
-      setValue(`submissions.${index}.campaign`, campaign, {
-        shouldValidate: true,
-      });
-    }
-  };
-
-  const updateContentType = (campaignId: number, contentType: string) => {
-    const index = formData.submissions.findIndex(
-      (sub) => sub.campaignId === campaignId
-    );
-    if (index !== -1) {
-      setValue(`submissions.${index}.contentType`, contentType, {
-        shouldValidate: true,
-      });
+  const updateCampaign = (fieldId: string, campaign: string) => {
+    const fieldIndex = fields.findIndex((field) => field.id === fieldId);
+    if (fieldIndex !== -1) {
+      setValue(`submissions.${fieldIndex}.campaign`, campaign);
     }
   };
 
   const updateCampaignProductMedia = (
-    campaignId: number,
+    fieldId: string,
     campaignProductMedia: File[]
   ) => {
-    const index = formData.submissions.findIndex(
-      (sub) => sub.campaignId === campaignId
-    );
-    if (index !== -1) {
+    const fieldIndex = fields.findIndex((field) => field.id === fieldId);
+    console.log(fieldIndex, campaignProductMedia);
+    if (fieldIndex !== -1) {
       setValue(
-        `submissions.${index}.campaignProductMedia`,
-        campaignProductMedia,
-        {
-          shouldValidate: true,
-        }
+        `submissions.${fieldIndex}.campaignProductMedia`,
+        campaignProductMedia
       );
     }
   };
 
   const updateCaptionAndHashtags = (
-    campaignId: number,
+    fieldId: string,
     captionAndHashtags: string
   ) => {
-    const index = formData.submissions.findIndex(
-      (sub) => sub.campaignId === campaignId
-    );
-    if (index !== -1) {
-      setValue(`submissions.${index}.captionAndHashtags`, captionAndHashtags, {
-        shouldValidate: true,
-      });
+    const fieldIndex = fields.findIndex((field) => field.id === fieldId);
+    console.log(fieldIndex, captionAndHashtags);
+    if (fieldIndex !== -1) {
+      setValue(
+        `submissions.${fieldIndex}.captionAndHashtags`,
+        captionAndHashtags
+      );
     }
   };
 
-  const getFormData = (campaignId: number) => {
-    const index = formData.submissions.findIndex(
-      (sub) => sub.campaignId === campaignId
-    );
-    if (index === -1) return null;
-
-    return {
-      campaign: formData.submissions[index]?.campaign || '',
-      campaignId: formData.submissions[index]?.campaignId,
-      contentType: formData.submissions[index]?.contentType || '',
-      campaignProductMedia:
-        formData.submissions[index]?.campaignProductMedia || [],
-      captionAndHashtags: formData.submissions[index]?.captionAndHashtags || '',
-    };
+  const updatePostUrl = (fieldId: string, postUrl: string) => {
+    const fieldIndex = fields.findIndex((field) => field.id === fieldId);
+    if (fieldIndex !== -1) {
+      setValue(`submissions.${fieldIndex}.postUrl`, postUrl);
+    }
   };
 
-  const getErrors = (campaignId: number) => {
-    const index = formData.submissions.findIndex(
-      (sub) => sub.campaignId === campaignId
-    );
-    if (index === -1) return {};
+  const getFormData = (fieldId: string) => {
+    // useFieldArray의 field.id를 사용하여 인덱스 찾기
+    const fieldIndex = fields.findIndex((field) => field.id === fieldId);
+    if (fieldIndex === -1) return null;
+    return formData.submissions[fieldIndex];
+  };
+
+  const getErrors = (fieldId: string) => {
+    // useFieldArray의 field.id를 사용하여 인덱스 찾기
+    const fieldIndex = fields.findIndex((field) => field.id === fieldId);
+    if (fieldIndex === -1) return {};
 
     return {
-      campaign: errors.submissions?.[index]?.campaign?.message,
-      contentType: errors.submissions?.[index]?.contentType?.message,
+      campaign: errors.submissions?.[fieldIndex]?.campaign?.message,
       campaignProductMedia:
-        errors.submissions?.[index]?.campaignProductMedia?.message,
+        errors.submissions?.[fieldIndex]?.campaignProductMedia?.message,
       captionAndHashtags:
-        errors.submissions?.[index]?.captionAndHashtags?.message,
+        errors.submissions?.[fieldIndex]?.captionAndHashtags?.message,
+      postUrl: errors.submissions?.[fieldIndex]?.postUrl?.message,
     };
   };
 
   const onSubmit = async (data: ContentSubmissionsForm) => {
     try {
-      await Promise.all(
-        data.submissions.map(async (submission) => {
-          if (!submission.campaignId) {
-            throw new Error('캠페인 ID가 없습니다.');
-          }
+      for (const submission of data.submissions) {
+        if (submission.campaignProductMedia.length > 0) {
+          const mediaUrls = await getMediaPresignedUrls(
+            submission.campaignProductMedia
+          );
+          const uploadedUrls = await Promise.all(
+            submission.campaignProductMedia.map((file, index) =>
+              uploadMediaToPresignedUrl(file, mediaUrls[index] || '')
+            )
+          );
 
-          let mediaUrls: string[] = [];
+          submission.campaignProductMedia = uploadedUrls.map(
+            (url) => new File([], url)
+          );
+        }
+      }
 
-          if (submission.campaignProductMedia.length > 0) {
-            const presignedUrls = await getMediaPresignedUrls(
-              submission.campaignProductMedia
-            );
+      // 리뷰 제출 API 호출 - 모든 폼 데이터를 하나의 요청으로 합쳐서 전송
+      const reviewData: CombinedReviewData = {};
 
-            mediaUrls = await Promise.all(
-              submission.campaignProductMedia.map(async (file, index) => {
-                return await uploadMediaToPresignedUrl(
-                  file,
-                  presignedUrls[index] || ''
-                );
-              })
-            );
-          }
+      data.submissions.forEach((submission, index) => {
+        if (index === 0) {
+          // 첫 번째 폼은 first 필드에
+          reviewData.firstMediaUrls = submission.campaignProductMedia;
+          reviewData.firstCaptionWithHashtags = submission.captionAndHashtags;
+          reviewData.firstPostUrl = submission.postUrl;
+        } else if (index === 1) {
+          // 두 번째 폼은 second 필드에
+          reviewData.secondMediaUrls = submission.campaignProductMedia;
+          reviewData.secondCaptionWithHashtags = submission.captionAndHashtags;
+          reviewData.secondPostUrl = submission.postUrl;
+        }
+      });
 
-          const reviewData = {
-            contentType: submission.contentType,
-            mediaUrls: mediaUrls,
-            captionWithHashtags: submission.captionAndHashtags,
-          };
+      // 첫 번째 submission의 campaignId와 nowReviewRound 사용
+      const firstSubmission = data.submissions[0];
+      if (!firstSubmission) {
+        throw new Error('제출할 데이터가 없습니다.');
+      }
 
-          await submitReviewApi(submission.campaignId, reviewData);
-        })
+      await submitReviewApi(
+        firstSubmission.campaignId,
+        reviewData,
+        firstSubmission.nowReviewRound || 'FIRST'
       );
 
       onSuccess?.();
     } catch (error) {
-      console.error('콘텐츠 제출 실패:', error);
+      console.error('리뷰 제출 실패:', error);
       throw error;
     }
   };
@@ -257,15 +278,16 @@ export const useContentSubmissions = (onSuccess?: () => void) => {
     validateAllForms,
     isAllFormsValid,
     updateCampaign,
-    updateContentType,
     updateCampaignProductMedia,
     updateCaptionAndHashtags,
+    updatePostUrl,
     trigger,
+    watchData: formData,
   };
 };
 
 const getMediaPresignedUrls = async (file: File[]): Promise<string[]> => {
-  const response = await apiRequest<ApiResponseReviewMediaResponse>({
+  const response = await apiRequest<ApiResponseMediaPresignedUrlResponse>({
     endPoint: '/api/reviews/media',
     method: 'POST',
     data: {
@@ -298,17 +320,21 @@ const uploadMediaToPresignedUrl = async (
   return response.url;
 };
 
-interface ReviewData {
-  contentType: string;
-  mediaUrls: string[];
-  captionWithHashtags: string;
-}
+const submitReviewApi = async (
+  campaignId: number,
+  data: CombinedReviewData,
+  round: string
+) => {
+  // API 스펙에 따라 라운드별로 다른 엔드포인트 사용
+  const endPoint =
+    round === 'FIRST'
+      ? `/api/campaignReviews/${campaignId}/first`
+      : `/api/campaignReviews/${campaignId}/second`;
 
-const submitReviewApi = async (campaignId: number, data: ReviewData) => {
   const response = await apiRequest<ApiResponseReviewReceiptResponse>({
-    endPoint: `/api/campaignReviews/${campaignId}/first`,
+    endPoint,
     method: 'POST',
-    data: data,
+    data,
   });
 
   if (!response.success) {
