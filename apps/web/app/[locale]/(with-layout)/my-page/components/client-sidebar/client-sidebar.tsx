@@ -22,7 +22,7 @@ export default function ClientSideBar({
   const userProfileImage = profileData?.profileImageUrl;
   //TODO: email, instagram 추가
 
-  const userType = profileQuery.data?.data?.creatorType || 'NORMAL';
+  const userType = profileQuery.data?.data?.creatorStatus || '';
 
   if (profileQuery.isLoading) {
     return <SideBarSkeleton />;

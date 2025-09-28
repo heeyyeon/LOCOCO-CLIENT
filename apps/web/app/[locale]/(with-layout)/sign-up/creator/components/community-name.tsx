@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { UseFormReturn } from 'react-hook-form';
 
 import { useTranslations } from 'next-intl';
@@ -17,6 +18,7 @@ export function CommunityName({
   handleCheckAvailability,
 }: CommunityNameProps) {
   const t = useTranslations('creatorSignup.communityName');
+  const [isAvailable, setIsAvailable] = useState(false);
 
   return (
     <FormSection title={t('title')} description={t('description')}>
@@ -26,6 +28,7 @@ export function CommunityName({
         placeholder={t('idPlaceholder')}
         register={form.register('id')}
         error={form.formState.errors.id?.message}
+        successMessage={isAvailable ? t('idAvailable') : undefined}
         rightContent={
           <Button
             type="button"
@@ -38,7 +41,10 @@ export function CommunityName({
             {t('checkAvailabilityButton')}
           </Button>
         }
-        onRightContentClick={handleCheckAvailability}
+        onRightContentClick={() => {
+          handleCheckAvailability();
+          setIsAvailable(true);
+        }}
       />
     </FormSection>
   );

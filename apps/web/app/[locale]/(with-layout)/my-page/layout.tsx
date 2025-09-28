@@ -14,7 +14,6 @@ export default async function Layout({
     { label: t('myCampaign'), value: 'my-campaign' },
     { label: t('editProfile'), value: 'edit-profile' },
     { label: t('connectSNS'), value: 'connect-sns' },
-    { label: t('contentSubmissions'), value: 'content-submissions' },
   ];
 
   return (

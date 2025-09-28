@@ -109,6 +109,32 @@
       "titleRequired": "Campaign title is required"
     }
   },
+  "brandMyPageEditProfile": {
+    "addressInfo": {
+      "addressInfoDescription": "This will be used in case of product misdelivery for returns.",
+      "addressInfoTitle": "Company Address Information",
+      "companyAddressLabel": "Street Address",
+      "companyAddressPlaceholder": "Search Postal Code",
+      "detailAddressLabel": "Detailed Address",
+      "detailAddressPlaceholder": "ex: Apt 201"
+    },
+    "basicInfo": {
+      "basicInfoTitle": "Basic Information",
+      "brandNameFieldLabel": "Brand Name",
+      "emailNotice": "To change your email, please contact Lococo",
+      "managerNameFieldLabel": "Contact Person’s Name",
+      "phoneNumberFieldLabel": "Contact Person’s Phone Number"
+    },
+    "formButton": {
+      "cancel": "Cancel",
+      "save": "Save"
+    },
+    "profileImage": {
+      "profileImage": "Profile Image",
+      "profileImageEditBtn": "Change Photo",
+      "profileImageFormTitle": "Profile Photo"
+    }
+  },
   "brandMyPageSideBar": {
     "checkApplicants": "Applicant Confirmation",
     "checkContents": "View Contents",
@@ -119,44 +145,45 @@
   },
   "brandSignup": {
     "brandInfo": {
-      "brandName": "",
-      "brandNamePlaceholder": "",
-      "contactName": "",
-      "contactNamePlaceholder": "",
-      "contactPhone": "",
-      "contactPhonePlaceholder": "",
-      "contactPosition": "",
-      "contactPositionPlaceholder": "",
-      "description": "",
-      "title": ""
+      "brandName": "Brand Name",
+      "brandNamePlaceholder": "ex: Lococo",
+      "contactName": "Contact Person’s Name",
+      "contactNamePlaceholder": "ex: Hong Gil-dong",
+      "contactPhone": "Contact Person’s Phone Number",
+      "contactPhonePlaceholder": "ex: XXXXXXXXXXX",
+      "contactPosition": "Contact Person’s Position",
+      "contactPositionPlaceholder": "ex: Assistant Manager",
+      "description": "Welcome! Please enter the information below for brand verification.",
+      "title": "Brand Information"
     },
     "companyAddress": {
-      "description": "",
-      "detailAddress": "",
-      "detailAddressPlaceholder": "",
-      "streetAddress": "",
-      "streetAddressPlaceholder": "",
-      "title": ""
+      "description": "This will be used in case of product misdelivery for returns.",
+      "detailAddress": "Detailed Address",
+      "detailAddressPlaceholder": "ex: Apt 201",
+      "streetAddress": "Street Address",
+      "streetAddressPlaceholder": "Search Postal Code",
+      "title": "Company Address Information"
     },
     "layout": {
-      "submit": "",
-      "title": ""
+      "back": "Back",
+      "submit": "Join",
+      "title": "Join Lococo Creator Community!"
     },
     "validation": {
-      "brandNameInvalidFormat": "",
-      "brandNameMaxLength": "",
-      "brandNameRequired": "",
-      "contactNameInvalidFormat": "",
-      "contactNameMaxLength": "",
-      "contactNameRequired": "",
-      "contactPhoneInvalid": "",
-      "contactPhoneRequired": "",
-      "contactPositionInvalidFormat": "",
-      "contactPositionMaxLength": "",
-      "contactPositionRequired": "",
-      "detailAddressMaxLength": "",
-      "detailAddressRequired": "",
-      "streetAddressRequired": ""
+      "brandNameInvalidFormat": "Please enter only Korean, English, and numbers.",
+      "brandNameMaxLength": "Brand name can be up to 30 characters.",
+      "brandNameRequired": "Please enter the brand name.",
+      "contactNameInvalidFormat": "Please enter in Korean only.",
+      "contactNameMaxLength": "Contact person’s name can be up to 10 characters.",
+      "contactNameRequired": "Please enter the contact person’s name.",
+      "contactPhoneInvalid": "Please enter a valid phone number.",
+      "contactPhoneRequired": "Please enter the contact person’s phone number.",
+      "contactPositionInvalidFormat": "Please enter in Korean only.",
+      "contactPositionMaxLength": "Contact person’s position can be up to 10 characters.",
+      "contactPositionRequired": "Please enter the contact person’s position.",
+      "detailAddressMaxLength": "Detailed address can be up to 30 characters.",
+      "detailAddressRequired": "Please enter the detailed address.",
+      "streetAddressRequired": "Please enter the street address."
     }
   },
   "campaignDetail": {
@@ -373,6 +400,10 @@
       "zip": "Zip/Postal Code"
     },
     "contentSubmissions": {
+      "brandNote": {
+        "description": "These are the revisions requested by the brand. Please update your content accordingly and re-upload it after making the changes.",
+        "firstReview": "Brand’s Note for 1st Review "
+      },
       "campaignProductMediaInput": {
         "description": "Drag and drop or click to upload the file.",
         "selectFile": "Select File",
@@ -382,6 +413,10 @@
         "description": "Please select a campaign",
         "selectCampaign": "Select a Campaign",
         "title": "Select a Campaign"
+      },
+      "content": {
+        "1stContent": "1st Content",
+        "2ndContent": "2nd Content"
       },
       "contentTypeSelect": {
         "instagramPost": "Instagram Post",
@@ -406,10 +441,6 @@
       "submitContentUrl": {
         "description": "Submit the URL of your uploaded review content for confirmation and tracking.",
         "title": "Submit Content URL"
-      },
-      "content": {
-        "1stContent": "1st Content",
-        "2ndContent": "2nd Content"
       }
     },
     "editProfile": {
@@ -509,28 +540,28 @@
       "myCampaign": "My Campaign"
     },
     "myCampaign": {
+      "buttonText": {
+        "confirmAddress": "Confirm Address",
+        "revisionRequested": "Revision Requested",
+        "uploadFirstReview": "Upload First Review",
+        "uploadSecondReview": "Upload Second Review",
+        "viewDetails": "View Details",
+        "viewNote": "View Note",
+        "viewNotes": "View Notes",
+        "viewResults": "View Results"
+      },
       "empty": {
         "title": "There is no campaign has been applied."
       },
-      "title": "My Campaign",
-      "buttonText": {
-        "viewDetails": "View Details",
-        "confirmAddress": "Confirm Address",
-        "uploadFirstReview": "Upload First Review",
-        "revisionRequested": "Revision Requested",
-        "viewNote": "View Note",
-        "uploadSecondReview": "Upload Second Review",
-        "viewResults": "View Results",
-        "viewNotes": "View Notes"
-      },
       "participationStatus": {
-        "pending": "Pending",
-        "approved": "Approved",
-        "rejected": "Rejected",
         "active": "Active",
+        "approved": "Approved",
         "completed": "Completed",
-        "expired": "Expired"
-      }
+        "expired": "Expired",
+        "pending": "Pending",
+        "rejected": "Rejected"
+      },
+      "title": "My Campaign"
     },
     "saveFormModal": {
       "description": "Your changes have been saved.",
@@ -567,31 +598,5 @@
     "confirmButton": "Yes",
     "message": "Campaign applications are only available to creator members.\nWould you like to sign up as a creator?",
     "title": "Creator Suggestion"
-  },
-  "brandMyPageEditProfile": {
-    "profileImage": {
-      "profileImageFormTitle": "",
-      "profileImage": "",
-      "profileImageEditBtn": ""
-    },
-    "basicInfo": {
-      "basicInfoTitle": "",
-      "brandNameFieldLabel": "",
-      "managerNameFieldLabel": "",
-      "phoneNumberFieldLabel": "",
-      "emailNotice": ""
-    },
-    "addressInfo": {
-      "addressInfoTitle": "",
-      "addressInfoDescription": "",
-      "companyAddressLabel": "",
-      "companyAddressPlaceholder": "",
-      "detailAddressLabel": "",
-      "detailAddressPlaceholder": ""
-    },
-    "formButton": {
-      "cancel": "",
-      "save": ""
-    }
   }
 }

@@ -36,7 +36,7 @@ export default function MyCampaign() {
     isPending,
     isError,
   } = useMyCampaign({
-    page: currentPage - 1, // API는 0-based, UI는 1-based
+    page: currentPage - 1,
     size: 9,
   });
 
@@ -48,7 +48,11 @@ export default function MyCampaign() {
   }, [campaignData?.totalPages]);
 
   if (isPending) {
-    return <LoadingSvg />;
+    return (
+      <div className="flex h-[50rem] w-full items-center justify-center">
+        <LoadingSvg />
+      </div>
+    );
   }
   if (isError || !campaignData?.campaigns?.length) {
     return <Empty translationKey="myPage.myCampaign.empty" />;
