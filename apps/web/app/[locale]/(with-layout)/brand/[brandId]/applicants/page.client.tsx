@@ -181,11 +181,14 @@ export default function BrandApplicantsPageClient() {
       setRowSelection(currentPageRows);
     } else {
       // 현재 페이지의 모든 row 해제 (다른 페이지 선택 상태 유지)
+      // APPROVED 상태가 아닌 항목들만 해제
       const currentPageRows: Record<string, boolean> = {
         ...rowSelection,
       };
       data?.data?.applicants?.forEach((applicant) => {
-        delete currentPageRows[applicant.creatorCampaignId.toString()];
+        if (applicant.approveStatus !== 'APPROVED') {
+          delete currentPageRows[applicant.creatorCampaignId.toString()];
+        }
       });
       setRowSelection(currentPageRows);
     }
@@ -297,7 +300,8 @@ export default function BrandApplicantsPageClient() {
               checked={
                 data?.data?.applicants?.every(
                   (applicant) =>
-                    rowSelection[applicant.creatorCampaignId.toString()]
+                    rowSelection[applicant.creatorCampaignId.toString()] ||
+                    applicant.approveStatus === 'APPROVED'
                 ) && data?.data?.applicants?.length > 0
               }
               onCheckedChange={handleAllSelectChange}
@@ -307,10 +311,11 @@ export default function BrandApplicantsPageClient() {
               className="text-inter-body1 cursor-pointer font-bold text-gray-600"
             >
               전체 선택하기(
-              {
-                Object.keys(rowSelection).filter((key) => rowSelection[key])
-                  .length
-              }
+              {data?.data?.applicants?.filter(
+                (applicant) =>
+                  rowSelection[applicant.creatorCampaignId.toString()] ||
+                  applicant.approveStatus === 'APPROVED'
+              ).length || 0}
               /{data?.data?.applicants?.length || 0})
             </label>
           </div>
@@ -320,7 +325,13 @@ export default function BrandApplicantsPageClient() {
             size="sm"
             rounded="md"
             className="grow-0"
-            disabled={Object.keys(rowSelection).length === 0}
+            disabled={
+              data?.data?.applicants?.filter(
+                (applicant) =>
+                  rowSelection[applicant.creatorCampaignId.toString()] ||
+                  applicant.approveStatus === 'APPROVED'
+              ).length === 0
+            }
           >
             <SvgCheck size={20} />
             <span className="text-[1.4rem]">승인하기</span>

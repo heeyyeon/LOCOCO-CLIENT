@@ -42,12 +42,18 @@ const createColumns = (): ColumnDef<ApplicantData>[] => [
     cell: ({ row }: { row: Row<ApplicantData> }) => (
       <Checkbox
         id={`cell-checkbox-${row.id}`}
-        checked={row.getIsSelected()}
-        disabled={!row.getCanSelect()}
+        checked={
+          row.getIsSelected() || row.original.approveStatus === 'APPROVED'
+        }
+        disabled={
+          !row.getCanSelect() || row.original.approveStatus === 'APPROVED'
+        }
         onCheckedChange={(checked) => {
-          row.getToggleSelectedHandler()({
-            target: { checked },
-          } as React.ChangeEvent<HTMLInputElement>);
+          if (row.original.approveStatus !== 'APPROVED') {
+            row.getToggleSelectedHandler()({
+              target: { checked },
+            } as React.ChangeEvent<HTMLInputElement>);
+          }
         }}
       />
     ),
