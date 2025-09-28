@@ -4,13 +4,187 @@
   "brandMyPage": {
     "myCampaign": "Mis Campañas"
   },
+  "brandMyPageCreateCampaign": {
+    "basicInfo": {
+      "category": "Categoría",
+      "creatorCount": "Número de creadores a reclutar",
+      "creatorCountPlaceholder": "Ingrese un número",
+      "language": "Idioma de la campaña",
+      "title": "Título de la campaña",
+      "titlePlaceholder": "Ingrese el título de la campaña",
+      "type": "Tipo de campaña"
+    },
+    "buttons": {
+      "publish": "Publicar campaña",
+      "save": "Guardar"
+    },
+    "conditions": {
+      "inputPlaceholder": "Texto",
+      "joinConditionDescription": "Por favor, describa las condiciones para los creadores que pueden participar en esta campaña",
+      "joinConditionTitle": "Requisitos de participación de los creadores",
+      "rewardDescription": "Por favor, describa las condiciones para los creadores que pueden participar en esta campaña",
+      "rewardTitle": "Recompensas para los creadores",
+      "submitConditionDescription": "Por favor, describa las condiciones para los creadores que pueden participar en esta campaña",
+      "submitConditionTitle": "Requisitos de contenido de los creadores"
+    },
+    "errorMessage": {
+      "campaignAnnounceDay": "Ingrese la fecha de anuncio de los ganadores de la campaña.",
+      "campaignAnnounceTime": "Ingrese la hora de anuncio de los ganadores de la campaña.",
+      "campaignCategory": "Ingrese la categoría de la campaña.",
+      "campaignCreatorCount": "Ingrese el número de creadores a reclutar.",
+      "campaignDueDay": "Ingrese el título de la campaña.",
+      "campaignDueTime": "Ingrese el título de la campaña.",
+      "campaignEndDay": "Ingrese la fecha de cierre de postulaciones de la campaña.",
+      "campaignEndTime": "Ingrese la hora de cierre de postulaciones de la campaña.",
+      "campaignLanguage": "Ingrese el idioma de la campaña.",
+      "campaignMediaDetail": "Suba las fotos para la página de detalles del contenido.",
+      "campaignMediaThumbnail": "Suba las fotos en miniatura del contenido.",
+      "campaignPlatformSelect": "Seleccione la plataforma de contenido.",
+      "campaignStartDay": "Ingrese la fecha de inicio de postulaciones de la campaña.",
+      "campaignStartTime": "Ingrese la hora de inicio de postulaciones de la campaña.",
+      "campaignTitle": "Ingrese el título de la campaña.",
+      "campaignType": "Ingrese el tipo de campaña.",
+      "detailMaxFiles": "Puede subir hasta 15 fotos de detalle.",
+      "firstContentMaxExceeded": "Puede seleccionar hasta 2 contenidos.",
+      "secondContentMaxExceeded": "Puede seleccionar hasta 2 contenidos.",
+      "thumbnailMaxFiles": "Puede subir hasta 5 miniaturas."
+    },
+    "media": {
+      "detailDescription": "Estas son las imágenes que aparecerán en la página de detalles de la campaña. Por favor, suba imágenes en alta resolución. Se pueden subir hasta 15 imágenes.",
+      "detailTitle": "Fotos de la página de detalles del contenido",
+      "thumbnailDescription": "Estas son las imágenes que aparecerán como miniaturas de la campaña. Por favor, suba imágenes en alta resolución. Se pueden subir hasta 5 imágenes.",
+      "thumbnailTitle": "Fotos en miniatura del contenido"
+    },
+    "options": {
+      "category": {
+        "MAKEUP": "Maquillaje",
+        "SKINCARE": "Cuidado de la piel",
+        "SUNCARE": "Cuidado solar"
+      },
+      "language": {
+        "EN": "Inglés",
+        "ES": "Español"
+      },
+      "type": {
+        "CONTENTS": "Contenido",
+        "EXCLUSIVE": "Exclusivo",
+        "GIVEAWAY": "Sorteo"
+      }
+    },
+    "pageTitle": "Información de la campaña",
+    "platform": {
+      "description": "(Se pueden seleccionar hasta 2.)",
+      "firstContent": "Primer contenido",
+      "secondContent": "Segundo contenido",
+      "title": "Seleccione la plataforma de contenido"
+    },
+    "schedule": {
+      "announceDate": "Fecha de anuncio de ganadores de la campaña",
+      "announceTime": "Hora de anuncio de ganadores de la campaña",
+      "dueDate": "Fecha límite de entrega del segundo contenido",
+      "dueTime": "Hora límite de entrega del segundo contenido",
+      "endDate": "Fecha de cierre de postulaciones de la campaña",
+      "endTime": "Hora de cierre de postulaciones de la campaña",
+      "placeholders": {
+        "amPm": "AM/PM",
+        "day": "Día",
+        "hour": "Hora",
+        "minute": "Minuto",
+        "month": "Mes",
+        "year": "Año"
+      },
+      "startDate": "Fecha de inicio de postulaciones de la campaña",
+      "startTime": "Hora de inicio de postulaciones de la campaña"
+    },
+    "validation": {
+      "conditionRequired": "Ingrese las condiciones",
+      "creatorCountRequired": "El número de creadores a reclutar es obligatorio",
+      "detailMaxFiles": "Puede subir hasta 15 fotos de detalle",
+      "firstContentMaxExceeded": "Puede seleccionar hasta 2 primeros contenidos",
+      "firstContentMinRequired": "Debe seleccionar al menos 1 primer contenido",
+      "rewardRequired": "Ingrese las recompensas",
+      "secondContentMaxExceeded": "Puede seleccionar hasta 2 segundos contenidos",
+      "secondContentRequiresFirst": "Debe seleccionar el primer contenido antes de elegir el segundo",
+      "thumbnailMaxFiles": "Puede subir hasta 5 miniaturas",
+      "titleRequired": "El título de la campaña es obligatorio"
+    }
+  },
+  "brandMyPageEditProfile": {
+    "addressInfo": {
+      "addressInfoDescription": "Se solicita en caso de devolución por envío incorrecto del producto.",
+      "addressInfoTitle": "Información de la dirección de la empresa",
+      "companyAddressLabel": "Dirección (calle)",
+      "companyAddressPlaceholder": "Buscar código postal",
+      "detailAddressLabel": "Dirección detallada",
+      "detailAddressPlaceholder": "ej: 201"
+    },
+    "basicInfo": {
+      "basicInfoTitle": "Información básica",
+      "brandNameFieldLabel": "Nombre de la marca",
+      "emailNotice": "Para cambiar el correo electrónico, por favor contacte a Lococo",
+      "managerNameFieldLabel": "Nombre del responsable",
+      "phoneNumberFieldLabel": "Teléfono del responsable"
+    },
+    "formButton": {
+      "cancel": "Cancelar",
+      "save": "Guardar"
+    },
+    "profileImage": {
+      "profileImage": "Imagen de perfil",
+      "profileImageEditBtn": "Cambiar foto",
+      "profileImageFormTitle": "Foto de perfil"
+    }
+  },
   "brandMyPageSideBar": {
-    "checkApplicants": "Revisar Solicitantes",
+    "checkApplicants": "Confirmación de solicitantes",
     "checkContents": "Revisar Contenidos",
     "dashboard": "Tablero de campañas",
     "editProfile": "Editar perfil",
     "makeNewCampaign": "Crear una nueva campaña",
     "myCampaign": "Mis Campañas"
+  },
+  "brandSignup": {
+    "brandInfo": {
+      "brandName": "Nombre de la marca",
+      "brandNamePlaceholder": "ej: Lococo",
+      "contactName": "Nombre del responsable",
+      "contactNamePlaceholder": "ej: Hong Gil-dong",
+      "contactPhone": "Teléfono del responsable",
+      "contactPhonePlaceholder": "ej: XXXXXXXXXXX",
+      "contactPosition": "Cargo del responsable",
+      "contactPositionPlaceholder": "ej: Subgerente",
+      "description": "¡Bienvenido(a)! Por favor ingrese la siguiente información para la verificación de la marca.",
+      "title": "Información de la marca"
+    },
+    "companyAddress": {
+      "description": "Se solicita en caso de devolución por envío incorrecto del producto.",
+      "detailAddress": "Dirección detallada",
+      "detailAddressPlaceholder": "ej: 201",
+      "streetAddress": "Dirección (calle)",
+      "streetAddressPlaceholder": "Buscar código postal",
+      "title": "Información de la dirección de la empresa"
+    },
+    "layout": {
+      "back": "Atrás",
+      "submit": "Unirse",
+      "title": "¡Únete a la Comunidad de Creadores de Lococo!"
+    },
+    "validation": {
+      "brandNameInvalidFormat": "Por favor ingrese solo en coreano, inglés y números.",
+      "brandNameMaxLength": "El nombre de la marca puede tener hasta 30 caracteres.",
+      "brandNameRequired": "Por favor ingrese el nombre de la marca.",
+      "contactNameInvalidFormat": "Por favor ingrese solo en coreano.",
+      "contactNameMaxLength": "El nombre del responsable puede tener hasta 10 caracteres.",
+      "contactNameRequired": "Por favor ingrese el nombre del responsable.",
+      "contactPhoneInvalid": "Por favor ingrese un número de teléfono válido.",
+      "contactPhoneRequired": "Por favor ingrese el teléfono del responsable.",
+      "contactPositionInvalidFormat": "Por favor ingrese solo en coreano.",
+      "contactPositionMaxLength": "El cargo del responsable puede tener hasta 10 caracteres.",
+      "contactPositionRequired": "Por favor ingrese el cargo del responsable.",
+      "detailAddressMaxLength": "La dirección detallada puede tener hasta 30 caracteres.",
+      "detailAddressRequired": "Por favor ingrese la dirección detallada.",
+      "streetAddressRequired": "Por favor ingrese la dirección (calle)."
+    }
   },
   "campaignDetail": {
     "applicationPeriod": "Período de aplicación",
@@ -37,44 +211,44 @@
   },
   "creatorOptions": {
     "contentLanguage": {
-      "ENGLISH": "",
-      "ENGLISH_AND_SPANISH": "",
-      "SPANISH": ""
+      "ENGLISH": "Inglés",
+      "ENGLISH_AND_SPANISH": "Inglés y Español",
+      "SPANISH": "Español"
     },
     "gender": {
-      "FEMALE": "",
-      "MALE": "",
-      "NON_BINARY": "",
-      "PREFER_NOT_TO_SAY": ""
+      "FEMALE": "Femenino",
+      "MALE": "Masculino",
+      "NON_BINARY": "No binario",
+      "PREFER_NOT_TO_SAY": "Prefiero no decirlo"
     },
     "skinTone": {
-      "SHADE_1": "",
-      "SHADE_2": "",
-      "SHADE_3": "",
-      "SHADE_4": ""
+      "SHADE_1": "Tono 1",
+      "SHADE_2": "Tono 2",
+      "SHADE_3": "Tono 3",
+      "SHADE_4": "Tono 4"
     },
     "skinType": {
-      "COMBINATION": "",
-      "DRY": "",
-      "NORMAL": "",
-      "OILY": "",
-      "OTHERS": "",
-      "SENSITIVE": ""
+      "COMBINATION": "Mixta",
+      "DRY": "Seca",
+      "NORMAL": "Normal",
+      "OILY": "Grasa",
+      "OTHERS": "Otros",
+      "SENSITIVE": "Sensible"
     }
   },
   "creatorSignup": {
     "button": {
-      "back": "",
-      "next": ""
+      "back": "Atrás",
+      "next": "Siguiente"
     },
     "communityName": {
       "checkAvailabilityButton": "Comprobar disponibilidad",
       "description": "(La ID debe tener entre 1 y 15 caracteres y solo puede contener letras, números, puntos (.) y guiones bajos (_)).",
-      "idAvailable": "",
+      "idAvailable": "¡Genial! Este ID está disponible.",
       "idLabel": "ID",
       "idPlaceholder": "ej: ilovelococo",
-      "idRequired": "",
-      "idTaken": "",
+      "idRequired": "Por favor, verifique la disponibilidad del ID.",
+      "idTaken": "Lo siento, este ID ya está en uso.",
       "title": "Nombre de la comunidad"
     },
     "homeAddress": {
@@ -92,6 +266,11 @@
       "title": "Dirección de domicilio",
       "zipCodeLabel": "Código postal",
       "zipCodePlaceholder": "ej: 60606"
+    },
+    "layout": {
+      "back": "Atrás",
+      "next": "Siguiente",
+      "title": "¡Únete a la comunidad de creadores de Lococo!"
     },
     "personalDetails": {
       "birthLabel": "Fecha de nacimiento",
@@ -133,6 +312,7 @@
       "firstNameMaxLength": "Puedes usar hasta 20 caracteres.",
       "firstNameRequired": "El nombre es obligatorio.",
       "genderRequired": "El género es obligatorio.",
+      "idAvailabilityCheck": "Por favor, verifique la disponibilidad del ID.",
       "idInvalidFormat": "Este ID no está disponible. Por favor, revisa el formato del ID.",
       "idMaxLength": "Puede utilizar hasta 15 caracteres.",
       "idRequired": "El ID es obligatorio.",
@@ -154,9 +334,11 @@
   },
   "fileUploader": {
     "cannotUploadFile": "No se puede subir el archivo.",
+    "dragDropDescription": "Arrastra y suelta o haz clic para subir un archivo.",
     "emptyFile": "El archivo está vacío.",
     "fileTooLarge": "El archivo es demasiado grande.",
-    "notAllowedFileType": "Tipo de archivo no permitido."
+    "notAllowedFileType": "Tipo de archivo no permitido.",
+    "selectFile": "Seleccionar archivo"
   },
   "footer": {
     "copyright": "Lococo. Todos los derechos reservados.",
@@ -236,17 +418,17 @@
         "title": "Tipo de contenido"
       },
       "empty": {
-        "title": ""
+        "title": "No hay contenido para revisar."
       },
       "hashtagsInput": {
         "description": "Pegue exactamente el pie de foto y los hashtags que utilizó.",
         "title": "Envíe su pie de foto y hashtags"
       },
       "saveSubmitModal": {
-        "firstDescription": "",
-        "save": "",
-        "secondDescription": "",
-        "title": ""
+        "firstDescription": "Tu envío final ha sido recibido. Gracias por tu participación.",
+        "save": "Está bien",
+        "secondDescription": "Tu primer envío ha sido recibido. La marca lo revisará y enviará una nota.",
+        "title": "Enviado con éxito"
       }
     },
     "editProfile": {
@@ -347,9 +529,9 @@
     },
     "myCampaign": {
       "empty": {
-        "title": ""
+        "title": "No hay ninguna campaña solicitada."
       },
-      "title": ""
+      "title": "Mi campaña"
     },
     "saveFormModal": {
       "description": "Tus cambios han sido guardados.",

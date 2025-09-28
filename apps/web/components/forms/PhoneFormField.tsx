@@ -7,11 +7,6 @@ import { ErrorNotice } from '@lococo/design-system/error-notice';
 import { Input } from '@lococo/design-system/input';
 import { cn } from '@lococo/utils';
 
-import {
-  formatPhoneNumber,
-  removePhoneNumberFormat,
-} from '../../utils/format-phone-number';
-
 interface PhoneFormFieldProps {
   label: string;
   required?: boolean;
@@ -33,11 +28,8 @@ export function PhoneFormField({
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = e.target.value;
-    const formattedValue = formatPhoneNumber(inputValue);
-
-    setFormattedPhoneNumber(formattedValue);
-
-    const numericValue = removePhoneNumberFormat(inputValue);
+    const numericValue = inputValue.replace(/[^0-9]/g, '');
+    setFormattedPhoneNumber(numericValue);
     e.target.value = numericValue;
 
     register.onChange(e);
@@ -57,7 +49,7 @@ export function PhoneFormField({
           value={formattedPhoneNumber}
           onChange={handleInputChange}
           placeholder={placeholder}
-          maxLength={13}
+          maxLength={11}
         />
         {error && <ErrorNotice message={error} />}
       </div>
