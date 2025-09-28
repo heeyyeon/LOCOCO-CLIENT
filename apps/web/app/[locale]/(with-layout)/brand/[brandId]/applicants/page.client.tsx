@@ -96,7 +96,6 @@ export default function BrandApplicantsPageClient() {
       return (approveStatusFromQuery as ApproveStatusWithAll) || '';
     });
   const [rowSelection, setRowSelection] = useState<RowSelectionState>({});
-  const [filteredRowIds, setFilteredRowIds] = useState<string[]>([]);
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
 
   const { data, isFetching, isError } = useApplicants(
@@ -145,7 +144,6 @@ export default function BrandApplicantsPageClient() {
   const handleCampaignChange = useCallback(
     (campaignId: string) => {
       const params = new URLSearchParams(searchParams.toString());
-      console.log(params);
       const campaign = campaignInfos.find(
         (campaign) => campaign.campaignId.toString() === campaignId
       );
@@ -167,7 +165,30 @@ export default function BrandApplicantsPageClient() {
     const params = new URLSearchParams(searchParams.toString());
     setPage(newPage);
     params.set('page', newPage.toString());
+    setRowSelection({});
     router.replace(`${pathname}?${params.toString()}`);
+  };
+
+  const handleAllSelectChange = (checked: boolean) => {
+    if (checked) {
+      // 현재 페이지의 모든 row 선택 (전체 선택 상태 유지)
+      const currentPageRows: Record<string, boolean> = {
+        ...rowSelection,
+      };
+      data?.data?.applicants?.forEach((applicant) => {
+        currentPageRows[applicant.creatorCampaignId.toString()] = true;
+      });
+      setRowSelection(currentPageRows);
+    } else {
+      // 현재 페이지의 모든 row 해제 (다른 페이지 선택 상태 유지)
+      const currentPageRows: Record<string, boolean> = {
+        ...rowSelection,
+      };
+      data?.data?.applicants?.forEach((applicant) => {
+        delete currentPageRows[applicant.creatorCampaignId.toString()];
+      });
+      setRowSelection(currentPageRows);
+    }
   };
 
   // URL의 page 쿼리 파라미터 변경 시 state 동기화
@@ -274,25 +295,12 @@ export default function BrandApplicantsPageClient() {
             <Checkbox
               id="all-select"
               checked={
-                Object.keys(rowSelection).length ===
-                  data?.data?.pageInfo?.numberOfElements &&
-                Object.keys(rowSelection).length > 0 &&
-                Object.values(rowSelection).every(Boolean)
+                data?.data?.applicants?.every(
+                  (applicant) =>
+                    rowSelection[applicant.creatorCampaignId.toString()]
+                ) && data?.data?.applicants?.length > 0
               }
-              onCheckedChange={(checked) => {
-                if (checked) {
-                  // 필터링된 모든 row 선택
-                  const allRowsSelected: Record<string, boolean> = {};
-                  // 필터링된 row ID들을 사용하여 선택
-                  filteredRowIds.forEach((rowId) => {
-                    allRowsSelected[rowId] = true;
-                  });
-                  setRowSelection(allRowsSelected);
-                } else {
-                  // 모든 row 해제
-                  setRowSelection({});
-                }
-              }}
+              onCheckedChange={handleAllSelectChange}
             />
             <label
               htmlFor="all-select"
@@ -303,7 +311,7 @@ export default function BrandApplicantsPageClient() {
                 Object.keys(rowSelection).filter((key) => rowSelection[key])
                   .length
               }
-              /{data?.data?.pageInfo?.numberOfElements || 0})
+              /{data?.data?.applicants?.length || 0})
             </label>
           </div>
           <Button
@@ -312,7 +320,7 @@ export default function BrandApplicantsPageClient() {
             size="sm"
             rounded="md"
             className="grow-0"
-            disabled={true}
+            disabled={Object.keys(rowSelection).length === 0}
           >
             <SvgCheck size={20} />
             <span className="text-[1.4rem]">승인하기</span>
@@ -326,7 +334,6 @@ export default function BrandApplicantsPageClient() {
         <ApplicantsTable
           rowSelection={rowSelection}
           onRowSelectionChange={setRowSelection}
-          onFilteredRowIdsChange={setFilteredRowIds}
           columnFilters={columnFilters}
           onColumnFiltersChange={setColumnFilters}
           data={data.data.applicants}

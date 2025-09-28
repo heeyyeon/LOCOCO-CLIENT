@@ -1,5 +1,3 @@
-import { useEffect } from 'react';
-
 import {
   type CellContext,
   type ColumnDef,
@@ -127,7 +125,6 @@ const createColumns = (): ColumnDef<ApplicantData>[] => [
 interface ApplicantsTableProps {
   rowSelection: RowSelectionState;
   onRowSelectionChange: OnChangeFn<RowSelectionState>;
-  onFilteredRowIdsChange?: (rowIds: string[]) => void;
   columnFilters: ColumnFiltersState;
   onColumnFiltersChange: OnChangeFn<ColumnFiltersState>;
   data: ApplicantData[];
@@ -136,8 +133,6 @@ interface ApplicantsTableProps {
 export default function ApplicantsTable({
   rowSelection,
   onRowSelectionChange,
-
-  onFilteredRowIdsChange,
   columnFilters,
   onColumnFiltersChange,
   data,
@@ -155,15 +150,6 @@ export default function ApplicantsTable({
       columnFilters,
     },
   });
-
-  // 필터링된 데이터 길이와 row ID들을 부모에게 전달
-  useEffect(() => {
-    const filteredRows = table.getFilteredRowModel().rows;
-
-    const filteredRowIds = filteredRows.map((row) => row.id);
-
-    onFilteredRowIdsChange?.(filteredRowIds);
-  }, [table, columnFilters, onFilteredRowIdsChange]);
 
   return (
     <div className="relative max-h-[123.5rem]">
