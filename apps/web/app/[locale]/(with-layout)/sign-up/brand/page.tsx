@@ -48,6 +48,7 @@ export default function BrandSignupPage() {
         onSubmit={form.handleSubmit(handleSubmit)}
         isValid={form.formState.isValid}
         submitLabel={t('layout.submit')}
+        backLabel={t('layout.back')}
         isBackDisabled={true}
       >
         <FormSection
