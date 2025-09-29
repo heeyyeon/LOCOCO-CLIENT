@@ -15,8 +15,7 @@ export default function CreatorSnsLinksPage() {
   const router = useRouter();
   const t = useTranslations('creatorSnsLinksPage');
 
-  const { connectedSns, isLoading, handleConnectSns, handleCompleteSignup } =
-    useSnsStatus();
+  const { connectedSns, isLoading, handleCompleteSignup } = useSnsStatus();
 
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isShowConfirmModal, setIsShowConfirmModal] = useState(false);
@@ -64,8 +63,6 @@ export default function CreatorSnsLinksPage() {
       >
         <SnsConnection
           description={t('snsDescription')}
-          connectedSns={connectedSns}
-          onConnectSns={handleConnectSns}
           hasError={isSubmitted}
         />
       </SignupFormLayout>
