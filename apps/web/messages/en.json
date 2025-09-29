@@ -561,6 +561,9 @@
         "pending": "Pending",
         "rejected": "Rejected"
       },
+      "empty": {
+        "title": "There is no campaign has been applied."
+      },
       "title": "My Campaign"
     },
     "saveFormModal": {

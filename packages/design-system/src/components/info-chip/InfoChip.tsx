@@ -53,7 +53,7 @@ export default function InfoChip({
       {icon && (
         <SvgParticipant size={ICON_SIZES[size]} fill={getIconColor(color)} />
       )}
-      <span>{text}</span>
+      <span className="caption1 font-[700]">{text}</span>
     </div>
   );
 }

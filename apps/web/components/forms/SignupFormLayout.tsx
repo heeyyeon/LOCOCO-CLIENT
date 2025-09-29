@@ -13,6 +13,7 @@ interface SignupFormLayoutProps {
   onSubmit?: () => void;
   isValid?: boolean;
   submitLabel: string;
+  backLabel?: string;
   isBackDisabled?: boolean;
   isSubmitting?: boolean;
 }
@@ -24,6 +25,7 @@ export function SignupFormLayout({
   onBack,
   onSubmit,
   submitLabel,
+  backLabel = 'Back',
   isBackDisabled = true,
 }: SignupFormLayoutProps) {
   const t = useTranslations('creatorSignup.layout');
@@ -55,7 +57,7 @@ export function SignupFormLayout({
             rounded="md"
             disabled={isBackDisabled}
           >
-            {t('back')}
+            {backLabel}
           </Button>
           <Button
             type="button"

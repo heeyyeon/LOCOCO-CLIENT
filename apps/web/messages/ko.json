@@ -561,6 +561,9 @@
         "pending": "",
         "rejected": ""
       },
+      "empty": {
+        "title": "신청한 캠페인이 없습니다."
+      },
       "title": "나의 캠페인"
     },
     "saveFormModal": {

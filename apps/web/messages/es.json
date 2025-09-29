@@ -561,6 +561,9 @@
         "pending": "",
         "rejected": ""
       },
+      "empty": {
+        "title": "No hay ninguna campaña solicitada."
+      },
       "title": "Mi campaña"
     },
     "saveFormModal": {
