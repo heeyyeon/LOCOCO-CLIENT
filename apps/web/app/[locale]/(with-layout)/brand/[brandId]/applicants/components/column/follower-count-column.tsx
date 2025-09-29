@@ -1,6 +1,6 @@
-import React from 'react';
-
 import Image from 'next/image';
+
+import { followerCountFormatter } from '../../utils/follower-count-formatter';
 
 export default function FollowerCountColumn({
   instagramFollower,
@@ -18,11 +18,15 @@ export default function FollowerCountColumn({
           width={20}
           height={20}
         />
-        <p className="text-inter-body3 text-gray-800">{instagramFollower}</p>
+        <p className="text-inter-body3 text-gray-800">
+          {followerCountFormatter(instagramFollower)}
+        </p>
       </div>
       <div className="flex items-center gap-[0.8rem]">
         <Image src="/tiktok.svg" alt="tiktok logo" width={20} height={20} />
-        <p className="text-inter-body3 text-gray-800">{tiktokFollower}</p>
+        <p className="text-inter-body3 text-gray-800">
+          {followerCountFormatter(tiktokFollower)}
+        </p>
       </div>
     </div>
   );
