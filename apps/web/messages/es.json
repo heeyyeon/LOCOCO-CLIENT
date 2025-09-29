@@ -4,13 +4,187 @@
   "brandMyPage": {
     "myCampaign": "Mis Campañas"
   },
+  "brandMyPageCreateCampaign": {
+    "basicInfo": {
+      "category": "Categoría",
+      "creatorCount": "Número de creadores a reclutar",
+      "creatorCountPlaceholder": "Ingrese un número",
+      "language": "Idioma de la campaña",
+      "title": "Título de la campaña",
+      "titlePlaceholder": "Ingrese el título de la campaña",
+      "type": "Tipo de campaña"
+    },
+    "buttons": {
+      "publish": "Publicar campaña",
+      "save": "Guardar"
+    },
+    "conditions": {
+      "inputPlaceholder": "Texto",
+      "joinConditionDescription": "Por favor, describa las condiciones para los creadores que pueden participar en esta campaña",
+      "joinConditionTitle": "Requisitos de participación de los creadores",
+      "rewardDescription": "Por favor, describa las condiciones para los creadores que pueden participar en esta campaña",
+      "rewardTitle": "Recompensas para los creadores",
+      "submitConditionDescription": "Por favor, describa las condiciones para los creadores que pueden participar en esta campaña",
+      "submitConditionTitle": "Requisitos de contenido de los creadores"
+    },
+    "errorMessage": {
+      "campaignAnnounceDay": "Ingrese la fecha de anuncio de los ganadores de la campaña.",
+      "campaignAnnounceTime": "Ingrese la hora de anuncio de los ganadores de la campaña.",
+      "campaignCategory": "Ingrese la categoría de la campaña.",
+      "campaignCreatorCount": "Ingrese el número de creadores a reclutar.",
+      "campaignDueDay": "Ingrese el título de la campaña.",
+      "campaignDueTime": "Ingrese el título de la campaña.",
+      "campaignEndDay": "Ingrese la fecha de cierre de postulaciones de la campaña.",
+      "campaignEndTime": "Ingrese la hora de cierre de postulaciones de la campaña.",
+      "campaignLanguage": "Ingrese el idioma de la campaña.",
+      "campaignMediaDetail": "Suba las fotos para la página de detalles del contenido.",
+      "campaignMediaThumbnail": "Suba las fotos en miniatura del contenido.",
+      "campaignPlatformSelect": "Seleccione la plataforma de contenido.",
+      "campaignStartDay": "Ingrese la fecha de inicio de postulaciones de la campaña.",
+      "campaignStartTime": "Ingrese la hora de inicio de postulaciones de la campaña.",
+      "campaignTitle": "Ingrese el título de la campaña.",
+      "campaignType": "Ingrese el tipo de campaña.",
+      "detailMaxFiles": "Puede subir hasta 15 fotos de detalle.",
+      "firstContentMaxExceeded": "Puede seleccionar hasta 2 contenidos.",
+      "secondContentMaxExceeded": "Puede seleccionar hasta 2 contenidos.",
+      "thumbnailMaxFiles": "Puede subir hasta 5 miniaturas."
+    },
+    "media": {
+      "detailDescription": "Estas son las imágenes que aparecerán en la página de detalles de la campaña. Por favor, suba imágenes en alta resolución. Se pueden subir hasta 15 imágenes.",
+      "detailTitle": "Fotos de la página de detalles del contenido",
+      "thumbnailDescription": "Estas son las imágenes que aparecerán como miniaturas de la campaña. Por favor, suba imágenes en alta resolución. Se pueden subir hasta 5 imágenes.",
+      "thumbnailTitle": "Fotos en miniatura del contenido"
+    },
+    "options": {
+      "category": {
+        "MAKEUP": "Maquillaje",
+        "SKINCARE": "Cuidado de la piel",
+        "SUNCARE": "Cuidado solar"
+      },
+      "language": {
+        "EN": "Inglés",
+        "ES": "Español"
+      },
+      "type": {
+        "CONTENTS": "Contenido",
+        "EXCLUSIVE": "Exclusivo",
+        "GIVEAWAY": "Sorteo"
+      }
+    },
+    "pageTitle": "Información de la campaña",
+    "platform": {
+      "description": "(Se pueden seleccionar hasta 2.)",
+      "firstContent": "Primer contenido",
+      "secondContent": "Segundo contenido",
+      "title": "Seleccione la plataforma de contenido"
+    },
+    "schedule": {
+      "announceDate": "Fecha de anuncio de ganadores de la campaña",
+      "announceTime": "Hora de anuncio de ganadores de la campaña",
+      "dueDate": "Fecha límite de entrega del segundo contenido",
+      "dueTime": "Hora límite de entrega del segundo contenido",
+      "endDate": "Fecha de cierre de postulaciones de la campaña",
+      "endTime": "Hora de cierre de postulaciones de la campaña",
+      "placeholders": {
+        "amPm": "AM/PM",
+        "day": "Día",
+        "hour": "Hora",
+        "minute": "Minuto",
+        "month": "Mes",
+        "year": "Año"
+      },
+      "startDate": "Fecha de inicio de postulaciones de la campaña",
+      "startTime": "Hora de inicio de postulaciones de la campaña"
+    },
+    "validation": {
+      "conditionRequired": "Ingrese las condiciones",
+      "creatorCountRequired": "El número de creadores a reclutar es obligatorio",
+      "detailMaxFiles": "Puede subir hasta 15 fotos de detalle",
+      "firstContentMaxExceeded": "Puede seleccionar hasta 2 primeros contenidos",
+      "firstContentMinRequired": "Debe seleccionar al menos 1 primer contenido",
+      "rewardRequired": "Ingrese las recompensas",
+      "secondContentMaxExceeded": "Puede seleccionar hasta 2 segundos contenidos",
+      "secondContentRequiresFirst": "Debe seleccionar el primer contenido antes de elegir el segundo",
+      "thumbnailMaxFiles": "Puede subir hasta 5 miniaturas",
+      "titleRequired": "El título de la campaña es obligatorio"
+    }
+  },
+  "brandMyPageEditProfile": {
+    "addressInfo": {
+      "addressInfoDescription": "Se solicita en caso de devolución por envío incorrecto del producto.",
+      "addressInfoTitle": "Información de la dirección de la empresa",
+      "companyAddressLabel": "Dirección (calle)",
+      "companyAddressPlaceholder": "Buscar código postal",
+      "detailAddressLabel": "Dirección detallada",
+      "detailAddressPlaceholder": "ej: 201"
+    },
+    "basicInfo": {
+      "basicInfoTitle": "Información básica",
+      "brandNameFieldLabel": "Nombre de la marca",
+      "emailNotice": "Para cambiar el correo electrónico, por favor contacte a Lococo",
+      "managerNameFieldLabel": "Nombre del responsable",
+      "phoneNumberFieldLabel": "Teléfono del responsable"
+    },
+    "formButton": {
+      "cancel": "Cancelar",
+      "save": "Guardar"
+    },
+    "profileImage": {
+      "profileImage": "Imagen de perfil",
+      "profileImageEditBtn": "Cambiar foto",
+      "profileImageFormTitle": "Foto de perfil"
+    }
+  },
   "brandMyPageSideBar": {
-    "checkApplicants": "Revisar Solicitantes",
+    "checkApplicants": "Confirmación de solicitantes",
     "checkContents": "Revisar Contenidos",
     "dashboard": "Tablero de campañas",
     "editProfile": "Editar perfil",
     "makeNewCampaign": "Crear una nueva campaña",
     "myCampaign": "Mis Campañas"
+  },
+  "brandSignup": {
+    "brandInfo": {
+      "brandName": "Nombre de la marca",
+      "brandNamePlaceholder": "ej: Lococo",
+      "contactName": "Nombre del responsable",
+      "contactNamePlaceholder": "ej: Hong Gil-dong",
+      "contactPhone": "Teléfono del responsable",
+      "contactPhonePlaceholder": "ej: XXXXXXXXXXX",
+      "contactPosition": "Cargo del responsable",
+      "contactPositionPlaceholder": "ej: Subgerente",
+      "description": "¡Bienvenido(a)! Por favor ingrese la siguiente información para la verificación de la marca.",
+      "title": "Información de la marca"
+    },
+    "companyAddress": {
+      "description": "Se solicita en caso de devolución por envío incorrecto del producto.",
+      "detailAddress": "Dirección detallada",
+      "detailAddressPlaceholder": "ej: 201",
+      "streetAddress": "Dirección (calle)",
+      "streetAddressPlaceholder": "Buscar código postal",
+      "title": "Información de la dirección de la empresa"
+    },
+    "layout": {
+      "back": "Atrás",
+      "submit": "Unirse",
+      "title": "¡Únete a la Comunidad de Creadores de Lococo!"
+    },
+    "validation": {
+      "brandNameInvalidFormat": "Por favor ingrese solo en coreano, inglés y números.",
+      "brandNameMaxLength": "El nombre de la marca puede tener hasta 30 caracteres.",
+      "brandNameRequired": "Por favor ingrese el nombre de la marca.",
+      "contactNameInvalidFormat": "Por favor ingrese solo en coreano.",
+      "contactNameMaxLength": "El nombre del responsable puede tener hasta 10 caracteres.",
+      "contactNameRequired": "Por favor ingrese el nombre del responsable.",
+      "contactPhoneInvalid": "Por favor ingrese un número de teléfono válido.",
+      "contactPhoneRequired": "Por favor ingrese el teléfono del responsable.",
+      "contactPositionInvalidFormat": "Por favor ingrese solo en coreano.",
+      "contactPositionMaxLength": "El cargo del responsable puede tener hasta 10 caracteres.",
+      "contactPositionRequired": "Por favor ingrese el cargo del responsable.",
+      "detailAddressMaxLength": "La dirección detallada puede tener hasta 30 caracteres.",
+      "detailAddressRequired": "Por favor ingrese la dirección detallada.",
+      "streetAddressRequired": "Por favor ingrese la dirección (calle)."
+    }
   },
   "campaignDetail": {
     "applicationPeriod": "Período de aplicación",
@@ -35,17 +209,46 @@
     "message": "Tu solicitud se ha enviado con éxito.\nTe enviaremos el resultado por correo electrónico en un plazo de 24 horas.",
     "title": "¡Enviado con éxito!"
   },
-  "ConfirmSignupModal": {
-    "confirmButton": "",
-    "message": "",
-    "title": ""
+  "creatorOptions": {
+    "contentLanguage": {
+      "ENGLISH": "Inglés",
+      "ENGLISH_AND_SPANISH": "Inglés y Español",
+      "SPANISH": "Español"
+    },
+    "gender": {
+      "FEMALE": "Femenino",
+      "MALE": "Masculino",
+      "NON_BINARY": "No binario",
+      "PREFER_NOT_TO_SAY": "Prefiero no decirlo"
+    },
+    "skinTone": {
+      "SHADE_1": "Tono 1",
+      "SHADE_2": "Tono 2",
+      "SHADE_3": "Tono 3",
+      "SHADE_4": "Tono 4"
+    },
+    "skinType": {
+      "COMBINATION": "Mixta",
+      "DRY": "Seca",
+      "NORMAL": "Normal",
+      "OILY": "Grasa",
+      "OTHERS": "Otros",
+      "SENSITIVE": "Sensible"
+    }
   },
   "creatorSignup": {
+    "button": {
+      "back": "Atrás",
+      "next": "Siguiente"
+    },
     "communityName": {
       "checkAvailabilityButton": "Comprobar disponibilidad",
       "description": "(La ID debe tener entre 1 y 15 caracteres y solo puede contener letras, números, puntos (.) y guiones bajos (_)).",
+      "idAvailable": "¡Genial! Este ID está disponible.",
       "idLabel": "ID",
       "idPlaceholder": "ej: ilovelococo",
+      "idRequired": "Por favor, verifique la disponibilidad del ID.",
+      "idTaken": "Lo siento, este ID ya está en uso.",
       "title": "Nombre de la comunidad"
     },
     "homeAddress": {
@@ -63,6 +266,11 @@
       "title": "Dirección de domicilio",
       "zipCodeLabel": "Código postal",
       "zipCodePlaceholder": "ej: 60606"
+    },
+    "layout": {
+      "back": "Atrás",
+      "next": "Siguiente",
+      "title": "¡Únete a la comunidad de creadores de Lococo!"
     },
     "personalDetails": {
       "birthLabel": "Fecha de nacimiento",
@@ -104,6 +312,7 @@
       "firstNameMaxLength": "Puedes usar hasta 20 caracteres.",
       "firstNameRequired": "El nombre es obligatorio.",
       "genderRequired": "El género es obligatorio.",
+      "idAvailabilityCheck": "Por favor, verifique la disponibilidad del ID.",
       "idInvalidFormat": "Este ID no está disponible. Por favor, revisa el formato del ID.",
       "idMaxLength": "Puede utilizar hasta 15 caracteres.",
       "idRequired": "El ID es obligatorio.",
@@ -125,9 +334,11 @@
   },
   "fileUploader": {
     "cannotUploadFile": "No se puede subir el archivo.",
+    "dragDropDescription": "Arrastra y suelta o haz clic para subir un archivo.",
     "emptyFile": "El archivo está vacío.",
     "fileTooLarge": "El archivo es demasiado grande.",
-    "notAllowedFileType": "Tipo de archivo no permitido."
+    "notAllowedFileType": "Tipo de archivo no permitido.",
+    "selectFile": "Seleccionar archivo"
   },
   "footer": {
     "copyright": "Lococo. Todos los derechos reservados.",
@@ -156,6 +367,85 @@
     },
     "ingredients": "Ingredientes",
     "productDetail22": "Detalles del producto 22"
+  },
+  "howItWork": {
+    "brands": {
+      "campaignApproval": {
+        "description": "Los resultados de aprobación de la campaña se proporcionan dentro de las 48 horas posteriores a la carga. Desde el panel de la marca, seleccione a los solicitantes de su campaña. Después de la fecha límite de solicitud, anuncie a los creadores seleccionados dentro de las 24 horas.",
+        "title": "Aprobación de campaña"
+      },
+      "checkPerformance": {
+        "description": "Revise el contenido y el rendimiento de la campaña en la página de su marca.",
+        "title": "Revisar rendimiento"
+      },
+      "provideFeedback": {
+        "description": "Proporcione solicitudes de revisión dentro de las 48 horas posteriores a que el creador suba la primera reseña. (Después de este período no se pueden realizar solicitudes).",
+        "title": "Proporcionar comentarios"
+      },
+      "shipProduct": {
+        "description": "Envíe el producto dentro de los 2 días una vez que el creador confirme la dirección de envío.",
+        "title": "Enviar producto"
+      },
+      "title": "Marcas"
+    },
+    "creators": {
+      "confimAddress": {
+        "description": "Confirme su dirección de envío dentro de las 24 horas posteriores a la selección de la campaña.",
+        "title": "Confirmar dirección"
+      },
+      "confirmAddress": {
+        "description": "Confirme su dirección de envío dentro de las 24 horas posteriores a la selección de la campaña.",
+        "title": "Confirmar dirección"
+      },
+      "maintenanceGuidelines": {
+        "description": "Mantenga la reseña publicada por al menos 6 meses.",
+        "title": "Directrices de mantenimiento"
+      },
+      "reviewUploadSchedule": {
+        "description": "Suba su primera reseña dentro de los 7 días posteriores a recibir el producto. Después de revisar los comentarios de la marca, suba su segunda reseña dentro de los 7 días. Adjunte la URL final de la red social al publicar la segunda reseña.",
+        "title": "Cronograma de carga de reseñas"
+      },
+      "title": "Creadores",
+      "uploadReview": {
+        "description": "Suba su primera reseña dentro de los 7 días posteriores a recibir el producto.",
+        "title": "Subir reseña"
+      }
+    },
+    "FAQs": {
+      "creatorLevels": {
+        "firstA": "Si su solicitud es rechazada, revise los criterios de elegibilidad y considere volver a postular después de abordar las áreas de mejora.",
+        "firstQ": "Mi solicitud de creador ha sido rechazada.",
+        "fistA": "Si su solicitud es rechazada, revise los criterios de elegibilidad y considere volver a postular después de abordar las áreas de mejora.",
+        "fistQ": "Mi solicitud de creador ha sido rechazada.",
+        "secondA": "Puede actualizar su cuenta a creador enviando una solicitud a través de la configuración de su perfil.",
+        "secondQ": "Me uní como usuario pero me gustaría participar como creador.",
+        "thirdA": "Puede verificar y actualizar sus datos de envío en su cuenta en la sección \"Información de envío\".",
+        "thirdQ": "¿Cómo puedo convertirme en un Creador Pro de Lococo?",
+        "title": "Niveles de creador"
+      },
+      "penaltyPolicy": {
+        "firstA": "Los creadores que no proporcionen la información de envío requerida después de ser seleccionados como revisores estarán sujetos a una suspensión de 6 meses de todas las actividades de Lococo después de tres ocurrencias.",
+        "firstQ": "No proporcionar información de envío cuando se es seleccionado como revisor.",
+        "fistA": "Los creadores que no proporcionen la información de envío requerida después de ser seleccionados como revisores estarán sujetos a una suspensión de 6 meses de todas las actividades de Lococo después de tres ocurrencias.",
+        "fistQ": "No proporcionar información de envío cuando se es seleccionado como revisor.",
+        "secondA": "Los creadores que presenten contenido fuera del plazo especificado enfrentarán una suspensión de 6 meses de todas las actividades de Lococo después de tres ocurrencias.",
+        "secondQ": "Presentación tardía de contenido.",
+        "thirdA": "Los creadores que no presenten contenido o presenten contenido que no cumpla con los estándares de calidad especificados enfrentarán una prohibición permanente de todas las actividades de Lococo.",
+        "thirdQ": "No presentar contenido o presentar contenido de baja calidad.",
+        "title": "Política de penalización"
+      },
+      "shipping": {
+        "firstA": "Puede verificar sus datos de envío a través del correo electrónico registrado.",
+        "firstQ": "¿Cómo puedo verificar la información de envío que proporcioné?",
+        "fistA": "Puede verificar sus datos de envío a través del correo electrónico registrado.",
+        "fistQ": "¿Cómo puedo verificar la información de envío que proporcioné?",
+        "secondA": "Una vez enviada la dirección de envío, no se puede modificar. Por favor contacte a Lococo para recibir asistencia.",
+        "secondQ": "Ingresé una dirección de envío incorrecta. ¿Qué debo hacer?",
+        "title": "Envío"
+      },
+      "title": "Preguntas frecuentes (FAQ)"
+    },
+    "title": "Cómo funciona"
   },
   "languageSelectTrigger": {
     "language": "Idioma"
@@ -189,26 +479,48 @@
       "zip": "Código postal"
     },
     "contentSubmissions": {
+      "brandNote": {
+        "description": "Arrastre y suelte el archivo o haga clic para subirlo.",
+        "firstReview": "Seleccionar archivo",
+        "secondReview": ""
+      },
       "campaignProductMediaInput": {
-        "description": "Arrastra y suelta o haz clic para subir el archivo.",
-        "selectFile": "Seleccionar archivo",
-        "title": "Medios del producto de la campaña"
+        "description": "Medios del producto de la campaña",
+        "selectFile": "Por favor seleccione una campaña.",
+        "title": "Selección de campaña"
       },
       "campaignSelect": {
-        "description": "Por favor, seleccione una campaña.",
-        "selectCampaign": "Seleccionar una campaña",
-        "title": "Seleccionar una campaña"
+        "description": "Publicación de Instagram",
+        "selectCampaign": "Reels de Instagram",
+        "title": "Seleccionar tipo de contenido"
+      },
+      "content": {
+        "1stContent": "Video de TikTok",
+        "2ndContent": "Tipo de contenido"
       },
       "contentTypeSelect": {
-        "instagramPost": "Publicación en Instagram",
-        "instagramReels": "Reels de Instagram",
-        "selectContentType": "Seleccione un tipo de contenido",
-        "tiktokVideo": "Video de TikTok",
-        "title": "Tipo de contenido"
+        "instagramPost": "No hay contenido para revisar.",
+        "instagramReels": "Pegue exactamente el pie de foto y los hashtags utilizados.",
+        "selectContentType": "Enviar pie de foto y hashtags",
+        "tiktokVideo": "El primer envío ha sido recibido. La marca lo revisará y enviará comentarios.",
+        "title": "Ok"
+      },
+      "empty": {
+        "title": "El envío final ha sido recibido. Muchas gracias por enviarlo."
       },
       "hashtagsInput": {
-        "description": "Pegue exactamente el pie de foto y los hashtags que utilizó.",
+        "description": "Se ha enviado con éxito",
         "title": "Envíe su pie de foto y hashtags"
+      },
+      "saveSubmitModal": {
+        "firstDescription": "Tu envío final ha sido recibido. Gracias por tu participación.",
+        "save": "Está bien",
+        "secondDescription": "Tu primer envío ha sido recibido. La marca lo revisará y enviará una nota.",
+        "title": "Enviado con éxito"
+      },
+      "submitContentUrl": {
+        "description": "Envíe la URL de su contenido de reseña subido para confirmación y seguimiento.",
+        "title": "Enviar URL de contenido"
       }
     },
     "editProfile": {
@@ -301,11 +613,52 @@
       "stateRequired": "El estado es obligatorio.",
       "yearRequired": "El año es obligatorio."
     },
+    "finalReview": {
+      "1stContent": "",
+      "2ndContent": "",
+      "brandNote": {
+        "1stContent": "",
+        "2ndContent": ""
+      },
+      "contentType": {
+        "instagramPost": "",
+        "instagramReels": "",
+        "tiktokVideo": "",
+        "title": ""
+      },
+      "socialMediaContent": "",
+      "submitCaptionAndHashtags": "",
+      "submitContentUrl": ""
+    },
     "menus": {
       "connectSNS": "Conectar SNS",
       "contentSubmissions": "Envíos de contenido",
       "editProfile": "Editar perfil",
       "myCampaign": "Mi campaña"
+    },
+    "myCampaign": {
+      "buttonText": {
+        "confirmAddress": "Confirmar dirección",
+        "revisionRequested": "Revisión solicitada",
+        "uploadFirstReview": "Subir primera reseña",
+        "uploadSecondReview": "Subir segunda reseña",
+        "viewDetails": "Ver detalles",
+        "viewNote": "Ver nota",
+        "viewNotes": "Ver notas",
+        "viewResults": "Ver resultados"
+      },
+      "empty": {
+        "title": "No se ha aplicado a ninguna campaña."
+      },
+      "participationStatus": {
+        "active": "Activo",
+        "approved": "Aprobado",
+        "completed": "Completado",
+        "expired": "Expirado",
+        "pending": "Pendiente",
+        "rejected": "Rechazado"
+      },
+      "title": "Mi campaña"
     },
     "saveFormModal": {
       "description": "Tus cambios han sido guardados.",
