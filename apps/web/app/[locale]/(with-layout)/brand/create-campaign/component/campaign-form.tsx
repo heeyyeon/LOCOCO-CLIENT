@@ -140,6 +140,11 @@ export default function CampaignForm({ campaignId }: { campaignId?: string }) {
   };
 
   const t = useTranslations('brandMyPageCreateCampaign');
+  const isMutating =
+    saveCampaignMutation.isPending ||
+    reSaveCampaignMutation.isPending ||
+    publishNewCampaignMutation.isPending ||
+    publishSavedCampaignMutation.isPending;
 
   if (isLoading) {
     return (
@@ -238,6 +243,7 @@ export default function CampaignForm({ campaignId }: { campaignId?: string }) {
                 color="secondary"
                 className="w-[41.2rem]"
                 onClick={handleSave}
+                disabled={isMutating}
               >
                 {t('buttons.save')}
               </Button>
@@ -247,6 +253,7 @@ export default function CampaignForm({ campaignId }: { campaignId?: string }) {
                 size="lg"
                 color="primary"
                 className="w-[41.2rem]"
+                disabled={isMutating}
               >
                 {t('buttons.publish')}
               </Button>
