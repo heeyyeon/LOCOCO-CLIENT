@@ -97,20 +97,23 @@ export default function CampaignForm({ campaignId }: { campaignId?: string }) {
   } = methods;
 
   useEffect(() => {
-    if (campaignId && !isLoading && !savedCampaignData) {
-      router.push('/brand/create-campaign');
-      return;
-    }
-
     if (savedCampaignData && campaignId) {
       try {
         const formData = transformApiDataToFormData(savedCampaignData);
-        reset(formData);
+        console.log('Transformed data!!!:', formData);
+
+        reset(formData, { keepDefaultValues: false });
+
+        // reset 후 확인
+        console.log('After reset - getValues():', methods.getValues());
+        console.log('After reset - language:', methods.getValues('language'));
+        console.log('After reset - type:', methods.getValues('type'));
+        console.log('After reset - category:', methods.getValues('category'));
       } catch (error) {
         console.error('Failed to transform API data:', error);
       }
     }
-  }, [savedCampaignData, campaignId, reset, isLoading]);
+  }, [savedCampaignData, campaignId, reset, isLoading, router]);
 
   const firstContents = usePlatformSelection(methods, 'firstContents');
   const secondContents = usePlatformSelection(methods, 'secondContents');
@@ -149,6 +152,7 @@ export default function CampaignForm({ campaignId }: { campaignId?: string }) {
       </div>
     );
   }
+  console.log('Transformed form data:', savedCampaignData);
 
   return (
     <FormProvider {...methods}>

@@ -37,6 +37,7 @@ export function SelectFormField({
   variant = 'default',
   value,
 }: SelectFormFieldProps) {
+  console.log(options);
   return (
     <div className={cn('flex items-center justify-between', className)}>
       <label className="body1 flex items-center font-bold text-gray-700">
@@ -61,7 +62,9 @@ export function SelectFormField({
               const selectedOption = options!.find(
                 (option) => option.label === selectedLabel
               );
-              onValueChange!(selectedOption?.value || selectedLabel);
+              if (selectedOption && onValueChange) {
+                onValueChange(selectedOption.value);
+              }
             }}
             size={size}
             variant={variant}

@@ -88,6 +88,7 @@ export const transformApiDataToFormData = (
         imageType: 'DETAIL' as const,
       })) || [],
   };
+  console.log('Transformed data!!!:', transformed);
 
   return transformed as CampaignFormData;
 };
@@ -113,20 +114,47 @@ export const transformFormDataToApiData = (data: CampaignFormData) => {
     date: { year: string; month: string; day: string },
     time: { period: string; hour: string; minute: string }
   ) => {
-    const hour24 =
-      time.period === 'PM' && time.hour !== '12'
-        ? parseInt(time.hour) + 12
-        : time.period === 'AM' && time.hour === '12'
-          ? 0
-          : parseInt(time.hour);
+    if (!date.year || !date.month || !date.day || !time.hour || !time.minute) {
+      console.error('Invalid date values:', { date, time });
+      throw new Error('날짜 정보가 올바르지 않습니다.');
+    }
 
-    const dateTime = new Date(
-      parseInt(date.year),
-      parseInt(date.month) - 1,
-      parseInt(date.day),
-      hour24,
-      parseInt(time.minute)
-    );
+    const year = parseInt(date.year);
+    const month = parseInt(date.month);
+    const day = parseInt(date.day);
+    const hour = parseInt(time.hour);
+    const minute = parseInt(time.minute);
+
+    if (
+      isNaN(year) ||
+      isNaN(month) ||
+      isNaN(day) ||
+      isNaN(hour) ||
+      isNaN(minute)
+    ) {
+      console.error('Failed to parse date values:', { date, time });
+      throw new Error('날짜 형식이 올바르지 않습니다.');
+    }
+
+    const hour24 =
+      time.period === 'PM' && hour !== 12
+        ? hour + 12
+        : time.period === 'AM' && hour === 12
+          ? 0
+          : hour;
+
+    const dateTime = new Date(year, month - 1, day, hour24, minute);
+
+    if (isNaN(dateTime.getTime())) {
+      console.error('Invalid date object created:', {
+        year,
+        month,
+        day,
+        hour24,
+        minute,
+      });
+      throw new Error('유효하지 않은 날짜입니다.');
+    }
 
     return dateTime.toISOString();
   };
