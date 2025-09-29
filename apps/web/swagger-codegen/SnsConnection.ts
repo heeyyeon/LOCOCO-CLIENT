@@ -12,7 +12,6 @@
 
 import {
   ApiResponseInstagramConnectionResponse,
-  ApiResponseString,
   ApiResponseTikTokConnectionResponse,
 } from "./data-contracts";
 import { HttpClient, RequestParams } from "./http-client";
@@ -30,7 +29,7 @@ export class SnsConnection<
    * @secure
    */
   connectTikTok = (params: RequestParams = {}) =>
-    this.request<ApiResponseString, any>({
+    this.request<void, any>({
       path: `/api/auth/sns/tiktok/connect`,
       method: "GET",
       secure: true,
@@ -69,7 +68,7 @@ export class SnsConnection<
    * @secure
    */
   connectInstagram = (params: RequestParams = {}) =>
-    this.request<ApiResponseString, any>({
+    this.request<void, any>({
       path: `/api/auth/sns/instagram/connect`,
       method: "GET",
       secure: true,
