@@ -43,8 +43,11 @@ export default function Profile() {
   const t = useTranslations('brandMyPageEditProfile');
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <div className="flex flex-col gap-[3.2rem] bg-gray-100 px-[9.6rem] py-[6.4rem]">
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className="flex flex-1 justify-center bg-gray-200 py-[6.4rem]"
+    >
+      <div className="flex flex-col gap-[3.2rem]">
         <AddressSearchModal
           isOpen={isOpen}
           onComplete={handleComplete}
