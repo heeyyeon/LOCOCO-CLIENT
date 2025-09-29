@@ -481,7 +481,8 @@
     "contentSubmissions": {
       "brandNote": {
         "description": "Arrastre y suelte el archivo o haga clic para subirlo.",
-        "firstReview": "Seleccionar archivo"
+        "firstReview": "Seleccionar archivo",
+        "secondReview": ""
       },
       "campaignProductMediaInput": {
         "description": "Medios del producto de la campaña",
@@ -507,12 +508,6 @@
       "empty": {
         "title": "El envío final ha sido recibido. Muchas gracias por enviarlo."
       },
-      "empty": {
-        "title": "No hay contenido para revisar."
-      },
-      "empty": {
-        "title": "No hay contenido para revisar."
-      },
       "hashtagsInput": {
         "description": "Se ha enviado con éxito",
         "title": "Envíe su pie de foto y hashtags"
@@ -526,12 +521,6 @@
       "submitContentUrl": {
         "description": "Envíe la URL de su contenido de reseña subido para confirmación y seguimiento.",
         "title": "Enviar URL de contenido"
-      },
-      "saveSubmitModal": {
-        "firstDescription": "Tu envío final ha sido recibido. Gracias por tu participación.",
-        "save": "Está bien",
-        "secondDescription": "Tu primer envío ha sido recibido. La marca lo revisará y enviará una nota.",
-        "title": "Enviado con éxito"
       }
     },
     "editProfile": {
@@ -623,6 +612,23 @@
       "skinTypeRequired": "El tipo de piel es obligatorio.",
       "stateRequired": "El estado es obligatorio.",
       "yearRequired": "El año es obligatorio."
+    },
+    "finalReview": {
+      "1stContent": "",
+      "2ndContent": "",
+      "brandNote": {
+        "1stContent": "",
+        "2ndContent": ""
+      },
+      "contentType": {
+        "instagramPost": "",
+        "instagramReels": "",
+        "tiktokVideo": "",
+        "title": ""
+      },
+      "socialMediaContent": "",
+      "submitCaptionAndHashtags": "",
+      "submitContentUrl": ""
     },
     "menus": {
       "connectSNS": "Conectar SNS",
