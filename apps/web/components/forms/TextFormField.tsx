@@ -43,7 +43,7 @@ export function TextFormField({
       </label>
       <div className="flex flex-col">
         <div className="relative">
-          <Input {...register} placeholder={placeholder} />
+          <Input {...register} placeholder={placeholder} className="h-[4rem]" />
 
           {rightContent && (
             <div
@@ -67,7 +67,7 @@ export function TextFormField({
         {error && <ErrorNotice message={error} />}
         {!error && successMessage && (
           <div className="mt-[0.2rem] flex items-center gap-[0.8rem]">
-            <SvgCheckRound size={16} className="fill-green" />
+            <SvgCheckRound size={16} className="fill-white" />
             <span className="caption3 text-green font-normal">
               {successMessage}
             </span>

@@ -12,13 +12,10 @@ import {
   TextFormField,
 } from '../../../../../../components/forms';
 import {
-  CONTENT_LANGUAGES,
-  GENDERS,
+  useContentLanguageOptions,
+  useGenderOptions,
 } from '../../../../../../constants/creator-options';
-import {
-  birthDateOptions,
-  countryPhoneCodeOptions,
-} from '../../../../../../utils';
+import { countryPhoneCodeOptions, dateOptions } from '../../../../../../utils';
 import { type CreatorSignupForm } from '../utils/signup';
 
 interface PersonalDetailsProps {
@@ -27,8 +24,10 @@ interface PersonalDetailsProps {
 
 export function PersonalDetails({ form }: PersonalDetailsProps) {
   const t = useTranslations('creatorSignup.personalDetails');
-  const { months, days, years } = birthDateOptions();
+  const { months, days, years } = dateOptions();
   const countryCodes = countryPhoneCodeOptions();
+  const genders = useGenderOptions();
+  const contentLanguages = useContentLanguageOptions();
 
   return (
     <div className="mt-[4.8rem] w-full">
@@ -113,7 +112,7 @@ export function PersonalDetails({ form }: PersonalDetailsProps) {
             label={t('genderLabel')}
             required
             placeholder={t('genderPlaceholder')}
-            options={GENDERS}
+            options={genders}
             value={form.watch('gender')}
             onValueChange={(value) =>
               form.setValue('gender', value, { shouldValidate: true })
@@ -188,7 +187,7 @@ export function PersonalDetails({ form }: PersonalDetailsProps) {
             label={t('contentLanguageLabel')}
             required
             placeholder={t('contentLanguagePlaceholder')}
-            options={CONTENT_LANGUAGES}
+            options={contentLanguages}
             value={form.watch('contentLanguage')}
             onValueChange={(value) =>
               form.setValue('contentLanguage', value, {

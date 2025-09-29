@@ -11,13 +11,20 @@ import { ContentSubmissionsFormData } from '../../hooks/use-content-submissions'
 interface CampaignProductMediaInputProps {
   formData: ContentSubmissionsFormData;
   errors: string | undefined;
-  updateCampaignProductMedia: (campaignProductMedia: File[]) => void;
+  updateCampaignProductMedia: (
+    fieldId: string,
+    campaignProductMedia: File[]
+  ) => void;
+  fieldId: string;
+  title?: string;
 }
 
 export default function CampaignProductMediaInput({
   formData,
   errors,
+  title,
   updateCampaignProductMedia,
+  fieldId,
 }: CampaignProductMediaInputProps) {
   const t = useTranslations(
     'myPage.contentSubmissions.campaignProductMediaInput'
@@ -46,23 +53,31 @@ export default function CampaignProductMediaInput({
     separateFiles(formData.campaignProductMedia);
   }, [formData.campaignProductMedia]);
 
-  const handleImageFilesChange = (files: File[]) => {
-    const allFiles = [...files, ...videoFiles];
-    updateCampaignProductMedia(allFiles);
+  const handleVideoFilesChange = (files: File[]) => {
+    const currentVideos = formData.campaignProductMedia.filter((file) =>
+      file.type.startsWith('video/')
+    );
+    const allFiles = [...files, ...currentVideos];
+    updateCampaignProductMedia(fieldId, allFiles);
   };
 
-  const handleVideoFilesChange = (files: File[]) => {
-    const allFiles = [...imageFiles, ...files];
-    updateCampaignProductMedia(allFiles);
+  const handleImageFilesChange = (files: File[]) => {
+    const currentImages = formData.campaignProductMedia.filter((file) =>
+      file.type.startsWith('image/')
+    );
+    const allFiles = [...currentImages, ...files];
+    updateCampaignProductMedia(fieldId, allFiles);
   };
+  const inputFileId = `campaign-product-media-upload-area-${fieldId}`;
+
   const triggerFileInput = () => {
-    document.getElementById('campaign-product-media-upload-area')?.click();
+    document.getElementById(inputFileId)?.click();
   };
 
   return (
     <section className="flex w-full flex-col gap-[1.6rem]">
       <div className="flex flex-col gap-[0.4rem]">
-        <p className="title2 text-gray-800">{t('title')}</p>
+        {title && <p className="title2 text-gray-800">{title}</p>}
         <div className="flex items-center gap-[0.8rem]">
           <p className="body4 text-gray-500">{t('description')}</p>
           <button
@@ -81,7 +96,6 @@ export default function CampaignProductMediaInput({
         handleImageFilesChange={handleImageFilesChange}
         handleVideoFilesChange={handleVideoFilesChange}
         maxFiles={12}
-        inputFileId="campaign-product-media-upload-area"
       />
       {errors && <ErrorNotice message={errors} />}
     </section>

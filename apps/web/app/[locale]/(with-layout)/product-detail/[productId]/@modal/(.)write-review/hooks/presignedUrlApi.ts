@@ -1,13 +1,15 @@
 import { apiRequest } from 'app/api/apiRequest';
 import {
-  ApiResponseReviewMediaResponse,
+  ApiResponseMediaPresignedUrlResponse,
   ApiResponseReviewReceiptResponse,
-  ReviewMediaRequest,
+  MediaPresignedUrlRequest,
   ReviewReceiptRequest,
 } from 'swagger-codegen/data-contracts';
 
-export const getMediaPresignedUrl = async (request: ReviewMediaRequest) => {
-  return await apiRequest<ApiResponseReviewMediaResponse>({
+export const getMediaPresignedUrl = async (
+  request: MediaPresignedUrlRequest
+) => {
+  return await apiRequest<ApiResponseMediaPresignedUrlResponse>({
     endPoint: '/api/reviews/media',
     method: 'POST',
     data: request,

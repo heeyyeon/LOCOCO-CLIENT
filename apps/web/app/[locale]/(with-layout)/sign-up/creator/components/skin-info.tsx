@@ -7,8 +7,8 @@ import {
   SelectFormField,
 } from '../../../../../../components/forms';
 import {
-  SKIN_TONE,
-  SKIN_TYPES,
+  useSkinToneOptions,
+  useSkinTypeOptions,
 } from '../../../../../../constants/creator-options';
 import { type CreatorSignupForm } from '../utils/signup';
 
@@ -18,7 +18,10 @@ interface SkinInfoProps {
 
 export function SkinInfo({ form }: SkinInfoProps) {
   const t = useTranslations('creatorSignup.skinInfo');
-  const SKIN_TONES = SKIN_TONE.map((tone) => ({
+  const skinTypes = useSkinTypeOptions();
+  const skinTones = useSkinToneOptions();
+
+  const SKIN_TONES = skinTones.map((tone) => ({
     label: tone.label,
     value: tone.value,
     icon: (
@@ -38,7 +41,7 @@ export function SkinInfo({ form }: SkinInfoProps) {
             required
             variant="reverse"
             placeholder={t('skinTypePlaceholder')}
-            options={SKIN_TYPES}
+            options={skinTypes}
             value={form.watch('skinType')}
             onValueChange={(value) =>
               form.setValue('skinType', value, { shouldValidate: true })
