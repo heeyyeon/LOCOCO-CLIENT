@@ -1,7 +1,11 @@
 import { SOCIAL_PLATFORMS } from 'types/social-platform';
 import { z } from 'zod';
 
-const isBrowser = typeof window !== 'undefined';
+const campaignImageRequestSchema = z.object({
+  url: z.string(),
+  displayOrder: z.number().min(0),
+  imageType: z.enum(['THUMBNAIL', 'DETAIL']),
+});
 
 export const createCampaignSchema = z
   .object({
@@ -62,7 +66,7 @@ export const createCampaignSchema = z
       minute: z.string().min(1, 'campaignDueTime'),
     }),
 
-    // 동적 입력 필드들 - 기존 메시지 그대로 유지
+    // 동적 입력 필드들
     joinConditions: z.array(z.string().min(1, '조건을 입력해주세요')),
     submitConditions: z.array(z.string().min(1, '조건을 입력해주세요')),
     joinRewards: z.array(z.string().min(1, '보상을 입력해주세요')),
@@ -71,25 +75,15 @@ export const createCampaignSchema = z
     firstContents: z.record(z.enum(SOCIAL_PLATFORMS), z.boolean()),
     secondContents: z.record(z.enum(SOCIAL_PLATFORMS), z.boolean()),
 
-    // 파일 업로드
-    thumbnailFiles: isBrowser
-      ? z
-          .array(z.instanceof(File))
-          .min(1, 'campaignMediaThumbnail')
-          .max(5, 'thumbnailMaxFiles')
-      : z
-          .array(z.any())
-          .min(1, 'campaignMediaThumbnail')
-          .max(5, 'thumbnailMaxFiles'),
-    detailFiles: isBrowser
-      ? z
-          .array(z.instanceof(File))
-          .min(1, 'campaignMediaDetail')
-          .max(15, 'detailMaxFiles')
-      : z
-          .array(z.any())
-          .min(1, 'campaignMediaDetail')
-          .max(15, 'detailMaxFiles'),
+    // API 스펙에 맞는 이미지 배열
+    thumbnailFiles: z
+      .array(campaignImageRequestSchema)
+      .min(1, 'campaignMediaThumbnail')
+      .max(5, 'thumbnailMaxFiles'),
+    detailFiles: z
+      .array(campaignImageRequestSchema)
+      .min(1, 'campaignMediaDetail')
+      .max(15, 'detailMaxFiles'),
   })
   .refine(
     (data) => {
@@ -129,3 +123,6 @@ export const createCampaignSchema = z
   );
 
 export type CampaignFormData = z.infer<typeof createCampaignSchema>;
+
+// CampaignImageRequest 타입 export
+export type CampaignImageRequest = z.infer<typeof campaignImageRequestSchema>;
