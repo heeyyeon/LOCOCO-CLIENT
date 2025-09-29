@@ -61,7 +61,11 @@ export default function GnbAuth() {
             align="end"
             className="body4 mt-[0.4rem] w-[var(--radix-dropdown-menu-trigger-width)] font-[500]"
           >
-            <DropdownMenuItem>{t('myPage')}</DropdownMenuItem>
+            <DropdownMenuItem
+              onClick={() => router.push('/my-page/my-campaign')}
+            >
+              {t('myPage')}
+            </DropdownMenuItem>
             <DropdownMenuItem>{t('logOut')}</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
