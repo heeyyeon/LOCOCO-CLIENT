@@ -9,7 +9,6 @@
  * ## SOURCE: https://github.com/acacode/swagger-typescript-api ##
  * ---------------------------------------------------------------
  */
-
 import {
   ApiResponseCreatorAddressInfo,
   ApiResponseCreatorInfoResponse,
@@ -22,8 +21,8 @@ import {
   CreatorInfoUpdateRequest,
   CreatorMyPageUpdateRequest,
   CreatorProfileImageRequest,
-} from "./data-contracts";
-import { ContentType, HttpClient, RequestParams } from "./http-client";
+} from './data-contracts';
+import { ContentType, HttpClient, RequestParams } from './http-client';
 
 export class Creator<
   SecurityDataType = unknown,
@@ -40,7 +39,7 @@ export class Creator<
   completeCreatorSignup = (params: RequestParams = {}) =>
     this.request<ApiResponseCreatorRegisterCompleteResponse, any>({
       path: `/api/creator/register/complete`,
-      method: "POST",
+      method: 'POST',
       secure: true,
       ...params,
     });
@@ -56,7 +55,7 @@ export class Creator<
   confirmAddress = (campaignId: number, params: RequestParams = {}) =>
     this.request<ApiResponseVoid, any>({
       path: `/api/creator/profile/${campaignId}/address`,
-      method: "POST",
+      method: 'POST',
       secure: true,
       ...params,
     });
@@ -71,11 +70,11 @@ export class Creator<
    */
   createProfileImagePresignedUrl1 = (
     data: CreatorProfileImageRequest,
-    params: RequestParams = {},
+    params: RequestParams = {}
   ) =>
     this.request<ApiResponseCreatorProfileImageResponse, any>({
       path: `/api/creator/profile/image`,
-      method: "POST",
+      method: 'POST',
       body: data,
       secure: true,
       type: ContentType.Json,
@@ -93,7 +92,7 @@ export class Creator<
   getRegisterInfo = (params: RequestParams = {}) =>
     this.request<ApiResponseCreatorInfoResponse, any>({
       path: `/api/creator/register/info`,
-      method: "GET",
+      method: 'GET',
       secure: true,
       ...params,
     });
@@ -108,11 +107,11 @@ export class Creator<
    */
   updateCreatorRegisterInfo = (
     data: CreatorInfoUpdateRequest,
-    params: RequestParams = {},
+    params: RequestParams = {}
   ) =>
     this.request<ApiResponseVoid, any>({
       path: `/api/creator/register/info`,
-      method: "PATCH",
+      method: 'PATCH',
       body: data,
       secure: true,
       type: ContentType.Json,
@@ -130,7 +129,7 @@ export class Creator<
   getProfile = (params: RequestParams = {}) =>
     this.request<ApiResponseCreatorMyPageResponse, any>({
       path: `/api/creator/profile`,
-      method: "GET",
+      method: 'GET',
       secure: true,
       ...params,
     });
@@ -145,11 +144,11 @@ export class Creator<
    */
   updateProfile = (
     data: CreatorMyPageUpdateRequest,
-    params: RequestParams = {},
+    params: RequestParams = {}
   ) =>
     this.request<ApiResponseCreatorMyPageResponse, any>({
       path: `/api/creator/profile`,
-      method: "PATCH",
+      method: 'PATCH',
       body: data,
       secure: true,
       type: ContentType.Json,
@@ -167,7 +166,7 @@ export class Creator<
   getCreatorSnsConnected = (params: RequestParams = {}) =>
     this.request<ApiResponseCreatorSnsConnectedResponse, any>({
       path: `/api/creator/register/sns-status`,
-      method: "GET",
+      method: 'GET',
       secure: true,
       ...params,
     });
@@ -193,11 +192,11 @@ export class Creator<
        */
       size?: number;
     },
-    params: RequestParams = {},
+    params: RequestParams = {}
   ) =>
     this.request<ApiResponseCreatorMyCampaignListResponse, any>({
       path: `/api/creator/profile/campaigns`,
-      method: "GET",
+      method: 'GET',
       query: query,
       secure: true,
       ...params,
@@ -214,7 +213,7 @@ export class Creator<
   getCreatorAddress = (params: RequestParams = {}) =>
     this.request<ApiResponseCreatorAddressInfo, any>({
       path: `/api/creator/profile/address`,
-      method: "GET",
+      method: 'GET',
       secure: true,
       ...params,
     });

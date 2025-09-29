@@ -1,61 +1,35 @@
 'use client';
 
-import { useForm } from 'react-hook-form';
-
 import { useLocale, useTranslations } from 'next-intl';
-import { useRouter } from 'next/navigation';
-
-import { zodResolver } from '@hookform/resolvers/zod';
 
 import {
   CreatorFormSections,
   SignupFormLayout,
 } from '../../../../../components/forms';
-import { type CreatorSignupForm, creatorSignupSchema } from './utils/signup';
+import { useCreatorForm } from './hooks/useCreatorForm';
 
 export default function CreatorSignupPage() {
-  const router = useRouter();
   const locale = useLocale();
-  const t = useTranslations('creatorSignup.validation');
+  const t = useTranslations('creatorSignup.layout');
+  const { form, handleBack, handleNext, handleIdCheckResult } =
+    useCreatorForm();
 
-  const form = useForm<CreatorSignupForm>({
-    resolver: zodResolver(creatorSignupSchema(t)),
-    mode: 'onBlur',
-    defaultValues: {
-      id: '',
-      birthMonth: '',
-      birthDay: '',
-      birthYear: '',
-      gender: '',
-      phoneCountryCode: '',
-      phoneNumber: '',
-      contentLanguage: '',
-      country: '',
-      skinType: '',
-      skinTone: '',
-    },
+  const handleSubmit = form.handleSubmit((data) => {
+    handleNext(data);
   });
-
-  const handleNext = () => {
-    router.push('/sign-up/creator/sns-links');
-  };
-
-  const handleCheckAvailability = () => {
-    // TODO: ID 중복 확인 API 호출
-  };
 
   return (
     <SignupFormLayout
-      title="Join Lococo Creator Community!"
-      onBack={() => router.back()}
-      onSubmit={form.handleSubmit(handleNext)}
+      title={t('title')}
+      onBack={handleBack}
+      onSubmit={handleSubmit}
       isValid={form.formState.isValid}
-      submitLabel="Next"
+      submitLabel={t('next')}
     >
       <CreatorFormSections
         form={form}
         locale={locale}
-        onCheckAvailability={handleCheckAvailability}
+        onIdCheckResult={handleIdCheckResult}
       />
     </SignupFormLayout>
   );

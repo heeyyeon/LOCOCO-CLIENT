@@ -9,15 +9,14 @@
  * ## SOURCE: https://github.com/acacode/swagger-typescript-api ##
  * ---------------------------------------------------------------
  */
-
 import {
   ApiResponseCampaignDetailResponse,
   ApiResponseCampaignMediaResponse,
   ApiResponseMainPageCampaignListResponse,
   ApiResponseMainPageUpcomingCampaignListResponse,
   CampaignMediaRequest,
-} from "./data-contracts";
-import { ContentType, HttpClient, RequestParams } from "./http-client";
+} from './data-contracts';
+import { ContentType, HttpClient, RequestParams } from './http-client';
 
 export class Campaign<
   SecurityDataType = unknown,
@@ -33,11 +32,11 @@ export class Campaign<
    */
   createMediaPresignedUrl1 = (
     data: CampaignMediaRequest,
-    params: RequestParams = {},
+    params: RequestParams = {}
   ) =>
     this.request<ApiResponseCampaignMediaResponse, any>({
       path: `/api/campaigns/media`,
-      method: "POST",
+      method: 'POST',
       body: data,
       secure: true,
       type: ContentType.Json,
@@ -54,8 +53,8 @@ export class Campaign<
    */
   getCampaignsInMainPage = (
     query: {
-      lang: "EN" | "ES" | "ALL";
-      category: "ALL" | "SKINCARE" | "SUNCARE" | "MAKEUP";
+      lang: 'EN' | 'ES' | 'ALL';
+      category: 'ALL' | 'SKINCARE' | 'SUNCARE' | 'MAKEUP';
       /**
        * @format int32
        * @default 0
@@ -67,11 +66,11 @@ export class Campaign<
        */
       size?: number;
     },
-    params: RequestParams = {},
+    params: RequestParams = {}
   ) =>
     this.request<ApiResponseMainPageCampaignListResponse, any>({
       path: `/api/campaigns`,
-      method: "GET",
+      method: 'GET',
       query: query,
       secure: true,
       ...params,
@@ -88,7 +87,7 @@ export class Campaign<
   getCampaignDetail = (campaignId: number, params: RequestParams = {}) =>
     this.request<ApiResponseCampaignDetailResponse, any>({
       path: `/api/campaigns/${campaignId}`,
-      method: "GET",
+      method: 'GET',
       secure: true,
       ...params,
     });
@@ -103,14 +102,14 @@ export class Campaign<
    */
   getUpcomingCampaignsInMainPage = (
     query: {
-      lang: "EN" | "ES" | "ALL";
-      category: "ALL" | "SKINCARE" | "SUNCARE" | "MAKEUP";
+      lang: 'EN' | 'ES' | 'ALL';
+      category: 'ALL' | 'SKINCARE' | 'SUNCARE' | 'MAKEUP';
     },
-    params: RequestParams = {},
+    params: RequestParams = {}
   ) =>
     this.request<ApiResponseMainPageUpcomingCampaignListResponse, any>({
       path: `/api/campaigns/upcoming`,
-      method: "GET",
+      method: 'GET',
       query: query,
       secure: true,
       ...params,

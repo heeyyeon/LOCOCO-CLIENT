@@ -3,7 +3,6 @@ import { Controller, useFormContext } from 'react-hook-form';
 
 import { useTranslations } from 'next-intl';
 
-import InputWrapper from 'app/[locale]/(with-layout)/my-page/components/input-wrapper';
 import { CampaignFormData } from 'schema/create-campaign-schema';
 import { dateOptions } from 'utils';
 import { timeOptions } from 'utils/time-options';
