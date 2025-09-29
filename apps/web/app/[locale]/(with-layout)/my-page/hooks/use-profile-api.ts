@@ -7,11 +7,16 @@ import { type CreatorSignupForm } from '../../../(with-layout)/sign-up/creator/u
 import { type ApiResponseCreatorMyPageResponse } from '../../../../../swagger-codegen/data-contracts';
 import { PROFILE_KEYS } from '../constant/queryKey';
 
+const headers = {
+  'Content-Type': 'application/json',
+  Authorization: `Bearer ${process.env.NEXT_PUBLIC_AUTH_TOKEN || ''}`,
+};
 // 프로필 조회
 export const useProfile = () => {
   const fetchProfile = async (): Promise<ApiResponseCreatorMyPageResponse> => {
     const response = await apiRequest<ApiResponseCreatorMyPageResponse>({
       endPoint: '/api/creator/profile',
+      headers,
     });
 
     if (!response.success) {
@@ -35,6 +40,7 @@ export const useUpdateProfile = () => {
     const response = await apiRequest<ApiResponseCreatorMyPageResponse>({
       endPoint: '/api/creator/profile',
       method: 'PATCH',
+      headers,
       data: {
         ...formData,
         profileImageUrl,
@@ -67,6 +73,7 @@ export const useCheckIdAvailability = () => {
     const response = await apiRequest<ApiResponseCreatorMyPageResponse>({
       endPoint: '/api/creator/check-id',
       method: 'POST',
+      headers,
       data: { id },
     });
 
@@ -111,6 +118,7 @@ export const usePresignedUrl = ({ file }: { file: File }) => {
     const response = await apiRequest<ApiResponseCreatorProfileImageResponse>({
       endPoint: '/api/creator/profile/image',
       method: 'POST',
+
       data: {
         mediaType: file.type,
       },

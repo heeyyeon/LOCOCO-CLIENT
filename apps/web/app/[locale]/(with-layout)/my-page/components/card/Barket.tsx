@@ -2,7 +2,32 @@ import { useTranslations } from 'next-intl';
 
 import { cn } from '@lococo/utils';
 
-const useGetChipText = (participationStatus: string) => {
+interface BracketChipProps {
+  text: string;
+  chipVariant: 'pending' | 'approved' | 'rejected' | 'active' | 'disabled';
+  className?: string;
+}
+
+export const getChipVariant = (
+  participationStatus: string
+): BracketChipProps['chipVariant'] => {
+  switch (participationStatus) {
+    case 'PENDING':
+      return 'pending';
+    case 'APPROVED':
+    case 'ACTIVE':
+      return 'approved';
+    case 'REJECTED':
+      return 'rejected';
+    case 'COMPLETED':
+    case 'EXPIRED':
+      return 'disabled';
+    default:
+      return 'rejected';
+  }
+};
+
+export const getChipText = (participationStatus: string) => {
   const t = useTranslations('myPage.myCampaign.participationStatus');
   switch (participationStatus) {
     case 'PENDING':
@@ -22,20 +47,6 @@ const useGetChipText = (participationStatus: string) => {
   }
 };
 
-interface BracketChipProps {
-  text: string;
-  chipVariant:
-    | 'not_open'
-    | 'pending'
-    | 'approved'
-    | 'completed'
-    | 'rejected'
-    | 'progress'
-    | 'expired'
-    | 'active';
-  className?: string;
-}
-
 export default function BracketChip({
   text,
   chipVariant,
@@ -45,11 +56,7 @@ export default function BracketChip({
     disabled: 'bg-gray-500',
     default: 'bg-pink-500',
     approved: 'bg-green',
-    completed: 'bg-red',
-    progress: 'bg-blue',
     active: 'bg-green',
-    expired: 'bg-gray-500',
-    not_open: 'bg-gray-500',
     pending: 'bg-pink-500',
     rejected: 'bg-red',
   };
@@ -77,7 +84,7 @@ export default function BracketChip({
        )`,
       }}
     >
-      {useGetChipText(text)}
+      {text}
     </div>
   );
 }

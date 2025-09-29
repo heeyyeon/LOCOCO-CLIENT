@@ -81,7 +81,7 @@ export default function MyCampaign() {
             UPLOAD_FIRST_REVIEW: {
               handleButtonClick: () => {
                 router.push(
-                  `/my-page/content-submissions?campaignId=${campaign.campaignId}&reviewRound=FIRST`
+                  `/my-page/content-submissions?campaignId=${campaign.campaignId}&round=FIRST`
                 );
               },
               buttonText: t('buttonText.uploadFirstReview'),
@@ -89,7 +89,7 @@ export default function MyCampaign() {
             REVISION_REQUESTED: {
               handleButtonClick: () => {
                 router.push(
-                  `/my-page/content-submissions?campaignId=${campaign.campaignId}&reviewRound=FIRST`
+                  `/my-page/content-submissions?campaignId=${campaign.campaignId}&round=SECOND`
                 );
               },
               buttonText: t('buttonText.revisionRequested'),
@@ -97,7 +97,7 @@ export default function MyCampaign() {
             VIEW_NOTES: {
               handleButtonClick: () => {
                 router.push(
-                  `/my-page/content-submissions?campaignId=${campaign.campaignId}&reviewRound=SECOND`
+                  `/my-page/content-submissions?campaignId=${campaign.campaignId}&round=SECOND`
                 );
               },
               buttonText: t('buttonText.viewNotes'),
@@ -105,7 +105,7 @@ export default function MyCampaign() {
             UPLOAD_SECOND_REVIEW: {
               handleButtonClick: () => {
                 router.push(
-                  `/my-page/content-submissions?campaignId=${campaign.campaignId}&reviewRound=SECOND`
+                  `/my-page/content-submissions?campaignId=${campaign.campaignId}&round=SECOND`
                 );
               },
               buttonText: t('buttonText.uploadSecondReview'),

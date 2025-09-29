@@ -76,7 +76,13 @@ export default function Card({
           <div className="mt-[1.6rem]">
             <button
               onClick={handleButtonClick}
-              className="body2 flex h-[4.8rem] w-full items-center justify-center rounded-[3.2rem] bg-pink-100 font-[700] text-pink-500"
+              className={cn(
+                'body2 flex h-[4.8rem] w-full cursor-pointer items-center justify-center rounded-[3.2rem] bg-pink-500 font-[700] text-white',
+                participationStatus === 'REJECTED' &&
+                  'border-red text-red border bg-white',
+                participationStatus === 'COMPLETED' &&
+                  'bg-gray-200 text-gray-500'
+              )}
             >
               {buttonText}
             </button>

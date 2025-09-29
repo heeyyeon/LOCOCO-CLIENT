@@ -37,14 +37,29 @@ export type ContentSubmissionsForm = {
   submissions: ContentSubmissionsFormData[];
 };
 
+interface FirstReviewData {
+  firstMediaUrls: string[];
+  firstCaptionWithHashtags: string;
+}
+
+interface SecondReviewData {
+  secondMediaUrls: string[];
+  secondCaptionWithHashtags: string;
+  secondPostUrl?: string;
+}
+
 interface CombinedReviewData {
-  firstMediaUrls?: File[];
+  firstMediaUrls?: string[];
   firstCaptionWithHashtags?: string;
-  firstPostUrl?: string;
-  secondMediaUrls?: File[];
+  secondMediaUrls?: string[];
   secondCaptionWithHashtags?: string;
   secondPostUrl?: string;
 }
+
+const headers = {
+  'Content-Type': 'application/json',
+  Authorization: `Bearer ${process.env.NEXT_PUBLIC_AUTH_TOKEN || ''}`,
+};
 
 export const useContentSubmissions = (
   campaignId?: number,
@@ -114,7 +129,7 @@ export const useContentSubmissions = (
       const newSubmissions: ContentSubmissionsFormData[] = [];
 
       campaignList.data.reviewContents.forEach(
-        (reviewContent, index: number) => {
+        (reviewContent: any, index: number) => {
           if (reviewContent) {
             const submission: ContentSubmissionsFormData = {
               formId: `form-${campaignId}-${index}`,
@@ -217,40 +232,27 @@ export const useContentSubmissions = (
             )
           );
 
-          submission.campaignProductMedia = uploadedUrls.map(
-            (url) => new File([], url)
-          );
+          submission.campaignProductMedia = uploadedUrls as any;
         }
       }
 
-      // 리뷰 제출 API 호출 - 모든 폼 데이터를 하나의 요청으로 합쳐서 전송
-      const reviewData: CombinedReviewData = {};
+      // 리뷰 제출 API 호출
+      for (const submission of data.submissions) {
+        const reviewData = {
+          firstMediaUrls: submission.campaignProductMedia as any,
+          firstCaptionWithHashtags: submission.captionAndHashtags,
+          secondMediaUrls: submission.campaignProductMedia as any,
+          secondCaptionWithHashtags: submission.captionAndHashtags,
+          firstPostUrl: submission.postUrl,
+          secondPostUrl: submission.postUrl,
+        };
 
-      data.submissions.forEach((submission, index) => {
-        if (index === 0) {
-          // 첫 번째 폼은 first 필드에
-          reviewData.firstMediaUrls = submission.campaignProductMedia;
-          reviewData.firstCaptionWithHashtags = submission.captionAndHashtags;
-          reviewData.firstPostUrl = submission.postUrl;
-        } else if (index === 1) {
-          // 두 번째 폼은 second 필드에
-          reviewData.secondMediaUrls = submission.campaignProductMedia;
-          reviewData.secondCaptionWithHashtags = submission.captionAndHashtags;
-          reviewData.secondPostUrl = submission.postUrl;
-        }
-      });
-
-      // 첫 번째 submission의 campaignId와 nowReviewRound 사용
-      const firstSubmission = data.submissions[0];
-      if (!firstSubmission) {
-        throw new Error('제출할 데이터가 없습니다.');
+        await submitReviewApi(
+          submission.campaignId,
+          reviewData,
+          submission.nowReviewRound || 'FIRST'
+        );
       }
-
-      await submitReviewApi(
-        firstSubmission.campaignId,
-        reviewData,
-        firstSubmission.nowReviewRound || 'FIRST'
-      );
 
       onSuccess?.();
     } catch (error) {
@@ -290,6 +292,7 @@ const getMediaPresignedUrls = async (file: File[]): Promise<string[]> => {
   const response = await apiRequest<ApiResponseMediaPresignedUrlResponse>({
     endPoint: '/api/reviews/media',
     method: 'POST',
+    headers,
     data: {
       mediaType: file.map((file) => file.type),
     },
@@ -334,6 +337,7 @@ const submitReviewApi = async (
   const response = await apiRequest<ApiResponseReviewReceiptResponse>({
     endPoint,
     method: 'POST',
+    headers,
     data,
   });
 

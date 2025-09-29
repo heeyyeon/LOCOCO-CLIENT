@@ -401,35 +401,35 @@
     },
     "contentSubmissions": {
       "brandNote": {
-        "description": "",
-        "firstReview": ""
+        "description": "파일을 드래그 앤 드롭하거나 클릭하여 업로드하세요.",
+        "firstReview": "파일 선택"
       },
       "campaignProductMediaInput": {
-        "description": "파일을 드래그 앤 드롭하거나 클릭하여 업로드하세요.",
-        "selectFile": "파일 선택",
-        "title": "캠페인 제품 미디어"
-      },
-      "campaignSelect": {
-        "description": "캠페인을 선택해 주세요.",
-        "selectCampaign": "캠페인 선택",
+        "description": "캠페인 제품 미디어",
+        "selectFile": "캠페인을 선택해 주세요.",
         "title": "캠페인 선택"
       },
+      "campaignSelect": {
+        "description": "인스타그램 게시물",
+        "selectCampaign": "인스타그램 릴스",
+        "title": "콘텐츠 유형 선택"
+      },
       "content": {
-        "1stContent": "",
-        "2ndContent": ""
+        "1stContent": "틱톡 영상",
+        "2ndContent": "콘텐츠 유형"
       },
       "contentTypeSelect": {
-        "instagramPost": "인스타그램 게시물",
-        "instagramReels": "인스타그램 릴스",
-        "selectContentType": "콘텐츠 유형 선택",
-        "tiktokVideo": "틱톡 영상",
-        "title": "콘텐츠 유형"
+        "instagramPost": "검토할 콘텐츠가 없습니다.",
+        "instagramReels": "사용한 캡션과 해시태그를 그대로 붙여 넣어 주세요.",
+        "selectContentType": "캡션 & 해시태그 제출하기",
+        "tiktokVideo": "첫 번째 제출물이 접수되었습니다. 브랜드가 검토 후 피드백을 보내드릴 예정입니다.",
+        "title": "오케이"
       },
       "empty": {
-        "title": "검토할 콘텐츠가 없습니다."
+        "title": "최종 제출물이 접수되었습니다. 제출해 주셔서 감사합니다."
       },
       "hashtagsInput": {
-        "description": "사용한 캡션과 해시태그를 그대로 붙여 넣어 주세요.",
+        "description": "성공적으로 제출되었습니다.",
         "title": "캡션 & 해시태그 제출하기"
       },
       "saveSubmitModal": {
@@ -439,8 +439,8 @@
         "title": "성공적으로 제출되었습니다."
       },
       "submitContentUrl": {
-        "description": "",
-        "title": ""
+        "description": "업로드한 리뷰 콘텐츠의 URL을 제출하여 확인 및 추적에 사용하세요.",
+        "title": "콘텐츠 URL 제출"
       }
     },
     "editProfile": {
@@ -541,25 +541,25 @@
     },
     "myCampaign": {
       "buttonText": {
-        "confirmAddress": "",
-        "revisionRequested": "",
-        "uploadFirstReview": "",
-        "uploadSecondReview": "",
-        "viewDetails": "",
-        "viewNote": "",
-        "viewNotes": "",
-        "viewResults": ""
+        "confirmAddress": "주소 확인",
+        "revisionRequested": "수정 요청됨",
+        "uploadFirstReview": "첫 번째 리뷰 업로드",
+        "uploadSecondReview": "두 번째 리뷰 업로드",
+        "viewDetails": "상세보기",
+        "viewNote": "메모 보기",
+        "viewNotes": "메모들 보기",
+        "viewResults": "결과 보기"
       },
       "empty": {
         "title": "신청한 캠페인이 없습니다."
       },
       "participationStatus": {
-        "active": "",
-        "approved": "",
-        "completed": "",
-        "expired": "",
-        "pending": "",
-        "rejected": ""
+        "active": "활성화됨",
+        "approved": "승인됨",
+        "completed": "완료됨",
+        "expired": "만료됨",
+        "pending": "대기 중",
+        "rejected": "거절됨"
       },
       "title": "나의 캠페인"
     },
