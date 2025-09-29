@@ -2179,6 +2179,45 @@ export interface MainPageUpcomingCampaignResponse {
   chipStatus: string;
 }
 
+export interface ApiResponseCompletedReviewResponse {
+  success?: boolean;
+  /** @format int32 */
+  status?: number;
+  message?: string;
+  data?: CompletedReviewResponse;
+}
+
+export interface CompletedReviewContent {
+  /**
+   * 컨텐츠 타입
+   * @example "INSTA_REELS"
+   */
+  contentType?: 'INSTA_REELS' | 'TIKTOK_VIDEO' | 'INSTA_POST';
+  /**
+   * 최종 제출한 캡션과 해시태그
+   * @example "수정해서 제출합니다 ㅎ"
+   */
+  captionWithHashtags?: string;
+  /** 최종 제출한 미디어 URL 목록 */
+  mediaUrls?: string[];
+}
+
+export interface CompletedReviewResponse {
+  /**
+   * 참여한 캠페인 ID
+   * @format int64
+   * @example 61
+   */
+  campaignId?: number;
+  /**
+   * 캠페인 이름
+   * @example "신상품 홍보 캠페인"
+   */
+  campaignName?: string;
+  /** 완료된 리뷰 컨텐츠 목록 */
+  reviewContents?: CompletedReviewContent[];
+}
+
 export interface ApiResponseListCampaignParticipatedResponse {
   success?: boolean;
   /** @format int32 */

@@ -9,16 +9,18 @@
  * ## SOURCE: https://github.com/acacode/swagger-typescript-api ##
  * ---------------------------------------------------------------
  */
+
 import {
   ApiResponseCampaignParticipatedResponse,
+  ApiResponseCompletedReviewResponse,
   ApiResponseListCampaignParticipatedResponse,
   ApiResponseMediaPresignedUrlResponse,
   ApiResponseReviewUploadResponse,
   FirstReviewUploadRequest,
   MediaPresignedUrlRequest,
   SecondReviewUploadRequest,
-} from './data-contracts';
-import { ContentType, HttpClient, RequestParams } from './http-client';
+} from "./data-contracts";
+import { ContentType, HttpClient, RequestParams } from "./http-client";
 
 export class CampaignReview<
   SecurityDataType = unknown,
@@ -35,11 +37,11 @@ export class CampaignReview<
   uploadSecond = (
     campaignId: number,
     data: SecondReviewUploadRequest,
-    params: RequestParams = {}
+    params: RequestParams = {},
   ) =>
     this.request<ApiResponseReviewUploadResponse, any>({
       path: `/api/campaignReviews/${campaignId}/second`,
-      method: 'POST',
+      method: "POST",
       body: data,
       secure: true,
       type: ContentType.Json,
@@ -57,11 +59,11 @@ export class CampaignReview<
   uploadFirst = (
     campaignId: number,
     data: FirstReviewUploadRequest,
-    params: RequestParams = {}
+    params: RequestParams = {},
   ) =>
     this.request<ApiResponseReviewUploadResponse, any>({
       path: `/api/campaignReviews/${campaignId}/first`,
-      method: 'POST',
+      method: "POST",
       body: data,
       secure: true,
       type: ContentType.Json,
@@ -78,14 +80,30 @@ export class CampaignReview<
    */
   createMediaPresignedUrl2 = (
     data: MediaPresignedUrlRequest,
-    params: RequestParams = {}
+    params: RequestParams = {},
   ) =>
     this.request<ApiResponseMediaPresignedUrlResponse, any>({
       path: `/api/campaignReviews/media`,
-      method: 'POST',
+      method: "POST",
       body: data,
       secure: true,
       type: ContentType.Json,
+      ...params,
+    });
+  /**
+   * No description
+   *
+   * @tags CAMPAIGN REVIEW
+   * @name GetCompletedReviews
+   * @summary 완료된 캠페인 리뷰 결과 조회 (2차 리뷰)
+   * @request GET:/api/campaignReviews/{campaignId}/results
+   * @secure
+   */
+  getCompletedReviews = (campaignId: number, params: RequestParams = {}) =>
+    this.request<ApiResponseCompletedReviewResponse, any>({
+      path: `/api/campaignReviews/${campaignId}/results`,
+      method: "GET",
+      secure: true,
       ...params,
     });
   /**
@@ -99,13 +117,13 @@ export class CampaignReview<
    */
   getMyReviewables = (
     query?: {
-      round?: 'FIRST' | 'SECOND';
+      round?: "FIRST" | "SECOND";
     },
-    params: RequestParams = {}
+    params: RequestParams = {},
   ) =>
     this.request<ApiResponseListCampaignParticipatedResponse, any>({
       path: `/api/campaignReviews/my/participation`,
-      method: 'GET',
+      method: "GET",
       query: query,
       secure: true,
       ...params,
@@ -122,13 +140,13 @@ export class CampaignReview<
   getMyReviewableCampaign = (
     campaignId: number,
     query?: {
-      round?: 'FIRST' | 'SECOND';
+      round?: "FIRST" | "SECOND";
     },
-    params: RequestParams = {}
+    params: RequestParams = {},
   ) =>
     this.request<ApiResponseCampaignParticipatedResponse, any>({
       path: `/api/campaignReviews/my/participation/${campaignId}`,
-      method: 'GET',
+      method: "GET",
       query: query,
       secure: true,
       ...params,

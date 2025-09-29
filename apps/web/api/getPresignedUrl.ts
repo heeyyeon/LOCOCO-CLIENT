@@ -1,5 +1,12 @@
-import { ApiResponseCampaignMediaResponse } from '@typescript-swagger/data-contracts';
 import { apiRequest } from 'app/api/apiRequest';
+
+interface MediaUrl {
+  mediaUrl: string[];
+}
+
+interface ApiResponseCampaignMediaResponse {
+  data: MediaUrl;
+}
 
 export const getPresignedUrl = async (fileTypes: string[]) => {
   const response = await apiRequest<ApiResponseCampaignMediaResponse>({

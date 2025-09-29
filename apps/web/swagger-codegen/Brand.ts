@@ -9,6 +9,7 @@
  * ## SOURCE: https://github.com/acacode/swagger-typescript-api ##
  * ---------------------------------------------------------------
  */
+
 import {
   ApiResponseBrandDashboardCampaignListResponse,
   ApiResponseBrandMyCampaignInfoListResponse,
@@ -30,8 +31,8 @@ import {
   CampaignDraftRequest,
   CampaignPublishRequest,
   CreatorApproveRequest,
-} from './data-contracts';
-import { ContentType, HttpClient, RequestParams } from './http-client';
+} from "./data-contracts";
+import { ContentType, HttpClient, RequestParams } from "./http-client";
 
 export class Brand<
   SecurityDataType = unknown,
@@ -48,11 +49,11 @@ export class Brand<
   updateCampaignDraft = (
     campaignId: number,
     data: CampaignDraftRequest,
-    params: RequestParams = {}
+    params: RequestParams = {},
   ) =>
     this.request<ApiResponseCampaignBasicResponse, any>({
       path: `/api/brands/my/campaigns/${campaignId}/draft`,
-      method: 'PUT',
+      method: "PUT",
       body: data,
       secure: true,
       type: ContentType.Json,
@@ -69,11 +70,11 @@ export class Brand<
    */
   createBrandImagePresignedUrl = (
     data: BrandProfileImageRequest,
-    params: RequestParams = {}
+    params: RequestParams = {},
   ) =>
     this.request<ApiResponseBrandProfileImageResponse, any>({
       path: `/api/brands/profile/image`,
-      method: 'POST',
+      method: "POST",
       body: data,
       secure: true,
       type: ContentType.Json,
@@ -91,14 +92,14 @@ export class Brand<
   requestReviewRevision = (
     campaignReviewId: number,
     query: {
-      action: 'SAVE_DRAFT' | 'SUBMIT';
+      action: "SAVE_DRAFT" | "SUBMIT";
     },
     data: BrandNoteRevisionRequest,
-    params: RequestParams = {}
+    params: RequestParams = {},
   ) =>
     this.request<ApiResponseBrandNoteRevisionResponse, any>({
       path: `/api/brands/my/reviews/${campaignReviewId}/revision-request`,
-      method: 'POST',
+      method: "POST",
       query: query,
       body: data,
       secure: true,
@@ -116,11 +117,11 @@ export class Brand<
    */
   createAndPublishCampaign = (
     data: CampaignPublishRequest,
-    params: RequestParams = {}
+    params: RequestParams = {},
   ) =>
     this.request<ApiResponseCampaignBasicResponse, any>({
       path: `/api/brands/my/campaigns/publish`,
-      method: 'POST',
+      method: "POST",
       body: data,
       secure: true,
       type: ContentType.Json,
@@ -137,11 +138,11 @@ export class Brand<
    */
   createAndPublishCampaignForAdmin = (
     data: CampaignPublishRequest,
-    params: RequestParams = {}
+    params: RequestParams = {},
   ) =>
     this.request<ApiResponseCampaignBasicResponse, any>({
       path: `/api/brands/my/campaigns/publish/admin`,
-      method: 'POST',
+      method: "POST",
       body: data,
       secure: true,
       type: ContentType.Json,
@@ -158,11 +159,11 @@ export class Brand<
    */
   createDraftCampaign = (
     data: CampaignDraftRequest,
-    params: RequestParams = {}
+    params: RequestParams = {},
   ) =>
     this.request<ApiResponseCampaignBasicResponse, any>({
       path: `/api/brands/my/campaigns/drafts`,
-      method: 'POST',
+      method: "POST",
       body: data,
       secure: true,
       type: ContentType.Json,
@@ -179,11 +180,11 @@ export class Brand<
    */
   updateBrandInfo = (
     data: BrandInfoUpdateRequest,
-    params: RequestParams = {}
+    params: RequestParams = {},
   ) =>
     this.request<ApiResponseVoid, any>({
       path: `/api/brands/register/info`,
-      method: 'PATCH',
+      method: "PATCH",
       body: data,
       secure: true,
       type: ContentType.Json,
@@ -201,7 +202,7 @@ export class Brand<
   getBrandMyPageInfo = (params: RequestParams = {}) =>
     this.request<ApiResponseBrandMyPageResponse, any>({
       path: `/api/brands/profile`,
-      method: 'GET',
+      method: "GET",
       secure: true,
       ...params,
     });
@@ -216,11 +217,11 @@ export class Brand<
    */
   updateBrandMyPageProfile = (
     data: BrandMyPageUpdateRequest,
-    params: RequestParams = {}
+    params: RequestParams = {},
   ) =>
     this.request<ApiResponseVoid, any>({
       path: `/api/brands/profile`,
-      method: 'PATCH',
+      method: "PATCH",
       body: data,
       secure: true,
       type: ContentType.Json,
@@ -238,11 +239,11 @@ export class Brand<
   publishCampaign = (
     campaignId: number,
     data: CampaignPublishRequest,
-    params: RequestParams = {}
+    params: RequestParams = {},
   ) =>
     this.request<ApiResponseCampaignBasicResponse, any>({
       path: `/api/brands/my/campaigns/${campaignId}/publish`,
-      method: 'PATCH',
+      method: "PATCH",
       body: data,
       secure: true,
       type: ContentType.Json,
@@ -260,11 +261,11 @@ export class Brand<
   approveCreatorApplicants = (
     campaignId: number,
     data: CreatorApproveRequest,
-    params: RequestParams = {}
+    params: RequestParams = {},
   ) =>
     this.request<ApiResponseCreatorApprovedResponse, any>({
       path: `/api/brands/my/campaigns/${campaignId}/applicants/approve`,
-      method: 'PATCH',
+      method: "PATCH",
       body: data,
       secure: true,
       type: ContentType.Json,
@@ -282,7 +283,7 @@ export class Brand<
   getBrandProfileAndStatistics = (params: RequestParams = {}) =>
     this.request<ApiResponseBrandProfileAndStatisticsResponse, any>({
       path: `/api/brands/my/profile/stats`,
-      method: 'GET',
+      method: "GET",
       secure: true,
       ...params,
     });
@@ -298,12 +299,12 @@ export class Brand<
   getBrandMyCampaigns = (
     query: {
       status:
-        | 'ALL'
-        | 'DRAFT'
-        | 'WAITING_APPROVAL'
-        | 'OPEN_RESERVED'
-        | 'ACTIVE'
-        | 'COMPLETED';
+        | "ALL"
+        | "DRAFT"
+        | "WAITING_APPROVAL"
+        | "OPEN_RESERVED"
+        | "ACTIVE"
+        | "COMPLETED";
       /**
        * @format int32
        * @default 0
@@ -315,11 +316,11 @@ export class Brand<
        */
       size?: number;
     },
-    params: RequestParams = {}
+    params: RequestParams = {},
   ) =>
     this.request<ApiResponseBrandMyCampaignListResponse, any>({
       path: `/api/brands/my/campaigns`,
-      method: 'GET',
+      method: "GET",
       query: query,
       secure: true,
       ...params,
@@ -336,7 +337,7 @@ export class Brand<
   getCampaignApplicants = (
     campaignId: number,
     query?: {
-      status?: 'PENDING' | 'APPROVED' | 'REJECTED';
+      status?: "PENDING" | "APPROVED" | "REJECTED";
       /**
        * @format int32
        * @default 0
@@ -348,11 +349,11 @@ export class Brand<
        */
       size?: number;
     },
-    params: RequestParams = {}
+    params: RequestParams = {},
   ) =>
     this.request<ApiResponseCampaignApplicantListResponse, any>({
       path: `/api/brands/my/campaigns/${campaignId}/applicants`,
-      method: 'GET',
+      method: "GET",
       query: query,
       secure: true,
       ...params,
@@ -369,7 +370,7 @@ export class Brand<
   getSimpleCampaignInfos = (params: RequestParams = {}) =>
     this.request<ApiResponseBrandMyCampaignInfoListResponse, any>({
       path: `/api/brands/my/campaigns/infos`,
-      method: 'GET',
+      method: "GET",
       secure: true,
       ...params,
     });
@@ -385,7 +386,7 @@ export class Brand<
   getCampaignDetails = (params: RequestParams = {}) =>
     this.request<ApiResponseListBrandIssuedCampaignResponse, any>({
       path: `/api/brands/my/campaigns/in-review`,
-      method: 'GET',
+      method: "GET",
       secure: true,
       ...params,
     });
@@ -401,7 +402,7 @@ export class Brand<
   getDraftCampaign = (campaignId: number, params: RequestParams = {}) =>
     this.request<ApiResponseCampaignBasicResponse, any>({
       path: `/api/brands/my/campaigns/drafts/${campaignId}`,
-      method: 'GET',
+      method: "GET",
       secure: true,
       ...params,
     });
@@ -416,11 +417,11 @@ export class Brand<
    */
   getCreatorCampaignReview = (
     campaignReviewId: number,
-    params: RequestParams = {}
+    params: RequestParams = {},
   ) =>
     this.request<ApiResponseCampaignReviewDetailListResponse, any>({
       path: `/api/brands/my/campaigns/creators/${campaignReviewId}/review`,
-      method: 'GET',
+      method: "GET",
       secure: true,
       ...params,
     });
@@ -446,11 +447,11 @@ export class Brand<
        */
       size?: number;
     },
-    params: RequestParams = {}
+    params: RequestParams = {},
   ) =>
     this.request<ApiResponseBrandDashboardCampaignListResponse, any>({
       path: `/api/brands/dashboard/campaigns`,
-      method: 'GET',
+      method: "GET",
       query: query,
       secure: true,
       ...params,
