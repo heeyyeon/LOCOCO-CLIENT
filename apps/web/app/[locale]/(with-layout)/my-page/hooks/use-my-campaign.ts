@@ -12,11 +12,6 @@ interface UseMyCampaignParams {
   size?: number;
 }
 
-const headers = {
-  'Content-Type': 'application/json',
-  Authorization: `Bearer ${process.env.NEXT_PUBLIC_AUTH_TOKEN || ''}`,
-};
-
 const fetchMyCampaigns = async (
   params: UseMyCampaignParams = {}
 ): Promise<{
@@ -29,7 +24,6 @@ const fetchMyCampaigns = async (
   const response = await apiRequest<ApiResponseCreatorMyCampaignListResponse>({
     endPoint: `/api/creator/profile/campaigns?page=${page}&size=${size}`,
     method: 'GET',
-    headers,
   });
 
   if (!response.success) {

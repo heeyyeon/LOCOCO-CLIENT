@@ -1,16 +1,8 @@
 import { useQuery } from '@tanstack/react-query';
-import {
-  ApiResponseCampaignParticipatedResponse,
-  CampaignParticipatedResponse,
-} from '@typescript-swagger/data-contracts';
+import { ApiResponseCampaignParticipatedResponse } from '@typescript-swagger/data-contracts';
 import { apiRequest } from 'app/api/apiRequest';
 
 import { CAMPAIGN_REVIEW_KEYS } from '../constant/queryKey';
-
-const headers = {
-  'Content-Type': 'application/json',
-  Authorization: `Bearer ${process.env.NEXT_PUBLIC_AUTH_TOKEN || ''}`,
-};
 
 const fetchCampaignReview = async (
   campaignId: number,
@@ -19,7 +11,6 @@ const fetchCampaignReview = async (
   const response = await apiRequest<ApiResponseCampaignParticipatedResponse>({
     endPoint: `/api/campaignReviews/my/participation/${campaignId}`,
     method: 'GET',
-    headers,
     params: {
       campaignId: campaignId.toString(),
       round: round || '',

@@ -37,17 +37,6 @@ export type ContentSubmissionsForm = {
   submissions: ContentSubmissionsFormData[];
 };
 
-interface FirstReviewData {
-  firstMediaUrls: string[];
-  firstCaptionWithHashtags: string;
-}
-
-interface SecondReviewData {
-  secondMediaUrls: string[];
-  secondCaptionWithHashtags: string;
-  secondPostUrl?: string;
-}
-
 interface CombinedReviewData {
   firstMediaUrls?: string[];
   firstCaptionWithHashtags?: string;
@@ -55,11 +44,6 @@ interface CombinedReviewData {
   secondCaptionWithHashtags?: string;
   secondPostUrl?: string;
 }
-
-const headers = {
-  'Content-Type': 'application/json',
-  Authorization: `Bearer ${process.env.NEXT_PUBLIC_AUTH_TOKEN || ''}`,
-};
 
 export const useContentSubmissions = (
   campaignId?: number,
@@ -292,7 +276,6 @@ const getMediaPresignedUrls = async (file: File[]): Promise<string[]> => {
   const response = await apiRequest<ApiResponseMediaPresignedUrlResponse>({
     endPoint: '/api/reviews/media',
     method: 'POST',
-    headers,
     data: {
       mediaType: file.map((file) => file.type),
     },
@@ -336,8 +319,6 @@ const submitReviewApi = async (
 
   const response = await apiRequest<ApiResponseReviewReceiptResponse>({
     endPoint,
-    method: 'POST',
-    headers,
     data,
   });
 

@@ -189,7 +189,7 @@ export class Creator<
       page?: number;
       /**
        * @format int32
-       * @default 20
+       * @default 12
        */
       size?: number;
     },

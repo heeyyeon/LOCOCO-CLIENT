@@ -1430,6 +1430,11 @@ export interface PageableResponse {
   /** @format int32 */
   numberOfElements: number;
   isLast: boolean;
+  /**
+   * 전체 페이지 개수
+   * @format int32
+   */
+  totalPages?: number;
 }
 
 export interface ProductListItemResponse {
@@ -2530,11 +2535,11 @@ export interface ApiResponseCampaignReviewDetailListResponse {
 
 export interface CampaignReviewDetailListResponse {
   /**
-   * 캠페인 ID
+   * 캠페인 리뷰 ID
    * @format int64
    * @example 11
    */
-  campaignId: number;
+  campaignReviewId: number;
   /**
    * 캠페인 제목
    * @example "Summer Hydration Campaign"

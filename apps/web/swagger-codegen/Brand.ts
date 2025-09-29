@@ -337,6 +337,7 @@ export class Brand<
   getCampaignApplicants = (
     campaignId: number,
     query?: {
+      status?: "PENDING" | "APPROVED" | "REJECTED";
       /**
        * @format int32
        * @default 0
