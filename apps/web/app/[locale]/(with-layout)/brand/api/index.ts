@@ -1,8 +1,7 @@
+import { ApiResponseBrandMyCampaignListResponse } from '@typescript-swagger/data-contracts';
 import { apiRequest } from 'app/api/apiRequest';
 
-import { BrandCampaignsResponse } from '../hooks/useBrandCampaign';
-
-interface GetBrandMyCampaignProps {
+export interface GetBrandMyCampaignProps {
   status?:
     | 'ALL'
     | 'DRAFT'
@@ -18,8 +17,8 @@ export const getBrandMyCampaign = async ({
   status = 'ALL',
   page = 0,
   size = 6,
-}: GetBrandMyCampaignProps): Promise<BrandCampaignsResponse> => {
-  const response = await apiRequest<BrandCampaignsResponse>({
+}: GetBrandMyCampaignProps): Promise<ApiResponseBrandMyCampaignListResponse> => {
+  const response = await apiRequest<ApiResponseBrandMyCampaignListResponse>({
     endPoint: `/api/brands/my/campaigns?status=${status}&page=${page}&size=${size}`,
   });
   return response;

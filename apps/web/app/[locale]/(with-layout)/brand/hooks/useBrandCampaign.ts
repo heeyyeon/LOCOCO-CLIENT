@@ -1,48 +1,18 @@
 import { useQuery } from '@tanstack/react-query';
+import { ApiResponseBrandMyCampaignListResponse } from '@typescript-swagger/data-contracts';
 
-import { getBrandMyCampaign } from '../api';
+import { GetBrandMyCampaignProps, getBrandMyCampaign } from '../api';
 
-interface Campaign {
-  id: number;
-  campaignImageUrl: string;
-  title: string;
-  applyDeadline: string;
-  applicantNumber: number;
-  recruitmentNumber: number;
-  campaignStatus:
-    | 'OPEN_RESERVED'
-    | 'ALL'
-    | 'COMPLETED'
-    | 'WAITING_APPROVAL'
-    | 'DRAFT'
-    | 'ACTIVE';
-}
+export const useBrandCampaigns = ({
+  status = 'ALL',
+  page = 0,
+  size = 6,
+}: GetBrandMyCampaignProps = {}) => {
+  const { data, isLoading, isError } =
+    useQuery<ApiResponseBrandMyCampaignListResponse>({
+      queryKey: ['brand', 'campaigns', status, page, size],
+      queryFn: () => getBrandMyCampaign({ status, page, size }),
+    });
 
-interface PageInfo {
-  pageNumber: number;
-  pageSize: number;
-  numberOfElements: number;
-  isLast: boolean;
-}
-
-interface CampaignsData {
-  campaigns: Campaign[];
-  pageInfo: PageInfo;
-}
-
-export interface BrandCampaignsResponse {
-  success: boolean;
-  status: number;
-  message: string;
-  data: CampaignsData;
-}
-
-export const useBrandCampaigns = () => {
-  const { data, isLoading, isError } = useQuery<BrandCampaignsResponse>({
-    queryKey: ['brand', 'campaigns'],
-    queryFn: async () => {
-      return await getBrandMyCampaign({});
-    },
-  });
   return { data, isLoading, isError };
 };

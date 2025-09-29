@@ -8,6 +8,36 @@ import CampaignListEmpty from 'components/empty/campgin-list-empty';
 
 import { useBrandCampaigns } from '../hooks/useBrandCampaign';
 
+type ChipVariant =
+  | 'ALL'
+  | 'DRAFT'
+  | 'WAITING_APPROVAL'
+  | 'OPEN_RESERVED'
+  | 'ACTIVE'
+  | 'COMPLETED'
+  | 'progress'
+  | 'default'
+  | 'disabled'
+  | 'approved'
+  | 'declined';
+
+const isValidChipVariant = (status: string): status is ChipVariant => {
+  const validStatuses: ChipVariant[] = [
+    'ALL',
+    'DRAFT',
+    'WAITING_APPROVAL',
+    'OPEN_RESERVED',
+    'ACTIVE',
+    'COMPLETED',
+    'progress',
+    'default',
+    'disabled',
+    'approved',
+    'declined',
+  ];
+  return validStatuses.includes(status as ChipVariant);
+};
+
 export default function CardGridSection() {
   const { data, isLoading, isError } = useBrandCampaigns();
 
@@ -27,25 +57,27 @@ export default function CardGridSection() {
 
   return (
     <section className="grid grid-cols-3 gap-x-[4rem] gap-y-[3.2rem]">
-      {data.data.campaigns.map((campaign) => (
-        <Card
-          key={campaign.id}
-          endTime={campaign.applyDeadline}
-          chipVariant={
-            campaign.campaignStatus
-              ? campaign.campaignStatus
-              : getChipVariantByDate(campaign.applyDeadline)
-          }
-          brandName={campaign.applyDeadline}
-          campaignName={campaign.title}
-          recruitmentNumber={campaign.recruitmentNumber}
-          applicantNumber={campaign.applicantNumber}
-          campaignImageUrl={campaign.campaignImageUrl}
-          campaignId={campaign.id}
-          hoverOption="always"
-          className="w-[28.4rem]"
-        />
-      ))}
+      {data.data.campaigns.map((campaign) => {
+        const chipVariant = isValidChipVariant(campaign.campaignStatus)
+          ? campaign.campaignStatus
+          : getChipVariantByDate(campaign.applyDeadline);
+
+        return (
+          <Card
+            key={campaign.id}
+            endTime={campaign.applyDeadline}
+            chipVariant={chipVariant}
+            brandName={campaign.applyDeadline}
+            campaignName={campaign.title}
+            recruitmentNumber={campaign.recruitmentNumber}
+            applicantNumber={campaign.applicantNumber}
+            campaignImageUrl={campaign.campaignImageUrl}
+            campaignId={campaign.id}
+            hoverOption="always"
+            className="w-[28.4rem]"
+          />
+        );
+      })}
     </section>
   );
 }
