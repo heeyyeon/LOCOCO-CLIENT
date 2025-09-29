@@ -400,6 +400,10 @@
       "zip": "Zip/Postal Code"
     },
     "contentSubmissions": {
+      "brandNote": {
+        "description": "These are the revisions requested by the brand. Please update your content accordingly and re-upload it after making the changes.",
+        "firstReview": "Brand’s Note for 1st Review "
+      },
       "campaignProductMediaInput": {
         "description": "Drag and drop or click to upload the file.",
         "selectFile": "Select File",
@@ -409,6 +413,10 @@
         "description": "Please select a campaign",
         "selectCampaign": "Select a Campaign",
         "title": "Select a Campaign"
+      },
+      "content": {
+        "1stContent": "1st Content",
+        "2ndContent": "2nd Content"
       },
       "contentTypeSelect": {
         "instagramPost": "Instagram Post",
@@ -429,6 +437,10 @@
         "save": "Okay",
         "secondDescription": "Your final submission has been received. Thank you for your submission.",
         "title": "Submitted successfully"
+      },
+      "submitContentUrl": {
+        "description": "Submit the URL of your uploaded review content for confirmation and tracking.",
+        "title": "Submit Content URL"
       }
     },
     "editProfile": {
@@ -528,6 +540,27 @@
       "myCampaign": "My Campaign"
     },
     "myCampaign": {
+      "buttonText": {
+        "confirmAddress": "Confirm Address",
+        "revisionRequested": "Revision Requested",
+        "uploadFirstReview": "Upload First Review",
+        "uploadSecondReview": "Upload Second Review",
+        "viewDetails": "View Details",
+        "viewNote": "View Note",
+        "viewNotes": "View Notes",
+        "viewResults": "View Results"
+      },
+      "empty": {
+        "title": "There is no campaign has been applied."
+      },
+      "participationStatus": {
+        "active": "Active",
+        "approved": "Approved",
+        "completed": "Completed",
+        "expired": "Expired",
+        "pending": "Pending",
+        "rejected": "Rejected"
+      },
       "empty": {
         "title": "There is no campaign has been applied."
       },

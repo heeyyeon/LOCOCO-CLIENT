@@ -400,6 +400,10 @@
       "zip": "Código postal"
     },
     "contentSubmissions": {
+      "brandNote": {
+        "description": "",
+        "firstReview": ""
+      },
       "campaignProductMediaInput": {
         "description": "Arrastra y suelta o haz clic para subir el archivo.",
         "selectFile": "Seleccionar archivo",
@@ -409,6 +413,10 @@
         "description": "Por favor, seleccione una campaña.",
         "selectCampaign": "Seleccionar una campaña",
         "title": "Seleccionar una campaña"
+      },
+      "content": {
+        "1stContent": "",
+        "2ndContent": ""
       },
       "contentTypeSelect": {
         "instagramPost": "Publicación en Instagram",
@@ -429,6 +437,10 @@
         "save": "Está bien",
         "secondDescription": "Tu primer envío ha sido recibido. La marca lo revisará y enviará una nota.",
         "title": "Enviado con éxito"
+      },
+      "submitContentUrl": {
+        "description": "",
+        "title": ""
       }
     },
     "editProfile": {
@@ -528,6 +540,27 @@
       "myCampaign": "Mi campaña"
     },
     "myCampaign": {
+      "buttonText": {
+        "confirmAddress": "",
+        "revisionRequested": "",
+        "uploadFirstReview": "",
+        "uploadSecondReview": "",
+        "viewDetails": "",
+        "viewNote": "",
+        "viewNotes": "",
+        "viewResults": ""
+      },
+      "empty": {
+        "title": "No hay ninguna campaña solicitada."
+      },
+      "participationStatus": {
+        "active": "",
+        "approved": "",
+        "completed": "",
+        "expired": "",
+        "pending": "",
+        "rejected": ""
+      },
       "empty": {
         "title": "No hay ninguna campaña solicitada."
       },

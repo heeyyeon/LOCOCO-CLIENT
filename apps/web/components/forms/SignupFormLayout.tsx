@@ -13,6 +13,7 @@ interface SignupFormLayoutProps {
   submitLabel: string;
   backLabel?: string;
   isBackDisabled?: boolean;
+  isSubmitting?: boolean;
 }
 
 export function SignupFormLayout({
@@ -56,7 +57,7 @@ export function SignupFormLayout({
             {backLabel}
           </Button>
           <Button
-            type="submit"
+            type="button"
             variant="filled"
             color="primary"
             size="md"

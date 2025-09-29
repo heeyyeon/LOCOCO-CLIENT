@@ -400,6 +400,10 @@
       "zip": "우편번호"
     },
     "contentSubmissions": {
+      "brandNote": {
+        "description": "",
+        "firstReview": ""
+      },
       "campaignProductMediaInput": {
         "description": "파일을 드래그 앤 드롭하거나 클릭하여 업로드하세요.",
         "selectFile": "파일 선택",
@@ -409,6 +413,10 @@
         "description": "캠페인을 선택해 주세요.",
         "selectCampaign": "캠페인 선택",
         "title": "캠페인 선택"
+      },
+      "content": {
+        "1stContent": "",
+        "2ndContent": ""
       },
       "contentTypeSelect": {
         "instagramPost": "인스타그램 게시물",
@@ -429,6 +437,10 @@
         "save": "오케이",
         "secondDescription": "최종 제출물이 접수되었습니다. 제출해 주셔서 감사합니다.",
         "title": "성공적으로 제출되었습니다."
+      },
+      "submitContentUrl": {
+        "description": "",
+        "title": ""
       }
     },
     "editProfile": {
@@ -528,6 +540,27 @@
       "myCampaign": "내 캠페인"
     },
     "myCampaign": {
+      "buttonText": {
+        "confirmAddress": "",
+        "revisionRequested": "",
+        "uploadFirstReview": "",
+        "uploadSecondReview": "",
+        "viewDetails": "",
+        "viewNote": "",
+        "viewNotes": "",
+        "viewResults": ""
+      },
+      "empty": {
+        "title": "신청한 캠페인이 없습니다."
+      },
+      "participationStatus": {
+        "active": "",
+        "approved": "",
+        "completed": "",
+        "expired": "",
+        "pending": "",
+        "rejected": ""
+      },
       "empty": {
         "title": "신청한 캠페인이 없습니다."
       },
