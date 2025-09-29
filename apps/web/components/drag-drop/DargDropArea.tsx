@@ -15,7 +15,7 @@ import {
 
 interface DragDropAreaProps {
   imageFiles: File[];
-  videoFiles: File[];
+  videoFiles?: File[];
   handleImageFilesChange: (files: File[]) => void;
   handleVideoFilesChange: (files: File[]) => void;
   maxFiles?: number;
@@ -24,7 +24,7 @@ interface DragDropAreaProps {
 
 export default function DragDropArea({
   imageFiles,
-  videoFiles,
+  videoFiles = [],
   handleImageFilesChange,
   handleVideoFilesChange,
   maxFiles = 10,
