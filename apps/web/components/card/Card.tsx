@@ -71,7 +71,6 @@ export default function Card({
         <Image
           fill
           className="object-cover"
-          unoptimized={true}
           src={
             isValidImageUrl(campaignImageUrl) ? campaignImageUrl : fallbackImage
           }
