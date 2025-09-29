@@ -105,6 +105,7 @@ export function SnsConnection({
                         rounded="sm"
                         fontType="InterBody2"
                         className="h-[4rem]"
+                        type="button"
                       >
                         {t(`connectButtons.${platform}`)}
                       </Button>
