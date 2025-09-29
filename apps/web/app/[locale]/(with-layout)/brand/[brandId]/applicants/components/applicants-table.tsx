@@ -22,7 +22,6 @@ import FollowerCountColumn from './column/follower-count-column';
 
 const getWidthClass = (size: number) => {
   const widthMap: { [key: number]: string } = {
-    40: 'w-[30px]',
     50: 'w-[50px]',
     120: 'w-[120px]',
     148: 'w-[148px]',
