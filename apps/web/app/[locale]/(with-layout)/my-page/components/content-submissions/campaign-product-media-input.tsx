@@ -16,11 +16,13 @@ interface CampaignProductMediaInputProps {
     campaignProductMedia: File[]
   ) => void;
   fieldId: string;
+  title?: string;
 }
 
 export default function CampaignProductMediaInput({
   formData,
   errors,
+  title,
   updateCampaignProductMedia,
   fieldId,
 }: CampaignProductMediaInputProps) {
@@ -75,7 +77,7 @@ export default function CampaignProductMediaInput({
   return (
     <section className="flex w-full flex-col gap-[1.6rem]">
       <div className="flex flex-col gap-[0.4rem]">
-        <p className="title2 text-gray-800">{t('title')}</p>
+        {title && <p className="title2 text-gray-800">{title}</p>}
         <div className="flex items-center gap-[0.8rem]">
           <p className="body4 text-gray-500">{t('description')}</p>
           <button
@@ -94,7 +96,6 @@ export default function CampaignProductMediaInput({
         handleImageFilesChange={handleImageFilesChange}
         handleVideoFilesChange={handleVideoFilesChange}
         maxFiles={12}
-        inputFileId={inputFileId}
       />
       {errors && <ErrorNotice message={errors} />}
     </section>

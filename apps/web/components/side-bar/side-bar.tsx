@@ -33,16 +33,8 @@ export default function SideBar({
   const router = useRouter();
   const pathname = usePathname();
 
-  const getActiveMenu = () => {
-    if (pathname.includes('/my-page/')) {
-      const pathAfterMyPage = pathname.split('/my-page/')[1];
-      const menuFromPath = pathAfterMyPage?.split('/')[0];
-      return menuFromPath || defaultActiveMenu;
-    }
-    return defaultActiveMenu;
-  };
-
-  const activeMenu = getActiveMenu();
+  const activeMenu =
+    pathname.split('/').pop() || menus[0]?.value || defaultActiveMenu;
 
   const handleClickTab = (item: MenuItem) => {
     const pathParts = pathname.split('/');
@@ -84,7 +76,7 @@ export default function SideBar({
               label={menu.label}
               value={menu.value}
               selected={activeMenu === menu.value}
-              className="p-0"
+              className="flex h-fit items-start truncate px-0 py-[1.15rem]"
               onClick={() => handleClickTab(menu)}
             />
           ))}
