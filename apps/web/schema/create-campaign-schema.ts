@@ -102,7 +102,7 @@ export const createCampaignSchema = z
       const firstSelected = Object.values(data.firstContents).filter(
         Boolean
       ).length;
-      return firstSelected <= 2;
+      return firstSelected <= 1;
     },
     {
       message: 'firstContentMaxExceeded',
@@ -114,7 +114,7 @@ export const createCampaignSchema = z
       const secondSelected = Object.values(data.secondContents).filter(
         Boolean
       ).length;
-      return secondSelected <= 2;
+      return secondSelected <= 1;
     },
     {
       message: 'secondContentMaxExceeded',
