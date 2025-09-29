@@ -98,9 +98,10 @@ export default function CampaignUploadMedia() {
         files: newFiles,
         onSuccess: (uploadedFiles: UploadedFile[]) => {
           // CampaignImageRequest 형태로 객체 생성
+          const base = currentDetailUrls.length;
           const newImageObjects = uploadedFiles.map((file, index) => ({
             url: file.url,
-            displayOrder: index,
+            displayOrder: base + index,
             imageType: 'DETAIL' as const,
           }));
 
