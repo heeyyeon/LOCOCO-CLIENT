@@ -35,7 +35,6 @@ export default function BracketChip({
     OPEN_RESERVED: 'bg-green',
     ACTIVE: 'bg-blue',
     COMPLETED: 'bg-red',
-    RECRUITING: 'bg-green',
     ALL: 'bg-green',
   };
   return (
