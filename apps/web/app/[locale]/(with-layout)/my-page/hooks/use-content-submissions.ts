@@ -9,6 +9,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import {
   ApiResponseMediaPresignedUrlResponse,
   ApiResponseReviewReceiptResponse,
+  ReviewContentStatus,
 } from '@typescript-swagger/data-contracts';
 import { apiRequest } from 'app/api/apiRequest';
 import { z } from 'zod';
@@ -113,7 +114,7 @@ export const useContentSubmissions = (
       const newSubmissions: ContentSubmissionsFormData[] = [];
 
       campaignList.data.reviewContents.forEach(
-        (reviewContent: any, index: number) => {
+        (reviewContent: ReviewContentStatus, index: number) => {
           if (reviewContent) {
             const submission: ContentSubmissionsFormData = {
               formId: `form-${campaignId}-${index}`,
@@ -216,16 +217,22 @@ export const useContentSubmissions = (
             )
           );
 
-          submission.campaignProductMedia = uploadedUrls as any;
+          submission.campaignProductMedia = uploadedUrls.map(
+            (url) => new File([], url)
+          );
         }
       }
 
       // 리뷰 제출 API 호출
       for (const submission of data.submissions) {
         const reviewData = {
-          firstMediaUrls: submission.campaignProductMedia as any,
+          firstMediaUrls: submission.campaignProductMedia.map(
+            (file) => file.name
+          ),
           firstCaptionWithHashtags: submission.captionAndHashtags,
-          secondMediaUrls: submission.campaignProductMedia as any,
+          secondMediaUrls: submission.campaignProductMedia.map(
+            (file) => file.name
+          ),
           secondCaptionWithHashtags: submission.captionAndHashtags,
           firstPostUrl: submission.postUrl,
           secondPostUrl: submission.postUrl,

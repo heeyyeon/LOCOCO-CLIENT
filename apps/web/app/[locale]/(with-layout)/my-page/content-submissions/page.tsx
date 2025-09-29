@@ -2,7 +2,6 @@
 
 import React, { useState } from 'react';
 
-import { useTranslations } from 'next-intl';
 import { useRouter, useSearchParams } from 'next/navigation';
 
 import LoadingSvg from 'components/loading/loading-svg';
@@ -166,9 +165,6 @@ function ContentSubmissionsForm({
   index,
   fieldId,
 }: ContentSubmissionsFormProps) {
-  const t = useTranslations(
-    'myPage.contentSubmissions.campaignProductMediaInput'
-  );
   return (
     <>
       <div className="flex w-[84rem] items-center justify-between gap-[4.8rem] border border-gray-400 bg-white p-[4.8rem]">

@@ -5,7 +5,7 @@ import Image from 'next/image';
 
 import { cn } from '@lococo/utils';
 
-import BracketChip, { getChipText, getChipVariant } from './Barket';
+import BracketChip, { useGetChipText, useGetChipVariant } from './Barket';
 
 interface CardProps {
   endTime: string;
@@ -60,8 +60,8 @@ export default function Card({
         />
       </div>
       <BracketChip
-        text={getChipText(participationStatus)}
-        chipVariant={getChipVariant(participationStatus)}
+        text={useGetChipText(participationStatus)}
+        chipVariant={useGetChipVariant(participationStatus)}
         className="absolute right-[1.6rem] top-[1.6rem]"
       />
       <div className="flex w-full flex-col bg-white p-[1.6rem]">

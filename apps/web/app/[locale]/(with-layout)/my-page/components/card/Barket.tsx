@@ -8,9 +8,9 @@ interface BracketChipProps {
   className?: string;
 }
 
-export const getChipVariant = (
+export function useGetChipVariant(
   participationStatus: string
-): BracketChipProps['chipVariant'] => {
+): BracketChipProps['chipVariant'] {
   switch (participationStatus) {
     case 'PENDING':
       return 'pending';
@@ -25,9 +25,9 @@ export const getChipVariant = (
     default:
       return 'rejected';
   }
-};
+}
 
-export const getChipText = (participationStatus: string) => {
+export function useGetChipText(participationStatus: string) {
   const t = useTranslations('myPage.myCampaign.participationStatus');
   switch (participationStatus) {
     case 'PENDING':
@@ -45,7 +45,7 @@ export const getChipText = (participationStatus: string) => {
     default:
       return t('rejected');
   }
-};
+}
 
 export default function BracketChip({
   text,
