@@ -7,7 +7,11 @@ import { type CreatorSignupForm } from './signup';
 export const transformApiToForm = (
   apiData: CreatorInfoResponse['data']
 ): CreatorSignupForm => {
-  const [birthYear, birthMonth, birthDay] = apiData.birthDate.split('-');
+  const [birthYear, birthMonth, birthDay] = apiData.birthDate?.split('-') || [
+    '',
+    '',
+    '',
+  ];
 
   return {
     id: apiData.creatorName,
