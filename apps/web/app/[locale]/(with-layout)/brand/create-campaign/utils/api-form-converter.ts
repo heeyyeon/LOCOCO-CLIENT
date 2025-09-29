@@ -187,13 +187,13 @@ export const transformFormDataToApiData = (data: CampaignFormData) => {
     thumbnailImages:
       data.thumbnailFiles?.map((file, index) => ({
         url: file.url,
-        displayOrder: file.displayOrder || index,
+        displayOrder: file.displayOrder ?? index,
         imageType: 'THUMBNAIL' as const,
       })) || [],
     detailImages:
       data.detailFiles?.map((file, index) => ({
         url: file.url,
-        displayOrder: file.displayOrder || index,
+        displayOrder: file.displayOrder ?? index,
         imageType: 'DETAIL' as const,
       })) || [],
   };
