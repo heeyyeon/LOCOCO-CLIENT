@@ -79,8 +79,8 @@ export default function Card({
       >
         <div className="flex flex-col gap-[0.8rem]">
           <div>
-            <p className="body4">{brandName}</p>
-            <p className="title3 truncate">{campaignName}</p>
+            <p className="body4 font-[500]">{brandName}</p>
+            <p className="title3 truncate font-[700]">{campaignName}</p>
           </div>
           <div className="flex items-center gap-[0.8rem]">
             <InfoChip text={campaignType} />
