@@ -10,6 +10,7 @@ import { CampaignPublishRequest } from '@typescript-swagger/data-contracts';
 import InputWrapper from 'app/[locale]/(with-layout)/my-page/components/input-wrapper';
 import CampaignUploadMedia from 'components/campaign/campaign-upload-media';
 import { FormSection } from 'components/forms';
+import { useRouter } from 'i18n/navigation';
 import {
   CampaignFormData,
   createCampaignSchema,
@@ -35,6 +36,8 @@ import {
 } from '../utils/api-form-converter';
 
 export default function CampaignForm({ campaignId }: { campaignId?: string }) {
+  const router = useRouter();
+
   const {
     useSavedCampaign,
     useSaveCampaign,
@@ -93,7 +96,14 @@ export default function CampaignForm({ campaignId }: { campaignId?: string }) {
     reset,
   } = methods;
 
+  console.log(savedCampaignData);
+
   useEffect(() => {
+    if (campaignId && !isLoading && !savedCampaignData) {
+      router.push('/brand/create-campaign');
+      return;
+    }
+
     if (savedCampaignData && campaignId) {
       try {
         const formData = transformApiDataToFormData(savedCampaignData);
@@ -102,7 +112,7 @@ export default function CampaignForm({ campaignId }: { campaignId?: string }) {
         console.error('Failed to transform API data:', error);
       }
     }
-  }, [savedCampaignData, campaignId, reset]);
+  }, [savedCampaignData, campaignId, reset, isLoading]);
 
   const firstContents = usePlatformSelection(methods, 'firstContents');
   const secondContents = usePlatformSelection(methods, 'secondContents');
@@ -134,8 +144,10 @@ export default function CampaignForm({ campaignId }: { campaignId?: string }) {
 
   if (isLoading) {
     return (
-      <div className="flex h-full w-full items-center justify-center bg-gray-100">
-        <div className="text-lg">캠페인 정보를 불러오는 중...</div>
+      <div className="flex min-h-[200rem] w-full justify-center bg-gray-100">
+        <div className="title1 mt-[30rem] font-[700] text-pink-500">
+          캠페인 정보를 불러오는 중...
+        </div>
       </div>
     );
   }
@@ -144,7 +156,7 @@ export default function CampaignForm({ campaignId }: { campaignId?: string }) {
     <FormProvider {...methods}>
       <div className="h-full w-full bg-gray-100 pl-[6.6rem] pt-[6.4rem]">
         <form onSubmit={handleSubmit(onSubmit)}>
-          <div className="bg-gray-100">
+          <div className="mb-[5.8rem] bg-gray-100">
             <div className="flex min-h-[260.4rem] w-[84rem] flex-col gap-[4.8rem] bg-white px-[9.6rem] py-[4.8rem]">
               <h3 className="title2 font-[700] text-gray-800">
                 {t('pageTitle')}
