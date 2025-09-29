@@ -1,7 +1,11 @@
 import { useTranslations } from 'next-intl';
 
 import LoadingSvg from 'components/loading/loading-svg';
-import { useConnectSns, useConnectTiktok } from 'hooks/use-connect-sns';
+import {
+  useConnectInstagram,
+  useConnectSns,
+  useConnectTiktok,
+} from 'hooks/use-connect-sns';
 
 import { Button } from '@lococo/design-system/button';
 import { ErrorNotice } from '@lococo/design-system/error-notice';
@@ -32,6 +36,7 @@ export function SnsConnection({
 
   const { data: connectSnsData, isPending } = useConnectSns();
   const { mutateAsync: connectTiktok } = useConnectTiktok();
+  const { mutateAsync: connectInstagram } = useConnectInstagram();
 
   const connectedSns: SnsPlatform[] = [];
   if (connectSnsData?.data?.isInstaConnected) {
@@ -49,6 +54,7 @@ export function SnsConnection({
         await connectTiktok();
       } else if (sns === 'instagram') {
         // Instagram 연결 로직 추가 필요
+        await connectInstagram();
       }
     } catch (error) {
       console.error('SNS 연결 실패:', error);

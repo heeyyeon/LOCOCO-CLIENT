@@ -34,17 +34,45 @@ const connectTiktokApi = async (): Promise<ApiResponseVoid> => {
   const response = await apiRequest<ApiResponseVoid>({
     endPoint: '/api/auth/sns/tiktok/connect',
   });
-  window.open(response.data, '_blank');
+
   if (!response.success) {
     throw new Error('TikTok 연결에 실패했습니다.');
   }
 
+  if (!response.data) {
+    throw new Error('TikTok OAuth URL이 비어있습니다.');
+  }
+
+  window.location.href = response.data;
   return response;
 };
 
 export const useConnectTiktok = () => {
   return useMutation({
     mutationFn: connectTiktokApi,
+  });
+};
+
+const connectInstagramApi = async (): Promise<ApiResponseVoid> => {
+  const response = await apiRequest<ApiResponseVoid>({
+    endPoint: '/api/auth/sns/instagram/connect',
+  });
+
+  if (!response.success) {
+    throw new Error('Instagram 연결에 실패했습니다.');
+  }
+
+  if (!response.data) {
+    throw new Error('Instagram OAuth URL이 비어있습니다.');
+  }
+
+  window.location.href = response.data;
+  return response;
+};
+
+export const useConnectInstagram = () => {
+  return useMutation({
+    mutationFn: connectInstagramApi,
   });
 };
 
