@@ -10,38 +10,68 @@ import { timeOptions } from 'utils/time-options';
 
 import { Select } from '@lococo/design-system/select';
 
-import { RHFSelect } from './rhf-Select';
-
 export default function CampaignDueDate() {
   const {
     control,
     formState: { errors },
+    watch,
   } = useFormContext<CampaignFormData>();
   const { AM_PM, HOURS, MINUTES } = timeOptions();
   const { months, years, days } = dateOptions();
   const t = useTranslations('brandMyPageCreateCampaign');
 
+  const monthValue = watch('dueDate.month');
+  const dayValue = watch('dueDate.day');
+  const yearValue = watch('dueDate.year');
+  const periodValue = watch('dueTime.period');
+  const hourValue = watch('dueTime.hour');
+  const minuteValue = watch('dueTime.minute');
+
   return (
     <section className="w-[64.8rem]">
       <InputWrapper label={t('schedule.dueDate')} required>
         <div className="flex gap-[2.4rem]">
-          <RHFSelect
+          <Controller
             name="dueDate.month"
-            options={months}
-            size="small"
-            placeholder="Month"
+            control={control}
+            render={({ field }) => (
+              <Select
+                key={`month-${monthValue}`}
+                size="small"
+                options={months}
+                value={monthValue || undefined}
+                onValueChange={field.onChange}
+                placeholder="Month"
+              />
+            )}
           />
-          <RHFSelect
+          <Controller
             name="dueDate.day"
-            options={days}
-            size="small"
-            placeholder="Day"
+            control={control}
+            render={({ field }) => (
+              <Select
+                key={`day-${dayValue}`}
+                size="small"
+                options={days}
+                value={dayValue || undefined}
+                onValueChange={field.onChange}
+                placeholder="Day"
+              />
+            )}
           />
-          <RHFSelect
+          <Controller
             name="dueDate.year"
-            options={years}
-            size="small"
-            placeholder="Year"
+            control={control}
+            render={({ field }) => (
+              <Select
+                key={`year-${yearValue}`}
+                size="small"
+                options={years}
+                value={yearValue || undefined}
+                onValueChange={field.onChange}
+                placeholder="Year"
+              />
+            )}
           />
         </div>
         {(errors.dueDate?.month ||
@@ -62,9 +92,10 @@ export default function CampaignDueDate() {
             control={control}
             render={({ field }) => (
               <Select
+                key={`period-${periodValue}`}
                 size="small"
                 options={AM_PM}
-                value={field.value}
+                value={periodValue || undefined}
                 onValueChange={field.onChange}
                 placeholder="AM/PM"
               />
@@ -75,9 +106,10 @@ export default function CampaignDueDate() {
             control={control}
             render={({ field }) => (
               <Select
+                key={`hour-${hourValue}`}
                 size="small"
                 options={HOURS}
-                value={field.value}
+                value={hourValue || undefined}
                 onValueChange={field.onChange}
                 placeholder="Hour"
               />
@@ -88,9 +120,10 @@ export default function CampaignDueDate() {
             control={control}
             render={({ field }) => (
               <Select
+                key={`minute-${minuteValue}`}
                 size="small"
                 options={MINUTES}
-                value={field.value}
+                value={minuteValue || undefined}
                 onValueChange={field.onChange}
                 placeholder="Minute"
               />

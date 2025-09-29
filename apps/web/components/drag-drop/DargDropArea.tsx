@@ -34,7 +34,6 @@ export default function DragDropArea({
   maxFiles = 10,
   className,
 }: DragDropAreaProps) {
-  console.log(existingImageUrls);
   const t = useTranslations('fileUploader');
   const [isDragOver, setIsDragOver] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');

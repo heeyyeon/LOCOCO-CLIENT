@@ -53,7 +53,7 @@ export default function CampaignForm({ campaignId }: { campaignId?: string }) {
     campaignId || ''
   );
 
-  const { data: savedCampaignData, isLoading } = useSavedCampaign(campaignId); // campaignId가 같이 오면 저장된게 있는지 먼저 확인하기 위한 호출
+  const { data: savedCampaignData, isLoading } = useSavedCampaign(campaignId);
 
   const methods = useForm<CampaignFormData>({
     resolver: zodResolver(createCampaignSchema),
@@ -90,6 +90,7 @@ export default function CampaignForm({ campaignId }: { campaignId?: string }) {
       detailFiles: [],
     },
   });
+
   const {
     handleSubmit,
     formState: { errors },
@@ -97,23 +98,20 @@ export default function CampaignForm({ campaignId }: { campaignId?: string }) {
   } = methods;
 
   useEffect(() => {
+    if (campaignId && !isLoading && !savedCampaignData) {
+      router.push('/brand/create-campaign');
+      return;
+    }
+
     if (savedCampaignData && campaignId) {
       try {
         const formData = transformApiDataToFormData(savedCampaignData);
-        console.log('Transformed data!!!:', formData);
-
-        reset(formData, { keepDefaultValues: false });
-
-        // reset 후 확인
-        console.log('After reset - getValues():', methods.getValues());
-        console.log('After reset - language:', methods.getValues('language'));
-        console.log('After reset - type:', methods.getValues('type'));
-        console.log('After reset - category:', methods.getValues('category'));
+        reset(formData);
       } catch (error) {
         console.error('Failed to transform API data:', error);
       }
     }
-  }, [savedCampaignData, campaignId, reset, isLoading, router]);
+  }, [savedCampaignData, campaignId, reset, isLoading]);
 
   const firstContents = usePlatformSelection(methods, 'firstContents');
   const secondContents = usePlatformSelection(methods, 'secondContents');
@@ -152,7 +150,6 @@ export default function CampaignForm({ campaignId }: { campaignId?: string }) {
       </div>
     );
   }
-  console.log('Transformed form data:', savedCampaignData);
 
   return (
     <FormProvider {...methods}>
