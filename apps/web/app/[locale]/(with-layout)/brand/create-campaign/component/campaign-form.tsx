@@ -96,8 +96,6 @@ export default function CampaignForm({ campaignId }: { campaignId?: string }) {
     reset,
   } = methods;
 
-  console.log(savedCampaignData);
-
   useEffect(() => {
     if (campaignId && !isLoading && !savedCampaignData) {
       router.push('/brand/create-campaign');

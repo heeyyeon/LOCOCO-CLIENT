@@ -35,6 +35,18 @@ export default function CampaignUploadMedia() {
 
   const t = useTranslations('brandMyPageCreateCampaign');
 
+  const handleRemoveExistingThumbnail = (index: number) => {
+    const updated = currentThumbnailUrls.filter((_, i) => i !== index);
+    setValue('thumbnailFiles', updated);
+    trigger('thumbnailFiles');
+  };
+
+  const handleRemoveExistingDetail = (index: number) => {
+    const updated = currentDetailUrls.filter((_, i) => i !== index);
+    setValue('detailFiles', updated);
+    trigger('detailFiles');
+  };
+
   const handleThumbnailFilesChange = (files: File[]) => {
     setThumbnailPreviewFiles(files);
 
@@ -121,6 +133,8 @@ export default function CampaignUploadMedia() {
         <DragDropArea
           imageFiles={thumbnailPreviewFiles}
           handleImageFilesChange={handleThumbnailFilesChange}
+          onRemoveExistingImage={handleRemoveExistingThumbnail}
+          existingImageUrls={currentThumbnailUrls.map((img) => img.url)}
           handleVideoFilesChange={() => {}}
           maxFiles={5}
           className={isUploading ? 'pointer-events-none opacity-50' : ''}
@@ -139,6 +153,8 @@ export default function CampaignUploadMedia() {
         <DragDropArea
           imageFiles={detailPreviewFiles}
           handleImageFilesChange={handleDetailFilesChange}
+          onRemoveExistingImage={handleRemoveExistingDetail}
+          existingImageUrls={currentDetailUrls.map((img) => img.url)}
           handleVideoFilesChange={() => {}}
           maxFiles={15}
           className={isUploading ? 'pointer-events-none opacity-50' : ''}

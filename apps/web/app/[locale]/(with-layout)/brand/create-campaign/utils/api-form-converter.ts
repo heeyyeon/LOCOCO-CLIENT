@@ -79,11 +79,13 @@ export const transformApiDataToFormData = (
       apiData.thumbnailImages?.map((img) => ({
         url: img.url,
         displayOrder: img.displayOrder,
+        imageType: 'THUMBNAIL' as const,
       })) || [],
     detailFiles:
       apiData.detailImages?.map((img) => ({
         url: img.url,
         displayOrder: img.displayOrder,
+        imageType: 'DETAIL' as const,
       })) || [],
   };
 
