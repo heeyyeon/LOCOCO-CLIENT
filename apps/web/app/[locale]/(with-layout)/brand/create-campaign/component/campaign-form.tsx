@@ -7,7 +7,7 @@ import { useTranslations } from 'next-intl';
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { CampaignPublishRequest } from '@typescript-swagger/data-contracts';
-import InputWrapper from 'app/[locale]/(with-layout)/my-page/components/input-wrapper';
+import InputWrapper from 'app/[locale]/(with-layout)/my-page/@modal/(.)address-modal/components/InputWrapper';
 import CampaignUploadMedia from 'components/campaign/campaign-upload-media';
 import { FormSection } from 'components/forms';
 import { useRouter } from 'i18n/navigation';
@@ -187,39 +187,41 @@ export default function CampaignForm({ campaignId }: { campaignId?: string }) {
                 title={t('platform.title')}
                 description={t('platform.description')}
               >
-                <InputWrapper label={t('platform.firstContent')} required />
-                <div className="flex gap-[1.2rem]">
-                  {(Object.keys(SOCIAL_CONFIGS) as SocialPlatform[]).map(
-                    (platform) => (
-                      <SocialChip
-                        key={platform}
-                        type={platform}
-                        selected={firstContents.selectStatus[platform]}
-                        onClick={firstContents.toggleChip}
-                        disabled={firstContents.isDisabled(platform)}
-                      />
-                    )
-                  )}
-                </div>
+                <InputWrapper label={t('platform.firstContent')} required>
+                  <div className="flex gap-[1.2rem]">
+                    {(Object.keys(SOCIAL_CONFIGS) as SocialPlatform[]).map(
+                      (platform) => (
+                        <SocialChip
+                          key={platform}
+                          type={platform}
+                          selected={firstContents.selectStatus[platform]}
+                          onClick={firstContents.toggleChip}
+                          disabled={firstContents.isDisabled(platform)}
+                        />
+                      )
+                    )}
+                  </div>
+                </InputWrapper>
                 {errors.firstContents && (
                   <p className="body2 text-red font-[500]">
                     {t(`errorMessage.${errors.firstContents.message}`)}
                   </p>
                 )}
-                <InputWrapper label={t('platform.secondContent')} />
-                <div className="flex gap-[1.2rem]">
-                  {(Object.keys(SOCIAL_CONFIGS) as SocialPlatform[]).map(
-                    (platform) => (
-                      <SocialChip
-                        key={platform}
-                        type={platform}
-                        selected={secondContents.selectStatus[platform]}
-                        onClick={secondContents.toggleChip}
-                        disabled={secondContents.isDisabled(platform)}
-                      />
-                    )
-                  )}
-                </div>
+                <InputWrapper label={t('platform.secondContent')}>
+                  <div className="flex gap-[1.2rem]">
+                    {(Object.keys(SOCIAL_CONFIGS) as SocialPlatform[]).map(
+                      (platform) => (
+                        <SocialChip
+                          key={platform}
+                          type={platform}
+                          selected={secondContents.selectStatus[platform]}
+                          onClick={secondContents.toggleChip}
+                          disabled={secondContents.isDisabled(platform)}
+                        />
+                      )
+                    )}
+                  </div>
+                </InputWrapper>
                 {errors.secondContents && (
                   <p className="body2 text-red font-[500]">
                     {t(`errorMessage.${errors.secondContents.message}`)}
