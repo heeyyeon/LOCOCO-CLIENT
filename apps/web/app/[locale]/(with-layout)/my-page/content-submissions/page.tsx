@@ -120,7 +120,10 @@ export default function ContentSubmissions() {
                 />
 
                 {submissionData.brandNote && (
-                  <BrandNote text={submissionData.brandNote} />
+                  <BrandNote
+                    round={round as string}
+                    text={submissionData.brandNote}
+                  />
                 )}
               </div>
             );
