@@ -1,28 +1,60 @@
-export const GENDERS = [
-  { label: 'Male', value: 'MALE' },
-  { label: 'Female', value: 'FEMALE' },
-  { label: 'Non-binary', value: 'NON_BINARY' },
-  { label: 'Prefer not to say', value: 'PREFER_NOT_TO_SAY' },
-];
+import { useTranslations } from 'next-intl';
 
-export const CONTENT_LANGUAGES = [
-  { label: 'English', value: 'ENGLISH' },
-  { label: 'Spanish', value: 'SPANISH' },
-  { label: 'English & Spanish', value: 'ENGLISH_AND_SPANISH' },
-];
+const GENDER_VALUES = [
+  'MALE',
+  'FEMALE',
+  'NON_BINARY',
+  'PREFER_NOT_TO_SAY',
+] as const;
+const CONTENT_LANGUAGE_VALUES = [
+  'ENGLISH',
+  'SPANISH',
+  'ENGLISH_AND_SPANISH',
+] as const;
+const SKIN_TYPE_VALUES = [
+  'NORMAL',
+  'DRY',
+  'OILY',
+  'COMBINATION',
+  'SENSITIVE',
+  'OTHERS',
+] as const;
+const SKIN_TONE_VALUES = [
+  { value: 'SHADE_1', color: '#F1DDD2' },
+  { value: 'SHADE_2', color: '#F4D6CB' },
+  { value: 'SHADE_3', color: '#EBC9BA' },
+  { value: 'SHADE_4', color: '#EDCBBC' },
+] as const;
 
-export const SKIN_TYPES = [
-  { label: 'Normal', value: 'NORMAL' },
-  { label: 'Dry', value: 'DRY' },
-  { label: 'Oily', value: 'OILY' },
-  { label: 'Combination', value: 'COMBINATION' },
-  { label: 'Sensitive', value: 'SENSITIVE' },
-  { label: 'Others', value: 'OTHERS' },
-];
+export function useGenderOptions() {
+  const t = useTranslations('creatorOptions.gender');
+  return GENDER_VALUES.map((value) => ({
+    label: t(value),
+    value,
+  }));
+}
 
-export const SKIN_TONE = [
-  { label: 'Shade 1', value: 'SHADE_1', color: '#F1DDD2' },
-  { label: 'Shade 2', value: 'SHADE_2', color: '#F4D6CB' },
-  { label: 'Shade 3', value: 'SHADE_3', color: '#EBC9BA' },
-  { label: 'Shade 4', value: 'SHADE_4', color: '#EDCBBC' },
-];
+export function useContentLanguageOptions() {
+  const t = useTranslations('creatorOptions.contentLanguage');
+  return CONTENT_LANGUAGE_VALUES.map((value) => ({
+    label: t(value),
+    value,
+  }));
+}
+
+export function useSkinTypeOptions() {
+  const t = useTranslations('creatorOptions.skinType');
+  return SKIN_TYPE_VALUES.map((value) => ({
+    label: t(value),
+    value,
+  }));
+}
+
+export function useSkinToneOptions() {
+  const t = useTranslations('creatorOptions.skinTone');
+  return SKIN_TONE_VALUES.map((item) => ({
+    label: t(item.value),
+    value: item.value,
+    color: item.color,
+  }));
+}

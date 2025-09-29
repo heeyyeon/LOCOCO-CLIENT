@@ -4,137 +4,6 @@
   "brandMyPage": {
     "myCampaign": "내 캠페인 "
   },
-  "brandMyPageCreateCampaign": {
-    "basicInfo": {
-      "category": "카테고리",
-      "creatorCount": "모집 예정 크리에이터 수",
-      "creatorCountPlaceholder": "숫자를 입력하세요",
-      "language": "캠페인 진행 언어",
-      "title": "캠페인 제목",
-      "titlePlaceholder": "캠페인 제목을 입력하세요",
-      "type": "캠페인 종류"
-    },
-    "buttons": {
-      "publish": "캠페인 발행하기",
-      "save": "저장하기"
-    },
-    "conditions": {
-      "inputPlaceholder": "text",
-      "joinConditionDescription": "캠페인에 참여할 수 있는 크리에이터의 조건을 설명해주세요",
-      "joinConditionTitle": "참여 크리에이터 조건",
-      "rewardDescription": "캠페인에 참여할 수 있는 크리에이터의 조건을 설명해주세요",
-      "rewardTitle": "크리에이터 참여 보상",
-      "submitConditionDescription": "캠페인에 참여할 수 있는 크리에이터의 조건을 설명해주세요",
-      "submitConditionTitle": "크리에이터 제출 컨텐츠 조건"
-    },
-    "errorMessage": {
-      "campaignAnnounceDay": "캠페인 당첨자 발표일을 입력해 주세요.",
-      "campaignAnnounceTime": "캠페인 당첨자 시각을 입력해 주세요.",
-      "campaignCategory": "캠페인 카테고리를 입력해 주세요.",
-      "campaignCreatorCount": "모집 예정 크리에이터 수를 입력해 주세요.",
-      "campaignDueDay": "캠페인 제목을 입력해주세요.",
-      "campaignDueTime": "캠페인 제목을 입력해주세요.",
-      "campaignEndDay": "캠페인 지원 종료일을 입력해 주세요.",
-      "campaignEndTime": "캠페인 지원 종료 시각을 입력해 주세요.",
-      "campaignLanguage": "캠페인 진행 언어를 입력해 주세요.",
-      "campaignMediaDetail": "컨텐츠 상세페이지 사진을 업로드해 주세요.",
-      "campaignMediaThumbnail": "컨텐츠 썸네일 사진을 업로드해 주세요.",
-      "campaignPlatformSelect": "컨텐츠 플랫폼을 선택해 주세요.",
-      "campaignStartDay": "캠페인 지원 시작일을 입력해 주세요.",
-      "campaignStartTime": "캠페인 지원 시작 시각을 입력해 주세요.",
-      "campaignTitle": "캠페인 제목을 입력해주세요.",
-      "campaignType": "캠페인 종류를 입력해 주세요.",
-      "detailMaxFiles": "상세 사진은 최대 15장까지 업로드 가능합니다",
-      "firstContentMaxExceeded": "컨텐츠는 최대 2개까지 선택 가능합니다",
-      "secondContentMaxExceeded": "컨텐츠는 최대 2개까지 선택 가능합니다",
-      "thumbnailMaxFiles": "썸네일은 최대 5장까지 업로드 가능합니다"
-    },
-    "media": {
-      "detailDescription": "캠페인 상세페이지에 보여질 사진들입니다. 고화질 사진을 첨부해주세요.\n사진은 최대 15장까지 업로드 가능합니다.",
-      "detailTitle": "컨텐츠 상세페이지 사진",
-      "thumbnailDescription": "캠페인 상세페이지 썸네일에 보여질 사진들입니다. 고화질 사진을 첨부해주세요.\n사진은 최대 5장까지 업로드 가능합니다.",
-      "thumbnailTitle": "컨텐츠 썸네일 사진"
-    },
-    "options": {
-      "category": {
-        "MAKEUP": "메이크업",
-        "SKINCARE": "스킨케어",
-        "SUNCARE": "선케어"
-      },
-      "language": {
-        "EN": "영어",
-        "ES": "스페인어"
-      },
-      "type": {
-        "CONTENTS": "컨텐츠",
-        "EXCLUSIVE": "독점",
-        "GIVEAWAY": "기브어웨이"
-      }
-    },
-    "pageTitle": "캠페인 정보",
-    "platform": {
-      "description": "(최대 2개까지 선택 가능합니다.)",
-      "firstContent": "첫번째 컨텐츠",
-      "secondContent": "두번째 컨텐츠",
-      "title": "컨텐츠 플랫폼 선택"
-    },
-    "schedule": {
-      "announceDate": "캠페인 당첨자 발표일",
-      "announceTime": "캠페인 당첨자 발표 시각",
-      "dueDate": "2차 컨텐츠 최종 제출일",
-      "dueTime": "2차 컨텐츠 최종 제출 시각",
-      "endDate": "캠페인 지원 종료일",
-      "endTime": "캠페인 지원 종료 시각",
-      "placeholders": {
-        "amPm": "AM/PM",
-        "day": "일",
-        "hour": "시",
-        "minute": "분",
-        "month": "월",
-        "year": "년"
-      },
-      "startDate": "캠페인 지원 시작일",
-      "startTime": "캠페인 지원 시작 시각"
-    },
-    "validation": {
-      "conditionRequired": "조건을 입력해주세요",
-      "creatorCountRequired": "모집 예정 크리에이터 수는 필수입니다",
-      "detailMaxFiles": "상세 사진은 최대 15장까지 업로드 가능합니다",
-      "firstContentMaxExceeded": "첫 번째 컨텐츠는 최대 2개까지 선택 가능합니다",
-      "firstContentMinRequired": "첫 번째 컨텐츠는 최소 1개 이상 선택해야 합니다",
-      "rewardRequired": "보상을 입력해주세요",
-      "secondContentMaxExceeded": "두 번째 컨텐츠는 최대 2개까지 선택 가능합니다",
-      "secondContentRequiresFirst": "두 번째 컨텐츠를 선택하려면 첫 번째 컨텐츠를 먼저 선택해야 합니다",
-      "thumbnailMaxFiles": "썸네일은 최대 5장까지 업로드 가능합니다",
-      "titleRequired": "캠페인 제목은 필수입니다"
-    }
-  },
-  "brandMyPageEditProfile": {
-    "profileImage": {
-      "profileImageFormTitle": "프로필 사진",
-      "profileImage": "프로필 이미지",
-      "profileImageEditBtn": "사진 변경하기"
-    },
-    "basicInfo": {
-      "basicInfoTitle": "기본 정보",
-      "brandNameFieldLabel": "브랜드 이름",
-      "managerNameFieldLabel": "담당자 이름",
-      "phoneNumberFieldLabel": "담당자 연락처",
-      "emailNotice": "이메일을 변경하려면 로코코에 문의해 주세요"
-    },
-    "addressInfo": {
-      "addressInfoTitle": "회사 주소 정보",
-      "addressInfoDescription": "제품 오배송 시, 반품을 위해서 입력받습니다.",
-      "companyAddressLabel": "도로명 주소",
-      "companyAddressPlaceholder": "우편번호 검색",
-      "detailAddressLabel": "상세 주소",
-      "detailAddressPlaceholder": "ex: 201호"
-    },
-    "formButton": {
-      "cancel": "취소하기",
-      "save": "저장하기"
-    }
-  },
   "brandMyPageSideBar": {
     "checkApplicants": "지원자 확인",
     "checkContents": "컨텐츠 확인",
@@ -142,48 +11,6 @@
     "editProfile": "프로필 편집",
     "makeNewCampaign": "새 캠페인 만들기",
     "myCampaign": "나의 캠페인"
-  },
-  "brandSignup": {
-    "brandInfo": {
-      "brandName": "브랜드 이름",
-      "brandNamePlaceholder": "ex: Lococo",
-      "contactName": "담당자 이름",
-      "contactNamePlaceholder": "ex: 홍길동",
-      "contactPhone": "담당자 연락처",
-      "contactPhonePlaceholder": "ex: XXXXXXXXXXX",
-      "contactPosition": "담당자 직책",
-      "contactPositionPlaceholder": "ex: 대리",
-      "description": "회원가입을 환영합니다! 브랜드 확인을 위해 아래 정보를 입력해주세요.",
-      "title": "브랜드 정보"
-    },
-    "companyAddress": {
-      "description": "제품 오배송 시, 반품을 위해서 입력받습니다.",
-      "detailAddress": "상세 주소",
-      "detailAddressPlaceholder": "ex: 201호",
-      "streetAddress": "도로명주소",
-      "streetAddressPlaceholder": "우편번호 검색",
-      "title": "회사 주소 정보"
-    },
-    "layout": {
-      "submit": "Join",
-      "title": "Join Lococo Creator Community!"
-    },
-    "validation": {
-      "brandNameInvalidFormat": "한글, 영어, 숫자만 입력해주세요.",
-      "brandNameMaxLength": "브랜드 이름은 최대 30글자입니다.",
-      "brandNameRequired": "브랜드 이름을 입력해주세요.",
-      "contactNameInvalidFormat": "한글만 입력해주세요.",
-      "contactNameMaxLength": "담당자 이름은 최대 10글자입니다.",
-      "contactNameRequired": "담당자 이름을 입력해주세요.",
-      "contactPhoneInvalid": "올바른 휴대폰 번호를 입력해주세요.",
-      "contactPhoneRequired": "담당자 연락처를 입력해주세요.",
-      "contactPositionInvalidFormat": "한글만 입력해주세요",
-      "contactPositionMaxLength": "담당자 직책은 최대 10글자입니다.",
-      "contactPositionRequired": "담당자 직책을 입력해주세요",
-      "detailAddressMaxLength": "상세주소는 최대 30글자입니다.",
-      "detailAddressRequired": "상세주소를 입력해주세요.",
-      "streetAddressRequired": "도로명주소를 입력해주세요."
-    }
   },
   "campaignDetail": {
     "applicationPeriod": "지원 기간",
@@ -367,6 +194,85 @@
     "ingredients": "성분",
     "productDetail22": "제품 상세 22"
   },
+  "howItWork": {
+    "brands": {
+      "campaignApproval": {
+        "description": "업로드 후 48시간 이내에 캠페인 승인 결과가 제공됩니다. 브랜드 대시보드에서 캠페인 지원자를 선택하세요. 신청 마감 후 24시간 이내에 최종 선정된 크리에이터를 발표해야 합니다.",
+        "title": "캠페인 승인"
+      },
+      "checkPerformance": {
+        "description": "브랜드 페이지에서 콘텐츠와 캠페인 성과를 확인하세요.",
+        "title": "성과 확인"
+      },
+      "provideFeedback": {
+        "description": "크리에이터가 첫 번째 리뷰를 업로드한 후 48시간 이내에 수정 요청을 제공하세요. (이 기간 이후에는 요청할 수 없습니다.)",
+        "title": "피드백 제공"
+      },
+      "shipProduct": {
+        "description": "크리에이터가 배송지를 확인하면 2일 이내에 제품을 발송하세요.",
+        "title": "제품 발송"
+      },
+      "title": "브랜드"
+    },
+    "creators": {
+      "confimAddress": {
+        "description": "캠페인 선정 후 24시간 이내에 배송지를 확인하세요.",
+        "title": "배송지 확인"
+      },
+      "confirmAddress": {
+        "description": "캠페인 선정 후 24시간 이내에 배송지를 확인하세요.",
+        "title": "배송지 확인"
+      },
+      "maintenanceGuidelines": {
+        "description": "리뷰는 최소 6개월간 게시 상태를 유지해야 합니다.",
+        "title": "유지 가이드라인"
+      },
+      "reviewUploadSchedule": {
+        "description": "제품 수령 후 7일 이내에 첫 번째 리뷰를 업로드하세요. 브랜드의 피드백을 검토한 후 7일 이내에 두 번째 리뷰를 업로드하세요. 두 번째 리뷰를 게시할 때 최종 SNS URL을 첨부하세요.",
+        "title": "리뷰 업로드 일정"
+      },
+      "title": "크리에이터",
+      "uploadReview": {
+        "description": "제품 수령 후 7일 이내에 첫 번째 리뷰를 업로드하세요.",
+        "title": "리뷰 업로드"
+      }
+    },
+    "FAQs": {
+      "creatorLevels": {
+        "firstA": "신청이 거절된 경우, 참여 자격 기준을 검토하고 개선 후 다시 지원하는 것을 고려해 주세요.",
+        "firstQ": "내 크리에이터 신청이 거절되었습니다.",
+        "fistA": "신청이 거절된 경우, 참여 자격 기준을 검토하고 개선 후 다시 지원하는 것을 고려해 주세요.",
+        "fistQ": "내 크리에이터 신청이 거절되었습니다.",
+        "secondA": "프로필 설정에서 신청서를 제출하여 계정을 크리에이터로 업그레이드할 수 있습니다.",
+        "secondQ": "사용자로 가입했지만 크리에이터로 참여하고 싶습니다.",
+        "thirdA": "계정의 \"배송 정보\" 섹션에서 배송 정보를 확인하고 업데이트할 수 있습니다.",
+        "thirdQ": "로코코 프로 크리에이터가 되려면 어떻게 해야 하나요?",
+        "title": "크리에이터 레벨"
+      },
+      "penaltyPolicy": {
+        "firstA": "리뷰어로 선정된 후 필요한 배송 정보를 제공하지 않는 경우, 세 번 발생 시 로코코 활동이 6개월간 정지됩니다.",
+        "firstQ": "리뷰어로 선정되었을 때 배송 정보를 제공하지 않은 경우.",
+        "fistA": "리뷰어로 선정된 후 필요한 배송 정보를 제공하지 않는 경우, 세 번 발생 시 로코코 활동이 6개월간 정지됩니다.",
+        "fistQ": "리뷰어로 선정되었을 때 배송 정보를 제공하지 않은 경우.",
+        "secondA": "지정된 마감일을 넘겨 콘텐츠를 제출하는 경우, 세 번 발생 시 로코코 활동이 6개월간 정지됩니다.",
+        "secondQ": "콘텐츠 지연 제출.",
+        "thirdA": "콘텐츠를 제출하지 않거나 지정된 품질 기준을 충족하지 못하는 콘텐츠를 제출하는 경우, 로코코 활동이 영구적으로 제한됩니다.",
+        "thirdQ": "콘텐츠 미제출 또는 저품질 콘텐츠 제출.",
+        "title": "페널티 정책"
+      },
+      "shipping": {
+        "firstA": "등록된 이메일을 통해 배송 정보를 확인할 수 있습니다.",
+        "firstQ": "제공한 배송 정보를 어떻게 확인할 수 있나요?",
+        "fistA": "등록된 이메일을 통해 배송 정보를 확인할 수 있습니다.",
+        "fistQ": "제공한 배송 정보를 어떻게 확인할 수 있나요?",
+        "secondA": "배송지가 한 번 제출되면 수정할 수 없습니다. 도움이 필요하면 로코코에 문의하세요.",
+        "secondQ": "잘못된 배송지를 입력했습니다. 어떻게 해야 하나요?",
+        "title": "배송"
+      },
+      "title": "자주 묻는 질문(FAQ)"
+    },
+    "title": "이용 방법"
+  },
   "languageSelectTrigger": {
     "language": "언어"
   },
@@ -399,35 +305,40 @@
       "zip": "우편번호"
     },
     "contentSubmissions": {
-      "campaignProductMediaInput": {
+      "brandNote": {
         "description": "파일을 드래그 앤 드롭하거나 클릭하여 업로드하세요.",
-        "selectFile": "파일 선택",
-        "title": "캠페인 제품 미디어"
+        "firstReview": "파일 선택"
       },
-      "campaignSelect": {
-        "description": "캠페인을 선택해 주세요.",
-        "selectCampaign": "캠페인 선택",
+      "campaignProductMediaInput": {
+        "description": "캠페인 제품 미디어",
+        "selectFile": "캠페인을 선택해 주세요.",
         "title": "캠페인 선택"
       },
+      "campaignSelect": {
+        "description": "인스타그램 게시물",
+        "selectCampaign": "인스타그램 릴스",
+        "title": "콘텐츠 유형 선택"
+      },
+      "content": {
+        "1stContent": "틱톡 영상",
+        "2ndContent": "콘텐츠 유형"
+      },
       "contentTypeSelect": {
-        "instagramPost": "인스타그램 게시물",
-        "instagramReels": "인스타그램 릴스",
-        "selectContentType": "콘텐츠 유형 선택",
-        "tiktokVideo": "틱톡 영상",
-        "title": "콘텐츠 유형"
+        "instagramPost": "검토할 콘텐츠가 없습니다.",
+        "instagramReels": "사용한 캡션과 해시태그를 그대로 붙여 넣어 주세요.",
+        "selectContentType": "캡션 & 해시태그 제출하기",
+        "tiktokVideo": "첫 번째 제출물이 접수되었습니다. 브랜드가 검토 후 피드백을 보내드릴 예정입니다.",
+        "title": "오케이"
+      },
+      "empty": {
+        "title": "최종 제출물이 접수되었습니다. 제출해 주셔서 감사합니다."
       },
       "empty": {
         "title": "검토할 콘텐츠가 없습니다."
       },
       "hashtagsInput": {
-        "description": "사용한 캡션과 해시태그를 그대로 붙여 넣어 주세요.",
+        "description": "성공적으로 제출되었습니다.",
         "title": "캡션 & 해시태그 제출하기"
-      },
-      "saveSubmitModal": {
-        "firstDescription": "첫 번째 제출물이 접수되었습니다. 브랜드가 검토 후 피드백을 보내드릴 예정입니다.",
-        "save": "오케이",
-        "secondDescription": "최종 제출물이 접수되었습니다. 제출해 주셔서 감사합니다.",
-        "title": "성공적으로 제출되었습니다."
       }
     },
     "editProfile": {
@@ -525,12 +436,6 @@
       "contentSubmissions": "컨텐츠 제출 ",
       "editProfile": "프로필 편집",
       "myCampaign": "내 캠페인"
-    },
-    "myCampaign": {
-      "empty": {
-        "title": "신청한 캠페인이 없습니다."
-      },
-      "title": "나의 캠페인"
     },
     "saveFormModal": {
       "description": "변경 사항이 저장되었습니다.",

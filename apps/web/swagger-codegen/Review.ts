@@ -15,13 +15,13 @@ import {
   ApiResponseImageReviewsProductDetailResponse,
   ApiResponseMainImageReviewResponse,
   ApiResponseMainVideoReviewResponse,
-  ApiResponseReviewMediaResponse,
+  ApiResponseMediaPresignedUrlResponse,
   ApiResponseReviewReceiptResponse,
   ApiResponseReviewResponse,
   ApiResponseVideoReviewDetailResponse,
   ApiResponseVideoReviewProductDetailResponse,
   ApiResponseVoid,
-  ReviewMediaRequest,
+  MediaPresignedUrlRequest,
   ReviewReceiptRequest,
   ReviewRequest,
 } from "./data-contracts";
@@ -83,10 +83,10 @@ export class Review<
    * @secure
    */
   createMediaPresignedUrl = (
-    data: ReviewMediaRequest,
+    data: MediaPresignedUrlRequest,
     params: RequestParams = {},
   ) =>
-    this.request<ApiResponseReviewMediaResponse, any>({
+    this.request<ApiResponseMediaPresignedUrlResponse, any>({
       path: `/api/reviews/media`,
       method: "POST",
       body: data,

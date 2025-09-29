@@ -8,13 +8,18 @@ import { ContentSubmissionsFormData } from '../../hooks/use-content-submissions'
 interface HashtagsInputProps {
   formData: ContentSubmissionsFormData;
   errors: string | undefined;
-  updateCaptionAndHashtags: (captionAndHashtags: string) => void;
+  updateCaptionAndHashtags: (
+    fieldId: string,
+    captionAndHashtags: string
+  ) => void;
+  fieldId: string;
 }
 
 export default function HashtagsInput({
   formData,
   errors,
   updateCaptionAndHashtags,
+  fieldId,
 }: HashtagsInputProps) {
   const t = useTranslations('myPage.contentSubmissions.hashtagsInput');
   return (
@@ -25,7 +30,7 @@ export default function HashtagsInput({
       </div>
       <Input
         value={formData.captionAndHashtags}
-        onChange={(e) => updateCaptionAndHashtags(e.target.value)}
+        onChange={(e) => updateCaptionAndHashtags(fieldId, e.target.value)}
         className="w-full"
       />
       {errors && <ErrorNotice message={errors} />}
