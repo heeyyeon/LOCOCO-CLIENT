@@ -1,6 +1,7 @@
 import { Campaign } from 'app/[locale]/(with-layout)/(home)/components/home-section-campaign';
 import Card from 'components/card/Card';
 import { getChipVariantByDate } from 'components/card/utils/getChipVariantByDate';
+import CampaignListEmpty from 'components/empty/campgin-list-empty';
 
 interface CampaignGridProps {
   campaigns?: Campaign[];
@@ -12,25 +13,11 @@ export default function CampaignGrid({
   isLoading,
 }: CampaignGridProps) {
   if (isLoading) {
-    return (
-      <div className="flex min-h-[33.1rem] items-center justify-center">
-        <div className="text-center">
-          <p className="title1 font-[700] text-pink-500">Loading...</p>
-        </div>
-      </div>
-    );
+    return <CampaignListEmpty emptyMessage="Loading..." />;
   }
 
   if (!campaigns || campaigns.length === 0) {
-    return (
-      <div className="flex min-h-[33.1rem] items-center justify-center">
-        <div className="text-center">
-          <p className="title1 font-[700] text-pink-500">
-            No campaigns available
-          </p>
-        </div>
-      </div>
-    );
+    return <CampaignListEmpty emptyMessage="No campaigns available" />;
   }
 
   return (

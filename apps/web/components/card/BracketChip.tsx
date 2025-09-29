@@ -4,7 +4,18 @@ import { formatBracketDate } from './utils/getChipVariantByDate';
 
 interface BracketChipProps {
   dueDate: string;
-  chipVariant: 'disabled' | 'default' | 'approved' | 'declined' | 'progress';
+  chipVariant:
+    | 'OPEN_RESERVED'
+    | 'COMPLETED'
+    | 'default'
+    | 'disabled'
+    | 'approved'
+    | 'declined'
+    | 'progress'
+    | 'DRAFT'
+    | 'WAITING_APPROVAL'
+    | 'ACTIVE'
+    | 'ALL';
   className?: string;
 }
 
@@ -19,6 +30,12 @@ export default function BracketChip({
     approved: 'bg-green',
     declined: 'bg-red',
     progress: 'bg-blue',
+    DRAFT: 'bg-pink-500',
+    WAITING_APPROVAL: 'bg-gray-500',
+    OPEN_RESERVED: 'bg-green',
+    ACTIVE: 'bg-blue',
+    COMPLETED: 'bg-red',
+    ALL: 'bg-green',
   };
   return (
     <div

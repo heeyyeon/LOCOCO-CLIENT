@@ -20,6 +20,7 @@ export { SvgClose } from './Close';
 export { SvgDelete } from './Delete';
 export { SvgDivider } from './Divider';
 export { SvgEllipsis } from './Ellipsis';
+export { SvgEmptyImage } from './EmptyImage';
 export { SvgErrorFill } from './ErrorFill';
 export { SvgFeedback } from './Feedback';
 export { SvgGift } from './Gift';
