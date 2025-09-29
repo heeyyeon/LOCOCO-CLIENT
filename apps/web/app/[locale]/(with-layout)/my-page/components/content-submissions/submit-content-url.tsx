@@ -5,23 +5,20 @@ import { Input } from '@lococo/design-system/input-field';
 
 import { ContentSubmissionsFormData } from '../../hooks/use-content-submissions';
 
-interface HashtagsInputProps {
+interface SubmitContentUrlProps {
   formData: ContentSubmissionsFormData;
   errors: string | undefined;
-  updateCaptionAndHashtags: (
-    fieldId: string,
-    captionAndHashtags: string
-  ) => void;
+  updatePostUrl: (fieldId: string, postUrl: string) => void;
   fieldId: string;
 }
 
-export default function HashtagsInput({
+export default function SubmitContentUrl({
   formData,
   errors,
-  updateCaptionAndHashtags,
+  updatePostUrl,
   fieldId,
-}: HashtagsInputProps) {
-  const t = useTranslations('myPage.contentSubmissions.hashtagsInput');
+}: SubmitContentUrlProps) {
+  const t = useTranslations('myPage.contentSubmissions.submitContentUrl');
   return (
     <section className="flex w-full flex-col gap-[1.6rem]">
       <div className="flex flex-col gap-[0.6rem]">
@@ -29,8 +26,8 @@ export default function HashtagsInput({
         <p className="caption3 text-gray-500">{t('description')}</p>
       </div>
       <Input
-        value={formData.captionAndHashtags}
-        onChange={(e) => updateCaptionAndHashtags(fieldId, e.target.value)}
+        value={formData.postUrl}
+        onChange={(e) => updatePostUrl(fieldId, e.target.value)}
         className="w-full"
       />
       {errors && <ErrorNotice message={errors} />}
