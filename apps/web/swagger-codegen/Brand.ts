@@ -11,6 +11,7 @@
  */
 
 import {
+  ApiResponseBrandDashboardCampaignListResponse,
   ApiResponseBrandMyCampaignInfoListResponse,
   ApiResponseBrandMyCampaignListResponse,
   ApiResponseBrandMyPageResponse,
@@ -19,7 +20,9 @@ import {
   ApiResponseBrandProfileImageResponse,
   ApiResponseCampaignApplicantListResponse,
   ApiResponseCampaignBasicResponse,
+  ApiResponseCampaignReviewDetailListResponse,
   ApiResponseCreatorApprovedResponse,
+  ApiResponseListBrandIssuedCampaignResponse,
   ApiResponseVoid,
   BrandInfoUpdateRequest,
   BrandMyPageUpdateRequest,
@@ -35,11 +38,11 @@ export class Brand<
   SecurityDataType = unknown,
 > extends HttpClient<SecurityDataType> {
   /**
-   * @description 브랜드 마이페이지에서 브랜드가 기존에 존재하는 캠페인에 대한 임시저장을 수행하는 API 입니다.
+   * No description
    *
    * @tags BRAND
    * @name UpdateCampaignDraft
-   * @summary 캠페인 수정 - 임시저장
+   * @summary 브랜드 마이페이지 - 브랜드가 기존에 존재하는 캠페인에 대한 임시저장
    * @request PUT:/api/brands/my/campaigns/{campaignId}/draft
    * @secure
    */
@@ -78,11 +81,11 @@ export class Brand<
       ...params,
     });
   /**
-   * @description 브랜드 마이페이지에서 브랜드가 크리에이터가 올린 1차 리뷰에 대해 수정사항을 남기는 API 입니다.
+   * No description
    *
    * @tags BRAND
    * @name RequestReviewRevision
-   * @summary 브랜드 수정사항 임시저장 / 전달
+   * @summary 브랜드 마이페이지 - 브랜드가 크리에이터가 올린 1차 리뷰 수정사항 임시저장 / 전달
    * @request POST:/api/brands/my/reviews/{campaignReviewId}/revision-request
    * @secure
    */
@@ -104,11 +107,11 @@ export class Brand<
       ...params,
     });
   /**
-   * @description 브랜드 마이페이지에서 브랜드가 캠페인을 발행 상태로 생성하는 API 입니다.
+   * No description
    *
    * @tags BRAND
    * @name CreateAndPublishCampaign
-   * @summary 캠페인 생성 - 발행
+   * @summary 브랜드 마이페이지 - 브랜드가 캠페인을 발행 상태로 생성
    * @request POST:/api/brands/my/campaigns/publish
    * @secure
    */
@@ -125,7 +128,7 @@ export class Brand<
       ...params,
     });
   /**
-   * @description 브랜드 마이페이지에서 브랜드가 캠페인을 발행 상태로 생성하는 API 입니다.
+   * @description 브랜드 마이페이지 - 브랜드가 캠페인을 발행 상태로 생성하는 API 입니다.
    *
    * @tags BRAND
    * @name CreateAndPublishCampaignForAdmin
@@ -146,11 +149,11 @@ export class Brand<
       ...params,
     });
   /**
-   * @description 브랜드 마이페이지에서 브랜드가 캠패인을 임시저장 상태로 생성하는 API 입니다.
+   * No description
    *
    * @tags BRAND
    * @name CreateDraftCampaign
-   * @summary 캠페인 생성 - 임시저장
+   * @summary 브랜드 마이페이지 - 브랜드가 캠패인을 임시저장 상태로 생성
    * @request POST:/api/brands/my/campaigns/drafts
    * @secure
    */
@@ -192,7 +195,7 @@ export class Brand<
    *
    * @tags BRAND
    * @name GetBrandMyPageInfo
-   * @summary 브랜드 마이페이지(프로필) 정보 조회
+   * @summary 브랜드 마이페이지 - 프로필 정보 조회
    * @request GET:/api/brands/profile
    * @secure
    */
@@ -208,7 +211,7 @@ export class Brand<
    *
    * @tags BRAND
    * @name UpdateBrandMyPageProfile
-   * @summary 브랜드 마이페이지(프로필) 정보 수정
+   * @summary 브랜드 마이페이지 - 프로필 정보 수정
    * @request PATCH:/api/brands/profile
    * @secure
    */
@@ -225,11 +228,11 @@ export class Brand<
       ...params,
     });
   /**
-   * @description 브랜드 마이페이지에서 브랜드가 기존에 존재하는 캠페인에 대한 발행을 수행하는 API 입니다.
+   * No description
    *
    * @tags BRAND
    * @name PublishCampaign
-   * @summary 캠페인 수정 - 발행
+   * @summary 브랜드 마이페이지 - 브랜드가 기존에 존재하는 캠페인 발행
    * @request PATCH:/api/brands/my/campaigns/{campaignId}/publish
    * @secure
    */
@@ -251,7 +254,7 @@ export class Brand<
    *
    * @tags BRAND
    * @name ApproveCreatorApplicants
-   * @summary 캠페인 지원자 확인 뷰 - 특정 캠페인에 조회한 크리에이터 승인
+   * @summary 브랜드 마이페이지 - 캠페인 지원자 확인 뷰 - 특정 캠페인에 조회한 크리에이터 승인
    * @request PATCH:/api/brands/my/campaigns/{campaignId}/applicants/approve
    * @secure
    */
@@ -273,7 +276,7 @@ export class Brand<
    *
    * @tags BRAND
    * @name GetBrandProfileAndStatistics
-   * @summary 브랜드 마이페이지에서 프로필(브랜드 이미지, 이름, 이메일) 및 통계 정보(진행 중인 캠페인, 종료 캠페인)조회
+   * @summary 브랜드 마이페이지 - 프로필(브랜드 이미지, 이름, 이메일) 및 통계 정보(진행 중인 캠페인, 종료 캠페인)조회
    * @request GET:/api/brands/my/profile/stats
    * @secure
    */
@@ -289,7 +292,7 @@ export class Brand<
    *
    * @tags BRAND
    * @name GetBrandMyCampaigns
-   * @summary 브랜드 마이페이지에서 캠페인 리스트 조회.
+   * @summary 브랜드 마이페이지 - 캠페인 리스트 조회.
    * @request GET:/api/brands/my/campaigns
    * @secure
    */
@@ -334,6 +337,7 @@ export class Brand<
   getCampaignApplicants = (
     campaignId: number,
     query?: {
+      status?: "PENDING" | "APPROVED" | "REJECTED";
       /**
        * @format int32
        * @default 0
@@ -374,8 +378,24 @@ export class Brand<
    * No description
    *
    * @tags BRAND
+   * @name GetCampaignDetails
+   * @summary 브랜드 마이페이지 - 본인이 발행한 승인된 캠페인 리뷰 관련 정보 조회 (리스트 반환)
+   * @request GET:/api/brands/my/campaigns/in-review
+   * @secure
+   */
+  getCampaignDetails = (params: RequestParams = {}) =>
+    this.request<ApiResponseListBrandIssuedCampaignResponse, any>({
+      path: `/api/brands/my/campaigns/in-review`,
+      method: "GET",
+      secure: true,
+      ...params,
+    });
+  /**
+   * No description
+   *
+   * @tags BRAND
    * @name GetDraftCampaign
-   * @summary 브랜드 마이페이지에서 임시저장한 캠페인 조회
+   * @summary 브랜드 마이페이지 - 임시저장한 캠페인 조회
    * @request GET:/api/brands/my/campaigns/drafts/{campaignId}
    * @secure
    */
@@ -383,6 +403,56 @@ export class Brand<
     this.request<ApiResponseCampaignBasicResponse, any>({
       path: `/api/brands/my/campaigns/drafts/${campaignId}`,
       method: "GET",
+      secure: true,
+      ...params,
+    });
+  /**
+   * No description
+   *
+   * @tags BRAND
+   * @name GetCreatorCampaignReview
+   * @summary 브랜드 마이페이지 - 본인이 발행한 특정 캠페인의 참여자 리뷰 단건 조회
+   * @request GET:/api/brands/my/campaigns/creators/{campaignReviewId}/review
+   * @secure
+   */
+  getCreatorCampaignReview = (
+    campaignReviewId: number,
+    params: RequestParams = {},
+  ) =>
+    this.request<ApiResponseCampaignReviewDetailListResponse, any>({
+      path: `/api/brands/my/campaigns/creators/${campaignReviewId}/review`,
+      method: "GET",
+      secure: true,
+      ...params,
+    });
+  /**
+   * No description
+   *
+   * @tags BRAND
+   * @name GetBrandDashboardCampaigns
+   * @summary 브랜드 대시보드 캠페인 리스트 조회
+   * @request GET:/api/brands/dashboard/campaigns
+   * @secure
+   */
+  getBrandDashboardCampaigns = (
+    query?: {
+      /**
+       * @format int32
+       * @default 0
+       */
+      page?: number;
+      /**
+       * @format int32
+       * @default 5
+       */
+      size?: number;
+    },
+    params: RequestParams = {},
+  ) =>
+    this.request<ApiResponseBrandDashboardCampaignListResponse, any>({
+      path: `/api/brands/dashboard/campaigns`,
+      method: "GET",
+      query: query,
       secure: true,
       ...params,
     });

@@ -14,7 +14,7 @@ import {
 
 import { Button } from '@lococo/design-system/button';
 
-import InputWrapper from '../../my-page/components/input-wrapper';
+import InputWrapper from '../../my-page/@modal/(.)address-modal/components/InputWrapper';
 import CampaignDueDate from '../component/create-campaign/campaign-due-date';
 import CampaignEndInfo from '../component/create-campaign/campaign-end-info';
 import CampaignInfo from '../component/create-campaign/campaign-info';
@@ -148,44 +148,56 @@ export default function CreateCampaign() {
                 title={t('platform.title')}
                 description={t('platform.description')}
               >
-                <InputWrapper label={t('platform.firstContent')} required />
-                <div className="flex gap-[1.2rem]">
-                  {(Object.keys(SOCIAL_CONFIGS) as SocialPlatform[]).map(
-                    (platform) => (
-                      <SocialChip
-                        key={platform}
-                        type={platform}
-                        selected={firstContents.selectStatus[platform]}
-                        onClick={firstContents.toggleChip}
-                        disabled={firstContents.isDisabled(platform)}
-                      />
+                <InputWrapper
+                  label={t('platform.firstContent')}
+                  required
+                  notice={
+                    errors.firstContents && (
+                      <p className="body2 text-red font-[500]">
+                        {t(`errorMessage.${errors.firstContents.message}`)}
+                      </p>
                     )
-                  )}
-                </div>
-                {errors.firstContents && (
-                  <p className="body2 text-red font-[500]">
-                    {t(`errorMessage.${errors.firstContents.message}`)}
-                  </p>
-                )}
-                <InputWrapper label={t('platform.secondContent')} />
-                <div className="flex gap-[1.2rem]">
-                  {(Object.keys(SOCIAL_CONFIGS) as SocialPlatform[]).map(
-                    (platform) => (
-                      <SocialChip
-                        key={platform}
-                        type={platform}
-                        selected={secondContents.selectStatus[platform]}
-                        onClick={secondContents.toggleChip}
-                        disabled={secondContents.isDisabled(platform)}
-                      />
+                  }
+                >
+                  <div className="flex gap-[1.2rem]">
+                    {(Object.keys(SOCIAL_CONFIGS) as SocialPlatform[]).map(
+                      (platform) => (
+                        <SocialChip
+                          key={platform}
+                          type={platform}
+                          selected={firstContents.selectStatus[platform]}
+                          onClick={firstContents.toggleChip}
+                          disabled={firstContents.isDisabled(platform)}
+                        />
+                      )
+                    )}
+                  </div>
+                </InputWrapper>
+
+                <InputWrapper
+                  label={t('platform.secondContent')}
+                  notice={
+                    errors.secondContents && (
+                      <p className="body2 text-red font-[500]">
+                        {t(`errorMessage.${errors.secondContents.message}`)}
+                      </p>
                     )
-                  )}
-                </div>
-                {errors.secondContents && (
-                  <p className="body2 text-red font-[500]">
-                    {t(`errorMessage.${errors.secondContents.message}`)}
-                  </p>
-                )}
+                  }
+                >
+                  <div className="flex gap-[1.2rem]">
+                    {(Object.keys(SOCIAL_CONFIGS) as SocialPlatform[]).map(
+                      (platform) => (
+                        <SocialChip
+                          key={platform}
+                          type={platform}
+                          selected={secondContents.selectStatus[platform]}
+                          onClick={secondContents.toggleChip}
+                          disabled={secondContents.isDisabled(platform)}
+                        />
+                      )
+                    )}
+                  </div>
+                </InputWrapper>
               </FormSection>
               <CampaignUploadMedia />
             </div>

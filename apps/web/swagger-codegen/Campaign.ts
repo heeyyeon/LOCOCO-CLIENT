@@ -12,10 +12,10 @@
 
 import {
   ApiResponseCampaignDetailResponse,
-  ApiResponseCampaignMediaResponse,
   ApiResponseMainPageCampaignListResponse,
   ApiResponseMainPageUpcomingCampaignListResponse,
-  CampaignMediaRequest,
+  ApiResponseMediaPresignedUrlResponse,
+  MediaPresignedUrlRequest,
 } from "./data-contracts";
 import { ContentType, HttpClient, RequestParams } from "./http-client";
 
@@ -32,10 +32,10 @@ export class Campaign<
    * @secure
    */
   createMediaPresignedUrl1 = (
-    data: CampaignMediaRequest,
+    data: MediaPresignedUrlRequest,
     params: RequestParams = {},
   ) =>
-    this.request<ApiResponseCampaignMediaResponse, any>({
+    this.request<ApiResponseMediaPresignedUrlResponse, any>({
       path: `/api/campaigns/media`,
       method: "POST",
       body: data,

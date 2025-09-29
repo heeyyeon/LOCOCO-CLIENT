@@ -368,6 +368,85 @@
     "ingredients": "성분",
     "productDetail22": "제품 상세 22"
   },
+  "howItWork": {
+    "brands": {
+      "campaignApproval": {
+        "description": "업로드 후 48시간 이내에 캠페인 승인 결과가 제공됩니다. 브랜드 대시보드에서 캠페인 지원자를 선택하세요. 신청 마감 후 24시간 이내에 최종 선정된 크리에이터를 발표해야 합니다.",
+        "title": "캠페인 승인"
+      },
+      "checkPerformance": {
+        "description": "브랜드 페이지에서 콘텐츠와 캠페인 성과를 확인하세요.",
+        "title": "성과 확인"
+      },
+      "provideFeedback": {
+        "description": "크리에이터가 첫 번째 리뷰를 업로드한 후 48시간 이내에 수정 요청을 제공하세요. (이 기간 이후에는 요청할 수 없습니다.)",
+        "title": "피드백 제공"
+      },
+      "shipProduct": {
+        "description": "크리에이터가 배송지를 확인하면 2일 이내에 제품을 발송하세요.",
+        "title": "제품 발송"
+      },
+      "title": "브랜드"
+    },
+    "creators": {
+      "confimAddress": {
+        "description": "캠페인 선정 후 24시간 이내에 배송지를 확인하세요.",
+        "title": "배송지 확인"
+      },
+      "confirmAddress": {
+        "description": "캠페인 선정 후 24시간 이내에 배송지를 확인하세요.",
+        "title": "배송지 확인"
+      },
+      "maintenanceGuidelines": {
+        "description": "리뷰는 최소 6개월간 게시 상태를 유지해야 합니다.",
+        "title": "유지 가이드라인"
+      },
+      "reviewUploadSchedule": {
+        "description": "제품 수령 후 7일 이내에 첫 번째 리뷰를 업로드하세요. 브랜드의 피드백을 검토한 후 7일 이내에 두 번째 리뷰를 업로드하세요. 두 번째 리뷰를 게시할 때 최종 SNS URL을 첨부하세요.",
+        "title": "리뷰 업로드 일정"
+      },
+      "title": "크리에이터",
+      "uploadReview": {
+        "description": "제품 수령 후 7일 이내에 첫 번째 리뷰를 업로드하세요.",
+        "title": "리뷰 업로드"
+      }
+    },
+    "FAQs": {
+      "creatorLevels": {
+        "firstA": "신청이 거절된 경우, 참여 자격 기준을 검토하고 개선 후 다시 지원하는 것을 고려해 주세요.",
+        "firstQ": "내 크리에이터 신청이 거절되었습니다.",
+        "fistA": "신청이 거절된 경우, 참여 자격 기준을 검토하고 개선 후 다시 지원하는 것을 고려해 주세요.",
+        "fistQ": "내 크리에이터 신청이 거절되었습니다.",
+        "secondA": "프로필 설정에서 신청서를 제출하여 계정을 크리에이터로 업그레이드할 수 있습니다.",
+        "secondQ": "사용자로 가입했지만 크리에이터로 참여하고 싶습니다.",
+        "thirdA": "계정의 \"배송 정보\" 섹션에서 배송 정보를 확인하고 업데이트할 수 있습니다.",
+        "thirdQ": "로코코 프로 크리에이터가 되려면 어떻게 해야 하나요?",
+        "title": "크리에이터 레벨"
+      },
+      "penaltyPolicy": {
+        "firstA": "리뷰어로 선정된 후 필요한 배송 정보를 제공하지 않는 경우, 세 번 발생 시 로코코 활동이 6개월간 정지됩니다.",
+        "firstQ": "리뷰어로 선정되었을 때 배송 정보를 제공하지 않은 경우.",
+        "fistA": "리뷰어로 선정된 후 필요한 배송 정보를 제공하지 않는 경우, 세 번 발생 시 로코코 활동이 6개월간 정지됩니다.",
+        "fistQ": "리뷰어로 선정되었을 때 배송 정보를 제공하지 않은 경우.",
+        "secondA": "지정된 마감일을 넘겨 콘텐츠를 제출하는 경우, 세 번 발생 시 로코코 활동이 6개월간 정지됩니다.",
+        "secondQ": "콘텐츠 지연 제출.",
+        "thirdA": "콘텐츠를 제출하지 않거나 지정된 품질 기준을 충족하지 못하는 콘텐츠를 제출하는 경우, 로코코 활동이 영구적으로 제한됩니다.",
+        "thirdQ": "콘텐츠 미제출 또는 저품질 콘텐츠 제출.",
+        "title": "페널티 정책"
+      },
+      "shipping": {
+        "firstA": "등록된 이메일을 통해 배송 정보를 확인할 수 있습니다.",
+        "firstQ": "제공한 배송 정보를 어떻게 확인할 수 있나요?",
+        "fistA": "등록된 이메일을 통해 배송 정보를 확인할 수 있습니다.",
+        "fistQ": "제공한 배송 정보를 어떻게 확인할 수 있나요?",
+        "secondA": "배송지가 한 번 제출되면 수정할 수 없습니다. 도움이 필요하면 로코코에 문의하세요.",
+        "secondQ": "잘못된 배송지를 입력했습니다. 어떻게 해야 하나요?",
+        "title": "배송"
+      },
+      "title": "자주 묻는 질문(FAQ)"
+    },
+    "title": "이용 방법"
+  },
   "languageSelectTrigger": {
     "language": "언어"
   },
@@ -401,35 +480,35 @@
     },
     "contentSubmissions": {
       "brandNote": {
-        "description": "",
-        "firstReview": ""
+        "description": "파일을 드래그 앤 드롭하거나 클릭하여 업로드하세요.",
+        "firstReview": "파일 선택"
       },
       "campaignProductMediaInput": {
-        "description": "파일을 드래그 앤 드롭하거나 클릭하여 업로드하세요.",
-        "selectFile": "파일 선택",
-        "title": "캠페인 제품 미디어"
-      },
-      "campaignSelect": {
-        "description": "캠페인을 선택해 주세요.",
-        "selectCampaign": "캠페인 선택",
+        "description": "캠페인 제품 미디어",
+        "selectFile": "캠페인을 선택해 주세요.",
         "title": "캠페인 선택"
       },
+      "campaignSelect": {
+        "description": "인스타그램 게시물",
+        "selectCampaign": "인스타그램 릴스",
+        "title": "콘텐츠 유형 선택"
+      },
       "content": {
-        "1stContent": "",
-        "2ndContent": ""
+        "1stContent": "틱톡 영상",
+        "2ndContent": "콘텐츠 유형"
       },
       "contentTypeSelect": {
-        "instagramPost": "인스타그램 게시물",
-        "instagramReels": "인스타그램 릴스",
-        "selectContentType": "콘텐츠 유형 선택",
-        "tiktokVideo": "틱톡 영상",
-        "title": "콘텐츠 유형"
+        "instagramPost": "검토할 콘텐츠가 없습니다.",
+        "instagramReels": "사용한 캡션과 해시태그를 그대로 붙여 넣어 주세요.",
+        "selectContentType": "캡션 & 해시태그 제출하기",
+        "tiktokVideo": "첫 번째 제출물이 접수되었습니다. 브랜드가 검토 후 피드백을 보내드릴 예정입니다.",
+        "title": "오케이"
       },
       "empty": {
-        "title": "검토할 콘텐츠가 없습니다."
+        "title": "최종 제출물이 접수되었습니다. 제출해 주셔서 감사합니다."
       },
       "hashtagsInput": {
-        "description": "사용한 캡션과 해시태그를 그대로 붙여 넣어 주세요.",
+        "description": "성공적으로 제출되었습니다.",
         "title": "캡션 & 해시태그 제출하기"
       },
       "saveSubmitModal": {
@@ -439,8 +518,8 @@
         "title": "성공적으로 제출되었습니다."
       },
       "submitContentUrl": {
-        "description": "",
-        "title": ""
+        "description": "업로드한 리뷰 콘텐츠의 URL을 제출하여 확인 및 추적에 사용하세요.",
+        "title": "콘텐츠 URL 제출"
       }
     },
     "editProfile": {
@@ -541,28 +620,25 @@
     },
     "myCampaign": {
       "buttonText": {
-        "confirmAddress": "",
-        "revisionRequested": "",
-        "uploadFirstReview": "",
-        "uploadSecondReview": "",
-        "viewDetails": "",
-        "viewNote": "",
-        "viewNotes": "",
-        "viewResults": ""
+        "confirmAddress": "주소 확인",
+        "revisionRequested": "수정 요청됨",
+        "uploadFirstReview": "첫 번째 리뷰 업로드",
+        "uploadSecondReview": "두 번째 리뷰 업로드",
+        "viewDetails": "상세보기",
+        "viewNote": "메모 보기",
+        "viewNotes": "메모들 보기",
+        "viewResults": "결과 보기"
       },
       "empty": {
         "title": "신청한 캠페인이 없습니다."
       },
       "participationStatus": {
-        "active": "",
-        "approved": "",
-        "completed": "",
-        "expired": "",
-        "pending": "",
-        "rejected": ""
-      },
-      "empty": {
-        "title": "신청한 캠페인이 없습니다."
+        "active": "활성화됨",
+        "approved": "승인됨",
+        "completed": "완료됨",
+        "expired": "만료됨",
+        "pending": "대기 중",
+        "rejected": "거절됨"
       },
       "title": "나의 캠페인"
     },

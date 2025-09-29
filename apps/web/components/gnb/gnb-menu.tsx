@@ -11,7 +11,7 @@ export default function GnbMenu() {
       <Link href={'/all/1'} className="whitespace-nowrap p-[1.6rem]">
         {t('campaigns')}
       </Link>
-      <Link href={'/'} className="whitespace-nowrap p-[1.6rem]">
+      <Link href={'/how-it-work'} className="whitespace-nowrap p-[1.6rem]">
         {t('howItWorks')}
       </Link>
     </nav>

@@ -57,7 +57,7 @@ export default function CreatorSnsLinksPage() {
         title={t('title')}
         onBack={handleBack}
         onSubmit={handleSubmit}
-        isValid={hasConnectedAccount}
+        isValid={true}
         submitLabel={t('submitLabel')}
         isBackDisabled={false}
       >

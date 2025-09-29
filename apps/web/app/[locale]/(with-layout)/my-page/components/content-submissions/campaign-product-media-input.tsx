@@ -11,8 +11,12 @@ import { ContentSubmissionsFormData } from '../../hooks/use-content-submissions'
 interface CampaignProductMediaInputProps {
   formData: ContentSubmissionsFormData;
   errors: string | undefined;
+  updateCampaignProductMedia: (
+    fieldId: string,
+    campaignProductMedia: File[]
+  ) => void;
+  fieldId: string;
   title?: string;
-  updateCampaignProductMedia: (campaignProductMedia: File[]) => void;
 }
 
 export default function CampaignProductMediaInput({
@@ -20,6 +24,7 @@ export default function CampaignProductMediaInput({
   errors,
   title,
   updateCampaignProductMedia,
+  fieldId,
 }: CampaignProductMediaInputProps) {
   const t = useTranslations(
     'myPage.contentSubmissions.campaignProductMediaInput'
@@ -48,17 +53,25 @@ export default function CampaignProductMediaInput({
     separateFiles(formData.campaignProductMedia);
   }, [formData.campaignProductMedia]);
 
-  const handleImageFilesChange = (files: File[]) => {
-    const allFiles = [...files, ...videoFiles];
-    updateCampaignProductMedia(allFiles);
+  const handleVideoFilesChange = (files: File[]) => {
+    const currentVideos = formData.campaignProductMedia.filter((file) =>
+      file.type.startsWith('video/')
+    );
+    const allFiles = [...files, ...currentVideos];
+    updateCampaignProductMedia(fieldId, allFiles);
   };
 
-  const handleVideoFilesChange = (files: File[]) => {
-    const allFiles = [...imageFiles, ...files];
-    updateCampaignProductMedia(allFiles);
+  const handleImageFilesChange = (files: File[]) => {
+    const currentImages = formData.campaignProductMedia.filter((file) =>
+      file.type.startsWith('image/')
+    );
+    const allFiles = [...currentImages, ...files];
+    updateCampaignProductMedia(fieldId, allFiles);
   };
+  const inputFileId = `campaign-product-media-upload-area-${fieldId}`;
+
   const triggerFileInput = () => {
-    document.getElementById('campaign-product-media-upload-area')?.click();
+    document.getElementById(inputFileId)?.click();
   };
 
   return (
