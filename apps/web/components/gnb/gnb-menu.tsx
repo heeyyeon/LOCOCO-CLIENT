@@ -7,7 +7,7 @@ import { Link } from 'i18n/navigation';
 export default function GnbMenu() {
   const t = useTranslations('gnb');
   return (
-    <nav className="flex">
+    <nav className="flex items-center">
       <Link href={'/all/1'} className="whitespace-nowrap p-[1.6rem]">
         {t('campaigns')}
       </Link>
