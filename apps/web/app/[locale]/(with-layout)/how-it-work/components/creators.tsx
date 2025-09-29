@@ -16,8 +16,8 @@ export default function Creator() {
         <div className="absolute bottom-0 left-1/2 top-0 w-[1px] -translate-x-1/2 transform bg-pink-300"></div>
         <div className="absolute bottom-0 left-1/2 h-[2.4rem] w-[2.4rem] -translate-x-1/2 transform rounded-full bg-pink-300"></div>
 
-        <div className="flex flex-col gap-[3.2rem]">
-          <div className="flex justify-start pr-[50%]">
+        <div className="grid grid-cols-2 grid-rows-4 gap-y-[3.2rem]">
+          <div className="col-start-1 row-start-1 flex justify-start">
             <Info
               number={1}
               title={t('confirmAddress.title')}
@@ -29,8 +29,7 @@ export default function Creator() {
             />
           </div>
 
-          {/* Row 2: Step 2 (right side of center line) */}
-          <div className="flex justify-end pl-[50%]">
+          <div className="col-start-2 row-start-2 flex justify-end">
             <Info
               number={2}
               title={t('uploadReview.title')}
@@ -42,8 +41,7 @@ export default function Creator() {
             />
           </div>
 
-          {/* Row 3: Step 3 (left side of center line) */}
-          <div className="flex justify-start pr-[50%]">
+          <div className="col-start-1 row-start-3 flex justify-start">
             <Info
               number={3}
               title={t('reviewUploadSchedule.title')}
@@ -59,8 +57,7 @@ export default function Creator() {
             />
           </div>
 
-          {/* Row 4: Step 4 (right side of center line) */}
-          <div className="flex justify-end pl-[50%]">
+          <div className="col-start-2 row-start-4 flex justify-end">
             <Info
               number={4}
               title={t('maintenanceGuidelines.title')}
