@@ -77,6 +77,7 @@ export default function Profile() {
         </div>
         <div className="flex gap-[1.6rem]">
           <Button
+            type="button"
             color="secondary"
             variant="outline"
             size="lg"
