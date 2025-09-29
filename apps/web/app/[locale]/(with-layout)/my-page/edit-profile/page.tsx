@@ -187,7 +187,7 @@ export default function EditProfile() {
 
             <CommunityName
               form={form}
-              handleCheckAvailability={handleCheckAvailability}
+              onIdCheckResult={handleCheckAvailability}
             />
 
             <PersonalDetails form={form} />

@@ -18,7 +18,6 @@ export function CommunityName({ form, onIdCheckResult }: CommunityNameProps) {
   const t = useTranslations('creatorSignup.communityName');
   const [isCheckingEnabled, setIsCheckingEnabled] = useState(false);
   const [hasCheckedCurrentId, setHasCheckedCurrentId] = useState(false);
-
   const id = form.watch('id');
 
   const { data: availabilityResult } = useIdAvailability(
@@ -97,7 +96,6 @@ export function CommunityName({ form, onIdCheckResult }: CommunityNameProps) {
         }
         onRightContentClick={() => {
           handleCheckAvailability();
-          setIsAvailable(true);
         }}
       />
     </FormSection>
