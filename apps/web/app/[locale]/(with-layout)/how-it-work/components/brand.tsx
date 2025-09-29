@@ -17,7 +17,7 @@ export default function Brand() {
         <div className="absolute bottom-0 left-1/2 h-[2.4rem] w-[2.4rem] -translate-x-1/2 transform rounded-full bg-pink-300"></div>
 
         <div className="flex flex-col gap-[3.2rem]">
-          <div className="pr-1/2 flex justify-start">
+          <div className="flex justify-start pr-[50%]">
             <Info
               number={1}
               title={t('campaignApproval.title')}
@@ -34,7 +34,7 @@ export default function Brand() {
           </div>
 
           {/* Row 2: Step 2 (right side of center line) */}
-          <div className="pl-1/2 flex justify-end">
+          <div className="flex justify-end pl-[50%]">
             <Info
               number={2}
               title={t('shipProduct.title')}
@@ -47,7 +47,7 @@ export default function Brand() {
           </div>
 
           {/* Row 3: Step 3 (left side of center line) */}
-          <div className="pr-1/2 flex justify-start">
+          <div className="flex justify-start pr-[50%]">
             <Info
               number={3}
               title={t('provideFeedback.title')}
@@ -64,7 +64,7 @@ export default function Brand() {
           </div>
 
           {/* Row 4: Step 4 (right side of center line) */}
-          <div className="pl-1/2 flex justify-end">
+          <div className="flex justify-end pl-[50%]">
             <Info
               number={4}
               title={t('checkPerformance.title')}

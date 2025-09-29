@@ -6,7 +6,7 @@ import { InfoChip } from '@lococo/design-system/info-chip';
 
 import QAndA from './q-and-a';
 
-export default function FAQs() {
+export default function FQAs() {
   const t = useTranslations('howItWork.FAQs');
   return (
     <div className="flex flex-col gap-[4.8rem]">
@@ -41,7 +41,10 @@ export default function FAQs() {
           className="w-fit"
         />
         <div className="flex flex-col gap-[3.2rem]">
-          <QAndA question={t('shipping.fistQ')} answer={t('shipping.fistA')} />
+          <QAndA
+            question={t('shipping.firstQ')}
+            answer={t('shipping.firstA')}
+          />
           <QAndA
             question={t('shipping.secondQ')}
             answer={t('shipping.secondA')}
@@ -57,8 +60,8 @@ export default function FAQs() {
         />
         <div className="flex flex-col gap-[3.2rem]">
           <QAndA
-            question={t('penaltyPolicy.fistQ')}
-            answer={t('penaltyPolicy.fistA')}
+            question={t('penaltyPolicy.firstQ')}
+            answer={t('penaltyPolicy.firstA')}
           />
           <QAndA
             question={t('penaltyPolicy.secondQ')}

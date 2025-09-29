@@ -57,7 +57,7 @@ export { SvgStar } from './Star';
 export { SvgTiktok } from './Tiktok';
 export { SvgTodo } from './Todo';
 export { SvgUpload } from './Upload';
-export { SvgUpoaldSchedule } from './UpoaldSchedule';
+export { SvgUploadSchedule } from './UploadSchedule';
 export { SvgVector } from './Vector';
 export { SvgVector469 } from './Vector469';
 export { SvgVector470 } from './Vector470';
