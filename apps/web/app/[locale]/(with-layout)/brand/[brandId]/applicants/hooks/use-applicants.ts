@@ -16,12 +16,15 @@ export const applicantsKeys = {
  * @returns 지원자 목록 데이터와 로딩 상태
  */
 export const useApplicants = (
-  campaignId: number,
+  campaignId: number | undefined,
   size: number,
   page: number,
   approveStatus?: ApproveStatus,
   enabled: boolean = true
 ) => {
+  if (campaignId === undefined) {
+    throw new Error('campaignId is required');
+  }
   return useQuery({
     queryKey: ['applicants', campaignId, size, page, approveStatus],
     queryFn: () => getApplicants({ campaignId, size, page, approveStatus }),

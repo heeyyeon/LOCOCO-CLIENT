@@ -99,7 +99,7 @@ export default function BrandApplicantsPageClient() {
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
 
   const { data, isFetching, isError } = useApplicants(
-    selectedCampaign?.campaignId || 0,
+    campaignIdQueryString ? parseInt(campaignIdQueryString, 10) : undefined,
     10,
     page - 1,
     selectedApproveStatus === '' || selectedApproveStatus === 'ALL'
