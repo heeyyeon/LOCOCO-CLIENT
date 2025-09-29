@@ -34,11 +34,16 @@ const connectTiktokApi = async (): Promise<ApiResponseVoid> => {
   const response = await apiRequest<ApiResponseVoid>({
     endPoint: '/api/auth/sns/tiktok/connect',
   });
-  window.open(response.data, '_blank');
+
   if (!response.success) {
     throw new Error('TikTok 연결에 실패했습니다.');
   }
 
+  if (!response.data) {
+    throw new Error('TikTok OAuth URL이 비어있습니다.');
+  }
+
+  window.location.href = response.data;
   return response;
 };
 
@@ -48,12 +53,35 @@ export const useConnectTiktok = () => {
   });
 };
 
+const connectInstagramApi = async (): Promise<ApiResponseVoid> => {
+  const response = await apiRequest<ApiResponseVoid>({
+    endPoint: '/api/auth/sns/instagram/connect',
+  });
+
+  if (!response.success) {
+    throw new Error('Instagram 연결에 실패했습니다.');
+  }
+
+  if (!response.data) {
+    throw new Error('Instagram OAuth URL이 비어있습니다.');
+  }
+
+  window.location.href = response.data;
+  return response;
+};
+
+export const useConnectInstagram = () => {
+  return useMutation({
+    mutationFn: connectInstagramApi,
+  });
+};
+
 // OAuth 콜백 처리 훅
 export const useOAuthCallback = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const queryClient = useQueryClient();
-  const { refetch } = useConnectSns();
+
   useEffect(() => {
     const code = searchParams.get('code');
     const state = searchParams.get('state');
@@ -83,17 +111,18 @@ export const useOAuthCallback = () => {
         await handleTiktokCallback(code, state);
       } else if (snsType === 'instagram') {
         await handleInstagramCallback(code, state);
-        await refetch();
       }
 
       // 성공 후 SNS 연결 상태 새로고침
       queryClient.invalidateQueries({
         queryKey: CONNECT_SNS_KEYS.CONNECT_SNS(),
       });
+
+      // URL에서 OAuth 파라미터 제거하고 원래 페이지로 리다이렉트
+      router.replace('/my-page?tab=connect-sns&success=true');
     } catch (error) {
       console.error('OAuth 콜백 처리 실패:', error);
-    } finally {
-      router.replace('/my-page/connect-sns');
+      router.replace('/my-page?tab=connect-sns&error=callback_failed');
     }
   };
 

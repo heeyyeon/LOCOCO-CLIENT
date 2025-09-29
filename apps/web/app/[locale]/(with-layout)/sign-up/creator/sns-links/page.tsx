@@ -5,22 +5,34 @@ import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { useRouter } from 'next/navigation';
 
-import {
-  SignupFormLayout,
-  SnsConnection,
-} from '../../../../../../components/forms';
+import { SignupFormLayout, SnsConnection } from 'components/forms';
+import LoadingSvg from 'components/loading/loading-svg';
+
 import { ConfirmSignupModal } from '../../components/confirm-signup-modal';
+import { useSnsStatus } from './hooks/useSnsStatus';
 
 export default function CreatorSnsLinksPage() {
   const router = useRouter();
   const t = useTranslations('creatorSnsLinksPage');
 
+  const { connectedSns, isLoading, handleCompleteSignup } = useSnsStatus();
+
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const [isShowConfirmModal, setIsShowConfirmModal] = useState(false);
 
-  const handleSubmit = () => {
-    // SnsConnection 컴포넌트 내부에서 연결 상태를 관리하므로
-    // 여기서는 단순히 확인 모달만 표시
-    setIsShowConfirmModal(true);
+  const hasConnectedAccount = connectedSns.length > 0;
+
+  const handleSubmit = async () => {
+    if (!hasConnectedAccount) {
+      setIsSubmitted(true);
+      return;
+    }
+
+    const response = await handleCompleteSignup();
+
+    if (response.success) {
+      setIsShowConfirmModal(true);
+    }
   };
 
   const handleConfirmModalConfirm = () => {
@@ -30,6 +42,14 @@ export default function CreatorSnsLinksPage() {
   const handleBack = () => {
     router.back();
   };
+
+  if (isLoading) {
+    return (
+      <div className="flex h-[50rem] w-full items-center justify-center">
+        <LoadingSvg />
+      </div>
+    );
+  }
 
   return (
     <>
@@ -41,7 +61,10 @@ export default function CreatorSnsLinksPage() {
         submitLabel={t('submitLabel')}
         isBackDisabled={false}
       >
-        <SnsConnection description={t('snsDescription')} />
+        <SnsConnection
+          description={t('snsDescription')}
+          hasError={isSubmitted}
+        />
       </SignupFormLayout>
 
       <ConfirmSignupModal
