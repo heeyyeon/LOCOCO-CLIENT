@@ -111,7 +111,7 @@ export default function CampaignForm({ campaignId }: { campaignId?: string }) {
         console.error('Failed to transform API data:', error);
       }
     }
-  }, [savedCampaignData, campaignId, reset, isLoading]);
+  }, [savedCampaignData, campaignId, reset, isLoading, router]);
 
   const firstContents = usePlatformSelection(methods, 'firstContents');
   const secondContents = usePlatformSelection(methods, 'secondContents');

@@ -2,6 +2,12 @@ import React from 'react';
 
 import CampaignForm from '../component/campaign-form';
 
-export default function EditCampaign({ params }: { params: { id: string } }) {
-  return <CampaignForm campaignId={params.id} />;
+export default async function EditCampaign({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const { id } = await params;
+
+  return <CampaignForm campaignId={id} />;
 }
