@@ -7,8 +7,8 @@ import { SvgArrowRight, SvgMail, SvgX } from '@lococo/icons';
 export default function Footer() {
   const t = useTranslations('footer');
   return (
-    <footer className="mx-auto flex w-full min-w-[112rem] flex-col gap-[5.6rem] border-gray-200 bg-pink-100 px-[11.9rem] py-[7.2rem]">
-      <div className="flex justify-between gap-[1rem]">
+    <footer className="mx-auto flex w-full min-w-[112.8rem] flex-col items-center gap-[5.6rem] border-gray-200 bg-pink-100 px-[11.9rem] py-[7.2rem]">
+      <div className="flex w-[112.8rem] justify-between gap-[1rem]">
         <div className="flex min-w-[30.8rem] flex-col gap-[1.6rem]">
           <p className="text-inter-title3 font-bold text-gray-600">
             {t('slogan')}
@@ -74,7 +74,7 @@ export default function Footer() {
       <Image
         src="/images/logo-high-quality.png"
         alt="logo"
-        className="w-full"
+        className="w-[112.8rem]"
         width={800}
         height={200}
       />
