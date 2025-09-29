@@ -368,6 +368,85 @@
     "ingredients": "Ingredientes",
     "productDetail22": "Detalles del producto 22"
   },
+  "howItWork": {
+    "brands": {
+      "campaignApproval": {
+        "description": "Los resultados de aprobación de la campaña se proporcionan dentro de las 48 horas posteriores a la carga. Desde el panel de la marca, seleccione a los solicitantes de su campaña. Después de la fecha límite de solicitud, anuncie a los creadores seleccionados dentro de las 24 horas.",
+        "title": "Aprobación de campaña"
+      },
+      "checkPerformance": {
+        "description": "Revise el contenido y el rendimiento de la campaña en la página de su marca.",
+        "title": "Revisar rendimiento"
+      },
+      "provideFeedback": {
+        "description": "Proporcione solicitudes de revisión dentro de las 48 horas posteriores a que el creador suba la primera reseña. (Después de este período no se pueden realizar solicitudes).",
+        "title": "Proporcionar comentarios"
+      },
+      "shipProduct": {
+        "description": "Envíe el producto dentro de los 2 días una vez que el creador confirme la dirección de envío.",
+        "title": "Enviar producto"
+      },
+      "title": "Marcas"
+    },
+    "creators": {
+      "confimAddress": {
+        "description": "Confirme su dirección de envío dentro de las 24 horas posteriores a la selección de la campaña.",
+        "title": "Confirmar dirección"
+      },
+      "confirmAddress": {
+        "description": "Confirme su dirección de envío dentro de las 24 horas posteriores a la selección de la campaña.",
+        "title": "Confirmar dirección"
+      },
+      "maintenanceGuidelines": {
+        "description": "Mantenga la reseña publicada por al menos 6 meses.",
+        "title": "Directrices de mantenimiento"
+      },
+      "reviewUploadSchedule": {
+        "description": "Suba su primera reseña dentro de los 7 días posteriores a recibir el producto. Después de revisar los comentarios de la marca, suba su segunda reseña dentro de los 7 días. Adjunte la URL final de la red social al publicar la segunda reseña.",
+        "title": "Cronograma de carga de reseñas"
+      },
+      "title": "Creadores",
+      "uploadReview": {
+        "description": "Suba su primera reseña dentro de los 7 días posteriores a recibir el producto.",
+        "title": "Subir reseña"
+      }
+    },
+    "FAQs": {
+      "creatorLevels": {
+        "firstA": "Si su solicitud es rechazada, revise los criterios de elegibilidad y considere volver a postular después de abordar las áreas de mejora.",
+        "firstQ": "Mi solicitud de creador ha sido rechazada.",
+        "fistA": "Si su solicitud es rechazada, revise los criterios de elegibilidad y considere volver a postular después de abordar las áreas de mejora.",
+        "fistQ": "Mi solicitud de creador ha sido rechazada.",
+        "secondA": "Puede actualizar su cuenta a creador enviando una solicitud a través de la configuración de su perfil.",
+        "secondQ": "Me uní como usuario pero me gustaría participar como creador.",
+        "thirdA": "Puede verificar y actualizar sus datos de envío en su cuenta en la sección \"Información de envío\".",
+        "thirdQ": "¿Cómo puedo convertirme en un Creador Pro de Lococo?",
+        "title": "Niveles de creador"
+      },
+      "penaltyPolicy": {
+        "firstA": "Los creadores que no proporcionen la información de envío requerida después de ser seleccionados como revisores estarán sujetos a una suspensión de 6 meses de todas las actividades de Lococo después de tres ocurrencias.",
+        "firstQ": "No proporcionar información de envío cuando se es seleccionado como revisor.",
+        "fistA": "Los creadores que no proporcionen la información de envío requerida después de ser seleccionados como revisores estarán sujetos a una suspensión de 6 meses de todas las actividades de Lococo después de tres ocurrencias.",
+        "fistQ": "No proporcionar información de envío cuando se es seleccionado como revisor.",
+        "secondA": "Los creadores que presenten contenido fuera del plazo especificado enfrentarán una suspensión de 6 meses de todas las actividades de Lococo después de tres ocurrencias.",
+        "secondQ": "Presentación tardía de contenido.",
+        "thirdA": "Los creadores que no presenten contenido o presenten contenido que no cumpla con los estándares de calidad especificados enfrentarán una prohibición permanente de todas las actividades de Lococo.",
+        "thirdQ": "No presentar contenido o presentar contenido de baja calidad.",
+        "title": "Política de penalización"
+      },
+      "shipping": {
+        "firstA": "Puede verificar sus datos de envío a través del correo electrónico registrado.",
+        "firstQ": "¿Cómo puedo verificar la información de envío que proporcioné?",
+        "fistA": "Puede verificar sus datos de envío a través del correo electrónico registrado.",
+        "fistQ": "¿Cómo puedo verificar la información de envío que proporcioné?",
+        "secondA": "Una vez enviada la dirección de envío, no se puede modificar. Por favor contacte a Lococo para recibir asistencia.",
+        "secondQ": "Ingresé una dirección de envío incorrecta. ¿Qué debo hacer?",
+        "title": "Envío"
+      },
+      "title": "Preguntas frecuentes (FAQ)"
+    },
+    "title": "Cómo funciona"
+  },
   "languageSelectTrigger": {
     "language": "Idioma"
   },
@@ -400,28 +479,36 @@
       "zip": "Código postal"
     },
     "contentSubmissions": {
+      "brandNote": {
+        "description": "Arrastre y suelte el archivo o haga clic para subirlo.",
+        "firstReview": "Seleccionar archivo"
+      },
       "campaignProductMediaInput": {
-        "description": "Arrastra y suelta o haz clic para subir el archivo.",
-        "selectFile": "Seleccionar archivo",
-        "title": "Medios del producto de la campaña"
+        "description": "Medios del producto de la campaña",
+        "selectFile": "Por favor seleccione una campaña.",
+        "title": "Selección de campaña"
       },
       "campaignSelect": {
-        "description": "Por favor, seleccione una campaña.",
-        "selectCampaign": "Seleccionar una campaña",
-        "title": "Seleccionar una campaña"
+        "description": "Publicación de Instagram",
+        "selectCampaign": "Reels de Instagram",
+        "title": "Seleccionar tipo de contenido"
+      },
+      "content": {
+        "1stContent": "Video de TikTok",
+        "2ndContent": "Tipo de contenido"
       },
       "contentTypeSelect": {
-        "instagramPost": "Publicación en Instagram",
-        "instagramReels": "Reels de Instagram",
-        "selectContentType": "Seleccione un tipo de contenido",
-        "tiktokVideo": "Video de TikTok",
-        "title": "Tipo de contenido"
+        "instagramPost": "No hay contenido para revisar.",
+        "instagramReels": "Pegue exactamente el pie de foto y los hashtags utilizados.",
+        "selectContentType": "Enviar pie de foto y hashtags",
+        "tiktokVideo": "El primer envío ha sido recibido. La marca lo revisará y enviará comentarios.",
+        "title": "Ok"
       },
       "empty": {
-        "title": "No hay contenido para revisar."
+        "title": "El envío final ha sido recibido. Muchas gracias por enviarlo."
       },
       "hashtagsInput": {
-        "description": "Pegue exactamente el pie de foto y los hashtags que utilizó.",
+        "description": "Se ha enviado con éxito",
         "title": "Envíe su pie de foto y hashtags"
       },
       "saveSubmitModal": {
@@ -429,6 +516,10 @@
         "save": "Está bien",
         "secondDescription": "Tu primer envío ha sido recibido. La marca lo revisará y enviará una nota.",
         "title": "Enviado con éxito"
+      },
+      "submitContentUrl": {
+        "description": "Envíe la URL de su contenido de reseña subido para confirmación y seguimiento.",
+        "title": "Enviar URL de contenido"
       }
     },
     "editProfile": {
@@ -528,8 +619,26 @@
       "myCampaign": "Mi campaña"
     },
     "myCampaign": {
+      "buttonText": {
+        "confirmAddress": "Confirmar dirección",
+        "revisionRequested": "Revisión solicitada",
+        "uploadFirstReview": "Subir primera reseña",
+        "uploadSecondReview": "Subir segunda reseña",
+        "viewDetails": "Ver detalles",
+        "viewNote": "Ver nota",
+        "viewNotes": "Ver notas",
+        "viewResults": "Ver resultados"
+      },
       "empty": {
-        "title": "No hay ninguna campaña solicitada."
+        "title": "No se ha aplicado a ninguna campaña."
+      },
+      "participationStatus": {
+        "active": "Activo",
+        "approved": "Aprobado",
+        "completed": "Completado",
+        "expired": "Expirado",
+        "pending": "Pendiente",
+        "rejected": "Rechazado"
       },
       "title": "Mi campaña"
     },

@@ -353,7 +353,7 @@
   },
   "gnb": {
     "campaigns": "campaigns",
-    "howItWorks": "how it works",
+    "howItWorks": "How It Works",
     "login": "Log in",
     "logIn": "Log in",
     "logOut": "Log Out",
@@ -367,6 +367,85 @@
     },
     "ingredients": "ingredients",
     "productDetail22": "productDetail22"
+  },
+  "howItWork": {
+    "brands": {
+      "campaignApproval": {
+        "description": "Campaign approval results are provided within 48 hours of upload. From the brand dashboard, select applicants for your campaign. After the application deadline, announce selected creators within 24 hours.",
+        "title": "Campaign Approval"
+      },
+      "checkPerformance": {
+        "description": "Check the content and campaign performance on your brand page.",
+        "title": "Check Performance"
+      },
+      "provideFeedback": {
+        "description": "Provide revision requests within 48 hours after the creator uploads the first review. (Requests cannot be made after this period.)",
+        "title": "Provide Feedback"
+      },
+      "shipProduct": {
+        "description": "Ship the product within 2 days once the creator confirms the shipping address.",
+        "title": "Ship Product"
+      },
+      "title": "Brands"
+    },
+    "creators": {
+      "confimAddress": {
+        "description": "Confirm your shipping address within 24 hours after campaign selection.",
+        "title": "Confim Address"
+      },
+      "confirmAddress": {
+        "description": "Confirm your shipping address within 24 hours after campaign selection.",
+        "title": "Confirm Address"
+      },
+      "maintenanceGuidelines": {
+        "description": "Keep the review published for at least 6 months.",
+        "title": "Maintenance Guidelines"
+      },
+      "reviewUploadSchedule": {
+        "description": "Upload your first review within 7 days of receiving the product. After reviewing the brand’s feedback, upload your second review within 7 days. Attach the final SNS URL when posting the second review.",
+        "title": "Review Upload Schedule"
+      },
+      "title": "Creators",
+      "uploadReview": {
+        "description": "Upload your first review within 7 days of receiving the product.",
+        "title": "Upload Review"
+      }
+    },
+    "FAQs": {
+      "creatorLevels": {
+        "firstA": "If your application is declined, please review the eligibility criteria and consider reapplying after addressing any areas for improvement.",
+        "firstQ": "My creator application is rejected.",
+        "fistA": "If your application is declined, please review the eligibility criteria and consider reapplying after addressing any areas for improvement.",
+        "fistQ": "My creator application is rejected.",
+        "secondA": "You can upgrade your account to a creator by submitting an application through your profile settings.",
+        "secondQ": "I joined as a user but would like to participate as a creator.",
+        "thirdA": "You can verify and update your shipping details in your account under the “Shipping Information” section.",
+        "thirdQ": "How can I become a Lococo Pro Creator?",
+        "title": "Creator Levels"
+      },
+      "penaltyPolicy": {
+        "firstA": "Creators who do not provide required shipping information after being selected as reviewers will be subject to a 6-month suspension from all Lococo activities after three occurrences.",
+        "firstQ": "Failure to provide shipping information when selected as a reviewer.",
+        "fistA": "Creators who do not provide required shipping information after being selected as reviewers will be subject to a 6-month suspension from all Lococo activities after three occurrences.",
+        "fistQ": "Failure to provide shipping information when selected as a reviewer.",
+        "secondA": "Creators who submit content past the specified deadline will face a 6-month suspension from all Lococo activities after three occurrences.",
+        "secondQ": "Late content submission.",
+        "thirdA": "Creators who fail to submit content or submit content that does not meet the specified quality standards will face a permanent ban from all Lococo activities.",
+        "thirdQ": "Failure to submit content or submitting low-quality content.",
+        "title": "Penalty Policy"
+      },
+      "shipping": {
+        "firstA": "You can check your shipping details through your registered email.",
+        "firstQ": "How can I check the shipping information I provided?",
+        "fistA": "You can check your shipping details through your registered email.",
+        "fistQ": "How can I check the shipping information I provided?",
+        "secondA": "Once a shipping address has been submitted, it cannot be modified. Please contact Lococo for assistance.",
+        "secondQ": "I entered the wrong shipping address. What should I do?",
+        "title": "Shipping"
+      },
+      "title": "FAQs"
+    },
+    "title": "How It Works"
   },
   "languageSelectTrigger": {
     "language": "Language"
@@ -400,6 +479,10 @@
       "zip": "Zip/Postal Code"
     },
     "contentSubmissions": {
+      "brandNote": {
+        "description": "These are the revisions requested by the brand. Please update your content accordingly and re-upload it after making the changes.",
+        "firstReview": "Brand’s Note for 1st Review "
+      },
       "campaignProductMediaInput": {
         "description": "Drag and drop or click to upload the file.",
         "selectFile": "Select File",
@@ -409,6 +492,10 @@
         "description": "Please select a campaign",
         "selectCampaign": "Select a Campaign",
         "title": "Select a Campaign"
+      },
+      "content": {
+        "1stContent": "1st Content",
+        "2ndContent": "2nd Content"
       },
       "contentTypeSelect": {
         "instagramPost": "Instagram Post",
@@ -429,6 +516,10 @@
         "save": "Okay",
         "secondDescription": "Your final submission has been received. Thank you for your submission.",
         "title": "Submitted successfully"
+      },
+      "submitContentUrl": {
+        "description": "Submit the URL of your uploaded review content for confirmation and tracking.",
+        "title": "Submit Content URL"
       }
     },
     "editProfile": {
@@ -528,8 +619,26 @@
       "myCampaign": "My Campaign"
     },
     "myCampaign": {
+      "buttonText": {
+        "confirmAddress": "Confirm Address",
+        "revisionRequested": "Revision Requested",
+        "uploadFirstReview": "Upload First Review",
+        "uploadSecondReview": "Upload Second Review",
+        "viewDetails": "View Details",
+        "viewNote": "View Note",
+        "viewNotes": "View Notes",
+        "viewResults": "View Results"
+      },
       "empty": {
         "title": "There is no campaign has been applied."
+      },
+      "participationStatus": {
+        "active": "Active",
+        "approved": "Approved",
+        "completed": "Completed",
+        "expired": "Expired",
+        "pending": "Pending",
+        "rejected": "Rejected"
       },
       "title": "My Campaign"
     },
@@ -568,74 +677,5 @@
     "confirmButton": "Yes",
     "message": "Campaign applications are only available to creator members.\nWould you like to sign up as a creator?",
     "title": "Creator Suggestion"
-  },
-  "howItWork": {
-    "title": "How It Works",
-    "creators": {
-      "title": "Creators",
-      "confirmAddress": {
-        "title": "Confirm Address",
-        "description": "Confirm your shipping address within 24 hours after campaign selection."
-      },
-      "uploadReview": {
-        "title": "Upload Review",
-        "description": "Upload your first review within 7 days of receiving the product."
-      },
-      "reviewUploadSchedule": {
-        "title": "Review Upload Schedule",
-        "description": "Upload your first review within 7 days of receiving the product. After reviewing the brand’s feedback, upload your second review within 7 days. Attach the final SNS URL when posting the second review."
-      },
-      "maintenanceGuidelines": {
-        "title": "Maintenance Guidelines",
-        "description": "Keep the review published for at least 6 months."
-      }
-    },
-    "brands": {
-      "title": "Brands",
-      "campaignApproval": {
-        "title": "Campaign Approval",
-        "description": "Campaign approval results are provided within 48 hours of upload. From the brand dashboard, select applicants for your campaign. After the application deadline, announce selected creators within 24 hours."
-      },
-      "shipProduct": {
-        "title": "Ship Product",
-        "description": "Ship the product within 2 days once the creator confirms the shipping address."
-      },
-      "provideFeedback": {
-        "title": "Provide Feedback",
-        "description": "Provide revision requests within 48 hours after the creator uploads the first review. (Requests cannot be made after this period.)"
-      },
-      "checkPerformance": {
-        "title": "Check Performance",
-        "description": "Check the content and campaign performance on your brand page."
-      }
-    },
-    "FAQs": {
-      "title": "FAQs",
-      "creatorLevels": {
-        "title": "Creator Levels",
-        "firstQ": "My creator application is rejected.",
-        "secondQ": "I joined as a user but would like to participate as a creator.",
-        "thirdQ": "How can I become a Lococo Pro Creator?",
-        "firstA": "If your application is declined, please review the eligibility criteria and consider reapplying after addressing any areas for improvement.",
-        "secondA": "You can upgrade your account to a creator by submitting an application through your profile settings.",
-        "thirdA": "You can verify and update your shipping details in your account under the “Shipping Information” section."
-      },
-      "shipping": {
-        "title": "Shipping",
-        "firstQ": "How can I check the shipping information I provided?",
-        "secondQ": "I entered the wrong shipping address. What should I do?",
-        "firstA": "You can check your shipping details through your registered email.",
-        "secondA": "Once a shipping address has been submitted, it cannot be modified. Please contact Lococo for assistance."
-      },
-      "penaltyPolicy": {
-        "title": "Penalty Policy",
-        "firstQ": "Failure to provide shipping information when selected as a reviewer.",
-        "secondQ": "Late content submission.",
-        "thirdQ": "Failure to submit content or submitting low-quality content.",
-        "firstA": "Creators who do not provide required shipping information after being selected as reviewers will be subject to a 6-month suspension from all Lococo activities after three occurrences.",
-        "secondA": "Creators who submit content past the specified deadline will face a 6-month suspension from all Lococo activities after three occurrences.",
-        "thirdA": "Creators who fail to submit content or submit content that does not meet the specified quality standards will face a permanent ban from all Lococo activities."
-      }
-    }
   }
 }
