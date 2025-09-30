@@ -189,7 +189,10 @@
   "campaignDetail": {
     "applicationPeriod": "Application Period",
     "applyButtonText": {
-      "active": "Campaign in progress",
+      "active": {
+        "user": "Campaign in progress",
+        "brand": "View Applicants"
+      },
       "applied": "Successfully Applied",
       "approved_review_not_confirmed": "Expired",
       "approved_second_review_done": "Campaign Completed",

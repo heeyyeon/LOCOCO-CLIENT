@@ -182,7 +182,10 @@ export default function CampaignInfoPanel({
       // TODO: 기획의 의도 마이페이지-마이캠페인 이동, 컨텐츠 제출페이지 이동 두가지로 나뉘어져서 체크필요함
       case 'ACTIVE':
         return {
-          text: t('applyButtonText.active'),
+          text:
+            currentUserRole === 'BRAND'
+              ? t('applyButtonText.active.brand')
+              : t('applyButtonText.active.user'),
           isDisabled: false,
           onClick: handleActiveCampaign,
         };
