@@ -1,35 +1,26 @@
 'use client';
 
-import React, { useState } from 'react';
-
-import { useParams } from 'next/navigation';
+import React from 'react';
 
 import CampaignFilters from 'components/campaign/campaign-filter';
 import CampaignGrid from 'components/campaign/campaign-grid';
-import { useRouter } from 'i18n/navigation';
-import { campaignDummyData } from 'mocks/campaignData';
 
 import { Pagenation } from '@lococo/design-system/pagenation';
 
-import { CategoryValue } from '../../../../../types/category';
-import { LocaleType } from './campaign-language';
+import { useCampaignsPaginated } from '../hooks/useCampaign';
 
 export default function CampaignAll() {
-  const [campaignCategory, setCampaignCategory] =
-    useState<CategoryValue>('ALL');
-
-  const router = useRouter();
-  const params = useParams();
-  const pageParam = Array.isArray(params.page) ? params.page[0] : params.page;
-  const currentPage = pageParam ? parseInt(pageParam) : 1;
-
-  const [campaignLanguage, setCampaignLanguage] = useState<LocaleType>('en');
-
-  const handlePageChange = (page: number) => {
-    router.push(`/all/${page}`);
-  };
-
-  // TODO API 응답 필드 보고 카테고리 필터 추가 후 렌더링
+  const {
+    campaignCategory,
+    setCampaignCategory,
+    campaignLanguage,
+    setCampaignLanguage,
+    campaigns,
+    isLoading,
+    currentPage,
+    totalPages,
+    handlePageChange,
+  } = useCampaignsPaginated();
 
   return (
     <div className="flex w-full flex-col gap-[1.6rem]">
@@ -40,11 +31,11 @@ export default function CampaignAll() {
         setCampaignLanguage={setCampaignLanguage}
         showSeeMore={false}
       />
-      <CampaignGrid campaigns={campaignDummyData} />
+      <CampaignGrid campaigns={campaigns} isLoading={isLoading} />
       <div className="mb-[6.4rem] mt-[4.8rem] flex w-full items-center justify-center">
         <Pagenation
           currentPage={currentPage}
-          totalPages={20}
+          totalPages={totalPages}
           handlePageChange={handlePageChange}
         />
       </div>

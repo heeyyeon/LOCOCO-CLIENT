@@ -37,9 +37,10 @@ function SelectTrigger({
     <SelectPrimitive.Trigger
       data-slot="select-trigger"
       className={cn(
-        'group flex h-[4rem] cursor-pointer items-center justify-between gap-[1rem] self-stretch border-b border-gray-500 pr-[1.2rem] text-gray-500 focus:outline-none',
+        'inter-body4 group flex h-[4rem] cursor-pointer items-center justify-between gap-[1rem] self-stretch border-b border-gray-400 bg-white pr-[1.2rem] text-gray-500 focus:outline-none',
         '[&:not([data-placeholder])]:border-gray-400',
         '[&[data-state=open]]:border-b-pink-500 [&[data-state=open]]:text-black',
+        '[&[data-placeholder]] body4',
         {
           'w-[40.8rem]': size === 'default',
           'w-[12rem]': size === 'small',
@@ -125,7 +126,7 @@ function SelectItem({
   );
 }
 
-interface SelectOption {
+export interface SelectOption {
   label: string;
   icon?: ReactNode;
 }

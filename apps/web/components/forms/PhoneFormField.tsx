@@ -1,14 +1,11 @@
+'use client';
+
 import React, { useState } from 'react';
 import { UseFormRegisterReturn } from 'react-hook-form';
 
 import { ErrorNotice } from '@lococo/design-system/error-notice';
 import { Input } from '@lococo/design-system/input';
 import { cn } from '@lococo/utils';
-
-import {
-  formatPhoneNumber,
-  removePhoneNumberFormat,
-} from '../../utils/formatPhoneNumber';
 
 interface PhoneFormFieldProps {
   label: string;
@@ -31,18 +28,15 @@ export function PhoneFormField({
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = e.target.value;
-    const formattedValue = formatPhoneNumber(inputValue);
-
-    setFormattedPhoneNumber(formattedValue);
-
-    const numericValue = removePhoneNumberFormat(inputValue);
+    const numericValue = inputValue.replace(/[^0-9]/g, '');
+    setFormattedPhoneNumber(numericValue);
     e.target.value = numericValue;
 
     register.onChange(e);
   };
 
   return (
-    <div className={cn('flex items-center justify-between', className)}>
+    <div className={cn('flex w-full items-center justify-between', className)}>
       <label className="body1 flex items-center font-bold text-gray-700">
         {required && (
           <span className="mr-[0.8rem] h-[0.6rem] w-[0.6rem] rounded-full bg-[#EF4351]" />
@@ -55,7 +49,7 @@ export function PhoneFormField({
           value={formattedPhoneNumber}
           onChange={handleInputChange}
           placeholder={placeholder}
-          maxLength={13}
+          maxLength={11}
         />
         {error && <ErrorNotice message={error} />}
       </div>

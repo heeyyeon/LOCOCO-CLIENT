@@ -1,67 +1,681 @@
 {
   "aabc": "aabc",
   "abc": "abc",
-  "home": {
-    "description": "상품정보",
-    "homeSection": {
-      "title": ""
+  "brandMyPage": {
+    "myCampaign": "내 캠페인 "
+  },
+  "brandMyPageCreateCampaign": {
+    "basicInfo": {
+      "category": "카테고리",
+      "creatorCount": "모집 예정 크리에이터 수",
+      "creatorCountPlaceholder": "숫자를 입력하세요",
+      "language": "캠페인 진행 언어",
+      "title": "캠페인 제목",
+      "titlePlaceholder": "캠페인 제목을 입력하세요",
+      "type": "캠페인 종류"
     },
-    "ingredients": "성분",
-    "productDetail22": "상품상세"
-  },
-  "gnb": {
-    "myPage": "마이 페이지",
-    "logOut": "로그아웃",
-    "login": "로그인",
-    "signUp": "회원가입",
-    "campaigns": "캠페인",
-    "howItWorks": "작동 방식"
-  },
-  "ConfirmSignupModal": {
-    "title": "",
-    "message": "",
-    "confirmButton": ""
-  },
-  "languageSelectTrigger": {
-    "language": ""
-  },
-  "main": {
-    "kBeautyCampaigns": "",
-    "openingSoon": ""
-  },
-  "userInductionModal": {
-    "title": "",
-    "message": "",
-    "cancelButton": "",
-    "confirmButton": ""
-  },
-  "selectRoleModal": {
-    "title": "",
-    "welcomeTitle": "",
-    "description": "",
-    "roles": {
-      "creator": "",
-      "brand": "",
-      "user": ""
+    "buttons": {
+      "publish": "캠페인 발행하기",
+      "save": "저장하기"
     },
-    "loginAs": ""
-  },
-  "snsConnection": {
-    "title": "",
-    "errorMessage": "",
-    "connectedStatus": "",
-    "platforms": {
-      "instagram": "",
-      "tiktok": ""
+    "conditions": {
+      "inputPlaceholder": "text",
+      "joinConditionDescription": "캠페인에 참여할 수 있는 크리에이터의 조건을 설명해주세요",
+      "joinConditionTitle": "참여 크리에이터 조건",
+      "rewardDescription": "캠페인에 참여할 수 있는 크리에이터의 조건을 설명해주세요",
+      "rewardTitle": "크리에이터 참여 보상",
+      "submitConditionDescription": "캠페인에 참여할 수 있는 크리에이터의 조건을 설명해주세요",
+      "submitConditionTitle": "크리에이터 제출 컨텐츠 조건"
     },
-    "connectButtons": {
-      "instagram": "",
-      "tiktok": ""
+    "errorMessage": {
+      "campaignAnnounceDay": "캠페인 당첨자 발표일을 입력해 주세요.",
+      "campaignAnnounceTime": "캠페인 당첨자 시각을 입력해 주세요.",
+      "campaignCategory": "캠페인 카테고리를 입력해 주세요.",
+      "campaignCreatorCount": "모집 예정 크리에이터 수를 입력해 주세요.",
+      "campaignDueDay": "캠페인 제목을 입력해주세요.",
+      "campaignDueTime": "캠페인 제목을 입력해주세요.",
+      "campaignEndDay": "캠페인 지원 종료일을 입력해 주세요.",
+      "campaignEndTime": "캠페인 지원 종료 시각을 입력해 주세요.",
+      "campaignLanguage": "캠페인 진행 언어를 입력해 주세요.",
+      "campaignMediaDetail": "컨텐츠 상세페이지 사진을 업로드해 주세요.",
+      "campaignMediaThumbnail": "컨텐츠 썸네일 사진을 업로드해 주세요.",
+      "campaignPlatformSelect": "컨텐츠 플랫폼을 선택해 주세요.",
+      "campaignStartDay": "캠페인 지원 시작일을 입력해 주세요.",
+      "campaignStartTime": "캠페인 지원 시작 시각을 입력해 주세요.",
+      "campaignTitle": "캠페인 제목을 입력해주세요.",
+      "campaignType": "캠페인 종류를 입력해 주세요.",
+      "detailMaxFiles": "상세 사진은 최대 15장까지 업로드 가능합니다",
+      "firstContentMaxExceeded": "컨텐츠는 최대 2개까지 선택 가능합니다",
+      "secondContentMaxExceeded": "컨텐츠는 최대 2개까지 선택 가능합니다",
+      "thumbnailMaxFiles": "썸네일은 최대 5장까지 업로드 가능합니다"
+    },
+    "media": {
+      "detailDescription": "캠페인 상세페이지에 보여질 사진들입니다. 고화질 사진을 첨부해주세요.\n사진은 최대 15장까지 업로드 가능합니다.",
+      "detailTitle": "컨텐츠 상세페이지 사진",
+      "thumbnailDescription": "캠페인 상세페이지 썸네일에 보여질 사진들입니다. 고화질 사진을 첨부해주세요.\n사진은 최대 5장까지 업로드 가능합니다.",
+      "thumbnailTitle": "컨텐츠 썸네일 사진"
+    },
+    "options": {
+      "category": {
+        "MAKEUP": "메이크업",
+        "SKINCARE": "스킨케어",
+        "SUNCARE": "선케어"
+      },
+      "language": {
+        "EN": "영어",
+        "ES": "스페인어"
+      },
+      "type": {
+        "CONTENTS": "컨텐츠",
+        "EXCLUSIVE": "독점",
+        "GIVEAWAY": "기브어웨이"
+      }
+    },
+    "pageTitle": "캠페인 정보",
+    "platform": {
+      "description": "(최대 2개까지 선택 가능합니다.)",
+      "firstContent": "첫번째 컨텐츠",
+      "secondContent": "두번째 컨텐츠",
+      "title": "컨텐츠 플랫폼 선택"
+    },
+    "schedule": {
+      "announceDate": "캠페인 당첨자 발표일",
+      "announceTime": "캠페인 당첨자 발표 시각",
+      "dueDate": "2차 컨텐츠 최종 제출일",
+      "dueTime": "2차 컨텐츠 최종 제출 시각",
+      "endDate": "캠페인 지원 종료일",
+      "endTime": "캠페인 지원 종료 시각",
+      "placeholders": {
+        "amPm": "AM/PM",
+        "day": "일",
+        "hour": "시",
+        "minute": "분",
+        "month": "월",
+        "year": "년"
+      },
+      "startDate": "캠페인 지원 시작일",
+      "startTime": "캠페인 지원 시작 시각"
+    },
+    "validation": {
+      "conditionRequired": "조건을 입력해주세요",
+      "creatorCountRequired": "모집 예정 크리에이터 수는 필수입니다",
+      "detailMaxFiles": "상세 사진은 최대 15장까지 업로드 가능합니다",
+      "firstContentMaxExceeded": "첫 번째 컨텐츠는 최대 2개까지 선택 가능합니다",
+      "firstContentMinRequired": "첫 번째 컨텐츠는 최소 1개 이상 선택해야 합니다",
+      "rewardRequired": "보상을 입력해주세요",
+      "secondContentMaxExceeded": "두 번째 컨텐츠는 최대 2개까지 선택 가능합니다",
+      "secondContentRequiresFirst": "두 번째 컨텐츠를 선택하려면 첫 번째 컨텐츠를 먼저 선택해야 합니다",
+      "thumbnailMaxFiles": "썸네일은 최대 5장까지 업로드 가능합니다",
+      "titleRequired": "캠페인 제목은 필수입니다"
+    }
+  },
+  "brandMyPageEditProfile": {
+    "addressInfo": {
+      "addressInfoDescription": "제품 오배송 시, 반품을 위해서 입력받습니다.",
+      "addressInfoTitle": "회사 주소 정보",
+      "companyAddressLabel": "도로명 주소",
+      "companyAddressPlaceholder": "우편번호 검색",
+      "detailAddressLabel": "상세 주소",
+      "detailAddressPlaceholder": "ex: 201호"
+    },
+    "basicInfo": {
+      "basicInfoTitle": "기본 정보",
+      "brandNameFieldLabel": "브랜드 이름",
+      "emailNotice": "이메일을 변경하려면 로코코에 문의해 주세요",
+      "managerNameFieldLabel": "담당자 이름",
+      "phoneNumberFieldLabel": "담당자 연락처"
+    },
+    "formButton": {
+      "cancel": "취소하기",
+      "save": "저장하기"
+    },
+    "profileImage": {
+      "profileImage": "프로필 이미지",
+      "profileImageEditBtn": "사진 변경하기",
+      "profileImageFormTitle": "프로필 사진"
+    }
+  },
+  "brandMyPageSideBar": {
+    "checkApplicants": "지원자 확인",
+    "checkContents": "컨텐츠 확인",
+    "dashboard": "대시보드",
+    "editProfile": "프로필 편집",
+    "makeNewCampaign": "새 캠페인 만들기",
+    "myCampaign": "나의 캠페인"
+  },
+  "brandSignup": {
+    "brandInfo": {
+      "brandName": "브랜드 이름",
+      "brandNamePlaceholder": "ex: Lococo",
+      "contactName": "담당자 이름",
+      "contactNamePlaceholder": "ex: 홍길동",
+      "contactPhone": "담당자 연락처",
+      "contactPhonePlaceholder": "ex: XXXXXXXXXXX",
+      "contactPosition": "담당자 직책",
+      "contactPositionPlaceholder": "ex: 대리",
+      "description": "회원가입을 환영합니다! 브랜드 확인을 위해 아래 정보를 입력해주세요.",
+      "title": "브랜드 정보"
+    },
+    "companyAddress": {
+      "description": "제품 오배송 시, 반품을 위해서 입력받습니다.",
+      "detailAddress": "상세 주소",
+      "detailAddressPlaceholder": "ex: 201호",
+      "streetAddress": "도로명주소",
+      "streetAddressPlaceholder": "우편번호 검색",
+      "title": "회사 주소 정보"
+    },
+    "layout": {
+      "back": "뒤로",
+      "submit": "가입",
+      "title": "로코코 브랜드 커뮤니티에 가입하세요!"
+    },
+    "validation": {
+      "brandNameInvalidFormat": "한글, 영어, 숫자만 입력해주세요.",
+      "brandNameMaxLength": "브랜드 이름은 최대 30글자입니다.",
+      "brandNameRequired": "브랜드 이름을 입력해주세요.",
+      "contactNameInvalidFormat": "한글만 입력해주세요.",
+      "contactNameMaxLength": "담당자 이름은 최대 10글자입니다.",
+      "contactNameRequired": "담당자 이름을 입력해주세요.",
+      "contactPhoneInvalid": "올바른 휴대폰 번호를 입력해주세요.",
+      "contactPhoneRequired": "담당자 연락처를 입력해주세요.",
+      "contactPositionInvalidFormat": "한글만 입력해주세요",
+      "contactPositionMaxLength": "담당자 직책은 최대 10글자입니다.",
+      "contactPositionRequired": "담당자 직책을 입력해주세요",
+      "detailAddressMaxLength": "상세주소는 최대 30글자입니다.",
+      "detailAddressRequired": "상세주소를 입력해주세요.",
+      "streetAddressRequired": "도로명주소를 입력해주세요."
+    }
+  },
+  "campaignDetail": {
+    "applicationPeriod": "지원 기간",
+    "campaignSchedule": "캠페인 일정",
+    "contentSubmissionPeriod": "콘텐츠 제출 기간",
+    "deliverableRequirements": "제출물 요건",
+    "eligibilityRequirements": "지원 자격 요건",
+    "localTimeNotice": "모든 시간은 사용자의 현지 시간으로 표시됩니다",
+    "resultAnnouncement": "결과 발표",
+    "rewardsAndCompensation": "보상 및 혜택"
+  },
+  "campaignFilter": {
+    "seeMore": "더 보기"
+  },
+  "card": {
+    "campaignThumbnailImage": "캠페인 썸네일 이미지",
+    "card": "카드",
+    "goToApply": "지원하기 "
+  },
+  "confirmSignupModal": {
+    "confirmButton": "네",
+    "message": "신청이 성공적으로 제출되었습니다. \n결과는 24시간 이내에 이메일로 보내드리겠습니다.",
+    "title": "성공적으로 제출되었습니다!"
+  },
+  "creatorOptions": {
+    "contentLanguage": {
+      "ENGLISH": "영어",
+      "ENGLISH_AND_SPANISH": "영어 & 스페인어",
+      "SPANISH": "스페인어"
+    },
+    "gender": {
+      "FEMALE": "여성",
+      "MALE": "남성",
+      "NON_BINARY": "논바이너리",
+      "PREFER_NOT_TO_SAY": "말하고 싶지 않음"
+    },
+    "skinTone": {
+      "SHADE_1": "색상 1",
+      "SHADE_2": "색상 2",
+      "SHADE_3": "색상 3",
+      "SHADE_4": "색상 4"
+    },
+    "skinType": {
+      "COMBINATION": "복합성",
+      "DRY": "건성",
+      "NORMAL": "정상 / 보통",
+      "OILY": "지성",
+      "OTHERS": "기타",
+      "SENSITIVE": "민감성"
+    }
+  },
+  "creatorSignup": {
+    "button": {
+      "back": "뒤로",
+      "next": "다음"
+    },
+    "communityName": {
+      "checkAvailabilityButton": "중복 확인 ",
+      "description": "(ID는 1자에서 15자 사이여야 하며, 문자, 숫자, 마침표(.), 밑줄(_)만 사용할 수 있습니다.)",
+      "idAvailable": "좋습니다! 이 ID는 사용 가능합니다.",
+      "idLabel": "ID",
+      "idPlaceholder": "ex: ilovelococo",
+      "idRequired": "ID 사용 가능 여부를 확인해주세요.",
+      "idTaken": "죄송합니다. 이 ID는 이미 사용 중입니다.",
+      "title": "커뮤니티 이름"
+    },
+    "homeAddress": {
+      "addressLine1Label": "주소 1",
+      "addressLine1Placeholder": "ex: 233 S Wacker Dr",
+      "addressLine2Label": "주소 2",
+      "addressLine2Placeholder": "ex: Apt 25B",
+      "cityLabel": "도시/ 타운 ",
+      "cityPlaceholder": "ex: Chicago",
+      "countryLabel": "국가",
+      "countryPlaceholder": "국가",
+      "description": "제품 배송을 위해 집 주소를 입력해 주세요.",
+      "stateLabel": "주/지역/도",
+      "statePlaceholder": "예: 일리노이",
+      "title": "집 주소",
+      "zipCodeLabel": "우편 번호 ",
+      "zipCodePlaceholder": "ex: 60606"
+    },
+    "layout": {
+      "back": "뒤로 ",
+      "next": "다음",
+      "title": "로코코 크리에이터 커뮤니티에 가입하세요!"
+    },
+    "personalDetails": {
+      "birthLabel": "생년월일",
+      "contentLanguageLabel": "콘텐츠 언어",
+      "contentLanguagePlaceholder": "콘텐츠 언어",
+      "dayPlaceholder": "일",
+      "description": "추가 정보 없이 생년월일을 입력해 주세요.",
+      "firstNameLabel": "이름",
+      "firstNamePlaceholder": "예: John",
+      "genderLabel": "성별",
+      "genderPlaceholder": "성별",
+      "lastNameLabel": "성",
+      "lastNamePlaceholder": "예: Doe",
+      "monthPlaceholder": "월",
+      "phoneCountryPlaceholder": "+XX",
+      "phoneNumberLabel": "전화번호",
+      "phoneNumberPlaceholder": "예: XXXXXXXXXX",
+      "title": "개인 정보",
+      "yearPlaceholder": "연도"
+    },
+    "skinInfo": {
+      "description": "자기소개를 더 해주세요!",
+      "skinToneLabel": "피부 톤",
+      "skinTonePlaceholder": "피부 톤",
+      "skinTypeLabel": "피부 타입",
+      "skinTypePlaceholder": "피부 타입",
+      "title": "추가 정보 "
+    },
+    "title": "로코코 크리에이터 커뮤니티에 가입하세요!",
+    "validation": {
+      "addressLine1MaxLength": "최대 20자까지 입력할 수 있습니다. ",
+      "addressLine1Required": "주소 1은 필수 입력 항목입니다. ",
+      "addressLine2MaxLength": "최대 20자까지 입력할 수 있습니다. ",
+      "birthRequired": "생년월일은 필수 입력 항목입니다. ",
+      "cityMaxLength": "컨텐츠 언어는 필수입니다. ",
+      "cityRequired": "시/군/구는 필수입니다. ",
+      "contentLanguageRequired": "컨텐츠 언어는 필수입니다. ",
+      "countryRequired": "국가는 필수입니다. ",
+      "firstNameMaxLength": "최대 20자까지 입력할 수 있습니다. ",
+      "firstNameRequired": "이름은 필수입니다. ",
+      "genderRequired": "성별은 필수입니다. ",
+      "idAvailabilityCheck": "ID 사용 가능 여부를 확인해주세요.",
+      "idInvalidFormat": "이 ID는 사용할 수 없습니다. ID 형식을 확인해 주세요.",
+      "idMaxLength": "최대 15자까지 사용할 수 있습니다.",
+      "idRequired": "ID는 필수 입력 항목입니다.",
+      "lastNameMaxLength": "최대 20자까지 사용할 수 있습니다.",
+      "lastNameRequired": "성(Last name)은 필수 입력 항목입니다.",
+      "phoneNumberInvalid": "유효한 전화번호를 입력해 주세요.",
+      "phoneNumberRequired": "전화번호는 필수 입력 항목입니다.",
+      "skinToneRequired": "피부 톤은 필수 입력 항목입니다.",
+      "skinTypeRequired": "피부 타입은 필수 입력 항목입니다.",
+      "stateMaxLength": "최대 20자까지 입력할 수 있습니다.",
+      "stateRequired": "주/지역/도는 필수 입력 항목입니다.",
+      "zipCodeMaxLength": "최대 20자까지 입력할 수 있습니다."
     }
   },
   "creatorSnsLinksPage": {
-    "title": "",
-    "snsDescription": "",
-    "submitLabel": ""
+    "snsDescription": "SNS 계정을 검토한 후, 인증 여부를 알려드리겠습니다.",
+    "submitLabel": "가입하기",
+    "title": "로코코 크리에이터 커뮤니티에 가입하세요!"
+  },
+  "fileUploader": {
+    "cannotUploadFile": "파일을 업로드할 수 없습니다.",
+    "dragDropDescription": "드래그 앤 드롭 또는 클릭하여 파일을 업로드하세요.",
+    "emptyFile": "파일이 비어 있습니다.",
+    "fileTooLarge": "파일 크기가 너무 큽니다.",
+    "notAllowedFileType": "허용되지 않는 파일 형식입니다.",
+    "selectFile": "파일 선택"
+  },
+  "footer": {
+    "copyright": "Lococo. All rights reserved.",
+    "links": {
+      "campaignGuideline": "캠페인 가이드라인",
+      "campaigns": "캠페인",
+      "FAQ": "자주 묻는 질문 (FAQ)",
+      "howItWorks": "이용 방법",
+      "privacyPolicy": "개인정보 처리방침"
+    },
+    "slogan": "Where Creators Meet Real K-Beauty"
+  },
+  "gnb": {
+    "campaigns": "캠페인",
+    "howItWorks": "이용 방법",
+    "login": "로그인",
+    "logIn": "로그인",
+    "logOut": "로그아웃",
+    "myPage": "마이페이지",
+    "signUp": "회원가입"
+  },
+  "home": {
+    "description": "제품 설명",
+    "homeSection": {
+      "title": "제목"
+    },
+    "ingredients": "성분",
+    "productDetail22": "제품 상세 22"
+  },
+  "howItWork": {
+    "brands": {
+      "campaignApproval": {
+        "description": "업로드 후 48시간 이내에 캠페인 승인 결과가 제공됩니다. 브랜드 대시보드에서 캠페인 지원자를 선택하세요. 신청 마감 후 24시간 이내에 최종 선정된 크리에이터를 발표해야 합니다.",
+        "title": "캠페인 승인"
+      },
+      "checkPerformance": {
+        "description": "브랜드 페이지에서 콘텐츠와 캠페인 성과를 확인하세요.",
+        "title": "성과 확인"
+      },
+      "provideFeedback": {
+        "description": "크리에이터가 첫 번째 리뷰를 업로드한 후 48시간 이내에 수정 요청을 제공하세요. (이 기간 이후에는 요청할 수 없습니다.)",
+        "title": "피드백 제공"
+      },
+      "shipProduct": {
+        "description": "크리에이터가 배송지를 확인하면 2일 이내에 제품을 발송하세요.",
+        "title": "제품 발송"
+      },
+      "title": "브랜드"
+    },
+    "creators": {
+      "confimAddress": {
+        "description": "캠페인 선정 후 24시간 이내에 배송지를 확인하세요.",
+        "title": "배송지 확인"
+      },
+      "confirmAddress": {
+        "description": "캠페인 선정 후 24시간 이내에 배송지를 확인하세요.",
+        "title": "배송지 확인"
+      },
+      "maintenanceGuidelines": {
+        "description": "리뷰는 최소 6개월간 게시 상태를 유지해야 합니다.",
+        "title": "유지 가이드라인"
+      },
+      "reviewUploadSchedule": {
+        "description": "제품 수령 후 7일 이내에 첫 번째 리뷰를 업로드하세요. 브랜드의 피드백을 검토한 후 7일 이내에 두 번째 리뷰를 업로드하세요. 두 번째 리뷰를 게시할 때 최종 SNS URL을 첨부하세요.",
+        "title": "리뷰 업로드 일정"
+      },
+      "title": "크리에이터",
+      "uploadReview": {
+        "description": "제품 수령 후 7일 이내에 첫 번째 리뷰를 업로드하세요.",
+        "title": "리뷰 업로드"
+      }
+    },
+    "FAQs": {
+      "creatorLevels": {
+        "firstA": "신청이 거절된 경우, 참여 자격 기준을 검토하고 개선 후 다시 지원하는 것을 고려해 주세요.",
+        "firstQ": "내 크리에이터 신청이 거절되었습니다.",
+        "fistA": "신청이 거절된 경우, 참여 자격 기준을 검토하고 개선 후 다시 지원하는 것을 고려해 주세요.",
+        "fistQ": "내 크리에이터 신청이 거절되었습니다.",
+        "secondA": "프로필 설정에서 신청서를 제출하여 계정을 크리에이터로 업그레이드할 수 있습니다.",
+        "secondQ": "사용자로 가입했지만 크리에이터로 참여하고 싶습니다.",
+        "thirdA": "계정의 \"배송 정보\" 섹션에서 배송 정보를 확인하고 업데이트할 수 있습니다.",
+        "thirdQ": "로코코 프로 크리에이터가 되려면 어떻게 해야 하나요?",
+        "title": "크리에이터 레벨"
+      },
+      "penaltyPolicy": {
+        "firstA": "리뷰어로 선정된 후 필요한 배송 정보를 제공하지 않는 경우, 세 번 발생 시 로코코 활동이 6개월간 정지됩니다.",
+        "firstQ": "리뷰어로 선정되었을 때 배송 정보를 제공하지 않은 경우.",
+        "fistA": "리뷰어로 선정된 후 필요한 배송 정보를 제공하지 않는 경우, 세 번 발생 시 로코코 활동이 6개월간 정지됩니다.",
+        "fistQ": "리뷰어로 선정되었을 때 배송 정보를 제공하지 않은 경우.",
+        "secondA": "지정된 마감일을 넘겨 콘텐츠를 제출하는 경우, 세 번 발생 시 로코코 활동이 6개월간 정지됩니다.",
+        "secondQ": "콘텐츠 지연 제출.",
+        "thirdA": "콘텐츠를 제출하지 않거나 지정된 품질 기준을 충족하지 못하는 콘텐츠를 제출하는 경우, 로코코 활동이 영구적으로 제한됩니다.",
+        "thirdQ": "콘텐츠 미제출 또는 저품질 콘텐츠 제출.",
+        "title": "페널티 정책"
+      },
+      "shipping": {
+        "firstA": "등록된 이메일을 통해 배송 정보를 확인할 수 있습니다.",
+        "firstQ": "제공한 배송 정보를 어떻게 확인할 수 있나요?",
+        "fistA": "등록된 이메일을 통해 배송 정보를 확인할 수 있습니다.",
+        "fistQ": "제공한 배송 정보를 어떻게 확인할 수 있나요?",
+        "secondA": "배송지가 한 번 제출되면 수정할 수 없습니다. 도움이 필요하면 로코코에 문의하세요.",
+        "secondQ": "잘못된 배송지를 입력했습니다. 어떻게 해야 하나요?",
+        "title": "배송"
+      },
+      "title": "자주 묻는 질문(FAQ)"
+    },
+    "title": "이용 방법"
+  },
+  "languageSelectTrigger": {
+    "language": "언어"
+  },
+  "loginGoogle": {
+    "continueWithGoogle": "구글로 로그인하기 ",
+    "loginMessage": "지금 바로 Google 계정으로 로그인하세요.",
+    "signupMessage": "Google로 회원가입 후, 크리에이터·유저·브랜드 중 하나로 선택해 가입하실 수 있습니다.",
+    "signupNote": "캠페인 지원은 크리에이터만 가능합니다.",
+    "title": "Lococo에 오신 것을 환영합니다!"
+  },
+  "main": {
+    "kBeautyCampaigns": "K-뷰티 캠페인",
+    "openingSoon": "곧 오픈 예정"
+  },
+  "myPage": {
+    "addressModal": {
+      "addressLine1": "주소 1",
+      "addressLine1Required": "주소 1은 필수 입력 항목입니다.",
+      "addressLine2": "주소 2",
+      "city": "도시/타운",
+      "cityRequired": "도시는 필수 입력 항목입니다.",
+      "country": "국가",
+      "countryRequired": "국가는 필수 입력 항목입니다.",
+      "description": "제품 배송을 위해 집 주소를 확인해 주세요.",
+      "edit": "편집",
+      "getDelivery": "배송받기",
+      "state": "주/지역/도",
+      "stateRequired": "주는 필수 입력 항목입니다.",
+      "title": "주소",
+      "zip": "우편번호"
+    },
+    "contentSubmissions": {
+      "brandNote": {
+        "description": "파일을 드래그 앤 드롭하거나 클릭하여 업로드하세요.",
+        "firstReview": "파일 선택"
+      },
+      "campaignProductMediaInput": {
+        "description": "캠페인 제품 미디어",
+        "selectFile": "캠페인을 선택해 주세요.",
+        "title": "캠페인 선택"
+      },
+      "campaignSelect": {
+        "description": "인스타그램 게시물",
+        "selectCampaign": "인스타그램 릴스",
+        "title": "콘텐츠 유형 선택"
+      },
+      "content": {
+        "1stContent": "틱톡 영상",
+        "2ndContent": "콘텐츠 유형"
+      },
+      "contentTypeSelect": {
+        "instagramPost": "검토할 콘텐츠가 없습니다.",
+        "instagramReels": "사용한 캡션과 해시태그를 그대로 붙여 넣어 주세요.",
+        "selectContentType": "캡션 & 해시태그 제출하기",
+        "tiktokVideo": "첫 번째 제출물이 접수되었습니다. 브랜드가 검토 후 피드백을 보내드릴 예정입니다.",
+        "title": "오케이"
+      },
+      "empty": {
+        "title": "최종 제출물이 접수되었습니다. 제출해 주셔서 감사합니다."
+      },
+      "hashtagsInput": {
+        "description": "성공적으로 제출되었습니다.",
+        "title": "캡션 & 해시태그 제출하기"
+      },
+      "saveSubmitModal": {
+        "firstDescription": "첫 번째 제출물이 접수되었습니다. 브랜드가 검토 후 피드백을 보내드릴 예정입니다.",
+        "save": "오케이",
+        "secondDescription": "최종 제출물이 접수되었습니다. 제출해 주셔서 감사합니다.",
+        "title": "성공적으로 제출되었습니다."
+      },
+      "submitContentUrl": {
+        "description": "업로드한 리뷰 콘텐츠의 URL을 제출하여 확인 및 추적에 사용하세요.",
+        "title": "콘텐츠 URL 제출"
+      }
+    },
+    "editProfile": {
+      "addressLine1Required": "주소 1은 필수 입력 항목입니다.",
+      "basicInformation": {
+        "id": "ID",
+        "idCheck": "사용 가능 여부 확인",
+        "idCheckSuccess": "ID 확인 성공",
+        "title": "기본 정보"
+      },
+      "cityRequired": "도시는 필수 입력 항목입니다.",
+      "contentLanguageRequired": "콘텐츠 언어는 필수 입력 항목입니다.",
+      "countryCodeRequired": "국가 코드는 필수 입력 항목입니다.",
+      "countryRequired": "국가는 필수 입력 항목입니다.",
+      "dateRequired": "날짜는 필수 입력 항목입니다.",
+      "emailRequired": "이메일은 필수 입력 항목입니다.",
+      "firstNameRequired": "이름(First name)은 필수 입력 항목입니다.",
+      "genderRequired": "성별은 필수 입력 항목입니다.",
+      "homeAddress": {
+        "addressLine1": "주소 1",
+        "addressLine2": "주소 2",
+        "city": "도시/타운",
+        "country": "국가",
+        "description": "제품 배송을 위해 집 주소를 입력해 주세요.",
+        "state": "주/지역/도",
+        "title": "집 주소",
+        "zip": "우편번호"
+      },
+      "idRequired": "ID는 필수 입력 항목입니다.",
+      "lastNameRequired": "성(Last name)은 필수 입력 항목입니다.",
+      "monthRequired": "월은 필수 입력 항목입니다.",
+      "personalInformation": {
+        "birth": "생년월일",
+        "contentLanguage": "콘텐츠 언어",
+        "countryCode": "국가 코드",
+        "date": "날짜",
+        "email": "이메일",
+        "firstName": "이름(First Name)",
+        "gender": "성별",
+        "lastName": "성(Last Name)",
+        "month": "월",
+        "phoneNumber": "전화번호",
+        "title": "개인 정보",
+        "year": "연도"
+      },
+      "phoneNumberRequired": "전화번호는 필수 입력 항목입니다.",
+      "profileImageRequired": "프로필 이미지는 필수 입력 항목입니다.",
+      "profilePhoto": {
+        "changePhoto": "사진 변경",
+        "title": "프로필 사진"
+      },
+      "skin": {
+        "description": "당신에 대해 더 알려주세요! ",
+        "skinTone": "피부 톤",
+        "skinToneOptions": {
+          "shade1": "Shade 1",
+          "shade10": "Shade 10",
+          "shade11": "Shade 11",
+          "shade12": "Shade 12",
+          "shade13": "Shade 13",
+          "shade14": "Shade 14",
+          "shade15": "Shade 15",
+          "shade16": "Shade 16",
+          "shade17": "Shade 17",
+          "shade18": "Shade 18",
+          "shade19": "Shade 19",
+          "shade2": "Shade 2",
+          "shade20": "Shade 20",
+          "shade3": "Shade 3",
+          "shade4": "Shade 4",
+          "shade5": "Shade 5",
+          "shade6": "Shade 6",
+          "shade7": "Shade 7",
+          "shade8": "Shade 8",
+          "shade9": "Shade 9"
+        },
+        "skinType": "피부 타입",
+        "skinTypeOptions": {
+          "combination": "복합성",
+          "dry": "건성",
+          "normal": "중성",
+          "oily": "지성",
+          "others": "기타",
+          "sensitive": "민감성"
+        },
+        "title": "피부"
+      },
+      "skinToneRequired": "피부 톤은 필수 입력 항목입니다.",
+      "skinTypeRequired": "피부 타입은 필수 입력 항목입니다.",
+      "stateRequired": "주는 필수 입력 항목입니다.",
+      "yearRequired": "연도는 필수 입력 항목입니다."
+    },
+    "menus": {
+      "connectSNS": "SNS 연결",
+      "contentSubmissions": "컨텐츠 제출 ",
+      "editProfile": "프로필 편집",
+      "myCampaign": "내 캠페인"
+    },
+    "myCampaign": {
+      "buttonText": {
+        "confirmAddress": "주소 확인",
+        "revisionRequested": "수정 요청됨",
+        "uploadFirstReview": "첫 번째 리뷰 업로드",
+        "uploadSecondReview": "두 번째 리뷰 업로드",
+        "viewDetails": "상세보기",
+        "viewNote": "메모 보기",
+        "viewNotes": "메모들 보기",
+        "viewResults": "결과 보기"
+      },
+      "empty": {
+        "title": "신청한 캠페인이 없습니다."
+      },
+      "participationStatus": {
+        "active": "활성화됨",
+        "approved": "승인됨",
+        "completed": "완료됨",
+        "expired": "만료됨",
+        "pending": "대기 중",
+        "rejected": "거절됨"
+      },
+      "title": "나의 캠페인"
+    },
+    "saveFormModal": {
+      "description": "변경 사항이 저장되었습니다.",
+      "save": "확인",
+      "title": "성공적으로 저장되었습니다."
+    }
+  },
+  "selectRoleModal": {
+    "description": "로그인할 역할을 선택하세요. 나중에 변경할 수 없습니다.",
+    "loginAs": "다음으로 로그인:",
+    "roles": {
+      "brand": "브랜드",
+      "creator": "크리에이터",
+      "user": "사용자"
+    },
+    "title": "역할 선택하기",
+    "welcomeTitle": "로코코에 오신 것을 환영합니다!"
+  },
+  "snsConnection": {
+    "connectButtons": {
+      "instagram": "인스타그램 연결",
+      "tiktok": "틱톡 연결"
+    },
+    "connectedStatus": "연결 완료!",
+    "errorMessage": "최소 하나 이상의 계정 링크를 추가해 주세요.",
+    "platforms": {
+      "instagram": "인스타그램",
+      "tiktok": "틱톡"
+    },
+    "title": "SNS 링크"
+  },
+  "userInductionModal": {
+    "cancelButton": "아니요",
+    "confirmButton": "예",
+    "message": "캠페인 신청은 크리에이터 회원만 가능합니다. \n크리에이터로 가입하시겠습니까?",
+    "title": "크리에이터 제안"
   }
 }

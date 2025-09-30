@@ -4,7 +4,7 @@ import { formatBracketDate } from './utils/getChipVariantByDate';
 
 interface BracketChipProps {
   dueDate: string;
-  chipVariant: 'expired' | 'active' | 'approved' | 'declined' | 'progress';
+  chipVariant: 'disabled' | 'default' | 'approved' | 'declined' | 'progress';
   className?: string;
 }
 
@@ -14,8 +14,8 @@ export default function BracketChip({
   className,
 }: BracketChipProps) {
   const CHIP_COLOR = {
-    expired: 'bg-gray-500',
-    active: 'bg-pink-500',
+    disabled: 'bg-gray-500',
+    default: 'bg-pink-500',
     approved: 'bg-green',
     declined: 'bg-red',
     progress: 'bg-blue',
@@ -23,7 +23,7 @@ export default function BracketChip({
   return (
     <div
       className={cn(
-        'body1 flex h-[3.2rem] w-[8.8rem] items-center justify-center text-white',
+        'body1 flex h-[3.2rem] w-[8.8rem] items-center justify-center font-[700] text-white',
         CHIP_COLOR[chipVariant],
         className
       )}

@@ -1,42 +1,57 @@
+import { Campaign } from 'app/[locale]/(with-layout)/(home)/components/home-section-campaign';
 import Card from 'components/card/Card';
 import { getChipVariantByDate } from 'components/card/utils/getChipVariantByDate';
-import { UserApplicationState } from 'mocks/campaignData';
-
-interface Campaign {
-  campaignId: number;
-  dueDate: string;
-  userApplicationState: UserApplicationState;
-  brand: string;
-  title: string;
-  label: string;
-  maxApplicants: number;
-  currentApplicants: number;
-  productThumbnailSrc: string;
-}
 
 interface CampaignGridProps {
-  campaigns: Campaign[];
+  campaigns?: Campaign[];
+  isLoading?: boolean;
 }
 
-export default function CampaignGrid({ campaigns }: CampaignGridProps) {
+export default function CampaignGrid({
+  campaigns,
+  isLoading,
+}: CampaignGridProps) {
+  if (isLoading) {
+    return (
+      <div className="flex min-h-[33.1rem] items-center justify-center">
+        <div className="text-center">
+          <p className="title1 font-[700] text-pink-500">Loading...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (!campaigns || campaigns.length === 0) {
+    return (
+      <div className="flex min-h-[33.1rem] items-center justify-center">
+        <div className="text-center">
+          <p className="title1 font-[700] text-pink-500">
+            No campaigns available
+          </p>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div className="grid grid-cols-3 gap-x-[2.4rem] gap-y-[3.2rem]">
+    <div className="grid min-h-[33.1rem] grid-cols-3 gap-x-[2.4rem] gap-y-[3.2rem]">
       {campaigns.map((campaign) => (
         <Card
           key={campaign.campaignId}
-          dueDate={campaign.dueDate}
+          endTime={campaign.endTime}
           chipVariant={
-            campaign.userApplicationState
-              ? campaign.userApplicationState
-              : getChipVariantByDate(campaign.dueDate)
+            campaign.chipStatus
+              ? campaign.chipStatus
+              : getChipVariantByDate(campaign.endTime)
           }
-          brand={campaign.brand}
-          title={campaign.title}
-          label={campaign.label}
-          maxApplicants={campaign.maxApplicants}
-          currentApplicants={campaign.currentApplicants}
-          productThumbnailSrc={campaign.productThumbnailSrc}
+          brandName={campaign.brandName}
+          campaignName={campaign.campaignName}
+          campaignType={campaign.campaignType}
+          recruitmentNumber={campaign.recruitmentNumber}
+          applicantNumber={campaign.applicantNumber}
+          campaignImageUrl={campaign.campaignImageUrl}
           campaignId={campaign.campaignId}
+          hoverOption="hover"
         />
       ))}
     </div>

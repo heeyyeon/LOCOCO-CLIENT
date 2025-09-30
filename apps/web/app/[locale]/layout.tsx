@@ -112,7 +112,7 @@ export default async function RootLayout({
       <GoogleTagManager gtmId="GTM-5QMBC6SP" />
 
       <body
-        className={`${notoSansJP.variable} ${pretendard.variable} ${inter.variable} ${notoSansKR.variable} min-h-screen lg:flex lg:justify-center`}
+        className={`${notoSansJP.variable} ${pretendard.variable} ${inter.variable} ${notoSansKR.variable} w-full`}
       >
         <NextIntlClientProvider locale={locale} timeZone={timeZone}>
           <Providers>{children}</Providers>

@@ -1,6 +1,365 @@
 {
   "aabc": "aabc",
   "abc": "abc",
+  "brandMyPage": {
+    "myCampaign": "My Campaigns"
+  },
+  "brandMyPageCreateCampaign": {
+    "basicInfo": {
+      "category": "Category",
+      "creatorCount": "Number of Creators Required",
+      "creatorCountPlaceholder": "Enter a number",
+      "language": "Campaign Language",
+      "title": "Campaign Title",
+      "titlePlaceholder": "Enter campaign title",
+      "type": "Campaign Type"
+    },
+    "buttons": {
+      "publish": "Publish Campaign",
+      "save": "Save"
+    },
+    "conditions": {
+      "inputPlaceholder": "Text",
+      "joinConditionDescription": "Please describe the conditions for creators eligible to participate in this campaign",
+      "joinConditionTitle": "Creator Eligibility Requirements",
+      "rewardDescription": "Please describe the conditions for creators eligible to participate in this campaign",
+      "rewardTitle": "Creator Rewards",
+      "submitConditionDescription": "Please describe the conditions for creators eligible to participate in this campaign",
+      "submitConditionTitle": "Creator Content Submission Requirements"
+    },
+    "errorMessage": {
+      "campaignAnnounceDay": "Please enter the campaign winner announcement date.",
+      "campaignAnnounceTime": "Please enter the campaign winner announcement time.",
+      "campaignCategory": "Please enter the campaign category.",
+      "campaignCreatorCount": "Please enter the number of creators to recruit.",
+      "campaignDueDay": "Please enter the campaign title.",
+      "campaignDueTime": "Please enter the campaign title.",
+      "campaignEndDay": "Please enter the campaign application deadline date.",
+      "campaignEndTime": "Please enter the campaign application deadline time.",
+      "campaignLanguage": "Please enter the campaign language.",
+      "campaignMediaDetail": "Please upload content detail page images.",
+      "campaignMediaThumbnail": "Please upload content thumbnail images.",
+      "campaignPlatformSelect": "Please select the content platform.",
+      "campaignStartDay": "Please enter the campaign application start date.",
+      "campaignStartTime": "Please enter the campaign application start time.",
+      "campaignTitle": "Please enter the campaign title.",
+      "campaignType": "Please enter the campaign type.",
+      "detailMaxFiles": "You can upload up to 15 detail images.",
+      "firstContentMaxExceeded": "You can select up to 2 contents.",
+      "secondContentMaxExceeded": "You can select up to 2 contents.",
+      "thumbnailMaxFiles": "You can upload up to 5 thumbnails."
+    },
+    "media": {
+      "detailDescription": "These are the images shown on the campaign detail page. Please upload high-resolution images. Up to 15 images can be uploaded.",
+      "detailTitle": "Content Detail Page Images",
+      "thumbnailDescription": "These are the images shown as campaign thumbnails. Please upload high-resolution images. Up to 5 images can be uploaded.",
+      "thumbnailTitle": "Content Thumbnail Images"
+    },
+    "options": {
+      "category": {
+        "MAKEUP": "Makeup",
+        "SKINCARE": "Skincare",
+        "SUNCARE": "Sun Care"
+      },
+      "language": {
+        "EN": "English",
+        "ES": "Spanish"
+      },
+      "type": {
+        "CONTENTS": "Content",
+        "EXCLUSIVE": "Exclusive",
+        "GIVEAWAY": "Giveaway"
+      }
+    },
+    "pageTitle": "Campaign Information",
+    "platform": {
+      "description": "(You may select up to 2.)",
+      "firstContent": "First Content",
+      "secondContent": "Second Content",
+      "title": "Select Content Platform"
+    },
+    "schedule": {
+      "announceDate": "Campaign Winner Announcement Date",
+      "announceTime": "Campaign Winner Announcement Time",
+      "dueDate": "Final Submission Date for Second Content",
+      "dueTime": "Final Submission Time for Second Content",
+      "endDate": "Campaign Application Deadline Date",
+      "endTime": "Campaign Application Deadline Time",
+      "placeholders": {
+        "amPm": "AM/PM",
+        "day": "Day",
+        "hour": "Hour",
+        "minute": "Minute",
+        "month": "Month",
+        "year": "Year"
+      },
+      "startDate": "Campaign Application Start Date",
+      "startTime": "Campaign Application Start Time"
+    },
+    "validation": {
+      "conditionRequired": "Please enter conditions",
+      "creatorCountRequired": "Number of creators to recruit is required",
+      "detailMaxFiles": "You may upload up to 15 detail images",
+      "firstContentMaxExceeded": "You may select up to 2 first contents",
+      "firstContentMinRequired": "You must select at least 1 first content",
+      "rewardRequired": "Please enter rewards",
+      "secondContentMaxExceeded": "You can select up to 2 second contents",
+      "secondContentRequiresFirst": "You must select the first content before selecting the second content",
+      "thumbnailMaxFiles": "You can upload up to 5 thumbnails",
+      "titleRequired": "Campaign title is required"
+    }
+  },
+  "brandMyPageEditProfile": {
+    "addressInfo": {
+      "addressInfoDescription": "This will be used in case of product misdelivery for returns.",
+      "addressInfoTitle": "Company Address Information",
+      "companyAddressLabel": "Street Address",
+      "companyAddressPlaceholder": "Search Postal Code",
+      "detailAddressLabel": "Detailed Address",
+      "detailAddressPlaceholder": "ex: Apt 201"
+    },
+    "basicInfo": {
+      "basicInfoTitle": "Basic Information",
+      "brandNameFieldLabel": "Brand Name",
+      "emailNotice": "To change your email, please contact Lococo",
+      "managerNameFieldLabel": "Contact Person’s Name",
+      "phoneNumberFieldLabel": "Contact Person’s Phone Number"
+    },
+    "formButton": {
+      "cancel": "Cancel",
+      "save": "Save"
+    },
+    "profileImage": {
+      "profileImage": "Profile Image",
+      "profileImageEditBtn": "Change Photo",
+      "profileImageFormTitle": "Profile Photo"
+    }
+  },
+  "brandMyPageSideBar": {
+    "checkApplicants": "Applicant Confirmation",
+    "checkContents": "View Contents",
+    "dashboard": "Dashboard ",
+    "editProfile": "Edit Profile ",
+    "makeNewCampaign": "Create a new campaign  ",
+    "myCampaign": "My Campaigns"
+  },
+  "brandSignup": {
+    "brandInfo": {
+      "brandName": "Brand Name",
+      "brandNamePlaceholder": "ex: Lococo",
+      "contactName": "Contact Person’s Name",
+      "contactNamePlaceholder": "ex: Hong Gil-dong",
+      "contactPhone": "Contact Person’s Phone Number",
+      "contactPhonePlaceholder": "ex: XXXXXXXXXXX",
+      "contactPosition": "Contact Person’s Position",
+      "contactPositionPlaceholder": "ex: Assistant Manager",
+      "description": "Welcome! Please enter the information below for brand verification.",
+      "title": "Brand Information"
+    },
+    "companyAddress": {
+      "description": "This will be used in case of product misdelivery for returns.",
+      "detailAddress": "Detailed Address",
+      "detailAddressPlaceholder": "ex: Apt 201",
+      "streetAddress": "Street Address",
+      "streetAddressPlaceholder": "Search Postal Code",
+      "title": "Company Address Information"
+    },
+    "layout": {
+      "back": "Back",
+      "submit": "Join",
+      "title": "Join Lococo Creator Community!"
+    },
+    "validation": {
+      "brandNameInvalidFormat": "Please enter only Korean, English, and numbers.",
+      "brandNameMaxLength": "Brand name can be up to 30 characters.",
+      "brandNameRequired": "Please enter the brand name.",
+      "contactNameInvalidFormat": "Please enter in Korean only.",
+      "contactNameMaxLength": "Contact person’s name can be up to 10 characters.",
+      "contactNameRequired": "Please enter the contact person’s name.",
+      "contactPhoneInvalid": "Please enter a valid phone number.",
+      "contactPhoneRequired": "Please enter the contact person’s phone number.",
+      "contactPositionInvalidFormat": "Please enter in Korean only.",
+      "contactPositionMaxLength": "Contact person’s position can be up to 10 characters.",
+      "contactPositionRequired": "Please enter the contact person’s position.",
+      "detailAddressMaxLength": "Detailed address can be up to 30 characters.",
+      "detailAddressRequired": "Please enter the detailed address.",
+      "streetAddressRequired": "Please enter the street address."
+    }
+  },
+  "campaignDetail": {
+    "applicationPeriod": "Application Period",
+    "campaignSchedule": "Campaign Schedule",
+    "contentSubmissionPeriod": "Content Submission Period",
+    "deliverableRequirements": "Deliverable Requirements",
+    "eligibilityRequirements": "Eligibility Requirements",
+    "localTimeNotice": "All times are displayed in your local time.",
+    "resultAnnouncement": "Result Announcement",
+    "rewardsAndCompensation": "Rewards & Compensation"
+  },
+  "campaignFilter": {
+    "seeMore": "See More"
+  },
+  "card": {
+    "campaignThumbnailImage": "campaign thumbnail image",
+    "card": "Card",
+    "goToApply": "Apply Now "
+  },
+  "confirmSignupModal": {
+    "confirmButton": "Okay",
+    "message": "Your application was successfully submitted.\nWe'll email you the result within 24 hours.",
+    "title": "Successfully Submitted!"
+  },
+  "creatorOptions": {
+    "contentLanguage": {
+      "ENGLISH": "English",
+      "ENGLISH_AND_SPANISH": "English & Spanish",
+      "SPANISH": "Spanish"
+    },
+    "gender": {
+      "FEMALE": "Female",
+      "MALE": "Male",
+      "NON_BINARY": "Non-binary",
+      "PREFER_NOT_TO_SAY": "Prefer not to say"
+    },
+    "skinTone": {
+      "SHADE_1": "Shade 1",
+      "SHADE_2": "Shade 2",
+      "SHADE_3": "Shade 3",
+      "SHADE_4": "Shade 4"
+    },
+    "skinType": {
+      "COMBINATION": "Combination",
+      "DRY": "Dry",
+      "NORMAL": "Normal",
+      "OILY": "Oily",
+      "OTHERS": "Others",
+      "SENSITIVE": "Sensitive"
+    }
+  },
+  "creatorSignup": {
+    "button": {
+      "back": "Back",
+      "next": "Next"
+    },
+    "communityName": {
+      "checkAvailabilityButton": "Check availability",
+      "description": "(ID must be between 1 and 15 characters long and can only contain letters, numbers, periods (.), and underscores (_)).",
+      "idAvailable": "Great! This ID is available.",
+      "idLabel": "ID",
+      "idPlaceholder": "ex: ilovelococo",
+      "idRequired": "Please check the ID availability.",
+      "idTaken": "Sorry, this ID is already taken.",
+      "title": "Community Name"
+    },
+    "homeAddress": {
+      "addressLine1Label": "Address Line 1",
+      "addressLine1Placeholder": "ex: 233 S Wacker Dr",
+      "addressLine2Label": "Address Line 2",
+      "addressLine2Placeholder": "ex: Apt 25B",
+      "cityLabel": "City / Town",
+      "cityPlaceholder": "ex: Chicago",
+      "countryLabel": "Country",
+      "countryPlaceholder": "Country",
+      "description": "Please provide your home address for product delivery.",
+      "stateLabel": "State/Region/Province",
+      "statePlaceholder": "ex: Illinois",
+      "title": "Home Address",
+      "zipCodeLabel": "Zip/Post Code",
+      "zipCodePlaceholder": "ex: 60606"
+    },
+    "layout": {
+      "back": "Back",
+      "next": "Next",
+      "title": "Join Lococo Creator Community!"
+    },
+    "personalDetails": {
+      "birthLabel": "Birth",
+      "contentLanguageLabel": "Content Language",
+      "contentLanguagePlaceholder": "Content Language",
+      "dayPlaceholder": "Day",
+      "description": "Please write your date of birth without any additional information.",
+      "firstNameLabel": "First name",
+      "firstNamePlaceholder": "ex: John",
+      "genderLabel": "Gender",
+      "genderPlaceholder": "Gender",
+      "lastNameLabel": "Last name",
+      "lastNamePlaceholder": "ex: Doe",
+      "monthPlaceholder": "Month",
+      "phoneCountryPlaceholder": "+XX",
+      "phoneNumberLabel": "Phone Number",
+      "phoneNumberPlaceholder": "ex: XXXXXXXXXX",
+      "title": "Personal Details",
+      "yearPlaceholder": "Year"
+    },
+    "skinInfo": {
+      "description": "Tell us about you more!",
+      "skinToneLabel": "Skin Tone",
+      "skinTonePlaceholder": "Skin Tone",
+      "skinTypeLabel": "Skin Type",
+      "skinTypePlaceholder": "Skin Type",
+      "title": "Additional Information"
+    },
+    "title": "Join Lococo Creator Community!",
+    "validation": {
+      "addressLine1MaxLength": "Use up to 20 characters.",
+      "addressLine1Required": "Address Line 1 is required.",
+      "addressLine2MaxLength": "Use up to 20 characters.",
+      "birthRequired": "Birth is required.",
+      "cityMaxLength": "Use up to 20 characters.",
+      "cityRequired": "City / Town is required.",
+      "contentLanguageRequired": "Content Language is required.",
+      "countryRequired": "Country is required.",
+      "firstNameMaxLength": "Use up to 20 characters.",
+      "firstNameRequired": "First name is required.",
+      "genderRequired": "Gender is required.",
+      "idAvailabilityCheck": "Please check the ID availability.",
+      "idInvalidFormat": "This ID is unavailable. Please check the ID form.",
+      "idMaxLength": "Use up to 15 characters.",
+      "idRequired": "ID is required.",
+      "lastNameMaxLength": "Use up to 20 characters.",
+      "lastNameRequired": "Last name is required.",
+      "phoneNumberInvalid": "Please enter a valid phone number.",
+      "phoneNumberRequired": "Phone Number is required.",
+      "skinToneRequired": "Skin Tone is required.",
+      "skinTypeRequired": "Skin Type is required.",
+      "stateMaxLength": "Use up to 20 characters.",
+      "stateRequired": "State/Region/Province is required.",
+      "zipCodeMaxLength": "Use up to 20 characters."
+    }
+  },
+  "creatorSnsLinksPage": {
+    "snsDescription": "We will go through your SNS account, and let you know if you are verified.",
+    "submitLabel": "Join",
+    "title": "Join Lococo Creator Community!"
+  },
+  "fileUploader": {
+    "cannotUploadFile": "Cannot upload file",
+    "dragDropDescription": "Drag and drop or click to upload a file.",
+    "emptyFile": "Empty file",
+    "fileTooLarge": "File too large",
+    "notAllowedFileType": "Not allowed file type",
+    "selectFile": "Choose File"
+  },
+  "footer": {
+    "copyright": "Lococo. All rights reserved.",
+    "links": {
+      "campaignGuideline": "Campaign Guideline",
+      "campaigns": "Campaigns",
+      "FAQ": "FAQ",
+      "howItWorks": "How It Works",
+      "privacyPolicy": "Privacy Policy"
+    },
+    "slogan": "Where Creators Meet Real K-Beauty"
+  },
+  "gnb": {
+    "campaigns": "campaigns",
+    "howItWorks": "How It Works",
+    "login": "Log in",
+    "logIn": "Log in",
+    "logOut": "Log Out",
+    "myPage": "My Page",
+    "signUp": "Sign up"
+  },
   "home": {
     "description": "productDescription",
     "homeSection": {
@@ -9,65 +368,314 @@
     "ingredients": "ingredients",
     "productDetail22": "productDetail22"
   },
+  "howItWork": {
+    "brands": {
+      "campaignApproval": {
+        "description": "Campaign approval results are provided within 48 hours of upload. From the brand dashboard, select applicants for your campaign. After the application deadline, announce selected creators within 24 hours.",
+        "title": "Campaign Approval"
+      },
+      "checkPerformance": {
+        "description": "Check the content and campaign performance on your brand page.",
+        "title": "Check Performance"
+      },
+      "provideFeedback": {
+        "description": "Provide revision requests within 48 hours after the creator uploads the first review. (Requests cannot be made after this period.)",
+        "title": "Provide Feedback"
+      },
+      "shipProduct": {
+        "description": "Ship the product within 2 days once the creator confirms the shipping address.",
+        "title": "Ship Product"
+      },
+      "title": "Brands"
+    },
+    "creators": {
+      "confimAddress": {
+        "description": "Confirm your shipping address within 24 hours after campaign selection.",
+        "title": "Confim Address"
+      },
+      "confirmAddress": {
+        "description": "Confirm your shipping address within 24 hours after campaign selection.",
+        "title": "Confirm Address"
+      },
+      "maintenanceGuidelines": {
+        "description": "Keep the review published for at least 6 months.",
+        "title": "Maintenance Guidelines"
+      },
+      "reviewUploadSchedule": {
+        "description": "Upload your first review within 7 days of receiving the product. After reviewing the brand’s feedback, upload your second review within 7 days. Attach the final SNS URL when posting the second review.",
+        "title": "Review Upload Schedule"
+      },
+      "title": "Creators",
+      "uploadReview": {
+        "description": "Upload your first review within 7 days of receiving the product.",
+        "title": "Upload Review"
+      }
+    },
+    "FAQs": {
+      "creatorLevels": {
+        "firstA": "If your application is declined, please review the eligibility criteria and consider reapplying after addressing any areas for improvement.",
+        "firstQ": "My creator application is rejected.",
+        "fistA": "If your application is declined, please review the eligibility criteria and consider reapplying after addressing any areas for improvement.",
+        "fistQ": "My creator application is rejected.",
+        "secondA": "You can upgrade your account to a creator by submitting an application through your profile settings.",
+        "secondQ": "I joined as a user but would like to participate as a creator.",
+        "thirdA": "You can verify and update your shipping details in your account under the “Shipping Information” section.",
+        "thirdQ": "How can I become a Lococo Pro Creator?",
+        "title": "Creator Levels"
+      },
+      "penaltyPolicy": {
+        "firstA": "Creators who do not provide required shipping information after being selected as reviewers will be subject to a 6-month suspension from all Lococo activities after three occurrences.",
+        "firstQ": "Failure to provide shipping information when selected as a reviewer.",
+        "fistA": "Creators who do not provide required shipping information after being selected as reviewers will be subject to a 6-month suspension from all Lococo activities after three occurrences.",
+        "fistQ": "Failure to provide shipping information when selected as a reviewer.",
+        "secondA": "Creators who submit content past the specified deadline will face a 6-month suspension from all Lococo activities after three occurrences.",
+        "secondQ": "Late content submission.",
+        "thirdA": "Creators who fail to submit content or submit content that does not meet the specified quality standards will face a permanent ban from all Lococo activities.",
+        "thirdQ": "Failure to submit content or submitting low-quality content.",
+        "title": "Penalty Policy"
+      },
+      "shipping": {
+        "firstA": "You can check your shipping details through your registered email.",
+        "firstQ": "How can I check the shipping information I provided?",
+        "fistA": "You can check your shipping details through your registered email.",
+        "fistQ": "How can I check the shipping information I provided?",
+        "secondA": "Once a shipping address has been submitted, it cannot be modified. Please contact Lococo for assistance.",
+        "secondQ": "I entered the wrong shipping address. What should I do?",
+        "title": "Shipping"
+      },
+      "title": "FAQs"
+    },
+    "title": "How It Works"
+  },
   "languageSelectTrigger": {
     "language": "Language"
+  },
+  "loginGoogle": {
+    "continueWithGoogle": "Continue with Google",
+    "loginMessage": "Log in to your Google account right away",
+    "signupMessage": "After signing up with Google, you can choose to join as a Creator, User, or Brand.",
+    "signupNote": "Please note that only Creators can apply for campaigns.",
+    "title": "Welcome to Lococo!"
   },
   "main": {
     "kBeautyCampaigns": "K-Beauty Campaigns",
     "openingSoon": "Opening Soon"
   },
-  "campaigns": {},
-  "gnb": {
-    "campaigns": "campaigns",
-    "howItWorks": "how it works",
-    "myPage": "My Page",
-    "logOut": "Log Out",
-    "login": "Log in",
-    "signUp": "Sign up"
-  },
-  "confirmSignupModal": {
-    "title": "Successfully Submitted!",
-    "message": "Your application was successfully submitted.\nWe'll email you the result within 24 hours.",
-    "confirmButton": "Okay"
-  },
-  "userInductionModal": {
-    "title": "Creator Suggestion",
-    "message": "Campaign applications are only available to creator members.\nWould you like to sign up as a creator?",
-    "cancelButton": "No",
-    "confirmButton": "Yes"
+  "myPage": {
+    "addressModal": {
+      "addressLine1": "Address Line 1",
+      "addressLine1Required": "Address line 1 is required",
+      "addressLine2": "Address Line 2",
+      "city": "City/Town",
+      "cityRequired": "City is required",
+      "country": "Country",
+      "countryRequired": "Country is required",
+      "description": "Please check your home address for product delivery.",
+      "edit": "Edit",
+      "getDelivery": "Get the delivery",
+      "state": "State/Region/Province",
+      "stateRequired": "State is required",
+      "title": "Address",
+      "zip": "Zip/Postal Code"
+    },
+    "contentSubmissions": {
+      "brandNote": {
+        "description": "These are the revisions requested by the brand. Please update your content accordingly and re-upload it after making the changes.",
+        "firstReview": "Brand’s Note for 1st Review "
+      },
+      "campaignProductMediaInput": {
+        "description": "Drag and drop or click to upload the file.",
+        "selectFile": "Select File",
+        "title": "Campaign Product Media"
+      },
+      "campaignSelect": {
+        "description": "Please select a campaign",
+        "selectCampaign": "Select a Campaign",
+        "title": "Select a Campaign"
+      },
+      "content": {
+        "1stContent": "1st Content",
+        "2ndContent": "2nd Content"
+      },
+      "contentTypeSelect": {
+        "instagramPost": "Instagram Post",
+        "instagramReels": "Instagram Reels",
+        "selectContentType": "Select a Content Type",
+        "tiktokVideo": "Tiktok Video",
+        "title": "Content Type"
+      },
+      "empty": {
+        "title": "There is no content to review."
+      },
+      "hashtagsInput": {
+        "description": "Please paste the exact caption and hashtags you used on",
+        "title": "Submit Your Caption & Hashtags"
+      },
+      "saveSubmitModal": {
+        "firstDescription": "Your first submission has been received. The brand will review it and send a brand’s note.",
+        "save": "Okay",
+        "secondDescription": "Your final submission has been received. Thank you for your submission.",
+        "title": "Submitted successfully"
+      },
+      "submitContentUrl": {
+        "description": "Submit the URL of your uploaded review content for confirmation and tracking.",
+        "title": "Submit Content URL"
+      }
+    },
+    "editProfile": {
+      "addressLine1Required": "Address line 1 is required",
+      "basicInformation": {
+        "id": "ID",
+        "idCheck": "Check availability",
+        "idCheckSuccess": "ID Check Success",
+        "title": "Basic Information"
+      },
+      "cityRequired": "City is required",
+      "contentLanguageRequired": "Content language is required",
+      "countryCodeRequired": "Country code is required",
+      "countryRequired": "Country is required",
+      "dateRequired": "Date is required",
+      "emailRequired": "Email is required",
+      "firstNameRequired": "First name is required",
+      "genderRequired": "Gender is required",
+      "homeAddress": {
+        "addressLine1": "Address Line 1",
+        "addressLine2": "Address Line 2",
+        "city": "City / Town",
+        "country": "Country",
+        "description": "Please provide your home address for product delivery.",
+        "state": "State/Region/Province",
+        "title": "Home Address",
+        "zip": "Zip/Postal Code"
+      },
+      "idRequired": "ID is required",
+      "lastNameRequired": "Last name is required",
+      "monthRequired": "Month is required",
+      "personalInformation": {
+        "birth": "Birth",
+        "contentLanguage": "Content Language",
+        "countryCode": "Country Code",
+        "date": "Date",
+        "email": "Email",
+        "firstName": "First Name",
+        "gender": "Gender",
+        "lastName": "Last Name",
+        "month": "Month",
+        "phoneNumber": "Phone Number",
+        "title": "Personal Information",
+        "year": "Year"
+      },
+      "phoneNumberRequired": "Phone number is required",
+      "profileImageRequired": "Profile image is required",
+      "profilePhoto": {
+        "changePhoto": "Change Photo",
+        "title": "Profile Photo"
+      },
+      "skin": {
+        "description": "Tell us about you more!",
+        "skinTone": "Skin Tone",
+        "skinToneOptions": {
+          "shade1": "Shade 1",
+          "shade10": "Shade 10",
+          "shade11": "Shade 11",
+          "shade12": "Shade 12",
+          "shade13": "Shade 13",
+          "shade14": "Shade 14",
+          "shade15": "Shade 15",
+          "shade16": "Shade 16",
+          "shade17": "Shade 17",
+          "shade18": "Shade 18",
+          "shade19": "Shade 19",
+          "shade2": "Shade 2",
+          "shade20": "Shade 20",
+          "shade3": "Shade 3",
+          "shade4": "Shade 4",
+          "shade5": "Shade 5",
+          "shade6": "Shade 6",
+          "shade7": "Shade 7",
+          "shade8": "Shade 8",
+          "shade9": "Shade 9"
+        },
+        "skinType": "Skin Type",
+        "skinTypeOptions": {
+          "combination": "Combination",
+          "dry": "Dry",
+          "normal": "Normal",
+          "oily": "Oily",
+          "others": "Others",
+          "sensitive": "Sensitive"
+        },
+        "title": "Skin"
+      },
+      "skinToneRequired": "Skin tone is required",
+      "skinTypeRequired": "Skin type is required",
+      "stateRequired": "State is required",
+      "yearRequired": "Year is required"
+    },
+    "menus": {
+      "connectSNS": "Connect SNS",
+      "contentSubmissions": "Content Submissions",
+      "editProfile": "Edit Profile",
+      "myCampaign": "My Campaign"
+    },
+    "myCampaign": {
+      "buttonText": {
+        "confirmAddress": "Confirm Address",
+        "revisionRequested": "Revision Requested",
+        "uploadFirstReview": "Upload First Review",
+        "uploadSecondReview": "Upload Second Review",
+        "viewDetails": "View Details",
+        "viewNote": "View Note",
+        "viewNotes": "View Notes",
+        "viewResults": "View Results"
+      },
+      "empty": {
+        "title": "There is no campaign has been applied."
+      },
+      "participationStatus": {
+        "active": "Active",
+        "approved": "Approved",
+        "completed": "Completed",
+        "expired": "Expired",
+        "pending": "Pending",
+        "rejected": "Rejected"
+      },
+      "title": "My Campaign"
+    },
+    "saveFormModal": {
+      "description": "Your changes have been saved.",
+      "save": "Okay",
+      "title": "Saved successfully"
+    }
   },
   "selectRoleModal": {
-    "title": "Choose Your Role",
-    "welcomeTitle": "Welcome to Lococo!",
     "description": "Select your role to sign in.\nYou won't be able to change this later.",
+    "loginAs": "Log in as a",
     "roles": {
-      "creator": "Creator",
       "brand": "Brand",
+      "creator": "Creator",
       "user": "User"
     },
-    "loginAs": "Log in as a"
-  },
-  "card": {
-    "card": "card",
-    "campaignThumbnailImage": "campaign thumbnail image",
-    "goToApply": "Go To Apply"
+    "title": "Choose Your Role",
+    "welcomeTitle": "Welcome to Lococo!"
   },
   "snsConnection": {
-    "title": "SNS Link",
-    "errorMessage": "Please add your account link at least one.",
+    "connectButtons": {
+      "instagram": "Connect with Instagram",
+      "tiktok": "Connect with Tiktok"
+    },
     "connectedStatus": "Connected!",
+    "errorMessage": "Please add your account link at least one.",
     "platforms": {
       "instagram": "Instagram",
       "tiktok": "Tiktok"
     },
-    "connectButtons": {
-      "instagram": "Connect with Instagram",
-      "tiktok": "Connect with Tiktok"
-    }
+    "title": "SNS Link"
   },
-  "creatorSnsLinksPage": {
-    "title": "Join Lococo Creator Community!",
-    "snsDescription": "We will go through your SNS account, and let you know if you are verified.",
-    "submitLabel": "Join"
+  "userInductionModal": {
+    "cancelButton": "No",
+    "confirmButton": "Yes",
+    "message": "Campaign applications are only available to creator members.\nWould you like to sign up as a creator?",
+    "title": "Creator Suggestion"
   }
 }

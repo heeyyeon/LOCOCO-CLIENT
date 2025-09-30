@@ -3,7 +3,7 @@ import { UseFormRegisterReturn } from 'react-hook-form';
 
 import { ErrorNotice } from '@lococo/design-system/error-notice';
 import { Input } from '@lococo/design-system/input';
-import { SvgSearch } from '@lococo/icons';
+import { SvgCheckRound, SvgSearch } from '@lococo/icons';
 import { cn } from '@lococo/utils';
 
 interface TextFormFieldProps {
@@ -12,7 +12,10 @@ interface TextFormFieldProps {
   placeholder?: string;
   register: UseFormRegisterReturn;
   error?: string;
+  successMessage?: string;
   className?: string;
+  rightContent?: React.ReactNode;
+  onRightContentClick?: () => void;
   showSearchIcon?: boolean;
   handleClickSearch?: () => void;
 }
@@ -23,7 +26,10 @@ export function TextFormField({
   placeholder,
   register,
   error,
+  successMessage,
   className,
+  rightContent,
+  onRightContentClick,
   showSearchIcon = false,
   handleClickSearch,
 }: TextFormFieldProps) {
@@ -37,8 +43,17 @@ export function TextFormField({
       </label>
       <div className="flex flex-col">
         <div className="relative">
-          <Input {...register} placeholder={placeholder} />
-          {showSearchIcon && (
+          <Input {...register} placeholder={placeholder} className="h-[4rem]" />
+
+          {rightContent && (
+            <div
+              onClick={onRightContentClick}
+              className="absolute right-2 top-1/2 flex -translate-y-1/2 cursor-pointer items-center justify-center"
+            >
+              {rightContent}
+            </div>
+          )}
+          {!rightContent && showSearchIcon && (
             <button
               type="button"
               onClick={handleClickSearch}
@@ -50,6 +65,14 @@ export function TextFormField({
           )}
         </div>
         {error && <ErrorNotice message={error} />}
+        {!error && successMessage && (
+          <div className="mt-[0.2rem] flex items-center gap-[0.8rem]">
+            <SvgCheckRound size={16} className="fill-white" />
+            <span className="caption3 text-green font-normal">
+              {successMessage}
+            </span>
+          </div>
+        )}
       </div>
     </div>
   );

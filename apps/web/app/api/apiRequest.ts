@@ -71,18 +71,35 @@ export const apiRequest = async <T = unknown>({
 
     if (!response.ok) {
       const error = await response.text();
-      console.error('API Response Error:', {
-        status: response.status,
-        statusText: response.statusText,
-        url: requestUrl,
-        error: error,
-      });
+
+      if (response.status !== 409) {
+        console.error('API Response Error:', {
+          status: response.status,
+          statusText: response.statusText,
+          url: requestUrl,
+          error: error,
+        });
+      }
+
       throw error;
     }
     const responseData = await response.json();
     return responseData;
   } catch (error) {
-    console.error(error);
+    if (typeof error === 'string') {
+      try {
+        const parsedError = JSON.parse(error);
+        if (parsedError.status !== 409) {
+          console.error(error);
+        }
+      } catch {
+        // JSON 파싱 실패 시 기본 에러 로그 출력
+        console.error(error);
+      }
+    } else {
+      console.error(error);
+    }
+
     throw error;
   }
 };
