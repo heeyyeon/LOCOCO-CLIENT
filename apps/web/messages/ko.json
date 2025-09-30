@@ -253,9 +253,25 @@
     },
     "skinTone": {
       "SHADE_1": "색상 1",
+      "SHADE_10": "색상 10",
+      "SHADE_11": "색상 11",
+      "SHADE_12": "색상 12",
+      "SHADE_13": "색상 13",
+      "SHADE_14": "색상 14",
+      "SHADE_15": "색상 15",
+      "SHADE_16": "색상 16",
+      "SHADE_17": "색상 17",
+      "SHADE_18": "색상 18",
+      "SHADE_19": "색상 19",
       "SHADE_2": "색상 2",
+      "SHADE_20": "색상 20",
       "SHADE_3": "색상 3",
-      "SHADE_4": "색상 4"
+      "SHADE_4": "색상 4",
+      "SHADE_5": "색상 5",
+      "SHADE_6": "색상 6",
+      "SHADE_7": "색상 7",
+      "SHADE_8": "색상 8",
+      "SHADE_9": "색상 9"
     },
     "skinType": {
       "COMBINATION": "복합성",
@@ -331,11 +347,11 @@
     },
     "title": "로코코 크리에이터 커뮤니티에 가입하세요!",
     "validation": {
-      "addressLine1MaxLength": "최대 20자까지 입력할 수 있습니다. ",
+      "addressLine1MaxLength": "최대 100자까지 입력할 수 있습니다. ",
       "addressLine1Required": "주소 1은 필수 입력 항목입니다. ",
-      "addressLine2MaxLength": "최대 20자까지 입력할 수 있습니다. ",
+      "addressLine2MaxLength": "최대 100자까지 입력할 수 있습니다. ",
       "birthRequired": "생년월일은 필수 입력 항목입니다. ",
-      "cityMaxLength": "컨텐츠 언어는 필수입니다. ",
+      "cityMaxLength": "최대 20자까지 입력할 수 있습니다. ",
       "cityRequired": "시/군/구는 필수입니다. ",
       "contentLanguageRequired": "컨텐츠 언어는 필수입니다. ",
       "countryRequired": "국가는 필수입니다. ",
@@ -353,9 +369,9 @@
       "phoneNumberRequired": "전화번호는 필수 입력 항목입니다.",
       "skinToneRequired": "피부 톤은 필수 입력 항목입니다.",
       "skinTypeRequired": "피부 타입은 필수 입력 항목입니다.",
-      "stateMaxLength": "최대 20자까지 입력할 수 있습니다.",
+      "stateMaxLength": "최대 100자까지 입력할 수 있습니다.",
       "stateRequired": "주/지역/도는 필수 입력 항목입니다.",
-      "zipCodeMaxLength": "최대 20자까지 입력할 수 있습니다."
+      "zipCodeMaxLength": "최대 100자까지 입력할 수 있습니다."
     }
   },
   "creatorSnsLinksPage": {
@@ -512,38 +528,38 @@
     },
     "contentSubmissions": {
       "brandNote": {
-        "description": "파일을 드래그 앤 드롭하거나 클릭하여 업로드하세요.",
-        "firstReview": "파일 선택",
-        "secondReview": ""
+        "description": "브랜드에서 요청한 수정 사항입니다. 해당 내용을 반영하여 콘텐츠를 업데이트한 후 다시 업로드해주세요.",
+        "firstReview": "1차 리뷰에 대한 브랜드 노트",
+        "secondReview": "2차 리뷰에 대한 브랜드 노트"
       },
       "campaignProductMediaInput": {
-        "description": "캠페인 제품 미디어",
-        "selectFile": "캠페인을 선택해 주세요.",
-        "title": "캠페인 선택"
+        "description": "파일을 드래그 앤 드롭하거나 클릭하여 업로드하세요.",
+        "selectFile": "파일 선택",
+        "title": "캠페인 제품 미디어"
       },
       "campaignSelect": {
-        "description": "인스타그램 게시물",
-        "selectCampaign": "인스타그램 릴스",
-        "title": "콘텐츠 유형 선택"
+        "description": "캠페인을 선택해주세요",
+        "selectCampaign": "캠페인 선택",
+        "title": "캠페인 선택"
       },
       "content": {
-        "1stContent": "틱톡 영상",
-        "2ndContent": "콘텐츠 유형"
+        "1stContent": "1차 콘텐츠",
+        "2ndContent": "2차 콘텐츠"
       },
       "contentTypeSelect": {
-        "instagramPost": "검토할 콘텐츠가 없습니다.",
-        "instagramReels": "사용한 캡션과 해시태그를 그대로 붙여 넣어 주세요.",
-        "selectContentType": "캡션 & 해시태그 제출하기",
-        "tiktokVideo": "첫 번째 제출물이 접수되었습니다. 브랜드가 검토 후 피드백을 보내드릴 예정입니다.",
-        "title": "오케이"
+        "instagramPost": "인스타그램 게시물",
+        "instagramReels": "인스타그램 릴스",
+        "selectContentType": "콘텐츠 유형을 선택해주세요",
+        "tiktokVideo": "틱톡 영상",
+        "title": "콘텐츠 유형"
       },
       "empty": {
-        "title": "최종 제출물이 접수되었습니다. 제출해 주셔서 감사합니다."
+        "title": "검토할 콘텐츠가 없습니다."
       },
-      "error": "",
+      "error": "콘텐츠 제출을 불러오지 못했습니다",
       "hashtagsInput": {
-        "description": "성공적으로 제출되었습니다.",
-        "title": "캡션 & 해시태그 제출하기"
+        "description": "사용한 캡션과 해시태그를 정확히 붙여넣어주세요",
+        "title": "캡션과 해시태그를 제출해주세요. "
       },
       "saveSubmitModal": {
         "firstDescription": "첫 번째 제출물이 접수되었습니다. 브랜드가 검토 후 피드백을 보내드릴 예정입니다.",

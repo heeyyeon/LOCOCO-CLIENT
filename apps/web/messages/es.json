@@ -253,9 +253,25 @@
     },
     "skinTone": {
       "SHADE_1": "Tono 1",
+      "SHADE_10": "Tono 10",
+      "SHADE_11": "Tono 11",
+      "SHADE_12": "Tono 12",
+      "SHADE_13": "Tono 13",
+      "SHADE_14": "Tono 14",
+      "SHADE_15": "Tono 15",
+      "SHADE_16": "Tono 16",
+      "SHADE_17": "Tono 17",
+      "SHADE_18": "Tono 18",
+      "SHADE_19": "Tono 19",
       "SHADE_2": "Tono 2",
+      "SHADE_20": "Tono 20",
       "SHADE_3": "Tono 3",
-      "SHADE_4": "Tono 4"
+      "SHADE_4": "Tono 4",
+      "SHADE_5": "Tono 5",
+      "SHADE_6": "Tono 6",
+      "SHADE_7": "Tono 7",
+      "SHADE_8": "Tono 8",
+      "SHADE_9": "Tono 9"
     },
     "skinType": {
       "COMBINATION": "Mixta",
@@ -331,9 +347,9 @@
     },
     "title": "¡Únete a la Comunidad de Creadores de Lococo!",
     "validation": {
-      "addressLine1MaxLength": "Puede usar hasta 20 caracteres.",
+      "addressLine1MaxLength": "Puede usar hasta 100 caracteres.",
       "addressLine1Required": "La línea de dirección 1 es obligatoria.",
-      "addressLine2MaxLength": "Puedes usar hasta 20 caracteres.",
+      "addressLine2MaxLength": "Puedes usar hasta 100 caracteres.",
       "birthRequired": "La fecha de nacimiento es obligatoria.",
       "cityMaxLength": "Puede usar hasta 20 caracteres.",
       "cityRequired": "La ciudad/pueblo es obligatoria.",
@@ -353,9 +369,9 @@
       "phoneNumberRequired": "El número de teléfono es obligatorio.",
       "skinToneRequired": "El tono de piel es obligatorio.",
       "skinTypeRequired": "El tipo de piel es obligatorio.",
-      "stateMaxLength": "Puede utilizar hasta 20 caracteres.",
+      "stateMaxLength": "Puede utilizar hasta 100 caracteres.",
       "stateRequired": "El estado/región/provincia es obligatorio.",
-      "zipCodeMaxLength": "Puede utilizar hasta 20 caracteres."
+      "zipCodeMaxLength": "Puede utilizar hasta 100 caracteres."
     }
   },
   "creatorSnsLinksPage": {
@@ -512,38 +528,38 @@
     },
     "contentSubmissions": {
       "brandNote": {
-        "description": "Arrastre y suelte el archivo o haga clic para subirlo.",
-        "firstReview": "Seleccionar archivo",
-        "secondReview": ""
+        "description": "Estas son las revisiones solicitadas por la marca. Actualiza tu contenido en consecuencia y vuelve a subirlo después de hacer los cambios.",
+        "firstReview": "Nota de la marca para la 1ª reseña",
+        "secondReview": "Nota de la marca para la 2ª reseña"
       },
       "campaignProductMediaInput": {
-        "description": "Medios del producto de la campaña",
-        "selectFile": "Por favor seleccione una campaña.",
-        "title": "Selección de campaña"
+        "description": "Arrastra y suelta o haz clic para subir el archivo.",
+        "selectFile": "Seleccionar archivo",
+        "title": "Medios del producto de la campaña"
       },
       "campaignSelect": {
-        "description": "Publicación de Instagram",
-        "selectCampaign": "Reels de Instagram",
-        "title": "Seleccionar tipo de contenido"
+        "description": "Por favor selecciona una campaña",
+        "selectCampaign": "Seleccionar una campaña",
+        "title": "Seleccionar una campaña"
       },
       "content": {
-        "1stContent": "Video de TikTok",
-        "2ndContent": "Tipo de contenido"
+        "1stContent": "1er contenido",
+        "2ndContent": "2º contenido"
       },
       "contentTypeSelect": {
-        "instagramPost": "No hay contenido para revisar.",
-        "instagramReels": "Pegue exactamente el pie de foto y los hashtags utilizados.",
-        "selectContentType": "Enviar pie de foto y hashtags",
-        "tiktokVideo": "El primer envío ha sido recibido. La marca lo revisará y enviará comentarios.",
-        "title": "Ok"
+        "instagramPost": "Publicación de Instagram",
+        "instagramReels": "Reels de Instagram",
+        "selectContentType": "Selecciona un tipo de contenido",
+        "tiktokVideo": "Video de TikTok",
+        "title": "Tipo de contenido"
       },
       "empty": {
-        "title": "El envío final ha sido recibido. Muchas gracias por enviarlo."
+        "title": "No hay contenido para revisar."
       },
-      "error": "",
+      "error": "No se pudieron cargar las entregas de contenido",
       "hashtagsInput": {
-        "description": "Se ha enviado con éxito",
-        "title": "Envíe su pie de foto y hashtags"
+        "description": "Pega exactamente el pie de foto y los hashtags que usaste",
+        "title": "Envía tu pie de foto y hashtags"
       },
       "saveSubmitModal": {
         "firstDescription": "Tu envío final ha sido recibido. Gracias por tu participación.",
