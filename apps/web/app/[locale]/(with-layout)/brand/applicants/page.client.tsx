@@ -3,6 +3,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 
 import { useFormatter } from 'next-intl';
+import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
 
 import {
@@ -273,75 +274,86 @@ export default function BrandApplicantsPageClient({
             onStatusChange={handleApproveStatusChange}
           />
         </div>
-
-        <div className="flex justify-between bg-gray-100 px-[1.6rem] py-[0.8rem]">
-          <div className="flex items-center gap-[0.8rem]">
-            <Checkbox
-              id="all-select"
-              checked={
-                data?.data?.applicants?.every(
+      </div>
+      {data.data.applicants.length > 0 ? (
+        <>
+          <div className="flex justify-between bg-gray-100 px-[1.6rem] py-[0.8rem]">
+            <div className="flex items-center gap-[0.8rem]">
+              <Checkbox
+                id="all-select"
+                checked={
+                  data?.data?.applicants?.every(
+                    (applicant) =>
+                      rowSelection[applicant.creatorCampaignId.toString()]
+                  ) && data?.data?.applicants?.length > 0
+                }
+                onCheckedChange={handleAllSelectChange}
+              />
+              <label
+                htmlFor="all-select"
+                className="text-inter-body1 cursor-pointer font-bold text-gray-600"
+              >
+                전체 선택하기(
+                {data?.data?.applicants?.filter(
+                  (applicant) =>
+                    rowSelection[applicant.creatorCampaignId.toString()] &&
+                    applicant.approveStatus === 'PENDING'
+                ).length || 0}
+                /
+                {data?.data?.applicants?.filter(
+                  (applicant) => applicant.approveStatus === 'PENDING'
+                ).length || 0}
+                )
+              </label>
+            </div>
+            <Button
+              onClick={() => approveApplicantsMutation.mutate()}
+              variant="outline"
+              color="primary"
+              size="sm"
+              rounded="md"
+              className="grow-0"
+              disabled={
+                data?.data?.applicants?.filter(
                   (applicant) =>
                     rowSelection[applicant.creatorCampaignId.toString()]
-                ) && data?.data?.applicants?.length > 0
+                ).length === 0 || approveStatusFromQuery === 'APPROVED'
               }
-              onCheckedChange={handleAllSelectChange}
-            />
-            <label
-              htmlFor="all-select"
-              className="text-inter-body1 cursor-pointer font-bold text-gray-600"
             >
-              전체 선택하기(
-              {data?.data?.applicants?.filter(
-                (applicant) =>
-                  rowSelection[applicant.creatorCampaignId.toString()] &&
-                  applicant.approveStatus === 'PENDING'
-              ).length || 0}
-              /
-              {data?.data?.applicants?.filter(
-                (applicant) => applicant.approveStatus === 'PENDING'
-              ).length || 0}
-              )
-            </label>
+              <SvgCheck size={20} />
+              <span className="text-[1.4rem]">승인하기</span>
+            </Button>
           </div>
-          <Button
-            onClick={() => approveApplicantsMutation.mutate()}
-            variant="outline"
-            color="primary"
-            size="sm"
-            rounded="md"
-            className="grow-0"
-            disabled={
-              data?.data?.applicants?.filter(
-                (applicant) =>
-                  rowSelection[applicant.creatorCampaignId.toString()]
-              ).length === 0 || approveStatusFromQuery === 'APPROVED'
-            }
-          >
-            <SvgCheck size={20} />
-            <span className="text-[1.4rem]">승인하기</span>
-          </Button>
-        </div>
-      </div>
 
-      {data.data.applicants.length === 0 ? (
-        <div>지원자가 없습니다.</div>
+          <ApplicantsTable
+            rowSelection={rowSelection}
+            onRowSelectionChange={setRowSelection}
+            columnFilters={columnFilters}
+            onColumnFiltersChange={setColumnFilters}
+            data={data.data.applicants}
+          />
+
+          <div className="my-[6.4rem] flex w-full items-center justify-center">
+            <Pagenation
+              currentPage={page}
+              totalPages={data?.data.pageInfo.totalPages || 1}
+              handlePageChange={handlePageChange}
+            />
+          </div>
+        </>
       ) : (
-        <ApplicantsTable
-          rowSelection={rowSelection}
-          onRowSelectionChange={setRowSelection}
-          columnFilters={columnFilters}
-          onColumnFiltersChange={setColumnFilters}
-          data={data.data.applicants}
-        />
+        <div className="flex h-[38.5rem] flex-col items-center justify-center gap-[3.2rem]">
+          <Image
+            src="/applicants-empty.svg"
+            alt="지원자가 없습니다."
+            width={100}
+            height={100}
+          />
+          <p className="text-inter-title2 font-bold text-gray-700">
+            지원자가 없습니다.
+          </p>
+        </div>
       )}
-
-      <div className="my-[6.4rem] flex w-full items-center justify-center">
-        <Pagenation
-          currentPage={page}
-          totalPages={data?.data.pageInfo.totalPages || 1}
-          handlePageChange={handlePageChange}
-        />
-      </div>
     </div>
   );
 }
