@@ -28,8 +28,8 @@ export const apiRequest = async <T = unknown>({
   headers,
   params,
 }: ApiRequestProps): Promise<T> => {
-  const accessToken =
-    'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxNSIsImlhdCI6MTc1OTE2MTIxMiwiZXhwIjoxNzU5NzY2MDEyLCJpZCI6MTUsInJvbGUiOiJST0xFX0JSQU5EIiwibGluZUlkIjoiMTUifQ.EwoUwQILpUtzZ98wzYIR_AP_3onM_lbekJT4F4q_SFw';
+  const accessToken = await getServerCookie('AccessToken');
+
   try {
     // 쿼리 파라미터가 있으면 URL에 추가
     let requestUrl = `${SERVER_API_BASE_URL}${endPoint}`;
@@ -45,7 +45,7 @@ export const apiRequest = async <T = unknown>({
 
     const defaultHeaders: Record<string, string> = {
       'Content-Type': 'application/json',
-      Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxOCIsImlhdCI6MTc1OTIxNTc1MSwiZXhwIjoxNzU5ODIwNTUxLCJpZCI6MTgsInJvbGUiOiJST0xFX0NSRUFUT1IiLCJsaW5lSWQiOiIxOCJ9.Eu-fx7eyQhO0HdbylBagcfWtiT3-5fYv9g9COiMS0A0`,
+      Authorization: `Bearer ${accessToken}`,
       ...headers,
     };
 
