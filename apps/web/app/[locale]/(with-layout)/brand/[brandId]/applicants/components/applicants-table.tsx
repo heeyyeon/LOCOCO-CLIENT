@@ -38,26 +38,30 @@ const createColumns = (): ColumnDef<ApplicantData>[] => [
     meta: {
       style: { textAlign: 'left' },
     },
-    cell: ({ row }: { row: Row<ApplicantData> }) => (
-      <div className="flex items-center justify-center">
-        <Checkbox
-          id={`cell-checkbox-${row.id}`}
-          checked={
-            row.getIsSelected() || row.original.approveStatus === 'APPROVED'
-          }
-          disabled={
-            !row.getCanSelect() || row.original.approveStatus === 'APPROVED'
-          }
-          onCheckedChange={(checked) => {
-            if (row.original.approveStatus !== 'APPROVED') {
-              row.getToggleSelectedHandler()({
-                target: { checked },
-              } as React.ChangeEvent<HTMLInputElement>);
-            }
-          }}
-        />
-      </div>
-    ),
+    cell: ({ row }: { row: Row<ApplicantData> }) => {
+      return (
+        <>
+          <div className="flex items-center justify-center">
+            <Checkbox
+              id={`cell-checkbox-${row.id}`}
+              checked={
+                row.getIsSelected() || row.original.approveStatus === 'APPROVED'
+              }
+              disabled={
+                !row.getCanSelect() || row.original.approveStatus === 'APPROVED'
+              }
+              onCheckedChange={(checked) => {
+                if (row.original.approveStatus !== 'APPROVED') {
+                  row.getToggleSelectedHandler()({
+                    target: { checked },
+                  } as React.ChangeEvent<HTMLInputElement>);
+                }
+              }}
+            />
+          </div>
+        </>
+      );
+    },
   },
   {
     accessorKey: 'creator',
@@ -67,11 +71,13 @@ const createColumns = (): ColumnDef<ApplicantData>[] => [
       getValue,
     }: CellContext<ApplicantData, ApplicantData['creator']>) => {
       const row = getValue();
-      return CreatorProfileColumn({
-        creatorProfileImageUrl: row.creatorProfileImageUrl,
-        creatorFullName: row.creatorFullName,
-        creatorNickName: row.creatorNickName,
-      });
+      return (
+        <CreatorProfileColumn
+          creatorProfileImageUrl={row.creatorProfileImageUrl}
+          creatorFullName={row.creatorFullName}
+          creatorNickName={row.creatorNickName}
+        />
+      );
     },
   },
   {
@@ -85,10 +91,12 @@ const createColumns = (): ColumnDef<ApplicantData>[] => [
       getValue,
     }: CellContext<ApplicantData, ApplicantData['followerCount']>) => {
       const row = getValue();
-      return FollowerCountColumn({
-        instagramFollower: row.instagramFollower,
-        tiktokFollower: row.tiktokFollower,
-      });
+      return (
+        <FollowerCountColumn
+          instagramFollower={row.instagramFollower}
+          tiktokFollower={row.tiktokFollower}
+        />
+      );
     },
   },
   {
@@ -100,7 +108,7 @@ const createColumns = (): ColumnDef<ApplicantData>[] => [
     },
     cell: ({ getValue }: CellContext<ApplicantData, number>) => {
       const row = getValue();
-      return CampaignCountColumn({ campaignCount: row });
+      return <CampaignCountColumn campaignCount={row} />;
     },
   },
   {
@@ -112,7 +120,7 @@ const createColumns = (): ColumnDef<ApplicantData>[] => [
     size: 148,
     cell: ({ getValue }: CellContext<ApplicantData, string>) => {
       const row = getValue();
-      return AppliedDateColumn({ appliedDate: row });
+      return <AppliedDateColumn appliedDate={row} />;
     },
   },
   {
@@ -124,7 +132,7 @@ const createColumns = (): ColumnDef<ApplicantData>[] => [
     },
     cell: ({ getValue }: CellContext<ApplicantData, ApproveStatus>) => {
       const row = getValue();
-      return ApproveStatusColumn({ approvalStatus: row });
+      return <ApproveStatusColumn approvalStatus={row} />;
     },
   },
 ];
