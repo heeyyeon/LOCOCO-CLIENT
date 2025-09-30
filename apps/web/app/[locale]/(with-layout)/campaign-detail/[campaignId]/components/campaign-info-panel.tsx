@@ -43,7 +43,7 @@ interface CampaignInfoPanelProps {
   eligibilityRequirements: string[];
   userSpecificCampaignStatus: string;
   isProCampaign: boolean;
-  currentUserRole: 'CUSTOMER' | 'CREATOR' | 'BRAND' | 'ADMIN';
+  currentUserRole: 'CUSTOMER' | 'CREATOR' | 'BRAND' | 'ADMIN' | null;
   creatorRoleInfo: 'NOT_APPROVED' | 'PRO' | 'NORMAL';
 }
 
@@ -70,7 +70,7 @@ export default function CampaignInfoPanel({
   const router = useRouter();
   const params = useParams();
   const campaignId = params.campaignId as string;
-
+  console.log(currentUserRole, userSpecificCampaignStatus);
   const [
     isConfirmCampaignSignUpModalOpen,
     setIsConfirmCampaignSignUpModalOpen,
@@ -79,7 +79,9 @@ export default function CampaignInfoPanel({
   const rejectModalType =
     isProCampaign && creatorRoleInfo !== 'PRO'
       ? 'notProCreator'
-      : creatorRoleInfo === 'NOT_APPROVED' || currentUserRole === 'CUSTOMER'
+      : creatorRoleInfo === 'NOT_APPROVED' ||
+          currentUserRole === 'CUSTOMER' ||
+          currentUserRole === null
         ? 'notCreator'
         : null;
 
@@ -95,7 +97,8 @@ export default function CampaignInfoPanel({
     // 미승인 크리에이터, 일반 유저 지원 케이스
     if (
       (currentUserRole === 'CREATOR' && creatorRoleInfo === 'NOT_APPROVED') ||
-      currentUserRole === 'CUSTOMER'
+      currentUserRole === 'CUSTOMER' ||
+      currentUserRole === null
     ) {
       //Campaigns are for Lococo Creators only.  reject 모달
       setIsRejectModalOpen(true);
@@ -182,7 +185,10 @@ export default function CampaignInfoPanel({
       // TODO: 기획의 의도 마이페이지-마이캠페인 이동, 컨텐츠 제출페이지 이동 두가지로 나뉘어져서 체크필요함
       case 'ACTIVE':
         return {
-          text: t('applyButtonText.active'),
+          text:
+            currentUserRole === 'BRAND'
+              ? t('applyButtonText.active.brand')
+              : t('applyButtonText.active.user'),
           isDisabled: false,
           onClick: handleActiveCampaign,
         };
