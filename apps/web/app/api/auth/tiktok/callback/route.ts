@@ -57,8 +57,8 @@ export async function GET(request: NextRequest) {
 
     const result = await response.json();
 
-    if (result.data?.redirect_url) {
-      return NextResponse.redirect(result.data.redirect_url);
+    if (result.data?.redirectUrl) {
+      return NextResponse.redirect(result.data.redirectUrl);
     }
 
     if (result.success) {
