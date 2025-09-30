@@ -3,17 +3,13 @@ import { UseFormRegisterReturn } from 'react-hook-form';
 
 import { useTranslations } from 'next-intl';
 
-import { FormSection, SelectFormField, TextFormField } from 'components/forms';
-import { countryPhoneCodeOptions } from 'utils';
-
-import { Input } from '@lococo/design-system/input';
-import { Select } from '@lococo/design-system/select';
+import { FormSection, TextFormField } from 'components/forms';
 
 interface BasicInfoProps {
   brandNameRegister: UseFormRegisterReturn;
   managerNameRegister: UseFormRegisterReturn;
   phoneNumberRegister: UseFormRegisterReturn;
-  emailRegister: UseFormRegisterReturn;
+  email?: string;
   countryCodeValue: string;
   brandNameError?: string;
   managerNameError?: string;
@@ -26,16 +22,12 @@ export default function BasicInfo({
   brandNameRegister,
   managerNameRegister,
   phoneNumberRegister,
-  emailRegister,
-  countryCodeValue,
+  email,
   brandNameError,
   managerNameError,
   phoneNumberError,
   emailError,
-  onCountryCodeChange,
 }: BasicInfoProps) {
-  const countryCodes = countryPhoneCodeOptions();
-
   const t = useTranslations('brandMyPageEditProfile');
 
   return (
@@ -52,28 +44,18 @@ export default function BasicInfo({
         register={managerNameRegister}
         error={managerNameError}
       />
-      <SelectFormField
+      <TextFormField
         label={t('basicInfo.phoneNumberFieldLabel')}
         required
+        register={phoneNumberRegister}
         error={phoneNumberError}
-      >
-        <div className="flex w-full items-center justify-start gap-[2.4rem]">
-          <Select
-            placeholder={'+xx'}
-            options={countryCodes}
-            size="small"
-            value={countryCodeValue}
-            onValueChange={onCountryCodeChange}
-          />
-          <Input className="h-[4rem] w-[26.4rem]" {...phoneNumberRegister} />
-        </div>
-      </SelectFormField>
+      />
       <TextFormField
         label="Email"
         required
-        placeholder="jessica.anderson@gmail.com"
-        register={emailRegister}
+        placeholder={email}
         error={emailError}
+        className="pointer-events-none"
       />
       <div className="relative">
         <p className="caption3 absolute left-[24rem] text-gray-500">
