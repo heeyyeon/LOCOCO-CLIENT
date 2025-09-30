@@ -1,8 +1,12 @@
 'use client';
 
+import { useState } from 'react';
+
 import { useFormatter, useTranslations } from 'next-intl';
+import { useParams } from 'next/navigation';
 
 import dayjs from 'dayjs';
+import { useRouter } from 'i18n/navigation';
 
 import { Button } from '@lococo/design-system/button';
 import { InfoChip } from '@lococo/design-system/info-chip';
@@ -14,6 +18,14 @@ import {
 } from '@lococo/icons';
 
 import CampaignInfoGrayBorderBox from './campaign-info-gray-border-box';
+import { RejectModal } from './campaign-reject-modal';
+import { ConfirmCampaignSignUpModal } from './confirm-campaign-sign-up-modal';
+
+/**
+ * 캠페인 상태에 따른 표시 문자열을 반환하는 함수
+ * @param status 서버에서 받은 캠페인 상태 코드
+ * @returns 사용자에게 표시할 문자열
+ */
 
 interface CampaignInfoPanelProps {
   title: string;
@@ -27,8 +39,10 @@ interface CampaignInfoPanelProps {
   deliverableRequirements: string[];
   participationRewards: string[];
   eligibilityRequirements: string[];
-  //TODO: 추후 백엔드와 논의 후 ENUM으로 변경
-  campaignStatusCode: string;
+  userSpecificCampaignStatus: string;
+  isProCampaign: boolean;
+  currentUserRole: 'CUSTOMER' | 'CREATOR' | 'BRAND' | 'ADMIN' | undefined;
+  creatorRoleInfo: 'NOT_APPROVED' | 'PRO' | 'NORMAL';
 }
 
 export default function CampaignInfoPanel({
@@ -43,15 +57,26 @@ export default function CampaignInfoPanel({
   deliverableRequirements,
   participationRewards,
   eligibilityRequirements,
-  campaignStatusCode,
+  userSpecificCampaignStatus,
+  isProCampaign,
+  currentUserRole,
+  creatorRoleInfo,
 }: CampaignInfoPanelProps) {
+  // const userSpecificCampaignStatus = 'ACTIVE';
+  // const currentUserRole:
+  //   | 'CUSTOMER'
+  //   | 'CREATOR'
+  //   | 'BRAND'
+  //   | 'ADMIN'
+  //   | undefined = 'BRAND' as const;
+  // const creatorRoleInfo = 'PRO';
+
   const t = useTranslations('campaignDetail');
   const format = useFormatter();
 
-  // const timeZone = useTimeZone();
-
-  // const defaultData = {
-  //   brand: 'UIQ',
+  const router = useRouter();
+  const params = useParams();
+  const campaignId = params.campaignId;
   //   title: 'Glass Skin Glow Serum Campaign',
   //   type: 'Giveaway',
   //   schedule: {
@@ -79,6 +104,106 @@ export default function CampaignInfoPanel({
 
   // TODO: 백엔드 데이터 누락, 추가시 삭제
   const hashtags = ['#GlassSkinGlow', '#Beauty_Of_UIQ', '#K-Beauty'];
+
+  const [
+    isConfirmCampaignSignUpModalOpen,
+    setIsConfirmCampaignSignUpModalOpen,
+  ] = useState(false);
+  const [isRejectModalOpen, setIsRejectModalOpen] = useState(false);
+  const rejectModalType =
+    isProCampaign && creatorRoleInfo !== 'PRO'
+      ? 'notProCreator'
+      : creatorRoleInfo === 'NOT_APPROVED' || currentUserRole === 'CUSTOMER'
+        ? 'notCreator'
+        : null;
+
+  const handleApplyButtonClick = () => {
+    // 미승인 크리에이터, 일반 유저 지원 케이스
+    if (
+      (currentUserRole === 'CREATOR' && creatorRoleInfo === 'NOT_APPROVED') ||
+      currentUserRole === 'CUSTOMER'
+    ) {
+      //Campaigns are for Lococo Creators only.  reject 모달
+      setIsRejectModalOpen(true);
+    }
+
+    if (currentUserRole === 'BRAND') {
+      // 지원자 리스트
+      router.push(`/brand/applicants?campaignId=${campaignId}`);
+    }
+
+    // PRO 캠페인 지원 케이스
+    if (isProCampaign) {
+      if (currentUserRole === 'CREATOR' && creatorRoleInfo === 'PRO') {
+        // PRO 캠페인이면서 크리에이터 PRO
+        // 정상 로직 진행
+      } else {
+        // PRO 캠페인이면서 크리에이터 자격없음
+        // reject 모달
+        setIsRejectModalOpen(true);
+      }
+    } else {
+      if (currentUserRole === 'CREATOR') {
+        setIsConfirmCampaignSignUpModalOpen(true);
+      }
+    }
+  };
+
+  const handleActiveCampaign = () => {
+    console.log(currentUserRole);
+    if (currentUserRole === 'CREATOR') {
+      router.push(`/my-page/my-campaign`);
+    } else if (currentUserRole === 'BRAND') {
+      // 지원자 리스트 라우팅
+      router.push(`/brand/applicants?campaignId=${campaignId}`);
+    }
+    // TODO: 체험단 모집완료, 캠페인 진행중 케이스 추가
+  };
+
+  const getCampaignButtonStatus = (
+    status: string
+  ): {
+    text: string;
+    isDisabled: boolean;
+    onClick?: () => void;
+  } => {
+    switch (status) {
+      //
+      case 'OPEN_RESERVED':
+        return { text: 'Coming Soon', isDisabled: true };
+      case 'RECRUITING': // 유저 상태 추가 요
+        return {
+          text: 'Apply Now!',
+          isDisabled: false,
+          onClick: handleApplyButtonClick,
+        };
+      case 'NOT_APPLIED_ENDED': //지원하지 않고 캠페인 마감
+        return { text: 'Campaign Closed', isDisabled: true };
+      case 'APPLIED': // 지원하고 아무것도 안한상태
+        return { text: 'Successfully Applied', isDisabled: true };
+      case 'REJECTED':
+        return { text: 'Campaign not Selected', isDisabled: true };
+      case 'APPROVED_SECOND_REVIEW_DONE':
+        return { text: 'Campaign Completed', isDisabled: true };
+      case 'APPROVED_REVIEW_NOT_CONFIRMED':
+        return {
+          text: 'Expired',
+          isDisabled: true,
+        };
+      // TODO: 기획의 의도 마이페이지-마이캠페인 이동, 컨텐츠 제출페이지 이동 두가지로 나뉘어져서 체크필요함
+      case 'ACTIVE':
+        return {
+          text: 'Campaign in progress',
+          isDisabled: false,
+          onClick: handleActiveCampaign,
+        }; // 지원기간이랑 상관없이 캠페인 진행중, 리뷰업로드 redirect or 캠페인 마이페이지 이동
+      case 'CLOSED':
+        return { text: 'Campaign Closed', isDisabled: true };
+
+      default:
+        return { text: 'Unknown Status', isDisabled: true };
+    }
+  };
 
   return (
     <div className="scrollbar-hide flex h-[636px] w-[45.6rem] overflow-x-hidden bg-white">
@@ -213,7 +338,7 @@ export default function CampaignInfoPanel({
               ))}
             </div>
 
-            {/* Hashtags */}
+            {/* Hashtags 삭제 필요*/}
             <div className="flex items-center gap-[4px]">
               {hashtags.map((hashtag, index) => (
                 <InfoChip
@@ -275,12 +400,37 @@ export default function CampaignInfoPanel({
             color="primary"
             size="lg"
             rounded="md"
-            className="h-[64px] w-[456px]"
+            className="h-[64px] w-[456px] text-white"
+            disabled={getCampaignButtonStatus('RECRUITING').isDisabled}
+            onClick={getCampaignButtonStatus('RECRUITING').onClick}
           >
-            {campaignStatusCode}
+            {getCampaignButtonStatus(userSpecificCampaignStatus).text}
           </Button>
         </div>
       </div>
+      <RejectModal
+        open={isRejectModalOpen}
+        onOpenChange={setIsRejectModalOpen}
+        onConfirm={() => {
+          setIsRejectModalOpen(false);
+        }}
+        type={rejectModalType}
+      />
+      <ConfirmCampaignSignUpModal
+        announcementDate={format.dateTime(
+          dayjs(creatorAnnouncementDate).toDate(),
+          {
+            month: 'short',
+            day: 'numeric',
+            year: 'numeric',
+          }
+        )}
+        open={isConfirmCampaignSignUpModalOpen}
+        onOpenChange={setIsConfirmCampaignSignUpModalOpen}
+        onConfirm={() => {
+          setIsConfirmCampaignSignUpModalOpen(false);
+        }}
+      />
     </div>
   );
 }

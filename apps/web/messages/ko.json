@@ -194,7 +194,14 @@
     "eligibilityRequirements": "지원 자격 요건",
     "localTimeNotice": "모든 시간은 사용자의 현지 시간으로 표시됩니다",
     "resultAnnouncement": "결과 발표",
-    "rewardsAndCompensation": "보상 및 혜택"
+    "rewardsAndCompensation": "보상 및 혜택",
+    "confirmCampaignSignUpModal": {
+      "title": "캠페인 신청 확인",
+      "description": "캠페인 결과는 {announcementDate}에 발표됩니다.\n배송 주소는 24시간 이내에 확인해야 합니다.\n신청하기 전에 <link>캠페인 가이드라인</link>을 확인해주세요.",
+      "finalDescription": "계속하시겠습니까?",
+      "confirmButton": "확인",
+      "cancelButton": "취소"
+    }
   },
   "campaignFilter": {
     "seeMore": "더 보기"
