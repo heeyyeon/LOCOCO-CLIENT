@@ -1,7 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
-import { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 
 import Image from 'next/image';
 

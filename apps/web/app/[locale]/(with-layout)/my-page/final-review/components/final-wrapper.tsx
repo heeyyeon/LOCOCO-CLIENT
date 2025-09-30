@@ -1,3 +1,5 @@
+import React from 'react';
+
 interface FinalWrapperProps {
   title: string;
   children: React.ReactNode;
