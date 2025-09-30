@@ -16,7 +16,7 @@ export default function CreatorProfileColumn({
         <p className="text-inter-body1 font-bold text-gray-800">
           {creatorFullName}
         </p>
-        <p className="text-inter-body3 text-gray-600">{creatorNickName}</p>
+        <p className="text-inter-body3 text-gray-600">@{creatorNickName}</p>
       </div>
     </div>
   );
