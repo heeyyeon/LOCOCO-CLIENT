@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { useFormContext } from 'react-hook-form';
+import { Controller, useFormContext } from 'react-hook-form';
 
 import { useTranslations } from 'next-intl';
 
@@ -10,38 +10,71 @@ import { CampaignFormData } from 'schema/create-campaign-schema';
 import { dateOptions } from 'utils';
 import { timeOptions } from 'utils/time-options';
 
-import { RHFSelect } from './rhf-Select';
+import { Select } from '@lococo/design-system/select';
 
 export default function CampaignWinnerAnnounce() {
   const { AM_PM, HOURS, MINUTES } = timeOptions();
   const { months, years, days } = dateOptions();
   const {
+    control,
     formState: { errors },
+    watch,
   } = useFormContext<CampaignFormData>();
 
   const t = useTranslations('brandMyPageCreateCampaign');
+
+  const monthValue = watch('announceDate.month');
+  const dayValue = watch('announceDate.day');
+  const yearValue = watch('announceDate.year');
+  const periodValue = watch('announceTime.period');
+  const hourValue = watch('announceTime.hour');
+  const minuteValue = watch('announceTime.minute');
 
   return (
     <section className="flex w-[64.8rem] flex-col gap-[1.6rem]">
       <SelectFormField label={t('schedule.announceDate')} required>
         <div className="flex gap-[2.4rem]">
-          <RHFSelect
+          <Controller
             name="announceDate.month"
-            options={months}
-            placeholder="Month"
-            size="small"
+            control={control}
+            render={({ field }) => (
+              <Select
+                key={`announce-month-${monthValue}`}
+                size="small"
+                options={months}
+                value={monthValue || undefined}
+                onValueChange={field.onChange}
+                placeholder="Month"
+              />
+            )}
           />
-          <RHFSelect
+          <Controller
             name="announceDate.day"
-            options={days}
-            placeholder="Day"
-            size="small"
+            control={control}
+            render={({ field }) => (
+              <Select
+                key={`announce-day-${dayValue}`}
+                size="small"
+                options={days}
+                value={dayValue || undefined}
+                onValueChange={field.onChange}
+                placeholder="Day"
+              />
+            )}
           />
-          <RHFSelect
+          <Controller
             name="announceDate.year"
-            options={years}
-            placeholder="Year"
-            size="small"
+            control={control}
+            render={({ field }) => (
+              <Select
+                key={`announce-year-${yearValue}`}
+                size="small"
+                options={years}
+                value={yearValue || undefined}
+                onValueChange={field.onChange}
+                placeholder="Year"
+              />
+            )}
           />
         </div>
         {(errors.announceDate?.month ||
@@ -57,23 +90,47 @@ export default function CampaignWinnerAnnounce() {
 
       <SelectFormField label={t('schedule.announceTime')} required>
         <div className="flex gap-[2.4rem]">
-          <RHFSelect
+          <Controller
             name="announceTime.period"
-            options={AM_PM}
-            placeholder="AM/PM"
-            size="small"
+            control={control}
+            render={({ field }) => (
+              <Select
+                key={`announce-period-${periodValue}`}
+                size="small"
+                options={AM_PM}
+                value={periodValue || undefined}
+                onValueChange={field.onChange}
+                placeholder="AM/PM"
+              />
+            )}
           />
-          <RHFSelect
+          <Controller
             name="announceTime.hour"
-            options={HOURS}
-            placeholder="Hour"
-            size="small"
+            control={control}
+            render={({ field }) => (
+              <Select
+                key={`announce-hour-${hourValue}`}
+                size="small"
+                options={HOURS}
+                value={hourValue || undefined}
+                onValueChange={field.onChange}
+                placeholder="Hour"
+              />
+            )}
           />
-          <RHFSelect
+          <Controller
             name="announceTime.minute"
-            options={MINUTES}
-            placeholder="Minute"
-            size="small"
+            control={control}
+            render={({ field }) => (
+              <Select
+                key={`announce-minute-${minuteValue}`}
+                size="small"
+                options={MINUTES}
+                value={minuteValue || undefined}
+                onValueChange={field.onChange}
+                placeholder="Minute"
+              />
+            )}
           />
         </div>
         {(errors.announceTime?.hour || errors.announceTime?.minute) && (

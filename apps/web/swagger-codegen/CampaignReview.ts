@@ -12,6 +12,7 @@
 
 import {
   ApiResponseCampaignParticipatedResponse,
+  ApiResponseCompletedReviewResponse,
   ApiResponseListCampaignParticipatedResponse,
   ApiResponseMediaPresignedUrlResponse,
   ApiResponseReviewUploadResponse,
@@ -87,6 +88,22 @@ export class CampaignReview<
       body: data,
       secure: true,
       type: ContentType.Json,
+      ...params,
+    });
+  /**
+   * No description
+   *
+   * @tags CAMPAIGN REVIEW
+   * @name GetCompletedReviews
+   * @summary 완료된 캠페인 리뷰 결과 조회 (2차 리뷰)
+   * @request GET:/api/campaignReviews/{campaignId}/results
+   * @secure
+   */
+  getCompletedReviews = (campaignId: number, params: RequestParams = {}) =>
+    this.request<ApiResponseCompletedReviewResponse, any>({
+      path: `/api/campaignReviews/${campaignId}/results`,
+      method: "GET",
+      secure: true,
       ...params,
     });
   /**

@@ -61,7 +61,9 @@ export function SelectFormField({
               const selectedOption = options!.find(
                 (option) => option.label === selectedLabel
               );
-              onValueChange!(selectedOption?.value || selectedLabel);
+              if (selectedOption && onValueChange) {
+                onValueChange(selectedOption.value);
+              }
             }}
             size={size}
             variant={variant}
