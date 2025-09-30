@@ -62,48 +62,12 @@ export default function CampaignInfoPanel({
   currentUserRole,
   creatorRoleInfo,
 }: CampaignInfoPanelProps) {
-  // const userSpecificCampaignStatus = 'ACTIVE';
-  // const currentUserRole:
-  //   | 'CUSTOMER'
-  //   | 'CREATOR'
-  //   | 'BRAND'
-  //   | 'ADMIN'
-  //   | undefined = 'BRAND' as const;
-  // const creatorRoleInfo = 'PRO';
-
   const t = useTranslations('campaignDetail');
   const format = useFormatter();
 
   const router = useRouter();
   const params = useParams();
   const campaignId = params.campaignId;
-  //   title: 'Glass Skin Glow Serum Campaign',
-  //   type: 'Giveaway',
-  //   schedule: {
-  //     applicationPeriod: 'Feb 15, 9:00 AM - Feb 15, 23:59 PM',
-  //     contentSubmissionPeriod: 'Feb 16, 12:00 PM',
-  //     resultAnnouncement: 'Feb 16, 12:00 PM',
-  //   },
-  //   deliverables: {
-  //     instagram: {
-  //       reels: '1 Reels(30-60 seconds)',
-  //       stories: 'Stories(3-5 posts)',
-  //       videos: '2 videos showcashing before/after',
-  //     },
-  //     hashtags: ['#GlassSkinGlow', '#Beauty_Of_UIQ', '#K-Beauty'],
-  //   },
-  //   rewards: [
-  //     'Free Giveaway',
-  //     'Bonus Rewards for contents with a view over 10K',
-  //   ],
-  //   eligibility: [
-  //     'Beauty/ Skincare content creators',
-  //     'Contents should be made in English',
-  //   ],
-  // };
-
-  // TODO: 백엔드 데이터 누락, 추가시 삭제
-  const hashtags = ['#GlassSkinGlow', '#Beauty_Of_UIQ', '#K-Beauty'];
 
   const [
     isConfirmCampaignSignUpModalOpen,
@@ -137,6 +101,7 @@ export default function CampaignInfoPanel({
       if (currentUserRole === 'CREATOR' && creatorRoleInfo === 'PRO') {
         // PRO 캠페인이면서 크리에이터 PRO
         // 정상 로직 진행
+        setIsConfirmCampaignSignUpModalOpen(true);
       } else {
         // PRO 캠페인이면서 크리에이터 자격없음
         // reject 모달
@@ -150,14 +115,13 @@ export default function CampaignInfoPanel({
   };
 
   const handleActiveCampaign = () => {
-    console.log(currentUserRole);
     if (currentUserRole === 'CREATOR') {
       router.push(`/my-page/my-campaign`);
     } else if (currentUserRole === 'BRAND') {
       // 지원자 리스트 라우팅
       router.push(`/brand/applicants?campaignId=${campaignId}`);
     }
-    // TODO: 체험단 모집완료, 캠페인 진행중 케이스 추가
+    // TODO: 체험단 모집완료, 캠페인 진행중 케이스 추가 or 기획 논의 필요
   };
 
   const getCampaignButtonStatus = (
@@ -335,17 +299,6 @@ export default function CampaignInfoPanel({
                     </div>
                   </div>
                 </div>
-              ))}
-            </div>
-
-            {/* Hashtags 삭제 필요*/}
-            <div className="flex items-center gap-[4px]">
-              {hashtags.map((hashtag, index) => (
-                <InfoChip
-                  key={index}
-                  text={hashtag}
-                  className="text-inter-caption font-bold text-gray-700"
-                />
               ))}
             </div>
           </div>

@@ -204,7 +204,7 @@
     },
     "confirmCampaignSignUpModal": {
       "title": "Confirm Campaign Sign-Up",
-      "description": "Campaign results will be announced on {announcementDate}.\nDelivery address must be confirmed within 24 hours.\nPlease review the <link>Campaign Guidelines</link> before signing up.",
+      "description": "Campaign results will be announced on <bold>{announcementDate}</bold> \nDelivery address must be confirmed within 24 hours.\nPlease review the <link>Campaign Guidelines</link> before signing up.",
       "finalDescription": "Do you want to proceed?",
       "confirmButton": "Confirm",
       "cancelButton": "Cancel"
