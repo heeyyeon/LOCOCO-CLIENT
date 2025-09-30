@@ -1,7 +1,5 @@
 import { getTranslations } from 'next-intl/server';
 
-import Test from 'components/table/test';
-
 import { RoleSetupHandler } from '../login-google/components/RoleSetupHandler';
 import HomeBanner from './components/home-banner';
 import HomeSection from './components/home-section';
@@ -25,7 +23,6 @@ export default async function Main() {
           <HomeSectionCampaign kindOfCard="openingSoon" seeMore={false} />
         </HomeSection>
       </div>
-      <Test />
     </div>
   );
 }
