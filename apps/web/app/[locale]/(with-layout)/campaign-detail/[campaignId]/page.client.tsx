@@ -18,7 +18,10 @@ interface CampaignDetailPageProps {
   eligibilityRequirements: string[];
   thumbnailImages: { id: number; url: string; displayOrder: number }[];
   detailImages: { id: number; url: string; displayOrder: number }[];
-  campaignStatusCode: string;
+  userSpecificCampaignStatus: string;
+  isProCampaign: boolean;
+  currentUserRole: 'CUSTOMER' | 'CREATOR' | 'BRAND' | 'ADMIN';
+  creatorRoleInfo: 'NOT_APPROVED' | 'PRO' | 'NORMAL';
 }
 
 export default function CampaignDetailPage({
@@ -35,7 +38,10 @@ export default function CampaignDetailPage({
   eligibilityRequirements,
   thumbnailImages,
   detailImages,
-  campaignStatusCode,
+  userSpecificCampaignStatus,
+  isProCampaign,
+  currentUserRole,
+  creatorRoleInfo,
 }: CampaignDetailPageProps) {
   const parsingThumbnailImages = thumbnailImages
     .sort((a, b) => a.displayOrder - b.displayOrder)
@@ -63,7 +69,11 @@ export default function CampaignDetailPage({
             deliverableRequirements={deliverableRequirements}
             participationRewards={participationRewards}
             eligibilityRequirements={eligibilityRequirements}
-            campaignStatusCode={campaignStatusCode}
+            // campaignStatusCode={campaignStatusCode}
+            userSpecificCampaignStatus={userSpecificCampaignStatus}
+            isProCampaign={isProCampaign}
+            currentUserRole={currentUserRole}
+            creatorRoleInfo={creatorRoleInfo}
           />
         </div>
         <CampaignDetailImageWrapper images={parsingDetailImages} />
