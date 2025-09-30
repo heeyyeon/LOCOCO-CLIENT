@@ -301,6 +301,7 @@
     },
     "title": "Join Lococo Creator Community!",
     "validation": {
+      "error": "Failed to load profile data",
       "addressLine1MaxLength": "Use up to 20 characters.",
       "addressLine1Required": "Address Line 1 is required.",
       "addressLine2MaxLength": "Use up to 20 characters.",
@@ -328,6 +329,7 @@
     }
   },
   "creatorSnsLinksPage": {
+    "error": "Failed to load SNS connection",
     "snsDescription": "We will go through your SNS account, and let you know if you are verified.",
     "submitLabel": "Join",
     "title": "Join Lococo Creator Community!"
@@ -352,7 +354,7 @@
     "slogan": "Where Creators Meet Real K-Beauty"
   },
   "gnb": {
-    "campaigns": "campaigns",
+    "campaigns": "Campaigns",
     "howItWorks": "How It Works",
     "login": "Log in",
     "logIn": "Log in",
@@ -479,6 +481,7 @@
       "zip": "Zip/Postal Code"
     },
     "contentSubmissions": {
+      "error": "Failed to load content submissions",
       "brandNote": {
         "description": "These are the revisions requested by the brand. Please update your content accordingly and re-upload it after making the changes.",
         "firstReview": "Brand’s Note for 1st Review ",
@@ -614,6 +617,8 @@
       "yearRequired": "Year is required"
     },
     "finalReview": {
+      "empty": "There is no review result.",
+      "error": "Failed to load review result",
       "1stContent": "1st Content",
       "2ndContent": "2nd Content",
       "brandNote": {
@@ -627,6 +632,7 @@
         "title": "Content Type"
       },
       "socialMediaContent": "Social Media Content",
+      "socialMediaContents": "Social Media Contents",
       "submitCaptionAndHashtags": "Submit Your Caption & Hashtags",
       "submitContentUrl": "Submit Content URL"
     },
@@ -637,6 +643,7 @@
       "myCampaign": "My Campaign"
     },
     "myCampaign": {
+      "error": "Failed to load my campaign",
       "buttonText": {
         "confirmAddress": "Confirm Address",
         "revisionRequested": "Revision Requested",
