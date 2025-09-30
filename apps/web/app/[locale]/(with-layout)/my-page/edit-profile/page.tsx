@@ -6,6 +6,7 @@ import { useForm } from 'react-hook-form';
 import { useTranslations } from 'next-intl';
 
 import { zodResolver } from '@hookform/resolvers/zod';
+import CampaignListEmpty from 'components/empty/campgin-list-empty';
 import LoadingSvg from 'components/loading/loading-svg';
 
 import { Button } from '@lococo/design-system/button';
@@ -166,7 +167,7 @@ export default function EditProfile() {
   }
 
   if (profileQuery.error) {
-    throw profileQuery.error;
+    return <CampaignListEmpty emptyMessage={t('error')} />;
   }
 
   return (

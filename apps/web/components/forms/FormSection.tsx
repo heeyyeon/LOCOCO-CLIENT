@@ -4,7 +4,7 @@ import { cn } from '@lococo/utils';
 
 interface FormSectionProps {
   title: string;
-  description: string;
+  description?: string;
   children: ReactNode;
   className?: string;
 }

@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { useFormContext } from 'react-hook-form';
+import { Controller, useFormContext } from 'react-hook-form';
 
 import { useTranslations } from 'next-intl';
 
@@ -10,38 +10,71 @@ import { CampaignFormData } from 'schema/create-campaign-schema';
 import { dateOptions } from 'utils';
 import { timeOptions } from 'utils/time-options';
 
-import { RHFSelect } from './rhf-Select';
+import { Select } from '@lococo/design-system/select';
 
 export default function CampaignEndInfo() {
   const { AM_PM, HOURS, MINUTES } = timeOptions();
   const { months, years, days } = dateOptions();
   const {
+    control,
     formState: { errors },
+    watch,
   } = useFormContext<CampaignFormData>();
 
   const t = useTranslations('brandMyPageCreateCampaign');
+
+  const monthValue = watch('endDate.month');
+  const dayValue = watch('endDate.day');
+  const yearValue = watch('endDate.year');
+  const periodValue = watch('endTime.period');
+  const hourValue = watch('endTime.hour');
+  const minuteValue = watch('endTime.minute');
 
   return (
     <section className="flex w-[64.8rem] flex-col gap-[1.6rem]">
       <SelectFormField label={t('schedule.endDate')} required>
         <div className="flex gap-[2.4rem]">
-          <RHFSelect
+          <Controller
             name="endDate.month"
-            options={months}
-            size="small"
-            placeholder="Month"
+            control={control}
+            render={({ field }) => (
+              <Select
+                key={`end-month-${monthValue}`}
+                size="small"
+                options={months}
+                value={monthValue || undefined}
+                onValueChange={field.onChange}
+                placeholder="Month"
+              />
+            )}
           />
-          <RHFSelect
+          <Controller
             name="endDate.day"
-            options={days}
-            size="small"
-            placeholder="Day"
+            control={control}
+            render={({ field }) => (
+              <Select
+                key={`end-day-${dayValue}`}
+                size="small"
+                options={days}
+                value={dayValue || undefined}
+                onValueChange={field.onChange}
+                placeholder="Day"
+              />
+            )}
           />
-          <RHFSelect
+          <Controller
             name="endDate.year"
-            options={years}
-            size="small"
-            placeholder="Year"
+            control={control}
+            render={({ field }) => (
+              <Select
+                key={`end-year-${yearValue}`}
+                size="small"
+                options={years}
+                value={yearValue || undefined}
+                onValueChange={field.onChange}
+                placeholder="Year"
+              />
+            )}
           />
         </div>
         {(errors.endDate?.month ||
@@ -57,23 +90,47 @@ export default function CampaignEndInfo() {
 
       <SelectFormField label={t('schedule.endTime')} required>
         <div className="flex gap-[2.4rem]">
-          <RHFSelect
+          <Controller
             name="endTime.period"
-            options={AM_PM}
-            size="small"
-            placeholder="AM/PM"
+            control={control}
+            render={({ field }) => (
+              <Select
+                key={`end-period-${periodValue}`}
+                size="small"
+                options={AM_PM}
+                value={periodValue || undefined}
+                onValueChange={field.onChange}
+                placeholder="AM/PM"
+              />
+            )}
           />
-          <RHFSelect
+          <Controller
             name="endTime.hour"
-            options={HOURS}
-            size="small"
-            placeholder="Hour"
+            control={control}
+            render={({ field }) => (
+              <Select
+                key={`end-hour-${hourValue}`}
+                size="small"
+                options={HOURS}
+                value={hourValue || undefined}
+                onValueChange={field.onChange}
+                placeholder="Hour"
+              />
+            )}
           />
-          <RHFSelect
+          <Controller
             name="endTime.minute"
-            options={MINUTES}
-            size="small"
-            placeholder="Minute"
+            control={control}
+            render={({ field }) => (
+              <Select
+                key={`end-minute-${minuteValue}`}
+                size="small"
+                options={MINUTES}
+                value={minuteValue || undefined}
+                onValueChange={field.onChange}
+                placeholder="Minute"
+              />
+            )}
           />
         </div>
         {(errors.endTime?.hour || errors.endTime?.minute) && (
