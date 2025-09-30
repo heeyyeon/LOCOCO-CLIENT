@@ -74,12 +74,10 @@ export default function BasicInfo({
         placeholder="jessica.anderson@gmail.com"
         register={emailRegister}
         error={emailError}
+        notice={
+          <p className="caption3 text-gray-500">{t('basicInfo.emailNotice')}</p>
+        }
       />
-      <div className="relative">
-        <p className="caption3 absolute left-[24rem] text-gray-500">
-          {t('basicInfo.emailNotice')}
-        </p>
-      </div>
     </FormSection>
   );
 }
