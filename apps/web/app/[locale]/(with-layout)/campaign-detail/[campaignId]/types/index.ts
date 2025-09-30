@@ -14,9 +14,19 @@ export interface CampaignDetailData {
   eligibilityRequirements: string[];
   thumbnailImages: { id: number; url: string; displayOrder: number }[];
   detailImages: { id: number; url: string; displayOrder: number }[];
-  campaignStatusCode: string;
+  userSpecificCampaignStatus: string;
+  isProCampaign: boolean;
+  currentUserRole: 'CUSTOMER' | 'CREATOR' | 'BRAND' | 'ADMIN';
+  creatorRoleInfo: 'NOT_APPROVED' | 'PRO' | 'NORMAL';
 }
 
 export interface CampaignDetailResponse {
   data: CampaignDetailData;
+}
+
+export interface CreatorCampaignApplyResponse {
+  success: boolean;
+  status: number;
+  message: string;
+  data: null;
 }
