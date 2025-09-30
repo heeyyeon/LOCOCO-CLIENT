@@ -3,6 +3,9 @@
 import { useTranslations } from 'next-intl';
 import { useSearchParams } from 'next/navigation';
 
+import CampaignListEmpty from 'components/empty/campgin-list-empty';
+import LoadingSvg from 'components/loading/loading-svg';
+
 import { useReviewResult } from '../hooks/use-review-result';
 import ContentType from './components/content-type';
 import FinalWrapper from './components/final-wrapper';
@@ -11,13 +14,29 @@ import ImageBox from './components/image-box';
 export default function FinalReview() {
   const searchParams = useSearchParams();
   const campaignId = searchParams.get('campaignId');
-  const { data: reviewResult } = useReviewResult(Number(campaignId));
+  const {
+    data: reviewResult,
+    isPending,
+    isError,
+  } = useReviewResult(Number(campaignId));
 
   const t = useTranslations('myPage.finalReview');
 
+  if (isPending) {
+    return (
+      <div className="flex h-[50rem] w-full items-center justify-center">
+        <LoadingSvg />
+      </div>
+    );
+  }
+  if (isError) {
+    <CampaignListEmpty emptyMessage={t('error')} />;
+  }
   return (
     <div className="flex min-h-[calc(100vh-11.2rem)] w-full flex-col items-center gap-[8.4rem] bg-gray-100 px-[9.4rem] py-[6.4rem]">
       {reviewResult?.data &&
+      reviewResult.data?.reviewContents?.length &&
+      reviewResult.data?.reviewContents?.length > 0 ? (
         reviewResult.data?.reviewContents?.map((item, index) => (
           <div
             key={`${item.contentType}-${index}`}
@@ -40,7 +59,10 @@ export default function FinalReview() {
               </p>
             </FinalWrapper>
           </div>
-        ))}
+        ))
+      ) : (
+        <CampaignListEmpty emptyMessage={t('empty')} />
+      )}
     </div>
   );
 }
