@@ -53,26 +53,16 @@ export const useConnectSns = () => {
 };
 
 const connectTiktokApi = async (): Promise<ApiResponseVoid> => {
-  // OAuth connect는 브라우저 네비게이션으로 직접 이동
-  console.log('🔗 TikTok 연결 시작');
-  console.log(
-    '📍 NEXT_PUBLIC_API_SERVER_URL:',
-    process.env.NEXT_PUBLIC_API_SERVER_URL
-  );
-
-  // 현재 페이지 정보를 세션 스토리지에 저장
   const currentPath = window.location.pathname;
   sessionStorage.setItem('oauth_return_path', currentPath);
-  console.log('💾 현재 페이지 저장:', currentPath);
 
-  // Next.js API Route 사용 (인증 처리 후 백엔드로 리다이렉트)
-  const connectUrl = `${window.location.protocol}//${window.location.host}/api/auth/sns/tiktok/connect`;
-  console.log('🌐 Next.js API Route URL:', connectUrl);
+  const connectUrl = new URL(
+    `${window.location.protocol}//${window.location.host}/api/auth/sns/tiktok/connect`
+  );
+  connectUrl.searchParams.set('return_to', currentPath);
 
-  console.log('🚀 Next.js API Route로 이동 중...');
-  window.location.href = connectUrl;
+  window.location.href = connectUrl.toString();
 
-  // Promise는 resolve되지 않음 (페이지가 리다이렉트되므로)
   return new Promise(() => {});
 };
 
@@ -83,25 +73,12 @@ export const useConnectTiktok = () => {
 };
 
 const connectInstagramApi = async (): Promise<ApiResponseVoid> => {
-  // OAuth connect는 브라우저 네비게이션으로 직접 이동
-  console.log('📸 Instagram 연결 시작');
-  console.log(
-    '📍 NEXT_PUBLIC_API_SERVER_URL:',
-    process.env.NEXT_PUBLIC_API_SERVER_URL
-  );
-
-  // 현재 페이지 정보를 세션 스토리지에 저장
   const currentPath = window.location.pathname;
   sessionStorage.setItem('oauth_return_path', currentPath);
-  console.log('💾 현재 페이지 저장:', currentPath);
 
   const connectUrl = `${process.env.NEXT_PUBLIC_API_SERVER_URL}/api/auth/sns/instagram/connect`;
-  console.log('🌐 연결 URL:', connectUrl);
-
-  console.log('🚀 Instagram OAuth 페이지로 이동 중...');
   window.location.href = connectUrl;
 
-  // Promise는 resolve되지 않음 (페이지가 리다이렉트되므로)
   return new Promise(() => {});
 };
 
@@ -111,41 +88,31 @@ export const useConnectInstagram = () => {
   });
 };
 
-// OAuth 콜백 처리 훅
 export const useOAuthCallback = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const queryClient = useQueryClient();
 
   useEffect(() => {
-    console.log('🔄 OAuth 콜백 처리 시작');
-    console.log('📍 현재 URL:', window.location.href);
-    console.log('🔍 URL 파라미터:', Object.fromEntries(searchParams.entries()));
-
     const success = searchParams.get('success');
     const error = searchParams.get('error');
-    const code = searchParams.get('code');
-    const state = searchParams.get('state');
-
-    console.log('✅ success:', success);
-    console.log('❌ error:', error);
-    console.log('🔑 code:', code);
-    console.log('🎯 state:', state);
 
     // 저장된 원래 페이지 경로 가져오기
     const returnPath = sessionStorage.getItem('oauth_return_path');
-    console.log('🔙 원래 페이지:', returnPath);
 
     if (success) {
-      console.log('🎉 SNS 연결 성공! 상태 새로고침 중...');
-      // SNS 연결 상태 새로고침
       queryClient.invalidateQueries({
         queryKey: CONNECT_SNS_KEYS.CONNECT_SNS(),
       });
+
+      // 성공 후 URL 파라미터 정리
+      const url = new URL(window.location.href);
+      url.searchParams.delete('success');
+      window.history.replaceState({}, '', url.toString());
+      return;
     }
 
     if (error) {
-      console.log('💥 OAuth 에러 발생:', error);
       // 에러 시에는 원래 페이지로 돌아가되 에러 파라미터 추가
       const errorPath = returnPath || '/sign-up/creator/sns-links';
       router.replace(
@@ -155,14 +122,16 @@ export const useOAuthCallback = () => {
     }
 
     // URL 파라미터 정리 및 원래 페이지로 리다이렉트
-    console.log('🧹 URL 파라미터 정리 중...');
-    const finalPath = returnPath || '/sign-up/creator/sns-links';
-    console.log('🏠 최종 리다이렉트 경로:', finalPath);
+    // returnPath가 있으면 해당 경로로, 없으면 현재 경로 유지
+    const finalPath = returnPath || window.location.pathname;
 
     // 세션 스토리지에서 원래 페이지 정보 제거
     sessionStorage.removeItem('oauth_return_path');
 
-    router.replace(finalPath);
+    // 현재 페이지와 다른 경우에만 리다이렉트
+    if (finalPath !== window.location.pathname) {
+      router.replace(finalPath);
+    }
   }, [searchParams, router, queryClient]);
 
   return {
