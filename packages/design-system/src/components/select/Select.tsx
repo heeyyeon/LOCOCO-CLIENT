@@ -37,7 +37,7 @@ function SelectTrigger({
     <SelectPrimitive.Trigger
       data-slot="select-trigger"
       className={cn(
-        'inter-body4 group flex h-[4rem] cursor-pointer items-center justify-between gap-[1rem] self-stretch border-b border-gray-400 bg-white pr-[1.2rem] text-gray-500 focus:outline-none',
+        'text-inter-body4 group flex h-[4rem] cursor-pointer items-center justify-between gap-[1rem] self-stretch border-b border-gray-400 bg-white pr-[1.2rem] text-gray-500 focus:outline-none',
         '[&:not([data-placeholder])]:border-gray-400',
         '[&[data-state=open]]:border-b-pink-500 [&[data-state=open]]:text-black',
         '[&[data-placeholder]] body4',
@@ -154,7 +154,13 @@ export function Select({
   return (
     <div>
       <SelectRoot {...selectProps}>
-        <SelectTrigger className={className} size={size}>
+        <SelectTrigger
+          className={cn(
+            'data-[placeholder]:text-body4 data-[slot]:text-[1.4rem] data-[placeholder]:text-gray-800 data-[slot]:text-gray-800',
+            className
+          )}
+          size={size}
+        >
           <SelectValue placeholder={placeholder} />
         </SelectTrigger>
 

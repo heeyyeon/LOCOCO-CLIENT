@@ -15,18 +15,22 @@ import {
 
 interface DragDropAreaProps {
   imageFiles: File[];
-  videoFiles: File[];
+  videoFiles?: File[];
+  existingImageUrls?: string[];
   handleImageFilesChange: (files: File[]) => void;
   handleVideoFilesChange: (files: File[]) => void;
+  onRemoveExistingImage?: (index: number) => void;
   maxFiles?: number;
   className?: string;
 }
 
 export default function DragDropArea({
   imageFiles,
-  videoFiles,
+  videoFiles = [],
+  existingImageUrls,
   handleImageFilesChange,
   handleVideoFilesChange,
+  onRemoveExistingImage,
   maxFiles = 10,
   className,
 }: DragDropAreaProps) {
@@ -133,6 +137,15 @@ export default function DragDropArea({
     e.target.value = '';
   };
 
+  const handleRemoveExistingImageFile =
+    (index: number) => (e: React.MouseEvent) => {
+      e.stopPropagation();
+      e.preventDefault();
+      if (onRemoveExistingImage) {
+        onRemoveExistingImage(index);
+      }
+    };
+
   const handleRemoveImageFile = (index: number) => (e: React.MouseEvent) => {
     e.stopPropagation();
     e.preventDefault();
@@ -186,8 +199,13 @@ export default function DragDropArea({
     }
   };
 
-  const hasFiles = imageFiles.length > 0 || videoFiles.length > 0;
-  const canAddMoreFiles = imageFiles.length + videoFiles.length < maxFiles;
+  const hasFiles =
+    imageFiles.length > 0 ||
+    videoFiles.length > 0 ||
+    (existingImageUrls && existingImageUrls.length > 0);
+  const canAddMoreFiles =
+    imageFiles.length + videoFiles.length + (existingImageUrls?.length || 0) <
+    maxFiles;
 
   return (
     <>
@@ -227,6 +245,17 @@ export default function DragDropArea({
             className="scrollbar-hide grid auto-cols-max grid-rows-2 gap-x-[1.2rem] gap-y-[1.5rem] overflow-x-scroll"
             style={{ gridAutoFlow: 'column' }}
           >
+            {existingImageUrls?.map((file, index) => (
+              <ImagePreview
+                key={`image-${index}`}
+                src={file}
+                alt="saved image"
+                handleRemoveFile={handleRemoveExistingImageFile(index)}
+                handleFileChange={handleChangeFile(index)}
+                className="h-[9.2rem] w-[9.2rem]"
+              />
+            ))}
+
             {/* Image Files */}
             {imageFiles.map((file, index) => (
               <ImagePreview

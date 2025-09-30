@@ -529,7 +529,7 @@ export interface CampaignPublishRequest {
    * 두 번째 컨텐츠 플랫폼
    * @example "INSTAGRAM_REELS 또는 INSTAGRAM_POST 또는 TIKTOK_VIDEO"
    */
-  secondContentType: "INSTA_REELS" | "TIKTOK_VIDEO" | "INSTA_POST";
+  secondContentType?: "INSTA_REELS" | "TIKTOK_VIDEO" | "INSTA_POST";
 }
 
 export interface RoleUpdateRequest {
@@ -650,16 +650,16 @@ export interface CustomerMyPageRequest {
    */
   cityOrTown?: string;
   /**
-   * Address Line 1 (최대 30자)
+   * Address Line 1 (최대 100자)
    * @minLength 0
-   * @maxLength 30
+   * @maxLength 100
    * @example 1234
    */
   addressLine1?: string;
   /**
-   * Address Line 2 (최대 30자)
+   * Address Line 2 (최대 100자)
    * @minLength 0
-   * @maxLength 30
+   * @maxLength 100
    * @example "Apt 5B"
    */
   addressLine2?: string;
@@ -772,16 +772,16 @@ export interface CreatorInfoUpdateRequest {
    */
   cityOrTown: string;
   /**
-   * Address Line 1 (최대 30자)
+   * Address Line 1 (최대 100자)
    * @minLength 0
-   * @maxLength 30
+   * @maxLength 100
    * @example 1234
    */
   addressLine1: string;
   /**
-   * Address Line 2 (최대 30자)
+   * Address Line 2 (최대 100자)
    * @minLength 0
-   * @maxLength 30
+   * @maxLength 100
    * @example "Apt 5B"
    */
   addressLine2?: string;
@@ -893,16 +893,16 @@ export interface CreatorMyPageUpdateRequest {
    */
   cityOrTown?: string;
   /**
-   * Address Line 1 (최대 30자)
+   * Address Line 1 (최대 100자)
    * @minLength 0
-   * @maxLength 30
+   * @maxLength 100
    * @example 1234
    */
   addressLine1?: string;
   /**
-   * Address Line 2 (최대 30자)
+   * Address Line 2 (최대 100자)
    * @minLength 0
-   * @maxLength 30
+   * @maxLength 100
    * @example "Apt 5B"
    */
   addressLine2?: string;
@@ -975,12 +975,12 @@ export interface CreatorAddressInfo {
    */
   cityOrTown: string;
   /**
-   * Address Line 1 (텍스트, 최대 30자)
+   * Address Line 1 (텍스트, 최대 100자)
    * @example 1234
    */
   addressLine1: string;
   /**
-   * Address Line 2 (텍스트, 최대 30자)
+   * Address Line 2 (텍스트, 최대 100자)
    * @example "Apt 5B"
    */
   addressLine2?: string;
@@ -1711,12 +1711,12 @@ export interface CustomerMyPageResponse {
    */
   cityOrTown?: string;
   /**
-   * Address Line 1 (최대 30자)
+   * Address Line 1 (최대 100자)
    * @example 1234
    */
   addressLine1?: string;
   /**
-   * Address Line 2 (최대 30자)
+   * Address Line 2 (최대 100자)
    * @example "Apt 5B"
    */
   addressLine2?: string;
@@ -1835,12 +1835,12 @@ export interface CreatorInfoResponse {
    */
   cityOrTown: string;
   /**
-   * Address Line 1 (텍스트, 최대 30자)
+   * Address Line 1 (텍스트, 최대 100자)
    * @example 1234
    */
   addressLine1: string;
   /**
-   * Address Line 2 (텍스트, 최대 30자)
+   * Address Line 2 (텍스트, 최대 100자)
    * @example "Apt 5B"
    */
   addressLine2: string;
@@ -2177,6 +2177,45 @@ export interface MainPageUpcomingCampaignResponse {
    * @example "disabled"
    */
   chipStatus: string;
+}
+
+export interface ApiResponseCompletedReviewResponse {
+  success?: boolean;
+  /** @format int32 */
+  status?: number;
+  message?: string;
+  data?: CompletedReviewResponse;
+}
+
+export interface CompletedReviewContent {
+  /**
+   * 컨텐츠 타입
+   * @example "INSTA_REELS"
+   */
+  contentType?: "INSTA_REELS" | "TIKTOK_VIDEO" | "INSTA_POST";
+  /**
+   * 최종 제출한 캡션과 해시태그
+   * @example "수정해서 제출합니다 ㅎ"
+   */
+  captionWithHashtags?: string;
+  /** 최종 제출한 미디어 URL 목록 */
+  mediaUrls?: string[];
+}
+
+export interface CompletedReviewResponse {
+  /**
+   * 참여한 캠페인 ID
+   * @format int64
+   * @example 61
+   */
+  campaignId?: number;
+  /**
+   * 캠페인 이름
+   * @example "신상품 홍보 캠페인"
+   */
+  campaignName?: string;
+  /** 완료된 리뷰 컨텐츠 목록 */
+  reviewContents?: CompletedReviewContent[];
 }
 
 export interface ApiResponseListCampaignParticipatedResponse {
