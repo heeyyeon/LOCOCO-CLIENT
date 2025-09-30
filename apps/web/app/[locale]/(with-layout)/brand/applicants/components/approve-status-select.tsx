@@ -20,9 +20,9 @@ export default function ApproveStatusSelect({
 }: ApproveStatusSelectProps) {
   const statusOptions = [
     { label: '전체', value: 'ALL' },
-    { label: 'APPROVED', value: 'APPROVED' },
-    { label: 'PENDING', value: 'PENDING' },
-    { label: 'REJECTED', value: 'REJECTED' },
+    { label: '승인됨', value: 'APPROVED' },
+    { label: '대기중', value: 'PENDING' },
+    { label: '거절됨', value: 'REJECTED' },
   ];
 
   return (
