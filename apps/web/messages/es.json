@@ -702,9 +702,7 @@
         "viewNotes": "Ver notas",
         "viewResults": "Ver resultados"
       },
-      "empty": {
-        "title": "No se ha aplicado a ninguna campaña."
-      },
+      "empty": "No se ha aplicado a ninguna campaña.",
       "error": "No se pudo cargar mi campaña",
       "participationStatus": {
         "active": "Activo",

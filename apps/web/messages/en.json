@@ -702,9 +702,7 @@
         "viewNotes": "View Notes",
         "viewResults": "View Results"
       },
-      "empty": {
-        "title": "There is no campaign has been applied."
-      },
+      "empty": "There is no campaign has been applied.",
       "error": "Failed to load my campaign",
       "participationStatus": {
         "active": "Active",
