@@ -235,7 +235,7 @@ export default function BrandApplicantsPageClient({
     <div>Loading...</div>
   ) : isError || !data?.data ? (
     <div>Error</div>
-  ) : (
+  ) : campaignInfos.length > 0 ? (
     <div className="flex w-full flex-col gap-[1.6rem] px-[1.6rem]">
       <div className="flex w-full justify-between">
         <CampaignSelect
@@ -354,6 +354,18 @@ export default function BrandApplicantsPageClient({
           </p>
         </div>
       )}
+    </div>
+  ) : (
+    <div className="flex h-[52.4rem] w-full flex-col items-center justify-center gap-[3.2rem]">
+      <Image
+        src="/applicants-empty.svg"
+        alt="지원자가 없습니다."
+        width={100}
+        height={100}
+      />
+      <p className="text-inter-title2 font-bold text-gray-700">
+        지원자가 없습니다.
+      </p>
     </div>
   );
 }
