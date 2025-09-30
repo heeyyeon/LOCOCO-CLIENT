@@ -188,11 +188,41 @@
   },
   "campaignDetail": {
     "applicationPeriod": "Período de aplicación",
+    "applyButtonText": {
+      "active": "Campaña en curso",
+      "applied": "Solicitud enviada con éxito",
+      "approved_review_not_confirmed": "Expirada",
+      "approved_second_review_done": "Campaña completada",
+      "closed": "Campaña cerrada",
+      "not_applied_ended": "Campaña cerrada",
+      "open_reserved": "Próximamente",
+      "recruiting": {
+        "brand": "Ver solicitantes",
+        "creator": "¡Aplica ahora!"
+      },
+      "rejected": "Campaña no seleccionada",
+      "unknown": "Estado desconocido"
+    },
     "campaignSchedule": "Cronograma de la campaña",
-    "contentSubmissionPeriod": "Período de envío de contenidos",
+    "confirmCampaignSignUpModal": {
+      "cancelButton": "Cancelar",
+      "confirmButton": "Confirmar",
+      "description": "Los resultados de la campaña se anunciarán el <bold>{announcementDate}</bold>\nLa dirección de entrega debe confirmarse dentro de las 24 horas.\nPor favor revisa las <link>Campaign Guidelines</link> antes de inscribirte.",
+      "finalDescription": "¿Quieres continuar?",
+      "title": "Confirmar inscripción en la campaña"
+    },
+    "contentSubmissionPeriod": "Fecha límite de entrega de contenido",
     "deliverableRequirements": "Requisitos de entrega",
     "eligibilityRequirements": "Requisitos de elegibilidad",
     "localTimeNotice": "Todos los horarios se muestran en tu hora local",
+    "rejectModal": {
+      "alreadyAppliedDescription": "Ya has solicitado esta campaña. Por favor revisa el estado de tu campaña en Mi Página.",
+      "confirmButton": "Estoy de acuerdo",
+      "notCreatorDescription": "Las campañas son solo para Creadores de Lococo.\nSi deseas solicitar una actualización al estado de Socio de Lococo, envía un correo electrónico a lococo.official@gmail.com. ",
+      "notProCreatorDescription": "Esta campaña está abierta solo para creadores PRO. Si deseas solicitar una actualización al estado de creador PRO, envía un correo electrónico a lococo.official@gmail.com. ",
+      "title": "Solicitud rechazada",
+      "unExpectedErrorDescription": "Ocurrió un error inesperado. Por favor, inténtalo de nuevo más tarde."
+    },
     "resultAnnouncement": "Anuncio de resultados",
     "rewardsAndCompensation": "Recompensas y compensación"
   },
@@ -309,6 +339,7 @@
       "cityRequired": "La ciudad/pueblo es obligatoria.",
       "contentLanguageRequired": "El idioma del contenido es obligatorio.",
       "countryRequired": "El país es obligatorio.",
+      "error": "No se pudieron cargar los datos del perfil",
       "firstNameMaxLength": "Puedes usar hasta 20 caracteres.",
       "firstNameRequired": "El nombre es obligatorio.",
       "genderRequired": "El género es obligatorio.",
@@ -328,6 +359,7 @@
     }
   },
   "creatorSnsLinksPage": {
+    "error": "No se pudo cargar la conexión de SNS",
     "snsDescription": "Revisaremos su cuenta de redes sociales y le informaremos si está verificada.",
     "submitLabel": "Unirse",
     "title": "¡Únase a la Comunidad de Creadores de Lococo!"
@@ -508,6 +540,7 @@
       "empty": {
         "title": "El envío final ha sido recibido. Muchas gracias por enviarlo."
       },
+      "error": "",
       "hashtagsInput": {
         "description": "Se ha enviado con éxito",
         "title": "Envíe su pie de foto y hashtags"
@@ -614,22 +647,24 @@
       "yearRequired": "El año es obligatorio."
     },
     "finalReview": {
-      "1stContent": "",
-      "2ndContent": "",
+      "1stContent": "1er contenido",
+      "2ndContent": "2º contenido",
       "brandNote": {
-        "1stContent": "",
-        "2ndContent": ""
+        "1stContent": "Nota de la marca para la 1ª reseña",
+        "2ndContent": "Nota de la marca para la 2ª reseña"
       },
       "contentType": {
-        "instagramPost": "",
-        "instagramReels": "",
-        "tiktokVideo": "",
-        "title": ""
+        "instagramPost": "Publicación de Instagram",
+        "instagramReels": "Reels de Instagram",
+        "tiktokVideo": "Video de TikTok",
+        "title": "Tipo de contenido"
       },
-      "socialMediaContent": "",
-      "socialMediaContents": "",
-      "submitCaptionAndHashtags": "",
-      "submitContentUrl": ""
+      "empty": "No hay resultado de reseña.",
+      "error": "No se pudo cargar el resultado de la reseña",
+      "socialMediaContent": "Contenido de redes sociales",
+      "socialMediaContents": "Contenidos de redes sociales",
+      "submitCaptionAndHashtags": "Envía tu pie de foto y hashtags",
+      "submitContentUrl": "Envía la URL del contenido"
     },
     "menus": {
       "connectSNS": "Conectar SNS",
@@ -651,6 +686,7 @@
       "empty": {
         "title": "No se ha aplicado a ninguna campaña."
       },
+      "error": "No se pudo cargar mi campaña",
       "participationStatus": {
         "active": "Activo",
         "approved": "Aprobado",

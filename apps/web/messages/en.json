@@ -188,42 +188,43 @@
   },
   "campaignDetail": {
     "applicationPeriod": "Application Period",
+    "applyButtonText": {
+      "active": "Campaign in progress",
+      "applied": "Successfully Applied",
+      "approved_review_not_confirmed": "Expired",
+      "approved_second_review_done": "Campaign Completed",
+      "closed": "Campaign Closed",
+      "not_applied_ended": "Campaign Closed",
+      "open_reserved": "Coming Soon",
+      "recruiting": {
+        "brand": "View Applicants",
+        "creator": "Apply Now!"
+      },
+      "rejected": "Campaign not Selected",
+      "unknown": "Unknown Status"
+    },
     "campaignSchedule": "Campaign Schedule",
-    "contentSubmissionPeriod": "Content Submission Period",
+    "confirmCampaignSignUpModal": {
+      "cancelButton": "Cancel",
+      "confirmButton": "Confirm",
+      "description": "Campaign results will be announced on <bold>{announcementDate}</bold> \nDelivery address must be confirmed within 24 hours.\nPlease review the <link>Campaign Guidelines</link> before signing up.",
+      "finalDescription": "Do you want to proceed?",
+      "title": "Confirm Campaign Sign-Up"
+    },
+    "contentSubmissionPeriod": "Content Submission Deadline",
     "deliverableRequirements": "Deliverable Requirements",
     "eligibilityRequirements": "Eligibility Requirements",
     "localTimeNotice": "All times are displayed in your local time.",
-    "resultAnnouncement": "Result Announcement",
-    "rewardsAndCompensation": "Rewards & Compensation",
-    "applyButtonText": {
-      "open_reserved": "Coming Soon",
-      "recruiting": {
-        "creator": "Apply Now!",
-        "brand": "View Applicants"
-      },
-      "not_applied_ended": "Campaign Closed",
-      "applied": "Successfully Applied",
-      "rejected": "Campaign not Selected",
-      "approved_second_review_done": "Campaign Completed",
-      "approved_review_not_confirmed": "Expired",
-      "active": "Campaign in progress",
-      "closed": "Campaign Closed",
-      "unknown": "Unknown Status"
-    },
     "rejectModal": {
-      "title": "Application Rejected",
-      "notProCreatorDescription": "This campaign is only open to Pro creators. \n If you would like to request an upgrade to PRO creator status, please send an email to lococo.official@gmail.com.",
+      "alreadyAppliedDescription": "You have already applied for this campaign. Please check your campaign status on My Page.",
+      "confirmButton": "Okay",
       "notCreatorDescription": "Campaigns are for Lococo Creators only. \n If you would like to request an upgrade to Lococo Partners status, please send an email to lococo.official@gmail.com.",
-      "unExpectedErrorDescription": "An unexpected error occurred. Please try again later.",
-      "confirmButton": "Okay"
+      "notProCreatorDescription": "This campaign is only open to Pro creators. \n If you would like to request an upgrade to PRO creator status, please send an email to lococo.official@gmail.com.",
+      "title": "Application Rejected",
+      "unExpectedErrorDescription": "An unexpected error occurred. Please try again later."
     },
-    "confirmCampaignSignUpModal": {
-      "title": "Confirm Campaign Sign-Up",
-      "description": "Campaign results will be announced on <bold>{announcementDate}</bold> \nDelivery address must be confirmed within 24 hours.\nPlease review the <link>Campaign Guidelines</link> before signing up.",
-      "finalDescription": "Do you want to proceed?",
-      "confirmButton": "Confirm",
-      "cancelButton": "Cancel"
-    }
+    "resultAnnouncement": "Result Announcement",
+    "rewardsAndCompensation": "Rewards & Compensation"
   },
   "campaignFilter": {
     "seeMore": "See More"
@@ -330,7 +331,6 @@
     },
     "title": "Join Lococo Creator Community!",
     "validation": {
-      "error": "Failed to load profile data",
       "addressLine1MaxLength": "Use up to 20 characters.",
       "addressLine1Required": "Address Line 1 is required.",
       "addressLine2MaxLength": "Use up to 20 characters.",
@@ -339,6 +339,7 @@
       "cityRequired": "City / Town is required.",
       "contentLanguageRequired": "Content Language is required.",
       "countryRequired": "Country is required.",
+      "error": "Failed to load profile data",
       "firstNameMaxLength": "Use up to 20 characters.",
       "firstNameRequired": "First name is required.",
       "genderRequired": "Gender is required.",
@@ -510,7 +511,6 @@
       "zip": "Zip/Postal Code"
     },
     "contentSubmissions": {
-      "error": "Failed to load content submissions",
       "brandNote": {
         "description": "These are the revisions requested by the brand. Please update your content accordingly and re-upload it after making the changes.",
         "firstReview": "Brand’s Note for 1st Review ",
@@ -540,6 +540,7 @@
       "empty": {
         "title": "There is no content to review."
       },
+      "error": "Failed to load content submissions",
       "hashtagsInput": {
         "description": "Please paste the exact caption and hashtags you used on",
         "title": "Submit Your Caption & Hashtags"
@@ -646,8 +647,6 @@
       "yearRequired": "Year is required"
     },
     "finalReview": {
-      "empty": "There is no review result.",
-      "error": "Failed to load review result",
       "1stContent": "1st Content",
       "2ndContent": "2nd Content",
       "brandNote": {
@@ -660,6 +659,8 @@
         "tiktokVideo": "Tiktok Video",
         "title": "Content Type"
       },
+      "empty": "There is no review result.",
+      "error": "Failed to load review result",
       "socialMediaContent": "Social Media Content",
       "socialMediaContents": "Social Media Contents",
       "submitCaptionAndHashtags": "Submit Your Caption & Hashtags",
@@ -672,7 +673,6 @@
       "myCampaign": "My Campaign"
     },
     "myCampaign": {
-      "error": "Failed to load my campaign",
       "buttonText": {
         "confirmAddress": "Confirm Address",
         "revisionRequested": "Revision Requested",
@@ -686,6 +686,7 @@
       "empty": {
         "title": "There is no campaign has been applied."
       },
+      "error": "Failed to load my campaign",
       "participationStatus": {
         "active": "Active",
         "approved": "Approved",
