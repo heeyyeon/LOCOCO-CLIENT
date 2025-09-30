@@ -49,7 +49,7 @@ export default function CampaignInfoPanel({
   title,
   campaignType,
   brandName,
-  //language,
+  language,
   applyStartDate,
   applyDeadline,
   creatorAnnouncementDate,
@@ -182,10 +182,16 @@ export default function CampaignInfoPanel({
               {title}
             </h1>
           </div>
-          <InfoChip
-            text={campaignType}
-            className="text-inter-caption w-fit font-bold text-gray-700"
-          />
+          <div className="flex items-center gap-[8px]">
+            <InfoChip
+              text={campaignType}
+              className="text-inter-caption w-fit font-bold text-gray-700"
+            />
+            <InfoChip
+              text={language}
+              className="text-inter-caption w-fit font-bold text-gray-700"
+            />
+          </div>
         </div>
 
         {/* Campaign Schedule Card */}
@@ -231,19 +237,18 @@ export default function CampaignInfoPanel({
                   </p>
                 </div>
               </div>
-
-              {/* Content Submission Period */}
+              {/* Result Announcement */}
               <div className="flex h-[76px] gap-[12px]">
                 <div className="flex flex-col items-center">
                   <div className="h-[2rem] w-[2rem] rounded-[12px] bg-pink-300" />
                   <div className="w-[2px] flex-1 border-l-2 border-gray-400" />
                 </div>
-                <div className="flex flex-col gap-[4px] pb-[24px]">
+                <div className="flex flex-col gap-[4px]">
                   <p className="text-inter-body1 font-bold text-gray-700">
-                    {t('contentSubmissionPeriod')}
+                    {t('resultAnnouncement')}
                   </p>
                   <p className="text-inter-body3 text-gray-700">
-                    {format.dateTime(dayjs(reviewSubmissionDeadline).toDate(), {
+                    {format.dateTime(dayjs(creatorAnnouncementDate).toDate(), {
                       month: 'short',
                       day: 'numeric',
                       hour: 'numeric',
@@ -253,17 +258,17 @@ export default function CampaignInfoPanel({
                 </div>
               </div>
 
-              {/* Result Announcement */}
+              {/* Content Submission Period */}
               <div className="flex h-[52px] gap-[12px]">
                 <div className="flex flex-col items-center">
                   <div className="h-[2rem] w-[2rem] rounded-[12px] bg-pink-300" />
                 </div>
-                <div className="flex flex-col gap-[4px]">
+                <div className="flex flex-col gap-[4px] pb-[24px]">
                   <p className="text-inter-body1 font-bold text-gray-700">
-                    {t('resultAnnouncement')}
+                    {t('contentSubmissionPeriod')}
                   </p>
                   <p className="text-inter-body3 text-gray-700">
-                    {format.dateTime(dayjs(creatorAnnouncementDate).toDate(), {
+                    {format.dateTime(dayjs(reviewSubmissionDeadline).toDate(), {
                       month: 'short',
                       day: 'numeric',
                       hour: 'numeric',
