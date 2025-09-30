@@ -5,6 +5,7 @@ import React from 'react';
 import { useTranslations } from 'next-intl';
 import { useSearchParams } from 'next/navigation';
 
+import CampaignListEmpty from 'components/empty/campgin-list-empty';
 import LoadingSvg from 'components/loading/loading-svg';
 
 import { SnsConnection } from '../../../../../components/forms/SnsConnection';
@@ -24,7 +25,7 @@ export default function ConnectSNS() {
   }
 
   if (error) {
-    throw new Error('SNS 연결에 실패했습니다.');
+    return <CampaignListEmpty emptyMessage={t('error')} />;
   }
 
   return (
