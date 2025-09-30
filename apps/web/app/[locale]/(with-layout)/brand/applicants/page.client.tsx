@@ -289,6 +289,7 @@ export default function BrandApplicantsPageClient({
             </label>
           </div>
           <Button
+            onClick={() => alert('준비중인 기능입니다.')}
             variant="outline"
             color="primary"
             size="sm"
