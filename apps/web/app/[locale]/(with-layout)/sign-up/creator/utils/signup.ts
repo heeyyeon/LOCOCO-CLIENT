@@ -50,11 +50,11 @@ export const homeAddressSchema = (t: TranslationFunction) =>
       .string()
       .trim()
       .min(1, t('addressLine1Required'))
-      .max(20, t('addressLine1MaxLength')),
+      .max(100, t('addressLine1MaxLength')),
     addressLine2: z
       .string()
       .trim()
-      .max(20, t('addressLine2MaxLength'))
+      .max(100, t('addressLine2MaxLength'))
       .nullable()
       .optional(),
     zipCode: z.string().trim().max(20, t('zipCodeMaxLength')).optional(),
