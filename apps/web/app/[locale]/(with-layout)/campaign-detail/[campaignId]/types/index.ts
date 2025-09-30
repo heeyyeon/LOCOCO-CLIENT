@@ -16,7 +16,7 @@ export interface CampaignDetailData {
   detailImages: { id: number; url: string; displayOrder: number }[];
   userSpecificCampaignStatus: string;
   isProCampaign: boolean;
-  currentUserRole: 'CUSTOMER' | 'CREATOR' | 'BRAND' | 'ADMIN' | undefined;
+  currentUserRole: 'CUSTOMER' | 'CREATOR' | 'BRAND' | 'ADMIN';
   creatorRoleInfo: 'NOT_APPROVED' | 'PRO' | 'NORMAL';
 }
 

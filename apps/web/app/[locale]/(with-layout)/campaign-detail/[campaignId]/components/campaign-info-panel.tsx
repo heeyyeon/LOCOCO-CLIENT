@@ -43,7 +43,7 @@ interface CampaignInfoPanelProps {
   eligibilityRequirements: string[];
   userSpecificCampaignStatus: string;
   isProCampaign: boolean;
-  currentUserRole: 'CUSTOMER' | 'CREATOR' | 'BRAND' | 'ADMIN' | undefined;
+  currentUserRole: 'CUSTOMER' | 'CREATOR' | 'BRAND' | 'ADMIN';
   creatorRoleInfo: 'NOT_APPROVED' | 'PRO' | 'NORMAL';
 }
 
@@ -99,11 +99,13 @@ export default function CampaignInfoPanel({
     ) {
       //Campaigns are for Lococo Creators only.  reject 모달
       setIsRejectModalOpen(true);
+      return;
     }
 
     if (currentUserRole === 'BRAND') {
       // 지원자 리스트
       router.push(`/brand/applicants?campaignId=${campaignId}`);
+      return;
     }
 
     // PRO 캠페인 지원 케이스
@@ -112,14 +114,17 @@ export default function CampaignInfoPanel({
         // PRO 캠페인이면서 크리에이터 PRO
         // 정상 로직 진행
         setIsConfirmCampaignSignUpModalOpen(true);
+        return;
       } else {
         // PRO 캠페인이면서 크리에이터 자격없음
         // reject 모달
         setIsRejectModalOpen(true);
+        return;
       }
     } else {
       if (currentUserRole === 'CREATOR') {
         setIsConfirmCampaignSignUpModalOpen(true);
+        return;
       }
     }
   };
