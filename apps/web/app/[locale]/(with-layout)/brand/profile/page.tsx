@@ -45,7 +45,7 @@ export default function Profile() {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="flex flex-1 justify-center bg-gray-200 py-[6.4rem]"
+      className="flex flex-1 justify-center bg-gray-100 p-[6.4rem]"
     >
       <div className="flex flex-col gap-[3.2rem]">
         <AddressSearchModal
@@ -53,7 +53,7 @@ export default function Profile() {
           onComplete={handleComplete}
           onClose={closeAddressSearch}
         />
-        <div className="flex min-h-[99.4rem] w-[84rem] flex-col gap-[4.8rem] bg-white px-[9.6rem] py-[4.8rem]">
+        <div className="flex w-[84rem] flex-col gap-[4.8rem] bg-white p-[4.8rem]">
           <ImageSection />
           <BasicInfo
             brandNameRegister={register('brandName')}

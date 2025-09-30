@@ -158,7 +158,7 @@ export default function CampaignForm({ campaignId }: { campaignId?: string }) {
 
   return (
     <FormProvider {...methods}>
-      <div className="h-full w-full bg-gray-100 pl-[6.6rem] pt-[6.4rem]">
+      <div className="flex h-full w-full items-center justify-center bg-gray-100 p-[6.4rem]">
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="mb-[5.8rem] bg-gray-100">
             <div className="flex min-h-[260.4rem] w-[84rem] flex-col gap-[4.8rem] bg-white px-[9.6rem] py-[4.8rem]">

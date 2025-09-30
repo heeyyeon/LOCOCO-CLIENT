@@ -42,17 +42,27 @@ export default function CardGridSection() {
   const { data, isLoading, isError } = useBrandCampaigns();
 
   if (isLoading) {
-    return <CampaignListEmpty emptyMessage="캠페인을 불러오는 중입니다." />;
+    return (
+      <div className="flex h-[50rem] w-full items-center justify-center">
+        <CampaignListEmpty emptyMessage="캠페인을 불러오는 중입니다." />
+      </div>
+    );
   }
 
   if (isError) {
     return (
-      <CampaignListEmpty emptyMessage="캠페인을 불러오는데 실패했습니다." />
+      <div className="flex h-[50rem] w-full items-center justify-center">
+        <CampaignListEmpty emptyMessage="캠페인을 불러오는데 실패했습니다." />
+      </div>
     );
   }
 
   if (!data?.data?.campaigns || data.data.campaigns.length === 0) {
-    return <CampaignListEmpty emptyMessage="등록된 캠페인이 없습니다." />;
+    return (
+      <div className="flex h-[50rem] w-full items-center justify-center">
+        <CampaignListEmpty emptyMessage="등록된 캠페인이 없습니다." />
+      </div>
+    );
   }
 
   return (
