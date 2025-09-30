@@ -189,7 +189,10 @@
   "campaignDetail": {
     "applicationPeriod": "Período de aplicación",
     "applyButtonText": {
-      "active": "Campaña en curso",
+      "active": {
+        "brand": "Campañas activas",
+        "user": "Revisar participante"
+      },
       "applied": "Solicitud enviada con éxito",
       "approved_review_not_confirmed": "Expirada",
       "approved_second_review_done": "Campaña completada",

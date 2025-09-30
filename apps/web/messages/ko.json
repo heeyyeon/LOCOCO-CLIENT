@@ -189,7 +189,10 @@
   "campaignDetail": {
     "applicationPeriod": "지원 기간",
     "applyButtonText": {
-      "active": "캠페인 진행 중",
+      "active": {
+        "brand": "지원자 확인하기",
+        "user": "진행 중 캠페인"
+      },
       "applied": "성공적으로 지원됨",
       "approved_review_not_confirmed": "만료됨",
       "approved_second_review_done": "캠페인 완료",

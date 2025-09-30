@@ -31,46 +31,14 @@ interface CampaignInfo {
   startDate: string;
   endDate: string;
 }
-const campaignInfos = [
-  {
-    campaignId: 11,
-    campaignTitle: 'Upcoming K-Beauty Fall Collection',
-    startDate: '2025-09-08T09:00:00Z',
-    endDate: '2025-10-05T23:59:59Z',
-  },
-  {
-    campaignId: 12,
-    campaignTitle: 'Active Summer Essence Campaign',
-    startDate: '2025-08-25T09:00:00Z',
-    endDate: '2025-09-25T23:59:59Z',
-  },
-  {
-    campaignId: 13,
-    campaignTitle: '캠페인을 만들어봅시다 호호',
-    startDate: '2025-09-18T07:32:08.995Z',
-    endDate: '2025-09-21T07:32:08.995Z',
-  },
-  {
-    campaignId: 14,
-    campaignTitle: 'Hydrating Mask Review Campaign',
-    startDate: '2025-08-15T09:00:00Z',
-    endDate: '2025-09-20T23:59:59Z',
-  },
-  {
-    campaignId: 50,
-    campaignTitle: 'A',
-    startDate: '2025-09-15T13:27:50Z',
-    endDate: '2025-09-21T13:28:37Z',
-  },
-  {
-    campaignId: 59,
-    campaignTitle: '캠페인을 만들어봅시다',
-    startDate: '2025-09-16T07:32:08.995Z',
-    endDate: '2025-09-21T07:32:08.995Z',
-  },
-];
 
-export default function BrandApplicantsPageClient() {
+interface BrandApplicantsPageClientProps {
+  campaignInfos: CampaignInfo[];
+}
+
+export default function BrandApplicantsPageClient({
+  campaignInfos,
+}: BrandApplicantsPageClientProps) {
   const format = useFormatter();
 
   const router = useRouter();
@@ -158,7 +126,7 @@ export default function BrandApplicantsPageClient() {
       setPage(1); // 페이지를 1로 리셋
       setRowSelection({});
     },
-    [pathname, router, searchParams]
+    [pathname, router, searchParams, campaignInfos]
   );
 
   const handlePageChange = (newPage: number) => {
@@ -247,6 +215,7 @@ export default function BrandApplicantsPageClient() {
     latestCampaignId,
     searchParams,
     handleCampaignChange,
+    campaignInfos,
   ]);
 
   return isFetching ? (
@@ -320,6 +289,7 @@ export default function BrandApplicantsPageClient() {
             </label>
           </div>
           <Button
+            onClick={() => alert('준비중인 기능입니다.')}
             variant="outline"
             color="primary"
             size="sm"
