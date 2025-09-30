@@ -626,7 +626,7 @@
         "tiktokVideo": "Tiktok Video",
         "title": "Content Type"
       },
-      "socialMediaContent": "Social Media Content",
+      "socialMediaContents": "Social Media Contents",
       "submitCaptionAndHashtags": "Submit Your Caption & Hashtags",
       "submitContentUrl": "Submit Content URL"
     },
@@ -664,23 +664,6 @@
       "description": "Your changes have been saved.",
       "save": "Okay",
       "title": "Saved successfully"
-    },
-    "finalReview": {
-      "1stContent": "1st Content",
-      "2ndContent": "2nd Content",
-      "contentType": {
-        "title": "Content Type",
-        "instagramPost": "Instagram Post",
-        "instagramReels": "Instagram Reels",
-        "tiktokVideo": "Tiktok Video"
-      },
-      "socialMediaContent": "Social Media Content",
-      "submitCaptionAndHashtags": "Submit Your Caption & Hashtags",
-      "submitContentUrl": "Submit Content URL",
-      "brandNote": {
-        "1stContent": "Brand Note for 1st Review ",
-        "2ndContent": "Brand Note for 2nd Review "
-      }
     }
   },
   "selectRoleModal": {
