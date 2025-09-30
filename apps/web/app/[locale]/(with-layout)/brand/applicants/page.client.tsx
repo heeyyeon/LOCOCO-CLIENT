@@ -22,7 +22,7 @@ import ApproveStatusSelect, {
   ApproveStatusWithAll,
 } from './components/approve-status-select';
 import CampaignSelect from './components/campaign-select';
-import { useApplicants } from './hooks/use-applicants';
+import { useApplicants, useApproveApplicantsMutation } from './hooks/query';
 import { koDateRangeFormatter } from './utils/ko-date-range-formatter';
 
 interface CampaignInfo {
@@ -74,6 +74,17 @@ export default function BrandApplicantsPageClient({
       ? undefined
       : (selectedApproveStatus as 'PENDING' | 'APPROVED' | 'REJECTED'),
     true
+  );
+
+  const approveApplicantsMutation = useApproveApplicantsMutation(
+    Object.keys(rowSelection)
+      .map((key) => parseInt(key, 10))
+      .filter(() =>
+        data?.data?.applicants.find(
+          (applicant) => applicant.approveStatus === 'PENDING'
+        )
+      ),
+    campaignIdQueryString ? parseInt(campaignIdQueryString, 10) : undefined
   );
 
   // 승인상태 변경 시 필터 업데이트 및 URL 변경
@@ -289,7 +300,7 @@ export default function BrandApplicantsPageClient({
             </label>
           </div>
           <Button
-            onClick={() => alert('준비중인 기능입니다.')}
+            onClick={() => approveApplicantsMutation.mutate()}
             variant="outline"
             color="primary"
             size="sm"

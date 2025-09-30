@@ -1,6 +1,6 @@
-import { useQuery } from '@tanstack/react-query';
+import { QueryClient, useMutation, useQuery } from '@tanstack/react-query';
 
-import { getApplicants } from '../apis';
+import { approveApplicants, getApplicants } from '../apis';
 import type { ApproveStatus } from '../types';
 
 // Query Key 팩토리
@@ -9,6 +9,7 @@ export const applicantsKeys = {
   lists: () => [...applicantsKeys.all, 'list'] as const,
 };
 
+const queryClient = new QueryClient();
 /**
  * 브랜드 지원자 목록 조회 훅
  * @param params 조회 파라미터
@@ -26,10 +27,26 @@ export const useApplicants = (
     throw new Error('campaignId is required');
   }
   return useQuery({
-    queryKey: ['applicants', campaignId, size, page, approveStatus],
+    queryKey: [applicantsKeys.lists, campaignId, size, page, approveStatus],
     queryFn: () => getApplicants({ campaignId, size, page, approveStatus }),
     enabled,
     staleTime: 5 * 60 * 1000, // 5분
     gcTime: 10 * 60 * 1000, // 10분
+  });
+};
+
+export const useApproveApplicantsMutation = (
+  creatorCampaignId: number[],
+  campaignId: number | undefined
+) => {
+  if (campaignId === undefined) {
+    throw new Error('campaignId is required');
+  }
+  return useMutation({
+    mutationFn: () => approveApplicants(campaignId, creatorCampaignId),
+    onSuccess: () => {
+      alert('승인되었습니다.');
+      queryClient.invalidateQueries({ queryKey: applicantsKeys.lists() });
+    },
   });
 };
