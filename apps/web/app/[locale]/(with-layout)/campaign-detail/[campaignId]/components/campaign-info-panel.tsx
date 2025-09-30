@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { useFormatter, useTranslations } from 'next-intl';
 import { useParams } from 'next/navigation';
 
+import { useMutation } from '@tanstack/react-query';
 import dayjs from 'dayjs';
 import { useRouter } from 'i18n/navigation';
 
@@ -17,6 +18,7 @@ import {
   SvgProfileIcon,
 } from '@lococo/icons';
 
+import { applyCampaign } from '../apis';
 import CampaignInfoGrayBorderBox from './campaign-info-gray-border-box';
 import { RejectModal } from './campaign-reject-modal';
 import { ConfirmCampaignSignUpModal } from './confirm-campaign-sign-up-modal';
@@ -67,7 +69,7 @@ export default function CampaignInfoPanel({
 
   const router = useRouter();
   const params = useParams();
-  const campaignId = params.campaignId;
+  const campaignId = params.campaignId as string;
 
   const [
     isConfirmCampaignSignUpModalOpen,
@@ -80,6 +82,14 @@ export default function CampaignInfoPanel({
       : creatorRoleInfo === 'NOT_APPROVED' || currentUserRole === 'CUSTOMER'
         ? 'notCreator'
         : null;
+
+  const applyCampaignMutation = useMutation({
+    mutationFn: (campaignId: string) => applyCampaign(campaignId),
+    onSuccess: () => {
+      setIsConfirmCampaignSignUpModalOpen(false);
+      router.refresh();
+    },
+  });
 
   const handleApplyButtonClick = () => {
     // 미승인 크리에이터, 일반 유저 지원 케이스
@@ -118,7 +128,7 @@ export default function CampaignInfoPanel({
     if (currentUserRole === 'CREATOR') {
       router.push(`/my-page/my-campaign`);
     } else if (currentUserRole === 'BRAND') {
-      // 지원자 리스트 라우팅
+      // 지원자 리스트 페이지 이동
       router.push(`/brand/applicants?campaignId=${campaignId}`);
     }
     // TODO: 체험단 모집완료, 캠페인 진행중 케이스 추가 or 기획 논의 필요
@@ -137,7 +147,12 @@ export default function CampaignInfoPanel({
         return { text: 'Coming Soon', isDisabled: true };
       case 'RECRUITING': // 유저 상태 추가 요
         return {
-          text: 'Apply Now!',
+          text:
+            currentUserRole === 'CREATOR'
+              ? 'Apply Now!'
+              : currentUserRole === 'BRAND'
+                ? 'View Applicants'
+                : 'Apply Now!',
           isDisabled: false,
           onClick: handleApplyButtonClick,
         };
@@ -359,8 +374,12 @@ export default function CampaignInfoPanel({
             size="lg"
             rounded="md"
             className="h-[64px] w-[456px] text-white"
-            disabled={getCampaignButtonStatus('RECRUITING').isDisabled}
-            onClick={getCampaignButtonStatus('RECRUITING').onClick}
+            disabled={
+              getCampaignButtonStatus(userSpecificCampaignStatus).isDisabled
+            }
+            onClick={
+              getCampaignButtonStatus(userSpecificCampaignStatus).onClick
+            }
           >
             {getCampaignButtonStatus(userSpecificCampaignStatus).text}
           </Button>
@@ -386,7 +405,7 @@ export default function CampaignInfoPanel({
         open={isConfirmCampaignSignUpModalOpen}
         onOpenChange={setIsConfirmCampaignSignUpModalOpen}
         onConfirm={() => {
-          setIsConfirmCampaignSignUpModalOpen(false);
+          applyCampaignMutation.mutate(campaignId);
         }}
       />
     </div>

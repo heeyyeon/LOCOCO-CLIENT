@@ -23,3 +23,10 @@ export interface CampaignDetailData {
 export interface CampaignDetailResponse {
   data: CampaignDetailData;
 }
+
+export interface CreatorCampaignApplyResponse {
+  success: boolean;
+  status: number;
+  message: string;
+  data: null;
+}

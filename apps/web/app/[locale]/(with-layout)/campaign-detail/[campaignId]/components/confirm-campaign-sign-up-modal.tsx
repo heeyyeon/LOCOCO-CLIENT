@@ -8,7 +8,7 @@ import {
   DialogContent,
   DialogTitle,
 } from '@lococo/design-system/dialog';
-import { ModalButton } from '@lococo/design-system/modal-button';
+import { ModalButtonWrapper } from '@lococo/design-system/modal-button';
 import { ModalHeader } from '@lococo/design-system/modal-header';
 
 interface ConfirmCampaignSignUpModalProps {
@@ -76,7 +76,20 @@ export function ConfirmCampaignSignUpModal({
         </section>
 
         <div className="border-t border-pink-500">
-          <ModalButton text={t('confirmButton')} onClick={handleConfirmModal} />
+          <ModalButtonWrapper>
+            {[
+              {
+                text: t('confirmButton'),
+                variant: 'left',
+                onClick: () => onOpenChange(false),
+              },
+              {
+                text: t('confirmButton'),
+                variant: 'right',
+                onClick: handleConfirmModal,
+              },
+            ]}
+          </ModalButtonWrapper>
         </div>
       </DialogContent>
     </Dialog>
