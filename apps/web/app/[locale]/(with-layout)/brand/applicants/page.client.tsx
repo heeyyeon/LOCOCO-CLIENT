@@ -358,13 +358,13 @@ export default function BrandApplicantsPageClient({
   ) : (
     <div className="flex h-[52.4rem] w-full flex-col items-center justify-center gap-[3.2rem]">
       <Image
-        src="/applicants-empty.svg"
+        src="/campaign-empty.svg"
         alt="지원자가 없습니다."
         width={100}
         height={100}
       />
       <p className="text-inter-title2 font-bold text-gray-700">
-        지원자가 없습니다.
+        아직 진행한 캠페인이 없습니다.
       </p>
     </div>
   );
