@@ -111,7 +111,11 @@ export default function MyCampaign() {
               buttonText: t('buttonText.uploadSecondReview'),
             },
             VIEW_RESULTS: {
-              handleButtonClick: () => {},
+              handleButtonClick: () => {
+                router.push(
+                  `/my-page/final-review?campaignId=${campaign.campaignId}`
+                );
+              },
               buttonText: t('buttonText.viewResults'),
             },
           };

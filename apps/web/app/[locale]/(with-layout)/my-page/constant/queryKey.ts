@@ -11,4 +11,6 @@ export const CAMPAIGN_REVIEW_KEYS = {
     [...CAMPAIGN_REVIEW_KEYS.all, campaignId, round] as const,
   myCampaigns: (params: { page?: number; size?: number } = {}) =>
     [...CAMPAIGN_REVIEW_KEYS.all, 'myCampaigns', params] as const,
+  reviewResult: (campaignId: number) =>
+    [...CAMPAIGN_REVIEW_KEYS.all, 'reviewResult', campaignId] as const,
 };
