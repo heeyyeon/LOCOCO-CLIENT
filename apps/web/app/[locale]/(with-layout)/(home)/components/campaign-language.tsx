@@ -40,7 +40,10 @@ export default function CampaignLanguage({
           <SvgArrowUp size={24} className="group-data-[state=closed]:hidden" />
         </SelectTrigger>
 
-        <SelectContent className="body4 mt-[1.6rem] w-[11rem]" align="center">
+        <SelectContent
+          className="body4 shadow-button mt-[1.6rem] w-[11rem]"
+          align="center"
+        >
           {LANGUAGE_KEYS.map((lang) => (
             <SelectItem
               key={lang}
