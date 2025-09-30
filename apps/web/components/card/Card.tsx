@@ -59,6 +59,7 @@ export default function Card({
   };
 
   const renderCampaignType = (type: string) => {
+    if (!type) return '';
     if (type == 'GIVEAWAY') return 'Give away';
     return type.charAt(0).toUpperCase() + type.slice(1).toLowerCase();
   };
@@ -100,7 +101,7 @@ export default function Card({
             <p className="title3 truncate font-[700]">{campaignName}</p>
           </div>
           <div className="flex items-center gap-[0.8rem]">
-            <InfoChip text={renderCampaignType(campaignType)} />
+            <InfoChip text={renderCampaignType(campaignType || '')} />
             <InfoChip
               icon={true}
               text={`${applicantNumber}/${recruitmentNumber}`}
