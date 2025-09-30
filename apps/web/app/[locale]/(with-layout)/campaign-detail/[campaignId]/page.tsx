@@ -13,7 +13,6 @@ export default async function CampaignDetail({
   let data: CampaignDetailData;
   try {
     data = await getCampaignDetail(campaignId);
-    console.log(data);
   } catch {
     notFound();
   }
