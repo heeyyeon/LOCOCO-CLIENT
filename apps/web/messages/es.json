@@ -369,9 +369,9 @@
       "phoneNumberRequired": "El número de teléfono es obligatorio.",
       "skinToneRequired": "El tono de piel es obligatorio.",
       "skinTypeRequired": "El tipo de piel es obligatorio.",
-      "stateMaxLength": "Puede utilizar hasta 20 caracteres.",
+      "stateMaxLength": "Puede utilizar hasta 100 caracteres.",
       "stateRequired": "El estado/región/provincia es obligatorio.",
-      "zipCodeMaxLength": "Puede utilizar hasta 20 caracteres."
+      "zipCodeMaxLength": "Puede utilizar hasta 100 caracteres."
     }
   },
   "creatorSnsLinksPage": {

@@ -369,9 +369,9 @@
       "phoneNumberRequired": "Phone Number is required.",
       "skinToneRequired": "Skin Tone is required.",
       "skinTypeRequired": "Skin Type is required.",
-      "stateMaxLength": "Use up to 20 characters.",
+      "stateMaxLength": "Use up to 100 characters.",
       "stateRequired": "State/Region/Province is required.",
-      "zipCodeMaxLength": "Use up to 20 characters."
+      "zipCodeMaxLength": "Use up to 100 characters."
     }
   },
   "creatorSnsLinksPage": {

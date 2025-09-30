@@ -351,7 +351,7 @@
       "addressLine1Required": "주소 1은 필수 입력 항목입니다. ",
       "addressLine2MaxLength": "최대 100자까지 입력할 수 있습니다. ",
       "birthRequired": "생년월일은 필수 입력 항목입니다. ",
-      "cityMaxLength": "컨텐츠 언어는 필수입니다. ",
+      "cityMaxLength": "최대 20자까지 입력할 수 있습니다. ",
       "cityRequired": "시/군/구는 필수입니다. ",
       "contentLanguageRequired": "컨텐츠 언어는 필수입니다. ",
       "countryRequired": "국가는 필수입니다. ",
@@ -369,9 +369,9 @@
       "phoneNumberRequired": "전화번호는 필수 입력 항목입니다.",
       "skinToneRequired": "피부 톤은 필수 입력 항목입니다.",
       "skinTypeRequired": "피부 타입은 필수 입력 항목입니다.",
-      "stateMaxLength": "최대 20자까지 입력할 수 있습니다.",
+      "stateMaxLength": "최대 100자까지 입력할 수 있습니다.",
       "stateRequired": "주/지역/도는 필수 입력 항목입니다.",
-      "zipCodeMaxLength": "최대 20자까지 입력할 수 있습니다."
+      "zipCodeMaxLength": "최대 100자까지 입력할 수 있습니다."
     }
   },
   "creatorSnsLinksPage": {
