@@ -11,7 +11,7 @@ import {
   SelectRoot,
   SelectTrigger,
 } from '@lococo/design-system/select';
-import { SvgArrowUp } from '@lococo/icons';
+import { SvgArrowDown, SvgArrowUp } from '@lococo/icons';
 
 interface CampaignLanguageProps {
   locale: LanguageKey;
@@ -32,14 +32,18 @@ export default function CampaignLanguage({
     <div className="flex h-full items-center">
       <SelectRoot value={locale} onValueChange={handleLanguageChange}>
         <SelectTrigger
-          className="flex w-fit items-center gap-[0.8rem] border-none bg-pink-100 bg-none px-[3.2rem] py-[1.6rem] text-black"
+          className="group flex w-fit items-center gap-[0.8rem] border-none bg-pink-100 bg-none px-[3.2rem] py-[1.6rem] text-black"
           onlyChildren={true}
         >
           <p className="body1 font-[700]">{t('language')}</p>
-          <SvgArrowUp size={24} />
+          <SvgArrowDown size={24} className="group-data-[state=open]:hidden" />
+          <SvgArrowUp size={24} className="group-data-[state=closed]:hidden" />
         </SelectTrigger>
 
-        <SelectContent className="body4 mt-[1.6rem] w-[11rem]" align="center">
+        <SelectContent
+          className="body4 shadow-button mt-[1.6rem] w-[11rem]"
+          align="center"
+        >
           {LANGUAGE_KEYS.map((lang) => (
             <SelectItem
               key={lang}

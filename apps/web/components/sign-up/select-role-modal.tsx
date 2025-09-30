@@ -59,10 +59,10 @@ export function SelectRoleModal({
 
         <section className="bg-white px-[4rem] py-[4rem]">
           <header className="mb-[4.4rem] text-center">
-            <h1 className="inter-head3 mb-[0.4rem] font-bold text-pink-500">
+            <h1 className="head3 mb-[0.4rem] font-bold text-pink-500">
               {t('welcomeTitle')}
             </h1>
-            <p className="inter-body3 whitespace-pre-line font-medium text-gray-800">
+            <p className="body3 whitespace-pre-line font-medium text-gray-800">
               {t('description')}
             </p>
           </header>
