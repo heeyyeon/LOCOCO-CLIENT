@@ -155,7 +155,8 @@ export default function BrandApplicantsPageClient({
         ...rowSelection,
       };
       data?.data?.applicants?.forEach((applicant) => {
-        currentPageRows[applicant.creatorCampaignId.toString()] = true;
+        currentPageRows[applicant.creatorCampaignId.toString()] =
+          applicant.approveStatus === 'PENDING';
       });
       setRowSelection(currentPageRows);
     } else {
@@ -280,8 +281,7 @@ export default function BrandApplicantsPageClient({
               checked={
                 data?.data?.applicants?.every(
                   (applicant) =>
-                    rowSelection[applicant.creatorCampaignId.toString()] ||
-                    applicant.approveStatus === 'APPROVED'
+                    rowSelection[applicant.creatorCampaignId.toString()]
                 ) && data?.data?.applicants?.length > 0
               }
               onCheckedChange={handleAllSelectChange}
@@ -293,10 +293,14 @@ export default function BrandApplicantsPageClient({
               전체 선택하기(
               {data?.data?.applicants?.filter(
                 (applicant) =>
-                  rowSelection[applicant.creatorCampaignId.toString()] ||
-                  applicant.approveStatus === 'APPROVED'
+                  rowSelection[applicant.creatorCampaignId.toString()] &&
+                  applicant.approveStatus === 'PENDING'
               ).length || 0}
-              /{data?.data?.applicants?.length || 0})
+              /
+              {data?.data?.applicants?.filter(
+                (applicant) => applicant.approveStatus === 'PENDING'
+              ).length || 0}
+              )
             </label>
           </div>
           <Button
@@ -309,8 +313,7 @@ export default function BrandApplicantsPageClient({
             disabled={
               data?.data?.applicants?.filter(
                 (applicant) =>
-                  rowSelection[applicant.creatorCampaignId.toString()] ||
-                  applicant.approveStatus === 'APPROVED'
+                  rowSelection[applicant.creatorCampaignId.toString()]
               ).length === 0 || approveStatusFromQuery === 'APPROVED'
             }
           >

@@ -44,14 +44,12 @@ const createColumns = (): ColumnDef<ApplicantData>[] => [
           <div className="flex items-center justify-center">
             <Checkbox
               id={`cell-checkbox-${row.id}`}
-              checked={
-                row.getIsSelected() || row.original.approveStatus === 'APPROVED'
-              }
+              checked={row.getIsSelected()}
               disabled={
-                !row.getCanSelect() || row.original.approveStatus === 'APPROVED'
+                !row.getCanSelect() || row.original.approveStatus !== 'PENDING'
               }
               onCheckedChange={(checked) => {
-                if (row.original.approveStatus !== 'APPROVED') {
+                if (row.original.approveStatus === 'PENDING') {
                   row.getToggleSelectedHandler()({
                     target: { checked },
                   } as React.ChangeEvent<HTMLInputElement>);
