@@ -188,11 +188,41 @@
   },
   "campaignDetail": {
     "applicationPeriod": "Application Period",
+    "applyButtonText": {
+      "active": "Campaign in progress",
+      "applied": "Successfully Applied",
+      "approved_review_not_confirmed": "Expired",
+      "approved_second_review_done": "Campaign Completed",
+      "closed": "Campaign Closed",
+      "not_applied_ended": "Campaign Closed",
+      "open_reserved": "Coming Soon",
+      "recruiting": {
+        "brand": "View Applicants",
+        "creator": "Apply Now!"
+      },
+      "rejected": "Campaign not Selected",
+      "unknown": "Unknown Status"
+    },
     "campaignSchedule": "Campaign Schedule",
-    "contentSubmissionPeriod": "Content Submission Period",
+    "confirmCampaignSignUpModal": {
+      "cancelButton": "Cancel",
+      "confirmButton": "Confirm",
+      "description": "Campaign results will be announced on <bold>{announcementDate}</bold> \nDelivery address must be confirmed within 24 hours.\nPlease review the <link>Campaign Guidelines</link> before signing up.",
+      "finalDescription": "Do you want to proceed?",
+      "title": "Confirm Campaign Sign-Up"
+    },
+    "contentSubmissionPeriod": "Content Submission Deadline",
     "deliverableRequirements": "Deliverable Requirements",
     "eligibilityRequirements": "Eligibility Requirements",
     "localTimeNotice": "All times are displayed in your local time.",
+    "rejectModal": {
+      "alreadyAppliedDescription": "You have already applied for this campaign. Please check your campaign status on My Page.",
+      "confirmButton": "Okay",
+      "notCreatorDescription": "Campaigns are for Lococo Creators only. \n If you would like to request an upgrade to Lococo Partners status, please send an email to lococo.official@gmail.com.",
+      "notProCreatorDescription": "This campaign is only open to Pro creators. \n If you would like to request an upgrade to PRO creator status, please send an email to lococo.official@gmail.com.",
+      "title": "Application Rejected",
+      "unExpectedErrorDescription": "An unexpected error occurred. Please try again later."
+    },
     "resultAnnouncement": "Result Announcement",
     "rewardsAndCompensation": "Rewards & Compensation"
   },
@@ -223,9 +253,25 @@
     },
     "skinTone": {
       "SHADE_1": "Shade 1",
+      "SHADE_10": "Shade 10",
+      "SHADE_11": "Shade 11",
+      "SHADE_12": "Shade 12",
+      "SHADE_13": "Shade 13",
+      "SHADE_14": "Shade 14",
+      "SHADE_15": "Shade 15",
+      "SHADE_16": "Shade 16",
+      "SHADE_17": "Shade 17",
+      "SHADE_18": "Shade 18",
+      "SHADE_19": "Shade 19",
       "SHADE_2": "Shade 2",
+      "SHADE_20": "Shade 20",
       "SHADE_3": "Shade 3",
-      "SHADE_4": "Shade 4"
+      "SHADE_4": "Shade 4",
+      "SHADE_5": "Shade 5",
+      "SHADE_6": "Shade 6",
+      "SHADE_7": "Shade 7",
+      "SHADE_8": "Shade 8",
+      "SHADE_9": "Shade 9"
     },
     "skinType": {
       "COMBINATION": "Combination",
@@ -301,15 +347,15 @@
     },
     "title": "Join Lococo Creator Community!",
     "validation": {
-      "error": "Failed to load profile data",
-      "addressLine1MaxLength": "Use up to 20 characters.",
+      "addressLine1MaxLength": "Use up to 100 characters.",
       "addressLine1Required": "Address Line 1 is required.",
-      "addressLine2MaxLength": "Use up to 20 characters.",
+      "addressLine2MaxLength": "Use up to 100 characters.",
       "birthRequired": "Birth is required.",
       "cityMaxLength": "Use up to 20 characters.",
       "cityRequired": "City / Town is required.",
       "contentLanguageRequired": "Content Language is required.",
       "countryRequired": "Country is required.",
+      "error": "Failed to load profile data",
       "firstNameMaxLength": "Use up to 20 characters.",
       "firstNameRequired": "First name is required.",
       "genderRequired": "Gender is required.",
@@ -481,7 +527,6 @@
       "zip": "Zip/Postal Code"
     },
     "contentSubmissions": {
-      "error": "Failed to load content submissions",
       "brandNote": {
         "description": "These are the revisions requested by the brand. Please update your content accordingly and re-upload it after making the changes.",
         "firstReview": "Brand’s Note for 1st Review ",
@@ -511,6 +556,7 @@
       "empty": {
         "title": "There is no content to review."
       },
+      "error": "Failed to load content submissions",
       "hashtagsInput": {
         "description": "Please paste the exact caption and hashtags you used on",
         "title": "Submit Your Caption & Hashtags"
@@ -617,8 +663,6 @@
       "yearRequired": "Year is required"
     },
     "finalReview": {
-      "empty": "There is no review result.",
-      "error": "Failed to load review result",
       "1stContent": "1st Content",
       "2ndContent": "2nd Content",
       "brandNote": {
@@ -631,6 +675,8 @@
         "tiktokVideo": "Tiktok Video",
         "title": "Content Type"
       },
+      "empty": "There is no review result.",
+      "error": "Failed to load review result",
       "socialMediaContent": "Social Media Content",
       "socialMediaContents": "Social Media Contents",
       "submitCaptionAndHashtags": "Submit Your Caption & Hashtags",
@@ -643,7 +689,6 @@
       "myCampaign": "My Campaign"
     },
     "myCampaign": {
-      "error": "Failed to load my campaign",
       "buttonText": {
         "confirmAddress": "Confirm Address",
         "revisionRequested": "Revision Requested",
@@ -657,6 +702,7 @@
       "empty": {
         "title": "There is no campaign has been applied."
       },
+      "error": "Failed to load my campaign",
       "participationStatus": {
         "active": "Active",
         "approved": "Approved",
