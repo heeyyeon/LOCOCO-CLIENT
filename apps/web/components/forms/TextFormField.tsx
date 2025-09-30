@@ -32,7 +32,7 @@ export function TextFormField({
   rightContent,
   onRightContentClick,
   showSearchIcon = false,
-  mouseEvent = true,
+  mouseEvent = false,
   handleClickSearch,
 }: TextFormFieldProps) {
   return (

@@ -10,12 +10,10 @@ interface BasicInfoProps {
   managerNameRegister: UseFormRegisterReturn;
   phoneNumberRegister: UseFormRegisterReturn;
   email?: string;
-  countryCodeValue: string;
   brandNameError?: string;
   managerNameError?: string;
   phoneNumberError?: string;
   emailError?: string;
-  onCountryCodeChange: (value: string) => void;
 }
 
 export default function BasicInfo({
