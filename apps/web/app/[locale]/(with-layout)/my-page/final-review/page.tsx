@@ -19,7 +19,10 @@ export default function FinalReview() {
     <div className="flex min-h-[calc(100vh-11.2rem)] w-full flex-col items-center gap-[8.4rem] bg-gray-100 px-[9.4rem] py-[6.4rem]">
       {reviewResult?.data &&
         reviewResult.data?.reviewContents?.map((item, index) => (
-          <div className="flex w-[84rem] flex-col items-start gap-[4.8rem] border border-gray-400 bg-white p-[4.8rem]">
+          <div
+            key={`${item.contentType}-${index}`}
+            className="flex w-[84rem] flex-col items-start gap-[4.8rem] border border-gray-400 bg-white p-[4.8rem]"
+          >
             <p className="title2 font-bold text-gray-800">
               {index == 0 ? t('1stContent') : t('2ndContent')}:{' '}
               {reviewResult.data?.campaignName}
