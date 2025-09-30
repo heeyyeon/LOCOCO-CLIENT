@@ -23,7 +23,7 @@ export default function Creator() {
               title={t('confirmAddress.title')}
               description={t('confirmAddress.description')}
               icon={
-                <SvgBus className="fill-pink-500" width={144} height={144} />
+                <SvgBus className="fill-pink-400" width={144} height={144} />
               }
               direction="left"
             />
@@ -35,7 +35,7 @@ export default function Creator() {
               title={t('uploadReview.title')}
               description={t('uploadReview.description')}
               icon={
-                <SvgUpload className="fill-pink-500" width={144} height={144} />
+                <SvgUpload className="fill-pink-400" width={144} height={144} />
               }
               direction="right"
             />
@@ -48,7 +48,7 @@ export default function Creator() {
               description={t('reviewUploadSchedule.description')}
               icon={
                 <SvgUploadSchedule
-                  className="fill-pink-500"
+                  className="fill-pink-400"
                   width={144}
                   height={144}
                 />
@@ -63,7 +63,7 @@ export default function Creator() {
               title={t('maintenanceGuidelines.title')}
               description={t('maintenanceGuidelines.description')}
               icon={
-                <SvgTodo className="fill-pink-500" width={144} height={144} />
+                <SvgTodo className="fill-pink-400" width={144} height={144} />
               }
               direction="right"
             />

@@ -481,7 +481,8 @@
     "contentSubmissions": {
       "brandNote": {
         "description": "파일을 드래그 앤 드롭하거나 클릭하여 업로드하세요.",
-        "firstReview": "파일 선택"
+        "firstReview": "파일 선택",
+        "secondReview": ""
       },
       "campaignProductMediaInput": {
         "description": "캠페인 제품 미디어",
@@ -611,6 +612,23 @@
       "skinTypeRequired": "피부 타입은 필수 입력 항목입니다.",
       "stateRequired": "주는 필수 입력 항목입니다.",
       "yearRequired": "연도는 필수 입력 항목입니다."
+    },
+    "finalReview": {
+      "1stContent": "",
+      "2ndContent": "",
+      "brandNote": {
+        "1stContent": "",
+        "2ndContent": ""
+      },
+      "contentType": {
+        "instagramPost": "",
+        "instagramReels": "",
+        "tiktokVideo": "",
+        "title": ""
+      },
+      "socialMediaContent": "",
+      "submitCaptionAndHashtags": "",
+      "submitContentUrl": ""
     },
     "menus": {
       "connectSNS": "SNS 연결",

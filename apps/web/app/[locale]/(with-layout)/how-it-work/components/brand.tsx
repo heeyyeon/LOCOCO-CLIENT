@@ -24,7 +24,7 @@ export default function Brand() {
               description={t('campaignApproval.description')}
               icon={
                 <SvgApprove
-                  className="fill-pink-500"
+                  className="fill-pink-400"
                   width={144}
                   height={144}
                 />
@@ -39,7 +39,7 @@ export default function Brand() {
               title={t('shipProduct.title')}
               description={t('shipProduct.description')}
               icon={
-                <SvgBus className="fill-pink-500" width={144} height={144} />
+                <SvgBus className="fill-pink-400" width={144} height={144} />
               }
               direction="right"
             />
@@ -52,7 +52,7 @@ export default function Brand() {
               description={t('provideFeedback.description')}
               icon={
                 <SvgFeedback
-                  className="fill-pink-500"
+                  className="fill-pink-400"
                   width={144}
                   height={144}
                 />
@@ -67,7 +67,7 @@ export default function Brand() {
               title={t('checkPerformance.title')}
               description={t('checkPerformance.description')}
               icon={
-                <SvgTodo className="fill-pink-500" width={144} height={144} />
+                <SvgTodo className="fill-pink-400" width={144} height={144} />
               }
               direction="right"
             />

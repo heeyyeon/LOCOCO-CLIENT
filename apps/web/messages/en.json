@@ -613,6 +613,23 @@
       "stateRequired": "State is required",
       "yearRequired": "Year is required"
     },
+    "finalReview": {
+      "1stContent": "1st Content",
+      "2ndContent": "2nd Content",
+      "brandNote": {
+        "1stContent": "Brand Note for 1st Review ",
+        "2ndContent": "Brand Note for 2nd Review "
+      },
+      "contentType": {
+        "instagramPost": "Instagram Post",
+        "instagramReels": "Instagram Reels",
+        "tiktokVideo": "Tiktok Video",
+        "title": "Content Type"
+      },
+      "socialMediaContent": "Social Media Content",
+      "submitCaptionAndHashtags": "Submit Your Caption & Hashtags",
+      "submitContentUrl": "Submit Content URL"
+    },
     "menus": {
       "connectSNS": "Connect SNS",
       "contentSubmissions": "Content Submissions",

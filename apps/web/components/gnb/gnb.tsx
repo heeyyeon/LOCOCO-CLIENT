@@ -1,10 +1,14 @@
+'use client';
+
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
 import GnbAuth from './gnb-auth';
 import GnbLanguage from './gnb-language';
 import GnbMenu from './gnb-menu';
 
 export default function Gnb() {
+  const router = useRouter();
   return (
     <header className="body1 flex h-[7.2rem] w-full min-w-[112.8rem] justify-center font-[700]">
       <div className="flex w-[112.8rem] justify-between">
@@ -13,7 +17,10 @@ export default function Gnb() {
           alt="logo"
           width={162}
           height={27}
-          className="object-contain"
+          className="cursor-pointer object-contain"
+          onClick={() => {
+            router.push('/');
+          }}
         />
         <GnbMenu />
         <div className="flex h-full items-center gap-[1.6rem]">
