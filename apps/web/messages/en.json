@@ -352,7 +352,7 @@
     "slogan": "Where Creators Meet Real K-Beauty"
   },
   "gnb": {
-    "campaigns": "campaigns",
+    "campaigns": "Campaigns",
     "howItWorks": "How It Works",
     "login": "Log in",
     "logIn": "Log in",
@@ -626,6 +626,7 @@
         "tiktokVideo": "Tiktok Video",
         "title": "Content Type"
       },
+      "socialMediaContent": "Social Media Content",
       "socialMediaContents": "Social Media Contents",
       "submitCaptionAndHashtags": "Submit Your Caption & Hashtags",
       "submitContentUrl": "Submit Content URL"
