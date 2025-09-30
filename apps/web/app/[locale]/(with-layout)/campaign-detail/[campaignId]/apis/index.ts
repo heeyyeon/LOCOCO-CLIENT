@@ -15,7 +15,7 @@ export const getCampaignDetail = async (campaignId: string) => {
   return response.data;
 };
 
-// 지원자 수용인원 full - 409 대응 필요
+// 지원자 수용인원 full / 이미 지원한 캠페인 - 409 대응 필요
 export const applyCampaign = async (campaignId: string) => {
   const response = await apiRequest<CreatorCampaignApplyResponse>({
     endPoint: `/api/creator-campaign/${campaignId}/participate`,

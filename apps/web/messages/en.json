@@ -195,11 +195,25 @@
     "localTimeNotice": "All times are displayed in your local time.",
     "resultAnnouncement": "Result Announcement",
     "rewardsAndCompensation": "Rewards & Compensation",
+    "applyButtonText": {
+      "open_reserved": "Coming Soon",
+      "recruiting": {
+        "creator": "Apply Now!",
+        "brand": "View Applicants"
+      },
+      "not_applied_ended": "Campaign Closed",
+      "applied": "Successfully Applied",
+      "rejected": "Campaign not Selected",
+      "approved_second_review_done": "Campaign Completed",
+      "approved_review_not_confirmed": "Expired",
+      "active": "Campaign in progress",
+      "closed": "Campaign Closed",
+      "unknown": "Unknown Status"
+    },
     "rejectModal": {
       "title": "Application Rejected",
       "notProCreatorDescription": "This campaign is only open to Pro creators. \n If you would like to request an upgrade to PRO creator status, please send an email to lococo.official@gmail.com.",
       "notCreatorDescription": "Campaigns are for Lococo Creators only. \n If you would like to request an upgrade to Lococo Partners status, please send an email to lococo.official@gmail.com.",
-      "alreadyAppliedDescription": "You have already applied to this campaign. \nPlease check your campaign status in My Page.",
       "unExpectedErrorDescription": "An unexpected error occurred. Please try again later.",
       "confirmButton": "Okay"
     },

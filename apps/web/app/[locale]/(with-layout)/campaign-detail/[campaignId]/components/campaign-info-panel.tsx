@@ -142,45 +142,50 @@ export default function CampaignInfoPanel({
     onClick?: () => void;
   } => {
     switch (status) {
-      //
       case 'OPEN_RESERVED':
-        return { text: 'Coming Soon', isDisabled: true };
-      case 'RECRUITING': // 유저 상태 추가 요
+        return { text: t('applyButtonText.open_reserved'), isDisabled: true };
+      case 'RECRUITING':
         return {
           text:
             currentUserRole === 'CREATOR'
-              ? 'Apply Now!'
+              ? t('applyButtonText.recruiting.creator')
               : currentUserRole === 'BRAND'
-                ? 'View Applicants'
-                : 'Apply Now!',
+                ? t('applyButtonText.recruiting.brand')
+                : t('applyButtonText.recruiting.creator'),
           isDisabled: false,
           onClick: handleApplyButtonClick,
         };
-      case 'NOT_APPLIED_ENDED': //지원하지 않고 캠페인 마감
-        return { text: 'Campaign Closed', isDisabled: true };
-      case 'APPLIED': // 지원하고 아무것도 안한상태
-        return { text: 'Successfully Applied', isDisabled: true };
+      case 'NOT_APPLIED_ENDED':
+        return {
+          text: t('applyButtonText.not_applied_ended'),
+          isDisabled: true,
+        };
+      case 'APPLIED':
+        return { text: t('applyButtonText.applied'), isDisabled: true };
       case 'REJECTED':
-        return { text: 'Campaign not Selected', isDisabled: true };
+        return { text: t('applyButtonText.rejected'), isDisabled: true };
       case 'APPROVED_SECOND_REVIEW_DONE':
-        return { text: 'Campaign Completed', isDisabled: true };
+        return {
+          text: t('applyButtonText.approved_second_review_done'),
+          isDisabled: true,
+        };
       case 'APPROVED_REVIEW_NOT_CONFIRMED':
         return {
-          text: 'Expired',
+          text: t('applyButtonText.approved_review_not_confirmed'),
           isDisabled: true,
         };
       // TODO: 기획의 의도 마이페이지-마이캠페인 이동, 컨텐츠 제출페이지 이동 두가지로 나뉘어져서 체크필요함
       case 'ACTIVE':
         return {
-          text: 'Campaign in progress',
+          text: t('applyButtonText.active'),
           isDisabled: false,
           onClick: handleActiveCampaign,
-        }; // 지원기간이랑 상관없이 캠페인 진행중, 리뷰업로드 redirect or 캠페인 마이페이지 이동
+        };
       case 'CLOSED':
-        return { text: 'Campaign Closed', isDisabled: true };
+        return { text: t('applyButtonText.closed'), isDisabled: true };
 
       default:
-        return { text: 'Unknown Status', isDisabled: true };
+        return { text: t('applyButtonText.unknown'), isDisabled: true };
     }
   };
 
