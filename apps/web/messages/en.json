@@ -614,6 +614,8 @@
       "yearRequired": "Year is required"
     },
     "finalReview": {
+      "empty": "There is no review result.",
+      "error": "Failed to load review result",
       "1stContent": "1st Content",
       "2ndContent": "2nd Content",
       "brandNote": {
