@@ -10,6 +10,7 @@ import {
   type ColumnFiltersState,
   type RowSelectionState,
 } from '@tanstack/react-table';
+import LoadingSvg from 'components/loading/loading-svg';
 import dayjs from 'dayjs';
 import { usePathname, useRouter } from 'i18n/navigation';
 
@@ -235,7 +236,9 @@ export default function BrandApplicantsPageClient({
   ]);
 
   return isFetching ? (
-    <div>Loading...</div>
+    <div className="flex h-screen w-full items-center justify-center">
+      <LoadingSvg />
+    </div>
   ) : isError || !data?.data ? (
     <div>Error</div>
   ) : campaignInfos.length > 0 ? (
