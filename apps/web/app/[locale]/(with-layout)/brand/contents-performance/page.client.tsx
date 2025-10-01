@@ -16,6 +16,7 @@ import { usePathname, useRouter } from 'i18n/navigation';
 
 import { Avatar } from '@lococo/design-system/avatar';
 import { Button } from '@lococo/design-system/button';
+import { Pagenation } from '@lococo/design-system/pagenation';
 import { SvgCalender, SvgDownload } from '@lococo/icons';
 import { cn } from '@lococo/utils';
 
@@ -151,7 +152,7 @@ const createColumns = (): ColumnDef<CampaignReview>[] => [
     id: 'contentType',
     accessorKey: 'contents',
     header: '컨텐츠 종류',
-    size: 88,
+    size: 50,
     cell: ({
       getValue,
     }: CellContext<CampaignReview, CampaignReview['contents']>) => {
@@ -171,6 +172,9 @@ const createColumns = (): ColumnDef<CampaignReview>[] => [
   {
     accessorKey: 'uploadedDate',
     header: '업로드 날짜',
+    meta: {
+      style: { textAlign: 'left' },
+    },
     size: 100,
     cell: ({ getValue }) => {
       const date = getValue() as string;
@@ -420,6 +424,15 @@ export default function ClientPage({ campaignInfos }: ClientPageProps) {
             creator={creator}
           />
         ))}
+      </div>
+      <div className="my-[6.4rem] flex w-full items-center justify-center">
+        <Pagenation
+          currentPage={data.data.pageableResponse.pageNumber}
+          totalPages={data.data.pageableResponse.totalPages}
+          handlePageChange={() => {
+            //
+          }}
+        />
       </div>
     </div>
   );
