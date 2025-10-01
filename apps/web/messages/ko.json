@@ -11,11 +11,11 @@
     "captionAndHashtags": "캠페인 캡션 & 해시태그",
     "contentType": "콘텐츠 플랫폼",
     "contentUrl": "캠페인 콘텐츠 URL",
-    "mediaUrls": "캠페인 사진",
     "formButton": {
       "deliver": "전달하기",
       "save": "저장하기"
-    }
+    },
+    "mediaUrls": "캠페인 사진"
   },
   "brandMyPage": {
     "myCampaign": "내 캠페인 "
@@ -630,6 +630,10 @@
       "dateRequired": "날짜는 필수 입력 항목입니다.",
       "emailRequired": "이메일은 필수 입력 항목입니다.",
       "firstNameRequired": "이름(First name)은 필수 입력 항목입니다.",
+      "formButton": {
+        "cancel": "",
+        "save": ""
+      },
       "genderRequired": "성별은 필수 입력 항목입니다.",
       "homeAddress": {
         "addressLine1": "주소 1",

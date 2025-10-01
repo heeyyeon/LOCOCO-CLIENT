@@ -11,6 +11,10 @@
     "captionAndHashtags": "",
     "contentType": "",
     "contentUrl": "",
+    "formButton": {
+      "deliver": "",
+      "save": ""
+    },
     "mediaUrls": ""
   },
   "brandMyPage": {
@@ -626,6 +630,10 @@
       "dateRequired": "La fecha es obligatoria.",
       "emailRequired": "El correo electrónico es obligatorio.",
       "firstNameRequired": "El nombre es obligatorio.",
+      "formButton": {
+        "cancel": "",
+        "save": ""
+      },
       "genderRequired": "El género es obligatorio.",
       "homeAddress": {
         "addressLine1": "Línea de dirección 1",

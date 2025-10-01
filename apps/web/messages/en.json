@@ -11,6 +11,10 @@
     "captionAndHashtags": "",
     "contentType": "",
     "contentUrl": "",
+    "formButton": {
+      "deliver": "",
+      "save": ""
+    },
     "mediaUrls": ""
   },
   "brandMyPage": {
@@ -626,6 +630,10 @@
       "dateRequired": "Date is required",
       "emailRequired": "Email is required",
       "firstNameRequired": "First name is required",
+      "formButton": {
+        "cancel": "Cancel",
+        "save": "Save"
+      },
       "genderRequired": "Gender is required",
       "homeAddress": {
         "addressLine1": "Address Line 1",
@@ -699,11 +707,7 @@
       "skinToneRequired": "Skin tone is required",
       "skinTypeRequired": "Skin type is required",
       "stateRequired": "State is required",
-      "yearRequired": "Year is required",
-      "formButton": {
-        "cancel": "Cancel",
-        "save": "Save"
-      }
+      "yearRequired": "Year is required"
     },
     "finalReview": {
       "1stContent": "1st Content",
