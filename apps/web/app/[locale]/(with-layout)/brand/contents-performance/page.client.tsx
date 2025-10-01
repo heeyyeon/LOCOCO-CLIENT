@@ -23,6 +23,7 @@ import { koDateRangeFormatter } from '../applicants/utils/ko-date-range-formatte
 import { CampaignInfo } from '../types';
 import ContentType from './components/column/content-type';
 import ReviewProgressStatus from './components/column/review-progress-status';
+import UploadedDate from './components/column/uploaded-date';
 import {
   ApiResponse,
   CampaignReview,
@@ -157,7 +158,7 @@ const createColumns = (): ColumnDef<CampaignReview>[] => [
     size: 100,
     cell: ({ getValue }) => {
       const date = getValue() as string;
-      return <p>{date}</p>;
+      return <UploadedDate uploadedDate={date} />;
     },
   },
   {
