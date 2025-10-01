@@ -1,7 +1,5 @@
 import { useEffect } from 'react';
 
-import { useRouter, useSearchParams } from 'next/navigation';
-
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { apiRequest } from 'app/api/apiRequest';
 import { CONNECT_SNS_KEYS } from 'constants/query-key';
@@ -9,6 +7,8 @@ import {
   type ApiResponseCreatorSnsConnectedResponse,
   ApiResponseVoid,
 } from 'swagger-codegen/data-contracts';
+
+import { useAuth } from './use-auth';
 
 const fetchConnectSns =
   async (): Promise<ApiResponseCreatorSnsConnectedResponse> => {
@@ -24,27 +24,50 @@ const fetchConnectSns =
   };
 
 export const useConnectSns = () => {
+  const { isLoggedIn } = useAuth();
+  const queryClient = useQueryClient();
+
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const success = urlParams.get('success');
+
+    if (success === 'true') {
+      queryClient.invalidateQueries({
+        queryKey: CONNECT_SNS_KEYS.CONNECT_SNS(),
+      });
+
+      const newUrl = new URL(window.location.href);
+      newUrl.searchParams.delete('success');
+      window.history.replaceState({}, '', newUrl.toString());
+    }
+  }, [queryClient]);
+
   return useQuery({
     queryKey: CONNECT_SNS_KEYS.CONNECT_SNS(),
     queryFn: fetchConnectSns,
+    enabled: isLoggedIn === true,
+    staleTime: 0,
+    refetchOnWindowFocus: true,
+    retry: (failureCount, error) => {
+      if (error instanceof Error && error.message.includes('403')) {
+        return false;
+      }
+      return failureCount < 2;
+    },
   });
 };
 
 const connectTiktokApi = async (): Promise<ApiResponseVoid> => {
-  const response = await apiRequest<ApiResponseVoid>({
-    endPoint: '/api/auth/sns/tiktok/connect',
-  });
+  const currentPath = window.location.pathname;
 
-  if (!response.success) {
-    throw new Error('TikTok 연결에 실패했습니다.');
-  }
+  const connectUrl = new URL(
+    `${window.location.protocol}//${window.location.host}/api/auth/sns/tiktok/connect`
+  );
+  connectUrl.searchParams.set('returnTo', currentPath);
 
-  if (!response.data) {
-    throw new Error('TikTok OAuth URL이 비어있습니다.');
-  }
+  window.location.href = connectUrl.toString();
 
-  window.location.href = response.data;
-  return response;
+  return new Promise(() => {});
 };
 
 export const useConnectTiktok = () => {
@@ -54,20 +77,16 @@ export const useConnectTiktok = () => {
 };
 
 const connectInstagramApi = async (): Promise<ApiResponseVoid> => {
-  const response = await apiRequest<ApiResponseVoid>({
-    endPoint: '/api/auth/sns/instagram/connect',
-  });
+  const currentPath = window.location.pathname;
 
-  if (!response.success) {
-    throw new Error('Instagram 연결에 실패했습니다.');
-  }
+  const connectUrl = new URL(
+    `${window.location.protocol}//${window.location.host}/api/auth/sns/instagram/connect`
+  );
+  connectUrl.searchParams.set('returnTo', currentPath);
 
-  if (!response.data) {
-    throw new Error('Instagram OAuth URL이 비어있습니다.');
-  }
+  window.location.href = connectUrl.toString();
 
-  window.location.href = response.data;
-  return response;
+  return new Promise(() => {});
 };
 
 export const useConnectInstagram = () => {
@@ -76,93 +95,8 @@ export const useConnectInstagram = () => {
   });
 };
 
-// OAuth 콜백 처리 훅
 export const useOAuthCallback = () => {
-  const router = useRouter();
-  const searchParams = useSearchParams();
-  const queryClient = useQueryClient();
-
-  useEffect(() => {
-    const code = searchParams.get('code');
-    const state = searchParams.get('state');
-    const error = searchParams.get('error');
-    const errorDescription = searchParams.get('error_description');
-
-    // 에러가 있는 경우
-    if (error) {
-      console.error('OAuth 에러:', error, errorDescription);
-      // 에러 페이지로 리다이렉트하거나 에러 메시지 표시
-      router.replace('/my-page?tab=connect-sns&error=oauth_failed');
-      return;
-    }
-
-    // code와 state가 있는 경우 (성공적인 OAuth 콜백)
-    if (code && state) {
-      handleOAuthCallback(code, state);
-    }
-  }, [searchParams, router, queryClient]);
-
-  const handleOAuthCallback = async (code: string, state: string) => {
-    try {
-      // URL에서 어떤 SNS인지 확인 (state 파라미터나 다른 방법으로)
-      const snsType = getSnsTypeFromState(state);
-
-      if (snsType === 'tiktok') {
-        await handleTiktokCallback(code, state);
-      } else if (snsType === 'instagram') {
-        await handleInstagramCallback(code, state);
-      }
-
-      // 성공 후 SNS 연결 상태 새로고침
-      queryClient.invalidateQueries({
-        queryKey: CONNECT_SNS_KEYS.CONNECT_SNS(),
-      });
-
-      // URL에서 OAuth 파라미터 제거하고 원래 페이지로 리다이렉트
-      router.replace('/my-page?tab=connect-sns&success=true');
-    } catch (error) {
-      console.error('OAuth 콜백 처리 실패:', error);
-      router.replace('/my-page?tab=connect-sns&error=callback_failed');
-    }
-  };
-
-  const getSnsTypeFromState = (state: string): string => {
-    // state 파라미터에서 SNS 타입을 추출하는 로직
-    // 예: state가 "tiktok_xxx" 형태라면 "tiktok" 반환
-    if (state.includes('tiktok')) return 'tiktok';
-    if (state.includes('instagram')) return 'instagram';
-    return 'unknown';
-  };
-
-  const handleTiktokCallback = async (code: string, state: string) => {
-    const response = await apiRequest<ApiResponseVoid>({
-      endPoint: '/api/auth/sns/tiktok/callback',
-
-      params: { code, state },
-    });
-
-    if (!response.success) {
-      throw new Error('TikTok 연결에 실패했습니다.');
-    }
-
-    return response;
-  };
-
-  const handleInstagramCallback = async (code: string, state: string) => {
-    const response = await apiRequest<ApiResponseVoid>({
-      endPoint: '/api/auth/sns/instagram/callback',
-
-      params: { code, state },
-    });
-
-    if (!response.success) {
-      throw new Error('Instagram 연결에 실패했습니다.');
-    }
-
-    return response;
-  };
-
   return {
-    isProcessingCallback: searchParams.has('code') && searchParams.has('state'),
+    isProcessingCallback: false,
   };
 };

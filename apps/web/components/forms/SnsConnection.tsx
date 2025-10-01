@@ -53,7 +53,6 @@ export function SnsConnection({
       if (sns === 'tiktok') {
         await connectTiktok();
       } else if (sns === 'instagram') {
-        // Instagram 연결 로직 추가 필요
         await connectInstagram();
       }
     } catch (error) {
