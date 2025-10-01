@@ -1,6 +1,22 @@
 {
   "aabc": "aabc",
   "abc": "abc",
+  "brandFeedback": {
+    "brandNote": {
+      "description": "변경/요청사항이 있으시면 여기에 내용을 작성해 주세요.",
+      "notice": "검수 마감일",
+      "title": "브랜드 노트"
+    },
+    "campaignName": "캠페인 종류",
+    "captionAndHashtags": "캠페인 캡션 & 해시태그",
+    "contentType": "콘텐츠 플랫폼",
+    "contentUrl": "캠페인 콘텐츠 URL",
+    "mediaUrls": "캠페인 사진",
+    "formButton": {
+      "deliver": "전달하기",
+      "save": "저장하기"
+    }
+  },
   "brandMyPage": {
     "myCampaign": "내 캠페인 "
   },
@@ -188,11 +204,44 @@
   },
   "campaignDetail": {
     "applicationPeriod": "지원 기간",
+    "applyButtonText": {
+      "active": {
+        "brand": "지원자 확인하기",
+        "user": "캠페인 진행 중"
+      },
+      "applied": "성공적으로 지원됨",
+      "approved_review_not_confirmed": "만료됨",
+      "approved_second_review_done": "캠페인 완료",
+      "closed": "캠페인 마감",
+      "not_applied_ended": "캠페인 마감",
+      "open_reserved": "곧 공개",
+      "recruiting": {
+        "brand": "지원자 보기",
+        "creator": "지금 지원하기!"
+      },
+      "rejected": "캠페인 미선정",
+      "unknown": "알 수 없는 상태"
+    },
     "campaignSchedule": "캠페인 일정",
+    "confirmCampaignSignUpModal": {
+      "cancelButton": "취소",
+      "confirmButton": "확인",
+      "description": "캠페인 결과는 {announcementDate}에 발표됩니다.\n배송 주소는 24시간 이내에 확인해야 합니다.\n신청하기 전에 <link>캠페인 가이드라인</link>을 확인해주세요.",
+      "finalDescription": "계속하시겠습니까?",
+      "title": "캠페인 신청 확인"
+    },
     "contentSubmissionPeriod": "콘텐츠 제출 기간",
     "deliverableRequirements": "제출물 요건",
     "eligibilityRequirements": "지원 자격 요건",
     "localTimeNotice": "모든 시간은 사용자의 현지 시간으로 표시됩니다",
+    "rejectModal": {
+      "alreadyAppliedDescription": "이미 이 캠페인에 지원하셨습니다. \n마이페이지에서 캠페인 상태를 확인해주세요.",
+      "confirmButton": "확인",
+      "notCreatorDescription": "캠페인은 Lococo 크리에이터만 참여할 수 있습니다. \nLococo 파트너 상태로 업그레이드를 원하시면 lococo.official@gmail.com으로 이메일을 보내주세요.",
+      "notProCreatorDescription": "이 캠페인은 프로 크리에이터만 참여할 수 있습니다. \n프로 크리에이터로 업그레이드를 원하시면 lococo.official@gmail.com으로 이메일을 보내주세요.",
+      "title": "지원 거부됨",
+      "unExpectedErrorDescription": "예상치 못한 오류가 발생했습니다. 나중에 다시 시도해주세요."
+    },
     "resultAnnouncement": "결과 발표",
     "rewardsAndCompensation": "보상 및 혜택"
   },
@@ -223,9 +272,25 @@
     },
     "skinTone": {
       "SHADE_1": "색상 1",
+      "SHADE_10": "색상 10",
+      "SHADE_11": "색상 11",
+      "SHADE_12": "색상 12",
+      "SHADE_13": "색상 13",
+      "SHADE_14": "색상 14",
+      "SHADE_15": "색상 15",
+      "SHADE_16": "색상 16",
+      "SHADE_17": "색상 17",
+      "SHADE_18": "색상 18",
+      "SHADE_19": "색상 19",
       "SHADE_2": "색상 2",
+      "SHADE_20": "색상 20",
       "SHADE_3": "색상 3",
-      "SHADE_4": "색상 4"
+      "SHADE_4": "색상 4",
+      "SHADE_5": "색상 5",
+      "SHADE_6": "색상 6",
+      "SHADE_7": "색상 7",
+      "SHADE_8": "색상 8",
+      "SHADE_9": "색상 9"
     },
     "skinType": {
       "COMBINATION": "복합성",
@@ -301,14 +366,15 @@
     },
     "title": "로코코 크리에이터 커뮤니티에 가입하세요!",
     "validation": {
-      "addressLine1MaxLength": "최대 20자까지 입력할 수 있습니다. ",
+      "addressLine1MaxLength": "최대 100자까지 입력할 수 있습니다. ",
       "addressLine1Required": "주소 1은 필수 입력 항목입니다. ",
-      "addressLine2MaxLength": "최대 20자까지 입력할 수 있습니다. ",
+      "addressLine2MaxLength": "최대 100자까지 입력할 수 있습니다. ",
       "birthRequired": "생년월일은 필수 입력 항목입니다. ",
-      "cityMaxLength": "컨텐츠 언어는 필수입니다. ",
+      "cityMaxLength": "최대 20자까지 입력할 수 있습니다. ",
       "cityRequired": "시/군/구는 필수입니다. ",
       "contentLanguageRequired": "컨텐츠 언어는 필수입니다. ",
       "countryRequired": "국가는 필수입니다. ",
+      "error": "프로필 데이터를 불러오지 못했습니다",
       "firstNameMaxLength": "최대 20자까지 입력할 수 있습니다. ",
       "firstNameRequired": "이름은 필수입니다. ",
       "genderRequired": "성별은 필수입니다. ",
@@ -322,12 +388,13 @@
       "phoneNumberRequired": "전화번호는 필수 입력 항목입니다.",
       "skinToneRequired": "피부 톤은 필수 입력 항목입니다.",
       "skinTypeRequired": "피부 타입은 필수 입력 항목입니다.",
-      "stateMaxLength": "최대 20자까지 입력할 수 있습니다.",
+      "stateMaxLength": "최대 100자까지 입력할 수 있습니다.",
       "stateRequired": "주/지역/도는 필수 입력 항목입니다.",
-      "zipCodeMaxLength": "최대 20자까지 입력할 수 있습니다."
+      "zipCodeMaxLength": "최대 100자까지 입력할 수 있습니다."
     }
   },
   "creatorSnsLinksPage": {
+    "error": "SNS 연결을 불러오지 못했습니다",
     "snsDescription": "SNS 계정을 검토한 후, 인증 여부를 알려드리겠습니다.",
     "submitLabel": "가입하기",
     "title": "로코코 크리에이터 커뮤니티에 가입하세요!"
@@ -389,6 +456,10 @@
       "title": "브랜드"
     },
     "creators": {
+      "applyForCampaign": {
+        "description": "",
+        "title": ""
+      },
       "confimAddress": {
         "description": "캠페인 선정 후 24시간 이내에 배송지를 확인하세요.",
         "title": "배송지 확인"
@@ -397,18 +468,38 @@
         "description": "캠페인 선정 후 24시간 이내에 배송지를 확인하세요.",
         "title": "배송지 확인"
       },
+      "keepYourReviewLive": {
+        "description": "",
+        "title": ""
+      },
       "maintenanceGuidelines": {
         "description": "리뷰는 최소 6개월간 게시 상태를 유지해야 합니다.",
         "title": "유지 가이드라인"
+      },
+      "receiveAndTryTheProducts": {
+        "description": "",
+        "title": ""
+      },
+      "reviewBrand’sFeedbackAndUpload2ndReview": {
+        "description": "",
+        "title": ""
       },
       "reviewUploadSchedule": {
         "description": "제품 수령 후 7일 이내에 첫 번째 리뷰를 업로드하세요. 브랜드의 피드백을 검토한 후 7일 이내에 두 번째 리뷰를 업로드하세요. 두 번째 리뷰를 게시할 때 최종 SNS URL을 첨부하세요.",
         "title": "리뷰 업로드 일정"
       },
       "title": "크리에이터",
+      "upload1stReview": {
+        "description": "",
+        "title": ""
+      },
       "uploadReview": {
         "description": "제품 수령 후 7일 이내에 첫 번째 리뷰를 업로드하세요.",
         "title": "리뷰 업로드"
+      },
+      "waitForResultAnnouncement": {
+        "description": "",
+        "title": ""
       }
     },
     "FAQs": {
@@ -480,37 +571,38 @@
     },
     "contentSubmissions": {
       "brandNote": {
-        "description": "파일을 드래그 앤 드롭하거나 클릭하여 업로드하세요.",
-        "firstReview": "파일 선택",
-        "secondReview": ""
+        "description": "브랜드에서 요청한 수정 사항입니다. 해당 내용을 반영하여 콘텐츠를 업데이트한 후 다시 업로드해주세요.",
+        "firstReview": "1차 리뷰에 대한 브랜드 노트",
+        "secondReview": "2차 리뷰에 대한 브랜드 노트"
       },
       "campaignProductMediaInput": {
-        "description": "캠페인 제품 미디어",
-        "selectFile": "캠페인을 선택해 주세요.",
-        "title": "캠페인 선택"
+        "description": "파일을 드래그 앤 드롭하거나 클릭하여 업로드하세요.",
+        "selectFile": "파일 선택",
+        "title": "캠페인 제품 미디어"
       },
       "campaignSelect": {
-        "description": "인스타그램 게시물",
-        "selectCampaign": "인스타그램 릴스",
-        "title": "콘텐츠 유형 선택"
+        "description": "캠페인을 선택해주세요",
+        "selectCampaign": "캠페인 선택",
+        "title": "캠페인 선택"
       },
       "content": {
-        "1stContent": "틱톡 영상",
-        "2ndContent": "콘텐츠 유형"
+        "1stContent": "1차 콘텐츠",
+        "2ndContent": "2차 콘텐츠"
       },
       "contentTypeSelect": {
-        "instagramPost": "검토할 콘텐츠가 없습니다.",
-        "instagramReels": "사용한 캡션과 해시태그를 그대로 붙여 넣어 주세요.",
-        "selectContentType": "캡션 & 해시태그 제출하기",
-        "tiktokVideo": "첫 번째 제출물이 접수되었습니다. 브랜드가 검토 후 피드백을 보내드릴 예정입니다.",
-        "title": "오케이"
+        "instagramPost": "인스타그램 게시물",
+        "instagramReels": "인스타그램 릴스",
+        "selectContentType": "콘텐츠 유형을 선택해주세요",
+        "tiktokVideo": "틱톡 영상",
+        "title": "콘텐츠 유형"
       },
       "empty": {
-        "title": "최종 제출물이 접수되었습니다. 제출해 주셔서 감사합니다."
+        "title": "검토할 콘텐츠가 없습니다."
       },
+      "error": "콘텐츠 제출을 불러오지 못했습니다",
       "hashtagsInput": {
-        "description": "성공적으로 제출되었습니다.",
-        "title": "캡션 & 해시태그 제출하기"
+        "description": "사용한 캡션과 해시태그를 정확히 붙여넣어주세요",
+        "title": "캡션과 해시태그를 제출해주세요. "
       },
       "saveSubmitModal": {
         "firstDescription": "첫 번째 제출물이 접수되었습니다. 브랜드가 검토 후 피드백을 보내드릴 예정입니다.",
@@ -614,22 +706,24 @@
       "yearRequired": "연도는 필수 입력 항목입니다."
     },
     "finalReview": {
-      "1stContent": "",
-      "2ndContent": "",
+      "1stContent": "1차 콘텐츠",
+      "2ndContent": "2차 콘텐츠",
       "brandNote": {
-        "1stContent": "",
-        "2ndContent": ""
+        "1stContent": "1차 리뷰에 대한 브랜드 노트",
+        "2ndContent": "2차 리뷰에 대한 브랜드 노트"
       },
       "contentType": {
-        "instagramPost": "",
-        "instagramReels": "",
-        "tiktokVideo": "",
-        "title": ""
+        "instagramPost": "인스타그램 게시물",
+        "instagramReels": "인스타그램 릴스",
+        "tiktokVideo": "틱톡 영상",
+        "title": "콘텐츠 유형"
       },
-      "socialMediaContent": "",
-      "socialMediaContents": "",
-      "submitCaptionAndHashtags": "",
-      "submitContentUrl": ""
+      "empty": "리뷰 결과가 없습니다.",
+      "error": "리뷰 결과를 불러오지 못했습니다",
+      "socialMediaContent": "소셜 미디어 콘텐츠",
+      "socialMediaContents": "소셜 미디어 콘텐츠들",
+      "submitCaptionAndHashtags": "캡션과 해시태그를 제출하세요",
+      "submitContentUrl": "콘텐츠 URL을 제출하세요"
     },
     "menus": {
       "connectSNS": "SNS 연결",
@@ -649,8 +743,10 @@
         "viewResults": "결과 보기"
       },
       "empty": {
+        "_value": "신청한 캠페인이 없습니다.",
         "title": "신청한 캠페인이 없습니다."
       },
+      "error": "내 캠페인을 불러오지 못했습니다",
       "participationStatus": {
         "active": "활성화됨",
         "approved": "승인됨",
