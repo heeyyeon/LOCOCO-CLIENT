@@ -22,6 +22,7 @@ import {
   ApiResponseCampaignBasicResponse,
   ApiResponseCampaignReviewDetailListResponse,
   ApiResponseCreatorApprovedResponse,
+  ApiResponseCreatorPerformanceResponse,
   ApiResponseListBrandIssuedCampaignResponse,
   ApiResponseVoid,
   BrandInfoUpdateRequest,
@@ -320,6 +321,38 @@ export class Brand<
   ) =>
     this.request<ApiResponseBrandMyCampaignListResponse, any>({
       path: `/api/brands/my/campaigns`,
+      method: "GET",
+      query: query,
+      secure: true,
+      ...params,
+    });
+  /**
+   * No description
+   *
+   * @tags BRAND
+   * @name GetCreatorPerformances
+   * @summary 브랜드 컨텐츠 확인 - 캠페인별 크리에이터 성과 조회
+   * @request GET:/api/brands/my/campaigns/{campaignId}/performances
+   * @secure
+   */
+  getCreatorPerformances = (
+    campaignId: number,
+    query?: {
+      /**
+       * @format int32
+       * @default 0
+       */
+      page?: number;
+      /**
+       * @format int32
+       * @default 5
+       */
+      size?: number;
+    },
+    params: RequestParams = {},
+  ) =>
+    this.request<ApiResponseCreatorPerformanceResponse, any>({
+      path: `/api/brands/my/campaigns/${campaignId}/performances`,
       method: "GET",
       query: query,
       secure: true,
