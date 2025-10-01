@@ -207,6 +207,7 @@
   "campaignDetail": {
     "applicationPeriod": "Application Period",
     "applyButtonText": {
+      "userRoleBrand": "Only for Creator",
       "active": {
         "brand": "View Applicants",
         "user": "Campaign in progress"

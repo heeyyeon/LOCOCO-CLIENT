@@ -70,7 +70,7 @@ export default function CampaignInfoPanel({
   const router = useRouter();
   const params = useParams();
   const campaignId = params.campaignId as string;
-  console.log(currentUserRole, userSpecificCampaignStatus);
+
   const [
     isConfirmCampaignSignUpModalOpen,
     setIsConfirmCampaignSignUpModalOpen,
@@ -149,6 +149,9 @@ export default function CampaignInfoPanel({
     isDisabled: boolean;
     onClick?: () => void;
   } => {
+    if (currentUserRole === 'BRAND') {
+      return { text: t('applyButtonText.userRoleBrand'), isDisabled: true };
+    }
     switch (status) {
       case 'OPEN_RESERVED':
         return { text: t('applyButtonText.open_reserved'), isDisabled: true };
@@ -157,9 +160,7 @@ export default function CampaignInfoPanel({
           text:
             currentUserRole === 'CREATOR'
               ? t('applyButtonText.recruiting.creator')
-              : currentUserRole === 'BRAND'
-                ? t('applyButtonText.recruiting.brand')
-                : t('applyButtonText.recruiting.creator'),
+              : t('applyButtonText.userRoleBrand'),
           isDisabled: false,
           onClick: handleApplyButtonClick,
         };
@@ -178,6 +179,7 @@ export default function CampaignInfoPanel({
           isDisabled: true,
         };
       case 'APPROVED_REVIEW_NOT_CONFIRMED':
+      case 'APPROVED_ADDRESS_NOT_CONFIRMED':
         return {
           text: t('applyButtonText.approved_review_not_confirmed'),
           isDisabled: true,
@@ -186,9 +188,11 @@ export default function CampaignInfoPanel({
       case 'ACTIVE':
         return {
           text:
-            currentUserRole === 'BRAND'
-              ? t('applyButtonText.active.brand')
-              : t('applyButtonText.active.user'),
+            currentUserRole === 'CREATOR'
+              ? t('applyButtonText.active.user')
+              : currentUserRole === 'CUSTOMER' || currentUserRole === null
+                ? t('applyButtonText.closed')
+                : t('applyButtonText.userRoleBrand'),
           isDisabled: false,
           onClick: handleActiveCampaign,
         };
