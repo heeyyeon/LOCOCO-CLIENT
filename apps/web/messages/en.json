@@ -3,20 +3,20 @@
   "abc": "abc",
   "brandFeedback": {
     "brandNote": {
-      "description": "",
+      "description": "If you have any changes or requests, please write them here.",
       "error": "Please enter the brand note.",
-      "notice": "",
-      "title": ""
+      "notice": "Review Deadline",
+      "title": "Brand Notes"
     },
-    "campaignName": "",
-    "captionAndHashtags": "",
-    "contentType": "",
-    "contentUrl": "",
+    "campaignName": "Campaign Type",
+    "captionAndHashtags": "Campaign Caption & Hashtags",
+    "contentType": "Content Platform",
+    "contentUrl": "Campaign Content URL",
     "formButton": {
-      "deliver": "",
-      "save": ""
+      "deliver": "Submit",
+      "save": "Save"
     },
-    "mediaUrls": ""
+    "mediaUrls": "Campaign Images"
   },
   "brandMyPage": {
     "myCampaign": "My Campaigns"
