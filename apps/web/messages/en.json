@@ -153,6 +153,7 @@
     }
   },
   "brandMyPageSideBar": {
+    "brand": "Brand",
     "checkApplicants": "Applicant Confirmation",
     "checkContents": "View Contents",
     "dashboard": "Dashboard ",
