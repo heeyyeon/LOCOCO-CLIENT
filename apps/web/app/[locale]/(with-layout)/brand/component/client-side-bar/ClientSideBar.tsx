@@ -4,7 +4,7 @@ import { useTranslations } from 'next-intl';
 
 import SideBar from '../../../../../../components/side-bar/side-bar';
 import SideBarSkeleton from '../../../../../../components/side-bar/side-bar-skeleton';
-import { useBrandProfile } from '../../hooks/use-brand-profile';
+import { useBrandProfile } from '../../hooks/useBrandProfile';
 
 interface ClientSideBarProps {
   menus: Array<{ label: string; value: string }>;
