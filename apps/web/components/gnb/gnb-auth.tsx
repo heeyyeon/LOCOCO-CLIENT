@@ -42,6 +42,16 @@ export default function GnbAuth() {
     router.push('/login-google?mode=signup');
   };
 
+  const handleRouteMyPage = () => {
+    if (userInfo?.role === 'BRAND') {
+      router.push('/brand/campaign');
+    } else if (userInfo?.role === 'Creator') {
+      router.push('/my-page/my-campaign');
+    } else {
+      router.push('/login-google?mode=signup');
+    }
+  };
+
   return (
     <div className="flex h-[5.6rem] items-center gap-4">
       {isLoggedIn ? (
@@ -57,9 +67,7 @@ export default function GnbAuth() {
             align="end"
             className="body4 mt-[0.4rem] w-[var(--radix-dropdown-menu-trigger-width)] font-[500]"
           >
-            <DropdownMenuItem
-              onClick={() => router.push('/my-page/my-campaign')}
-            >
+            <DropdownMenuItem onClick={handleRouteMyPage}>
               {t('myPage')}
             </DropdownMenuItem>
             <DropdownMenuItem onClick={logout}>{t('logOut')}</DropdownMenuItem>
