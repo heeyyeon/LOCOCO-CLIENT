@@ -12,20 +12,8 @@ import { useAuth } from './use-auth';
 
 const fetchConnectSns =
   async (): Promise<ApiResponseCreatorSnsConnectedResponse> => {
-    console.log('SNS 상태 API 호출 시작:', {
-      timestamp: new Date().toLocaleString(),
-      endpoint: '/api/creator/register/sns-status',
-      method: 'apiRequest 자동 토큰 관리',
-    });
-
     const response = await apiRequest<ApiResponseCreatorSnsConnectedResponse>({
       endPoint: '/api/creator/register/sns-status',
-    });
-
-    console.log('SNS 상태 API 응답:', {
-      success: response.success,
-      status: response.status,
-      timestamp: new Date().toLocaleString(),
     });
 
     if (!response.success) {
@@ -44,7 +32,6 @@ export const useConnectSns = () => {
     const success = urlParams.get('success');
 
     if (success === 'true') {
-      console.log('OAuth 성공 감지, SNS 상태 다시 확인');
       queryClient.invalidateQueries({
         queryKey: CONNECT_SNS_KEYS.CONNECT_SNS(),
       });
