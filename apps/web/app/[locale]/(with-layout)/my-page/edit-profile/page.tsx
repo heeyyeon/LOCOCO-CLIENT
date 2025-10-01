@@ -198,7 +198,7 @@ export default function EditProfile() {
             className="w-[41.2rem]"
             onClick={() => form.reset()}
           >
-            Cancel
+            {t('formButton.cancel')}
           </Button>
           <Button
             variant="filled"
@@ -207,7 +207,7 @@ export default function EditProfile() {
             className="w-[41.2rem]"
             onClick={handleSubmitForm}
           >
-            Save
+            {t('formButton.save')}
           </Button>
         </div>
       </div>

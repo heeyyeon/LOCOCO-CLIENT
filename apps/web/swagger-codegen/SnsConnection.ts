@@ -9,12 +9,11 @@
  * ## SOURCE: https://github.com/acacode/swagger-typescript-api ##
  * ---------------------------------------------------------------
  */
-
 import {
   ApiResponseInstagramConnectionResponse,
   ApiResponseTikTokConnectionResponse,
-} from "./data-contracts";
-import { HttpClient, RequestParams } from "./http-client";
+} from './data-contracts';
+import { HttpClient, RequestParams } from './http-client';
 
 export class SnsConnection<
   SecurityDataType = unknown,
@@ -23,37 +22,36 @@ export class SnsConnection<
    * No description
    *
    * @tags SNS_CONNECTION
-   * @name ConnectTikTok
-   * @summary TikTok 계정 연동 / TikTok OAuth 인증 페이지로 리다이렉트
-   * @request GET:/api/auth/sns/tiktok/connect
+   * @name HandleTikTokCallback
+   * @summary TikTok OAuth 콜백 / 인증 후 콜백을 처리 및 계정 연결
+   * @request GET:/api/auth/tiktok/callback
    * @secure
    */
-  connectTikTok = (params: RequestParams = {}) =>
+
+  connectTikTok = (
+    query: {
+      returnTo: string;
+    },
+    params: RequestParams = {}
+  ) =>
     this.request<void, any>({
       path: `/api/auth/sns/tiktok/connect`,
-      method: "GET",
+      method: 'GET',
+      query: query,
       secure: true,
       ...params,
     });
-  /**
-   * No description
-   *
-   * @tags SNS_CONNECTION
-   * @name HandleTikTokCallback
-   * @summary TikTok OAuth 콜백 / 인증 후 콜백을 처리 및 계정 연결
-   * @request GET:/api/auth/sns/tiktok/callback
-   * @secure
-   */
+
   handleTikTokCallback = (
     query: {
       code: string;
       state: string;
     },
-    params: RequestParams = {},
+    params: RequestParams = {}
   ) =>
     this.request<ApiResponseTikTokConnectionResponse, any>({
-      path: `/api/auth/sns/tiktok/callback`,
-      method: "GET",
+      path: `/api/auth/tiktok/callback`,
+      method: 'GET',
       query: query,
       secure: true,
       ...params,
@@ -67,10 +65,16 @@ export class SnsConnection<
    * @request GET:/api/auth/sns/instagram/connect
    * @secure
    */
-  connectInstagram = (params: RequestParams = {}) =>
+  connectInstagram = (
+    query: {
+      returnTo: string;
+    },
+    params: RequestParams = {}
+  ) =>
     this.request<void, any>({
       path: `/api/auth/sns/instagram/connect`,
-      method: "GET",
+      method: 'GET',
+      query: query,
       secure: true,
       ...params,
     });
@@ -88,11 +92,11 @@ export class SnsConnection<
       code: string;
       state: string;
     },
-    params: RequestParams = {},
+    params: RequestParams = {}
   ) =>
     this.request<ApiResponseInstagramConnectionResponse, any>({
       path: `/api/auth/sns/instagram/callback`,
-      method: "GET",
+      method: 'GET',
       query: query,
       secure: true,
       ...params,

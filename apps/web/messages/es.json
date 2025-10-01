@@ -1,6 +1,23 @@
 {
   "aabc": "aabc",
   "abc": "abc",
+  "brandFeedback": {
+    "brandNote": {
+      "description": "Si tiene algún cambio o solicitud, por favor escríbalo aquí.",
+      "error": "Por favor, ingrese la nota de la marca.",
+      "notice": "Fecha límite de revisión",
+      "title": "Notas de la marca"
+    },
+    "campaignName": "Tipo de campaña",
+    "captionAndHashtags": "Texto y hashtags de la campaña",
+    "contentType": "Plataforma de contenido",
+    "contentUrl": "URL del contenido de la campaña",
+    "formButton": {
+      "deliver": "Enviar",
+      "save": "Guardar"
+    },
+    "mediaUrls": "Imágenes de la campaña"
+  },
   "brandMyPage": {
     "myCampaign": "Mis Campañas"
   },
@@ -136,6 +153,7 @@
     }
   },
   "brandMyPageSideBar": {
+    "brand": "Marca",
     "checkApplicants": "Confirmación de solicitantes",
     "checkContents": "Revisar Contenidos",
     "dashboard": "Tablero de campañas",
@@ -440,26 +458,50 @@
       "title": "Marcas"
     },
     "creators": {
+      "applyForCampaign": {
+        "description": "¡Encuentra una campaña que te guste y solicita unirte!",
+        "title": "Solicitar una campaña"
+      },
       "confimAddress": {
-        "description": "Confirme su dirección de envío dentro de las 24 horas posteriores a la selección de la campaña.",
+        "description": "Confirma tu dirección de envío dentro de las 24 horas después de ser seleccionado para la campaña.",
         "title": "Confirmar dirección"
       },
       "confirmAddress": {
-        "description": "Confirme su dirección de envío dentro de las 24 horas posteriores a la selección de la campaña.",
+        "description": "Confirma tu dirección de envío dentro de las 24 horas después de ser seleccionado para la campaña.",
         "title": "Confirmar dirección"
       },
+      "keepYourReviewLive": {
+        "description": "Asegúrate de que tu contenido permanezca en tus redes sociales por al menos 6 meses.",
+        "title": "Mantener tu reseña activa"
+      },
       "maintenanceGuidelines": {
-        "description": "Mantenga la reseña publicada por al menos 6 meses.",
-        "title": "Directrices de mantenimiento"
+        "description": "Mantén la reseña publicada durante al menos 6 meses.",
+        "title": "Guías de mantenimiento"
+      },
+      "receiveAndTryTheProducts": {
+        "description": "¡Recibe y prueba los productos!",
+        "title": "Recibir y probar los productos"
+      },
+      "reviewBrand’sFeedbackAndUpload2ndReview": {
+        "description": "Revisar los comentarios de la marca y subir la 2ª reseña",
+        "title": "Revisa las notas de la marca y envía tu segunda reseña. ¡No olvides incluir la URL final de Instagram/TikTok!"
       },
       "reviewUploadSchedule": {
         "description": "Suba su primera reseña dentro de los 7 días posteriores a recibir el producto. Después de revisar los comentarios de la marca, suba su segunda reseña dentro de los 7 días. Adjunte la URL final de la red social al publicar la segunda reseña.",
         "title": "Cronograma de carga de reseñas"
       },
       "title": "Creadores",
+      "upload1stReview": {
+        "description": "Publica tu primera reseña dentro de los 7 días posteriores a recibir el producto. La marca la revisará y te dejará comentarios.",
+        "title": "Subir la 1ª reseña"
+      },
       "uploadReview": {
-        "description": "Suba su primera reseña dentro de los 7 días posteriores a recibir el producto.",
+        "description": "Sube tu primera reseña dentro de los 7 días posteriores a recibir el producto.",
         "title": "Subir reseña"
+      },
+      "waitForResultAnnouncement": {
+        "description": "¡Espera el anuncio de resultados!",
+        "title": "Si eres seleccionado, confirma tu dirección de envío en Mi Página dentro de las 24 horas."
       }
     },
     "FAQs": {
@@ -590,6 +632,10 @@
       "dateRequired": "La fecha es obligatoria.",
       "emailRequired": "El correo electrónico es obligatorio.",
       "firstNameRequired": "El nombre es obligatorio.",
+      "formButton": {
+        "cancel": "Cancelar",
+        "save": "Guardar"
+      },
       "genderRequired": "El género es obligatorio.",
       "homeAddress": {
         "addressLine1": "Línea de dirección 1",
@@ -702,7 +748,10 @@
         "viewNotes": "Ver notas",
         "viewResults": "Ver resultados"
       },
-      "empty": "No se ha aplicado a ninguna campaña.",
+      "empty": {
+        "_value": "No se ha aplicado a ninguna campaña.",
+        "title": "No se ha aplicado a ninguna campaña."
+      },
       "error": "No se pudo cargar mi campaña",
       "participationStatus": {
         "active": "Activo",

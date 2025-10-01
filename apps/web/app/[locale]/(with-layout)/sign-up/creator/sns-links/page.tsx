@@ -7,19 +7,24 @@ import { useRouter } from 'next/navigation';
 
 import { SignupFormLayout, SnsConnection } from 'components/forms';
 import LoadingSvg from 'components/loading/loading-svg';
+import { useConnectSns, useOAuthCallback } from 'hooks/use-connect-sns';
 
 import { ConfirmSignupModal } from '../../components/confirm-signup-modal';
-import { useSnsStatus } from './hooks/useSnsStatus';
+import { completeCreatorSignup } from '../apis/creator-form';
 
 export default function CreatorSnsLinksPage() {
   const router = useRouter();
   const t = useTranslations('creatorSnsLinksPage');
 
-  const { connectedSns, isLoading, handleCompleteSignup } = useSnsStatus();
+  const { isProcessingCallback } = useOAuthCallback();
+  const { data: snsData, isLoading } = useConnectSns();
 
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isShowConfirmModal, setIsShowConfirmModal] = useState(false);
 
+  const connectedSns: ('instagram' | 'tiktok')[] = [];
+  if (snsData?.data?.isInstaConnected) connectedSns.push('instagram');
+  if (snsData?.data?.isTiktokConnected) connectedSns.push('tiktok');
   const hasConnectedAccount = connectedSns.length > 0;
 
   const handleSubmit = async () => {
@@ -28,7 +33,7 @@ export default function CreatorSnsLinksPage() {
       return;
     }
 
-    const response = await handleCompleteSignup();
+    const response = await completeCreatorSignup();
 
     if (response.success) {
       setIsShowConfirmModal(true);
@@ -43,7 +48,7 @@ export default function CreatorSnsLinksPage() {
     router.back();
   };
 
-  if (isLoading) {
+  if (isLoading || isProcessingCallback) {
     return (
       <div className="flex h-[50rem] w-full items-center justify-center">
         <LoadingSvg />

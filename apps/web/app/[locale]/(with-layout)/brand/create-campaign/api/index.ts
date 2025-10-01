@@ -28,7 +28,7 @@ export const reSaveCampaignForm = async (
   id: string
 ): Promise<ApiResponseCampaignBasicResponse> => {
   const response = await apiRequest<ApiResponseCampaignBasicResponse>({
-    endPoint: `/api/brands/my/campaigns/${id}/drafts`,
+    endPoint: `/api/brands/my/campaigns/${id}/draft`,
     method: 'PUT',
     data: formData,
   });

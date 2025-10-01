@@ -2292,6 +2292,8 @@ export interface ApiResponseBrandMyPageResponse {
 export interface BrandMyPageResponse {
   /** 프로필 이미지 URL */
   profileImageUrl?: string;
+  /** 브랜드명 */
+  brandName: string;
   /** 담당자 이름 */
   managerName: string;
   /** 브랜드 이메일 (구글 로그인 이메일) */
@@ -2697,8 +2699,7 @@ export interface ApiResponseTikTokConnectionResponse {
 }
 
 export interface TikTokConnectionResponse {
-  connected?: boolean;
-  tikTokUserId?: string;
+  redirectUrl?: string;
 }
 
 export interface ApiResponseInstagramConnectionResponse {
@@ -2716,7 +2717,11 @@ export interface InstagramConnectionResponse {
 export interface AfterLoginUserNameResponse {
   /** 로그인 후 표시되는 이름 */
   displayName: string;
-  role: string;
+  /**
+   * 해당 사용자 역할
+   * @example "BRAND"
+   */
+  role: 'PENDING' | 'CUSTOMER' | 'CREATOR' | 'BRAND' | 'ADMIN';
 }
 
 export interface ApiResponseAfterLoginUserNameResponse {

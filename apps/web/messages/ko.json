@@ -1,6 +1,23 @@
 {
   "aabc": "aabc",
   "abc": "abc",
+  "brandFeedback": {
+    "brandNote": {
+      "description": "변경/요청사항이 있으시면 여기에 내용을 작성해 주세요.",
+      "error": "브랜드 노트를 입력해 주세요.",
+      "notice": "검수 마감일",
+      "title": "브랜드 노트"
+    },
+    "campaignName": "캠페인 종류",
+    "captionAndHashtags": "캠페인 캡션 & 해시태그",
+    "contentType": "콘텐츠 플랫폼",
+    "contentUrl": "캠페인 콘텐츠 URL",
+    "formButton": {
+      "deliver": "전달하기",
+      "save": "저장하기"
+    },
+    "mediaUrls": "캠페인 사진"
+  },
   "brandMyPage": {
     "myCampaign": "내 캠페인 "
   },
@@ -136,6 +153,7 @@
     }
   },
   "brandMyPageSideBar": {
+    "brand": "브랜드 ",
     "checkApplicants": "지원자 확인",
     "checkContents": "컨텐츠 확인",
     "dashboard": "대시보드",
@@ -440,26 +458,50 @@
       "title": "브랜드"
     },
     "creators": {
+      "applyForCampaign": {
+        "description": "마음에 드는 캠페인을 찾아 참여 신청하세요!",
+        "title": "캠페인 신청하기"
+      },
       "confimAddress": {
-        "description": "캠페인 선정 후 24시간 이내에 배송지를 확인하세요.",
-        "title": "배송지 확인"
+        "description": "캠페인 선정 후 24시간 이내에 배송지를 확인해 주세요.",
+        "title": "주소 확인"
       },
       "confirmAddress": {
-        "description": "캠페인 선정 후 24시간 이내에 배송지를 확인하세요.",
-        "title": "배송지 확인"
+        "description": "캠페인 선정 후 24시간 이내에 배송지를 확인해 주세요.",
+        "title": "주소 확인"
+      },
+      "keepYourReviewLive": {
+        "description": "콘텐츠는 최소 6개월 동안 SNS에 유지해 주세요.",
+        "title": "리뷰 유지하기"
       },
       "maintenanceGuidelines": {
-        "description": "리뷰는 최소 6개월간 게시 상태를 유지해야 합니다.",
+        "description": "리뷰는 최소 6개월 동안 게시 상태를 유지해 주세요.",
         "title": "유지 가이드라인"
       },
+      "receiveAndTryTheProducts": {
+        "description": "제품을 받아보고 사용해 보세요!",
+        "title": "제품 수령 & 체험하기"
+      },
+      "reviewBrand’sFeedbackAndUpload2ndReview": {
+        "description": "브랜드의 피드백을 확인하고 2차 리뷰를 업로드하세요. 최종 Instagram/TikTok URL 첨부를 잊지 마세요!",
+        "title": "제품 수령 후 7일 이내에 첫 번째 리뷰를 업로드하세요. 브랜드 피드백 확인 후, 7일 이내에 두 번째 리뷰를 업로드하고 최종 SNS URL을 첨부하세요."
+      },
       "reviewUploadSchedule": {
-        "description": "제품 수령 후 7일 이내에 첫 번째 리뷰를 업로드하세요. 브랜드의 피드백을 검토한 후 7일 이내에 두 번째 리뷰를 업로드하세요. 두 번째 리뷰를 게시할 때 최종 SNS URL을 첨부하세요.",
+        "description": "제품을 받은 후 7일 이내에 첫 번째 리뷰를 업로드하세요.\n브랜드의 피드백을 확인한 뒤, 7일 이내에 두 번째 리뷰를 업로드하고 두 번째 리뷰를 게시할 때 최종 SNS URL을 첨부해 주세요.",
         "title": "리뷰 업로드 일정"
       },
       "title": "크리에이터",
+      "upload1stReview": {
+        "description": "제품 수령 후 7일 이내에 첫 번째 리뷰를 게시하세요. 브랜드가 확인 후 피드백을 남깁니다.",
+        "title": "1차 리뷰 업로드"
+      },
       "uploadReview": {
         "description": "제품 수령 후 7일 이내에 첫 번째 리뷰를 업로드하세요.",
         "title": "리뷰 업로드"
+      },
+      "waitForResultAnnouncement": {
+        "description": "결과 발표를 기다려 주세요!",
+        "title": "선정되면, 마이페이지에서 24시간 이내에 배송지를 확인해 주세요."
       }
     },
     "FAQs": {
@@ -590,6 +632,10 @@
       "dateRequired": "날짜는 필수 입력 항목입니다.",
       "emailRequired": "이메일은 필수 입력 항목입니다.",
       "firstNameRequired": "이름(First name)은 필수 입력 항목입니다.",
+      "formButton": {
+        "cancel": "취소하기",
+        "save": "저장하기 "
+      },
       "genderRequired": "성별은 필수 입력 항목입니다.",
       "homeAddress": {
         "addressLine1": "주소 1",
@@ -702,7 +748,10 @@
         "viewNotes": "메모들 보기",
         "viewResults": "결과 보기"
       },
-      "empty": "신청한 캠페인이 없습니다.",
+      "empty": {
+        "_value": "신청한 캠페인이 없습니다.",
+        "title": "신청한 캠페인이 없습니다."
+      },
       "error": "내 캠페인을 불러오지 못했습니다",
       "participationStatus": {
         "active": "활성화됨",

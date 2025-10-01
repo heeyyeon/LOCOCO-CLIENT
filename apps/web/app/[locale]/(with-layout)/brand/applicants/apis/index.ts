@@ -44,3 +44,17 @@ export const getBrandCampaignInfos =
     });
     return response;
   };
+
+export const approveApplicants = async (
+  campaignId: number,
+  creatorCampaignId: number[]
+) => {
+  const response = await apiRequest<void>({
+    endPoint: `/api/brands/my/campaigns/${campaignId}/applicants/approve`,
+    method: 'PATCH',
+    data: {
+      creatorCampaignIds: creatorCampaignId,
+    },
+  });
+  return response;
+};

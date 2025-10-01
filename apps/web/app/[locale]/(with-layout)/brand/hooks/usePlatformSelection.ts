@@ -15,14 +15,14 @@ export const usePlatformSelection = (
     const selectedCount = Object.values(contents).filter(Boolean).length;
     const isCurrentSelected = contents[platform];
 
-    if (isCurrentSelected || selectedCount < 2) {
+    if (isCurrentSelected || selectedCount < 1) {
       setValue(`${fieldName}.${platform}`, !isCurrentSelected);
     }
   };
 
   const isDisabled = (platform: SocialPlatform) => {
     const selectedCount = Object.values(contents).filter(Boolean).length;
-    return !contents[platform] && selectedCount >= 2;
+    return !contents[platform] && selectedCount >= 1;
   };
   return {
     selectStatus: contents,

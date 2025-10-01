@@ -1,6 +1,23 @@
 {
   "aabc": "aabc",
   "abc": "abc",
+  "brandFeedback": {
+    "brandNote": {
+      "description": "If you have any changes or requests, please write them here.",
+      "error": "Please enter the brand note.",
+      "notice": "Review Deadline",
+      "title": "Brand Notes"
+    },
+    "campaignName": "Campaign Type",
+    "captionAndHashtags": "Campaign Caption & Hashtags",
+    "contentType": "Content Platform",
+    "contentUrl": "Campaign Content URL",
+    "formButton": {
+      "deliver": "Submit",
+      "save": "Save"
+    },
+    "mediaUrls": "Campaign Images"
+  },
   "brandMyPage": {
     "myCampaign": "My Campaigns"
   },
@@ -136,6 +153,7 @@
     }
   },
   "brandMyPageSideBar": {
+    "brand": "Brand",
     "checkApplicants": "Applicant Confirmation",
     "checkContents": "View Contents",
     "dashboard": "Dashboard ",
@@ -189,6 +207,7 @@
   "campaignDetail": {
     "applicationPeriod": "Application Period",
     "applyButtonText": {
+      "userRoleBrand": "Only for Creator",
       "active": {
         "brand": "View Applicants",
         "user": "Campaign in progress"
@@ -440,18 +459,25 @@
       "title": "Brands"
     },
     "creators": {
-      "title": "Creators",
-      "upload1stReview": {
-        "description": "Post your first review within 7 days of receiving the product. The brand will check it out and leave feedback for you.",
-        "title": "Upload 1st Review"
-      },
       "applyForCampaign": {
         "description": "Find a campaign you like and apply to join!",
         "title": "Apply for a campaign"
       },
-      "waitForResultAnnouncement": {
-        "description": "Wait for the result announcement!",
-        "title": "If you’re selected, confirm your shipping address in My Page within 24 hours."
+      "confimAddress": {
+        "description": "Confirm your shipping address within 24 hours after campaign selection.",
+        "title": "Confim Address"
+      },
+      "confirmAddress": {
+        "description": "Confirm your shipping address within 24 hours after campaign selection.",
+        "title": "Confirm Address"
+      },
+      "keepYourReviewLive": {
+        "description": "Please make sure your content stays up on your social media for at least 6 months.",
+        "title": "Keep Your Review Live"
+      },
+      "maintenanceGuidelines": {
+        "description": "Keep the review published for at least 6 months.",
+        "title": "Maintenance Guidelines"
       },
       "receiveAndTryTheProducts": {
         "description": "Receive and try the products!",
@@ -461,9 +487,22 @@
         "description": "Review Brand’s Feedback & Upload 2nd review",
         "title": "Take a look at the brand’s notes and submit your second review. Don’t forget to include the final Instagram/TikTok URL!"
       },
-      "keepYourReviewLive": {
-        "description": "Please make sure your content stays up on your social media for at least 6 months.",
-        "title": "Keep Your Review Live"
+      "reviewUploadSchedule": {
+        "description": "Upload your first review within 7 days of receiving the product. After reviewing the brand’s feedback, upload your second review within 7 days. Attach the final SNS URL when posting the second review.",
+        "title": "Review Upload Schedule"
+      },
+      "title": "Creators",
+      "upload1stReview": {
+        "description": "Post your first review within 7 days of receiving the product. The brand will check it out and leave feedback for you.",
+        "title": "Upload 1st Review"
+      },
+      "uploadReview": {
+        "description": "Upload your first review within 7 days of receiving the product.",
+        "title": "Upload Review"
+      },
+      "waitForResultAnnouncement": {
+        "description": "Wait for the result announcement!",
+        "title": "If you’re selected, confirm your shipping address in My Page within 24 hours."
       }
     },
     "FAQs": {
@@ -594,6 +633,10 @@
       "dateRequired": "Date is required",
       "emailRequired": "Email is required",
       "firstNameRequired": "First name is required",
+      "formButton": {
+        "cancel": "Cancel",
+        "save": "Save"
+      },
       "genderRequired": "Gender is required",
       "homeAddress": {
         "addressLine1": "Address Line 1",
@@ -706,7 +749,10 @@
         "viewNotes": "View Notes",
         "viewResults": "View Results"
       },
-      "empty": "There is no campaign has been applied.",
+      "empty": {
+        "_value": "There is no campaign has been applied.",
+        "title": "There is no campaign has been applied."
+      },
       "error": "Failed to load my campaign",
       "participationStatus": {
         "active": "Active",

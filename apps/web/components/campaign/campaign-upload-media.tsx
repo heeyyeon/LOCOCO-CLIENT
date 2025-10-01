@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 
 import { useTranslations } from 'next-intl';
@@ -23,25 +23,55 @@ export default function CampaignUploadMedia() {
 
   const { uploadImageFiles, isUploading } = useFileUpload();
 
-  // 미리보기용 File 객체들 (DragDropArea에서 사용할 보여주기 용)
   const [thumbnailPreviewFiles, setThumbnailPreviewFiles] = useState<File[]>(
     []
   );
   const [detailPreviewFiles, setDetailPreviewFiles] = useState<File[]>([]);
 
-  // 현재 폼에 저장된 URL들(서버로 보낼 실제 값들)
-  const currentThumbnailUrls = watch('thumbnailFiles') || [];
-  const currentDetailUrls = watch('detailFiles') || [];
+  // 서버에서 임시 저장된 캠페인에 대해 불러온 이미지 URL
+  const [existingThumbnailUrls, setExistingThumbnailUrls] = useState<string[]>(
+    []
+  );
+  const [existingDetailUrls, setExistingDetailUrls] = useState<string[]>([]);
+
+  const thumbnailFiles = watch('thumbnailFiles');
+  const detailFiles = watch('detailFiles');
+
+  const currentThumbnailUrls = useMemo(
+    () => thumbnailFiles || [],
+    [thumbnailFiles]
+  );
+
+  const currentDetailUrls = useMemo(() => detailFiles || [], [detailFiles]);
 
   const t = useTranslations('brandMyPageCreateCampaign');
 
+  // 초기 로드 시 서버에서 제공받은 저장된만 existing으로 설정
+  useEffect(() => {
+    if (currentThumbnailUrls.length > 0 && thumbnailPreviewFiles.length === 0) {
+      setExistingThumbnailUrls(currentThumbnailUrls.map((img) => img.url));
+    }
+  }, [currentThumbnailUrls, thumbnailPreviewFiles.length]);
+
+  useEffect(() => {
+    if (currentDetailUrls.length > 0 && detailPreviewFiles.length === 0) {
+      setExistingDetailUrls(currentDetailUrls.map((img) => img.url));
+    }
+  }, [currentDetailUrls, detailPreviewFiles.length]);
+
   const handleRemoveExistingThumbnail = (index: number) => {
+    const updatedExisting = existingThumbnailUrls.filter((_, i) => i !== index);
+    setExistingThumbnailUrls(updatedExisting);
+
     const updated = currentThumbnailUrls.filter((_, i) => i !== index);
     setValue('thumbnailFiles', updated);
     trigger('thumbnailFiles');
   };
 
   const handleRemoveExistingDetail = (index: number) => {
+    const updatedExisting = existingDetailUrls.filter((_, i) => i !== index);
+    setExistingDetailUrls(updatedExisting);
+
     const updated = currentDetailUrls.filter((_, i) => i !== index);
     setValue('detailFiles', updated);
     trigger('detailFiles');
@@ -50,27 +80,22 @@ export default function CampaignUploadMedia() {
   const handleThumbnailFilesChange = (files: File[]) => {
     setThumbnailPreviewFiles(files);
 
-    // 파일 추가
     if (files.length > thumbnailPreviewFiles.length) {
       const newFiles = files.slice(thumbnailPreviewFiles.length);
 
       uploadImageFiles({
         files: newFiles,
         onSuccess: (uploadedFiles: UploadedFile[]) => {
-          // CampaignImageRequest 형태로 객체 생성
           const newImageObjects = uploadedFiles.map((file, index) => ({
             url: file.url,
             displayOrder: currentThumbnailUrls.length + index,
             imageType: 'THUMBNAIL' as const,
           }));
 
-          // 기존 썸네일 객체들과 새로운 객체들 합치기
           const existingThumbnails = currentThumbnailUrls || [];
           const updatedThumbnails = [...existingThumbnails, ...newImageObjects];
 
-          // 폼에 CampaignImageRequest 배열 저장
           setValue('thumbnailFiles', updatedThumbnails);
-
           trigger('thumbnailFiles');
         },
         onError: () => {
@@ -78,11 +103,16 @@ export default function CampaignUploadMedia() {
         },
       });
     } else if (files.length < thumbnailPreviewFiles.length) {
-      // 파일 삭제
       const deletedCount = thumbnailPreviewFiles.length - files.length;
-      const updatedThumbnails = currentThumbnailUrls.slice(0, -deletedCount);
+      const updatedThumbnails = currentThumbnailUrls.slice(
+        existingThumbnailUrls.length,
+        -deletedCount || undefined
+      );
 
-      setValue('thumbnailFiles', updatedThumbnails);
+      setValue('thumbnailFiles', [
+        ...currentThumbnailUrls.slice(0, existingThumbnailUrls.length),
+        ...updatedThumbnails,
+      ]);
       trigger('thumbnailFiles');
     }
   };
@@ -90,14 +120,12 @@ export default function CampaignUploadMedia() {
   const handleDetailFilesChange = (files: File[]) => {
     setDetailPreviewFiles(files);
 
-    // 파일 추가
     if (files.length > detailPreviewFiles.length) {
       const newFiles = files.slice(detailPreviewFiles.length);
 
       uploadImageFiles({
         files: newFiles,
         onSuccess: (uploadedFiles: UploadedFile[]) => {
-          // CampaignImageRequest 형태로 객체 생성
           const base = currentDetailUrls.length;
           const newImageObjects = uploadedFiles.map((file, index) => ({
             url: file.url,
@@ -116,11 +144,16 @@ export default function CampaignUploadMedia() {
         },
       });
     } else if (files.length < detailPreviewFiles.length) {
-      // 파일 삭제
       const deletedCount = detailPreviewFiles.length - files.length;
-      const updatedDetails = currentDetailUrls.slice(0, -deletedCount);
+      const updatedDetails = currentDetailUrls.slice(
+        existingDetailUrls.length,
+        -deletedCount || undefined
+      );
 
-      setValue('detailFiles', updatedDetails);
+      setValue('detailFiles', [
+        ...currentDetailUrls.slice(0, existingDetailUrls.length),
+        ...updatedDetails,
+      ]);
       trigger('detailFiles');
     }
   };
@@ -130,12 +163,13 @@ export default function CampaignUploadMedia() {
       <FormSection
         title={t('media.thumbnailTitle')}
         description={t('media.thumbnailDescription')}
+        required
       >
         <DragDropArea
           imageFiles={thumbnailPreviewFiles}
           handleImageFilesChange={handleThumbnailFilesChange}
           onRemoveExistingImage={handleRemoveExistingThumbnail}
-          existingImageUrls={currentThumbnailUrls.map((img) => img.url)}
+          existingImageUrls={existingThumbnailUrls}
           handleVideoFilesChange={() => {}}
           maxFiles={5}
           className={isUploading ? 'pointer-events-none opacity-50' : ''}
@@ -150,12 +184,13 @@ export default function CampaignUploadMedia() {
       <FormSection
         title={t('media.detailTitle')}
         description={t('media.detailDescription')}
+        required
       >
         <DragDropArea
           imageFiles={detailPreviewFiles}
           handleImageFilesChange={handleDetailFilesChange}
           onRemoveExistingImage={handleRemoveExistingDetail}
-          existingImageUrls={currentDetailUrls.map((img) => img.url)}
+          existingImageUrls={existingDetailUrls}
           handleVideoFilesChange={() => {}}
           maxFiles={15}
           className={isUploading ? 'pointer-events-none opacity-50' : ''}
