@@ -50,18 +50,30 @@ export default function CampaignUploadMedia() {
 
   // 초기 로드 시 서버에서 제공받은 저장된만 existing으로 설정
   useEffect(() => {
-    if (!isThumbnailInitialized && currentThumbnailUrls.length > 0) {
+    if (
+      !isThumbnailInitialized &&
+      currentThumbnailUrls.length > 0 &&
+      thumbnailPreviewFiles.length === 0
+    ) {
       setExistingThumbnailUrls(currentThumbnailUrls.map((img) => img.url));
       setIsThumbnailInitialized(true);
     }
-  }, [currentThumbnailUrls, isThumbnailInitialized]);
+  }, [
+    currentThumbnailUrls,
+    isThumbnailInitialized,
+    thumbnailPreviewFiles.length,
+  ]);
 
   useEffect(() => {
-    if (!isDetailInitialized && currentDetailUrls.length > 0) {
+    if (
+      !isDetailInitialized &&
+      currentDetailUrls.length > 0 &&
+      detailPreviewFiles.length === 0
+    ) {
       setExistingDetailUrls(currentDetailUrls.map((img) => img.url));
       setIsDetailInitialized(true);
     }
-  }, [currentDetailUrls, isDetailInitialized]);
+  }, [currentDetailUrls, isDetailInitialized, detailPreviewFiles.length]);
 
   const handleRemoveExistingThumbnail = (index: number) => {
     const updatedExisting = existingThumbnailUrls.filter((_, i) => i !== index);
