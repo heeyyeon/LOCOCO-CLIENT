@@ -70,7 +70,7 @@ export default function CampaignInfoPanel({
   const router = useRouter();
   const params = useParams();
   const campaignId = params.campaignId as string;
-  console.log(currentUserRole, userSpecificCampaignStatus);
+
   const [
     isConfirmCampaignSignUpModalOpen,
     setIsConfirmCampaignSignUpModalOpen,
@@ -179,6 +179,7 @@ export default function CampaignInfoPanel({
           isDisabled: true,
         };
       case 'APPROVED_REVIEW_NOT_CONFIRMED':
+      case 'APPROVED_ADDRESS_NOT_CONFIRMED':
         return {
           text: t('applyButtonText.approved_review_not_confirmed'),
           isDisabled: true,
@@ -189,7 +190,9 @@ export default function CampaignInfoPanel({
           text:
             currentUserRole === 'CREATOR'
               ? t('applyButtonText.active.user')
-              : t('applyButtonText.userRoleBrand'),
+              : currentUserRole === 'CUSTOMER' || currentUserRole === null
+                ? t('applyButtonText.closed')
+                : t('applyButtonText.userRoleBrand'),
           isDisabled: false,
           onClick: handleActiveCampaign,
         };
