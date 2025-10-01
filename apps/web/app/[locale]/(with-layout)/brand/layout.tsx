@@ -19,7 +19,7 @@ export default async function layout({
     { label: t('editProfile'), value: 'profile' },
     { label: t('makeNewCampaign'), value: 'create-campaign' },
     { label: t('checkApplicants'), value: 'applicants' },
-    { label: t('checkContents'), value: 'content' },
+    { label: t('checkContents'), value: 'contents-performance' },
     { label: t('dashboard'), value: 'dashboard' },
   ];
   return (
