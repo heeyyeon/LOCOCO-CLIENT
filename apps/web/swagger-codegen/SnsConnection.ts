@@ -23,25 +23,9 @@ export class SnsConnection<
    * No description
    *
    * @tags SNS_CONNECTION
-   * @name ConnectTikTok
-   * @summary TikTok 계정 연동 / TikTok OAuth 인증 페이지로 리다이렉트
-   * @request GET:/api/auth/sns/tiktok/connect
-   * @secure
-   */
-  connectTikTok = (params: RequestParams = {}) =>
-    this.request<void, any>({
-      path: `/api/auth/sns/tiktok/connect`,
-      method: "GET",
-      secure: true,
-      ...params,
-    });
-  /**
-   * No description
-   *
-   * @tags SNS_CONNECTION
    * @name HandleTikTokCallback
    * @summary TikTok OAuth 콜백 / 인증 후 콜백을 처리 및 계정 연결
-   * @request GET:/api/auth/sns/tiktok/callback
+   * @request GET:/api/auth/tiktok/callback
    * @secure
    */
   handleTikTokCallback = (
@@ -52,7 +36,29 @@ export class SnsConnection<
     params: RequestParams = {},
   ) =>
     this.request<ApiResponseTikTokConnectionResponse, any>({
-      path: `/api/auth/sns/tiktok/callback`,
+      path: `/api/auth/tiktok/callback`,
+      method: "GET",
+      query: query,
+      secure: true,
+      ...params,
+    });
+  /**
+   * No description
+   *
+   * @tags SNS_CONNECTION
+   * @name ConnectTikTok
+   * @summary TikTok 계정 연동 / TikTok OAuth 인증 페이지로 리다이렉트
+   * @request GET:/api/auth/sns/tiktok/connect
+   * @secure
+   */
+  connectTikTok = (
+    query: {
+      returnTo: string;
+    },
+    params: RequestParams = {},
+  ) =>
+    this.request<void, any>({
+      path: `/api/auth/sns/tiktok/connect`,
       method: "GET",
       query: query,
       secure: true,
