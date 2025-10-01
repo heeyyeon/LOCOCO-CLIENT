@@ -155,10 +155,12 @@ export default function BrandApplicantsPageClient({
       const currentPageRows: Record<string, boolean> = {
         ...rowSelection,
       };
-      data?.data?.applicants?.forEach((applicant) => {
-        currentPageRows[applicant.creatorCampaignId.toString()] =
-          applicant.approveStatus === 'PENDING';
-      });
+
+      data?.data?.applicants
+        ?.filter((applicant) => applicant.approveStatus === 'PENDING')
+        .forEach((applicant) => {
+          currentPageRows[applicant.creatorCampaignId.toString()] = true;
+        });
       setRowSelection(currentPageRows);
     } else {
       // 현재 페이지의 모든 row 해제 (다른 페이지 선택 상태 유지)
@@ -167,10 +169,11 @@ export default function BrandApplicantsPageClient({
         ...rowSelection,
       };
       data?.data?.applicants?.forEach((applicant) => {
-        if (applicant.approveStatus !== 'APPROVED') {
+        if (applicant.approveStatus === 'PENDING') {
           delete currentPageRows[applicant.creatorCampaignId.toString()];
         }
       });
+
       setRowSelection(currentPageRows);
     }
   };
@@ -282,10 +285,10 @@ export default function BrandApplicantsPageClient({
               <Checkbox
                 id="all-select"
                 checked={
-                  data?.data?.applicants?.every(
-                    (applicant) =>
-                      rowSelection[applicant.creatorCampaignId.toString()]
-                  ) && data?.data?.applicants?.length > 0
+                  Object.keys(rowSelection).length ===
+                    data?.data?.applicants?.filter(
+                      (applicant) => applicant.approveStatus === 'PENDING'
+                    ).length && Object.keys(rowSelection).length > 0
                 }
                 onCheckedChange={handleAllSelectChange}
               />
