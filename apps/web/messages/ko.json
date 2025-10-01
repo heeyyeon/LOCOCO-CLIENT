@@ -633,8 +633,8 @@
       "emailRequired": "이메일은 필수 입력 항목입니다.",
       "firstNameRequired": "이름(First name)은 필수 입력 항목입니다.",
       "formButton": {
-        "cancel": "",
-        "save": ""
+        "cancel": "취소하기",
+        "save": "저장하기 "
       },
       "genderRequired": "성별은 필수 입력 항목입니다.",
       "homeAddress": {

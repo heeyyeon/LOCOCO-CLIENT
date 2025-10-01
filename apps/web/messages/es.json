@@ -483,8 +483,8 @@
         "title": "Recibir y probar los productos"
       },
       "reviewBrand’sFeedbackAndUpload2ndReview": {
-        "description": "",
-        "title": ""
+        "description": "Revisar los comentarios de la marca y subir la 2ª reseña",
+        "title": "Revisa las notas de la marca y envía tu segunda reseña. ¡No olvides incluir la URL final de Instagram/TikTok!"
       },
       "reviewUploadSchedule": {
         "description": "Suba su primera reseña dentro de los 7 días posteriores a recibir el producto. Después de revisar los comentarios de la marca, suba su segunda reseña dentro de los 7 días. Adjunte la URL final de la red social al publicar la segunda reseña.",
@@ -633,8 +633,8 @@
       "emailRequired": "El correo electrónico es obligatorio.",
       "firstNameRequired": "El nombre es obligatorio.",
       "formButton": {
-        "cancel": "",
-        "save": ""
+        "cancel": "Cancelar",
+        "save": "Guardar"
       },
       "genderRequired": "El género es obligatorio.",
       "homeAddress": {
