@@ -20,16 +20,17 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '../ui/dropdown-menu';
+import { useAuthInfo } from './hooks/useAuthInfo';
 
 export default function GnbAuth() {
   const [isRoleModalOpen, setIsRoleModalOpen] = useState(false);
-  const { isLoggedIn } = useAuth();
+  const { isLoggedIn, logout } = useAuth();
   const router = useRouter();
   const t = useTranslations('gnb');
 
-  const handleLogin = () => {
-    router.push('/login-google?mode=login');
-  };
+  const { data: userInfo } = useAuthInfo({
+    enabled: isLoggedIn === true,
+  });
 
   const handleSignup = () => {
     setIsRoleModalOpen(true);
@@ -41,42 +42,48 @@ export default function GnbAuth() {
     router.push('/login-google?mode=signup');
   };
 
-  // TODO Link태그 href 경로 논의 필요
+  const handleRouteMyPage = () => {
+    if (userInfo?.role === 'BRAND') {
+      router.push('/brand/campaign');
+    } else if (userInfo?.role === 'CREATOR') {
+      router.push('/my-page/my-campaign');
+    } else {
+      router.push('/login-google?mode=signup');
+    }
+  };
 
   return (
     <div className="flex h-[5.6rem] items-center gap-4">
       {isLoggedIn ? (
         <DropdownMenu>
           <DropdownMenuTrigger asChild className="relative">
-            <Link
-              href={'/myPage'}
-              className="flex h-[5.6rem] items-center gap-[1rem] px-[1rem] py-[1.6rem] text-black"
-            >
+            <button className="flex h-[5.6rem] cursor-pointer items-center gap-[1rem] px-[1rem] py-[1.6rem] text-black">
               <SvgProfileIcon size={20} />
-              <span>유저이름</span>
-            </Link>
+              <span>{userInfo?.displayName}</span>
+            </button>
           </DropdownMenuTrigger>
 
           <DropdownMenuContent
             align="end"
             className="body4 mt-[0.4rem] w-[var(--radix-dropdown-menu-trigger-width)] font-[500]"
           >
-            <DropdownMenuItem
-              onClick={() => router.push('/my-page/my-campaign')}
-            >
+            <DropdownMenuItem onClick={handleRouteMyPage}>
               {t('myPage')}
             </DropdownMenuItem>
-            <DropdownMenuItem>{t('logOut')}</DropdownMenuItem>
+            <DropdownMenuItem onClick={logout}>{t('logOut')}</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       ) : (
         <>
-          <button onClick={handleLogin} className="px-[1.6rem] py-[1rem]">
+          <Link
+            href={'/login-google?mode=login'}
+            className="body1 px-[1.6rem] py-[1rem] font-[700]"
+          >
             {t('login')}
-          </button>
+          </Link>
           <button
             onClick={handleSignup}
-            className="px-[1.6rem] py-[1rem] text-pink-500"
+            className="body1 cursor-pointer px-[1.6rem] py-[1rem] font-[700] text-pink-500"
           >
             {t('signUp')}
           </button>
