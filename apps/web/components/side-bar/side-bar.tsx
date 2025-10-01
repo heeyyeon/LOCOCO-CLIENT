@@ -43,7 +43,7 @@ export default function SideBar({
   };
 
   return (
-    <div className="mr-[2.4rem] mt-[1.6rem] flex w-[16.8rem] flex-col gap-[1.6rem]">
+    <div className="mr-[2.4rem] mt-[1.6rem] flex w-fit flex-col gap-[1.6rem]">
       {profileImage ? (
         <div className="relative h-[9.8rem] w-[9.8rem] overflow-hidden rounded-full">
           <Image
@@ -76,7 +76,7 @@ export default function SideBar({
               label={menu.label}
               value={menu.value}
               selected={activeMenu === menu.value}
-              className="flex h-fit items-start truncate px-0 py-[1.15rem]"
+              className="flex h-fit items-start whitespace-nowrap px-0 py-[1.15rem]"
               onClick={() => handleClickTab(menu)}
             />
           ))}

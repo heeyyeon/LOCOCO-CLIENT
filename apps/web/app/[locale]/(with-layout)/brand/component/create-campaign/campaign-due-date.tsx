@@ -5,7 +5,7 @@ import { Controller, useFormContext } from 'react-hook-form';
 
 import { useTranslations } from 'next-intl';
 
-import InputWrapper from 'app/[locale]/(with-layout)/my-page/@modal/(.)address-modal/components/InputWrapper';
+import { SelectFormField } from 'components/forms';
 import { CampaignFormData } from 'schema/create-campaign-schema';
 import { dateOptions } from 'utils';
 import { timeOptions } from 'utils/time-options';
@@ -30,8 +30,8 @@ export default function CampaignDueDate() {
   const minuteValue = watch('dueTime.minute');
 
   return (
-    <section className="w-[64.8rem]">
-      <InputWrapper label={t('schedule.dueDate')} required>
+    <section className="flex w-[64.8rem] flex-col gap-[1.6rem]">
+      <SelectFormField label={t('schedule.dueDate')} required>
         <div className="flex gap-[2.4rem]">
           <Controller
             name="dueDate.month"
@@ -85,9 +85,9 @@ export default function CampaignDueDate() {
             )}
           </p>
         )}
-      </InputWrapper>
+      </SelectFormField>
 
-      <InputWrapper label={t('schedule.dueTime')} required>
+      <SelectFormField label={t('schedule.dueTime')} required>
         <div className="flex gap-[2.4rem]">
           <Controller
             name="dueTime.period"
@@ -139,7 +139,7 @@ export default function CampaignDueDate() {
             )}
           </p>
         )}
-      </InputWrapper>
+      </SelectFormField>
     </section>
   );
 }

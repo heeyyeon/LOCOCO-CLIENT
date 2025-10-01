@@ -17,8 +17,8 @@ export default function QAndA({ question, answer }: QAndAProps) {
   return (
     <div className="flex w-full flex-col">
       <div className="flex flex-col gap-[3.5rem]">
-        <div className="flex w-full justify-between px-[1.6rem]">
-          <div className="title3 flex w-full items-center gap-[3.2rem] font-bold">
+        <div className="flex w-full items-center justify-between px-[1.6rem]">
+          <div className="title3 flex w-full items-start gap-[3.2rem] font-bold">
             <p>Q.</p>
             <p>{question}</p>
           </div>
@@ -37,7 +37,7 @@ export default function QAndA({ question, answer }: QAndAProps) {
         <div className="h-[1px] w-full bg-black" />
       </div>
       {isOpen && (
-        <div className="title3 flex w-full items-center gap-[3.2rem] rounded-b-[2.4rem] bg-pink-100 px-[1.6rem] py-[2.4rem] font-bold">
+        <div className="title3 flex w-full items-start gap-[3.2rem] rounded-b-[2.4rem] bg-pink-100 px-[1.6rem] py-[2.4rem] font-bold">
           <p>A.</p>
           <p>{answer}</p>
         </div>

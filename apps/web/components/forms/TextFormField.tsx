@@ -19,6 +19,7 @@ interface TextFormFieldProps {
   showSearchIcon?: boolean;
   mouseEvent?: boolean;
   handleClickSearch?: () => void;
+  notice?: React.ReactNode;
 }
 
 export function TextFormField({
@@ -34,6 +35,7 @@ export function TextFormField({
   showSearchIcon = false,
   mouseEvent = false,
   handleClickSearch,
+  notice,
 }: TextFormFieldProps) {
   return (
     <div className={cn('flex items-center justify-between', className)}>
@@ -80,6 +82,7 @@ export function TextFormField({
             </span>
           </div>
         )}
+        {notice}
       </div>
     </div>
   );

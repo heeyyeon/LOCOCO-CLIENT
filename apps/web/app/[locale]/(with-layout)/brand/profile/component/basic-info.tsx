@@ -53,13 +53,11 @@ export default function BasicInfo({
         required
         placeholder={email}
         error={emailError}
+        notice={
+          <p className="caption3 text-gray-500">{t('basicInfo.emailNotice')}</p>
+        }
         className="pointer-events-none"
       />
-      <div className="relative">
-        <p className="caption3 absolute left-[24rem] text-gray-500">
-          {t('basicInfo.emailNotice')}
-        </p>
-      </div>
     </FormSection>
   );
 }
