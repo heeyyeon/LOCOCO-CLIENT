@@ -10,14 +10,16 @@ interface TextFormFieldProps {
   label: string;
   required?: boolean;
   placeholder?: string;
-  register: UseFormRegisterReturn;
+  register?: UseFormRegisterReturn;
   error?: string;
   successMessage?: string;
   className?: string;
   rightContent?: React.ReactNode;
   onRightContentClick?: () => void;
   showSearchIcon?: boolean;
+  mouseEvent?: boolean;
   handleClickSearch?: () => void;
+  notice?: React.ReactNode;
 }
 
 export function TextFormField({
@@ -31,7 +33,9 @@ export function TextFormField({
   rightContent,
   onRightContentClick,
   showSearchIcon = false,
+  mouseEvent = false,
   handleClickSearch,
+  notice,
 }: TextFormFieldProps) {
   return (
     <div className={cn('flex items-center justify-between', className)}>
@@ -43,7 +47,12 @@ export function TextFormField({
       </label>
       <div className="flex flex-col">
         <div className="relative">
-          <Input {...register} placeholder={placeholder} className="h-[4rem]" />
+          <Input
+            {...register}
+            placeholder={placeholder}
+            className="h-[4rem]"
+            disabled={mouseEvent}
+          />
 
           {rightContent && (
             <div
@@ -73,6 +82,7 @@ export function TextFormField({
             </span>
           </div>
         )}
+        {notice}
       </div>
     </div>
   );

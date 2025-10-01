@@ -21,8 +21,8 @@ export default function Checkbox({
               : 'transparent',
       }}
       className={cn(
-        'flex h-[2.4rem] w-[2.4rem] items-center justify-center border border-gray-400 data-[state=checked]:border-none',
-        props.disabled && 'border-gray-300',
+        'flex h-[2.4rem] w-[2.4rem] cursor-pointer items-center justify-center rounded-[0.6rem] border border-gray-400 data-[state=checked]:border-none',
+        props.disabled && 'border-gray-300' && 'bg-gray-200',
         className
       )}
       {...props}
@@ -30,7 +30,7 @@ export default function Checkbox({
       <CheckboxPrimitive.Indicator
         data-slot="checkbox-indicator"
         className={cn(
-          'flex h-[2.4rem] w-[2.4rem] items-center justify-center rounded-[0.6rem] transition-none',
+          'flex h-[2.4rem] w-[2.4rem] items-center justify-center rounded-[0.6rem] transition-none data-[disabled]:!bg-gray-200 data-[disabled][data-state=checked]:!bg-gray-200 data-[state=checked]:bg-pink-500',
           props.disabled && 'bg-gray-200'
         )}
       >

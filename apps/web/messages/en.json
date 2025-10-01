@@ -222,7 +222,8 @@
         "creator": "Apply Now!"
       },
       "rejected": "Campaign not Selected",
-      "unknown": "Unknown Status"
+      "unknown": "Unknown Status",
+      "userRoleBrand": "Only for Creator"
     },
     "campaignSchedule": "Campaign Schedule",
     "confirmCampaignSignUpModal": {

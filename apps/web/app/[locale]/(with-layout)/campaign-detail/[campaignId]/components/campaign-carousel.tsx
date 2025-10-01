@@ -40,7 +40,7 @@ export default function CampaignCarousel({ images }: CampaignCarouselProps) {
           slidesPerView={5}
           watchSlidesProgress={true}
           modules={[Thumbs]}
-          className="left-[2.4rem] h-[40.8rem] w-[72px]"
+          className="left-[2.4rem] flex h-[40.8rem] w-[72px] flex-col items-center"
         >
           {galleryImages.map((imageUrl, index) => (
             <SwiperSlide key={imageUrl} className="thumbnail-slide">
@@ -51,7 +51,8 @@ export default function CampaignCarousel({ images }: CampaignCarouselProps) {
                 height={72}
                 className={cn(
                   'h-full w-full cursor-pointer rounded-[16px] object-cover',
-                  activeThumbIndex === index && 'border-2 border-pink-500'
+                  activeThumbIndex === index && 'border-2 border-pink-500',
+                  'thumbnail-slide'
                 )}
               />
             </SwiperSlide>

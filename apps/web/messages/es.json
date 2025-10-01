@@ -153,7 +153,7 @@
     }
   },
   "brandMyPageSideBar": {
-    "brand": "",
+    "brand": "Marca",
     "checkApplicants": "Confirmación de solicitantes",
     "checkContents": "Revisar Contenidos",
     "dashboard": "Tablero de campañas",
@@ -222,7 +222,8 @@
         "creator": "¡Aplica ahora!"
       },
       "rejected": "Campaña no seleccionada",
-      "unknown": "Estado desconocido"
+      "unknown": "Estado desconocido",
+      "userRoleBrand": "Solo para Creadores"
     },
     "campaignSchedule": "Cronograma de la campaña",
     "confirmCampaignSignUpModal": {
@@ -459,32 +460,32 @@
     },
     "creators": {
       "applyForCampaign": {
-        "description": "",
-        "title": ""
+        "description": "¡Encuentra una campaña que te guste y solicita unirte!",
+        "title": "Solicitar una campaña"
       },
       "confimAddress": {
-        "description": "Confirme su dirección de envío dentro de las 24 horas posteriores a la selección de la campaña.",
+        "description": "Confirma tu dirección de envío dentro de las 24 horas después de ser seleccionado para la campaña.",
         "title": "Confirmar dirección"
       },
       "confirmAddress": {
-        "description": "Confirme su dirección de envío dentro de las 24 horas posteriores a la selección de la campaña.",
+        "description": "Confirma tu dirección de envío dentro de las 24 horas después de ser seleccionado para la campaña.",
         "title": "Confirmar dirección"
       },
       "keepYourReviewLive": {
-        "description": "",
-        "title": ""
+        "description": "Asegúrate de que tu contenido permanezca en tus redes sociales por al menos 6 meses.",
+        "title": "Mantener tu reseña activa"
       },
       "maintenanceGuidelines": {
-        "description": "Mantenga la reseña publicada por al menos 6 meses.",
-        "title": "Directrices de mantenimiento"
+        "description": "Mantén la reseña publicada durante al menos 6 meses.",
+        "title": "Guías de mantenimiento"
       },
       "receiveAndTryTheProducts": {
-        "description": "",
-        "title": ""
+        "description": "¡Recibe y prueba los productos!",
+        "title": "Recibir y probar los productos"
       },
       "reviewBrand’sFeedbackAndUpload2ndReview": {
-        "description": "",
-        "title": ""
+        "description": "Revisar los comentarios de la marca y subir la 2ª reseña",
+        "title": "Revisa las notas de la marca y envía tu segunda reseña. ¡No olvides incluir la URL final de Instagram/TikTok!"
       },
       "reviewUploadSchedule": {
         "description": "Suba su primera reseña dentro de los 7 días posteriores a recibir el producto. Después de revisar los comentarios de la marca, suba su segunda reseña dentro de los 7 días. Adjunte la URL final de la red social al publicar la segunda reseña.",
@@ -492,16 +493,16 @@
       },
       "title": "Creadores",
       "upload1stReview": {
-        "description": "",
-        "title": ""
+        "description": "Publica tu primera reseña dentro de los 7 días posteriores a recibir el producto. La marca la revisará y te dejará comentarios.",
+        "title": "Subir la 1ª reseña"
       },
       "uploadReview": {
-        "description": "Suba su primera reseña dentro de los 7 días posteriores a recibir el producto.",
+        "description": "Sube tu primera reseña dentro de los 7 días posteriores a recibir el producto.",
         "title": "Subir reseña"
       },
       "waitForResultAnnouncement": {
-        "description": "",
-        "title": ""
+        "description": "¡Espera el anuncio de resultados!",
+        "title": "Si eres seleccionado, confirma tu dirección de envío en Mi Página dentro de las 24 horas."
       }
     },
     "FAQs": {
@@ -633,8 +634,8 @@
       "emailRequired": "El correo electrónico es obligatorio.",
       "firstNameRequired": "El nombre es obligatorio.",
       "formButton": {
-        "cancel": "",
-        "save": ""
+        "cancel": "Cancelar",
+        "save": "Guardar"
       },
       "genderRequired": "El género es obligatorio.",
       "homeAddress": {

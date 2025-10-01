@@ -206,7 +206,6 @@ export default function DragDropArea({
   const canAddMoreFiles =
     imageFiles.length + videoFiles.length + (existingImageUrls?.length || 0) <
     maxFiles;
-
   return (
     <>
       {errorMessage && <ErrorNotice message={errorMessage} />}
