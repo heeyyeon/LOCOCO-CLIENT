@@ -3,20 +3,20 @@
   "abc": "abc",
   "brandFeedback": {
     "brandNote": {
-      "description": "",
-      "error": "",
-      "notice": "",
-      "title": ""
+      "description": "Si tiene algún cambio o solicitud, por favor escríbalo aquí.",
+      "error": "Por favor, ingrese la nota de la marca.",
+      "notice": "Fecha límite de revisión",
+      "title": "Notas de la marca"
     },
-    "campaignName": "",
-    "captionAndHashtags": "",
-    "contentType": "",
-    "contentUrl": "",
+    "campaignName": "Tipo de campaña",
+    "captionAndHashtags": "Texto y hashtags de la campaña",
+    "contentType": "Plataforma de contenido",
+    "contentUrl": "URL del contenido de la campaña",
     "formButton": {
-      "deliver": "",
-      "save": ""
+      "deliver": "Enviar",
+      "save": "Guardar"
     },
-    "mediaUrls": ""
+    "mediaUrls": "Imágenes de la campaña"
   },
   "brandMyPage": {
     "myCampaign": "Mis Campañas"
@@ -153,6 +153,7 @@
     }
   },
   "brandMyPageSideBar": {
+    "brand": "Marca",
     "checkApplicants": "Confirmación de solicitantes",
     "checkContents": "Revisar Contenidos",
     "dashboard": "Tablero de campañas",
