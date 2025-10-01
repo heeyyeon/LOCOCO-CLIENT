@@ -3,6 +3,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 
 import { useFormatter } from 'next-intl';
+import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
 
 import {
@@ -22,7 +23,7 @@ import ApproveStatusSelect, {
   ApproveStatusWithAll,
 } from './components/approve-status-select';
 import CampaignSelect from './components/campaign-select';
-import { useApplicants } from './hooks/use-applicants';
+import { useApplicants, useApproveApplicantsMutation } from './hooks/query';
 import { koDateRangeFormatter } from './utils/ko-date-range-formatter';
 
 interface CampaignInfo {
@@ -74,6 +75,17 @@ export default function BrandApplicantsPageClient({
       ? undefined
       : (selectedApproveStatus as 'PENDING' | 'APPROVED' | 'REJECTED'),
     true
+  );
+
+  const approveApplicantsMutation = useApproveApplicantsMutation(
+    Object.keys(rowSelection)
+      .map((key) => parseInt(key, 10))
+      .filter(() =>
+        data?.data?.applicants.find(
+          (applicant) => applicant.approveStatus === 'PENDING'
+        )
+      ),
+    campaignIdQueryString ? parseInt(campaignIdQueryString, 10) : undefined
   );
 
   // 승인상태 변경 시 필터 업데이트 및 URL 변경
@@ -143,9 +155,12 @@ export default function BrandApplicantsPageClient({
       const currentPageRows: Record<string, boolean> = {
         ...rowSelection,
       };
-      data?.data?.applicants?.forEach((applicant) => {
-        currentPageRows[applicant.creatorCampaignId.toString()] = true;
-      });
+
+      data?.data?.applicants
+        ?.filter((applicant) => applicant.approveStatus === 'PENDING')
+        .forEach((applicant) => {
+          currentPageRows[applicant.creatorCampaignId.toString()] = true;
+        });
       setRowSelection(currentPageRows);
     } else {
       // 현재 페이지의 모든 row 해제 (다른 페이지 선택 상태 유지)
@@ -154,10 +169,11 @@ export default function BrandApplicantsPageClient({
         ...rowSelection,
       };
       data?.data?.applicants?.forEach((applicant) => {
-        if (applicant.approveStatus !== 'APPROVED') {
+        if (applicant.approveStatus === 'PENDING') {
           delete currentPageRows[applicant.creatorCampaignId.toString()];
         }
       });
+
       setRowSelection(currentPageRows);
     }
   };
@@ -222,7 +238,7 @@ export default function BrandApplicantsPageClient({
     <div>Loading...</div>
   ) : isError || !data?.data ? (
     <div>Error</div>
-  ) : (
+  ) : campaignInfos.length > 0 ? (
     <div className="flex w-full flex-col gap-[1.6rem] px-[1.6rem]">
       <div className="flex w-full justify-between">
         <CampaignSelect
@@ -261,73 +277,98 @@ export default function BrandApplicantsPageClient({
             onStatusChange={handleApproveStatusChange}
           />
         </div>
-
-        <div className="flex justify-between bg-gray-100 px-[1.6rem] py-[0.8rem]">
-          <div className="flex items-center gap-[0.8rem]">
-            <Checkbox
-              id="all-select"
-              checked={
-                data?.data?.applicants?.every(
+      </div>
+      {data.data.applicants.length > 0 ? (
+        <>
+          <div className="flex justify-between bg-gray-100 px-[1.6rem] py-[0.8rem]">
+            <div className="flex items-center gap-[0.8rem]">
+              <Checkbox
+                id="all-select"
+                checked={
+                  Object.keys(rowSelection).length ===
+                    data?.data?.applicants?.filter(
+                      (applicant) => applicant.approveStatus === 'PENDING'
+                    ).length && Object.keys(rowSelection).length > 0
+                }
+                onCheckedChange={handleAllSelectChange}
+              />
+              <label
+                htmlFor="all-select"
+                className="text-inter-body1 cursor-pointer font-bold text-gray-600"
+              >
+                전체 선택하기(
+                {data?.data?.applicants?.filter(
                   (applicant) =>
-                    rowSelection[applicant.creatorCampaignId.toString()] ||
-                    applicant.approveStatus === 'APPROVED'
-                ) && data?.data?.applicants?.length > 0
+                    rowSelection[applicant.creatorCampaignId.toString()] &&
+                    applicant.approveStatus === 'PENDING'
+                ).length || 0}
+                /
+                {data?.data?.applicants?.filter(
+                  (applicant) => applicant.approveStatus === 'PENDING'
+                ).length || 0}
+                )
+              </label>
+            </div>
+            <Button
+              onClick={() => approveApplicantsMutation.mutate()}
+              variant="outline"
+              color="primary"
+              size="sm"
+              rounded="md"
+              className="grow-0"
+              disabled={
+                data?.data?.applicants?.filter(
+                  (applicant) =>
+                    rowSelection[applicant.creatorCampaignId.toString()]
+                ).length === 0 || approveStatusFromQuery === 'APPROVED'
               }
-              onCheckedChange={handleAllSelectChange}
-            />
-            <label
-              htmlFor="all-select"
-              className="text-inter-body1 cursor-pointer font-bold text-gray-600"
             >
-              전체 선택하기(
-              {data?.data?.applicants?.filter(
-                (applicant) =>
-                  rowSelection[applicant.creatorCampaignId.toString()] ||
-                  applicant.approveStatus === 'APPROVED'
-              ).length || 0}
-              /{data?.data?.applicants?.length || 0})
-            </label>
+              <SvgCheck size={20} />
+              <span className="text-[1.4rem]">승인하기</span>
+            </Button>
           </div>
-          <Button
-            onClick={() => alert('준비중인 기능입니다.')}
-            variant="outline"
-            color="primary"
-            size="sm"
-            rounded="md"
-            className="grow-0"
-            disabled={
-              data?.data?.applicants?.filter(
-                (applicant) =>
-                  rowSelection[applicant.creatorCampaignId.toString()] ||
-                  applicant.approveStatus === 'APPROVED'
-              ).length === 0 || approveStatusFromQuery === 'APPROVED'
-            }
-          >
-            <SvgCheck size={20} />
-            <span className="text-[1.4rem]">승인하기</span>
-          </Button>
-        </div>
-      </div>
 
-      {data.data.applicants.length === 0 ? (
-        <div>지원자가 없습니다.</div>
+          <ApplicantsTable
+            rowSelection={rowSelection}
+            onRowSelectionChange={setRowSelection}
+            columnFilters={columnFilters}
+            onColumnFiltersChange={setColumnFilters}
+            data={data.data.applicants}
+          />
+
+          <div className="my-[6.4rem] flex w-full items-center justify-center">
+            <Pagenation
+              currentPage={page}
+              totalPages={data?.data.pageInfo.totalPages || 1}
+              handlePageChange={handlePageChange}
+            />
+          </div>
+        </>
       ) : (
-        <ApplicantsTable
-          rowSelection={rowSelection}
-          onRowSelectionChange={setRowSelection}
-          columnFilters={columnFilters}
-          onColumnFiltersChange={setColumnFilters}
-          data={data.data.applicants}
-        />
+        <div className="flex h-[38.5rem] flex-col items-center justify-center gap-[3.2rem]">
+          <Image
+            src="/applicants-empty.svg"
+            alt="지원자가 없습니다."
+            width={100}
+            height={100}
+          />
+          <p className="text-inter-title2 font-bold text-gray-700">
+            지원자가 없습니다.
+          </p>
+        </div>
       )}
-
-      <div className="my-[6.4rem] flex w-full items-center justify-center">
-        <Pagenation
-          currentPage={page}
-          totalPages={data?.data.pageInfo.totalPages || 1}
-          handlePageChange={handlePageChange}
-        />
-      </div>
+    </div>
+  ) : (
+    <div className="flex h-[52.4rem] w-full flex-col items-center justify-center gap-[3.2rem]">
+      <Image
+        src="/campaign-empty.svg"
+        alt="지원자가 없습니다."
+        width={100}
+        height={100}
+      />
+      <p className="text-inter-title2 font-bold text-gray-700">
+        아직 진행한 캠페인이 없습니다.
+      </p>
     </div>
   );
 }
