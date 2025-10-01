@@ -459,28 +459,28 @@
     },
     "creators": {
       "applyForCampaign": {
-        "description": "",
-        "title": ""
+        "description": "¡Encuentra una campaña que te guste y solicita unirte!",
+        "title": "Solicitar una campaña"
       },
       "confimAddress": {
-        "description": "Confirme su dirección de envío dentro de las 24 horas posteriores a la selección de la campaña.",
+        "description": "Confirma tu dirección de envío dentro de las 24 horas después de ser seleccionado para la campaña.",
         "title": "Confirmar dirección"
       },
       "confirmAddress": {
-        "description": "Confirme su dirección de envío dentro de las 24 horas posteriores a la selección de la campaña.",
+        "description": "Confirma tu dirección de envío dentro de las 24 horas después de ser seleccionado para la campaña.",
         "title": "Confirmar dirección"
       },
       "keepYourReviewLive": {
-        "description": "",
-        "title": ""
+        "description": "Asegúrate de que tu contenido permanezca en tus redes sociales por al menos 6 meses.",
+        "title": "Mantener tu reseña activa"
       },
       "maintenanceGuidelines": {
-        "description": "Mantenga la reseña publicada por al menos 6 meses.",
-        "title": "Directrices de mantenimiento"
+        "description": "Mantén la reseña publicada durante al menos 6 meses.",
+        "title": "Guías de mantenimiento"
       },
       "receiveAndTryTheProducts": {
-        "description": "",
-        "title": ""
+        "description": "¡Recibe y prueba los productos!",
+        "title": "Recibir y probar los productos"
       },
       "reviewBrand’sFeedbackAndUpload2ndReview": {
         "description": "",
@@ -492,16 +492,16 @@
       },
       "title": "Creadores",
       "upload1stReview": {
-        "description": "",
-        "title": ""
+        "description": "Publica tu primera reseña dentro de los 7 días posteriores a recibir el producto. La marca la revisará y te dejará comentarios.",
+        "title": "Subir la 1ª reseña"
       },
       "uploadReview": {
-        "description": "Suba su primera reseña dentro de los 7 días posteriores a recibir el producto.",
+        "description": "Sube tu primera reseña dentro de los 7 días posteriores a recibir el producto.",
         "title": "Subir reseña"
       },
       "waitForResultAnnouncement": {
-        "description": "",
-        "title": ""
+        "description": "¡Espera el anuncio de resultados!",
+        "title": "Si eres seleccionado, confirma tu dirección de envío en Mi Página dentro de las 24 horas."
       }
     },
     "FAQs": {

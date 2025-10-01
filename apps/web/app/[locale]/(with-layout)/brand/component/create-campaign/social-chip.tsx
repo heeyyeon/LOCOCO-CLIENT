@@ -50,7 +50,7 @@ export default function SocialChip({
   return (
     <button
       type="button"
-      className={`flex items-center gap-[0.6rem] rounded-[2.4rem] border px-[1.2rem] py-[1rem] ${
+      className={`flex items-center gap-[0.6rem] rounded-[2.4rem] border px-[1.2rem] py-[1rem] cursor-pointer${
         disabled ? 'cursor-not-allowed' : ''
       } ${
         selected ? 'border-pink-500 bg-pink-100' : 'border-gray-400'
