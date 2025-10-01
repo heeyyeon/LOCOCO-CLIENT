@@ -440,26 +440,30 @@
       "title": "Brands"
     },
     "creators": {
-      "confimAddress": {
-        "description": "Confirm your shipping address within 24 hours after campaign selection.",
-        "title": "Confim Address"
-      },
-      "confirmAddress": {
-        "description": "Confirm your shipping address within 24 hours after campaign selection.",
-        "title": "Confirm Address"
-      },
-      "maintenanceGuidelines": {
-        "description": "Keep the review published for at least 6 months.",
-        "title": "Maintenance Guidelines"
-      },
-      "reviewUploadSchedule": {
-        "description": "Upload your first review within 7 days of receiving the product. After reviewing the brand’s feedback, upload your second review within 7 days. Attach the final SNS URL when posting the second review.",
-        "title": "Review Upload Schedule"
-      },
       "title": "Creators",
-      "uploadReview": {
-        "description": "Upload your first review within 7 days of receiving the product.",
-        "title": "Upload Review"
+      "upload1stReview": {
+        "description": "Post your first review within 7 days of receiving the product. The brand will check it out and leave feedback for you.",
+        "title": "Upload 1st Review"
+      },
+      "applyForCampaign": {
+        "description": "Find a campaign you like and apply to join!",
+        "title": "Apply for a campaign"
+      },
+      "waitForResultAnnouncement": {
+        "description": "Wait for the result announcement!",
+        "title": "If you’re selected, confirm your shipping address in My Page within 24 hours."
+      },
+      "receiveAndTryTheProducts": {
+        "description": "Receive and try the products!",
+        "title": "Receive & Try the Products"
+      },
+      "reviewBrand’sFeedbackAndUpload2ndReview": {
+        "description": "Review Brand’s Feedback & Upload 2nd review",
+        "title": "Take a look at the brand’s notes and submit your second review. Don’t forget to include the final Instagram/TikTok URL!"
+      },
+      "keepYourReviewLive": {
+        "description": "Please make sure your content stays up on your social media for at least 6 months.",
+        "title": "Keep Your Review Live"
       }
     },
     "FAQs": {
