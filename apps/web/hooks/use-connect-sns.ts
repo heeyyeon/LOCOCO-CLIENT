@@ -1,7 +1,5 @@
 import { useEffect } from 'react';
 
-import { useRouter, useSearchParams } from 'next/navigation';
-
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { apiRequest } from 'app/api/apiRequest';
 import { CONNECT_SNS_KEYS } from 'constants/query-key';
@@ -12,27 +10,22 @@ import {
 
 import { useAuth } from './use-auth';
 
-// 클라이언트에서 액세스 토큰 가져오는 유틸리티 함수
-const getClientAccessToken = (): string | null => {
-  if (typeof window === 'undefined') return null;
-
-  const cookies = document.cookie.split('; ');
-  const tokenCookie = cookies.find((row) => row.startsWith('AccessToken='));
-  return tokenCookie?.split('=')[1] || null;
-};
-
 const fetchConnectSns =
   async (): Promise<ApiResponseCreatorSnsConnectedResponse> => {
-    // 클라이언트에서 액세스 토큰 가져오기
-    const accessToken = getClientAccessToken();
+    console.log('SNS 상태 API 호출 시작:', {
+      timestamp: new Date().toLocaleString(),
+      endpoint: '/api/creator/register/sns-status',
+      method: 'apiRequest 자동 토큰 관리',
+    });
 
     const response = await apiRequest<ApiResponseCreatorSnsConnectedResponse>({
       endPoint: '/api/creator/register/sns-status',
-      headers: accessToken
-        ? {
-            Authorization: `Bearer ${accessToken}`,
-          }
-        : {},
+    });
+
+    console.log('SNS 상태 API 응답:', {
+      success: response.success,
+      status: response.status,
+      timestamp: new Date().toLocaleString(),
     });
 
     if (!response.success) {
@@ -44,35 +37,49 @@ const fetchConnectSns =
 
 export const useConnectSns = () => {
   const { isLoggedIn } = useAuth();
+  const queryClient = useQueryClient();
+
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const success = urlParams.get('success');
+
+    if (success === 'true') {
+      console.log('OAuth 성공 감지, SNS 상태 다시 확인');
+      queryClient.invalidateQueries({
+        queryKey: CONNECT_SNS_KEYS.CONNECT_SNS(),
+      });
+
+      const newUrl = new URL(window.location.href);
+      newUrl.searchParams.delete('success');
+      window.history.replaceState({}, '', newUrl.toString());
+    }
+  }, [queryClient]);
 
   return useQuery({
     queryKey: CONNECT_SNS_KEYS.CONNECT_SNS(),
     queryFn: fetchConnectSns,
-    enabled: isLoggedIn === true, // 로그인된 사용자에게만 API 호출
+    enabled: isLoggedIn === true,
+    staleTime: 0,
+    refetchOnWindowFocus: true,
+    retry: (failureCount, error) => {
+      if (error instanceof Error && error.message.includes('403')) {
+        return false;
+      }
+      return failureCount < 2;
+    },
   });
 };
 
 const connectTiktokApi = async (): Promise<ApiResponseVoid> => {
-  // OAuth connect는 브라우저 네비게이션으로 직접 이동
-  console.log('🔗 TikTok 연결 시작');
-  console.log(
-    '📍 NEXT_PUBLIC_API_SERVER_URL:',
-    process.env.NEXT_PUBLIC_API_SERVER_URL_SNS
-  );
-
-  // 현재 페이지 정보를 세션 스토리지에 저장
   const currentPath = window.location.pathname;
-  sessionStorage.setItem('oauth_return_path', currentPath);
-  console.log('💾 현재 페이지 저장:', currentPath);
 
-  // Next.js API Route 사용 (인증 처리 후 백엔드로 리다이렉트)
-  const connectUrl = `${window.location.protocol}//${window.location.host}/api/auth/sns/tiktok/connect`;
-  console.log('🌐 Next.js API Route URL:', connectUrl);
+  const connectUrl = new URL(
+    `${window.location.protocol}//${window.location.host}/api/auth/sns/tiktok/connect`
+  );
+  connectUrl.searchParams.set('returnTo', currentPath);
 
-  console.log('🚀 Next.js API Route로 이동 중...');
-  window.location.href = connectUrl;
+  window.location.href = connectUrl.toString();
 
-  // Promise는 resolve되지 않음 (페이지가 리다이렉트되므로)
   return new Promise(() => {});
 };
 
@@ -83,25 +90,12 @@ export const useConnectTiktok = () => {
 };
 
 const connectInstagramApi = async (): Promise<ApiResponseVoid> => {
-  // OAuth connect는 브라우저 네비게이션으로 직접 이동
-  console.log('📸 Instagram 연결 시작');
-  console.log(
-    '📍 NEXT_PUBLIC_API_SERVER_URL:',
-    process.env.NEXT_PUBLIC_API_SERVER_URL
-  );
-
-  // 현재 페이지 정보를 세션 스토리지에 저장
   const currentPath = window.location.pathname;
   sessionStorage.setItem('oauth_return_path', currentPath);
-  console.log('💾 현재 페이지 저장:', currentPath);
 
   const connectUrl = `${process.env.NEXT_PUBLIC_API_SERVER_URL}/api/auth/sns/instagram/connect`;
-  console.log('🌐 연결 URL:', connectUrl);
-
-  console.log('🚀 Instagram OAuth 페이지로 이동 중...');
   window.location.href = connectUrl;
 
-  // Promise는 resolve되지 않음 (페이지가 리다이렉트되므로)
   return new Promise(() => {});
 };
 
@@ -111,62 +105,10 @@ export const useConnectInstagram = () => {
   });
 };
 
-// OAuth 콜백 처리 훅
+// 새로운 플로우에서는 서버가 직접 returnTo로 리다이렉트하므로
+// 이 훅은 더 이상 필요하지 않음
 export const useOAuthCallback = () => {
-  const router = useRouter();
-  const searchParams = useSearchParams();
-  const queryClient = useQueryClient();
-
-  useEffect(() => {
-    console.log('🔄 OAuth 콜백 처리 시작');
-    console.log('📍 현재 URL:', window.location.href);
-    console.log('🔍 URL 파라미터:', Object.fromEntries(searchParams.entries()));
-
-    const success = searchParams.get('success');
-    const error = searchParams.get('error');
-    const code = searchParams.get('code');
-    const state = searchParams.get('state');
-
-    console.log('✅ success:', success);
-    console.log('❌ error:', error);
-    console.log('🔑 code:', code);
-    console.log('🎯 state:', state);
-
-    // 저장된 원래 페이지 경로 가져오기
-    const returnPath = sessionStorage.getItem('oauth_return_path');
-    console.log('🔙 원래 페이지:', returnPath);
-
-    if (success) {
-      console.log('🎉 SNS 연결 성공! 상태 새로고침 중...');
-      // SNS 연결 상태 새로고침
-      queryClient.invalidateQueries({
-        queryKey: CONNECT_SNS_KEYS.CONNECT_SNS(),
-      });
-    }
-
-    if (error) {
-      console.log('💥 OAuth 에러 발생:', error);
-      // 에러 시에는 원래 페이지로 돌아가되 에러 파라미터 추가
-      const errorPath = returnPath || '/sign-up/creator/sns-links';
-      router.replace(
-        `${errorPath}${errorPath.includes('?') ? '&' : '?'}error=oauth_failed`
-      );
-      return;
-    }
-
-    // URL 파라미터 정리 및 원래 페이지로 리다이렉트
-    console.log('🧹 URL 파라미터 정리 중...');
-    const finalPath = returnPath || '/sign-up/creator/sns-links';
-    console.log('🏠 최종 리다이렉트 경로:', finalPath);
-
-    // 세션 스토리지에서 원래 페이지 정보 제거
-    sessionStorage.removeItem('oauth_return_path');
-
-    router.replace(finalPath);
-  }, [searchParams, router, queryClient]);
-
   return {
-    isProcessingCallback:
-      searchParams.has('success') || searchParams.has('error'),
+    isProcessingCallback: false,
   };
 };
