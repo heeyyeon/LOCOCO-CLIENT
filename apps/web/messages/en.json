@@ -4,6 +4,7 @@
   "brandFeedback": {
     "brandNote": {
       "description": "",
+      "error": "Please enter the brand note.",
       "notice": "",
       "title": ""
     },

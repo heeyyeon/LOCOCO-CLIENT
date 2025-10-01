@@ -4,6 +4,7 @@
   "brandFeedback": {
     "brandNote": {
       "description": "변경/요청사항이 있으시면 여기에 내용을 작성해 주세요.",
+      "error": "",
       "notice": "검수 마감일",
       "title": "브랜드 노트"
     },

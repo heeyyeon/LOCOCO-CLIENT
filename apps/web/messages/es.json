@@ -4,6 +4,7 @@
   "brandFeedback": {
     "brandNote": {
       "description": "",
+      "error": "",
       "notice": "",
       "title": ""
     },
