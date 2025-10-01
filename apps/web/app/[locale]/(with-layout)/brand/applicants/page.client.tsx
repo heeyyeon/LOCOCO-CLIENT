@@ -75,7 +75,7 @@ export default function BrandApplicantsPageClient({
     selectedApproveStatus === '' || selectedApproveStatus === 'ALL'
       ? undefined
       : (selectedApproveStatus as 'PENDING' | 'APPROVED' | 'REJECTED'),
-    true
+    !!campaignIdQueryString
   );
 
   const approveApplicantsMutation = useApproveApplicantsMutation(
@@ -235,12 +235,14 @@ export default function BrandApplicantsPageClient({
     campaignInfos,
   ]);
 
-  return isFetching ? (
+  if (isError) {
+    return <div>Error</div>;
+  }
+
+  return isFetching || !data?.data ? (
     <div className="flex h-screen w-full items-center justify-center">
       <LoadingSvg />
     </div>
-  ) : isError || !data?.data ? (
-    <div>Error</div>
   ) : campaignInfos.length > 0 ? (
     <div className="flex w-full flex-col gap-[1.6rem] px-[1.6rem]">
       <div className="flex w-full justify-between">

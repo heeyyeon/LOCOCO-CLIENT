@@ -28,7 +28,7 @@ export const getApplicants = async (
 };
 
 export const approveApplicants = async (
-  campaignId: number,
+  campaignId: number | undefined,
   creatorCampaignId: number[]
 ) => {
   const response = await apiRequest<void>({
