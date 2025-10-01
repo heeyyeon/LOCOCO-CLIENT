@@ -9,6 +9,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { AddressSearchModal } from 'components/address/AddressSearchModal';
 import LoadingSvg from 'components/loading/loading-svg';
 import { useAddressSearch } from 'hooks/useAddressSearch';
+import { useRouter } from 'i18n/navigation';
 import {
   BrandProfileEditSchema,
   brandProfileEditSchema,
@@ -23,6 +24,7 @@ import { useBrandProfile } from './hooks/useBrandProfile';
 import { useEditBrandProfile } from './hooks/useEditBrandProfile';
 
 export default function Profile() {
+  const router = useRouter();
   const methods = useForm<BrandProfileEditSchema>({
     resolver: zodResolver(brandProfileEditSchema),
     defaultValues: {
@@ -70,8 +72,14 @@ export default function Profile() {
     });
 
   const onSubmit = (data: BrandProfileEditSchema) => {
-    console.log(data);
-    patchProfileMutation.mutate(data);
+    patchProfileMutation.mutate(data, {
+      onSuccess: () => {
+        alert('프로필이 성공적으로 저장되었습니다.');
+      },
+      onError: () => {
+        alert('프로필 저장에 실패했습니다.');
+      },
+    });
   };
 
   const t = useTranslations('brandMyPageEditProfile');
@@ -128,6 +136,7 @@ export default function Profile() {
               variant="outline"
               size="lg"
               className="w-[41.2rem]"
+              onClick={() => router.back()}
             >
               {t('formButton.cancel')}
             </Button>

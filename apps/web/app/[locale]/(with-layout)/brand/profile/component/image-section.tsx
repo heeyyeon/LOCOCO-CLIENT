@@ -43,10 +43,12 @@ export default function ImageSection({
           const uploadedUrl = uploadedFiles[0].url;
           setValue('profileImageUrl', uploadedUrl);
           setPreviewUrl(uploadedUrl);
+          URL.revokeObjectURL(tempImageUrl);
         }
       },
       onError: (error) => {
         alert(`이미지 업로드 실패: ${error}`);
+        URL.revokeObjectURL(tempImageUrl);
         setPreviewUrl(initialImageUrl || null);
       },
     });
