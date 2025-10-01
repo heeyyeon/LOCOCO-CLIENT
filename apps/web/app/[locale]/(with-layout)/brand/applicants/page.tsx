@@ -1,8 +1,8 @@
 import { notFound } from 'next/navigation';
 
-import { getBrandCampaignInfos } from './apis';
+import { getBrandCampaignInfos } from '../api';
+import { CampaignInfo } from './../types';
 import ClientPage from './page.client';
-import { CampaignInfo } from './types';
 
 export default async function page() {
   let campaignInfos: CampaignInfo[] = [];
