@@ -33,8 +33,6 @@ export default function CampaignUploadMedia() {
     []
   );
   const [existingDetailUrls, setExistingDetailUrls] = useState<string[]>([]);
-  const [isThumbnailInitialized, setIsThumbnailInitialized] = useState(false);
-  const [isDetailInitialized, setIsDetailInitialized] = useState(false);
 
   const thumbnailFiles = watch('thumbnailFiles');
   const detailFiles = watch('detailFiles');
@@ -50,30 +48,16 @@ export default function CampaignUploadMedia() {
 
   // 초기 로드 시 서버에서 제공받은 저장된만 existing으로 설정
   useEffect(() => {
-    if (
-      !isThumbnailInitialized &&
-      currentThumbnailUrls.length > 0 &&
-      thumbnailPreviewFiles.length === 0
-    ) {
+    if (currentThumbnailUrls.length > 0 && thumbnailPreviewFiles.length === 0) {
       setExistingThumbnailUrls(currentThumbnailUrls.map((img) => img.url));
-      setIsThumbnailInitialized(true);
     }
-  }, [
-    currentThumbnailUrls,
-    isThumbnailInitialized,
-    thumbnailPreviewFiles.length,
-  ]);
+  }, [currentThumbnailUrls, thumbnailPreviewFiles.length]);
 
   useEffect(() => {
-    if (
-      !isDetailInitialized &&
-      currentDetailUrls.length > 0 &&
-      detailPreviewFiles.length === 0
-    ) {
+    if (currentDetailUrls.length > 0 && detailPreviewFiles.length === 0) {
       setExistingDetailUrls(currentDetailUrls.map((img) => img.url));
-      setIsDetailInitialized(true);
     }
-  }, [currentDetailUrls, isDetailInitialized, detailPreviewFiles.length]);
+  }, [currentDetailUrls, detailPreviewFiles.length]);
 
   const handleRemoveExistingThumbnail = (index: number) => {
     const updatedExisting = existingThumbnailUrls.filter((_, i) => i !== index);
