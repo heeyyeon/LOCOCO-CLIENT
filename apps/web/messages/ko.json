@@ -191,7 +191,7 @@
     "applyButtonText": {
       "active": {
         "brand": "지원자 확인하기",
-        "user": "진행 중 캠페인"
+        "user": "캠페인 진행 중"
       },
       "applied": "성공적으로 지원됨",
       "approved_review_not_confirmed": "만료됨",
@@ -702,9 +702,7 @@
         "viewNotes": "메모들 보기",
         "viewResults": "결과 보기"
       },
-      "empty": {
-        "title": "신청한 캠페인이 없습니다."
-      },
+      "empty": "신청한 캠페인이 없습니다.",
       "error": "내 캠페인을 불러오지 못했습니다",
       "participationStatus": {
         "active": "활성화됨",
