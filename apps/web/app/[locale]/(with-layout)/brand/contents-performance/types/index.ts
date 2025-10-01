@@ -2,12 +2,12 @@
 export type ReviewRound = 'FIRST' | 'SECOND';
 export type ContentPlatform = 'INSTA_REELS' | 'TIKTOK_VIDEO' | 'INSTA_POST';
 export type ReviewStatus =
-  | 'FINAL_UPLOADED'
-  | 'PENDING'
-  | 'FEEDBACK'
-  | 'NOT_SUBMITTED'
-  | 'IN_PROGRESS'
-  | 'UNDER_REVISION';
+  | 'NOT_SUBMITTED' // 미제출
+  | 'IN_PROGRESS' // 검토 중
+  | 'PENDING_REVISION' // 검토 요청
+  | 'REVISING' // 수정중
+  | 'FINAL_UPLOADED'; // 최종 업로드
+
 export interface Creator {
   creatorId: number;
   creatorFullName: string;

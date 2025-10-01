@@ -22,12 +22,13 @@ import CampaignSelect from '../applicants/components/campaign-select';
 import { koDateRangeFormatter } from '../applicants/utils/ko-date-range-formatter';
 import { CampaignInfo } from '../types';
 import ContentType from './components/column/content-type';
+import ReviewProgressStatus from './components/column/review-progress-status';
 import {
   ApiResponse,
   CampaignReview,
   ContentPlatform,
   CreatorWithReviews,
-  ReviewStatus,
+  type ReviewStatus,
 } from './types';
 
 const getWidthClass = (size: number) => {
@@ -75,7 +76,7 @@ const data: ApiResponse = {
             campaignReviewId: 21,
             reviewRound: 'FIRST',
             contentType: 'TIKTOK_VIDEO',
-            reviewStatus: 'UNDER_REVISION',
+            reviewStatus: 'PENDING_REVISION',
             postUrl: '',
             viewCount: 3,
             likeCount: 2,
@@ -110,7 +111,7 @@ const data: ApiResponse = {
             campaignReviewId: 23,
             reviewRound: 'FIRST',
             contentType: 'TIKTOK_VIDEO',
-            reviewStatus: 'UNDER_REVISION',
+            reviewStatus: 'NOT_SUBMITTED',
             postUrl: '',
             viewCount: 3,
             likeCount: 2,
@@ -147,7 +148,7 @@ const createColumns = (): ColumnDef<CampaignReview>[] => [
     size: 120,
     cell: ({ getValue }) => {
       const status = getValue() as ReviewStatus;
-      return <p>{status}</p>;
+      return <ReviewProgressStatus reviewStatus={status} />;
     },
   },
   {
