@@ -126,8 +126,7 @@ export default function EditProfile() {
     }
 
     initialized.current = true;
-  }, [profileQuery.data?.data]);
-  console.log(form.getValues('id'));
+  }, [profileQuery.data?.data, form]);
 
   const handleIdCheckResult = (checked: boolean, available: boolean) => {
     if (checked) {
