@@ -149,6 +149,9 @@ export default function CampaignInfoPanel({
     isDisabled: boolean;
     onClick?: () => void;
   } => {
+    if (currentUserRole === 'BRAND') {
+      return { text: t('applyButtonText.userRoleBrand'), isDisabled: true };
+    }
     switch (status) {
       case 'OPEN_RESERVED':
         return { text: t('applyButtonText.open_reserved'), isDisabled: true };
@@ -157,9 +160,7 @@ export default function CampaignInfoPanel({
           text:
             currentUserRole === 'CREATOR'
               ? t('applyButtonText.recruiting.creator')
-              : currentUserRole === 'BRAND'
-                ? t('applyButtonText.recruiting.brand')
-                : t('applyButtonText.recruiting.creator'),
+              : t('applyButtonText.userRoleBrand'),
           isDisabled: false,
           onClick: handleApplyButtonClick,
         };
@@ -186,9 +187,9 @@ export default function CampaignInfoPanel({
       case 'ACTIVE':
         return {
           text:
-            currentUserRole === 'BRAND'
-              ? t('applyButtonText.active.brand')
-              : t('applyButtonText.active.user'),
+            currentUserRole === 'CREATOR'
+              ? t('applyButtonText.active.user')
+              : t('applyButtonText.userRoleBrand'),
           isDisabled: false,
           onClick: handleActiveCampaign,
         };
