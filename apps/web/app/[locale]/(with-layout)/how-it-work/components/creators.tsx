@@ -9,7 +9,6 @@ import {
   SvgPresent,
   SvgTodo,
   SvgUpload,
-  SvgUploadSchedule,
 } from '@lococo/icons';
 
 import Info from './info';
