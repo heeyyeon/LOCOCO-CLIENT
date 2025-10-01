@@ -18,13 +18,16 @@ export interface Creator {
 export interface CampaignReview {
   campaignReviewId: number;
   reviewRound: ReviewRound;
-  contentType: ContentPlatform;
   reviewStatus: ReviewStatus;
   postUrl: string;
-  viewCount: number;
-  likeCount: number;
-  commentCount: number;
-  shareCount: number;
+  contents: {
+    contentType: ContentPlatform;
+    viewCount: number;
+    likeCount: number;
+    commentCount: number;
+    shareCount: number;
+  };
+
   uploadedDate: string;
 }
 

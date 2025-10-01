@@ -6,6 +6,7 @@ import { useFormatter } from 'next-intl';
 import { useSearchParams } from 'next/navigation';
 
 import {
+  type CellContext,
   type ColumnDef,
   flexRender,
   getCoreRowModel,
@@ -21,13 +22,13 @@ import { cn } from '@lococo/utils';
 import CampaignSelect from '../applicants/components/campaign-select';
 import { koDateRangeFormatter } from '../applicants/utils/ko-date-range-formatter';
 import { CampaignInfo } from '../types';
-import ContentType from './components/column/content-type';
-import ReviewProgressStatus from './components/column/review-progress-status';
-import UploadedDate from './components/column/uploaded-date';
+import ContentType from './components/column/content-type-column';
+import FollowerCount from './components/column/follower-count-column';
+import ReviewProgressStatus from './components/column/review-progress-status-column';
+import UploadedDate from './components/column/uploaded-date-column';
 import {
   ApiResponse,
   CampaignReview,
-  ContentPlatform,
   CreatorWithReviews,
   type ReviewStatus,
 } from './types';
@@ -64,25 +65,31 @@ const data: ApiResponse = {
           {
             campaignReviewId: 22,
             reviewRound: 'SECOND',
-            contentType: 'INSTA_REELS',
+            contents: {
+              contentType: 'INSTA_REELS',
+              viewCount: 234,
+              likeCount: 2342,
+              commentCount: 23423,
+              shareCount: 2342,
+            },
             reviewStatus: 'FINAL_UPLOADED',
             postUrl: 'ADFASFF',
-            viewCount: 234,
-            likeCount: 2342,
-            commentCount: 23423,
-            shareCount: 2342,
+
             uploadedDate: '2025-01-01T00:00:00.000Z',
           },
           {
             campaignReviewId: 21,
             reviewRound: 'FIRST',
-            contentType: 'TIKTOK_VIDEO',
+            contents: {
+              contentType: 'TIKTOK_VIDEO',
+              viewCount: 234,
+              likeCount: 2342,
+              commentCount: 23423,
+              shareCount: 2342,
+            },
             reviewStatus: 'PENDING_REVISION',
             postUrl: '',
-            viewCount: 3,
-            likeCount: 2,
-            commentCount: 1,
-            shareCount: 1000,
+
             uploadedDate: '2025-10-02T00:00:00.000Z',
           },
         ],
@@ -99,25 +106,31 @@ const data: ApiResponse = {
           {
             campaignReviewId: 22,
             reviewRound: 'SECOND',
-            contentType: 'INSTA_REELS',
+
             reviewStatus: 'FINAL_UPLOADED',
             postUrl: 'ADFASFF',
-            viewCount: 234,
-            likeCount: 2342,
-            commentCount: 23423,
-            shareCount: 2342,
+            contents: {
+              contentType: 'INSTA_REELS',
+              viewCount: 234,
+              likeCount: 2342,
+              commentCount: 23423,
+              shareCount: 2342,
+            },
+
             uploadedDate: '2025-01-01T00:00:00.000Z',
           },
           {
             campaignReviewId: 23,
             reviewRound: 'FIRST',
-            contentType: 'TIKTOK_VIDEO',
+            contents: {
+              contentType: 'TIKTOK_VIDEO',
+              viewCount: 234,
+              likeCount: 2342,
+              commentCount: 23423,
+              shareCount: 2342,
+            },
             reviewStatus: 'NOT_SUBMITTED',
             postUrl: '',
-            viewCount: 3,
-            likeCount: 2,
-            commentCount: 1,
-            shareCount: 1000,
             uploadedDate: '2025-10-02T00:00:00.000Z',
           },
         ],
@@ -135,12 +148,15 @@ const data: ApiResponse = {
 
 const createColumns = (): ColumnDef<CampaignReview>[] => [
   {
-    accessorKey: 'contentType',
+    id: 'contentType',
+    accessorKey: 'contents',
     header: '컨텐츠 종류',
     size: 88,
-    cell: ({ getValue }) => {
-      const contentType = getValue() as ContentPlatform;
-      return <ContentType contentType={contentType} />;
+    cell: ({
+      getValue,
+    }: CellContext<CampaignReview, CampaignReview['contents']>) => {
+      const contents = getValue() as CampaignReview['contents'];
+      return <ContentType contentType={contents.contentType} />;
     },
   },
   {
@@ -162,39 +178,84 @@ const createColumns = (): ColumnDef<CampaignReview>[] => [
     },
   },
   {
-    accessorKey: 'viewCount',
+    id: 'viewCount',
+    accessorKey: 'contents',
     header: '조회수',
+    meta: {
+      style: { textAlign: 'left' },
+    },
     size: 100,
-    cell: ({ getValue }) => {
-      const count = getValue() as number;
-      return <p>{count.toLocaleString()}</p>;
+    cell: ({
+      getValue,
+    }: CellContext<CampaignReview, CampaignReview['contents']>) => {
+      const contents = getValue() as CampaignReview['contents'];
+      return (
+        <FollowerCount
+          contentType={contents.contentType}
+          count={contents.viewCount}
+        />
+      );
     },
   },
   {
-    accessorKey: 'likeCount',
+    id: 'likeCount',
+    accessorKey: 'contents',
     header: '좋아요 수',
+    meta: {
+      style: { textAlign: 'left' },
+    },
     size: 100,
-    cell: ({ getValue }) => {
-      const count = getValue() as number;
-      return <p>{count.toLocaleString()}</p>;
+    cell: ({
+      getValue,
+    }: CellContext<CampaignReview, CampaignReview['contents']>) => {
+      const contents = getValue() as CampaignReview['contents'];
+      return (
+        <FollowerCount
+          contentType={contents.contentType}
+          count={contents.likeCount}
+        />
+      );
     },
   },
   {
-    accessorKey: 'commentCount',
+    id: 'commentCount',
+    accessorKey: 'contents',
     header: '댓글 수',
+    meta: {
+      style: { textAlign: 'left' },
+    },
     size: 100,
-    cell: ({ getValue }) => {
-      const count = getValue() as number;
-      return <p>{count.toLocaleString()}</p>;
+    cell: ({
+      getValue,
+    }: CellContext<CampaignReview, CampaignReview['contents']>) => {
+      const contents = getValue() as CampaignReview['contents'];
+      return (
+        <FollowerCount
+          contentType={contents.contentType}
+          count={contents.commentCount}
+        />
+      );
     },
   },
   {
-    accessorKey: 'shareCount',
+    id: 'shareCount',
+    accessorKey: 'contents',
     header: '공유 수',
+    meta: {
+      style: { textAlign: 'left' },
+    },
+
     size: 100,
-    cell: ({ getValue }) => {
-      const count = getValue() as number;
-      return <p>{count.toLocaleString()}</p>;
+    cell: ({
+      getValue,
+    }: CellContext<CampaignReview, CampaignReview['contents']>) => {
+      const contents = getValue() as CampaignReview['contents'];
+      return (
+        <FollowerCount
+          contentType={contents.contentType}
+          count={contents.shareCount}
+        />
+      );
     },
   },
 ];
