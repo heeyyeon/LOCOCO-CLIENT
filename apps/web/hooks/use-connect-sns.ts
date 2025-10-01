@@ -91,10 +91,13 @@ export const useConnectTiktok = () => {
 
 const connectInstagramApi = async (): Promise<ApiResponseVoid> => {
   const currentPath = window.location.pathname;
-  sessionStorage.setItem('oauth_return_path', currentPath);
 
-  const connectUrl = `${process.env.NEXT_PUBLIC_API_SERVER_URL}/api/auth/sns/instagram/connect`;
-  window.location.href = connectUrl;
+  const connectUrl = new URL(
+    `${window.location.protocol}//${window.location.host}/api/auth/sns/instagram/connect`
+  );
+  connectUrl.searchParams.set('returnTo', currentPath);
+
+  window.location.href = connectUrl.toString();
 
   return new Promise(() => {});
 };
@@ -105,8 +108,6 @@ export const useConnectInstagram = () => {
   });
 };
 
-// 새로운 플로우에서는 서버가 직접 returnTo로 리다이렉트하므로
-// 이 훅은 더 이상 필요하지 않음
 export const useOAuthCallback = () => {
   return {
     isProcessingCallback: false,
