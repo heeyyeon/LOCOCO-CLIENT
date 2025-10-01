@@ -24,7 +24,6 @@ import {
 import { SaveFormModal } from '../@modal/(.)save-form-modal/SaveFormModal';
 import ProfilePhoto from '../components/edit-profile/profile-photo';
 import {
-  useCheckIdAvailability,
   usePresignedUrl,
   useProfile,
   useUpdateProfile,
@@ -35,6 +34,7 @@ export default function EditProfile() {
   const [profileImage, setProfileImage] = useState<File | null>(null);
   const [profileImageError, setProfileImageError] = useState<string>('');
   const t = useTranslations('creatorSignup.validation');
+
   const form = useForm<CreatorSignupForm>({
     resolver: zodResolver(creatorSignupSchema(t)),
     mode: 'onBlur',
@@ -62,86 +62,82 @@ export default function EditProfile() {
 
   const profileQuery = useProfile();
   const updateProfileMutation = useUpdateProfile();
-  const checkIdMutation = useCheckIdAvailability();
   const presignedUrlMutation = usePresignedUrl({
     file: profileImage || new File([], 'profile-image.jpg'),
   });
 
+  const initialized = React.useRef(false);
+
   useEffect(() => {
-    if (profileQuery.data?.data) {
-      const profileData = profileQuery.data.data;
-      const {
-        creatorAddressInfo,
-        creatorBasicInfo,
-        creatorContactInfo,
-        creatorFaceInfo,
-      } = profileData;
-      // firstName에서 first/last name 분리
-      const fullName = creatorBasicInfo.creatorName || '';
-      const nameParts = fullName.trim().split(' ');
+    const profile = profileQuery.data?.data;
+    if (!profile || initialized.current) return;
 
-      const firstName = creatorBasicInfo.firstName || nameParts[0] || '';
-      const lastName =
-        creatorBasicInfo.lastName || nameParts.slice(1).join(' ') || '';
-      const fullBirthDate = creatorBasicInfo.birthDate || '';
-      const birthMonth = fullBirthDate.split('-')[1] || '';
-      const birthDay = fullBirthDate.split('-')[2] || '';
-      const birthYear = fullBirthDate.split('-')[0] || '';
-      form.reset({
-        id: creatorBasicInfo.creatorName || '',
-        birthMonth: birthMonth,
-        birthDay: birthDay,
-        birthYear: birthYear,
-        gender: creatorBasicInfo.gender || '',
-        firstName: firstName,
-        lastName: lastName,
-        phoneCountryCode: creatorContactInfo.countryCode || '',
-        phoneNumber: creatorContactInfo.phoneNumber || '',
-        contentLanguage: profileData.contentLanguage || '',
-        country: creatorAddressInfo.country || '',
-        stateRegion: creatorAddressInfo.stateOrProvince || '',
-        city: creatorAddressInfo.cityOrTown || '',
-        addressLine1: creatorAddressInfo.addressLine1 || '',
-        addressLine2: creatorAddressInfo.addressLine2 || '',
-        zipCode: creatorAddressInfo.postalCode || '',
-        skinType: creatorFaceInfo.skinType || '',
-        skinTone: creatorFaceInfo.skinTone || '',
-      });
+    const {
+      creatorAddressInfo,
+      creatorBasicInfo,
+      creatorContactInfo,
+      creatorFaceInfo,
+    } = profile;
 
-      if (creatorBasicInfo.profileImageUrl) {
-        fetch(creatorBasicInfo.profileImageUrl)
-          .then((response) => response.blob())
-          .then((blob) => {
-            const file = new File([blob], 'profile-image.jpg', {
-              type: blob.type,
-            });
-            setProfileImage(file);
-          })
-          .catch((error) => {
-            console.error('프로필 이미지 로드 실패:', error);
-            setProfileImage(null);
+    const fullName = creatorBasicInfo.creatorName || '';
+    const nameParts = fullName.trim().split(' ');
+    const firstName = creatorBasicInfo.firstName || nameParts[0] || '';
+    const lastName =
+      creatorBasicInfo.lastName || nameParts.slice(1).join(' ') || '';
+
+    const fullBirthDate = creatorBasicInfo.birthDate || '';
+    const [birthYear = '', birthMonth = '', birthDay = ''] =
+      fullBirthDate.split('-');
+
+    form.reset({
+      id: creatorBasicInfo.creatorName || '',
+      birthMonth,
+      birthDay,
+      birthYear,
+      gender: creatorBasicInfo.gender || '',
+      firstName,
+      lastName,
+      phoneCountryCode: creatorContactInfo.countryCode || '',
+      phoneNumber: creatorContactInfo.phoneNumber || '',
+      contentLanguage: profile.contentLanguage || '',
+      country: creatorAddressInfo.country || '',
+      stateRegion: creatorAddressInfo.stateOrProvince || '',
+      city: creatorAddressInfo.cityOrTown || '',
+      addressLine1: creatorAddressInfo.addressLine1 || '',
+      addressLine2: creatorAddressInfo.addressLine2 || '',
+      zipCode: creatorAddressInfo.postalCode || '',
+      skinType: creatorFaceInfo.skinType || '',
+      skinTone: creatorFaceInfo.skinTone || '',
+    });
+    if (creatorBasicInfo.profileImageUrl) {
+      (async () => {
+        try {
+          const res = await fetch(creatorBasicInfo.profileImageUrl);
+          const blob = await res.blob();
+          const file = new File([blob], 'profile-image.jpg', {
+            type: blob.type,
           });
-      }
-    }
-  }, [profileQuery.data, form]);
-
-  const handleCheckAvailability = async () => {
-    const id = form.getValues('id');
-    if (!id.trim()) {
-      form.setError('id', { message: 'ID is required' });
-      return;
+          setProfileImage(file);
+        } catch (e) {
+          console.error('프로필 이미지 로드 실패:', e);
+          setProfileImage(null);
+        }
+      })();
     }
 
-    try {
-      const isAvailable = await checkIdMutation.mutateAsync(id);
-      if (isAvailable) {
-        // TODO: 성공 메시지 표시
+    initialized.current = true;
+  }, [profileQuery.data?.data]);
+  console.log(form.getValues('id'));
+
+  const handleIdCheckResult = (checked: boolean, available: boolean) => {
+    if (checked) {
+      if (available) {
+        // ID 사용 가능 - 에러 제거
+        form.clearErrors('id');
       } else {
+        // ID 사용 불가 - 에러 설정
         form.setError('id', { message: '이미 사용 중인 ID입니다.' });
       }
-    } catch (error) {
-      console.error('ID 중복 체크 실패:', error);
-      form.setError('id', { message: 'ID 중복 체크에 실패했습니다.' });
     }
   };
 
@@ -186,10 +182,7 @@ export default function EditProfile() {
               setProfileImageError={setProfileImageError}
             />
 
-            <CommunityName
-              form={form}
-              onIdCheckResult={handleCheckAvailability}
-            />
+            <CommunityName form={form} onIdCheckResult={handleIdCheckResult} />
 
             <PersonalDetails form={form} />
 
