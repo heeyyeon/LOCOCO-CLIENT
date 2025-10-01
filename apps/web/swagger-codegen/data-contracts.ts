@@ -2292,6 +2292,7 @@ export interface ApiResponseBrandMyPageResponse {
 export interface BrandMyPageResponse {
   /** 프로필 이미지 URL */
   profileImageUrl?: string;
+  brandName: string;
   /** 담당자 이름 */
   managerName: string;
   /** 브랜드 이메일 (구글 로그인 이메일) */

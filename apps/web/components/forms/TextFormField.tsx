@@ -10,13 +10,14 @@ interface TextFormFieldProps {
   label: string;
   required?: boolean;
   placeholder?: string;
-  register: UseFormRegisterReturn;
+  register?: UseFormRegisterReturn;
   error?: string;
   successMessage?: string;
   className?: string;
   rightContent?: React.ReactNode;
   onRightContentClick?: () => void;
   showSearchIcon?: boolean;
+  mouseEvent?: boolean;
   handleClickSearch?: () => void;
   notice?: React.ReactNode;
 }
@@ -32,6 +33,7 @@ export function TextFormField({
   rightContent,
   onRightContentClick,
   showSearchIcon = false,
+  mouseEvent = false,
   handleClickSearch,
   notice,
 }: TextFormFieldProps) {
@@ -45,7 +47,12 @@ export function TextFormField({
       </label>
       <div className="flex flex-col">
         <div className="relative">
-          <Input {...register} placeholder={placeholder} className="h-[4rem]" />
+          <Input
+            {...register}
+            placeholder={placeholder}
+            className="h-[4rem]"
+            disabled={mouseEvent}
+          />
 
           {rightContent && (
             <div
