@@ -88,7 +88,7 @@ export function CommunityName({ form, onIdCheckResult }: CommunityNameProps) {
             color="primary"
             size="sm"
             rounded="sm"
-            className="h-[3.7rem] px-[1.6rem]"
+            className="mb-[0.8rem] h-[3.7rem] px-[1.6rem]"
             onClick={handleCheckAvailability}
           >
             {t('checkAvailabilityButton')}

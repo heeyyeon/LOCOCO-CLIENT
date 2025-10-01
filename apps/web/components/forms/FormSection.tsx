@@ -16,7 +16,7 @@ export function FormSection({
   className,
 }: FormSectionProps) {
   return (
-    <div className={cn('space-y-[1.6rem]', className)}>
+    <div className={cn('w-full space-y-[1.6rem]', className)}>
       <div>
         <h2 className="title2 font-bold text-gray-800">{title}</h2>
         <p className="body4 mt-[0.4rem] whitespace-pre-line text-gray-500">
