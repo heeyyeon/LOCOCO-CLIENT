@@ -23,7 +23,7 @@ export default function ModalButton({
       <button
         type="button"
         className={cn(
-          'body1 flex h-[5.6rem] w-[55rem] items-center justify-center rounded-b-[3.2rem] bg-pink-100 px-[3.2rem] py-[1.6rem] text-pink-500 hover:bg-pink-200',
+          'body1 flex h-[5.6rem] w-[55rem] cursor-pointer items-center justify-center rounded-b-[3.2rem] bg-pink-100 px-[3.2rem] py-[1.6rem] text-pink-500 hover:bg-pink-200',
           isSelected && 'bg-pink-500'
         )}
         onClick={props.onClick}
@@ -38,7 +38,7 @@ export default function ModalButton({
     return (
       <button
         className={cn(
-          'body1 flex h-[5.6rem] w-[27.5rem] items-center justify-center bg-white px-[3.2rem] py-[1rem] text-gray-600 hover:bg-pink-100',
+          'body1 flex h-[5.6rem] w-[27.5rem] cursor-pointer items-center justify-center bg-white px-[3.2rem] py-[1rem] text-gray-600 hover:bg-pink-100',
           isSelected && 'bg-pink-100'
         )}
         style={{ borderBottomLeftRadius: '3.2rem' }}
@@ -54,7 +54,7 @@ export default function ModalButton({
     return (
       <button
         className={cn(
-          'body1 flex h-[5.6rem] w-[27.5rem] items-center justify-center bg-pink-100 px-[3.2rem] py-[1rem] text-pink-500 hover:bg-pink-200',
+          'body1 flex h-[5.6rem] w-[27.5rem] cursor-pointer items-center justify-center bg-pink-100 px-[3.2rem] py-[1rem] text-pink-500 hover:bg-pink-200',
           isSelected && 'bg-pink-200'
         )}
         style={{ borderBottomRightRadius: '3.2rem' }}

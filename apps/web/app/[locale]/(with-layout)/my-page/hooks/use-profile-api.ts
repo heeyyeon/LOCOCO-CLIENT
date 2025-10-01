@@ -7,7 +7,6 @@ import { type CreatorSignupForm } from '../../../(with-layout)/sign-up/creator/u
 import { type ApiResponseCreatorMyPageResponse } from '../../../../../swagger-codegen/data-contracts';
 import { PROFILE_KEYS } from '../constant/queryKey';
 
-// 프로필 조회
 export const useProfile = () => {
   const fetchProfile = async (): Promise<ApiResponseCreatorMyPageResponse> => {
     const response = await apiRequest<ApiResponseCreatorMyPageResponse>({
@@ -58,26 +57,6 @@ export const useUpdateProfile = () => {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: PROFILE_KEYS.profile() });
     },
-  });
-};
-
-// ID 중복 체크
-export const useCheckIdAvailability = () => {
-  const checkIdAvailabilityApi = async (id: string): Promise<boolean> => {
-    const response = await apiRequest<ApiResponseCreatorMyPageResponse>({
-      endPoint: '/api/creator/check-id',
-      method: 'POST',
-      data: { id },
-    });
-
-    if (!response.success) {
-      throw new Error('ID 중복 체크에 실패했습니다.');
-    }
-
-    return true;
-  };
-  return useMutation({
-    mutationFn: checkIdAvailabilityApi,
   });
 };
 

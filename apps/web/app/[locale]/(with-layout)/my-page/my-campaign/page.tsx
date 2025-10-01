@@ -5,12 +5,12 @@ import React, { useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { useRouter, useSearchParams } from 'next/navigation';
 
+import CampaignListEmpty from 'components/empty/campgin-list-empty';
 import LoadingSvg from 'components/loading/loading-svg';
 
 import Pagenation from '../../../../../../../packages/design-system/src/components/pagenation/Pagenation';
 import { AddressModal } from '../@modal/(.)address-modal/AddressModal';
 import Card from '../components/card/Card';
-import Empty from '../components/empty/Empty';
 import useMyCampaign from '../hooks/use-my-campaign';
 
 export default function MyCampaign() {
@@ -55,7 +55,7 @@ export default function MyCampaign() {
     );
   }
   if (isError || !campaignData?.campaigns?.length) {
-    return <Empty translationKey="myPage.myCampaign.empty" />;
+    return <CampaignListEmpty emptyMessage={t('empty')} />;
   }
 
   const campaignList = campaignData.campaigns;
@@ -111,7 +111,11 @@ export default function MyCampaign() {
               buttonText: t('buttonText.uploadSecondReview'),
             },
             VIEW_RESULTS: {
-              handleButtonClick: () => {},
+              handleButtonClick: () => {
+                router.push(
+                  `/my-page/final-review?campaignId=${campaign.campaignId}`
+                );
+              },
               buttonText: t('buttonText.viewResults'),
             },
           };

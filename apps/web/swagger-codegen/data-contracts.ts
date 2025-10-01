@@ -529,7 +529,7 @@ export interface CampaignPublishRequest {
    * 두 번째 컨텐츠 플랫폼
    * @example "INSTAGRAM_REELS 또는 INSTAGRAM_POST 또는 TIKTOK_VIDEO"
    */
-  secondContentType: 'INSTA_REELS' | 'TIKTOK_VIDEO' | 'INSTA_POST';
+  secondContentType?: 'INSTA_REELS' | 'TIKTOK_VIDEO' | 'INSTA_POST';
 }
 
 export interface RoleUpdateRequest {
@@ -650,16 +650,16 @@ export interface CustomerMyPageRequest {
    */
   cityOrTown?: string;
   /**
-   * Address Line 1 (최대 30자)
+   * Address Line 1 (최대 100자)
    * @minLength 0
-   * @maxLength 30
+   * @maxLength 100
    * @example 1234
    */
   addressLine1?: string;
   /**
-   * Address Line 2 (최대 30자)
+   * Address Line 2 (최대 100자)
    * @minLength 0
-   * @maxLength 30
+   * @maxLength 100
    * @example "Apt 5B"
    */
   addressLine2?: string;
@@ -772,16 +772,16 @@ export interface CreatorInfoUpdateRequest {
    */
   cityOrTown: string;
   /**
-   * Address Line 1 (최대 30자)
+   * Address Line 1 (최대 100자)
    * @minLength 0
-   * @maxLength 30
+   * @maxLength 100
    * @example 1234
    */
   addressLine1: string;
   /**
-   * Address Line 2 (최대 30자)
+   * Address Line 2 (최대 100자)
    * @minLength 0
-   * @maxLength 30
+   * @maxLength 100
    * @example "Apt 5B"
    */
   addressLine2?: string;
@@ -893,16 +893,16 @@ export interface CreatorMyPageUpdateRequest {
    */
   cityOrTown?: string;
   /**
-   * Address Line 1 (최대 30자)
+   * Address Line 1 (최대 100자)
    * @minLength 0
-   * @maxLength 30
+   * @maxLength 100
    * @example 1234
    */
   addressLine1?: string;
   /**
-   * Address Line 2 (최대 30자)
+   * Address Line 2 (최대 100자)
    * @minLength 0
-   * @maxLength 30
+   * @maxLength 100
    * @example "Apt 5B"
    */
   addressLine2?: string;
@@ -975,12 +975,12 @@ export interface CreatorAddressInfo {
    */
   cityOrTown: string;
   /**
-   * Address Line 1 (텍스트, 최대 30자)
+   * Address Line 1 (텍스트, 최대 100자)
    * @example 1234
    */
   addressLine1: string;
   /**
-   * Address Line 2 (텍스트, 최대 30자)
+   * Address Line 2 (텍스트, 최대 100자)
    * @example "Apt 5B"
    */
   addressLine2?: string;
@@ -1711,12 +1711,12 @@ export interface CustomerMyPageResponse {
    */
   cityOrTown?: string;
   /**
-   * Address Line 1 (최대 30자)
+   * Address Line 1 (최대 100자)
    * @example 1234
    */
   addressLine1?: string;
   /**
-   * Address Line 2 (최대 30자)
+   * Address Line 2 (최대 100자)
    * @example "Apt 5B"
    */
   addressLine2?: string;
@@ -1835,12 +1835,12 @@ export interface CreatorInfoResponse {
    */
   cityOrTown: string;
   /**
-   * Address Line 1 (텍스트, 최대 30자)
+   * Address Line 1 (텍스트, 최대 100자)
    * @example 1234
    */
   addressLine1: string;
   /**
-   * Address Line 2 (텍스트, 최대 30자)
+   * Address Line 2 (텍스트, 최대 100자)
    * @example "Apt 5B"
    */
   addressLine2: string;
@@ -2292,6 +2292,8 @@ export interface ApiResponseBrandMyPageResponse {
 export interface BrandMyPageResponse {
   /** 프로필 이미지 URL */
   profileImageUrl?: string;
+  /** 브랜드명 */
+  brandName: string;
   /** 담당자 이름 */
   managerName: string;
   /** 브랜드 이메일 (구글 로그인 이메일) */
@@ -2697,8 +2699,7 @@ export interface ApiResponseTikTokConnectionResponse {
 }
 
 export interface TikTokConnectionResponse {
-  connected?: boolean;
-  tikTokUserId?: string;
+  redirectUrl?: string;
 }
 
 export interface ApiResponseInstagramConnectionResponse {
@@ -2716,6 +2717,11 @@ export interface InstagramConnectionResponse {
 export interface AfterLoginUserNameResponse {
   /** 로그인 후 표시되는 이름 */
   displayName: string;
+  /**
+   * 해당 사용자 역할
+   * @example "BRAND"
+   */
+  role: 'PENDING' | 'CUSTOMER' | 'CREATOR' | 'BRAND' | 'ADMIN';
 }
 
 export interface ApiResponseAfterLoginUserNameResponse {

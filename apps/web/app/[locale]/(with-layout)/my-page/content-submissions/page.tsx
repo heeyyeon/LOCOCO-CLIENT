@@ -2,8 +2,10 @@
 
 import React, { useState } from 'react';
 
+import { useTranslations } from 'next-intl';
 import { useRouter, useSearchParams } from 'next/navigation';
 
+import CampaignListEmpty from 'components/empty/campgin-list-empty';
 import LoadingSvg from 'components/loading/loading-svg';
 
 import { Button } from '@lococo/design-system/button';
@@ -44,6 +46,7 @@ interface ContentSubmissionsFormProps {
 }
 
 export default function ContentSubmissions() {
+  const t = useTranslations('myPage.contentSubmissions');
   const searchParams = useSearchParams();
   const campaignId = searchParams.get('campaignId');
   const round = searchParams.get('round');
@@ -83,7 +86,7 @@ export default function ContentSubmissions() {
   }
 
   if (isError) {
-    throw new Error('콘텐츠 제출 실패');
+    return <CampaignListEmpty emptyMessage={t('error')} />;
   }
 
   return (
@@ -120,7 +123,10 @@ export default function ContentSubmissions() {
                 />
 
                 {submissionData.brandNote && (
-                  <BrandNote text={submissionData.brandNote} />
+                  <BrandNote
+                    round={round as string}
+                    text={submissionData.brandNote}
+                  />
                 )}
               </div>
             );

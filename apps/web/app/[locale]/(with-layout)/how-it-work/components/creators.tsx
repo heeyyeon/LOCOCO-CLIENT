@@ -2,7 +2,14 @@ import React from 'react';
 
 import { useTranslations } from 'next-intl';
 
-import { SvgBus, SvgTodo, SvgUpload, SvgUploadSchedule } from '@lococo/icons';
+import {
+  SvgBus,
+  SvgCrown,
+  SvgPersonTime,
+  SvgPresent,
+  SvgTodo,
+  SvgUpload,
+} from '@lococo/icons';
 
 import Info from './info';
 
@@ -20,35 +27,11 @@ export default function Creator() {
           <div className="col-start-1 row-start-1 flex justify-start">
             <Info
               number={1}
-              title={t('confirmAddress.title')}
-              description={t('confirmAddress.description')}
+              title={t('applyForCampaign.title')}
+              description={t('applyForCampaign.description')}
               icon={
-                <SvgBus className="fill-pink-500" width={144} height={144} />
-              }
-              direction="left"
-            />
-          </div>
-
-          <div className="col-start-2 row-start-2 flex justify-end">
-            <Info
-              number={2}
-              title={t('uploadReview.title')}
-              description={t('uploadReview.description')}
-              icon={
-                <SvgUpload className="fill-pink-500" width={144} height={144} />
-              }
-              direction="right"
-            />
-          </div>
-
-          <div className="col-start-1 row-start-3 flex justify-start">
-            <Info
-              number={3}
-              title={t('reviewUploadSchedule.title')}
-              description={t('reviewUploadSchedule.description')}
-              icon={
-                <SvgUploadSchedule
-                  className="fill-pink-500"
+                <SvgPresent
+                  className="fill-pink-400"
                   width={144}
                   height={144}
                 />
@@ -57,13 +40,66 @@ export default function Creator() {
             />
           </div>
 
+          <div className="col-start-2 row-start-2 flex justify-end">
+            <Info
+              number={2}
+              title={t('waitForResultAnnouncement.title')}
+              description={t('waitForResultAnnouncement.description')}
+              icon={
+                <SvgCrown className="fill-pink-400" width={144} height={144} />
+              }
+              direction="right"
+            />
+          </div>
+
+          <div className="col-start-1 row-start-3 flex justify-start">
+            <Info
+              number={3}
+              title={t('receiveAndTryTheProducts.title')}
+              description={t('receiveAndTryTheProducts.description')}
+              icon={
+                <SvgBus className="fill-pink-400" width={144} height={144} />
+              }
+              direction="left"
+            />
+          </div>
+
           <div className="col-start-2 row-start-4 flex justify-end">
             <Info
               number={4}
-              title={t('maintenanceGuidelines.title')}
-              description={t('maintenanceGuidelines.description')}
+              title={t('upload1stReview.title')}
+              description={t('upload1stReview.description')}
               icon={
-                <SvgTodo className="fill-pink-500" width={144} height={144} />
+                <SvgUpload className="fill-pink-400" width={144} height={144} />
+              }
+              direction="right"
+            />
+          </div>
+          <div className="col-start-1 row-start-5 flex justify-start">
+            <Info
+              number={5}
+              title={t('reviewBrand’sFeedbackAndUpload2ndReview.title')}
+              description={t(
+                'reviewBrand’sFeedbackAndUpload2ndReview.description'
+              )}
+              icon={
+                <SvgPersonTime
+                  className="fill-pink-400"
+                  width={144}
+                  height={144}
+                />
+              }
+              direction="left"
+            />
+          </div>
+
+          <div className="col-start-2 row-start-6 flex justify-end">
+            <Info
+              number={6}
+              title={t('keepYourReviewLive.title')}
+              description={t('keepYourReviewLive.description')}
+              icon={
+                <SvgTodo className="fill-pink-400" width={144} height={144} />
               }
               direction="right"
             />

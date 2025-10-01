@@ -15,7 +15,7 @@ export default function CampaignListEmpty({
   return (
     <section
       className={cn(
-        'flex h-[69.4rem] w-[112.8rem] flex-col items-center justify-center gap-[3.2rem]',
+        'flex h-[69.4rem] w-full flex-col items-center justify-center gap-[3.2rem]',
         className
       )}
     >
