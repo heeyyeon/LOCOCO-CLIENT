@@ -2,32 +2,32 @@
   "aabc": "aabc",
   "abc": "abc",
   "brandFeedback": {
-    "saveFormModal": {
-      "description": "Your changes have been saved.",
-      "save": "Okay",
-      "title": "Saved successfully"
-    },
-    "deliveryFormModal": {
-      "description": "Your brand note was well conveyed.",
-      "save": "Okay",
-      "title": "Successfully conveyed"
-    },
     "brandNote": {
       "description": "If you have any changes or requests, please write them here.",
       "error": "Please enter the brand note.",
       "notice": "Review Deadline",
       "title": "Brand Notes"
     },
-    "reviewRequest": "Review Request",
     "campaignName": "Campaign Type",
     "captionAndHashtags": "Campaign Caption & Hashtags",
     "contentType": "Content Platform",
     "contentUrl": "Campaign Content URL",
+    "deliveryFormModal": {
+      "description": "Your brand note was well conveyed.",
+      "save": "Okay",
+      "title": "Successfully conveyed"
+    },
     "formButton": {
       "deliver": "Submit",
       "save": "Save"
     },
-    "mediaUrls": "Campaign Images"
+    "mediaUrls": "Campaign Images",
+    "reviewRequest": "Review Request",
+    "saveFormModal": {
+      "description": "Your changes have been saved.",
+      "save": "Okay",
+      "title": "Saved successfully"
+    }
   },
   "brandMyPage": {
     "myCampaign": "My Campaigns"
@@ -318,7 +318,8 @@
   "creatorSignup": {
     "button": {
       "back": "Back",
-      "next": "Next"
+      "next": "Next",
+      "save": "Save"
     },
     "communityName": {
       "checkAvailabilityButton": "Check availability",

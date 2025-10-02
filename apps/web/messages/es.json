@@ -12,11 +12,22 @@
     "captionAndHashtags": "Texto y hashtags de la campaña",
     "contentType": "Plataforma de contenido",
     "contentUrl": "URL del contenido de la campaña",
+    "deliveryFormModal": {
+      "description": "Su nota de marca fue transmitida correctamente.",
+      "save": "De acuerdo / Está bien",
+      "title": "Transmitido con éxito"
+    },
     "formButton": {
       "deliver": "Enviar",
       "save": "Guardar"
     },
-    "mediaUrls": "Imágenes de la campaña"
+    "mediaUrls": "Imágenes de la campaña",
+    "reviewRequest": "Solicitud de revisión",
+    "saveFormModal": {
+      "description": "Sus cambios se han guardado.",
+      "save": "Aceptar",
+      "title": "Guardado con éxito"
+    }
   },
   "brandMyPage": {
     "myCampaign": "Mis Campañas"
@@ -307,7 +318,8 @@
   "creatorSignup": {
     "button": {
       "back": "Atrás",
-      "next": "Siguiente"
+      "next": "Siguiente",
+      "save": ""
     },
     "communityName": {
       "checkAvailabilityButton": "Comprobar disponibilidad",
