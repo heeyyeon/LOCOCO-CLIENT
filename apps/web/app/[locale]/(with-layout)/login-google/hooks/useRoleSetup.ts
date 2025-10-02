@@ -7,6 +7,7 @@ import { apiRequest } from 'app/api/apiRequest';
 
 import { setUserRole } from '../utils/role-api';
 import {
+  UserRole,
   clearRoleFromLocalStorage,
   getRoleFromLocalStorage,
   saveRoleToLocalStorage,
@@ -15,8 +16,6 @@ import {
 interface UseRoleSetupOptions {
   onUserRoleSet?: () => void;
 }
-
-type UserRole = 'creator' | 'brand' | 'user';
 
 export const useRoleSetup = (options?: UseRoleSetupOptions) => {
   const router = useRouter();
