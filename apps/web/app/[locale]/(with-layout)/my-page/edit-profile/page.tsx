@@ -34,6 +34,7 @@ export default function EditProfile() {
   const [profileImage, setProfileImage] = useState<File | null>(null);
   const [profileImageError, setProfileImageError] = useState<string>('');
   const t = useTranslations('creatorSignup.validation');
+  const t2 = useTranslations('creatorSignup.button');
 
   const form = useForm<CreatorSignupForm>({
     resolver: zodResolver(creatorSignupSchema(t)),
@@ -198,7 +199,7 @@ export default function EditProfile() {
             className="w-[41.2rem]"
             onClick={() => form.reset()}
           >
-            {t('formButton.cancel')}
+            {t2('back')}
           </Button>
           <Button
             variant="filled"
@@ -207,7 +208,7 @@ export default function EditProfile() {
             className="w-[41.2rem]"
             onClick={handleSubmitForm}
           >
-            {t('formButton.save')}
+            {t2('save')}
           </Button>
         </div>
       </div>
