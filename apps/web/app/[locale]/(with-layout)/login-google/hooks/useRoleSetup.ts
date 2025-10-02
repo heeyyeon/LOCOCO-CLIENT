@@ -36,14 +36,29 @@ export const useRoleSetup = (options?: UseRoleSetupOptions) => {
     (loginStatus: string, role: UserRole) => {
       const roleRoutes = getRoleRoutes();
 
-      if (loginStatus === 'LOGIN') {
-        router.replace(`/${locale}`);
-      } else if (loginStatus === 'INFO_REQUIRED') {
-        const routeHandler = roleRoutes[role];
-        routeHandler?.();
-      } else {
-        const routeHandler = roleRoutes[role];
-        routeHandler?.();
+      switch (loginStatus) {
+        case 'LOGIN':
+          router.replace(`/${locale}`);
+          break;
+        case 'INFO_REQUIRED':
+          if (role === 'user') {
+            router.replace(`/${locale}`);
+          } else {
+            const routeHandler = roleRoutes[role];
+            routeHandler?.();
+          }
+          break;
+        case 'SNS_REQUIRED':
+          router.replace(`/${locale}/my-page/connect-sns`);
+          break;
+        case 'REGISTER': {
+          const signupRoute = roleRoutes[role];
+          signupRoute?.();
+          break;
+        }
+        default:
+          router.replace(`/${locale}`);
+          break;
       }
     },
     [router, locale, getRoleRoutes]
