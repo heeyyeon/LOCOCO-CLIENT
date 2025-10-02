@@ -1,6 +1,5 @@
 import { Campaign } from 'app/[locale]/(with-layout)/(home)/components/home-section-campaign';
-import Card from 'components/card/Card';
-import { getChipVariantByDate } from 'components/card/utils/getChipVariantByDate';
+import CardMain from 'components/card/card-main';
 import CampaignListEmpty from 'components/empty/campgin-list-empty';
 
 interface CampaignGridProps {
@@ -25,23 +24,20 @@ export default function CampaignGrid({
   return (
     <div className="grid min-h-[33.1rem] grid-cols-3 gap-x-[2.4rem] gap-y-[3.2rem]">
       {campaigns.map((campaign) => (
-        <Card
+        <CardMain
           key={campaign.campaignId}
-          endTime={campaign.endTime}
-          chipVariant={
-            campaign.chipStatus
-              ? campaign.chipStatus
-              : getChipVariantByDate(campaign.endTime)
+          campaignId={campaign.campaignId}
+          campaignImageUrl={campaign.campaignImageUrl}
+          endTime={kindOfCard === 'openingSoon' ? undefined : campaign.endTime}
+          startTime={
+            kindOfCard === 'openingSoon' ? campaign.endTime : undefined
           }
+          chipStatus={campaign.chipStatus}
           brandName={campaign.brandName}
           campaignName={campaign.campaignName}
           campaignType={campaign.campaignType}
-          recruitmentNumber={campaign.recruitmentNumber}
           applicantNumber={campaign.applicantNumber}
-          campaignImageUrl={campaign.campaignImageUrl}
-          campaignId={campaign.campaignId}
-          hoverOption="hover"
-          isUpcoming={kindOfCard === 'openingSoon'}
+          recruitmentNumber={campaign.recruitmentNumber}
         />
       ))}
     </div>
