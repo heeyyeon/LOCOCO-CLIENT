@@ -6,7 +6,7 @@ import CampaignListEmpty from 'components/empty/campgin-list-empty';
 interface CampaignGridProps {
   campaigns?: Campaign[];
   isLoading?: boolean;
-  kindOfCard: 'KBeauty' | 'openingSoon';
+  kindOfCard?: 'KBeauty' | 'openingSoon';
 }
 
 export default function CampaignGrid({
