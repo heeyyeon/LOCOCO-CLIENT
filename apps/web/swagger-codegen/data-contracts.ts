@@ -2411,53 +2411,136 @@ export interface ApiResponseCreatorPerformanceResponse {
   /** @format int32 */
   status?: number;
   message?: string;
+  /** 캠페인별 크리에이터 성과 응답 */
   data?: CreatorPerformanceResponse;
 }
 
+/** 크리에이터 정보 */
 export interface CreatorInfo {
-  /** @format int64 */
-  creatorId?: number;
-  creatorFullName?: string;
-  creatorNickname?: string;
+  /**
+   * 크리에이터 ID
+   * @format int64
+   * @example 10
+   */
+  creatorId: number;
+  /**
+   * 크리에이터 풀 네임
+   * @example "김지수"
+   */
+  creatorFullName: string;
+  /**
+   * 크리에이터 닉네임
+   * @example "jisoo_creator"
+   */
+  creatorNickname: string;
+  /**
+   * 프로필 이미지 URL
+   * @example "https://s3.example.com/profile/creator-10.jpg"
+   */
   profileImageUrl?: string;
 }
 
+/** 캠페인별 크리에이터 성과 응답 */
 export interface CreatorPerformanceResponse {
-  /** @format int64 */
-  campaignId?: number;
-  campaignTitle?: string;
-  firstContentPlatform?: "INSTA_REELS" | "TIKTOK_VIDEO" | "INSTA_POST";
+  /**
+   * 캠페인 ID
+   * @format int64
+   * @example 1
+   */
+  campaignId: number;
+  /**
+   * 캠페인 제목
+   * @example "여름 신상 홍보 캠페인"
+   */
+  campaignTitle: string;
+  /**
+   * 1차 콘텐츠 플랫폼
+   * @example "INSTA_REELS"
+   */
+  firstContentPlatform: "INSTA_REELS" | "TIKTOK_VIDEO" | "INSTA_POST";
+  /**
+   * 2차 콘텐츠 플랫폼
+   * @example "TIKTOK_VIDEO"
+   */
   secondContentPlatform?: "INSTA_REELS" | "TIKTOK_VIDEO" | "INSTA_POST";
-  creators?: CreatorReviewPerformance[];
-  pageableResponse?: PageableResponse;
+  /** 크리에이터별 리뷰 성과 목록 */
+  creators: CreatorReviewPerformance[];
+  /** 페이지네이션 정보 */
+  pageableResponse: PageableResponse;
 }
 
+/** 크리에이터별 리뷰 성과 */
 export interface CreatorReviewPerformance {
-  creator?: CreatorInfo;
-  reviews?: ReviewPerformance[];
+  /** 크리에이터 정보 */
+  creator: CreatorInfo;
+  /** 리뷰 성과 목록 */
+  reviews: ReviewPerformance[];
 }
 
+/** 리뷰 성과 정보 */
 export interface ReviewPerformance {
-  /** @format int64 */
+  /**
+   * 캠페인 리뷰 ID
+   * @format int64
+   * @example 100
+   */
   campaignReviewId?: number;
-  reviewRound?: "FIRST" | "SECOND";
-  contentType?: "INSTA_REELS" | "TIKTOK_VIDEO" | "INSTA_POST";
-  reviewStatus?:
+  /**
+   * 리뷰 라운드
+   * @example "SECOND"
+   */
+  reviewRound: "FIRST" | "SECOND";
+  /**
+   * 콘텐츠 타입
+   * @example "TIKTOK_VIDEO"
+   */
+  contentType: "INSTA_REELS" | "TIKTOK_VIDEO" | "INSTA_POST";
+  /**
+   * 리뷰 상태
+   * @example "FINAL_UPLOADED"
+   */
+  reviewStatus:
     | "NOT_SUBMITTED"
     | "IN_PROGRESS"
     | "PENDING_REVISION"
     | "REVISING"
     | "FINAL_UPLOADED"
     | "UNKNOWN";
+  /**
+   * 게시물 URL (2차 리뷰만)
+   * @example "https://www.instagram.com/p/ABC123/"
+   */
   postUrl?: string;
-  /** @format int64 */
+  /**
+   * 조회수 (2차 리뷰만)
+   * @format int64
+   * @example 15000
+   */
   viewCount?: number;
-  /** @format int64 */
+  /**
+   * 좋아요 수 (2차 리뷰만)
+   * @format int64
+   * @example 1200
+   */
   likeCount?: number;
-  /** @format int64 */
+  /**
+   * 댓글 수 (2차 리뷰만)
+   * @format int64
+   * @example 85
+   */
   commentCount?: number;
-  /** @format int64 */
+  /**
+   * 공유 수 (2차 리뷰만)
+   * @format int64
+   * @example 30
+   */
   shareCount?: number;
+  /**
+   * 업로드 시간 (2차 리뷰만)
+   * @format date-time
+   * @example "2024-01-15T10:30:00Z"
+   */
+  uploadedAt?: string;
 }
 
 export interface ApiResponseCampaignApplicantListResponse {
