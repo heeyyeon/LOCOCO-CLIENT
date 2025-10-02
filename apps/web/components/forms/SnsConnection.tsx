@@ -75,7 +75,9 @@ export function SnsConnection({
           />
         </div>
         {isPending ? (
-          <LoadingSvg />
+          <div className="flex flex-1 justify-center">
+            <LoadingSvg />
+          </div>
         ) : (
           <>
             {platforms.map((platform, index) => (
