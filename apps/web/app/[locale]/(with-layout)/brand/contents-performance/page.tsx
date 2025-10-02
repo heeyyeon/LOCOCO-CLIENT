@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation';
 
 import { getBrandCampaignInfos } from '../api';
-import { CampaignInfo } from './../types';
+import { CampaignInfo } from '../types';
 import ClientPage from './page.client';
 
 export default async function page() {
