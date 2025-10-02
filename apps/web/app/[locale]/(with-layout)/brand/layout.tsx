@@ -20,7 +20,6 @@ export default async function layout({
     { label: t('makeNewCampaign'), value: 'create-campaign' },
     { label: t('checkApplicants'), value: 'applicants' },
     { label: t('checkContents'), value: 'contents-performance' },
-    { label: t('dashboard'), value: 'dashboard' },
   ];
   return (
     <div className="mx-auto flex w-[112rem]">
