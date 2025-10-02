@@ -62,7 +62,11 @@ export default function HomeSectionCampaign({
         setCampaignLanguage={setCampaignLanguage}
         showSeeMore={seeMore}
       />
-      <CampaignGrid campaigns={campaigns} isLoading={isLoading} />
+      <CampaignGrid
+        campaigns={campaigns}
+        isLoading={isLoading}
+        kindOfCard={kindOfCard}
+      />
     </div>
   );
 }
