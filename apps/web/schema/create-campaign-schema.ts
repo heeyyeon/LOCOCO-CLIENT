@@ -67,9 +67,24 @@ export const createCampaignSchema = z
     }),
 
     // 동적 입력 필드들
-    joinConditions: z.array(z.string().min(1, '조건을 입력해주세요')),
-    submitConditions: z.array(z.string().min(1, '조건을 입력해주세요')),
-    joinRewards: z.array(z.string().min(1, '보상을 입력해주세요')),
+    joinConditions: z.array(
+      z
+        .string()
+        .min(1, '조건을 입력해주세요')
+        .max(100, '최대 100자 이내로 입력해주세요')
+    ),
+    submitConditions: z.array(
+      z
+        .string()
+        .min(1, '조건을 입력해주세요')
+        .max(100, '최대 100자 이내로 입력해주세요')
+    ),
+    joinRewards: z.array(
+      z
+        .string()
+        .min(1, '보상을 입력해주세요')
+        .max(100, '최대 100자 이내로 입력해주세요')
+    ),
 
     // 플랫폼 선택
     firstContents: z.record(z.enum(SOCIAL_PLATFORMS), z.boolean()),

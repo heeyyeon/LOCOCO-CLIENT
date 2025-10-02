@@ -10,6 +10,7 @@ import {
   type ColumnFiltersState,
   type RowSelectionState,
 } from '@tanstack/react-table';
+import LoadingSvg from 'components/loading/loading-svg';
 import dayjs from 'dayjs';
 import { usePathname, useRouter } from 'i18n/navigation';
 
@@ -74,7 +75,7 @@ export default function BrandApplicantsPageClient({
     selectedApproveStatus === '' || selectedApproveStatus === 'ALL'
       ? undefined
       : (selectedApproveStatus as 'PENDING' | 'APPROVED' | 'REJECTED'),
-    true
+    !!campaignIdQueryString
   );
 
   const approveApplicantsMutation = useApproveApplicantsMutation(
@@ -234,10 +235,14 @@ export default function BrandApplicantsPageClient({
     campaignInfos,
   ]);
 
-  return isFetching ? (
-    <div>Loading...</div>
-  ) : isError || !data?.data ? (
-    <div>Error</div>
+  if (isError) {
+    return <div>Error</div>;
+  }
+
+  return isFetching || !data?.data ? (
+    <div className="flex h-screen w-full items-center justify-center">
+      <LoadingSvg />
+    </div>
   ) : campaignInfos.length > 0 ? (
     <div className="flex w-full flex-col gap-[1.6rem] px-[1.6rem]">
       <div className="flex w-full justify-between">

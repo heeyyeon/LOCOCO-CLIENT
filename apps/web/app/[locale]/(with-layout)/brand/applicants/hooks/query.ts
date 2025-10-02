@@ -22,9 +22,6 @@ export const useApplicants = (
   approveStatus?: ApproveStatus,
   enabled: boolean = true
 ) => {
-  if (campaignId === undefined) {
-    throw new Error('campaignId is required');
-  }
   return useQuery({
     queryKey: [
       ...applicantsKeys.lists(),
@@ -34,7 +31,7 @@ export const useApplicants = (
       approveStatus,
     ],
     queryFn: () => getApplicants({ campaignId, size, page, approveStatus }),
-    enabled,
+    enabled: enabled && !!campaignId,
     staleTime: 5 * 60 * 1000, // 5분
     gcTime: 10 * 60 * 1000, // 10분
   });
@@ -44,9 +41,6 @@ export const useApproveApplicantsMutation = (
   creatorCampaignId: number[],
   campaignId: number | undefined
 ) => {
-  if (campaignId === undefined) {
-    throw new Error('campaignId is required');
-  }
   return useMutation({
     mutationFn: () => approveApplicants(campaignId, creatorCampaignId),
     onSuccess: () => {

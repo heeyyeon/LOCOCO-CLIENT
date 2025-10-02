@@ -16,12 +16,14 @@ interface BracketChipProps {
     | 'WAITING_APPROVAL'
     | 'ACTIVE'
     | 'ALL';
+  isUpcoming?: boolean;
   className?: string;
 }
 
 export default function BracketChip({
   dueDate,
   chipVariant,
+  isUpcoming,
   className,
 }: BracketChipProps) {
   const CHIP_COLOR = {
@@ -61,7 +63,7 @@ export default function BracketChip({
        )`,
       }}
     >
-      {formatBracketDate(dueDate)}
+      {formatBracketDate(dueDate, isUpcoming)}
     </div>
   );
 }

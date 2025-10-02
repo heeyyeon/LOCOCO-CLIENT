@@ -33,6 +33,7 @@ interface CardProps {
   campaignId: number;
   className?: string;
   hoverOption?: 'hover' | 'always';
+  isUpcoming?: boolean;
 }
 
 export default function Card({
@@ -47,6 +48,7 @@ export default function Card({
   chipVariant,
   className,
   hoverOption = 'hover',
+  isUpcoming = false,
 }: CardProps) {
   const card = useTranslations('card');
 
@@ -83,6 +85,7 @@ export default function Card({
           alt={`${campaignName}${card('campaignThumbnailImage')}`}
         />
         <BracketChip
+          isUpcoming={isUpcoming}
           dueDate={endTime}
           chipVariant={chipVariant}
           className="absolute right-[1.6rem] top-[1.6rem]"

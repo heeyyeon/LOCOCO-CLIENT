@@ -6,11 +6,13 @@ import CampaignListEmpty from 'components/empty/campgin-list-empty';
 interface CampaignGridProps {
   campaigns?: Campaign[];
   isLoading?: boolean;
+  kindOfCard?: 'KBeauty' | 'openingSoon';
 }
 
 export default function CampaignGrid({
   campaigns,
   isLoading,
+  kindOfCard,
 }: CampaignGridProps) {
   if (isLoading) {
     return <CampaignListEmpty emptyMessage="Loading..." />;
@@ -39,6 +41,7 @@ export default function CampaignGrid({
           campaignImageUrl={campaign.campaignImageUrl}
           campaignId={campaign.campaignId}
           hoverOption="hover"
+          isUpcoming={kindOfCard === 'openingSoon'}
         />
       ))}
     </div>
