@@ -1,29 +1,27 @@
 import { cn } from '@lococo/utils';
 
-import { formatBracketDate } from './utils/getChipVariantByDate';
-
 interface BracketChipProps {
-  dueDate: string;
-  chipVariant:
+  content?: string;
+  chipVariant?:
     | 'OPEN_RESERVED'
     | 'COMPLETED'
+    | 'DRAFT'
+    | 'WAITING_APPROVAL'
+    | 'RECRUITING'
+    | 'RECRUITMENT_CLOSED'
+    | 'IN_REVIEW'
     | 'default'
     | 'disabled'
     | 'approved'
     | 'declined'
-    | 'progress'
-    | 'DRAFT'
-    | 'WAITING_APPROVAL'
-    | 'ACTIVE'
-    | 'ALL';
+    | 'progress';
   isUpcoming?: boolean;
   className?: string;
 }
 
 export default function BracketChip({
-  dueDate,
-  chipVariant,
-  isUpcoming,
+  content,
+  chipVariant = 'default',
   className,
 }: BracketChipProps) {
   const CHIP_COLOR = {
@@ -35,9 +33,10 @@ export default function BracketChip({
     DRAFT: 'bg-pink-500',
     WAITING_APPROVAL: 'bg-gray-500',
     OPEN_RESERVED: 'bg-green',
-    ACTIVE: 'bg-blue',
     COMPLETED: 'bg-red',
-    ALL: 'bg-green',
+    RECRUITING: 'bg-gray-500',
+    RECRUITMENT_CLOSED: 'bg-gray-500',
+    IN_REVIEW: 'bg-green',
   };
   return (
     <div
@@ -63,7 +62,7 @@ export default function BracketChip({
        )`,
       }}
     >
-      {formatBracketDate(dueDate, isUpcoming)}
+      {content}
     </div>
   );
 }
