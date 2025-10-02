@@ -4,7 +4,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 
 import { useFormatter } from 'next-intl';
 import Image from 'next/image';
-import { useSearchParams } from 'next/navigation';
+import { notFound, useSearchParams } from 'next/navigation';
 
 import {
   type ColumnFiltersState,
@@ -236,14 +236,14 @@ export default function BrandApplicantsPageClient({
   ]);
 
   if (isError) {
-    return <div>Error</div>;
+    notFound();
   }
 
-  return isFetching || !data?.data ? (
+  return isFetching ? (
     <div className="flex h-screen w-full items-center justify-center">
       <LoadingSvg />
     </div>
-  ) : campaignInfos.length > 0 ? (
+  ) : campaignInfos.length > 0 && data?.data ? (
     <div className="flex w-full flex-col gap-[1.6rem] px-[1.6rem]">
       <div className="flex w-full justify-between">
         <CampaignSelect
@@ -257,6 +257,12 @@ export default function BrandApplicantsPageClient({
           size="sm"
           rounded="sm"
           className="grow-0"
+          disabled={
+            campaignIdQueryString === null || data?.data.applicants.length === 0
+          }
+          onClick={() => {
+            alert('준비중인 기능입니다.');
+          }}
         >
           <SvgDownload />
           Export

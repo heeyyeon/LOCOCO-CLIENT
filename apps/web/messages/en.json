@@ -414,6 +414,10 @@
     "submitLabel": "Join",
     "title": "Join Lococo Creator Community!"
   },
+  "errorPage": {
+    "backToHome": "Back to Home",
+    "errorPageMessage": "Something went wrong. Please try again later."
+  },
   "fileUploader": {
     "cannotUploadFile": "Cannot upload file",
     "dragDropDescription": "Drag and drop or click to upload a file.",
@@ -761,10 +765,7 @@
         "viewNotes": "View Notes",
         "viewResults": "View Results"
       },
-      "empty": {
-        "_value": "There is no campaign has been applied.",
-        "title": "There is no campaign has been applied."
-      },
+      "empty": "There is no campaign has been applied.",
       "error": "Failed to load my campaign",
       "participationStatus": {
         "active": "Active",
@@ -782,6 +783,7 @@
       "title": "Saved successfully"
     }
   },
+
   "selectRoleModal": {
     "description": "Select your role to sign in.\nYou won't be able to change this later.",
     "loginAs": "Log in as a",

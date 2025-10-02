@@ -29,14 +29,20 @@ export default function middleware(req: NextRequest) {
 
   // TODO: 추후 routing을 관리하는 파일로 분리
   // 로그인이 필요한 페이지 (인증이 필요한 페이지) - locale 제외한 경로
-  const AUTH_REQUIRED_PATH = ['/product-detail/:productId/write-review'];
+  const AUTH_REQUIRED_PATH = [
+    '/product-detail/:productId/write-review',
+    '/brand',
+    '/my-page',
+  ];
   // 로그인 후 접근 불가능한 페이지 - locale 제외한 경로
   const LOGIN_RESTRICTED_PATH = ['/login', '/api/auth/line/login'];
 
   // 인증이 필요한 페이지 체크
   const isAuthRequired = AUTH_REQUIRED_PATH.some((path) => {
+    // 동적 파라미터 처리
     const regex = new RegExp(path.replace(':productId', '[^/]+'));
-    return regex.test(pathWithoutLocale);
+    // 정확히 일치하거나 해당 경로로 시작하는 경우 (하위 경로 포함)
+    return regex.test(pathWithoutLocale) || pathWithoutLocale.startsWith(path);
   });
 
   const currentLocale =
@@ -46,7 +52,7 @@ export default function middleware(req: NextRequest) {
 
   if (isAuthRequired) {
     if (!isLoggedIn) {
-      const loginPath = `/${currentLocale}/login`;
+      const loginPath = `/${currentLocale}/login-google`;
       return NextResponse.redirect(new URL(loginPath, origin));
     } else {
       return NextResponse.next();

@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 import { useFormatter } from 'next-intl';
 import Image from 'next/image';
-import { useSearchParams } from 'next/navigation';
+import { notFound, useSearchParams } from 'next/navigation';
 
 import {
   type CellContext,
@@ -325,7 +325,7 @@ export default function ClientPage({ campaignInfos }: ClientPageProps) {
     );
   }
   if (isError) {
-    return <div>Error</div>;
+    notFound();
   }
   // const data: ContentsPerformanceApiResponse = {
   //   success: true,
@@ -440,7 +440,12 @@ export default function ClientPage({ campaignInfos }: ClientPageProps) {
           size="sm"
           rounded="sm"
           className="grow-0"
-          disabled={campaignIdQueryString === null}
+          disabled={
+            campaignIdQueryString === null || data?.data.creators.length === 0
+          }
+          onClick={() => {
+            alert('준비중인 기능입니다.');
+          }}
         >
           <SvgDownload />
           Export
