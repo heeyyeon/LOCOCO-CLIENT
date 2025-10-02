@@ -157,7 +157,7 @@ const responseInterceptor = async <T>(
     }
   } else if (response.status === 403) {
     //TODO 서버측 api 연결되면 logout api 호출
-    throw new Error('토큰이 만료됨');
+    throw new Error('권한 없는 사용자의 접근');
   } else {
     return null;
   }
