@@ -222,7 +222,8 @@
         "creator": "지금 지원하기!"
       },
       "rejected": "캠페인 미선정",
-      "unknown": "알 수 없는 상태"
+      "unknown": "알 수 없는 상태",
+      "userRoleBrand": "크리에이터만 참여 가능합니다. "
     },
     "campaignSchedule": "캠페인 일정",
     "confirmCampaignSignUpModal": {

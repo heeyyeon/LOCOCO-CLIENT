@@ -222,7 +222,8 @@
         "creator": "¡Aplica ahora!"
       },
       "rejected": "Campaña no seleccionada",
-      "unknown": "Estado desconocido"
+      "unknown": "Estado desconocido",
+      "userRoleBrand": "Solo para Creadores"
     },
     "campaignSchedule": "Cronograma de la campaña",
     "confirmCampaignSignUpModal": {

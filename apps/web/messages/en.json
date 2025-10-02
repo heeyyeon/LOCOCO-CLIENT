@@ -207,7 +207,6 @@
   "campaignDetail": {
     "applicationPeriod": "Application Period",
     "applyButtonText": {
-      "userRoleBrand": "Only for Creator",
       "active": {
         "brand": "View Applicants",
         "user": "Campaign in progress"
@@ -223,7 +222,8 @@
         "creator": "Apply Now!"
       },
       "rejected": "Campaign not Selected",
-      "unknown": "Unknown Status"
+      "unknown": "Unknown Status",
+      "userRoleBrand": "Only for Creator"
     },
     "campaignSchedule": "Campaign Schedule",
     "confirmCampaignSignUpModal": {
@@ -307,7 +307,7 @@
   "creatorSignup": {
     "button": {
       "back": "Back",
-      "next": "Next"
+      "save": "Save"
     },
     "communityName": {
       "checkAvailabilityButton": "Check availability",
