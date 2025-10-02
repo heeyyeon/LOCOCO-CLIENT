@@ -36,10 +36,19 @@ export default function GnbAuth() {
     setIsRoleModalOpen(true);
   };
 
-  const handleRoleSelect = (selectedRole: UserRole) => {
-    saveRoleToLocalStorage(selectedRole);
-    setIsRoleModalOpen(false);
-    router.push('/login-google?mode=signup');
+  const handleRoleSelect = (role: 'creator' | 'brand' | 'user') => {
+    const roleMapping: Record<string, UserRole> = {
+      creator: 'CREATOR',
+      brand: 'BRAND',
+      user: 'CUSTOMER',
+    };
+
+    const selectedRole = roleMapping[role];
+    if (selectedRole) {
+      saveRoleToLocalStorage(selectedRole);
+      setIsRoleModalOpen(false);
+      router.push('/login-google?mode=signup');
+    }
   };
 
   const handleRouteMyPage = () => {
