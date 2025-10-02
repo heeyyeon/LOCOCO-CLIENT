@@ -239,11 +239,11 @@ export default function BrandApplicantsPageClient({
     notFound();
   }
 
-  return isFetching || !data?.data ? (
+  return isFetching ? (
     <div className="flex h-screen w-full items-center justify-center">
       <LoadingSvg />
     </div>
-  ) : campaignInfos.length > 0 ? (
+  ) : campaignInfos.length > 0 && data?.data ? (
     <div className="flex w-full flex-col gap-[1.6rem] px-[1.6rem]">
       <div className="flex w-full justify-between">
         <CampaignSelect
