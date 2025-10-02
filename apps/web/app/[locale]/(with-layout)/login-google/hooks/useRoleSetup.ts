@@ -25,9 +25,11 @@ export const useRoleSetup = (options?: UseRoleSetupOptions) => {
 
   const getRoleRoutes = useCallback(
     () => ({
-      creator: () => router.replace(`/${locale}/sign-up/creator`),
-      brand: () => router.replace(`/${locale}/sign-up/brand`),
-      user: () => options?.onUserRoleSet?.(),
+      CREATOR: () => router.replace(`/${locale}/sign-up/creator`),
+      BRAND: () => router.replace(`/${locale}/sign-up/brand`),
+      CUSTOMER: () => router.replace(`/${locale}`),
+      ADMIN: () => router.replace(`/${locale}`),
+      PENDING: () => options?.onUserRoleSet?.(),
     }),
     [router, locale, options]
   );
@@ -41,7 +43,7 @@ export const useRoleSetup = (options?: UseRoleSetupOptions) => {
           router.replace(`/${locale}`);
           break;
         case 'INFO_REQUIRED':
-          if (role === 'user') {
+          if (role === 'CUSTOMER' || role === 'ADMIN') {
             router.replace(`/${locale}`);
           } else {
             const routeHandler = roleRoutes[role];
@@ -78,11 +80,20 @@ export const useRoleSetup = (options?: UseRoleSetupOptions) => {
   );
 
   const handleUrlRole = useCallback(async () => {
-    const urlRole = searchParams.get('role') as UserRole | null;
+    const urlRole = searchParams.get('role') as string | null;
     if (!urlRole) return false;
 
-    saveRoleToLocalStorage(urlRole);
-    await processRoleSetup(urlRole);
+    const roleMapping: Record<string, UserRole> = {
+      creator: 'CREATOR',
+      brand: 'BRAND',
+      user: 'CUSTOMER',
+    };
+
+    const mappedRole = roleMapping[urlRole.toLowerCase()];
+    if (!mappedRole) return false;
+
+    saveRoleToLocalStorage(mappedRole);
+    await processRoleSetup(mappedRole);
     return true;
   }, [searchParams, processRoleSetup]);
 

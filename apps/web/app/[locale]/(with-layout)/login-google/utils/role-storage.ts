@@ -1,4 +1,4 @@
-export type UserRole = 'creator' | 'brand' | 'user';
+export type UserRole = 'PENDING' | 'CUSTOMER' | 'CREATOR' | 'BRAND' | 'ADMIN';
 
 const ROLE_STORAGE_KEY = 'selectedRole';
 

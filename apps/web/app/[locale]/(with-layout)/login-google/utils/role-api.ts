@@ -14,9 +14,11 @@ export const setUserRole = async (
   role: UserRole
 ): Promise<RoleApiResponse['data']> => {
   const roleMapping: Record<UserRole, string> = {
-    creator: 'CREATOR',
-    brand: 'BRAND',
-    user: 'CUSTOMER',
+    PENDING: 'PENDING',
+    CUSTOMER: 'CUSTOMER',
+    CREATOR: 'CREATOR',
+    BRAND: 'BRAND',
+    ADMIN: 'ADMIN',
   };
 
   const response = await apiRequest<RoleApiResponse>({
