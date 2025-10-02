@@ -257,6 +257,12 @@ export default function BrandApplicantsPageClient({
           size="sm"
           rounded="sm"
           className="grow-0"
+          disabled={
+            campaignIdQueryString === null || data?.data.applicants.length === 0
+          }
+          onClick={() => {
+            alert('준비중인 기능입니다.');
+          }}
         >
           <SvgDownload />
           Export

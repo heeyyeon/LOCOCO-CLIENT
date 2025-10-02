@@ -440,7 +440,12 @@ export default function ClientPage({ campaignInfos }: ClientPageProps) {
           size="sm"
           rounded="sm"
           className="grow-0"
-          disabled={campaignIdQueryString === null}
+          disabled={
+            campaignIdQueryString === null || data?.data.creators.length === 0
+          }
+          onClick={() => {
+            alert('준비중인 기능입니다.');
+          }}
         >
           <SvgDownload />
           Export
