@@ -811,5 +811,9 @@
     "confirmButton": "Yes",
     "message": "Campaign applications are only available to creator members.\nWould you like to sign up as a creator?",
     "title": "Creator Suggestion"
+  },
+  "errorPage": {
+    "errorPageMessage": "Something went wrong. Please try again later.",
+    "backToHome": "Back to Home"
   }
 }

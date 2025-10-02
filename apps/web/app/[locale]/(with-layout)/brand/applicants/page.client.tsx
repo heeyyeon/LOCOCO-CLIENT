@@ -4,7 +4,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 
 import { useFormatter } from 'next-intl';
 import Image from 'next/image';
-import { useSearchParams } from 'next/navigation';
+import { notFound, useSearchParams } from 'next/navigation';
 
 import {
   type ColumnFiltersState,
@@ -236,7 +236,7 @@ export default function BrandApplicantsPageClient({
   ]);
 
   if (isError) {
-    return <div>Error</div>;
+    notFound();
   }
 
   return isFetching || !data?.data ? (

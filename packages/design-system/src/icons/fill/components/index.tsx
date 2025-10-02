@@ -2,6 +2,7 @@ export { SvgAvatar } from './Avatar';
 export { SvgLine } from './Line';
 export { SvgLogo } from './Logo';
 export { SvgAdd } from './Add';
+export { SvgAlert } from './Alert';
 export { SvgApprove } from './Approve';
 export { SvgArrowDown } from './ArrowDown';
 export { SvgArrowLeft } from './ArrowLeft';
