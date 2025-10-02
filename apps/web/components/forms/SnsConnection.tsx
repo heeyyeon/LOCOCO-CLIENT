@@ -75,7 +75,7 @@ export function SnsConnection({
           />
         </div>
         {isPending ? (
-          <div className="flex flex-1 justify-center">
+          <div className="flex h-screen w-full items-center justify-center bg-white">
             <LoadingSvg />
           </div>
         ) : (
