@@ -414,6 +414,10 @@
     "submitLabel": "Unirse",
     "title": "¡Únase a la Comunidad de Creadores de Lococo!"
   },
+  "errorPage": {
+    "backToHome": "",
+    "errorPageMessage": ""
+  },
   "fileUploader": {
     "cannotUploadFile": "No se puede subir el archivo.",
     "dragDropDescription": "Arrastra y suelta o haz clic para subir un archivo.",
@@ -761,10 +765,7 @@
         "viewNotes": "Ver notas",
         "viewResults": "Ver resultados"
       },
-      "empty": {
-        "_value": "No se ha aplicado a ninguna campaña.",
-        "title": "No se ha aplicado a ninguna campaña."
-      },
+      "empty": "No se ha aplicado a ninguna campaña.",
       "error": "No se pudo cargar mi campaña",
       "participationStatus": {
         "active": "Activo",
