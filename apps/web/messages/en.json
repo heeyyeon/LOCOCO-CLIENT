@@ -12,11 +12,22 @@
     "captionAndHashtags": "Campaign Caption & Hashtags",
     "contentType": "Content Platform",
     "contentUrl": "Campaign Content URL",
+    "deliveryFormModal": {
+      "description": "Your brand note was well conveyed.",
+      "save": "Okay",
+      "title": "Successfully conveyed"
+    },
     "formButton": {
       "deliver": "Submit",
       "save": "Save"
     },
-    "mediaUrls": "Campaign Images"
+    "mediaUrls": "Campaign Images",
+    "reviewRequest": "Review Request",
+    "saveFormModal": {
+      "description": "Your changes have been saved.",
+      "save": "Okay",
+      "title": "Saved successfully"
+    }
   },
   "brandMyPage": {
     "myCampaign": "My Campaigns"
@@ -307,6 +318,7 @@
   "creatorSignup": {
     "button": {
       "back": "Back",
+      "next": "Next",
       "save": "Save"
     },
     "communityName": {
