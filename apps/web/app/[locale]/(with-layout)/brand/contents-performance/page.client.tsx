@@ -25,6 +25,7 @@ import { koDateRangeFormatter } from '../applicants/utils/ko-date-range-formatte
 import { CampaignInfo } from '../types';
 import ContentType from './components/column/content-type-column';
 import FollowerCount from './components/column/follower-count-column';
+import NavigateColumn from './components/column/navigate-column';
 import ReviewProgressStatus from './components/column/review-progress-status-column';
 import UploadedDate from './components/column/uploaded-date-column';
 import {
@@ -36,6 +37,7 @@ import {
 
 const getWidthClass = (size: number) => {
   const widthMap: { [key: number]: string } = {
+    40: 'w-[40px]',
     88: 'w-[88px]',
     100: 'w-[100px]',
     120: 'w-[120px]',
@@ -258,6 +260,29 @@ const createColumns = (): ColumnDef<CampaignReview>[] => [
         <FollowerCount
           contentType={contents.contentType}
           count={contents.shareCount}
+        />
+      );
+    },
+  },
+  {
+    id: 'navigate',
+    accessorKey: 'reviewStatus',
+    header: '',
+    size: 40,
+    cell: ({
+      getValue,
+    }: CellContext<CampaignReview, CampaignReview['reviewStatus']>) => {
+      const reviewStatus = getValue() as ReviewStatus;
+
+      return (
+        <NavigateColumn
+          isActive={
+            reviewStatus !== 'NOT_SUBMITTED' && reviewStatus !== 'IN_PROGRESS'
+          }
+          onClick={() => {
+            //TODO: 추후 라우팅 로직 추가
+            console.log('navigate');
+          }}
         />
       );
     },
