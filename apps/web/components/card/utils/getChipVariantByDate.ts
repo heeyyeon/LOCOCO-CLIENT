@@ -8,7 +8,10 @@ export const getChipVariantByDate = (dueDate: string) => {
   return targetDate.isBefore(today, 'day') ? 'disabled' : 'default';
 };
 
-export const formatBracketDate = (dateString: string): string => {
+export const formatBracketDate = (
+  dateString: string,
+  isUpcoming?: boolean
+): string => {
   const date = dayjs(dateString);
-  return `~${date.format('MM/DD')}`;
+  return isUpcoming ? `${date.format('MM/DD')}~` : `~${date.format('MM/DD')}`;
 };

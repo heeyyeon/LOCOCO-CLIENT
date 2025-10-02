@@ -25,6 +25,7 @@ export default function DynamicInput({ fieldName }: DynamicInputProps) {
             <Input
               className="h-[4rem] w-full"
               placeholder="text"
+              maxLength={100}
               {...register(`${fieldName}.${index}`)}
             />
             {isLastItem && (
