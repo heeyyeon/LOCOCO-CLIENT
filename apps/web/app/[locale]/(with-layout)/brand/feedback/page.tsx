@@ -19,7 +19,7 @@ import BrandNote from './components/brand-note';
 import CreatorInfo from './components/creator-info';
 import { useBrandNote, useGetReview } from './hooks/use-review';
 
-export default function page() {
+export default function Page() {
   const t = useTranslations('brandFeedback');
   const searchParams = useSearchParams();
   const campaignReviewId = searchParams.get('campaignReviewId');
