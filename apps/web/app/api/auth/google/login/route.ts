@@ -24,10 +24,14 @@ export async function GET(request: NextRequest) {
     if (response.ok) {
       try {
         const authData = await response.json();
-        const { accessToken } = authData.data || {};
+        const { accessToken, refreshToken } = authData.data || {};
 
         if (accessToken) {
           await setCookie('AccessToken', accessToken);
+
+          if (refreshToken) {
+            await setCookie('RefreshToken', refreshToken);
+          }
 
           return NextResponse.redirect(
             new URL('/login-google/loading', request.url)
