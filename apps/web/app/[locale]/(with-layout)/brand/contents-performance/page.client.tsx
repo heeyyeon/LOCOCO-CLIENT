@@ -3,6 +3,7 @@
 import { useState } from 'react';
 
 import { useFormatter } from 'next-intl';
+import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
 
 import {
@@ -12,6 +13,7 @@ import {
   getCoreRowModel,
   useReactTable,
 } from '@tanstack/react-table';
+import LoadingSvg from 'components/loading/loading-svg';
 import { usePathname, useRouter } from 'i18n/navigation';
 
 import { Avatar } from '@lococo/design-system/avatar';
@@ -28,12 +30,8 @@ import FollowerCount from './components/column/follower-count-column';
 import NavigateColumn from './components/column/navigate-column';
 import ReviewProgressStatus from './components/column/review-progress-status-column';
 import UploadedDate from './components/column/uploaded-date-column';
-import {
-  ApiResponse,
-  CampaignReview,
-  CreatorWithReviews,
-  type ReviewStatus,
-} from './types';
+import { useContentsPerformance } from './hooks/query';
+import { CampaignReview, CreatorWithReviews, type ReviewStatus } from './types';
 
 const getWidthClass = (size: number) => {
   const widthMap: { [key: number]: string } = {
@@ -46,109 +44,6 @@ const getWidthClass = (size: number) => {
   return widthMap[size] || `w-[${size}px]`;
 };
 
-const data: ApiResponse = {
-  success: true,
-  status: 200,
-  message: '캠페인 크리에이터 성과 리스트 조회에 성공했습니다.',
-  data: {
-    campaignId: 63,
-    campaignTitle: 'ASFDS',
-    firstContentPlatform: 'INSTA_REELS',
-    secondContentPlatform: 'TIKTOK_VIDEO',
-    creators: [
-      {
-        creator: {
-          creatorId: 18,
-          creatorFullName: '이재훈',
-          creatorNickname: 'ADF',
-          profileImageUrl:
-            'https://lococo-bucket.s3.ap-northeast-2.amazonaws.com/image/myProfile.jpg',
-        },
-        reviews: [
-          {
-            campaignReviewId: 22,
-            reviewRound: 'SECOND',
-            contents: {
-              contentType: 'INSTA_REELS',
-              viewCount: 234,
-              likeCount: 2342,
-              commentCount: 23423,
-              shareCount: 2342,
-            },
-            reviewStatus: 'FINAL_UPLOADED',
-            postUrl: 'ADFASFF',
-
-            uploadedDate: '2025-01-01T00:00:00.000Z',
-          },
-          {
-            campaignReviewId: 21,
-            reviewRound: 'FIRST',
-            contents: {
-              contentType: 'TIKTOK_VIDEO',
-              viewCount: 234,
-              likeCount: 2342,
-              commentCount: 23423,
-              shareCount: 2342,
-            },
-            reviewStatus: 'PENDING_REVISION',
-            postUrl: '',
-
-            uploadedDate: '2025-10-02T00:00:00.000Z',
-          },
-        ],
-      },
-      {
-        creator: {
-          creatorId: 22,
-          creatorFullName: '박성제성제',
-          creatorNickname: 'ADF',
-          profileImageUrl:
-            'https://lococo-bucket.s3.ap-northeast-2.amazonaws.com/image/myProfile.jpg',
-        },
-        reviews: [
-          {
-            campaignReviewId: 22,
-            reviewRound: 'SECOND',
-
-            reviewStatus: 'FINAL_UPLOADED',
-            postUrl: 'ADFASFF',
-            contents: {
-              contentType: 'INSTA_REELS',
-              viewCount: 234,
-              likeCount: 2342,
-              commentCount: 23423,
-              shareCount: 2342,
-            },
-
-            uploadedDate: '2025-01-01T00:00:00.000Z',
-          },
-          {
-            campaignReviewId: 23,
-            reviewRound: 'FIRST',
-            contents: {
-              contentType: 'TIKTOK_VIDEO',
-              viewCount: 234,
-              likeCount: 2342,
-              commentCount: 23423,
-              shareCount: 2342,
-            },
-            reviewStatus: 'NOT_SUBMITTED',
-            postUrl: '',
-            uploadedDate: '2025-10-02T00:00:00.000Z',
-          },
-        ],
-      },
-    ],
-    pageableResponse: {
-      pageNumber: 0,
-      pageSize: 5,
-      numberOfElements: 1,
-      isLast: true,
-      totalPages: 1,
-    },
-  },
-};
-
 const createColumns = (): ColumnDef<CampaignReview>[] => [
   {
     id: 'contentType',
@@ -158,7 +53,8 @@ const createColumns = (): ColumnDef<CampaignReview>[] => [
     cell: ({
       getValue,
     }: CellContext<CampaignReview, CampaignReview['contents']>) => {
-      const contents = getValue() as CampaignReview['contents'];
+      const contents = getValue();
+
       return <ContentType contentType={contents.contentType} />;
     },
   },
@@ -266,23 +162,19 @@ const createColumns = (): ColumnDef<CampaignReview>[] => [
   },
   {
     id: 'navigate',
-    accessorKey: 'reviewStatus',
     header: '',
     size: 40,
-    cell: ({
-      getValue,
-    }: CellContext<CampaignReview, CampaignReview['reviewStatus']>) => {
-      const reviewStatus = getValue() as ReviewStatus;
-
+    cell: ({ row }: CellContext<CampaignReview, unknown>) => {
+      const { reviewStatus, campaignReviewId, postUrl } = row.original;
+      console.log(reviewStatus, campaignReviewId, postUrl);
       return (
         <NavigateColumn
           isActive={
             reviewStatus !== 'NOT_SUBMITTED' && reviewStatus !== 'IN_PROGRESS'
           }
-          onClick={() => {
-            //TODO: 추후 라우팅 로직 추가
-            console.log('navigate');
-          }}
+          reviewStatus={reviewStatus}
+          campaignReviewId={campaignReviewId}
+          postUrl={postUrl}
         />
       );
     },
@@ -299,7 +191,6 @@ function CreatorReviewTable({ creator }: CreatorReviewTableProps) {
     data: creator.reviews,
     columns,
     getCoreRowModel: getCoreRowModel(),
-    getRowId: (row) => row.campaignReviewId.toString(),
   });
 
   return (
@@ -355,7 +246,7 @@ function CreatorReviewTable({ creator }: CreatorReviewTableProps) {
             ) : (
               table.getRowModel().rows.map((row) => (
                 <tr
-                  key={row.original.campaignReviewId}
+                  key={row.id}
                   className="h-[9.6rem] w-full border-b border-gray-400 px-[1.6rem] py-[2.4rem]"
                 >
                   {row.getVisibleCells().map((cell) => (
@@ -385,6 +276,12 @@ export default function ClientPage({ campaignInfos }: ClientPageProps) {
   const searchParams = useSearchParams();
   const format = useFormatter();
   const campaignIdQueryString = searchParams.get('campaignId');
+  // URL에서 page 쿼리 파라미터 읽기, 없으면 1로 기본값 설정
+  const pageFromQuery = searchParams.get('page');
+  const [page, setPage] = useState(() => {
+    const parsedPage = pageFromQuery ? parseInt(pageFromQuery, 10) : 1;
+    return parsedPage > 0 ? parsedPage : 1; // 1 이상의 값만 허용
+  });
 
   const [selectedCampaign, setSelectedCampaign] = useState<
     CampaignInfo | undefined
@@ -403,8 +300,131 @@ export default function ClientPage({ campaignInfos }: ClientPageProps) {
     setSelectedCampaign(campaign);
     params.set('campaignId', campaignId);
     params.delete('page');
+    setPage(1); // 페이지를 1로 리셋
     router.replace(`${pathname}?${params.toString()}`);
   };
+  const handlePageChange = (newPage: number) => {
+    const params = new URLSearchParams(searchParams.toString());
+    setPage(newPage);
+    params.set('page', newPage.toString());
+    router.replace(`${pathname}?${params.toString()}`);
+  };
+
+  const { data, isFetching, isError } = useContentsPerformance(
+    campaignIdQueryString || undefined,
+    page - 1,
+    5,
+    !!campaignIdQueryString
+  );
+
+  if (isFetching) {
+    return (
+      <div className="flex h-[52rem] w-full items-center justify-center">
+        <LoadingSvg />
+      </div>
+    );
+  }
+  if (isError) {
+    return <div>Error</div>;
+  }
+  // const data: ContentsPerformanceApiResponse = {
+  //   success: true,
+  //   status: 200,
+  //   message: '캠페인 크리에이터 성과 리스트 조회에 성공했습니다.',
+  //   data: {
+  //     campaignId: 63,
+  //     campaignTitle: 'ASFDS',
+  //     firstContentPlatform: 'INSTA_REELS',
+  //     secondContentPlatform: 'TIKTOK_VIDEO',
+  //     creators: [
+  //       {
+  //         creator: {
+  //           creatorId: 18,
+  //           creatorFullName: '이재훈',
+  //           creatorNickname: 'ADF',
+  //           profileImageUrl:
+  //             'https://lococo-bucket.s3.ap-northeast-2.amazonaws.com/image/myProfile.jpg',
+  //         },
+  //         reviews: [
+  //           {
+  //             campaignReviewId: 22,
+  //             reviewRound: 'SECOND',
+  //             contents: {
+  //               contentType: 'INSTA_REELS',
+  //               viewCount: 234,
+  //               likeCount: 2342,
+  //               commentCount: 23423,
+  //               shareCount: 2342,
+  //             },
+  //             reviewStatus: 'FINAL_UPLOADED',
+  //             postUrl: 'www.google.com',
+
+  //             uploadedDate: '2025-01-01T00:00:00.000Z',
+  //           },
+  //           {
+  //             campaignReviewId: 21,
+  //             reviewRound: 'FIRST',
+  //             contents: {
+  //               contentType: 'TIKTOK_VIDEO',
+  //             },
+  //             reviewStatus: 'IN_PROGRESS',
+  //             // postUrl: '',
+
+  //             // uploadedDate: '2025-10-02T00:00:00.000Z',
+  //           },
+  //         ],
+  //       },
+  //       {
+  //         creator: {
+  //           creatorId: 22,
+  //           creatorFullName: '박성제성제',
+  //           creatorNickname: 'ADF',
+  //           profileImageUrl:
+  //             'https://lococo-bucket.s3.ap-northeast-2.amazonaws.com/image/myProfile.jpg',
+  //         },
+  //         reviews: [
+  //           {
+  //             campaignReviewId: 22,
+  //             reviewRound: 'SECOND',
+
+  //             reviewStatus: 'FINAL_UPLOADED',
+  //             postUrl: 'ADFASFF',
+  //             contents: {
+  //               contentType: 'INSTA_REELS',
+  //               viewCount: 234,
+  //               likeCount: 2342,
+  //               commentCount: 23423,
+  //               shareCount: 2342,
+  //             },
+
+  //             uploadedDate: '2025-01-01T00:00:00.000Z',
+  //           },
+  //           {
+  //             campaignReviewId: 23,
+  //             reviewRound: 'FIRST',
+  //             contents: {
+  //               contentType: 'TIKTOK_VIDEO',
+  //               viewCount: 234,
+  //               likeCount: 2342,
+  //               commentCount: 23423,
+  //               shareCount: 2342,
+  //             },
+  //             reviewStatus: 'PENDING_REVISION',
+  //             postUrl: '',
+  //             uploadedDate: '2025-10-02T00:00:00.000Z',
+  //           },
+  //         ],
+  //       },
+  //     ],
+  //     pageableResponse: {
+  //       pageNumber: 0,
+  //       pageSize: 5,
+  //       numberOfElements: 1,
+  //       isLast: true,
+  //       totalPages: 3,
+  //     },
+  //   },
+  // };
 
   return (
     <div className="flex w-full flex-col gap-[1.6rem] px-[1.6rem]">
@@ -442,23 +462,39 @@ export default function ClientPage({ campaignInfos }: ClientPageProps) {
           </div>
         </div>
       </div>
-      <div className="flex flex-col gap-[4.8rem]">
-        {data.data.creators.map((creator) => (
-          <CreatorReviewTable
-            key={creator.creator.creatorId}
-            creator={creator}
-          />
+      {campaignIdQueryString &&
+        data &&
+        (data.data.creators.length > 0 ? (
+          <>
+            <div className="flex flex-col gap-[4.8rem]">
+              {data.data.creators.map((creator) => (
+                <CreatorReviewTable
+                  key={creator.creator.creatorId}
+                  creator={creator}
+                />
+              ))}
+            </div>
+            <div className="my-[6.4rem] flex w-full items-center justify-center">
+              <Pagenation
+                currentPage={page}
+                totalPages={data.data.pageableResponse.totalPages}
+                handlePageChange={handlePageChange}
+              />
+            </div>
+          </>
+        ) : (
+          <div className="flex h-[38.5rem] flex-col items-center justify-center gap-[3.2rem]">
+            <Image
+              src="/applicants-empty.svg"
+              alt="지원자가 없습니다."
+              width={100}
+              height={100}
+            />
+            <p className="text-inter-title2 font-bold text-gray-700">
+              지원자가 없습니다.
+            </p>
+          </div>
         ))}
-      </div>
-      <div className="my-[6.4rem] flex w-full items-center justify-center">
-        <Pagenation
-          currentPage={data.data.pageableResponse.pageNumber}
-          totalPages={data.data.pageableResponse.totalPages}
-          handlePageChange={() => {
-            //
-          }}
-        />
-      </div>
     </div>
   );
 }

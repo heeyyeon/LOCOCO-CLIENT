@@ -7,7 +7,7 @@ import { ContentPlatform } from '../../types';
 
 interface FollowerCountProps {
   contentType: ContentPlatform;
-  count: number;
+  count?: number;
 }
 
 export default function FollowerCount({
@@ -28,7 +28,7 @@ export default function FollowerCount({
         height={24}
       ></Image>
       <p className="text-inter-body3 text-gray-800">
-        {followerCountFormatter(count)}
+        {count ? followerCountFormatter(count) : '-'}
       </p>
     </div>
   );

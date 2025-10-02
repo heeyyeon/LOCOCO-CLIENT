@@ -12,7 +12,7 @@ export default function ReviewProgressStatus({
 }: ReviewStatusProps) {
   const REVIEW_STATUS_MAP = {
     NOT_SUBMITTED: '미제출',
-    IN_PROGRESS: '검토 중',
+    IN_PROGRESS: '진행중',
     PENDING_REVISION: '검토 요청',
     REVISING: '수정중',
     FINAL_UPLOADED: '최종 업로드',

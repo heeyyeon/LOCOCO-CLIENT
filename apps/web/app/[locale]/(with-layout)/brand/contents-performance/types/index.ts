@@ -19,16 +19,15 @@ export interface CampaignReview {
   campaignReviewId: number;
   reviewRound: ReviewRound;
   reviewStatus: ReviewStatus;
-  postUrl: string;
+  postUrl?: string;
   contents: {
     contentType: ContentPlatform;
-    viewCount: number;
-    likeCount: number;
-    commentCount: number;
-    shareCount: number;
+    viewCount?: number;
+    likeCount?: number;
+    commentCount?: number;
+    shareCount?: number;
   };
-
-  uploadedDate: string;
+  uploadedDate?: string;
 }
 
 export interface CreatorWithReviews {
@@ -53,7 +52,7 @@ export interface CampaignPerformanceData {
   pageableResponse: PageableResponse;
 }
 
-export interface ApiResponse {
+export interface ContentsPerformanceApiResponse {
   success: boolean;
   status: number;
   message: string;
