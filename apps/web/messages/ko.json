@@ -414,6 +414,10 @@
     "submitLabel": "가입하기",
     "title": "로코코 크리에이터 커뮤니티에 가입하세요!"
   },
+  "errorPage": {
+    "backToHome": "",
+    "errorPageMessage": ""
+  },
   "fileUploader": {
     "cannotUploadFile": "파일을 업로드할 수 없습니다.",
     "dragDropDescription": "드래그 앤 드롭 또는 클릭하여 파일을 업로드하세요.",
@@ -761,10 +765,7 @@
         "viewNotes": "메모들 보기",
         "viewResults": "결과 보기"
       },
-      "empty": {
-        "_value": "신청한 캠페인이 없습니다.",
-        "title": "신청한 캠페인이 없습니다."
-      },
+      "empty": "신청한 캠페인이 없습니다.",
       "error": "내 캠페인을 불러오지 못했습니다",
       "participationStatus": {
         "active": "활성화됨",
