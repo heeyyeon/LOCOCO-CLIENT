@@ -2,12 +2,23 @@
   "aabc": "aabc",
   "abc": "abc",
   "brandFeedback": {
+    "saveFormModal": {
+      "description": "Your changes have been saved.",
+      "save": "Okay",
+      "title": "Saved successfully"
+    },
+    "deliveryFormModal": {
+      "description": "Your brand note was well conveyed.",
+      "save": "Okay",
+      "title": "Successfully conveyed"
+    },
     "brandNote": {
       "description": "If you have any changes or requests, please write them here.",
       "error": "Please enter the brand note.",
       "notice": "Review Deadline",
       "title": "Brand Notes"
     },
+    "reviewRequest": "Review Request",
     "campaignName": "Campaign Type",
     "captionAndHashtags": "Campaign Caption & Hashtags",
     "contentType": "Content Platform",
