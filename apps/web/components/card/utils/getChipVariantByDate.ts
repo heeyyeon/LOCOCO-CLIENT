@@ -10,8 +10,8 @@ export const getChipVariantByDate = (dueDate: string) => {
 
 export const formatBracketDate = (
   dateString: string,
-  isUpComing?: boolean
+  isUpcoming?: boolean
 ): string => {
   const date = dayjs(dateString);
-  return isUpComing ? `${date.format('MM/DD')}~` : `~${date.format('MM/DD')}`;
+  return isUpcoming ? `${date.format('MM/DD')}~` : `~${date.format('MM/DD')}`;
 };
