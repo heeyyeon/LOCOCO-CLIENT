@@ -12,7 +12,7 @@ import {
 import { ModalHeader } from '@lococo/design-system/modal-header';
 import { SvgClose } from '@lococo/icons';
 
-type Role = 'creator' | 'brand' | 'user';
+type Role = 'CUSTOMER' | 'CREATOR' | 'BRAND';
 
 interface SelectRoleModalProps {
   open: boolean;
@@ -29,16 +29,16 @@ export function SelectRoleModal({
   const t = useTranslations('selectRoleModal');
 
   const roleTextMap: Record<Role, string> = {
-    creator: t('roles.creator'),
-    brand: t('roles.brand'),
-    user: t('roles.user'),
+    CREATOR: t('roles.creator'),
+    BRAND: t('roles.brand'),
+    CUSTOMER: t('roles.user'),
   };
 
   const handleSelectRole = (role: Role) => {
     onSelectRole(role);
     onOpenChange(false);
 
-    router.push(`/login-google?mode=signup&role=${role}`);
+    router.push(`/login-google?mode=signup&role=${role.toLowerCase()}`);
   };
 
   return (
