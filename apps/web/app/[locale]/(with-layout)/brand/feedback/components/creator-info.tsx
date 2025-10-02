@@ -1,6 +1,9 @@
 import React from 'react';
 
+import { useTranslations } from 'next-intl';
 import Image from 'next/image';
+
+import dayjs from 'dayjs';
 
 import { SvgAvatar } from '@lococo/icons';
 
@@ -17,6 +20,8 @@ export default function CreatorInfo({
   creatorNickname,
   date,
 }: CreatorInfoProps) {
+  const t = useTranslations('brandFeedback');
+  const day = dayjs(date);
   return (
     <div className="flex w-full justify-between">
       <div className="flex items-center gap-[2.4rem]">
@@ -39,7 +44,9 @@ export default function CreatorInfo({
           <p className="body3 text-gray-600">{creatorNickname}</p>
         </div>
       </div>
-      <div className="body3 flex items-end text-gray-800">{date}</div>
+      <div className="body3 flex items-end text-gray-800">
+        {day.format('YYYY.MM.DD')} {t('reviewRequest')}
+      </div>
     </div>
   );
 }
