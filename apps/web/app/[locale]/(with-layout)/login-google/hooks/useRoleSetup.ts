@@ -55,17 +55,9 @@ export const useRoleSetup = (options?: UseRoleSetupOptions) => {
       try {
         const roleResponse = await setUserRole(role);
         handleLoginStatus(roleResponse.loginStatus, role);
-      } catch (error) {
-        if (
-          error &&
-          typeof error === 'string' &&
-          error.includes('이미 가입되었습니다.')
-        ) {
-          router.replace(`/${locale}/login-google`);
-        } else {
-          clearRoleFromLocalStorage();
-          router.replace(`/${locale}`);
-        }
+      } catch {
+        clearRoleFromLocalStorage();
+        router.replace(`/${locale}`);
       }
     },
     [router, locale, handleLoginStatus]
