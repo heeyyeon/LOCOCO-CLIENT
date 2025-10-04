@@ -38,6 +38,10 @@ const NEXT_ACTION_CHIP_VARIANT: Record<CreatorAction, ChipVariant> = {
   BRAND_APPROVAL_WAITING: 'WAITING_APPROVAL',
 };
 
+const isValidCreatorAction = (action?: string): action is CreatorAction => {
+  return !!action && Object.keys(CREATOR_ACTION_CONFIG).includes(action);
+};
+
 export default function MyCampaign() {
   const t = useTranslations('myPage.myCampaign');
   const searchParams = useSearchParams();
@@ -89,7 +93,24 @@ export default function MyCampaign() {
       </p>
       <div className="grid w-[93.8rem] grid-cols-3 gap-[4rem] gap-y-[3.2rem]">
         {campaignData.campaigns.map((campaign) => {
-          const action = campaign.nextAction as CreatorAction;
+          if (!isValidCreatorAction(campaign.nextAction)) {
+            return (
+              // TODO fallback
+              <CardMyPage
+                key={campaign.campaignId}
+                campaignId={campaign.campaignId || 0}
+                campaignName={campaign.title}
+                campaignImageUrl={campaign.campaignImageUrl}
+                endTime={campaign.reviewSubmissionDeadline}
+                chipContent="Pending"
+                chipVariant="WAITING_APPROVAL"
+                buttonLabel={t('buttonText.viewDetails') || '자세히 보기'}
+                buttonHref={`/campaign-detail/${campaign.campaignId}`}
+              />
+            );
+          }
+
+          const action = campaign.nextAction;
           const config = CREATOR_ACTION_CONFIG[action];
           const isAddressAction = action === 'CONFIRM_ADDRESS';
 
