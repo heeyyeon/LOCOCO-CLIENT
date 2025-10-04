@@ -74,7 +74,8 @@ export default function CardMyPage({
           className="absolute right-[1.6rem] top-[1.6rem]"
         />
       </div>
-      <div className="flex h-[17.9rem] w-full flex-col bg-white p-[1.6rem]">
+
+      <div className="flex w-full flex-col bg-white p-[1.6rem]">
         <div className="flex flex-col gap-[0.8rem]">
           <div>
             {endTime && <p className="body4 font-[500]">{endTime}</p>}
