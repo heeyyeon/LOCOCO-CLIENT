@@ -21,6 +21,11 @@ interface BracketChipProps {
     | 'ACTIVE'
     | 'COMPLETED'
     | 'EXPIRED'
+    | 'REJECTED'
+    | 'PENDING'
+    | 'ACTIVE'
+    | 'COMPLETED'
+    | 'EXPIRED'
     | 'REJECTED';
   isUpcoming?: boolean;
   className?: string;

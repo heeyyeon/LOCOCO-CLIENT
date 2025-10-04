@@ -86,7 +86,7 @@ export default function MyCampaign() {
                 campaignImageUrl={campaign.campaignImageUrl}
                 endTime={campaign.reviewSubmissionDeadline}
                 chipContent={participationStatus}
-                chipVariant={campaign.participationStatus}
+                chipVariant={campaign.participationStatus as any}
                 buttonLabel={t('buttonText.view_details') || '자세히 보기'}
                 buttonHref={`/campaign-detail/${campaign.campaignId}`}
               />
