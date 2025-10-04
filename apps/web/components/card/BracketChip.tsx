@@ -41,7 +41,7 @@ export default function BracketChip({
   return (
     <div
       className={cn(
-        'body1 flex h-[3.2rem] w-[8.8rem] items-center justify-center font-[700] text-white',
+        'body1 flex h-[3.2rem] min-w-[8.8rem] items-center justify-center px-[1.5rem] font-[700] text-white',
         CHIP_COLOR[chipVariant],
         className
       )}
