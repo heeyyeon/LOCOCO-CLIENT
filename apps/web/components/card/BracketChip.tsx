@@ -1,20 +1,28 @@
 import { cn } from '@lococo/utils';
 
+export type BracketChipVariant =
+  | 'OPEN_RESERVED'
+  | 'COMPLETED'
+  | 'DRAFT'
+  | 'WAITING_APPROVAL'
+  | 'RECRUITING'
+  | 'RECRUITMENT_CLOSED'
+  | 'IN_REVIEW'
+  | 'default'
+  | 'disabled'
+  | 'approved'
+  | 'declined'
+  | 'progress'
+  | 'NOT_OPEN'
+  | 'PENDING'
+  | 'APPROVED'
+  | 'ACTIVE'
+  | 'EXPIRED'
+  | 'REJECTED';
+
 interface BracketChipProps {
   content?: string;
-  chipVariant?:
-    | 'OPEN_RESERVED'
-    | 'COMPLETED'
-    | 'DRAFT'
-    | 'WAITING_APPROVAL'
-    | 'RECRUITING'
-    | 'RECRUITMENT_CLOSED'
-    | 'IN_REVIEW'
-    | 'default'
-    | 'disabled'
-    | 'approved'
-    | 'declined'
-    | 'progress';
+  chipVariant?: BracketChipVariant;
   isUpcoming?: boolean;
   className?: string;
 }
@@ -33,10 +41,16 @@ export default function BracketChip({
     DRAFT: 'bg-pink-500',
     WAITING_APPROVAL: 'bg-gray-500',
     OPEN_RESERVED: 'bg-green',
-    COMPLETED: 'bg-red',
+    COMPLETED: 'bg-gray-500',
     RECRUITING: 'bg-green',
     RECRUITMENT_CLOSED: 'bg-gray-500',
     IN_REVIEW: 'bg-green',
+    NOT_OPEN: 'bg-gray-500',
+    PENDING: 'bg-pink-500',
+    APPROVED: 'bg-green',
+    ACTIVE: 'bg-green',
+    EXPIRED: 'bg-gray-500',
+    REJECTED: 'bg-red',
   };
   return (
     <div

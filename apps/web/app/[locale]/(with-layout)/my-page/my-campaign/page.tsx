@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { useSearchParams } from 'next/navigation';
 
+import { BracketChipVariant } from 'components/card/BracketChip';
 import CardMyPage from 'components/card/card-my-page';
 import {
   CREATOR_ACTION_CONFIG,
@@ -17,26 +18,6 @@ import { Pagenation } from '@lococo/design-system/pagenation';
 
 import { AddressModal } from '../@modal/(.)address-modal/AddressModal';
 import useMyCampaign from '../hooks/use-my-campaign';
-
-type ChipVariant =
-  | 'OPEN_RESERVED'
-  | 'COMPLETED'
-  | 'DRAFT'
-  | 'WAITING_APPROVAL'
-  | 'RECRUITING'
-  | 'RECRUITMENT_CLOSED'
-  | 'IN_REVIEW';
-
-const NEXT_ACTION_CHIP_VARIANT: Record<CreatorAction, ChipVariant> = {
-  VIEW_DETAILS: 'RECRUITING',
-  CONFIRM_ADDRESS: 'WAITING_APPROVAL',
-  UPLOAD_FIRST_REVIEW: 'RECRUITING',
-  REVISION_REQUESTED: 'IN_REVIEW',
-  VIEW_NOTES: 'IN_REVIEW',
-  UPLOAD_SECOND_REVIEW: 'IN_REVIEW',
-  VIEW_RESULTS: 'COMPLETED',
-  BRAND_APPROVAL_WAITING: 'WAITING_APPROVAL',
-};
 
 const isValidCreatorAction = (action?: string): action is CreatorAction => {
   return !!action && Object.keys(CREATOR_ACTION_CONFIG).includes(action);
@@ -91,20 +72,23 @@ export default function MyCampaign() {
       <p className="title1 w-[93.8rem] py-[1.6rem] text-start font-bold text-gray-800">
         {t('title')}
       </p>
-      <div className="grid w-[93.8rem] grid-cols-3 gap-[4rem] gap-y-[3.2rem]">
+      <div className="grid w-[93.8rem] grid-cols-3 gap-[4rem] gap-y-[3.2rem] pb-[6.4rem]">
         {campaignData.campaigns.map((campaign) => {
+          const participationStatus = campaign.participationStatus
+            ? campaign.participationStatus.charAt(0).toUpperCase() +
+              campaign.participationStatus.slice(1).toLowerCase()
+            : 'Pending';
           if (!isValidCreatorAction(campaign.nextAction)) {
             return (
-              // TODO fallback
               <CardMyPage
                 key={campaign.campaignId}
                 campaignId={campaign.campaignId || 0}
                 campaignName={campaign.title}
                 campaignImageUrl={campaign.campaignImageUrl}
                 endTime={campaign.reviewSubmissionDeadline}
-                chipContent="Pending"
-                chipVariant="WAITING_APPROVAL"
-                buttonLabel={t('buttonText.viewDetails') || '자세히 보기'}
+                chipContent={participationStatus}
+                chipVariant={campaign.participationStatus as BracketChipVariant}
+                buttonLabel={t('buttonText.view_details') || '자세히 보기'}
                 buttonHref={`/campaign-detail/${campaign.campaignId}`}
               />
             );
@@ -121,8 +105,8 @@ export default function MyCampaign() {
               campaignName={campaign.title}
               campaignImageUrl={campaign.campaignImageUrl}
               endTime={campaign.reviewSubmissionDeadline}
-              chipContent={config?.chipContent}
-              chipVariant={NEXT_ACTION_CHIP_VARIANT[action]}
+              chipContent={participationStatus}
+              chipVariant={campaign.participationStatus as BracketChipVariant}
               buttonLabel={t(`buttonText.${action.toLowerCase()}`)}
               buttonHref={
                 isAddressAction

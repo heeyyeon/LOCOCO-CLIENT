@@ -756,14 +756,14 @@
     },
     "myCampaign": {
       "buttonText": {
-        "confirmAddress": "주소 확인",
-        "revisionRequested": "수정 요청됨",
-        "uploadFirstReview": "첫 번째 리뷰 업로드",
-        "uploadSecondReview": "두 번째 리뷰 업로드",
-        "viewDetails": "상세보기",
-        "viewNote": "메모 보기",
-        "viewNotes": "메모들 보기",
-        "viewResults": "결과 보기"
+        "confirm_address": "주소 확인",
+        "revision_requested": "수정 요청됨",
+        "upload_first_review": "첫 번째 리뷰 업로드",
+        "upload_second_review": "두 번째 리뷰 업로드",
+        "view_details": "상세보기",
+        "view_note": "메모 보기",
+        "view_notes": "메모들 보기",
+        "view_results": "결과 보기"
       },
       "empty": "신청한 캠페인이 없습니다.",
       "error": "내 캠페인을 불러오지 못했습니다",

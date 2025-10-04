@@ -756,14 +756,14 @@
     },
     "myCampaign": {
       "buttonText": {
-        "confirmAddress": "Confirmar dirección",
-        "revisionRequested": "Revisión solicitada",
-        "uploadFirstReview": "Subir primera reseña",
-        "uploadSecondReview": "Subir segunda reseña",
-        "viewDetails": "Ver detalles",
-        "viewNote": "Ver nota",
-        "viewNotes": "Ver notas",
-        "viewResults": "Ver resultados"
+        "confirm_address": "Confirmar dirección",
+        "revision_requested": "Revisión solicitada",
+        "upload_first_review": "Subir primera reseña",
+        "upload_second_review": "Subir segunda reseña",
+        "view_details": "Ver detalles",
+        "view_note": "Ver nota",
+        "view_notes": "Ver notas",
+        "view_results": "Ver resultados"
       },
       "empty": "No se ha aplicado a ninguna campaña.",
       "error": "No se pudo cargar mi campaña",
