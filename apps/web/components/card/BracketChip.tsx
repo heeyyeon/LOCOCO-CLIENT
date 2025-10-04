@@ -34,7 +34,7 @@ export default function BracketChip({
     WAITING_APPROVAL: 'bg-gray-500',
     OPEN_RESERVED: 'bg-green',
     COMPLETED: 'bg-red',
-    RECRUITING: 'bg-gray-500',
+    RECRUITING: 'bg-green',
     RECRUITMENT_CLOSED: 'bg-gray-500',
     IN_REVIEW: 'bg-green',
   };
