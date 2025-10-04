@@ -756,14 +756,14 @@
     },
     "myCampaign": {
       "buttonText": {
-        "confirmAddress": "Confirm Address",
-        "revisionRequested": "Revision Requested",
-        "uploadFirstReview": "Upload First Review",
-        "uploadSecondReview": "Upload Second Review",
-        "viewDetails": "View Details",
-        "viewNote": "View Note",
-        "viewNotes": "View Notes",
-        "viewResults": "View Results"
+        "confirm_address": "Confirm Address",
+        "revision_requested": "Revision Requested",
+        "upload_first_review": "Upload First Review",
+        "upload_second_review": "Upload Second Review",
+        "view_details": "View Details",
+        "view_note": "View Note",
+        "view_notes": "View Notes",
+        "view_results": "View Results"
       },
       "empty": "There is no campaign has been applied.",
       "error": "Failed to load my campaign",

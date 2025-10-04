@@ -14,7 +14,14 @@ interface BracketChipProps {
     | 'disabled'
     | 'approved'
     | 'declined'
-    | 'progress';
+    | 'progress'
+    | 'NOT_OPEN'
+    | 'PENDING'
+    | 'APPROVED'
+    | 'ACTIVE'
+    | 'COMPLETED'
+    | 'EXPIRED'
+    | 'REJECTED';
   isUpcoming?: boolean;
   className?: string;
 }
@@ -24,6 +31,8 @@ export default function BracketChip({
   chipVariant = 'default',
   className,
 }: BracketChipProps) {
+  console.log('chipVariant:', chipVariant);
+  console.log('content:', content);
   const CHIP_COLOR = {
     disabled: 'bg-gray-500',
     default: 'bg-pink-500',
@@ -37,6 +46,12 @@ export default function BracketChip({
     RECRUITING: 'bg-green',
     RECRUITMENT_CLOSED: 'bg-gray-500',
     IN_REVIEW: 'bg-green',
+    NOT_OPEN: 'bg-gray-500',
+    PENDING: 'bg-pink-500',
+    APPROVED: 'bg-green',
+    ACTIVE: 'bg-green',
+    EXPIRED: 'bg-gray-500',
+    REJECTED: 'bg-red',
   };
   return (
     <div
