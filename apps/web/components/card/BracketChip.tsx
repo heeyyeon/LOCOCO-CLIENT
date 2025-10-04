@@ -19,12 +19,6 @@ interface BracketChipProps {
     | 'PENDING'
     | 'APPROVED'
     | 'ACTIVE'
-    | 'COMPLETED'
-    | 'EXPIRED'
-    | 'REJECTED'
-    | 'PENDING'
-    | 'ACTIVE'
-    | 'COMPLETED'
     | 'EXPIRED'
     | 'REJECTED';
   isUpcoming?: boolean;
