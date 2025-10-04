@@ -31,8 +31,6 @@ export default function BracketChip({
   chipVariant = 'default',
   className,
 }: BracketChipProps) {
-  console.log('chipVariant:', chipVariant);
-  console.log('content:', content);
   const CHIP_COLOR = {
     disabled: 'bg-gray-500',
     default: 'bg-pink-500',
@@ -42,7 +40,7 @@ export default function BracketChip({
     DRAFT: 'bg-pink-500',
     WAITING_APPROVAL: 'bg-gray-500',
     OPEN_RESERVED: 'bg-green',
-    COMPLETED: 'bg-red',
+    COMPLETED: 'bg-gray-500',
     RECRUITING: 'bg-green',
     RECRUITMENT_CLOSED: 'bg-gray-500',
     IN_REVIEW: 'bg-green',

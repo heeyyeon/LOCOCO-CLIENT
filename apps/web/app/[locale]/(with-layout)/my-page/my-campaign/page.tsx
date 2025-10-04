@@ -71,10 +71,12 @@ export default function MyCampaign() {
       <p className="title1 w-[93.8rem] py-[1.6rem] text-start font-bold text-gray-800">
         {t('title')}
       </p>
-      <div className="grid w-[93.8rem] grid-cols-3 gap-[4rem] gap-y-[3.2rem]">
+      <div className="grid w-[93.8rem] grid-cols-3 gap-[4rem] gap-y-[3.2rem] pb-[6.4rem]">
         {campaignData.campaigns.map((campaign) => {
-          const participationStatus = campaign.participationStatus || 'PENDING';
-          console.log('participationStatus:', participationStatus);
+          const participationStatus = campaign.participationStatus
+            ? campaign.participationStatus.charAt(0).toUpperCase() +
+              campaign.participationStatus.slice(1).toLowerCase()
+            : 'Pending';
           if (!isValidCreatorAction(campaign.nextAction)) {
             return (
               <CardMyPage
@@ -84,7 +86,7 @@ export default function MyCampaign() {
                 campaignImageUrl={campaign.campaignImageUrl}
                 endTime={campaign.reviewSubmissionDeadline}
                 chipContent={participationStatus}
-                chipVariant={participationStatus}
+                chipVariant={campaign.participationStatus}
                 buttonLabel={t('buttonText.view_details') || '자세히 보기'}
                 buttonHref={`/campaign-detail/${campaign.campaignId}`}
               />
@@ -103,7 +105,7 @@ export default function MyCampaign() {
               campaignImageUrl={campaign.campaignImageUrl}
               endTime={campaign.reviewSubmissionDeadline}
               chipContent={participationStatus}
-              chipVariant={participationStatus}
+              chipVariant={campaign.participationStatus as any}
               buttonLabel={t(`buttonText.${action.toLowerCase()}`)}
               buttonHref={
                 isAddressAction
