@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { useSearchParams } from 'next/navigation';
 
+import { BracketChipVariant } from 'components/card/BracketChip';
 import CardMyPage from 'components/card/card-my-page';
 import {
   CREATOR_ACTION_CONFIG,
@@ -86,7 +87,7 @@ export default function MyCampaign() {
                 campaignImageUrl={campaign.campaignImageUrl}
                 endTime={campaign.reviewSubmissionDeadline}
                 chipContent={participationStatus}
-                chipVariant={campaign.participationStatus as any}
+                chipVariant={campaign.participationStatus as BracketChipVariant}
                 buttonLabel={t('buttonText.view_details') || '자세히 보기'}
                 buttonHref={`/campaign-detail/${campaign.campaignId}`}
               />
@@ -105,7 +106,7 @@ export default function MyCampaign() {
               campaignImageUrl={campaign.campaignImageUrl}
               endTime={campaign.reviewSubmissionDeadline}
               chipContent={participationStatus}
-              chipVariant={campaign.participationStatus as any}
+              chipVariant={campaign.participationStatus as BracketChipVariant}
               buttonLabel={t(`buttonText.${action.toLowerCase()}`)}
               buttonHref={
                 isAddressAction

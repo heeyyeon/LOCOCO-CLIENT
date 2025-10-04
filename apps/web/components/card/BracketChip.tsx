@@ -1,26 +1,28 @@
 import { cn } from '@lococo/utils';
 
+export type BracketChipVariant =
+  | 'OPEN_RESERVED'
+  | 'COMPLETED'
+  | 'DRAFT'
+  | 'WAITING_APPROVAL'
+  | 'RECRUITING'
+  | 'RECRUITMENT_CLOSED'
+  | 'IN_REVIEW'
+  | 'default'
+  | 'disabled'
+  | 'approved'
+  | 'declined'
+  | 'progress'
+  | 'NOT_OPEN'
+  | 'PENDING'
+  | 'APPROVED'
+  | 'ACTIVE'
+  | 'EXPIRED'
+  | 'REJECTED';
+
 interface BracketChipProps {
   content?: string;
-  chipVariant?:
-    | 'OPEN_RESERVED'
-    | 'COMPLETED'
-    | 'DRAFT'
-    | 'WAITING_APPROVAL'
-    | 'RECRUITING'
-    | 'RECRUITMENT_CLOSED'
-    | 'IN_REVIEW'
-    | 'default'
-    | 'disabled'
-    | 'approved'
-    | 'declined'
-    | 'progress'
-    | 'NOT_OPEN'
-    | 'PENDING'
-    | 'APPROVED'
-    | 'ACTIVE'
-    | 'EXPIRED'
-    | 'REJECTED';
+  chipVariant?: BracketChipVariant;
   isUpcoming?: boolean;
   className?: string;
 }

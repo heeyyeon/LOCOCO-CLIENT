@@ -8,21 +8,14 @@ import { Link } from 'i18n/navigation';
 import { cn } from '@lococo/utils';
 
 import InfoChip from '../../../../packages/design-system/src/components/info-chip/InfoChip';
-import BracketChip from './BracketChip';
+import BracketChip, { BracketChipVariant } from './BracketChip';
 
 interface CardMyPageProps {
   campaignName?: string;
   campaignImageUrl?: string;
   endTime?: string;
   chipContent?: string;
-  chipVariant?:
-    | 'OPEN_RESERVED'
-    | 'COMPLETED'
-    | 'DRAFT'
-    | 'WAITING_APPROVAL'
-    | 'RECRUITING'
-    | 'RECRUITMENT_CLOSED'
-    | 'IN_REVIEW';
+  chipVariant?: BracketChipVariant;
   buttonLabel: string;
   buttonHref?: string;
   onButtonClick?: () => void;
