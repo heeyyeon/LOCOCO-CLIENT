@@ -500,8 +500,8 @@
         "title": "제품 수령 & 체험하기"
       },
       "reviewBrand’sFeedbackAndUpload2ndReview": {
-        "description": "브랜드의 피드백을 확인하고 2차 리뷰를 업로드하세요. 최종 Instagram/TikTok URL 첨부를 잊지 마세요!",
-        "title": "제품 수령 후 7일 이내에 첫 번째 리뷰를 업로드하세요. 브랜드 피드백 확인 후, 7일 이내에 두 번째 리뷰를 업로드하고 최종 SNS URL을 첨부하세요."
+        "title": "브랜드의 피드백을 확인하고 2차 리뷰를 업로드하세요. 최종 Instagram/TikTok URL 첨부를 잊지 마세요!",
+        "description": "브랜드의 피드백을 확인하고 2차 리뷰를 업로드하세요. 최종 Instagram/TikTok URL 첨부를 잊지 마세요!"
       },
       "reviewUploadSchedule": {
         "description": "제품을 받은 후 7일 이내에 첫 번째 리뷰를 업로드하세요.\n브랜드의 피드백을 확인한 뒤, 7일 이내에 두 번째 리뷰를 업로드하고 두 번째 리뷰를 게시할 때 최종 SNS URL을 첨부해 주세요.",
@@ -517,8 +517,8 @@
         "title": "리뷰 업로드"
       },
       "waitForResultAnnouncement": {
-        "description": "결과 발표를 기다려 주세요!",
-        "title": "선정되면, 마이페이지에서 24시간 이내에 배송지를 확인해 주세요."
+        "title": "결과 발표를 기다려 주세요!",
+        "description": "선정되면, 마이페이지에서 24시간 이내에 배송지를 확인해 주세요."
       }
     },
     "FAQs": {
