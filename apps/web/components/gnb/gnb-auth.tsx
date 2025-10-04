@@ -69,7 +69,7 @@ export default function GnbAuth() {
         <DropdownMenu>
           <DropdownMenuTrigger asChild className="relative">
             <button className="flex h-[5.6rem] cursor-pointer items-center gap-[1rem] px-[1rem] py-[1.6rem] text-black">
-              <SvgProfileIcon size={20} />
+              <SvgProfileIcon size={32} />
               <span>{userInfo?.displayName}</span>
             </button>
           </DropdownMenuTrigger>
