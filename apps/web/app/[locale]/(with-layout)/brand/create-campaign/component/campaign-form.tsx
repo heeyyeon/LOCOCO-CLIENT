@@ -171,18 +171,21 @@ export default function CampaignForm({ campaignId }: { campaignId?: string }) {
               <CampaignWinnerAnnounce />
               <CampaignDueDate />
               <FormSection
+                required
                 title={t('conditions.joinConditionTitle')}
                 description={t('conditions.joinConditionDescription')}
               >
                 <DynamicInput fieldName="joinConditions" />
               </FormSection>
               <FormSection
+                required
                 title={t('conditions.submitConditionTitle')}
                 description={t('conditions.submitConditionDescription')}
               >
                 <DynamicInput fieldName="submitConditions" />
               </FormSection>
               <FormSection
+                required
                 title={t('conditions.rewardTitle')}
                 description={t('conditions.rewardDescription')}
               >
