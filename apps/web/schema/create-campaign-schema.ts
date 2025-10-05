@@ -95,10 +95,7 @@ export const createCampaignSchema = z
       .array(campaignImageRequestSchema)
       .min(1, 'campaignMediaThumbnail')
       .max(5, 'thumbnailMaxFiles'),
-    detailFiles: z
-      .array(campaignImageRequestSchema)
-      .min(1, 'campaignMediaDetail')
-      .max(15, 'detailMaxFiles'),
+    detailFiles: z.array(campaignImageRequestSchema).max(15, 'detailMaxFiles'),
   })
   .refine(
     (data) => {

@@ -184,7 +184,6 @@ export default function CampaignUploadMedia() {
       <FormSection
         title={t('media.detailTitle')}
         description={t('media.detailDescription')}
-        required
       >
         <DragDropArea
           imageFiles={detailPreviewFiles}
