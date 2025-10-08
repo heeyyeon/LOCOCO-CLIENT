@@ -14,6 +14,7 @@ export default async function layout({
 }) {
   const t = await getTranslations('brandMyPageSideBar');
 
+
   const menuItems: MenuItem[] = [
     { label: t('myCampaign'), value: 'campaign' },
     { label: t('editProfile'), value: 'profile' },
@@ -21,6 +22,7 @@ export default async function layout({
     { label: t('checkApplicants'), value: 'applicants' },
     { label: t('checkContents'), value: 'contents-performance' },
   ];
+
   return (
     <div className="mx-auto flex w-[112rem]">
       <ClientSideBar menus={menuItems} defaultActiveMenu="campaign" />

@@ -500,8 +500,8 @@
         "title": "Recibir y probar los productos"
       },
       "reviewBrand’sFeedbackAndUpload2ndReview": {
-        "description": "Revisar los comentarios de la marca y subir la 2ª reseña",
-        "title": "Revisa las notas de la marca y envía tu segunda reseña. ¡No olvides incluir la URL final de Instagram/TikTok!"
+        "title": "Revisar los comentarios de la marca y subir la 2ª reseña",
+        "description": "Revisa las notas de la marca y envía tu segunda reseña. ¡No olvides incluir la URL final de Instagram/TikTok!"
       },
       "reviewUploadSchedule": {
         "description": "Suba su primera reseña dentro de los 7 días posteriores a recibir el producto. Después de revisar los comentarios de la marca, suba su segunda reseña dentro de los 7 días. Adjunte la URL final de la red social al publicar la segunda reseña.",
@@ -517,8 +517,8 @@
         "title": "Subir reseña"
       },
       "waitForResultAnnouncement": {
-        "description": "¡Espera el anuncio de resultados!",
-        "title": "Si eres seleccionado, confirma tu dirección de envío en Mi Página dentro de las 24 horas."
+        "title": "¡Espera el anuncio de resultados!",
+        "description": "Si eres seleccionado, confirma tu dirección de envío en Mi Página dentro de las 24 horas."
       }
     },
     "FAQs": {
@@ -756,14 +756,14 @@
     },
     "myCampaign": {
       "buttonText": {
-        "confirmAddress": "Confirmar dirección",
-        "revisionRequested": "Revisión solicitada",
-        "uploadFirstReview": "Subir primera reseña",
-        "uploadSecondReview": "Subir segunda reseña",
-        "viewDetails": "Ver detalles",
-        "viewNote": "Ver nota",
-        "viewNotes": "Ver notas",
-        "viewResults": "Ver resultados"
+        "confirm_address": "Confirmar dirección",
+        "revision_requested": "Revisión solicitada",
+        "upload_first_review": "Subir primera reseña",
+        "upload_second_review": "Subir segunda reseña",
+        "view_details": "Ver detalles",
+        "view_note": "Ver nota",
+        "view_notes": "Ver notas",
+        "view_results": "Ver resultados"
       },
       "empty": "No se ha aplicado a ninguna campaña.",
       "error": "No se pudo cargar mi campaña",

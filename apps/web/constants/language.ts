@@ -7,9 +7,9 @@ export const LANGUAGES = {
 } as const;
 
 export const GNB_LANGUAGES = {
-  EN: 'Eng',
-  ES: 'Esn',
-  KO: 'Kor',
+  en: 'Eng',
+  es: 'Esn',
+  ko: 'Kor',
 } as const;
 
-export const GNB_LANGUAGE_KEYS = ['EN', 'ES', 'KO'] as const;
+export const GNB_LANGUAGE_KEYS = ['en', 'es', 'ko'] as const;

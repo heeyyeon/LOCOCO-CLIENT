@@ -1,29 +1,35 @@
 import { cn } from '@lococo/utils';
 
-import { formatBracketDate } from './utils/getChipVariantByDate';
+export type BracketChipVariant =
+  | 'OPEN_RESERVED'
+  | 'COMPLETED'
+  | 'DRAFT'
+  | 'WAITING_APPROVAL'
+  | 'RECRUITING'
+  | 'RECRUITMENT_CLOSED'
+  | 'IN_REVIEW'
+  | 'default'
+  | 'disabled'
+  | 'approved'
+  | 'declined'
+  | 'progress'
+  | 'NOT_OPEN'
+  | 'PENDING'
+  | 'APPROVED'
+  | 'ACTIVE'
+  | 'EXPIRED'
+  | 'REJECTED';
 
 interface BracketChipProps {
-  dueDate: string;
-  chipVariant:
-    | 'OPEN_RESERVED'
-    | 'COMPLETED'
-    | 'default'
-    | 'disabled'
-    | 'approved'
-    | 'declined'
-    | 'progress'
-    | 'DRAFT'
-    | 'WAITING_APPROVAL'
-    | 'ACTIVE'
-    | 'ALL';
+  content?: string;
+  chipVariant?: BracketChipVariant;
   isUpcoming?: boolean;
   className?: string;
 }
 
 export default function BracketChip({
-  dueDate,
-  chipVariant,
-  isUpcoming,
+  content,
+  chipVariant = 'default',
   className,
 }: BracketChipProps) {
   const CHIP_COLOR = {
@@ -35,14 +41,21 @@ export default function BracketChip({
     DRAFT: 'bg-pink-500',
     WAITING_APPROVAL: 'bg-gray-500',
     OPEN_RESERVED: 'bg-green',
-    ACTIVE: 'bg-blue',
-    COMPLETED: 'bg-red',
-    ALL: 'bg-green',
+    COMPLETED: 'bg-gray-500',
+    RECRUITING: 'bg-green',
+    RECRUITMENT_CLOSED: 'bg-gray-500',
+    IN_REVIEW: 'bg-green',
+    NOT_OPEN: 'bg-gray-500',
+    PENDING: 'bg-pink-500',
+    APPROVED: 'bg-green',
+    ACTIVE: 'bg-green',
+    EXPIRED: 'bg-gray-500',
+    REJECTED: 'bg-red',
   };
   return (
     <div
       className={cn(
-        'body1 flex h-[3.2rem] w-[8.8rem] items-center justify-center font-[700] text-white',
+        'body1 flex h-[3.2rem] min-w-[8.8rem] items-center justify-center px-[1.5rem] font-[700] text-white',
         CHIP_COLOR[chipVariant],
         className
       )}
@@ -63,7 +76,7 @@ export default function BracketChip({
        )`,
       }}
     >
-      {formatBracketDate(dueDate, isUpcoming)}
+      {content}
     </div>
   );
 }

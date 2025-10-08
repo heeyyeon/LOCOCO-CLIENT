@@ -21,8 +21,9 @@ export default function ClientSideBar({
   //const userEmail = profileData?.email || '';
   const userProfileImage = profileData?.profileImageUrl;
   //TODO: email, instagram 추가
+  const userEmail = profileData?.email || '';
 
-  const userType = profileQuery.data?.data?.creatorStatus || '';
+  const creatorType = profileQuery.data?.data?.creatorType || '';
 
   if (profileQuery.isLoading) {
     return <SideBarSkeleton />;
@@ -31,8 +32,8 @@ export default function ClientSideBar({
   return (
     <SideBar
       name={userName}
-      email={''}
-      userType={userType}
+      email={userEmail}
+      userType={creatorType}
       profileImage={userProfileImage}
       instagram={''}
       menus={menus}

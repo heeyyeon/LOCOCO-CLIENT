@@ -500,8 +500,8 @@
         "title": "Receive & Try the Products"
       },
       "reviewBrand’sFeedbackAndUpload2ndReview": {
-        "description": "Review Brand’s Feedback & Upload 2nd review",
-        "title": "Take a look at the brand’s notes and submit your second review. Don’t forget to include the final Instagram/TikTok URL!"
+        "title": "Review Brand’s Feedback & Upload 2nd review",
+        "description": "Take a look at the brand’s notes and submit your second review. Don’t forget to include the final Instagram/TikTok URL!"
       },
       "reviewUploadSchedule": {
         "description": "Upload your first review within 7 days of receiving the product. After reviewing the brand’s feedback, upload your second review within 7 days. Attach the final SNS URL when posting the second review.",
@@ -517,8 +517,8 @@
         "title": "Upload Review"
       },
       "waitForResultAnnouncement": {
-        "description": "Wait for the result announcement!",
-        "title": "If you’re selected, confirm your shipping address in My Page within 24 hours."
+        "title": "Wait for the result announcement!",
+        "description": "If you’re selected, confirm your shipping address in My Page within 24 hours."
       }
     },
     "FAQs": {
@@ -756,14 +756,14 @@
     },
     "myCampaign": {
       "buttonText": {
-        "confirmAddress": "Confirm Address",
-        "revisionRequested": "Revision Requested",
-        "uploadFirstReview": "Upload First Review",
-        "uploadSecondReview": "Upload Second Review",
-        "viewDetails": "View Details",
-        "viewNote": "View Note",
-        "viewNotes": "View Notes",
-        "viewResults": "View Results"
+        "confirm_address": "Confirm Address",
+        "revision_requested": "Revision Requested",
+        "upload_first_review": "Upload First Review",
+        "upload_second_review": "Upload Second Review",
+        "view_details": "View Details",
+        "view_note": "View Note",
+        "view_notes": "View Notes",
+        "view_results": "View Results"
       },
       "empty": "There is no campaign has been applied.",
       "error": "Failed to load my campaign",

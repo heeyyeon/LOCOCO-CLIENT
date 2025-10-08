@@ -10,9 +10,6 @@ export default function middleware(req: NextRequest) {
   const { nextUrl, cookies } = req;
   const { origin, pathname } = nextUrl;
 
-  // next-intl 미들웨어 실행하여 locale 처리
-  const response = intlMiddleware(req);
-
   // 지원하지 않는 locale 접근시 default locale로 리다이렉트
   const unsupportedLocale = ['fr', 'ru', 'ja', 'zh'];
   const firstSegment = pathname.split('/')[1]; // 현재 locale
@@ -50,13 +47,9 @@ export default function middleware(req: NextRequest) {
       ? firstSegment
       : routing.defaultLocale;
 
-  if (isAuthRequired) {
-    if (!isLoggedIn) {
-      const loginPath = `/${currentLocale}/login-google`;
-      return NextResponse.redirect(new URL(loginPath, origin));
-    } else {
-      return NextResponse.next();
-    }
+  if (isAuthRequired && !isLoggedIn) {
+    const loginPath = `/${currentLocale}/login-google`;
+    return NextResponse.redirect(new URL(loginPath, origin));
   }
 
   // 로그인한 상태에서 접근할 수 없는 페이지 체크
@@ -64,15 +57,13 @@ export default function middleware(req: NextRequest) {
     return pathWithoutLocale === pattern;
   });
 
-  if (isLoginRestricted) {
-    if (isLoggedIn) {
-      const homePath = `/${currentLocale}`;
-      return NextResponse.redirect(new URL(homePath, origin));
-    } else {
-      return NextResponse.next();
-    }
+  if (isLoginRestricted && isLoggedIn) {
+    const homePath = `/${currentLocale}`;
+    return NextResponse.redirect(new URL(homePath, origin));
   }
 
+  // next-intl 미들웨어 실행하여 locale 처리
+  const response = intlMiddleware(req);
   // next-intl 미들웨어 응답 반환
   return response;
 }
