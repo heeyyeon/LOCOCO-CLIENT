@@ -10,17 +10,24 @@ export default function AppliedDateColumn({
   appliedDate: string;
 }) {
   const format = useFormatter();
+  const date = dayjs(appliedDate).toDate();
 
   return (
-    <p className="text-inter-body3 text-gray-800">
-      {format.dateTime(dayjs(appliedDate).toDate(), {
-        month: 'short',
-        day: 'numeric',
-        year: 'numeric',
-        hour12: false,
-        hour: '2-digit',
-        minute: '2-digit',
-      })}
-    </p>
+    <div className="text-inter-body3 text-gray-800">
+      <p>
+        {format.dateTime(date, {
+          month: 'short',
+          day: 'numeric',
+          year: 'numeric',
+        })}
+      </p>
+      <p>
+        {format.dateTime(date, {
+          hour12: false,
+          hour: '2-digit',
+          minute: '2-digit',
+        })}
+      </p>
+    </div>
   );
 }
