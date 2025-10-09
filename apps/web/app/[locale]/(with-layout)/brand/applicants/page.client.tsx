@@ -2,7 +2,7 @@
 
 import React, { useCallback, useEffect, useState } from 'react';
 
-import { useFormatter } from 'next-intl';
+import { useFormatter, useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { notFound, useSearchParams } from 'next/navigation';
 
@@ -42,6 +42,7 @@ export default function BrandApplicantsPageClient({
   campaignInfos,
 }: BrandApplicantsPageClientProps) {
   const format = useFormatter();
+  const t = useTranslations('brandApplicants');
 
   const router = useRouter();
   const pathname = usePathname();
@@ -261,11 +262,11 @@ export default function BrandApplicantsPageClient({
             campaignIdQueryString === null || data?.data.applicants.length === 0
           }
           onClick={() => {
-            alert('준비중인 기능입니다.');
+            alert(t('comingSoon'));
           }}
         >
           <SvgDownload />
-          Export
+          {t('excelExport')}
         </Button>
       </div>
 
@@ -307,7 +308,7 @@ export default function BrandApplicantsPageClient({
                 htmlFor="all-select"
                 className="text-inter-body1 cursor-pointer font-bold text-gray-600"
               >
-                전체 선택하기(
+                {t('allSelect')}(
                 {data?.data?.applicants?.filter(
                   (applicant) =>
                     rowSelection[applicant.creatorCampaignId.toString()] &&
@@ -335,7 +336,7 @@ export default function BrandApplicantsPageClient({
               }
             >
               <SvgCheck size={20} />
-              <span className="text-[1.4rem]">승인하기</span>
+              <span className="text-[1.4rem]">{t('approve')}</span>
             </Button>
           </div>
 
@@ -359,12 +360,12 @@ export default function BrandApplicantsPageClient({
         <div className="flex h-[38.5rem] flex-col items-center justify-center gap-[3.2rem]">
           <Image
             src="/applicants-empty.svg"
-            alt="지원자가 없습니다."
+            alt={t('noApplicants')}
             width={100}
             height={100}
           />
           <p className="text-inter-title2 font-bold text-gray-700">
-            지원자가 없습니다.
+            {t('noApplicants')}
           </p>
         </div>
       )}
@@ -373,12 +374,12 @@ export default function BrandApplicantsPageClient({
     <div className="flex h-[52.4rem] w-full flex-col items-center justify-center gap-[3.2rem]">
       <Image
         src="/campaign-empty.svg"
-        alt="지원자가 없습니다."
+        alt={t('noCampaign')}
         width={100}
         height={100}
       />
       <p className="text-inter-title2 font-bold text-gray-700">
-        아직 진행한 캠페인이 없습니다.
+        {t('noCampaign')}
       </p>
     </div>
   );

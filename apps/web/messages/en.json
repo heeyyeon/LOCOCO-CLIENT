@@ -813,5 +813,35 @@
     "confirmButton": "Yes",
     "message": "Campaign applications are only available to creator members.\nWould you like to sign up as a creator?",
     "title": "Creator Suggestion"
+  },
+  "brandApplicants": {
+    "excelExport": "Export",
+    "comingSoon": "Coming Soon",
+    "allSelect": "Select All",
+    "approve": "Approve",
+    "approveStatus": "Approval Status",
+    "noApplicants": "No applicants.",
+    "noCampaign": "No campaigns yet.",
+    "campaignSelect": {
+      "selectCampaign": "Select a campaign.",
+      "noCampaign": "No campaigns created."
+    },
+    "approveStatusSelect": {
+      "approveStatus": "Approval Status",
+      "all": "All",
+      "approved": "Approved",
+      "pending": "Pending",
+      "rejected": "Rejected"
+    },
+    "applicantsTable": {
+      "headers": {
+        "creator": "Creator",
+        "followerCount": "Follower Count",
+        "participationCount": "Participation Count",
+        "appliedDate": "Applied Date (KST)",
+        "approveStatus": "Approval Status"
+      },
+      "noApplicants": "No applicants."
+    }
   }
 }
