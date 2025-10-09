@@ -1,6 +1,63 @@
 {
   "aabc": "aabc",
   "abc": "abc",
+  "brandApplicants": {
+    "allSelect": "Seleccionar todo",
+    "applicantsTable": {
+      "headers": {
+        "appliedDate": "Fecha de solicitud (KST)",
+        "approveStatus": "Estado de aprobación",
+        "creator": "Creador",
+        "followerCount": "Cantidad de seguidores",
+        "participationCount": "Número de participaciones"
+      },
+      "noApplicants": "No hay solicitantes."
+    },
+    "approve": "Aprobar",
+    "approveStatus": "Estado de aprobación",
+    "approveStatusSelect": {
+      "all": "Todos",
+      "approved": "Aprobado",
+      "approveStatus": "Estado de aprobación",
+      "pending": "Pendiente",
+      "rejected": "Rechazado"
+    },
+    "campaignSelect": {
+      "noCampaign": "No se han creado campañas.",
+      "selectCampaign": "Seleccione una campaña."
+    },
+    "comingSoon": "Próximamente",
+    "excelExport": "Exportar",
+    "noApplicants": "No hay solicitantes.",
+    "noCampaign": "Aún no hay campañas."
+  },
+  "brandContentsPerformance": {
+    "comingSoon": "Función en preparación",
+    "contentType": {
+      "post": "Publicación",
+      "reels": "Reel",
+      "video": "Video"
+    },
+    "export": "Exportar",
+    "headers": {
+      "commentCount": "Número de comentarios",
+      "contentType": "Tipo de contenido",
+      "likeCount": "Número de “me gusta”",
+      "reviewStatus": "Estado",
+      "shareCount": "Número de compartidos",
+      "uploadedDate": "Fecha de carga",
+      "viewCount": "Visualizaciones"
+    },
+    "noApplicants": "No hay solicitantes",
+    "noReviews": "No hay reseñas",
+    "reviewStatus": {
+      "finalUploaded": "Carga final",
+      "inProgress": "En progreso",
+      "notSubmitted": "No enviado",
+      "pendingRevision": "Revisión solicitada",
+      "revising": "En revisión"
+    }
+  },
   "brandFeedback": {
     "brandNote": {
       "description": "Si tiene algún cambio o solicitud, por favor escríbalo aquí.",
@@ -319,7 +376,7 @@
     "button": {
       "back": "Atrás",
       "next": "Siguiente",
-      "save": ""
+      "save": "Guardar"
     },
     "communityName": {
       "checkAvailabilityButton": "Comprobar disponibilidad",
@@ -415,8 +472,8 @@
     "title": "¡Únase a la Comunidad de Creadores de Lococo!"
   },
   "errorPage": {
-    "backToHome": "",
-    "errorPageMessage": ""
+    "backToHome": "Volver al inicio",
+    "errorPageMessage": "Ocurrió un error. Por favor, inténtalo de nuevo más tarde."
   },
   "fileUploader": {
     "cannotUploadFile": "No se puede subir el archivo.",
@@ -500,8 +557,8 @@
         "title": "Recibir y probar los productos"
       },
       "reviewBrand’sFeedbackAndUpload2ndReview": {
-        "title": "Revisar los comentarios de la marca y subir la 2ª reseña",
-        "description": "Revisa las notas de la marca y envía tu segunda reseña. ¡No olvides incluir la URL final de Instagram/TikTok!"
+        "description": "Revisar los comentarios de la marca y subir la 2ª reseña",
+        "title": "Revisa las notas de la marca y envía tu segunda reseña. ¡No olvides incluir la URL final de Instagram/TikTok!"
       },
       "reviewUploadSchedule": {
         "description": "Suba su primera reseña dentro de los 7 días posteriores a recibir el producto. Después de revisar los comentarios de la marca, suba su segunda reseña dentro de los 7 días. Adjunte la URL final de la red social al publicar la segunda reseña.",
@@ -517,8 +574,8 @@
         "title": "Subir reseña"
       },
       "waitForResultAnnouncement": {
-        "title": "¡Espera el anuncio de resultados!",
-        "description": "Si eres seleccionado, confirma tu dirección de envío en Mi Página dentro de las 24 horas."
+        "description": "¡Espera el anuncio de resultados!",
+        "title": "Si eres seleccionado, confirma tu dirección de envío en Mi Página dentro de las 24 horas."
       }
     },
     "FAQs": {
@@ -757,13 +814,21 @@
     "myCampaign": {
       "buttonText": {
         "confirm_address": "Confirmar dirección",
+        "confirmAddress": "Confirmar dirección",
         "revision_requested": "Revisión solicitada",
+        "revisionRequested": "Revisión solicitada",
         "upload_first_review": "Subir primera reseña",
         "upload_second_review": "Subir segunda reseña",
+        "uploadFirstReview": "Subir primera reseña",
+        "uploadSecondReview": "Subir segunda reseña",
         "view_details": "Ver detalles",
         "view_note": "Ver nota",
         "view_notes": "Ver notas",
-        "view_results": "Ver resultados"
+        "view_results": "Ver resultados",
+        "viewDetails": "Ver detalles",
+        "viewNote": "Ver nota",
+        "viewNotes": "Ver notas",
+        "viewResults": "Ver resultados"
       },
       "empty": "No se ha aplicado a ninguna campaña.",
       "error": "No se pudo cargar mi campaña",
@@ -781,6 +846,209 @@
       "description": "Tus cambios han sido guardados.",
       "save": "Vale",
       "title": "Guardado con éxito"
+    }
+  },
+  "privacyPolicy": {
+    "changesToThisPrivacyPolicy": {
+      "description": "Podemos actualizar esta Política de Privacidad periódicamente.",
+      "description2": "Le notificaremos sobre cambios importantes por correo electrónico o mediante un aviso en nuestro sitio web, y actualizaremos la fecha de “Última actualización” que aparece arriba.",
+      "title": "Cambios en esta Política de Privacidad"
+    },
+    "childrensPrivacy": {
+      "description": "Nuestro Servicio no está dirigido a menores de 13 años.",
+      "description2": "No recopilamos intencionadamente información personal identificable de nadie menor de 13 años.",
+      "title": "Privacidad de los niños"
+    },
+    "contactUs": {
+      "description": "Si tiene alguna pregunta sobre esta Política de Privacidad:",
+      "email": {
+        "description": "lococo.official@gmail.com",
+        "title": "Correo electrónico"
+      },
+      "title": "Contáctenos"
+    },
+    "dataDeletion": {
+      "description": "Si ha conectado sus cuentas de redes sociales (como Instagram, TikTok o Facebook) a Lococo y desea eliminar sus datos, puede solicitar la eliminación en cualquier momento. Para hacerlo, comuníquese con nosotros a support@lococo.beauty con el asunto “Data Deletion Request”, y eliminaremos permanentemente su cuenta y todos los datos asociados en un plazo de 30 días. También puede desconectar directamente sus cuentas de redes sociales conectadas desde el panel de control de su cuenta de Lococo.\nUna vez desconectadas, no se recopilarán más datos de esas cuentas.\nLococo cumple con los Términos de Plataforma y los Requisitos de Eliminación de Datos de Meta al proporcionar a los usuarios una forma clara y accesible de solicitar la eliminación de datos por correo electrónico y mediante la configuración de la cuenta en la aplicación.",
+      "title": "Eliminación de datos"
+    },
+    "dataRetention": {
+      "description": "Conservamos los Datos Personales solo durante el tiempo necesario para los fines descritos en esta Política, para cumplir con obligaciones legales o resolver disputas.",
+      "description2": "Los Datos de Uso suelen almacenarse por períodos más cortos, salvo que se requieran por motivos de seguridad o mejora.",
+      "title": "Retención de datos"
+    },
+    "dataTransfers": {
+      "description": "Sus datos pueden procesarse fuera de su país, incluso en lugares donde las leyes de privacidad sean diferentes.",
+      "description2": "Nos aseguramos de que todas las transferencias cumplan con los estándares de protección adecuados bajo esta Política.",
+      "title": "Transferencias de datos"
+    },
+    "dataWeCollect": {
+      "dataFromSocialMedia": {
+        "descriptions": {
+          "title": "Si se registra o inicia sesión a través de un Servicio de Redes Sociales de Terceros (por ejemplo, Google, Instagram), podemos recopilar información vinculada a su cuenta, como su nombre, correo electrónico y contactos. Puede optar por compartir información adicional a su discreción."
+        },
+        "title": "Datos de redes sociales"
+      },
+      "personalData": {
+        "descriptions": {
+          "descriptions": {
+            "address": "Dirección",
+            "email": "Correo electrónico",
+            "name": "Nombre",
+            "phone": "Teléfono"
+          },
+          "title": "Al usar nuestro Servicio, podemos solicitarle información personal, que incluye:"
+        },
+        "title": "Datos personales"
+      },
+      "title": "Datos que recopilamos",
+      "usageData": {
+        "descriptions": {
+          "description": {
+            "dateTime": "Fecha/hora de la visita, tiempo de permanencia y datos de diagnóstico",
+            "deviceDetails": "Detalles del dispositivo e identificadores móviles al acceder desde dispositivos móviles",
+            "ipAddress": "Dirección IP, tipo/versión del navegador y páginas visitadas"
+          },
+          "title": "La información recopilada automáticamente puede incluir:"
+        },
+        "title": "Datos de uso"
+      }
+    },
+    "disclosureOfData": {
+      "descriptions": {
+        "businessTransactions": "Transacciones comerciales: los datos pueden transferirse en una fusión o adquisición.",
+        "legalRequirements": "Requisitos legales: podemos divulgar datos para cumplir con la ley, proteger derechos o prevenir actos ilícitos."
+      },
+      "title": "Divulgación de datos"
+    },
+    "externalLinks": {
+      "description": "Nuestro Servicio puede contener enlaces a sitios de terceros. No somos responsables de su contenido o prácticas de privacidad y recomendamos revisar sus Políticas de Privacidad.",
+      "title": "Enlaces externos"
+    },
+    "howWeUseYourData": {
+      "description": "Podemos usar sus Datos Personales para:",
+      "descriptions": {
+        "conductAnalyticsAndImproveService": "Proporcionar y mantener el Servicio",
+        "contactYou": "Realizar análisis y mejorar el Servicio",
+        "manageAccount": "Gestionar su cuenta",
+        "manageInquiriesAndRequests": "Gestionar sus consultas y solicitudes",
+        "performContractualObligations": "Cumplir con obligaciones contractuales",
+        "providePromotionalOffers": "Contactarlo con actualizaciones o avisos de seguridad",
+        "provideService": "Enviar ofertas promocionales (a menos que opte por no recibirlas)",
+        "supportBusinessTransfers": "Apoyar transferencias comerciales (por ejemplo, fusiones, adquisiciones)"
+      },
+      "informationSharing": {
+        "description": "Podemos compartir sus datos:",
+        "descriptions": {
+          "inBusinessTransfers": "En transferencias comerciales – como parte de transacciones corporativas.",
+          "publicly": "Públicamente – cuando comparta información en áreas públicas o a través de redes sociales conectadas.",
+          "withAffiliatesOrBusinessPartners": "Con afiliados o socios comerciales – bajo los mismos estándares de privacidad.",
+          "withConsent": "Con consentimiento – para cualquier otro propósito aprobado por usted.",
+          "withServiceProviders": "Con proveedores de servicios – para análisis, soporte al cliente o comunicaciones."
+        },
+        "title": "Compartición de información"
+      },
+      "title": "Cómo usamos sus datos"
+    },
+    "interpretationAndDefinitions": {
+      "definitions": {
+        "description": {
+          "Account": {
+            "description": "Una cuenta única creada para que acceda a nuestro Servicio.",
+            "title": "Cuenta"
+          },
+          "Affiliate": {
+            "description": "Cualquier entidad que controle, sea controlada o esté bajo control común con nosotros (propiedad del 50 % o más de los derechos de voto).",
+            "title": "Afiliado"
+          },
+          "Company": {
+            "description": "Se refiere a Lococo.",
+            "title": "Compañía"
+          },
+          "Cookies": {
+            "description": "Pequeños archivos colocados en su dispositivo que almacenan información de navegación.",
+            "title": "Cookies"
+          },
+          "Country": {
+            "description": "Corea del Sur.",
+            "title": "País"
+          },
+          "Device": {
+            "description": "Cualquier dispositivo que pueda acceder al Servicio, como una computadora, teléfono móvil o tableta.",
+            "title": "Dispositivo"
+          },
+          "PersonalData": {
+            "description": "Cualquier información que identifique o pueda identificar a una persona.",
+            "title": "Datos personales"
+          },
+          "Service": {
+            "description": "Se refiere a nuestro sitio web.",
+            "title": "Servicio"
+          },
+          "ServiceProvider": {
+            "description": "Cualquier persona o empresa que procese datos en nuestro nombre.",
+            "title": "Proveedor de servicios"
+          },
+          "ThirdPartySocialMediaService": {
+            "description": "Plataformas como Google, Facebook, Instagram, Twitter o LinkedIn mediante las cuales puede registrarse o iniciar sesión.",
+            "title": "Servicio de redes sociales de terceros"
+          },
+          "UsageData": {
+            "description": "Datos recopilados automáticamente relacionados con el uso del Servicio (por ejemplo, dirección IP, tipo de navegador, tiempo de uso).",
+            "title": "Datos de uso"
+          },
+          "You": {
+            "description": "La persona o entidad que accede o utiliza el Servicio.",
+            "title": "Usted"
+          }
+        },
+        "title": "Definiciones"
+      },
+      "interpretation": {
+        "description": "Las palabras con inicial mayúscula tienen los significados definidos a continuación. Estas definiciones se aplican tanto en singular como en plural.",
+        "title": "Interpretación y definiciones"
+      },
+      "title": "Interpretación y definiciones"
+    },
+    "lastUpdated": {
+      "description": "Lococo (“nosotros”, “nos” o “nuestra”) opera el sitio web https://www.lococo.beauty/ (“el Servicio”). Esta Política de Privacidad explica cómo recopilamos, usamos y divulgamos su información, sus derechos de privacidad y cómo la ley lo protege. Al usar nuestro Servicio, acepta la recopilación y el uso de información de acuerdo con esta Política.",
+      "title": "Última actualización: 31 de agosto de 2025"
+    },
+    "securityOfData": {
+      "description": "Tomamos medidas comercialmente razonables para salvaguardar sus Datos Personales.",
+      "description2": "Sin embargo, ningún sistema de transmisión o almacenamiento en línea es completamente seguro.",
+      "title": "Seguridad de los datos"
+    },
+    "title": "Política de privacidad",
+    "trackingTechnologiesAndCookies": {
+      "title": "Tecnologías de seguimiento y cookies",
+      "typesOfCookies": {
+        "description": "Usamos cookies y tecnologías similares (balizas, etiquetas, scripts) para mejorar y analizar nuestro Servicio.",
+        "description2": "Puede rechazar las cookies en la configuración de su navegador, pero algunas funciones pueden no funcionar correctamente.",
+        "descriptions": {
+          "consentCookies": {
+            "description": "Registrar si aceptó cookies.",
+            "title": "Cookies de consentimiento (persistentes)"
+          },
+          "essentialCookies": {
+            "description": "Habilitar funciones básicas y prevenir fraudes.",
+            "title": "Cookies esenciales (de sesión)"
+          },
+          "functionalityCookies": {
+            "description": "Recordar preferencias como idioma o inicio de sesión.",
+            "title": "Cookies de funcionalidad (persistentes)"
+          }
+        },
+        "title": "Tipos de cookies"
+      }
+    },
+    "yourRights": {
+      "description": "Usted puede:",
+      "description2": "Tenga en cuenta que podemos conservar ciertos datos según lo requiera la ley.",
+      "descriptions": {
+        "access": "Acceder, actualizar o eliminar sus Datos Personales a través de la configuración de su cuenta.",
+        "requestAssistance": "Solicitar asistencia contactándonos en lococo.official@gmail.com"
+      },
+      "title": "Sus derechos"
     }
   },
   "selectRoleModal": {
