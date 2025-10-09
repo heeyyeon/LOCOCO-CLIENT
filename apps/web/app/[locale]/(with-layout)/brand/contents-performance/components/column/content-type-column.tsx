@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { useTranslations } from 'next-intl';
+
 import { SvgPost, SvgReels, SvgVideo } from '@lococo/icons';
 
 import { ContentPlatform } from '../../types';
@@ -8,10 +10,11 @@ interface ContentTypeProps {
   contentType: ContentPlatform;
 }
 export default function ContentType({ contentType }: ContentTypeProps) {
+  const t = useTranslations('brandContentsPerformance');
   const CONTENT_TYPE_MAP = {
-    INSTA_REELS: 'Reels',
-    TIKTOK_VIDEO: 'Video',
-    INSTA_POST: 'Post',
+    INSTA_REELS: t('contentType.reels'),
+    TIKTOK_VIDEO: t('contentType.video'),
+    INSTA_POST: t('contentType.post'),
   };
 
   const CONTENT_TYPE_ICON_MAP = {
