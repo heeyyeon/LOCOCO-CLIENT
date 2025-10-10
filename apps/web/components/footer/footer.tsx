@@ -2,7 +2,7 @@ import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { SvgArrowRight, SvgMail, SvgX } from '@lococo/icons';
+import { SvgArrowRight, SvgMail, SvgTiktok, SvgX } from '@lococo/icons';
 
 export default function Footer() {
   const t = useTranslations('footer');
@@ -14,15 +14,21 @@ export default function Footer() {
             {t('slogan')}
           </p>
           <div className="flex items-center gap-[1.6rem]">
-            <SvgMail className="h-[3.2rem] w-[3.2rem] text-gray-600" />
+            <Link href="mailto:lococo.official@gmail.com">
+              <SvgMail className="h-[3.2rem] w-[3.2rem] text-gray-600" />
+            </Link>
             {/* TODO: 디자인 제공 인스타그램 svg fill 속성 문제로 direct svg import */}
-            <Image
-              src="/instagram-footer.svg"
-              alt="instagram"
-              width={28}
-              height={28}
-            />
-            <SvgX className="h-[3.2rem] w-[3.2rem] text-gray-600" />
+            <Link href="https://www.instagram.com/lococo.official/">
+              <Image
+                src="/instagram-footer.svg"
+                alt="instagram"
+                width={28}
+                height={28}
+              />
+            </Link>
+            <Link href="https://www.tiktok.com/@lococo.official">
+              <SvgTiktok className="h-[3.2rem] w-[3.2rem] text-gray-600" />
+            </Link>
           </div>
         </div>
 
