@@ -1,3 +1,5 @@
+import { useTranslations } from 'next-intl';
+
 import {
   SelectContent,
   SelectItem,
@@ -22,6 +24,7 @@ export default function CampaignSelect({
   selectedCampaign: CampaignInfo | undefined;
   handleCampaignChange: (campaignId: string) => void;
 }) {
+  const t = useTranslations('brandApplicants.campaignSelect');
   return (
     <SelectRoot
       value={selectedCampaign?.campaignId.toString()}
@@ -31,9 +34,7 @@ export default function CampaignSelect({
       <SelectTrigger className="data-[placeholder]:text-body4 data-[slot]:text-[1.4rem] data-[placeholder]:text-gray-800 data-[slot]:text-gray-800">
         <SelectValue
           placeholder={
-            campaignInfos.length > 0
-              ? `캠페인을 선택하세요.`
-              : '생성한 캠페인이 없습니다.'
+            campaignInfos.length > 0 ? t('selectCampaign') : t('noCampaign')
           }
         />
       </SelectTrigger>

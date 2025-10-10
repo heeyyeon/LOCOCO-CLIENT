@@ -1,3 +1,5 @@
+import { useTranslations } from 'next-intl';
+
 import {
   SelectContent,
   SelectItem,
@@ -18,11 +20,12 @@ export default function ApproveStatusSelect({
   selectedStatus,
   onStatusChange,
 }: ApproveStatusSelectProps) {
+  const t = useTranslations('brandApplicants.approveStatusSelect');
   const statusOptions = [
-    { label: '전체', value: 'ALL' },
-    { label: '승인됨', value: 'APPROVED' },
-    { label: '대기중', value: 'PENDING' },
-    { label: '거절됨', value: 'REJECTED' },
+    { label: t('all'), value: 'ALL' },
+    { label: t('approved'), value: 'APPROVED' },
+    { label: t('pending'), value: 'PENDING' },
+    { label: t('rejected'), value: 'REJECTED' },
   ];
 
   return (
@@ -33,7 +36,7 @@ export default function ApproveStatusSelect({
       }}
     >
       <SelectTrigger className="data-[placeholder]:text-body4 w-[12rem] data-[slot]:text-[1.4rem] data-[placeholder]:text-gray-600 data-[slot]:text-gray-600">
-        <SelectValue placeholder="승인현황" />
+        <SelectValue placeholder={t('approveStatus')} />
       </SelectTrigger>
       <SelectContent className="text-[1.4rem]">
         {statusOptions.map((option) => (

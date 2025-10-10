@@ -30,7 +30,7 @@ export default function CampaignGrid({
           campaignImageUrl={campaign.campaignImageUrl}
           endTime={kindOfCard === 'openingSoon' ? undefined : campaign.endTime}
           startTime={
-            kindOfCard === 'openingSoon' ? campaign.endTime : undefined
+            kindOfCard === 'openingSoon' ? campaign.startTime : undefined
           }
           chipStatus={campaign.chipStatus}
           brandName={campaign.brandName}
