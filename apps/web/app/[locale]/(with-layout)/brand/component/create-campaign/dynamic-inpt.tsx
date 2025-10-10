@@ -8,9 +8,13 @@ import { useDynamicInputs } from '../../hooks/useDynamicInput';
 
 interface DynamicInputProps {
   fieldName: 'joinConditions' | 'submitConditions' | 'joinRewards';
+  isReadonly?: boolean;
 }
 
-export default function DynamicInput({ fieldName }: DynamicInputProps) {
+export default function DynamicInput({
+  fieldName,
+  isReadonly = false,
+}: DynamicInputProps) {
   const { register } = useFormContext();
 
   const { fields, addField, removeField } = useDynamicInputs(fieldName);
@@ -24,11 +28,13 @@ export default function DynamicInput({ fieldName }: DynamicInputProps) {
           <div key={field.id} className="flex gap-[0.8rem]">
             <Input
               className="h-[4rem] w-full"
-              placeholder="text"
+              placeholder={isReadonly ? undefined : 'text'}
               maxLength={100}
               {...register(`${fieldName}.${index}`)}
+              disabled={isReadonly}
+              readOnly={isReadonly}
             />
-            {isLastItem && (
+            {!isReadonly && isLastItem && (
               <button
                 type="button"
                 onClick={addField}
@@ -37,7 +43,7 @@ export default function DynamicInput({ fieldName }: DynamicInputProps) {
                 <SvgPlusButtons size={40} className="fill-pink-500" />
               </button>
             )}
-            {fields.length > 1 && (
+            {!isReadonly && fields.length > 1 && (
               <button
                 type="button"
                 onClick={() => removeField(index)}

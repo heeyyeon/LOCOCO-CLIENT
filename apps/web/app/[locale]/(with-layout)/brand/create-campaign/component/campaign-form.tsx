@@ -181,21 +181,27 @@ export default function CampaignForm({
                 title={t('conditions.joinConditionTitle')}
                 description={t('conditions.joinConditionDescription')}
               >
-                <DynamicInput fieldName="joinConditions" />
+                <DynamicInput
+                  fieldName="joinConditions"
+                  isReadonly={isReadonly}
+                />
               </FormSection>
               <FormSection
                 required
                 title={t('conditions.submitConditionTitle')}
                 description={t('conditions.submitConditionDescription')}
               >
-                <DynamicInput fieldName="submitConditions" />
+                <DynamicInput
+                  fieldName="submitConditions"
+                  isReadonly={isReadonly}
+                />
               </FormSection>
               <FormSection
                 required
                 title={t('conditions.rewardTitle')}
                 description={t('conditions.rewardDescription')}
               >
-                <DynamicInput fieldName="joinRewards" />
+                <DynamicInput fieldName="joinRewards" isReadonly={isReadonly} />
               </FormSection>
               <FormSection
                 title={t('platform.title')}
@@ -210,7 +216,9 @@ export default function CampaignForm({
                           type={platform}
                           selected={firstContents.selectStatus[platform]}
                           onClick={firstContents.toggleChip}
-                          disabled={firstContents.isDisabled(platform)}
+                          disabled={
+                            isReadonly || secondContents.isDisabled(platform)
+                          }
                         />
                       )
                     )}
@@ -230,7 +238,9 @@ export default function CampaignForm({
                           type={platform}
                           selected={secondContents.selectStatus[platform]}
                           onClick={secondContents.toggleChip}
-                          disabled={secondContents.isDisabled(platform)}
+                          disabled={
+                            isReadonly || secondContents.isDisabled(platform)
+                          }
                         />
                       )
                     )}
