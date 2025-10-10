@@ -5,7 +5,8 @@ import { useState } from 'react';
 import { useFormatter, useTranslations } from 'next-intl';
 import { useParams } from 'next/navigation';
 
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { CAMPAIGN_REVIEW_KEYS } from 'app/[locale]/(with-layout)/my-page/constant/queryKey';
 import dayjs from 'dayjs';
 import { useRouter } from 'i18n/navigation';
 
@@ -70,6 +71,7 @@ export default function CampaignInfoPanel({
   const router = useRouter();
   const params = useParams();
   const campaignId = params.campaignId as string;
+  const queryClient = useQueryClient();
 
   const [
     isConfirmCampaignSignUpModalOpen,
@@ -90,6 +92,9 @@ export default function CampaignInfoPanel({
     onSuccess: () => {
       setIsConfirmCampaignSignUpModalOpen(false);
       router.refresh();
+      queryClient.invalidateQueries({
+        queryKey: CAMPAIGN_REVIEW_KEYS.all,
+      });
     },
   });
 
