@@ -12,7 +12,13 @@ import { timeOptions } from 'utils/time-options';
 
 import { Select } from '@lococo/design-system/select';
 
-export default function CampaignDueDate() {
+interface CampaignDueDateProps {
+  isReadonly?: boolean;
+}
+
+export default function CampaignDueDate({
+  isReadonly = false,
+}: CampaignDueDateProps) {
   const {
     control,
     formState: { errors },
@@ -42,8 +48,9 @@ export default function CampaignDueDate() {
                 size="small"
                 options={months}
                 value={monthValue || undefined}
-                onValueChange={field.onChange}
-                placeholder="Month"
+                onValueChange={isReadonly ? undefined : field.onChange}
+                placeholder={isReadonly ? undefined : 'Month'}
+                disabled={isReadonly}
               />
             )}
           />
@@ -56,8 +63,9 @@ export default function CampaignDueDate() {
                 size="small"
                 options={days}
                 value={dayValue || undefined}
-                onValueChange={field.onChange}
-                placeholder="Day"
+                onValueChange={isReadonly ? undefined : field.onChange}
+                placeholder={isReadonly ? undefined : 'Day'}
+                disabled={isReadonly}
               />
             )}
           />
@@ -70,21 +78,23 @@ export default function CampaignDueDate() {
                 size="small"
                 options={years}
                 value={yearValue || undefined}
-                onValueChange={field.onChange}
-                placeholder="Year"
+                onValueChange={isReadonly ? undefined : field.onChange}
+                placeholder={isReadonly ? undefined : 'Year'}
+                disabled={isReadonly}
               />
             )}
           />
         </div>
-        {(errors.dueDate?.month ||
-          errors.dueDate?.day ||
-          errors.dueDate?.year) && (
-          <p className="text-red caption3 font-[400]">
-            {t(
-              `errorMessage.${errors.dueDate.month?.message || errors.dueDate.day?.message || errors.dueDate.year?.message}`
-            )}
-          </p>
-        )}
+        {!isReadonly &&
+          (errors.dueDate?.month ||
+            errors.dueDate?.day ||
+            errors.dueDate?.year) && (
+            <p className="text-red caption3 font-[400]">
+              {t(
+                `errorMessage.${errors.dueDate.month?.message || errors.dueDate.day?.message || errors.dueDate.year?.message}`
+              )}
+            </p>
+          )}
       </SelectFormField>
 
       <SelectFormField label={t('schedule.dueTime')} required>
@@ -98,8 +108,9 @@ export default function CampaignDueDate() {
                 size="small"
                 options={AM_PM}
                 value={periodValue || undefined}
-                onValueChange={field.onChange}
-                placeholder="AM/PM"
+                onValueChange={isReadonly ? undefined : field.onChange}
+                placeholder={isReadonly ? undefined : 'AM/PM'}
+                disabled={isReadonly}
               />
             )}
           />
@@ -112,8 +123,9 @@ export default function CampaignDueDate() {
                 size="small"
                 options={HOURS}
                 value={hourValue || undefined}
-                onValueChange={field.onChange}
-                placeholder="Hour"
+                onValueChange={isReadonly ? undefined : field.onChange}
+                placeholder={isReadonly ? undefined : 'Hour'}
+                disabled={isReadonly}
               />
             )}
           />
@@ -126,13 +138,14 @@ export default function CampaignDueDate() {
                 size="small"
                 options={MINUTES}
                 value={minuteValue || undefined}
-                onValueChange={field.onChange}
-                placeholder="Minute"
+                onValueChange={isReadonly ? undefined : field.onChange}
+                placeholder={isReadonly ? undefined : 'Minute'}
+                disabled={isReadonly}
               />
             )}
           />
         </div>
-        {(errors.dueTime?.hour || errors.dueTime?.minute) && (
+        {!isReadonly && (errors.dueTime?.hour || errors.dueTime?.minute) && (
           <p className="text-red caption3 font-[400]">
             {t(
               `errorMessage.${errors.dueTime.hour?.message || errors.dueTime.minute?.message}`

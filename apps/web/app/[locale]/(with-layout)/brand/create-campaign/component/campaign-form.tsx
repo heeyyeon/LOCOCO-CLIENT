@@ -172,10 +172,10 @@ export default function CampaignForm({
                 {t('pageTitle')}
               </h3>
               <CampaignInfo isReadonly={isReadonly} />
-              <CampaignStartInfo />
-              <CampaignEndInfo />
-              <CampaignWinnerAnnounce />
-              <CampaignDueDate />
+              <CampaignStartInfo isReadonly={isReadonly} />
+              <CampaignEndInfo isReadonly={isReadonly} />
+              <CampaignWinnerAnnounce isReadonly={isReadonly} />
+              <CampaignDueDate isReadonly={isReadonly} />
               <FormSection
                 required
                 title={t('conditions.joinConditionTitle')}
