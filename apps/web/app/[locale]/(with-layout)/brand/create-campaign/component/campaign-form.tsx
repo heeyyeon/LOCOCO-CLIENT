@@ -35,7 +35,13 @@ import {
   transformFormDataToApiData,
 } from '../utils/api-form-converter';
 
-export default function CampaignForm({ campaignId }: { campaignId?: string }) {
+export default function CampaignForm({
+  campaignId,
+  isReadonly = false,
+}: {
+  campaignId?: string;
+  isReadonly?: boolean;
+}) {
   const router = useRouter();
 
   const {
@@ -165,7 +171,7 @@ export default function CampaignForm({ campaignId }: { campaignId?: string }) {
               <h3 className="title2 font-[700] text-gray-800">
                 {t('pageTitle')}
               </h3>
-              <CampaignInfo />
+              <CampaignInfo isReadonly={isReadonly} />
               <CampaignStartInfo />
               <CampaignEndInfo />
               <CampaignWinnerAnnounce />
