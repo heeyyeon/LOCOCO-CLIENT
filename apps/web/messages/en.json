@@ -500,8 +500,8 @@
         "title": "Receive & Try the Products"
       },
       "reviewBrand’sFeedbackAndUpload2ndReview": {
-        "title": "Review Brand’s Feedback & Upload 2nd review",
-        "description": "Take a look at the brand’s notes and submit your second review. Don’t forget to include the final Instagram/TikTok URL!"
+        "description": "Review Brand’s Feedback & Upload 2nd review",
+        "title": "Take a look at the brand’s notes and submit your second review. Don’t forget to include the final Instagram/TikTok URL!"
       },
       "reviewUploadSchedule": {
         "description": "Upload your first review within 7 days of receiving the product. After reviewing the brand’s feedback, upload your second review within 7 days. Attach the final SNS URL when posting the second review.",
@@ -517,8 +517,8 @@
         "title": "Upload Review"
       },
       "waitForResultAnnouncement": {
-        "title": "Wait for the result announcement!",
-        "description": "If you’re selected, confirm your shipping address in My Page within 24 hours."
+        "description": "Wait for the result announcement!",
+        "title": "If you’re selected, confirm your shipping address in My Page within 24 hours."
       }
     },
     "FAQs": {
@@ -757,13 +757,21 @@
     "myCampaign": {
       "buttonText": {
         "confirm_address": "Confirm Address",
+        "confirmAddress": "Confirm Address",
         "revision_requested": "Revision Requested",
+        "revisionRequested": "Revision Requested",
         "upload_first_review": "Upload First Review",
         "upload_second_review": "Upload Second Review",
+        "uploadFirstReview": "Upload First Review",
+        "uploadSecondReview": "Upload Second Review",
         "view_details": "View Details",
         "view_note": "View Note",
         "view_notes": "View Notes",
-        "view_results": "View Results"
+        "view_results": "View Results",
+        "viewDetails": "View Details",
+        "viewNote": "View Note",
+        "viewNotes": "View Notes",
+        "viewResults": "View Results"
       },
       "empty": "There is no campaign has been applied.",
       "error": "Failed to load my campaign",
@@ -783,7 +791,6 @@
       "title": "Saved successfully"
     }
   },
-
   "selectRoleModal": {
     "description": "Select your role to sign in.\nYou won't be able to change this later.",
     "loginAs": "Log in as a",
@@ -813,5 +820,267 @@
     "confirmButton": "Yes",
     "message": "Campaign applications are only available to creator members.\nWould you like to sign up as a creator?",
     "title": "Creator Suggestion"
+  },
+  "privacyPolicy": {
+    "title": "Privacy Policy",
+    "lastUpdated": {
+      "title": "Last Updated: August 31, 2025",
+      "description": "Lococo (“we”, “us”, or “our”) operates the website https://www.lococo.beauty/ (the “Service”).This Privacy Policy explains how we collect, use, and disclose your information, your privacy rights, and how the law protects you.\nBy using our Service, you agree to the collection and use of information in accordance with this Policy."
+    },
+    "interpretationAndDefinitions": {
+      "title": "Interpretation and Definitions",
+      "interpretation": {
+        "title": "Interpretation and Definitions",
+        "description": "Words with capitalized initial letters have meanings defined below. These definitions apply whether in singular or plural form."
+      },
+      "definitions": {
+        "title": "Definitions",
+        "description": {
+          "Account": {
+            "title": "Account",
+            "description": "A unique account created for you to access our Service."
+          },
+          "Affiliate": {
+            "title": "Affiliate",
+            "description": "Any entity that controls, is controlled by, or is under common control with us (ownership of 50% or more of voting interests)."
+          },
+          "Company": { "title": "Company", "description": "Refers to Lococo." },
+          "Cookies": {
+            "title": "Cookies",
+            "description": "Small files placed on your device that store browsing information."
+          },
+          "Country": { "title": "Country", "description": "South Korea." },
+          "Device": {
+            "title": "Device",
+            "description": "Any device that can access the Service, such as a computer, mobile phone, or tablet."
+          },
+          "PersonalData": {
+            "title": "Personal Data",
+            "description": "Any information that identifies or can identify an individual."
+          },
+          "Service": {
+            "title": "Service",
+            "description": "Refers to our website."
+          },
+          "ServiceProvider": {
+            "title": "Service Provider",
+            "description": "Any person or company processing data on our behalf."
+          },
+          "ThirdPartySocialMediaService": {
+            "title": "Third-Party Social Media Service",
+            "description": "Platforms such as Google, Facebook, Instagram, Twitter, or LinkedIn through which you can register or log in."
+          },
+          "UsageData": {
+            "title": "Usage Data",
+            "description": "Automatically collected data related to how you use our Service (e.g., IP address, browser type, time spent)."
+          },
+          "You": {
+            "title": "You",
+            "description": "The individual or entity accessing or using the Service."
+          }
+        }
+      }
+    },
+    "dataWeCollect": {
+      "title": "Data We Collect",
+      "personalData": {
+        "title": "Personal Data",
+        "descriptions": {
+          "title": "When using our Service, we may ask for personal information, including:",
+          "descriptions": {
+            "name": "Name",
+            "email": "Email",
+            "phone": "Phone",
+            "address": "Address"
+          }
+        }
+      },
+      "usageData": {
+        "title": "Usage Data",
+        "descriptions": {
+          "title": "Automatically collected information may include:",
+          "description": {
+            "ipAddress": "IP address, browser type/version, and pages visited",
+            "dateTime": "Date/time of visit, time spent, and diagnostic data",
+            "deviceDetails": "Device details and mobile identifiers when accessed through mobile"
+          }
+        }
+      },
+      "dataFromSocialMedia": {
+        "title": "Data from Social Media",
+        "descriptions": {
+          "title": "If you register or log in via a Third-Party Social Media Service (e.g., Google, Instagram), we may collect information linked to your account such as your name, email, and contacts. You may choose to share additional information at your discretion."
+        }
+      }
+    },
+    "trackingTechnologiesAndCookies": {
+      "title": "Tracking Technologies and Cookies",
+      "typesOfCookies": {
+        "title": "Types of Cookies",
+        "description": "We use cookies and similar technologies (beacons, tags, scripts) to improve and analyze our Service.",
+        "descriptions": {
+          "essentialCookies": {
+            "title": "Essential Cookies (Session)",
+            "description": "Enable basic functions and prevent fraud."
+          },
+          "consentCookies": {
+            "title": "Consent Cookies (Persistent)",
+            "description": "Record whether you accepted cookies."
+          },
+          "functionalityCookies": {
+            "title": "Functionality Cookies (Persistent)",
+            "description": "Remember preferences like language or login."
+          }
+        },
+        "description2": "You can refuse cookies in your browser settings, but some features may not function properly."
+      }
+    },
+    "howWeUseYourData": {
+      "title": "How We Use Your Data",
+      "description": "We may use your Personal Data to:",
+      "descriptions": {
+        "provideService": "Provide and maintain the Service",
+        "manageAccount": "Manage your Account",
+        "performContractualObligations": "Perform contractual obligations",
+        "contactYou": "Contact you regarding updates or security notices",
+        "providePromotionalOffers": "Send promotional offers (unless you opt out)",
+        "manageInquiriesAndRequests": "Manage your inquiries and requests",
+        "supportBusinessTransfers": "Support business transfers (e.g., merger, acquisition)",
+        "conductAnalyticsAndImproveService": "Conduct analytics and improve our Service"
+      },
+      "informationSharing": {
+        "title": "Information Sharing",
+        "description": "We may share your data:",
+        "descriptions": {
+          "withServiceProviders": "With Service Providers – For analytics, customer support, or communications.",
+          "withAffiliatesOrBusinessPartners": "With Affiliates or Business Partners – Under the same privacy standards.",
+          "inBusinessTransfers": "In Business Transfers – As part of corporate transactions.",
+          "publicly": "Publicly – When you share information in public areas or via connected social media.",
+          "withConsent": "With Consent – For any other purpose you approve."
+        }
+      }
+    },
+    "dataRetention": {
+      "title": "Data Retention",
+      "description": "We retain Personal Data only as long as necessary for the purposes described in this Policy, to meet legal obligations, or to resolve disputes.",
+      "description2": "Usage Data is typically stored for shorter periods unless required for security or improvement purposes."
+    },
+    "dataTransfers": {
+      "title": "Data Transfers",
+      "description": "Your data may be processed outside your country, including where privacy laws differ.",
+      "description2": "We ensure all transfers meet adequate protection standards under this Policy."
+    },
+    "yourRights": {
+      "title": "Your Rights",
+      "description": "You may:",
+      "descriptions": {
+        "access": "Access, update, or delete your Personal Data via your account settings",
+        "requestAssistance": "Request assistance by contacting us at lococo.official@gmail.com"
+      },
+      "description2": "Please note we may retain certain data as required by law."
+    },
+    "disclosureOfData": {
+      "title": "Disclosure of Data",
+      "descriptions": {
+        "businessTransactions": "Business Transactions: Data may be transferred in a merger or acquisition.",
+        "legalRequirements": "Legal Requirements: We may disclose data to comply with law, protect rights, or prevent wrongdoing."
+      }
+    },
+    "securityOfData": {
+      "title": "Security of Data",
+      "description": "We take commercially reasonable steps to safeguard your Personal Data.",
+      "description2": " However, no online transmission or storage system is completely secure."
+    },
+    "childrensPrivacy": {
+      "title": "Children's Privacy",
+      "description": "Our Service does not address anyone under the age of 13.",
+      "description2": "We do not knowingly collect personally identifiable information from anyone under the age of 13."
+    },
+    "externalLinks": {
+      "title": "External Links",
+      "description": "Our Service may contain links to third-party sites. We are not responsible for their content or privacy practices and recommend reviewing their Privacy Policies."
+    },
+    "changesToThisPrivacyPolicy": {
+      "title": "Changes to This Privacy Policy",
+      "description": "We may update this Privacy Policy periodically.",
+      "description2": "We will notify you of significant changes by email or a notice on our website and update the “Last Updated” date above."
+    },
+    "dataDeletion": {
+      "title": "Data Deletion",
+      "description": "If you have connected your social media accounts (such as Instagram, TikTok, or Facebook) to Lococo and wish to delete your data, you may request data deletion at any time. To do so, please contact us at support@lococo.beauty with the subject line \"Data Deletion Request\", and we will permanently remove your account and all associated data from our systems within 30 days. You may also disconnect your connected social media accounts directly from your Lococo account dashboard. Once disconnected, no further data will be collected from those accounts. Lococo complies with Meta’s Platform Terms and Data Deletion Requirements by providing users with a clear and accessible way to request data deletion through both email and in-app account settings."
+    },
+    "contactUs": {
+      "title": "Contact Us",
+      "description": "If you have any questions about this Privacy Policy:",
+      "email": {
+        "title": "Email",
+        "description": "lococo.official@gmail.com"
+      }
+    }
+  },
+  "termsOfService": {
+    "title": "Terms of Service",
+    "effectiveDate": "Effective Date: September 1, 2025",
+    "acceptanceOfTerms": {
+      "title": "Acceptance of Terms",
+      "description": "By accessing or using Lococo (the “Service”), you agree to be bound by these Terms of Service (“Terms”). If you do not agree with any part of these Terms, you may not access or use the Service."
+    },
+    "eligibility": {
+      "title": "Eligibility",
+      "descriptions": {
+        "serviceAvailability": "The Service is available only to individuals who are 13 years of age or older.",
+        "accountCreation": "Each individual may create and maintain only one account.",
+        "warranty": "By using the Service, you represent and warrant that you meet these requirements."
+      }
+    },
+    "personalInformation": {
+      "title": "Personal Information",
+      "descriptions": {
+        "collection": "We collect personal information from users, including: name and username, phone number, email address, mailing address, and age.",
+        "email": "We do not send promotional emails or newsletters.",
+        "advertisements": "We do not display advertisements within the Service.",
+        "privacyPolicy": "For details about how we handle personal information, please refer to our Privacy Policy."
+      }
+    },
+    "accountTerminationAndDataRetention": {
+      "title": "Account Termination and Data Retention",
+      "descriptions": {
+        "accountDeletion": "Users may delete their accounts at any time.",
+        "dataRetention": "After account deletion, Lococo will retain user data for 90 days to process any outstanding matters. After this period, all associated data will be permanently deleted."
+      }
+    },
+    "prohibitedActivities": {
+      "title": "Prohibited Activities",
+      "description": "Users agree not to engage in the following activities:",
+      "descriptions": {
+        "multipleAccounts": "Creating or maintaining multiple accounts.",
+        "fraudulentActivities": "Fraudulent activities or attempts to deceive other users or the platform.",
+        "illegalContent": "Uploading or sharing illegal, harmful, or inappropriate content.",
+        "disruption": "Any action that may disrupt, damage, or interfere with the proper functioning of the Service."
+      },
+      "description2": "Violation of these rules may result in suspension or termination of your account without prior notice."
+    },
+    "intellectualProperty": {
+      "title": "Intellectual Property",
+      "descriptions": {
+        "content": "All content, trademarks, logos, and materials available on Lococo are owned by Lococo or its licensors.",
+        "ownership": "Users retain ownership of any content they create and share but grant Lococo a non-exclusive, worldwide, royalty-free license to display and operate the content within the Service."
+      }
+    },
+    "limitationOfLiability": {
+      "title": "Limitation of Liability",
+      "description": "Lococo is provided “as is” without warranties of any kind. To the maximum extent permitted by law, we disclaim all liability for any damages arising out of or in connection with your use of the Service."
+    },
+    "governingLaw": {
+      "title": "Governing Law",
+      "description": "These Terms are governed by and construed in accordance with the laws of the Republic of Korea. Any disputes arising under or related to these Terms shall be subject to the exclusive jurisdiction of the courts of Korea."
+    },
+    "contactUs": {
+      "title": "Contact Us",
+      "description": "If you have any questions about these Terms, please contact us at:",
+      "email": "lococo.official@gmail.com",
+      "team": "Lococo Team",
+      "location": "Seoul, Republic of Koreas"
+    }
   }
 }

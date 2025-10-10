@@ -319,7 +319,7 @@
     "button": {
       "back": "뒤로",
       "next": "다음",
-      "save": ""
+      "save": "저장하기 "
     },
     "communityName": {
       "checkAvailabilityButton": "중복 확인 ",
@@ -415,8 +415,8 @@
     "title": "로코코 크리에이터 커뮤니티에 가입하세요!"
   },
   "errorPage": {
-    "backToHome": "",
-    "errorPageMessage": ""
+    "backToHome": "홈으로 돌아가기",
+    "errorPageMessage": "문제가 발생했습니다. 잠시 후 다시 시도해주세요."
   },
   "fileUploader": {
     "cannotUploadFile": "파일을 업로드할 수 없습니다.",
@@ -500,8 +500,8 @@
         "title": "제품 수령 & 체험하기"
       },
       "reviewBrand’sFeedbackAndUpload2ndReview": {
-        "title": "브랜드의 피드백을 확인하고 2차 리뷰를 업로드하세요. 최종 Instagram/TikTok URL 첨부를 잊지 마세요!",
-        "description": "브랜드의 피드백을 확인하고 2차 리뷰를 업로드하세요. 최종 Instagram/TikTok URL 첨부를 잊지 마세요!"
+        "description": "브랜드의 피드백을 확인하고 2차 리뷰를 업로드하세요. 최종 Instagram/TikTok URL 첨부를 잊지 마세요!",
+        "title": "제품 수령 후 7일 이내에 첫 번째 리뷰를 업로드하세요. 브랜드 피드백 확인 후, 7일 이내에 두 번째 리뷰를 업로드하고 최종 SNS URL을 첨부하세요."
       },
       "reviewUploadSchedule": {
         "description": "제품을 받은 후 7일 이내에 첫 번째 리뷰를 업로드하세요.\n브랜드의 피드백을 확인한 뒤, 7일 이내에 두 번째 리뷰를 업로드하고 두 번째 리뷰를 게시할 때 최종 SNS URL을 첨부해 주세요.",
@@ -517,8 +517,8 @@
         "title": "리뷰 업로드"
       },
       "waitForResultAnnouncement": {
-        "title": "결과 발표를 기다려 주세요!",
-        "description": "선정되면, 마이페이지에서 24시간 이내에 배송지를 확인해 주세요."
+        "description": "결과 발표를 기다려 주세요!",
+        "title": "선정되면, 마이페이지에서 24시간 이내에 배송지를 확인해 주세요."
       }
     },
     "FAQs": {
@@ -757,13 +757,21 @@
     "myCampaign": {
       "buttonText": {
         "confirm_address": "주소 확인",
+        "confirmAddress": "주소 확인",
         "revision_requested": "수정 요청됨",
+        "revisionRequested": "수정 요청됨",
         "upload_first_review": "첫 번째 리뷰 업로드",
         "upload_second_review": "두 번째 리뷰 업로드",
+        "uploadFirstReview": "첫 번째 리뷰 업로드",
+        "uploadSecondReview": "두 번째 리뷰 업로드",
         "view_details": "상세보기",
         "view_note": "메모 보기",
         "view_notes": "메모들 보기",
-        "view_results": "결과 보기"
+        "view_results": "결과 보기",
+        "viewDetails": "상세보기",
+        "viewNote": "메모 보기",
+        "viewNotes": "메모들 보기",
+        "viewResults": "결과 보기"
       },
       "empty": "신청한 캠페인이 없습니다.",
       "error": "내 캠페인을 불러오지 못했습니다",
