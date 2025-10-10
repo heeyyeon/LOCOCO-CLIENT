@@ -165,7 +165,7 @@ export default function CampaignForm({
   return (
     <FormProvider {...methods}>
       <div className="flex h-full w-full items-center justify-center bg-gray-100 p-[6.4rem]">
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={isReadonly ? undefined : handleSubmit(onSubmit)}>
           <div className="mb-[5.8rem] bg-gray-100">
             <div className="flex min-h-[260.4rem] w-[84rem] flex-col gap-[4.8rem] bg-white px-[9.6rem] py-[4.8rem]">
               <h3 className="title2 font-[700] text-gray-800">
@@ -252,31 +252,33 @@ export default function CampaignForm({
                   </p>
                 )}
               </FormSection>
-              <CampaignUploadMedia />
+              <CampaignUploadMedia isReadonly={isReadonly} />
             </div>
-            <div className="mt-[3.2rem] flex gap-[1.6rem]">
-              <Button
-                type="button"
-                variant="outline"
-                size="lg"
-                color="secondary"
-                className="w-[41.2rem]"
-                onClick={handleSave}
-                disabled={isMutating}
-              >
-                {t('buttons.save')}
-              </Button>
-              <Button
-                type="submit"
-                variant="filled"
-                size="lg"
-                color="primary"
-                className="w-[41.2rem]"
-                disabled={isMutating}
-              >
-                {t('buttons.publish')}
-              </Button>
-            </div>
+            {!isReadonly && (
+              <div className="mt-[3.2rem] flex gap-[1.6rem]">
+                <Button
+                  type="button"
+                  variant="outline"
+                  size="lg"
+                  color="secondary"
+                  className="w-[41.2rem]"
+                  onClick={handleSave}
+                  disabled={isMutating}
+                >
+                  {t('buttons.save')}
+                </Button>
+                <Button
+                  type="submit"
+                  variant="filled"
+                  size="lg"
+                  color="primary"
+                  className="w-[41.2rem]"
+                  disabled={isMutating}
+                >
+                  {t('buttons.publish')}
+                </Button>
+              </div>
+            )}
           </div>
         </form>
       </div>
