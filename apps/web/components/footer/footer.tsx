@@ -35,13 +35,13 @@ export default function Footer() {
             {/* TODO: 추후 각 링크 추가 */}
             <div className="flex flex-col">
               <Link
-                href={'/'}
+                href={'/all/1'}
                 className="flex gap-[0.8rem] px-[1.6rem] py-[0.5rem]"
               >
                 {t('links.campaigns')} <SvgArrowRight />
               </Link>
               <Link
-                href={'/'}
+                href={'/how-it-work'}
                 className="flex gap-[0.8rem] px-[1.6rem] py-[0.5rem]"
               >
                 {t('links.howItWorks')} <SvgArrowRight />
@@ -49,22 +49,22 @@ export default function Footer() {
             </div>
             <div className="flex flex-col">
               <Link
-                href={'/'}
+                href={'/how-it-work'}
                 className="flex gap-[0.8rem] px-[1.6rem] py-[0.5rem]"
               >
                 {t('links.campaignGuideline')} <SvgArrowRight />
               </Link>
               <Link
-                href={'/'}
+                href={'/privacy-policy'}
                 className="flex gap-[0.8rem] px-[1.6rem] py-[0.5rem]"
               >
                 {t('links.privacyPolicy')} <SvgArrowRight />
               </Link>
               <Link
-                href={'/'}
+                href={'/terms-of-service'}
                 className="flex gap-[0.8rem] px-[1.6rem] py-[0.5rem]"
               >
-                {t('links.FAQ')} <SvgArrowRight />
+                {t('links.termsOfService')} <SvgArrowRight />
               </Link>
             </div>
           </div>
