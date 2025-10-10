@@ -2,7 +2,7 @@ import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { SvgArrowRight, SvgMail, SvgTiktok, SvgX } from '@lococo/icons';
+import { SvgArrowRight, SvgMail, SvgTiktok } from '@lococo/icons';
 
 export default function Footer() {
   const t = useTranslations('footer');
