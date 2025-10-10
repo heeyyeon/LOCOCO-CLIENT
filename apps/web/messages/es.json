@@ -1,6 +1,63 @@
 {
   "aabc": "aabc",
   "abc": "abc",
+  "brandApplicants": {
+    "allSelect": "Seleccionar todo",
+    "applicantsTable": {
+      "headers": {
+        "appliedDate": "Fecha de solicitud (KST)",
+        "approveStatus": "Estado de aprobación",
+        "creator": "Creador",
+        "followerCount": "Cantidad de seguidores",
+        "participationCount": "Número de participaciones"
+      },
+      "noApplicants": "No hay solicitantes."
+    },
+    "approve": "Aprobar",
+    "approveStatus": "Estado de aprobación",
+    "approveStatusSelect": {
+      "all": "Todos",
+      "approved": "Aprobado",
+      "approveStatus": "Estado de aprobación",
+      "pending": "Pendiente",
+      "rejected": "Rechazado"
+    },
+    "campaignSelect": {
+      "noCampaign": "No se han creado campañas.",
+      "selectCampaign": "Seleccione una campaña."
+    },
+    "comingSoon": "Próximamente",
+    "excelExport": "Exportar",
+    "noApplicants": "No hay solicitantes.",
+    "noCampaign": "Aún no hay campañas."
+  },
+  "brandContentsPerformance": {
+    "comingSoon": "Función en preparación",
+    "contentType": {
+      "post": "Publicación",
+      "reels": "Reel",
+      "video": "Video"
+    },
+    "export": "Exportar",
+    "headers": {
+      "commentCount": "Número de comentarios",
+      "contentType": "Tipo de contenido",
+      "likeCount": "Número de “me gusta”",
+      "reviewStatus": "Estado",
+      "shareCount": "Número de compartidos",
+      "uploadedDate": "Fecha de carga",
+      "viewCount": "Visualizaciones"
+    },
+    "noApplicants": "No hay solicitantes",
+    "noReviews": "No hay reseñas",
+    "reviewStatus": {
+      "finalUploaded": "Carga final",
+      "inProgress": "En progreso",
+      "notSubmitted": "No enviado",
+      "pendingRevision": "Revisión solicitada",
+      "revising": "En revisión"
+    }
+  },
   "brandFeedback": {
     "brandNote": {
       "description": "Si tiene algún cambio o solicitud, por favor escríbalo aquí.",
@@ -433,7 +490,8 @@
       "campaigns": "Campañas",
       "FAQ": "Preguntas Frecuentes (FAQ)",
       "howItWorks": "Cómo Funciona",
-      "privacyPolicy": "Política de Privacidad"
+      "privacyPolicy": "Política de Privacidad",
+      "termsOfService": "Términos de servicio"
     },
     "slogan": "Donde los Creadores se Encuentran con la Verdadera K-Beauty"
   },
@@ -791,6 +849,209 @@
       "title": "Guardado con éxito"
     }
   },
+  "privacyPolicy": {
+    "changesToThisPrivacyPolicy": {
+      "description": "Podemos actualizar esta Política de Privacidad periódicamente.",
+      "description2": "Le notificaremos sobre cambios importantes por correo electrónico o mediante un aviso en nuestro sitio web, y actualizaremos la fecha de “Última actualización” que aparece arriba.",
+      "title": "Cambios en esta Política de Privacidad"
+    },
+    "childrensPrivacy": {
+      "description": "Nuestro Servicio no está dirigido a menores de 13 años.",
+      "description2": "No recopilamos intencionadamente información personal identificable de nadie menor de 13 años.",
+      "title": "Privacidad de los niños"
+    },
+    "contactUs": {
+      "description": "Si tiene alguna pregunta sobre esta Política de Privacidad:",
+      "email": {
+        "description": "lococo.official@gmail.com",
+        "title": "Correo electrónico"
+      },
+      "title": "Contáctenos"
+    },
+    "dataDeletion": {
+      "description": "Si ha conectado sus cuentas de redes sociales (como Instagram, TikTok o Facebook) a Lococo y desea eliminar sus datos, puede solicitar la eliminación en cualquier momento. Para hacerlo, comuníquese con nosotros a support@lococo.beauty con el asunto “Data Deletion Request”, y eliminaremos permanentemente su cuenta y todos los datos asociados en un plazo de 30 días. También puede desconectar directamente sus cuentas de redes sociales conectadas desde el panel de control de su cuenta de Lococo.\nUna vez desconectadas, no se recopilarán más datos de esas cuentas.\nLococo cumple con los Términos de Plataforma y los Requisitos de Eliminación de Datos de Meta al proporcionar a los usuarios una forma clara y accesible de solicitar la eliminación de datos por correo electrónico y mediante la configuración de la cuenta en la aplicación.",
+      "title": "Eliminación de datos"
+    },
+    "dataRetention": {
+      "description": "Conservamos los Datos Personales solo durante el tiempo necesario para los fines descritos en esta Política, para cumplir con obligaciones legales o resolver disputas.",
+      "description2": "Los Datos de Uso suelen almacenarse por períodos más cortos, salvo que se requieran por motivos de seguridad o mejora.",
+      "title": "Retención de datos"
+    },
+    "dataTransfers": {
+      "description": "Sus datos pueden procesarse fuera de su país, incluso en lugares donde las leyes de privacidad sean diferentes.",
+      "description2": "Nos aseguramos de que todas las transferencias cumplan con los estándares de protección adecuados bajo esta Política.",
+      "title": "Transferencias de datos"
+    },
+    "dataWeCollect": {
+      "dataFromSocialMedia": {
+        "descriptions": {
+          "title": "Si se registra o inicia sesión a través de un Servicio de Redes Sociales de Terceros (por ejemplo, Google, Instagram), podemos recopilar información vinculada a su cuenta, como su nombre, correo electrónico y contactos. Puede optar por compartir información adicional a su discreción."
+        },
+        "title": "Datos de redes sociales"
+      },
+      "personalData": {
+        "descriptions": {
+          "descriptions": {
+            "address": "Dirección",
+            "email": "Correo electrónico",
+            "name": "Nombre",
+            "phone": "Teléfono"
+          },
+          "title": "Al usar nuestro Servicio, podemos solicitarle información personal, que incluye:"
+        },
+        "title": "Datos personales"
+      },
+      "title": "Datos que recopilamos",
+      "usageData": {
+        "descriptions": {
+          "description": {
+            "dateTime": "Fecha/hora de la visita, tiempo de permanencia y datos de diagnóstico",
+            "deviceDetails": "Detalles del dispositivo e identificadores móviles al acceder desde dispositivos móviles",
+            "ipAddress": "Dirección IP, tipo/versión del navegador y páginas visitadas"
+          },
+          "title": "La información recopilada automáticamente puede incluir:"
+        },
+        "title": "Datos de uso"
+      }
+    },
+    "disclosureOfData": {
+      "descriptions": {
+        "businessTransactions": "Transacciones comerciales: los datos pueden transferirse en una fusión o adquisición.",
+        "legalRequirements": "Requisitos legales: podemos divulgar datos para cumplir con la ley, proteger derechos o prevenir actos ilícitos."
+      },
+      "title": "Divulgación de datos"
+    },
+    "externalLinks": {
+      "description": "Nuestro Servicio puede contener enlaces a sitios de terceros. No somos responsables de su contenido o prácticas de privacidad y recomendamos revisar sus Políticas de Privacidad.",
+      "title": "Enlaces externos"
+    },
+    "howWeUseYourData": {
+      "description": "Podemos usar sus Datos Personales para:",
+      "descriptions": {
+        "conductAnalyticsAndImproveService": "Proporcionar y mantener el Servicio",
+        "contactYou": "Realizar análisis y mejorar el Servicio",
+        "manageAccount": "Gestionar su cuenta",
+        "manageInquiriesAndRequests": "Gestionar sus consultas y solicitudes",
+        "performContractualObligations": "Cumplir con obligaciones contractuales",
+        "providePromotionalOffers": "Contactarlo con actualizaciones o avisos de seguridad",
+        "provideService": "Enviar ofertas promocionales (a menos que opte por no recibirlas)",
+        "supportBusinessTransfers": "Apoyar transferencias comerciales (por ejemplo, fusiones, adquisiciones)"
+      },
+      "informationSharing": {
+        "description": "Podemos compartir sus datos:",
+        "descriptions": {
+          "inBusinessTransfers": "En transferencias comerciales – como parte de transacciones corporativas.",
+          "publicly": "Públicamente – cuando comparta información en áreas públicas o a través de redes sociales conectadas.",
+          "withAffiliatesOrBusinessPartners": "Con afiliados o socios comerciales – bajo los mismos estándares de privacidad.",
+          "withConsent": "Con consentimiento – para cualquier otro propósito aprobado por usted.",
+          "withServiceProviders": "Con proveedores de servicios – para análisis, soporte al cliente o comunicaciones."
+        },
+        "title": "Compartición de información"
+      },
+      "title": "Cómo usamos sus datos"
+    },
+    "interpretationAndDefinitions": {
+      "definitions": {
+        "description": {
+          "Account": {
+            "description": "Una cuenta única creada para que acceda a nuestro Servicio.",
+            "title": "Cuenta"
+          },
+          "Affiliate": {
+            "description": "Cualquier entidad que controle, sea controlada o esté bajo control común con nosotros (propiedad del 50 % o más de los derechos de voto).",
+            "title": "Afiliado"
+          },
+          "Company": {
+            "description": "Se refiere a Lococo.",
+            "title": "Compañía"
+          },
+          "Cookies": {
+            "description": "Pequeños archivos colocados en su dispositivo que almacenan información de navegación.",
+            "title": "Cookies"
+          },
+          "Country": {
+            "description": "Corea del Sur.",
+            "title": "País"
+          },
+          "Device": {
+            "description": "Cualquier dispositivo que pueda acceder al Servicio, como una computadora, teléfono móvil o tableta.",
+            "title": "Dispositivo"
+          },
+          "PersonalData": {
+            "description": "Cualquier información que identifique o pueda identificar a una persona.",
+            "title": "Datos personales"
+          },
+          "Service": {
+            "description": "Se refiere a nuestro sitio web.",
+            "title": "Servicio"
+          },
+          "ServiceProvider": {
+            "description": "Cualquier persona o empresa que procese datos en nuestro nombre.",
+            "title": "Proveedor de servicios"
+          },
+          "ThirdPartySocialMediaService": {
+            "description": "Plataformas como Google, Facebook, Instagram, Twitter o LinkedIn mediante las cuales puede registrarse o iniciar sesión.",
+            "title": "Servicio de redes sociales de terceros"
+          },
+          "UsageData": {
+            "description": "Datos recopilados automáticamente relacionados con el uso del Servicio (por ejemplo, dirección IP, tipo de navegador, tiempo de uso).",
+            "title": "Datos de uso"
+          },
+          "You": {
+            "description": "La persona o entidad que accede o utiliza el Servicio.",
+            "title": "Usted"
+          }
+        },
+        "title": "Definiciones"
+      },
+      "interpretation": {
+        "description": "Las palabras con inicial mayúscula tienen los significados definidos a continuación. Estas definiciones se aplican tanto en singular como en plural.",
+        "title": "Interpretación y definiciones"
+      },
+      "title": "Interpretación y definiciones"
+    },
+    "lastUpdated": {
+      "description": "Lococo (“nosotros”, “nos” o “nuestra”) opera el sitio web https://www.lococo.beauty/ (“el Servicio”). Esta Política de Privacidad explica cómo recopilamos, usamos y divulgamos su información, sus derechos de privacidad y cómo la ley lo protege. Al usar nuestro Servicio, acepta la recopilación y el uso de información de acuerdo con esta Política.",
+      "title": "Última actualización: 31 de agosto de 2025"
+    },
+    "securityOfData": {
+      "description": "Tomamos medidas comercialmente razonables para salvaguardar sus Datos Personales.",
+      "description2": "Sin embargo, ningún sistema de transmisión o almacenamiento en línea es completamente seguro.",
+      "title": "Seguridad de los datos"
+    },
+    "title": "Política de privacidad",
+    "trackingTechnologiesAndCookies": {
+      "title": "Tecnologías de seguimiento y cookies",
+      "typesOfCookies": {
+        "description": "Usamos cookies y tecnologías similares (balizas, etiquetas, scripts) para mejorar y analizar nuestro Servicio.",
+        "description2": "Puede rechazar las cookies en la configuración de su navegador, pero algunas funciones pueden no funcionar correctamente.",
+        "descriptions": {
+          "consentCookies": {
+            "description": "Registrar si aceptó cookies.",
+            "title": "Cookies de consentimiento (persistentes)"
+          },
+          "essentialCookies": {
+            "description": "Habilitar funciones básicas y prevenir fraudes.",
+            "title": "Cookies esenciales (de sesión)"
+          },
+          "functionalityCookies": {
+            "description": "Recordar preferencias como idioma o inicio de sesión.",
+            "title": "Cookies de funcionalidad (persistentes)"
+          }
+        },
+        "title": "Tipos de cookies"
+      }
+    },
+    "yourRights": {
+      "description": "Usted puede:",
+      "description2": "Tenga en cuenta que podemos conservar ciertos datos según lo requiera la ley.",
+      "descriptions": {
+        "access": "Acceder, actualizar o eliminar sus Datos Personales a través de la configuración de su cuenta.",
+        "requestAssistance": "Solicitar asistencia contactándonos en lococo.official@gmail.com"
+      },
+      "title": "Sus derechos"
+    }
+  },
   "selectRoleModal": {
     "description": "Seleccione su rol para iniciar sesión. No podrá cambiarlo más tarde.",
     "loginAs": "Iniciar sesión como:",
@@ -814,6 +1075,71 @@
       "tiktok": "TikTok"
     },
     "title": "Enlace de SNS"
+  },
+  "termsOfService": {
+    "acceptanceOfTerms": {
+      "description": "Al acceder o utilizar Lococo (el “Servicio”), aceptas estar sujeto a estos Términos de servicio (“Términos”). Si no estás de acuerdo con alguna parte de estos Términos, no podrás acceder ni utilizar el Servicio.",
+      "title": "Aceptación de los Términos"
+    },
+    "accountTerminationAndDataRetention": {
+      "descriptions": {
+        "accountDeletion": "Los usuarios pueden eliminar sus cuentas en cualquier momento.",
+        "dataRetention": "Después de la eliminación de la cuenta, Lococo conservará los datos del usuario durante 90 días para procesar cualquier asunto pendiente. Después de este período, todos los datos asociados serán eliminados permanentemente."
+      },
+      "title": "Eliminación de la cuenta y retención de datos"
+    },
+    "contactUs": {
+      "description": "Si tienes alguna pregunta sobre estos Términos, contáctanos en:",
+      "email": "lococo.official@gmail.com",
+      "location": "Seúl, República de Corea",
+      "team": "Equipo de Lococo",
+      "title": "Contáctanos"
+    },
+    "effectiveDate": "Fecha de entrada en vigor: 1 de septiembre de 2025",
+    "eligibility": {
+      "descriptions": {
+        "accountCreation": "Cada persona puede crear y mantener solo una cuenta.",
+        "serviceAvailability": "El Servicio está disponible únicamente para personas mayores de 13 años.",
+        "warranty": "Al utilizar el Servicio, declaras y garantizas que cumples con estos requisitos."
+      },
+      "title": "Elegibilidad"
+    },
+    "governingLaw": {
+      "description": "Estos Términos se rigen e interpretan de acuerdo con las leyes de la República de Corea. Cualquier disputa relacionada con estos Términos estará sujeta a la jurisdicción exclusiva de los tribunales de Corea.",
+      "title": "Ley aplicable"
+    },
+    "intellectualProperty": {
+      "descriptions": {
+        "content": "Todo el contenido, las marcas comerciales, los logotipos y los materiales disponibles en Lococo son propiedad de Lococo o de sus licenciantes.",
+        "ownership": "Los usuarios conservan la propiedad del contenido que crean y comparten, pero otorgan a Lococo una licencia no exclusiva, mundial y libre de regalías para mostrar y operar dicho contenido dentro del Servicio."
+      },
+      "title": "Propiedad intelectual"
+    },
+    "limitationOfLiability": {
+      "description": "Lococo se proporciona “tal cual”.\nEn la medida máxima permitida por la ley, no asumimos ninguna responsabilidad por los daños derivados o relacionados con el uso del Servicio.\n",
+      "title": "Limitación de responsabilidad"
+    },
+    "personalInformation": {
+      "descriptions": {
+        "advertisements": "No mostramos anuncios dentro del Servicio.",
+        "collection": "Recopilamos la siguiente información personal: nombre y nombre de usuario, número de teléfono, dirección de correo electrónico, dirección postal y edad.",
+        "email": "No enviamos correos promocionales ni boletines informativos.",
+        "privacyPolicy": "Para más detalles sobre cómo manejamos la información personal, consulta nuestra Política de privacidad."
+      },
+      "title": "Información personal"
+    },
+    "prohibitedActivities": {
+      "description": "Los usuarios aceptan no participar en las siguientes actividades:",
+      "description2": "La violación de estas reglas puede resultar en la suspensión o terminación de tu cuenta sin previo aviso. ",
+      "descriptions": {
+        "disruption": "Cualquier acción que interrumpa, dañe o interfiera con el funcionamiento adecuado del Servicio.",
+        "fraudulentActivities": "Actividades fraudulentas o intentos de engañar a otros usuarios o a la plataforma.",
+        "illegalContent": "Subir o compartir contenido ilegal, dañino o inapropiado.",
+        "multipleAccounts": "Crear o mantener múltiples cuentas."
+      },
+      "title": "Actividades prohibidas"
+    },
+    "title": "Términos de servicio"
   },
   "userInductionModal": {
     "cancelButton": "No",
