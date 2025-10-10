@@ -22,6 +22,7 @@ interface DragDropAreaProps {
   onRemoveExistingImage?: (index: number) => void;
   maxFiles?: number;
   className?: string;
+  disabled?: boolean;
 }
 
 export default function DragDropArea({
@@ -33,6 +34,7 @@ export default function DragDropArea({
   onRemoveExistingImage,
   maxFiles = 10,
   className,
+  disabled = false,
 }: DragDropAreaProps) {
   const t = useTranslations('fileUploader');
   const [isDragOver, setIsDragOver] = useState(false);
@@ -61,6 +63,8 @@ export default function DragDropArea({
   }, [imageFiles.length, videoFiles.length]);
 
   const addFiles = (newFiles: File[]) => {
+    if (disabled) return;
+
     const validImageFiles: File[] = [];
     const validVideoFiles: File[] = [];
     const invalidFiles: string[] = [];
@@ -109,16 +113,19 @@ export default function DragDropArea({
   };
 
   const removeImageFile = (index: number) => {
+    if (disabled) return;
     const updatedFiles = imageFiles.filter((_, i) => i !== index);
     handleImageFilesChange(updatedFiles);
   };
 
   const removeVideoFile = (index: number) => {
+    if (disabled) return;
     const updatedFiles = videoFiles.filter((_, i) => i !== index);
     handleVideoFilesChange(updatedFiles);
   };
 
   const replaceFile = (indexToReplace: number, newFile: File) => {
+    if (disabled) return;
     const updatedFiles = imageFiles.map((file, index) =>
       index === indexToReplace ? newFile : file
     );
@@ -130,6 +137,7 @@ export default function DragDropArea({
   };
 
   const handleFileInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    if (disabled) return;
     const selectedFiles = Array.from(e.target.files || []);
     if (selectedFiles.length > 0) {
       addFiles(selectedFiles);
@@ -139,6 +147,7 @@ export default function DragDropArea({
 
   const handleRemoveExistingImageFile =
     (index: number) => (e: React.MouseEvent) => {
+      if (disabled) return;
       e.stopPropagation();
       e.preventDefault();
       if (onRemoveExistingImage) {
@@ -147,12 +156,14 @@ export default function DragDropArea({
     };
 
   const handleRemoveImageFile = (index: number) => (e: React.MouseEvent) => {
+    if (disabled) return;
     e.stopPropagation();
     e.preventDefault();
     removeImageFile(index);
   };
 
   const handleRemoveVideoFile = (index: number) => (e: React.MouseEvent) => {
+    if (disabled) return;
     e.stopPropagation();
     e.preventDefault();
     removeVideoFile(index);
@@ -160,6 +171,7 @@ export default function DragDropArea({
 
   const handleChangeFile =
     (indexToReplace: number) => (e: ChangeEvent<HTMLInputElement>) => {
+      if (disabled) return;
       e.stopPropagation();
       e.preventDefault();
       const newFiles = Array.from(e.target.files || []);
@@ -172,16 +184,19 @@ export default function DragDropArea({
     };
 
   const handleDragOver = (e: React.DragEvent) => {
+    if (disabled) return;
     e.preventDefault();
     setIsDragOver(true);
   };
 
   const handleDragLeave = (e: React.DragEvent) => {
+    if (disabled) return;
     e.preventDefault();
     setIsDragOver(false);
   };
 
   const handleDrop = (e: React.DragEvent) => {
+    if (disabled) return;
     e.preventDefault();
     setIsDragOver(false);
     const droppedFiles = Array.from(e.dataTransfer.files);
@@ -189,10 +204,12 @@ export default function DragDropArea({
   };
 
   const triggerFileInput = () => {
+    if (disabled) return;
     fileInputRef.current?.click();
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (disabled) return;
     if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault();
       triggerFileInput();
@@ -204,29 +221,34 @@ export default function DragDropArea({
     videoFiles.length > 0 ||
     (existingImageUrls && existingImageUrls.length > 0);
   const canAddMoreFiles =
+    !disabled &&
     imageFiles.length + videoFiles.length + (existingImageUrls?.length || 0) <
-    maxFiles;
+      maxFiles;
   return (
     <>
-      {errorMessage && <ErrorNotice message={errorMessage} />}
-      <div className="flex gap-[0.8rem]">
-        <p className="body4 font-[500] text-gray-500">
-          {t('dragDropDescription')}
-        </p>
-        <button
-          className="body4 border-none border-pink-500 border-b-gray-100 font-[500] text-pink-500 underline"
-          onClick={triggerFileInput}
-        >
-          {t('selectFile')}
-        </button>
-      </div>
+      {!disabled && errorMessage && <ErrorNotice message={errorMessage} />}
+      {!disabled && (
+        <div className="flex gap-[0.8rem]">
+          <p className="body4 font-[500] text-gray-500">
+            {t('dragDropDescription')}
+          </p>
+          <button
+            className="body4 border-none border-pink-500 border-b-gray-100 font-[500] text-pink-500 underline"
+            onClick={triggerFileInput}
+            disabled={disabled}
+          >
+            {t('selectFile')}
+          </button>
+        </div>
+      )}
       <div
         className={cn(
           'flex h-[22rem] w-full items-center rounded-lg border border-solid bg-pink-100 p-[1.2rem] transition-all duration-200',
-          isDragOver
+          !disabled && isDragOver
             ? 'border-dashed border-pink-500 bg-pink-200'
             : 'border-pink-300',
           hasFiles && 'border-pink-300',
+          disabled && 'cursor-default',
           className
         )}
         onDragOver={handleDragOver}
@@ -234,7 +256,7 @@ export default function DragDropArea({
         onDrop={handleDrop}
         onClick={canAddMoreFiles ? triggerFileInput : undefined}
         role="button"
-        tabIndex={0}
+        tabIndex={disabled ? -1 : 0}
         onKeyDown={handleKeyDown}
       >
         {/* File Grid */}
@@ -249,8 +271,12 @@ export default function DragDropArea({
                 key={`image-${index}`}
                 src={file}
                 alt="saved image"
-                handleRemoveFile={handleRemoveExistingImageFile(index)}
-                handleFileChange={handleChangeFile(index)}
+                handleRemoveFile={
+                  disabled ? undefined : handleRemoveExistingImageFile(index)
+                }
+                handleFileChange={
+                  disabled ? undefined : handleChangeFile(index)
+                }
                 className="h-[9.2rem] w-[9.2rem]"
               />
             ))}
@@ -261,8 +287,12 @@ export default function DragDropArea({
                 key={`image-${file.name}-${index}`}
                 src={URL.createObjectURL(file)}
                 alt={`Upload ${index + 1}: ${file.name}`}
-                handleRemoveFile={handleRemoveImageFile(index)}
-                handleFileChange={handleChangeFile(index)}
+                handleRemoveFile={
+                  disabled ? undefined : handleRemoveImageFile(index)
+                }
+                handleFileChange={
+                  disabled ? undefined : handleChangeFile(index)
+                }
                 className="h-[9.2rem] w-[9.2rem]"
               />
             ))}
@@ -274,8 +304,12 @@ export default function DragDropArea({
                 src={URL.createObjectURL(file)}
                 className="h-[9.2rem] w-[9.2rem]"
                 alt={`Upload ${index + 1}: ${file.name}`}
-                handleRemoveFile={handleRemoveVideoFile(index)}
-                handleFileChange={handleChangeFile(index)}
+                handleRemoveFile={
+                  disabled ? undefined : handleRemoveVideoFile(index)
+                }
+                handleFileChange={
+                  disabled ? undefined : handleChangeFile(index)
+                }
               />
             ))}
           </div>
@@ -288,6 +322,7 @@ export default function DragDropArea({
           accept={ALLOWED_MEDIA_TYPES.join(',')}
           className="hidden"
           onChange={handleFileInputChange}
+          disabled={disabled}
         />
       </div>
     </>
