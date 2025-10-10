@@ -490,7 +490,8 @@
       "campaigns": "Campañas",
       "FAQ": "Preguntas Frecuentes (FAQ)",
       "howItWorks": "Cómo Funciona",
-      "privacyPolicy": "Política de Privacidad"
+      "privacyPolicy": "Política de Privacidad",
+      "termsOfService": "Términos de servicio"
     },
     "slogan": "Donde los Creadores se Encuentran con la Verdadera K-Beauty"
   },
@@ -1074,6 +1075,71 @@
       "tiktok": "TikTok"
     },
     "title": "Enlace de SNS"
+  },
+  "termsOfService": {
+    "acceptanceOfTerms": {
+      "description": "Al acceder o utilizar Lococo (el “Servicio”), aceptas estar sujeto a estos Términos de servicio (“Términos”). Si no estás de acuerdo con alguna parte de estos Términos, no podrás acceder ni utilizar el Servicio.",
+      "title": "Aceptación de los Términos"
+    },
+    "accountTerminationAndDataRetention": {
+      "descriptions": {
+        "accountDeletion": "Los usuarios pueden eliminar sus cuentas en cualquier momento.",
+        "dataRetention": "Después de la eliminación de la cuenta, Lococo conservará los datos del usuario durante 90 días para procesar cualquier asunto pendiente. Después de este período, todos los datos asociados serán eliminados permanentemente."
+      },
+      "title": "Eliminación de la cuenta y retención de datos"
+    },
+    "contactUs": {
+      "description": "Si tienes alguna pregunta sobre estos Términos, contáctanos en:",
+      "email": "lococo.official@gmail.com",
+      "location": "Seúl, República de Corea",
+      "team": "Equipo de Lococo",
+      "title": "Contáctanos"
+    },
+    "effectiveDate": "Fecha de entrada en vigor: 1 de septiembre de 2025",
+    "eligibility": {
+      "descriptions": {
+        "accountCreation": "Cada persona puede crear y mantener solo una cuenta.",
+        "serviceAvailability": "El Servicio está disponible únicamente para personas mayores de 13 años.",
+        "warranty": "Al utilizar el Servicio, declaras y garantizas que cumples con estos requisitos."
+      },
+      "title": "Elegibilidad"
+    },
+    "governingLaw": {
+      "description": "Estos Términos se rigen e interpretan de acuerdo con las leyes de la República de Corea. Cualquier disputa relacionada con estos Términos estará sujeta a la jurisdicción exclusiva de los tribunales de Corea.",
+      "title": "Ley aplicable"
+    },
+    "intellectualProperty": {
+      "descriptions": {
+        "content": "Todo el contenido, las marcas comerciales, los logotipos y los materiales disponibles en Lococo son propiedad de Lococo o de sus licenciantes.",
+        "ownership": "Los usuarios conservan la propiedad del contenido que crean y comparten, pero otorgan a Lococo una licencia no exclusiva, mundial y libre de regalías para mostrar y operar dicho contenido dentro del Servicio."
+      },
+      "title": "Propiedad intelectual"
+    },
+    "limitationOfLiability": {
+      "description": "Lococo se proporciona “tal cual”.\nEn la medida máxima permitida por la ley, no asumimos ninguna responsabilidad por los daños derivados o relacionados con el uso del Servicio.\n",
+      "title": "Limitación de responsabilidad"
+    },
+    "personalInformation": {
+      "descriptions": {
+        "advertisements": "No mostramos anuncios dentro del Servicio.",
+        "collection": "Recopilamos la siguiente información personal: nombre y nombre de usuario, número de teléfono, dirección de correo electrónico, dirección postal y edad.",
+        "email": "No enviamos correos promocionales ni boletines informativos.",
+        "privacyPolicy": "Para más detalles sobre cómo manejamos la información personal, consulta nuestra Política de privacidad."
+      },
+      "title": "Información personal"
+    },
+    "prohibitedActivities": {
+      "description": "Los usuarios aceptan no participar en las siguientes actividades:",
+      "description2": "La violación de estas reglas puede resultar en la suspensión o terminación de tu cuenta sin previo aviso. ",
+      "descriptions": {
+        "disruption": "Cualquier acción que interrumpa, dañe o interfiera con el funcionamiento adecuado del Servicio.",
+        "fraudulentActivities": "Actividades fraudulentas o intentos de engañar a otros usuarios o a la plataforma.",
+        "illegalContent": "Subir o compartir contenido ilegal, dañino o inapropiado.",
+        "multipleAccounts": "Crear o mantener múltiples cuentas."
+      },
+      "title": "Actividades prohibidas"
+    },
+    "title": "Términos de servicio"
   },
   "userInductionModal": {
     "cancelButton": "No",

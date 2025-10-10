@@ -490,7 +490,8 @@
       "campaigns": "Campaigns",
       "FAQ": "FAQ",
       "howItWorks": "How It Works",
-      "privacyPolicy": "Privacy Policy"
+      "privacyPolicy": "Privacy Policy",
+      "termsOfService": "Terms of Service"
     },
     "slogan": "Where Creators Meet Real K-Beauty"
   },
@@ -1074,6 +1075,71 @@
       "tiktok": "Tiktok"
     },
     "title": "SNS Link"
+  },
+  "termsOfService": {
+    "acceptanceOfTerms": {
+      "description": "By accessing or using Lococo (the “Service”), you agree to be bound by these Terms of Service (“Terms”). If you do not agree with any part of these Terms, you may not access or use the Service.",
+      "title": "Acceptance of Terms"
+    },
+    "accountTerminationAndDataRetention": {
+      "descriptions": {
+        "accountDeletion": "Users may delete their accounts at any time.",
+        "dataRetention": "After account deletion, Lococo will retain user data for 90 days to process any outstanding matters. After this period, all associated data will be permanently deleted."
+      },
+      "title": "Account Termination and Data Retention"
+    },
+    "contactUs": {
+      "description": "If you have any questions about these Terms, please contact us at:",
+      "email": "lococo.official@gmail.com",
+      "location": "Seoul, Republic of Koreas",
+      "team": "Lococo Team",
+      "title": "Contact Us"
+    },
+    "effectiveDate": "Effective Date: September 1, 2025",
+    "eligibility": {
+      "descriptions": {
+        "accountCreation": "Each individual may create and maintain only one account.",
+        "serviceAvailability": "The Service is available only to individuals who are 13 years of age or older.",
+        "warranty": "By using the Service, you represent and warrant that you meet these requirements."
+      },
+      "title": "Eligibility"
+    },
+    "governingLaw": {
+      "description": "These Terms are governed by and construed in accordance with the laws of the Republic of Korea. Any disputes arising under or related to these Terms shall be subject to the exclusive jurisdiction of the courts of Korea.",
+      "title": "Governing Law"
+    },
+    "intellectualProperty": {
+      "descriptions": {
+        "content": "All content, trademarks, logos, and materials available on Lococo are owned by Lococo or its licensors.",
+        "ownership": "Users retain ownership of any content they create and share but grant Lococo a non-exclusive, worldwide, royalty-free license to display and operate the content within the Service."
+      },
+      "title": "Intellectual Property"
+    },
+    "limitationOfLiability": {
+      "description": "Lococo is provided “as is” without warranties of any kind. To the maximum extent permitted by law, we disclaim all liability for any damages arising out of or in connection with your use of the Service.",
+      "title": "Limitation of Liability"
+    },
+    "personalInformation": {
+      "descriptions": {
+        "advertisements": "We do not display advertisements within the Service.",
+        "collection": "We collect personal information from users, including: name and username, phone number, email address, mailing address, and age.",
+        "email": "We do not send promotional emails or newsletters.",
+        "privacyPolicy": "For details about how we handle personal information, please refer to our Privacy Policy."
+      },
+      "title": "Personal Information"
+    },
+    "prohibitedActivities": {
+      "description": "Users agree not to engage in the following activities:",
+      "description2": "Violation of these rules may result in suspension or termination of your account without prior notice.",
+      "descriptions": {
+        "disruption": "Any action that may disrupt, damage, or interfere with the proper functioning of the Service.",
+        "fraudulentActivities": "Fraudulent activities or attempts to deceive other users or the platform.",
+        "illegalContent": "Uploading or sharing illegal, harmful, or inappropriate content.",
+        "multipleAccounts": "Creating or maintaining multiple accounts."
+      },
+      "title": "Prohibited Activities"
+    },
+    "title": "Terms of Service"
   },
   "userInductionModal": {
     "cancelButton": "No",
