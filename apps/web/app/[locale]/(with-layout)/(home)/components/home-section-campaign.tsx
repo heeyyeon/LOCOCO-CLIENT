@@ -10,23 +10,6 @@ interface HomeSectionCampaignProps {
   seeMore?: boolean;
 }
 
-export interface CampaignApiResponse {
-  success: boolean;
-  status: number;
-  message: string;
-  data: {
-    campaigns: Campaign[];
-    pageInfo: PageInfo;
-  };
-}
-
-interface PageInfo {
-  pageNumber: number;
-  pageSize: number;
-  numberOfElements: number;
-  isLast: boolean;
-}
-
 export interface Campaign {
   campaignId: number;
   campaignType: string;
@@ -36,8 +19,26 @@ export interface Campaign {
   campaignName: string;
   applicantNumber: number;
   recruitmentNumber: number;
-  endTime: string;
+  startTime?: string;
+  endTime?: string;
   chipStatus: 'disabled' | 'default' | 'approved' | 'declined' | 'progress';
+}
+
+export interface PageInfo {
+  pageNumber: number;
+  pageSize: number;
+  numberOfElements: number;
+  isLast: boolean;
+}
+
+export interface CampaignApiResponse {
+  success: boolean;
+  status: number;
+  message: string;
+  data: {
+    campaigns: Campaign[];
+    pageInfo: PageInfo;
+  };
 }
 
 export default function HomeSectionCampaign({

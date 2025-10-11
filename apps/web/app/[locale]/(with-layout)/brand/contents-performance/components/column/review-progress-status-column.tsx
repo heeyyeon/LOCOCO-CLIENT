@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { useTranslations } from 'next-intl';
+
 import { InfoChip } from '@lococo/design-system/info-chip';
 
 import { type ReviewStatus } from '../../types';
@@ -10,12 +12,13 @@ interface ReviewStatusProps {
 export default function ReviewProgressStatus({
   reviewStatus,
 }: ReviewStatusProps) {
+  const t = useTranslations('brandContentsPerformance');
   const REVIEW_STATUS_MAP = {
-    NOT_SUBMITTED: '미제출',
-    IN_PROGRESS: '진행중',
-    PENDING_REVISION: '검토 요청',
-    REVISING: '수정중',
-    FINAL_UPLOADED: '최종 업로드',
+    NOT_SUBMITTED: t('reviewStatus.notSubmitted'),
+    IN_PROGRESS: t('reviewStatus.inProgress'),
+    PENDING_REVISION: t('reviewStatus.pendingRevision'),
+    REVISING: t('reviewStatus.revising'),
+    FINAL_UPLOADED: t('reviewStatus.finalUploaded'),
   };
   const REVIEW_STATUS_COLOR_MAP = {
     NOT_SUBMITTED: 'red',

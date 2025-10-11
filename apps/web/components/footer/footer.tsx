@@ -2,7 +2,7 @@ import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { SvgArrowRight, SvgMail, SvgX } from '@lococo/icons';
+import { SvgArrowRight, SvgMail, SvgTiktok } from '@lococo/icons';
 
 export default function Footer() {
   const t = useTranslations('footer');
@@ -14,15 +14,21 @@ export default function Footer() {
             {t('slogan')}
           </p>
           <div className="flex items-center gap-[1.6rem]">
-            <SvgMail className="h-[3.2rem] w-[3.2rem] text-gray-600" />
+            <Link href="mailto:lococo.official@gmail.com">
+              <SvgMail className="h-[3.2rem] w-[3.2rem] text-gray-600" />
+            </Link>
             {/* TODO: 디자인 제공 인스타그램 svg fill 속성 문제로 direct svg import */}
-            <Image
-              src="/instagram-footer.svg"
-              alt="instagram"
-              width={28}
-              height={28}
-            />
-            <SvgX className="h-[3.2rem] w-[3.2rem] text-gray-600" />
+            <Link href="https://www.instagram.com/lococo.official/">
+              <Image
+                src="/instagram-footer.svg"
+                alt="instagram"
+                width={28}
+                height={28}
+              />
+            </Link>
+            <Link href="https://www.tiktok.com/@lococo.official">
+              <SvgTiktok className="h-[3.2rem] w-[3.2rem] text-gray-600" />
+            </Link>
           </div>
         </div>
 
@@ -35,13 +41,13 @@ export default function Footer() {
             {/* TODO: 추후 각 링크 추가 */}
             <div className="flex flex-col">
               <Link
-                href={'/'}
+                href={'/all/1'}
                 className="flex gap-[0.8rem] px-[1.6rem] py-[0.5rem]"
               >
                 {t('links.campaigns')} <SvgArrowRight />
               </Link>
               <Link
-                href={'/'}
+                href={'/how-it-work'}
                 className="flex gap-[0.8rem] px-[1.6rem] py-[0.5rem]"
               >
                 {t('links.howItWorks')} <SvgArrowRight />
@@ -49,22 +55,22 @@ export default function Footer() {
             </div>
             <div className="flex flex-col">
               <Link
-                href={'/'}
+                href={'/how-it-work'}
                 className="flex gap-[0.8rem] px-[1.6rem] py-[0.5rem]"
               >
                 {t('links.campaignGuideline')} <SvgArrowRight />
               </Link>
               <Link
-                href={'/'}
+                href={'/privacy-policy'}
                 className="flex gap-[0.8rem] px-[1.6rem] py-[0.5rem]"
               >
                 {t('links.privacyPolicy')} <SvgArrowRight />
               </Link>
               <Link
-                href={'/'}
+                href={'/terms-of-service'}
                 className="flex gap-[0.8rem] px-[1.6rem] py-[0.5rem]"
               >
-                {t('links.FAQ')} <SvgArrowRight />
+                {t('links.termsOfService')} <SvgArrowRight />
               </Link>
             </div>
           </div>

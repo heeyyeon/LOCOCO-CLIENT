@@ -25,4 +25,6 @@ export const applyCampaign = async (campaignId: string) => {
     alert('Campaign already applied');
     throw new Error('Campaign already applied');
   }
+
+  return response;
 };

@@ -1,3 +1,5 @@
+import { useTranslations } from 'next-intl';
+
 import {
   type CellContext,
   type ColumnDef,
@@ -31,7 +33,9 @@ const getWidthClass = (size: number) => {
   return widthMap[size] || `w-[${size}px]`;
 };
 
-const createColumns = (): ColumnDef<ApplicantData>[] => [
+const createColumns = (
+  t: (key: string) => string
+): ColumnDef<ApplicantData>[] => [
   {
     id: 'select',
     size: 50,
@@ -63,7 +67,7 @@ const createColumns = (): ColumnDef<ApplicantData>[] => [
   },
   {
     accessorKey: 'creator',
-    header: '크리에이터',
+    header: t('headers.creator'),
     size: 244, // 컬럼 너비 설정
     cell: ({
       getValue,
@@ -80,7 +84,7 @@ const createColumns = (): ColumnDef<ApplicantData>[] => [
   },
   {
     accessorKey: 'followerCount',
-    header: '팔로워 숫자',
+    header: t('headers.followerCount'),
     meta: {
       style: { textAlign: 'left' },
     },
@@ -99,7 +103,7 @@ const createColumns = (): ColumnDef<ApplicantData>[] => [
   },
   {
     accessorKey: 'participationCount',
-    header: '참여 캠페인 수',
+    header: t('headers.participationCount'),
     size: 148,
     meta: {
       style: { textAlign: 'left' },
@@ -111,7 +115,7 @@ const createColumns = (): ColumnDef<ApplicantData>[] => [
   },
   {
     accessorKey: 'appliedDate',
-    header: '지원 날짜(한국기준)',
+    header: t('headers.appliedDate'),
     meta: {
       style: { textAlign: 'left' },
     },
@@ -123,7 +127,7 @@ const createColumns = (): ColumnDef<ApplicantData>[] => [
   },
   {
     accessorKey: 'approveStatus',
-    header: '승인 현황',
+    header: t('headers.approveStatus'),
     size: 50,
     meta: {
       style: { textAlign: 'center' },
@@ -150,7 +154,8 @@ export default function ApplicantsTable({
   onColumnFiltersChange,
   data,
 }: ApplicantsTableProps) {
-  const columns = createColumns();
+  const t = useTranslations('brandApplicants.applicantsTable');
+  const columns = createColumns(t);
   const table = useReactTable({
     data,
     columns,
@@ -198,7 +203,7 @@ export default function ApplicantsTable({
           {table.getFilteredRowModel().rows.length === 0 ? (
             <tr className="h-[60rem] w-full border-b border-gray-400 px-[1.6rem] py-[2.4rem]">
               <td colSpan={5} className="text-center">
-                지원자가 없습니다.
+                {t('noApplicants')}
               </td>
             </tr>
           ) : (

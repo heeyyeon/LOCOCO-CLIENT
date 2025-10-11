@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 
-import { useFormatter } from 'next-intl';
+import { useFormatter, useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { notFound, useSearchParams } from 'next/navigation';
 
@@ -44,11 +44,13 @@ const getWidthClass = (size: number) => {
   return widthMap[size] || `w-[${size}px]`;
 };
 
-const createColumns = (): ColumnDef<CampaignReview>[] => [
+const createColumns = (
+  t: (key: string) => string
+): ColumnDef<CampaignReview>[] => [
   {
     id: 'contentType',
     accessorKey: 'contents',
-    header: '컨텐츠 종류',
+    header: t('headers.contentType'),
     size: 50,
     cell: ({
       getValue,
@@ -60,7 +62,7 @@ const createColumns = (): ColumnDef<CampaignReview>[] => [
   },
   {
     accessorKey: 'reviewStatus',
-    header: '상태',
+    header: t('headers.reviewStatus'),
     size: 120,
     cell: ({ getValue }) => {
       const status = getValue() as ReviewStatus;
@@ -69,7 +71,7 @@ const createColumns = (): ColumnDef<CampaignReview>[] => [
   },
   {
     accessorKey: 'uploadedDate',
-    header: '업로드 날짜',
+    header: t('headers.uploadedDate'),
     meta: {
       style: { textAlign: 'left' },
     },
@@ -82,7 +84,7 @@ const createColumns = (): ColumnDef<CampaignReview>[] => [
   {
     id: 'viewCount',
     accessorKey: 'contents',
-    header: '조회수',
+    header: t('headers.viewCount'),
     meta: {
       style: { textAlign: 'left' },
     },
@@ -102,7 +104,7 @@ const createColumns = (): ColumnDef<CampaignReview>[] => [
   {
     id: 'likeCount',
     accessorKey: 'contents',
-    header: '좋아요 수',
+    header: t('headers.likeCount'),
     meta: {
       style: { textAlign: 'left' },
     },
@@ -122,7 +124,7 @@ const createColumns = (): ColumnDef<CampaignReview>[] => [
   {
     id: 'commentCount',
     accessorKey: 'contents',
-    header: '댓글 수',
+    header: t('headers.commentCount'),
     meta: {
       style: { textAlign: 'left' },
     },
@@ -142,7 +144,7 @@ const createColumns = (): ColumnDef<CampaignReview>[] => [
   {
     id: 'shareCount',
     accessorKey: 'contents',
-    header: '공유 수',
+    header: t('headers.shareCount'),
     meta: {
       style: { textAlign: 'left' },
     },
@@ -166,7 +168,6 @@ const createColumns = (): ColumnDef<CampaignReview>[] => [
     size: 40,
     cell: ({ row }: CellContext<CampaignReview, unknown>) => {
       const { reviewStatus, campaignReviewId, postUrl } = row.original;
-      console.log(reviewStatus, campaignReviewId, postUrl);
       return (
         <NavigateColumn
           isActive={
@@ -186,7 +187,8 @@ interface CreatorReviewTableProps {
 }
 
 function CreatorReviewTable({ creator }: CreatorReviewTableProps) {
-  const columns = createColumns();
+  const t = useTranslations('brandContentsPerformance');
+  const columns = createColumns(t);
   const table = useReactTable({
     data: creator.reviews,
     columns,
@@ -240,7 +242,7 @@ function CreatorReviewTable({ creator }: CreatorReviewTableProps) {
             {table.getRowModel().rows.length === 0 ? (
               <tr className="h-[9.6rem] w-full border-b border-gray-400 px-[1.6rem] py-[2.4rem]">
                 <td colSpan={columns.length} className="text-center">
-                  리뷰가 없습니다.
+                  {t('noReviews')}
                 </td>
               </tr>
             ) : (
@@ -271,6 +273,7 @@ interface ClientPageProps {
   campaignInfos: CampaignInfo[];
 }
 export default function ClientPage({ campaignInfos }: ClientPageProps) {
+  const t = useTranslations('brandContentsPerformance');
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -444,11 +447,11 @@ export default function ClientPage({ campaignInfos }: ClientPageProps) {
             campaignIdQueryString === null || data?.data.creators.length === 0
           }
           onClick={() => {
-            alert('준비중인 기능입니다.');
+            alert(t('comingSoon'));
           }}
         >
           <SvgDownload />
-          Export
+          {t('export')}
         </Button>
       </div>
       <div className="flex flex-col gap-[3.2rem]">
@@ -491,12 +494,12 @@ export default function ClientPage({ campaignInfos }: ClientPageProps) {
           <div className="flex h-[38.5rem] flex-col items-center justify-center gap-[3.2rem]">
             <Image
               src="/applicants-empty.svg"
-              alt="지원자가 없습니다."
+              alt={t('noApplicants')}
               width={100}
               height={100}
             />
             <p className="text-inter-title2 font-bold text-gray-700">
-              지원자가 없습니다.
+              {t('noApplicants')}
             </p>
           </div>
         ))}

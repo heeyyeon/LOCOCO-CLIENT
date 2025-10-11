@@ -183,14 +183,12 @@ export const useContentSubmissions = (
   };
 
   const getFormData = (fieldId: string) => {
-    // useFieldArray의 field.id를 사용하여 인덱스 찾기
     const fieldIndex = fields.findIndex((field) => field.id === fieldId);
     if (fieldIndex === -1) return null;
     return formData.submissions[fieldIndex];
   };
 
   const getErrors = (fieldId: string) => {
-    // useFieldArray의 field.id를 사용하여 인덱스 찾기
     const fieldIndex = fields.findIndex((field) => field.id === fieldId);
     if (fieldIndex === -1) return {};
 
@@ -223,7 +221,6 @@ export const useContentSubmissions = (
         }
       }
 
-      // 리뷰 제출 API 호출
       for (const submission of data.submissions) {
         const reviewData = {
           firstMediaUrls: submission.campaignProductMedia.map(
@@ -247,7 +244,7 @@ export const useContentSubmissions = (
 
       onSuccess?.();
     } catch (error) {
-      console.error('리뷰 제출 실패:', error);
+      console.error('Review submission failed:', error);
       throw error;
     }
   };
@@ -318,7 +315,6 @@ const submitReviewApi = async (
   data: CombinedReviewData,
   round: string
 ) => {
-  // API 스펙에 따라 라운드별로 다른 엔드포인트 사용
   const endPoint =
     round === 'FIRST'
       ? `/api/campaignReviews/${campaignId}/first`
