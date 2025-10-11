@@ -38,37 +38,36 @@ export default function Footer() {
             <p>{t('copyright')}</p>
           </div>
           <div className="text-inter-body4 flex gap-[2.4rem] text-gray-600">
-            {/* TODO: 추후 각 링크 추가 */}
             <div className="flex flex-col">
               <Link
-                href={'/all/1'}
-                className="flex gap-[0.8rem] px-[1.6rem] py-[0.5rem]"
+                href="/all/1"
+                className="flex items-center gap-[0.8rem] whitespace-nowrap px-[1.6rem] py-[0.5rem]"
               >
                 {t('links.campaigns')} <SvgArrowRight />
               </Link>
               <Link
-                href={'/how-it-work'}
-                className="flex gap-[0.8rem] px-[1.6rem] py-[0.5rem]"
+                href="/how-it-work"
+                className="flex items-center gap-[0.8rem] whitespace-nowrap px-[1.6rem] py-[0.5rem]"
               >
                 {t('links.howItWorks')} <SvgArrowRight />
               </Link>
             </div>
             <div className="flex flex-col">
               <Link
-                href={'/how-it-work'}
-                className="flex gap-[0.8rem] px-[1.6rem] py-[0.5rem]"
+                href="https://pricey-sheep-acd.notion.site/Lococo-Campaign-Guideline-283dc421839980e0bc7ae20e84a2b4a7"
+                className="flex items-center gap-[0.8rem] whitespace-nowrap px-[1.6rem] py-[0.5rem]"
               >
                 {t('links.campaignGuideline')} <SvgArrowRight />
               </Link>
               <Link
-                href={'/privacy-policy'}
-                className="flex gap-[0.8rem] px-[1.6rem] py-[0.5rem]"
+                href="/privacy-policy"
+                className="flex items-center gap-[0.8rem] whitespace-nowrap px-[1.6rem] py-[0.5rem]"
               >
                 {t('links.privacyPolicy')} <SvgArrowRight />
               </Link>
               <Link
-                href={'/terms-of-service'}
-                className="flex gap-[0.8rem] px-[1.6rem] py-[0.5rem]"
+                href="/terms-of-service"
+                className="flex items-center gap-[0.8rem] whitespace-nowrap px-[1.6rem] py-[0.5rem]"
               >
                 {t('links.termsOfService')} <SvgArrowRight />
               </Link>
