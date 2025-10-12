@@ -1,13 +1,14 @@
 import CampaignForm from '../create-campaign/component/campaign-form';
 
 interface CampaignDetailReadonlyProps {
-  searchParams: { campaignId?: string };
+  searchParams: Promise<{ campaignId?: string }>;
 }
 
-export default function CampaignDetailReadonly({
+export default async function CampaignDetailReadonly({
   searchParams,
 }: CampaignDetailReadonlyProps) {
-  const campaignId = searchParams.campaignId;
+  const params = await searchParams;
+  const campaignId = params.campaignId;
 
   return <CampaignForm campaignId={campaignId} isReadonly={true} />;
 }
