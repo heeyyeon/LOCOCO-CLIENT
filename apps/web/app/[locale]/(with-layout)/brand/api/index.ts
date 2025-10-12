@@ -1,4 +1,7 @@
-import { ApiResponseBrandMyCampaignListResponse } from '@typescript-swagger/data-contracts';
+import {
+  ApiResponseBrandMyCampaignListResponse,
+  ApiResponseCampaignBasicResponse,
+} from '@typescript-swagger/data-contracts';
 import { apiRequest } from 'app/api/apiRequest';
 
 import { BrandCampaignInfosApiResponse } from '../types';
@@ -36,6 +39,17 @@ export const getBrandMyCampaign = async ({
 }: GetBrandMyCampaignProps): Promise<ApiResponseBrandMyCampaignListResponse> => {
   const response = await apiRequest<ApiResponseBrandMyCampaignListResponse>({
     endPoint: `/api/brands/my/campaigns?status=${status}&page=${page}&size=${size}`,
+  });
+  return response;
+};
+
+export const getWaitingApprovalCampaign = async ({
+  campaignId,
+}: {
+  campaignId: string;
+}): Promise<ApiResponseCampaignBasicResponse> => {
+  const response = await apiRequest<ApiResponseCampaignBasicResponse>({
+    endPoint: `/api/brands/my/campaigns/waiting-approval/${campaignId}`,
   });
   return response;
 };
