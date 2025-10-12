@@ -7,7 +7,11 @@ import { useTranslations } from 'next-intl';
 import { SelectFormField, TextFormField } from 'components/forms';
 import { CampaignFormData } from 'schema/create-campaign-schema';
 
-export default function CampaignInfo() {
+export default function CampaignInfo({
+  isReadonly = false,
+}: {
+  isReadonly?: boolean;
+}) {
   const {
     control,
     register,
@@ -19,6 +23,7 @@ export default function CampaignInfo() {
   return (
     <section className="flex w-[64.8rem] flex-col gap-[1.6rem]">
       <TextFormField
+        isReadonly={isReadonly}
         label={t('basicInfo.title')}
         required
         placeholder={t('basicInfo.titlePlaceholder')}
@@ -35,6 +40,7 @@ export default function CampaignInfo() {
         control={control}
         render={({ field, fieldState: { error } }) => (
           <SelectFormField
+            isReadonly={isReadonly}
             label={t('basicInfo.language')}
             required
             options={[
@@ -55,6 +61,7 @@ export default function CampaignInfo() {
         control={control}
         render={({ field, fieldState: { error } }) => (
           <SelectFormField
+            isReadonly={isReadonly}
             label={t('basicInfo.type')}
             required
             options={[
@@ -76,6 +83,7 @@ export default function CampaignInfo() {
         control={control}
         render={({ field, fieldState: { error } }) => (
           <SelectFormField
+            isReadonly={isReadonly}
             label={t('basicInfo.category')}
             required
             options={[
@@ -93,6 +101,7 @@ export default function CampaignInfo() {
       />
 
       <TextFormField
+        isReadonly={isReadonly}
         label={t('basicInfo.creatorCount')}
         required
         placeholder={t('basicInfo.creatorCountPlaceholder')}

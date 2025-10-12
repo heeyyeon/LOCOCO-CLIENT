@@ -395,6 +395,25 @@ export class Brand<
    * No description
    *
    * @tags BRAND
+   * @name GetWaitingApprovalCampaign
+   * @summary 브랜드 마이페이지 - 승인 대기중 캠페인 조회
+   * @request GET:/api/brands/my/campaigns/waiting-approval/{campaignId}
+   * @secure
+   */
+  getWaitingApprovalCampaign = (
+    campaignId: number,
+    params: RequestParams = {},
+  ) =>
+    this.request<ApiResponseCampaignBasicResponse, any>({
+      path: `/api/brands/my/campaigns/waiting-approval/${campaignId}`,
+      method: "GET",
+      secure: true,
+      ...params,
+    });
+  /**
+   * No description
+   *
+   * @tags BRAND
    * @name GetSimpleCampaignInfos
    * @summary 캠페인 지원자 확인 뷰 - 브랜드 캠페인 목록 간단 조회
    * @request GET:/api/brands/my/campaigns/infos

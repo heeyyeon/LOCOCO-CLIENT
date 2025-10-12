@@ -35,11 +35,18 @@ import {
   transformFormDataToApiData,
 } from '../utils/api-form-converter';
 
-export default function CampaignForm({ campaignId }: { campaignId?: string }) {
+export default function CampaignForm({
+  campaignId,
+  isReadonly = false,
+}: {
+  campaignId?: string;
+  isReadonly?: boolean;
+}) {
   const router = useRouter();
 
   const {
     useSavedCampaign,
+    useWaitingApprovalCampaign,
     useSaveCampaign,
     useReSaveCampaign,
     usePublishNewCampaign,
@@ -53,7 +60,13 @@ export default function CampaignForm({ campaignId }: { campaignId?: string }) {
     campaignId || ''
   );
 
-  const { data: savedCampaignData, isLoading } = useSavedCampaign(campaignId);
+  const { data: savedCampaignData, isLoading: isSavedLoading } =
+    useSavedCampaign(isReadonly ? undefined : campaignId);
+  const { data: waitingApprovalData, isLoading: isWaitingLoading } =
+    useWaitingApprovalCampaign(isReadonly ? campaignId : undefined);
+
+  const campaignData = isReadonly ? waitingApprovalData : savedCampaignData;
+  const isLoading = isReadonly ? isWaitingLoading : isSavedLoading;
 
   const methods = useForm<CampaignFormData>({
     resolver: zodResolver(createCampaignSchema),
@@ -98,20 +111,20 @@ export default function CampaignForm({ campaignId }: { campaignId?: string }) {
   } = methods;
 
   useEffect(() => {
-    if (campaignId && !isLoading && !savedCampaignData) {
+    if (campaignId && !isLoading && !campaignData) {
       router.push('/brand/create-campaign');
       return;
     }
 
-    if (savedCampaignData && campaignId) {
+    if (campaignData && campaignId) {
       try {
-        const formData = transformApiDataToFormData(savedCampaignData);
+        const formData = transformApiDataToFormData(campaignData);
         reset(formData);
       } catch (error) {
         console.error('Failed to transform API data:', error);
       }
     }
-  }, [savedCampaignData, campaignId, reset, isLoading, router]);
+  }, [campaignData, campaignId, reset, isLoading, router]);
 
   const firstContents = usePlatformSelection(methods, 'firstContents');
   const secondContents = usePlatformSelection(methods, 'secondContents');
@@ -159,37 +172,43 @@ export default function CampaignForm({ campaignId }: { campaignId?: string }) {
   return (
     <FormProvider {...methods}>
       <div className="flex h-full w-full items-center justify-center bg-gray-100 p-[6.4rem]">
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={isReadonly ? undefined : handleSubmit(onSubmit)}>
           <div className="mb-[5.8rem] bg-gray-100">
             <div className="flex min-h-[260.4rem] w-[84rem] flex-col gap-[4.8rem] bg-white px-[9.6rem] py-[4.8rem]">
               <h3 className="title2 font-[700] text-gray-800">
                 {t('pageTitle')}
               </h3>
-              <CampaignInfo />
-              <CampaignStartInfo />
-              <CampaignEndInfo />
-              <CampaignWinnerAnnounce />
-              <CampaignDueDate />
+              <CampaignInfo isReadonly={isReadonly} />
+              <CampaignStartInfo isReadonly={isReadonly} />
+              <CampaignEndInfo isReadonly={isReadonly} />
+              <CampaignWinnerAnnounce isReadonly={isReadonly} />
+              <CampaignDueDate isReadonly={isReadonly} />
               <FormSection
                 required
                 title={t('conditions.joinConditionTitle')}
                 description={t('conditions.joinConditionDescription')}
               >
-                <DynamicInput fieldName="joinConditions" />
+                <DynamicInput
+                  fieldName="joinConditions"
+                  isReadonly={isReadonly}
+                />
               </FormSection>
               <FormSection
                 required
                 title={t('conditions.submitConditionTitle')}
                 description={t('conditions.submitConditionDescription')}
               >
-                <DynamicInput fieldName="submitConditions" />
+                <DynamicInput
+                  fieldName="submitConditions"
+                  isReadonly={isReadonly}
+                />
               </FormSection>
               <FormSection
                 required
                 title={t('conditions.rewardTitle')}
                 description={t('conditions.rewardDescription')}
               >
-                <DynamicInput fieldName="joinRewards" />
+                <DynamicInput fieldName="joinRewards" isReadonly={isReadonly} />
               </FormSection>
               <FormSection
                 title={t('platform.title')}
@@ -204,7 +223,9 @@ export default function CampaignForm({ campaignId }: { campaignId?: string }) {
                           type={platform}
                           selected={firstContents.selectStatus[platform]}
                           onClick={firstContents.toggleChip}
-                          disabled={firstContents.isDisabled(platform)}
+                          disabled={
+                            isReadonly || secondContents.isDisabled(platform)
+                          }
                         />
                       )
                     )}
@@ -224,7 +245,9 @@ export default function CampaignForm({ campaignId }: { campaignId?: string }) {
                           type={platform}
                           selected={secondContents.selectStatus[platform]}
                           onClick={secondContents.toggleChip}
-                          disabled={secondContents.isDisabled(platform)}
+                          disabled={
+                            isReadonly || secondContents.isDisabled(platform)
+                          }
                         />
                       )
                     )}
@@ -236,31 +259,33 @@ export default function CampaignForm({ campaignId }: { campaignId?: string }) {
                   </p>
                 )}
               </FormSection>
-              <CampaignUploadMedia />
+              <CampaignUploadMedia isReadonly={isReadonly} />
             </div>
-            <div className="mt-[3.2rem] flex gap-[1.6rem]">
-              <Button
-                type="button"
-                variant="outline"
-                size="lg"
-                color="secondary"
-                className="w-[41.2rem]"
-                onClick={handleSave}
-                disabled={isMutating}
-              >
-                {t('buttons.save')}
-              </Button>
-              <Button
-                type="submit"
-                variant="filled"
-                size="lg"
-                color="primary"
-                className="w-[41.2rem]"
-                disabled={isMutating}
-              >
-                {t('buttons.publish')}
-              </Button>
-            </div>
+            {!isReadonly && (
+              <div className="mt-[3.2rem] flex gap-[1.6rem]">
+                <Button
+                  type="button"
+                  variant="outline"
+                  size="lg"
+                  color="secondary"
+                  className="w-[41.2rem]"
+                  onClick={handleSave}
+                  disabled={isMutating}
+                >
+                  {t('buttons.save')}
+                </Button>
+                <Button
+                  type="submit"
+                  variant="filled"
+                  size="lg"
+                  color="primary"
+                  className="w-[41.2rem]"
+                  disabled={isMutating}
+                >
+                  {t('buttons.publish')}
+                </Button>
+              </div>
+            )}
           </div>
         </form>
       </div>

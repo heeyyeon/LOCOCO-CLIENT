@@ -13,7 +13,13 @@ import DragDropArea from 'components/drag-drop/DargDropArea';
 import { FormSection } from 'components/forms';
 import { CampaignFormData } from 'schema/create-campaign-schema';
 
-export default function CampaignUploadMedia() {
+interface CampaignUploadMediaProps {
+  isReadonly?: boolean;
+}
+
+export default function CampaignUploadMedia({
+  isReadonly = false,
+}: CampaignUploadMediaProps) {
   const {
     watch,
     setValue,
@@ -60,6 +66,8 @@ export default function CampaignUploadMedia() {
   }, [currentDetailUrls, detailPreviewFiles.length]);
 
   const handleRemoveExistingThumbnail = (index: number) => {
+    if (isReadonly) return;
+
     const updatedExisting = existingThumbnailUrls.filter((_, i) => i !== index);
     setExistingThumbnailUrls(updatedExisting);
 
@@ -69,6 +77,8 @@ export default function CampaignUploadMedia() {
   };
 
   const handleRemoveExistingDetail = (index: number) => {
+    if (isReadonly) return;
+
     const updatedExisting = existingDetailUrls.filter((_, i) => i !== index);
     setExistingDetailUrls(updatedExisting);
 
@@ -78,6 +88,8 @@ export default function CampaignUploadMedia() {
   };
 
   const handleThumbnailFilesChange = (files: File[]) => {
+    if (isReadonly) return;
+
     setThumbnailPreviewFiles(files);
 
     if (files.length > thumbnailPreviewFiles.length) {
@@ -118,6 +130,8 @@ export default function CampaignUploadMedia() {
   };
 
   const handleDetailFilesChange = (files: File[]) => {
+    if (isReadonly) return;
+
     setDetailPreviewFiles(files);
 
     if (files.length > detailPreviewFiles.length) {
@@ -172,9 +186,12 @@ export default function CampaignUploadMedia() {
           existingImageUrls={existingThumbnailUrls}
           handleVideoFilesChange={() => {}}
           maxFiles={5}
-          className={isUploading ? 'pointer-events-none opacity-50' : ''}
+          className={
+            isUploading || isReadonly ? 'pointer-events-none opacity-50' : ''
+          }
+          disabled={isReadonly}
         />
-        {errors.thumbnailFiles && (
+        {!isReadonly && errors.thumbnailFiles && (
           <p className="text-red caption3 font-[400]">
             {t(`errorMessage.${errors.thumbnailFiles.message}`)}
           </p>
@@ -192,9 +209,12 @@ export default function CampaignUploadMedia() {
           existingImageUrls={existingDetailUrls}
           handleVideoFilesChange={() => {}}
           maxFiles={15}
-          className={isUploading ? 'pointer-events-none opacity-50' : ''}
+          className={
+            isUploading || isReadonly ? 'pointer-events-none opacity-50' : ''
+          }
+          disabled={isReadonly}
         />
-        {errors.detailFiles && (
+        {!isReadonly && errors.detailFiles && (
           <p className="text-red caption3 font-[400]">
             {t(`errorMessage.${errors.detailFiles.message}`)}
           </p>

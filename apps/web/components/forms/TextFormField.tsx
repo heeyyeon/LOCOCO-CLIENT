@@ -20,6 +20,7 @@ interface TextFormFieldProps {
   mouseEvent?: boolean;
   handleClickSearch?: () => void;
   notice?: React.ReactNode;
+  isReadonly?: boolean;
 }
 
 export function TextFormField({
@@ -36,6 +37,7 @@ export function TextFormField({
   mouseEvent = false,
   handleClickSearch,
   notice,
+  isReadonly = false,
 }: TextFormFieldProps) {
   return (
     <div className={cn('flex items-center justify-between', className)}>
@@ -49,12 +51,13 @@ export function TextFormField({
         <div className="relative">
           <Input
             {...register}
-            placeholder={placeholder}
-            className="h-[4rem]"
-            disabled={mouseEvent}
+            placeholder={isReadonly ? undefined : placeholder}
+            className={cn('h-[4rem]', isReadonly && 'cursor-default')}
+            disabled={mouseEvent || isReadonly}
+            readOnly={isReadonly}
           />
 
-          {rightContent && (
+          {!isReadonly && rightContent && (
             <div
               onClick={onRightContentClick}
               className="absolute right-2 top-1/2 flex -translate-y-1/2 cursor-pointer items-center justify-center"
@@ -62,7 +65,7 @@ export function TextFormField({
               {rightContent}
             </div>
           )}
-          {!rightContent && showSearchIcon && (
+          {!isReadonly && !rightContent && showSearchIcon && (
             <button
               type="button"
               onClick={handleClickSearch}
@@ -73,8 +76,8 @@ export function TextFormField({
             </button>
           )}
         </div>
-        {error && <ErrorNotice message={error} />}
-        {!error && successMessage && (
+        {!isReadonly && error && <ErrorNotice message={error} />}
+        {!isReadonly && !error && successMessage && (
           <div className="mt-[0.2rem] flex items-center gap-[0.8rem]">
             <SvgCheckRound size={16} className="fill-white" />
             <span className="caption3 text-green font-normal">
@@ -82,7 +85,7 @@ export function TextFormField({
             </span>
           </div>
         )}
-        {notice}
+        {!isReadonly && notice}
       </div>
     </div>
   );

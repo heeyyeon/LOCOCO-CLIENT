@@ -7,6 +7,7 @@ import {
 import { useRouter } from 'i18n/navigation';
 import { getErrorMessage } from 'utils/getErrorMessage';
 
+import { getWaitingApprovalCampaign } from '../api';
 import {
   getSavedCampaignForm,
   reSaveCampaignForm,
@@ -17,12 +18,28 @@ import {
 
 export const useCampaignFormAPI = () => {
   const router = useRouter();
+
   const useSavedCampaign = (id?: string) => {
     const { data, isLoading, isError } =
       useQuery<ApiResponseCampaignBasicResponse>({
         queryKey: ['saved-campaign', id],
         queryFn: () => getSavedCampaignForm(id!),
         enabled: !!id,
+      });
+
+    return {
+      data: data?.data,
+      isLoading,
+      isError,
+    };
+  };
+
+  const useWaitingApprovalCampaign = (campaignId?: string) => {
+    const { data, isLoading, isError } =
+      useQuery<ApiResponseCampaignBasicResponse>({
+        queryKey: ['waiting-approval-campaign', campaignId],
+        queryFn: () => getWaitingApprovalCampaign({ campaignId: campaignId! }),
+        enabled: !!campaignId,
       });
 
     return {
@@ -94,6 +111,7 @@ export const useCampaignFormAPI = () => {
 
   return {
     useSavedCampaign,
+    useWaitingApprovalCampaign,
     useSaveCampaign,
     useReSaveCampaign,
     usePublishNewCampaign,
