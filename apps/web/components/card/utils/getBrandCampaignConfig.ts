@@ -41,6 +41,7 @@ export const CAMPAIGN_STATUS_CONFIG = {
   WAITING_APPROVAL: {
     chipContent: 'Pending',
     buttonLabel: '승인 대기 중',
-    routePath: (id: number) => `/brand/campaign-detail/${id}`,
+    routePath: (id: number) =>
+      `/brand/campaign-detail-readonly?campaignId=${id}`,
   },
 } as const;

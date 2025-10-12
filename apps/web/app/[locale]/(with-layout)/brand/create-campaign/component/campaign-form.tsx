@@ -60,13 +60,11 @@ export default function CampaignForm({
     campaignId || ''
   );
 
-  // isReadonly에 따라 다른 훅 사용
   const { data: savedCampaignData, isLoading: isSavedLoading } =
     useSavedCampaign(isReadonly ? undefined : campaignId);
   const { data: waitingApprovalData, isLoading: isWaitingLoading } =
     useWaitingApprovalCampaign(isReadonly ? campaignId : undefined);
 
-  // 실제 사용할 데이터와 로딩 상태
   const campaignData = isReadonly ? waitingApprovalData : savedCampaignData;
   const isLoading = isReadonly ? isWaitingLoading : isSavedLoading;
 
