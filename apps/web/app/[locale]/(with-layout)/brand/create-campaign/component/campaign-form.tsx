@@ -46,6 +46,7 @@ export default function CampaignForm({
 
   const {
     useSavedCampaign,
+    useWaitingApprovalCampaign,
     useSaveCampaign,
     useReSaveCampaign,
     usePublishNewCampaign,
@@ -59,7 +60,15 @@ export default function CampaignForm({
     campaignId || ''
   );
 
-  const { data: savedCampaignData, isLoading } = useSavedCampaign(campaignId);
+  // isReadonly에 따라 다른 훅 사용
+  const { data: savedCampaignData, isLoading: isSavedLoading } =
+    useSavedCampaign(isReadonly ? undefined : campaignId);
+  const { data: waitingApprovalData, isLoading: isWaitingLoading } =
+    useWaitingApprovalCampaign(isReadonly ? campaignId : undefined);
+
+  // 실제 사용할 데이터와 로딩 상태
+  const campaignData = isReadonly ? waitingApprovalData : savedCampaignData;
+  const isLoading = isReadonly ? isWaitingLoading : isSavedLoading;
 
   const methods = useForm<CampaignFormData>({
     resolver: zodResolver(createCampaignSchema),
@@ -104,20 +113,20 @@ export default function CampaignForm({
   } = methods;
 
   useEffect(() => {
-    if (campaignId && !isLoading && !savedCampaignData) {
+    if (campaignId && !isLoading && !campaignData) {
       router.push('/brand/create-campaign');
       return;
     }
 
-    if (savedCampaignData && campaignId) {
+    if (campaignData && campaignId) {
       try {
-        const formData = transformApiDataToFormData(savedCampaignData);
+        const formData = transformApiDataToFormData(campaignData);
         reset(formData);
       } catch (error) {
         console.error('Failed to transform API data:', error);
       }
     }
-  }, [savedCampaignData, campaignId, reset, isLoading, router]);
+  }, [campaignData, campaignId, reset, isLoading, router]);
 
   const firstContents = usePlatformSelection(methods, 'firstContents');
   const secondContents = usePlatformSelection(methods, 'secondContents');
