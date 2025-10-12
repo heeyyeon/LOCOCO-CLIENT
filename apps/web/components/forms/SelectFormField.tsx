@@ -22,6 +22,7 @@ interface SelectFormFieldProps {
   children?: React.ReactNode;
   variant?: 'default' | 'reverse';
   value?: string;
+  isReadonly?: boolean;
 }
 
 export function SelectFormField({
@@ -36,11 +37,12 @@ export function SelectFormField({
   children,
   variant = 'default',
   value,
+  isReadonly = false,
 }: SelectFormFieldProps) {
   return (
     <div className={cn('flex items-center justify-between', className)}>
       <label className="body1 flex items-center font-bold text-gray-700">
-        {required && (
+        { required && (
           <span className="bg-red mr-[0.8rem] h-[0.6rem] w-[0.6rem] rounded-full" />
         )}
         {label}
@@ -50,25 +52,30 @@ export function SelectFormField({
           children
         ) : (
           <Select
-            placeholder={placeholder}
+            placeholder={isReadonly ? undefined : placeholder}
             options={options!}
             value={
               value
                 ? options!.find((option) => option.value === value)?.label
                 : undefined
             }
-            onValueChange={(selectedLabel) => {
-              const selectedOption = options!.find(
-                (option) => option.label === selectedLabel
-              );
-              if (selectedOption && onValueChange) {
-                onValueChange(selectedOption.value);
-              }
-            }}
+            onValueChange={
+              isReadonly
+                ? undefined
+                : (selectedLabel) => {
+                    const selectedOption = options!.find(
+                      (option) => option.label === selectedLabel
+                    );
+                    if (selectedOption && onValueChange) {
+                      onValueChange(selectedOption.value);
+                    }
+                  }
+            }
             size={size}
             variant={variant}
-            isError={!!error}
-            errorText={error}
+            isError={isReadonly ? false : !!error}
+            errorText={isReadonly ? undefined : error}
+            disabled={isReadonly}
           />
         )}
       </div>

@@ -9,7 +9,13 @@ import { timeOptions } from 'utils/time-options';
 
 import { Select } from '@lococo/design-system/select';
 
-export default function CampaignStartInfo() {
+interface CampaignStartInfoProps {
+  isReadonly?: boolean;
+}
+
+export default function CampaignStartInfo({
+  isReadonly = false,
+}: CampaignStartInfoProps) {
   const { AM_PM, HOURS, MINUTES } = timeOptions();
   const { months, years, days } = dateOptions();
   const {
@@ -40,8 +46,9 @@ export default function CampaignStartInfo() {
                 size="small"
                 options={months}
                 value={monthValue || undefined}
-                onValueChange={field.onChange}
-                placeholder="Month"
+                onValueChange={isReadonly ? undefined : field.onChange}
+                placeholder={isReadonly ? undefined : 'Month'}
+                disabled={isReadonly}
               />
             )}
           />
@@ -54,8 +61,9 @@ export default function CampaignStartInfo() {
                 size="small"
                 options={days}
                 value={dayValue || undefined}
-                onValueChange={field.onChange}
-                placeholder="Day"
+                onValueChange={isReadonly ? undefined : field.onChange}
+                placeholder={isReadonly ? undefined : 'Day'}
+                disabled={isReadonly}
               />
             )}
           />
@@ -68,21 +76,23 @@ export default function CampaignStartInfo() {
                 size="small"
                 options={years}
                 value={yearValue || undefined}
-                onValueChange={field.onChange}
-                placeholder="Year"
+                onValueChange={isReadonly ? undefined : field.onChange}
+                placeholder={isReadonly ? undefined : 'Year'}
+                disabled={isReadonly}
               />
             )}
           />
         </div>
-        {(errors.startDate?.month ||
-          errors.startDate?.day ||
-          errors.startDate?.year) && (
-          <p className="text-red caption3 font-[400]">
-            {t(
-              `errorMessage.${errors.startDate.month?.message || errors.startDate.day?.message || errors.startDate.year?.message}`
-            )}
-          </p>
-        )}
+        {!isReadonly &&
+          (errors.startDate?.month ||
+            errors.startDate?.day ||
+            errors.startDate?.year) && (
+            <p className="text-red caption3 font-[400]">
+              {t(
+                `errorMessage.${errors.startDate.month?.message || errors.startDate.day?.message || errors.startDate.year?.message}`
+              )}
+            </p>
+          )}
       </SelectFormField>
 
       <SelectFormField label={t('schedule.startTime')} required>
@@ -96,8 +106,9 @@ export default function CampaignStartInfo() {
                 size="small"
                 options={AM_PM}
                 value={periodValue || undefined}
-                onValueChange={field.onChange}
-                placeholder="AM/PM"
+                onValueChange={isReadonly ? undefined : field.onChange}
+                placeholder={isReadonly ? undefined : 'AM/PM'}
+                disabled={isReadonly}
               />
             )}
           />
@@ -110,8 +121,9 @@ export default function CampaignStartInfo() {
                 size="small"
                 options={HOURS}
                 value={hourValue || undefined}
-                onValueChange={field.onChange}
-                placeholder="Hour"
+                onValueChange={isReadonly ? undefined : field.onChange}
+                placeholder={isReadonly ? undefined : 'Hour'}
+                disabled={isReadonly}
               />
             )}
           />
@@ -124,19 +136,21 @@ export default function CampaignStartInfo() {
                 size="small"
                 options={MINUTES}
                 value={minuteValue || undefined}
-                onValueChange={field.onChange}
-                placeholder="Minute"
+                onValueChange={isReadonly ? undefined : field.onChange}
+                placeholder={isReadonly ? undefined : 'Minute'}
+                disabled={isReadonly}
               />
             )}
           />
         </div>
-        {(errors.startTime?.hour || errors.startTime?.minute) && (
-          <p className="text-red caption3 font-[400]">
-            {t(
-              `errorMessage.${errors.startTime.hour?.message || errors.startTime.minute?.message}`
-            )}
-          </p>
-        )}
+        {!isReadonly &&
+          (errors.startTime?.hour || errors.startTime?.minute) && (
+            <p className="text-red caption3 font-[400]">
+              {t(
+                `errorMessage.${errors.startTime.hour?.message || errors.startTime.minute?.message}`
+              )}
+            </p>
+          )}
       </SelectFormField>
     </section>
   );

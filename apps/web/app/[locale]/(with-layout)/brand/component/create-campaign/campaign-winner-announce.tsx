@@ -12,7 +12,13 @@ import { timeOptions } from 'utils/time-options';
 
 import { Select } from '@lococo/design-system/select';
 
-export default function CampaignWinnerAnnounce() {
+interface CampaignWinnerAnnounceProps {
+  isReadonly?: boolean;
+}
+
+export default function CampaignWinnerAnnounce({
+  isReadonly = false,
+}: CampaignWinnerAnnounceProps) {
   const { AM_PM, HOURS, MINUTES } = timeOptions();
   const { months, years, days } = dateOptions();
   const {
@@ -43,8 +49,9 @@ export default function CampaignWinnerAnnounce() {
                 size="small"
                 options={months}
                 value={monthValue || undefined}
-                onValueChange={field.onChange}
-                placeholder="Month"
+                onValueChange={isReadonly ? undefined : field.onChange}
+                placeholder={isReadonly ? undefined : 'Month'}
+                disabled={isReadonly}
               />
             )}
           />
@@ -57,8 +64,9 @@ export default function CampaignWinnerAnnounce() {
                 size="small"
                 options={days}
                 value={dayValue || undefined}
-                onValueChange={field.onChange}
-                placeholder="Day"
+                onValueChange={isReadonly ? undefined : field.onChange}
+                placeholder={isReadonly ? undefined : 'Day'}
+                disabled={isReadonly}
               />
             )}
           />
@@ -71,21 +79,23 @@ export default function CampaignWinnerAnnounce() {
                 size="small"
                 options={years}
                 value={yearValue || undefined}
-                onValueChange={field.onChange}
-                placeholder="Year"
+                onValueChange={isReadonly ? undefined : field.onChange}
+                placeholder={isReadonly ? undefined : 'Year'}
+                disabled={isReadonly}
               />
             )}
           />
         </div>
-        {(errors.announceDate?.month ||
-          errors.announceDate?.day ||
-          errors.announceDate?.year) && (
-          <p className="text-red caption3 font-[400]">
-            {t(
-              `errorMessage.${errors.announceDate.month?.message || errors.announceDate.day?.message || errors.announceDate.year?.message}`
-            )}
-          </p>
-        )}
+        {!isReadonly &&
+          (errors.announceDate?.month ||
+            errors.announceDate?.day ||
+            errors.announceDate?.year) && (
+            <p className="text-red caption3 font-[400]">
+              {t(
+                `errorMessage.${errors.announceDate.month?.message || errors.announceDate.day?.message || errors.announceDate.year?.message}`
+              )}
+            </p>
+          )}
       </SelectFormField>
 
       <SelectFormField label={t('schedule.announceTime')} required>
@@ -99,8 +109,9 @@ export default function CampaignWinnerAnnounce() {
                 size="small"
                 options={AM_PM}
                 value={periodValue || undefined}
-                onValueChange={field.onChange}
-                placeholder="AM/PM"
+                onValueChange={isReadonly ? undefined : field.onChange}
+                placeholder={isReadonly ? undefined : 'AM/PM'}
+                disabled={isReadonly}
               />
             )}
           />
@@ -113,8 +124,9 @@ export default function CampaignWinnerAnnounce() {
                 size="small"
                 options={HOURS}
                 value={hourValue || undefined}
-                onValueChange={field.onChange}
-                placeholder="Hour"
+                onValueChange={isReadonly ? undefined : field.onChange}
+                placeholder={isReadonly ? undefined : 'Hour'}
+                disabled={isReadonly}
               />
             )}
           />
@@ -127,19 +139,21 @@ export default function CampaignWinnerAnnounce() {
                 size="small"
                 options={MINUTES}
                 value={minuteValue || undefined}
-                onValueChange={field.onChange}
-                placeholder="Minute"
+                onValueChange={isReadonly ? undefined : field.onChange}
+                placeholder={isReadonly ? undefined : 'Minute'}
+                disabled={isReadonly}
               />
             )}
           />
         </div>
-        {(errors.announceTime?.hour || errors.announceTime?.minute) && (
-          <p className="text-red caption3 font-[400]">
-            {t(
-              `errorMessage.${errors.announceTime.hour?.message || errors.announceTime.minute?.message}`
-            )}
-          </p>
-        )}
+        {!isReadonly &&
+          (errors.announceTime?.hour || errors.announceTime?.minute) && (
+            <p className="text-red caption3 font-[400]">
+              {t(
+                `errorMessage.${errors.announceTime.hour?.message || errors.announceTime.minute?.message}`
+              )}
+            </p>
+          )}
       </SelectFormField>
     </section>
   );
