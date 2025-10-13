@@ -1,6 +1,24 @@
 {
-  "aabc": "aabc",
-  "abc": "abc",
+  "metadata": {
+    "title": "Lococo | Campañas y Tienda de K-Beauty",
+    "description": "Conéctate con las mejores marcas de K-Beauty. Únete a la comunidad de creadores de Lococo y descubre oportunidades exclusivas para colaborar con las principales marcas de belleza coreana.",
+    "keywords": {
+      "Kbeauty": "",
+      "stylekorean": "",
+      "yesstyle": "",
+      "biodance": "",
+      "medicube": "",
+      "anua": "",
+      "beauty creator": "",
+      "giveaway": "",
+      "korean skincare": "",
+      "glassskin": "",
+      "Laneige": "",
+      "beauty of joseon": "",
+      "skin1004": "",
+      "centella": ""
+    }
+  },
   "brandApplicants": {
     "allSelect": "Seleccionar todo",
     "applicantsTable": {

@@ -1,6 +1,24 @@
 {
-  "aabc": "aabc",
-  "abc": "abc",
+  "metadata": {
+    "title": "Lococo | K-Beauty Campaigns & K-Beauty Store",
+    "description": "Get Matched with Top K-Beauty Brands. Join Lococo creator community and discover exclusive opportunities to collaborate with top K-beauty brands. ",
+    "keywords": {
+      "Kbeauty": "Kbeauty",
+      "stylekorean": "stylekorean",
+      "yesstyle": "yesstyle",
+      "biodance": "biodance",
+      "medicube": "medicube",
+      "anua": "anua",
+      "beauty creator": "beauty creator",
+      "giveaway": "giveaway",
+      "korean skincare": "korean skincare",
+      "glassskin": "glassskin",
+      "Laneige": "Laneige",
+      "beauty of joseon": "beauty of joseon",
+      "skin1004": "skin1004",
+      "centella": "centella"
+    }
+  },
   "brandApplicants": {
     "allSelect": "Select All",
     "applicantsTable": {
