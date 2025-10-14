@@ -105,7 +105,7 @@ export const useRoleSetup = (options?: UseRoleSetupOptions) => {
       const userInfo = await apiRequest<{
         data?: { role?: string };
       }>({
-        endPoint: '/api/auth/name',
+        endPoint: '/api/user/name',
       });
 
       if (!userInfo?.data?.role) return true;
