@@ -3,7 +3,7 @@ import { apiRequest } from 'app/api/apiRequest';
 
 export const getUserInfoForHeader = async () => {
   const response = await apiRequest<ApiResponseAfterLoginUserNameResponse>({
-    endPoint: '/api/auth/name',
+    endPoint: '/api/user/name',
   });
   return response.data;
 };
