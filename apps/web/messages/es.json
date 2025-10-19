@@ -322,7 +322,12 @@
   "card": {
     "campaignThumbnailImage": "Imagen en miniatura de la campaña",
     "card": "Tarjeta ",
-    "goToApply": "Aplica ahora"
+    "goToApply": "Aplica ahora",
+    "editDraft": "Editar borrador",
+    "viewContent": "Ver contenido",
+    "goToCampaign": "Ver campañas",
+    "viewApplicants": "Ver solicitantes",
+    "waitingApproval": "Aprobación pendiente"
   },
   "confirmSignupModal": {
     "confirmButton": "Está bien",
