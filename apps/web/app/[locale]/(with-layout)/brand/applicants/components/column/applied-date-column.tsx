@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { useFormatter } from 'next-intl';
+import { useFormatter, useTimeZone } from 'next-intl';
 
 import dayjs from 'dayjs';
 
@@ -11,7 +11,7 @@ export default function AppliedDateColumn({
 }) {
   const format = useFormatter();
   const date = dayjs(appliedDate).toDate();
-
+  const timeZone = useTimeZone();
   return (
     <div className="text-inter-body3 text-gray-800">
       <p>
@@ -19,6 +19,7 @@ export default function AppliedDateColumn({
           month: 'short',
           day: 'numeric',
           year: 'numeric',
+          timeZone: timeZone,
         })}
       </p>
       <p>
@@ -26,6 +27,7 @@ export default function AppliedDateColumn({
           hour12: false,
           hour: '2-digit',
           minute: '2-digit',
+          timeZone: timeZone,
         })}
       </p>
     </div>
