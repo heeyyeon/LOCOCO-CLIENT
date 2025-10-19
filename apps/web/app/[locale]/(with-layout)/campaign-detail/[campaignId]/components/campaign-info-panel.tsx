@@ -71,7 +71,7 @@ export default function CampaignInfoPanel({
 }: CampaignInfoPanelProps) {
   const t = useTranslations('campaignDetail');
   const format = useFormatter();
-  const timeZone = useTimeZone();
+  const timeZone = useTimeZone() || 'UTC';
 
   const router = useRouter();
   const params = useParams();
@@ -222,18 +222,17 @@ export default function CampaignInfoPanel({
       dayjs(applyStartDate).tz(timeZone).toDate()
   );
   console.log(
-    'applyDeadline: formatted timezone' +
-      format.dateTime(dayjs(applyDeadline).toDate(), {
+    'applyDeadline: tz timezone' +
+      format.dateTime(dayjs(applyStartDate).tz(timeZone).toDate(), {
         month: 'short',
         day: 'numeric',
         hour: 'numeric',
         minute: '2-digit',
-        timeZone: timeZone,
       })
   );
   console.log(
     'applyDeadline: formatted timezone tz(timeZone)' +
-      format.dateTime(dayjs(applyDeadline).tz(timeZone).toDate(), {
+      format.dateTime(dayjs(applyStartDate).tz(timeZone).toDate(), {
         month: 'short',
         day: 'numeric',
         hour: 'numeric',
@@ -294,21 +293,25 @@ export default function CampaignInfoPanel({
                     {t('applicationPeriod')}
                   </p>
                   <p className="text-inter-body3 text-gray-700">
-                    {format.dateTime(dayjs(applyStartDate).toDate(), {
-                      month: 'short',
-                      day: 'numeric',
-                      hour: 'numeric',
-                      minute: '2-digit',
-                      timeZone: timeZone,
-                    })}
+                    {format.dateTime(
+                      dayjs(applyStartDate).tz(timeZone).toDate(),
+                      {
+                        month: 'short',
+                        day: 'numeric',
+                        hour: 'numeric',
+                        minute: '2-digit',
+                      }
+                    )}
                     ~
-                    {format.dateTime(dayjs(applyDeadline).toDate(), {
-                      month: 'short',
-                      day: 'numeric',
-                      hour: 'numeric',
-                      minute: '2-digit',
-                      timeZone: timeZone,
-                    })}
+                    {format.dateTime(
+                      dayjs(applyDeadline).tz(timeZone).toDate(),
+                      {
+                        month: 'short',
+                        day: 'numeric',
+                        hour: 'numeric',
+                        minute: '2-digit',
+                      }
+                    )}
                   </p>
                 </div>
               </div>
@@ -323,13 +326,15 @@ export default function CampaignInfoPanel({
                     {t('resultAnnouncement')}
                   </p>
                   <p className="text-inter-body3 text-gray-700">
-                    {format.dateTime(dayjs(creatorAnnouncementDate).toDate(), {
-                      month: 'short',
-                      day: 'numeric',
-                      hour: 'numeric',
-                      minute: '2-digit',
-                      timeZone: timeZone,
-                    })}
+                    {format.dateTime(
+                      dayjs(creatorAnnouncementDate).tz(timeZone).toDate(),
+                      {
+                        month: 'short',
+                        day: 'numeric',
+                        hour: 'numeric',
+                        minute: '2-digit',
+                      }
+                    )}
                   </p>
                 </div>
               </div>
@@ -344,13 +349,15 @@ export default function CampaignInfoPanel({
                     {t('contentSubmissionPeriod')}
                   </p>
                   <p className="text-inter-body3 text-gray-700">
-                    {format.dateTime(dayjs(reviewSubmissionDeadline).toDate(), {
-                      month: 'short',
-                      day: 'numeric',
-                      hour: 'numeric',
-                      minute: '2-digit',
-                      timeZone: timeZone,
-                    })}
+                    {format.dateTime(
+                      dayjs(reviewSubmissionDeadline).tz(timeZone).toDate(),
+                      {
+                        month: 'short',
+                        day: 'numeric',
+                        hour: 'numeric',
+                        minute: '2-digit',
+                      }
+                    )}
                   </p>
                 </div>
               </div>
