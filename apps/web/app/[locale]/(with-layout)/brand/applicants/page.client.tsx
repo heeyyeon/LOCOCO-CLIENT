@@ -2,7 +2,12 @@
 
 import React, { useCallback, useEffect, useState } from 'react';
 
-import { useFormatter, useLocale, useTranslations } from 'next-intl';
+import {
+  useFormatter,
+  useLocale,
+  useTimeZone,
+  useTranslations,
+} from 'next-intl';
 import Image from 'next/image';
 import { notFound, useSearchParams } from 'next/navigation';
 
@@ -43,6 +48,8 @@ export default function BrandApplicantsPageClient({
 }: BrandApplicantsPageClientProps) {
   const format = useFormatter();
   const locale = useLocale();
+  const timeZone = useTimeZone();
+
   const t = useTranslations('brandApplicants');
 
   const router = useRouter();
@@ -290,6 +297,7 @@ export default function BrandApplicantsPageClient({
                         day: 'numeric',
                         hour: 'numeric',
                         minute: '2-digit',
+                        timeZone: timeZone,
                       }
                     )} ~ ${format.dateTime(
                       dayjs(selectedCampaign.endDate).toDate(),
@@ -298,6 +306,7 @@ export default function BrandApplicantsPageClient({
                         day: 'numeric',
                         hour: 'numeric',
                         minute: '2-digit',
+                        timeZone: timeZone,
                       }
                     )}`
                 : ''}

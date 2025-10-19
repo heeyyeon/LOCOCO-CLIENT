@@ -2,12 +2,14 @@
 
 import { useState } from 'react';
 
-import { useFormatter, useTranslations } from 'next-intl';
+import { useFormatter, useTimeZone, useTranslations } from 'next-intl';
 import { useParams } from 'next/navigation';
 
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { CAMPAIGN_REVIEW_KEYS } from 'app/[locale]/(with-layout)/my-page/constant/queryKey';
 import dayjs from 'dayjs';
+import timezone from 'dayjs/plugin/timezone';
+import utc from 'dayjs/plugin/utc';
 import { useRouter } from 'i18n/navigation';
 
 import { Button } from '@lococo/design-system/button';
@@ -24,6 +26,8 @@ import CampaignInfoGrayBorderBox from './campaign-info-gray-border-box';
 import { RejectModal } from './campaign-reject-modal';
 import { ConfirmCampaignSignUpModal } from './confirm-campaign-sign-up-modal';
 
+dayjs.extend(utc);
+dayjs.extend(timezone);
 /**
  * 캠페인 상태에 따른 표시 문자열을 반환하는 함수
  * @param status 서버에서 받은 캠페인 상태 코드
@@ -67,6 +71,7 @@ export default function CampaignInfoPanel({
 }: CampaignInfoPanelProps) {
   const t = useTranslations('campaignDetail');
   const format = useFormatter();
+  const timeZone = useTimeZone() || 'UTC';
 
   const router = useRouter();
   const params = useParams();
@@ -209,6 +214,33 @@ export default function CampaignInfoPanel({
     }
   };
 
+  // prod 환경에서의 timezone 확인 용도
+  console.log(timeZone, 'timeZone');
+  console.log('applyStartDate: toDate()' + dayjs(applyStartDate).toDate());
+  console.log(
+    'applyStartDate: tz(timeZone) toDate()' +
+      dayjs(applyStartDate).tz(timeZone).toDate()
+  );
+  console.log(
+    'applyDeadline: tz timezone' +
+      format.dateTime(dayjs(applyStartDate).tz(timeZone).toDate(), {
+        month: 'short',
+        day: 'numeric',
+        hour: 'numeric',
+        minute: '2-digit',
+      })
+  );
+  console.log(
+    'applyDeadline: formatted timezone tz(timeZone)' +
+      format.dateTime(dayjs(applyStartDate).tz(timeZone).toDate(), {
+        month: 'short',
+        day: 'numeric',
+        hour: 'numeric',
+        minute: '2-digit',
+        timeZone: timeZone,
+      })
+  );
+
   return (
     <div className="scrollbar-hide flex h-[636px] w-[45.6rem] overflow-x-hidden bg-white">
       <div className="flex flex-col gap-[12px] md:gap-[16px]">
@@ -261,19 +293,25 @@ export default function CampaignInfoPanel({
                     {t('applicationPeriod')}
                   </p>
                   <p className="text-inter-body3 text-gray-700">
-                    {format.dateTime(dayjs(applyStartDate).toDate(), {
-                      month: 'short',
-                      day: 'numeric',
-                      hour: 'numeric',
-                      minute: '2-digit',
-                    })}
+                    {format.dateTime(
+                      dayjs(applyStartDate).tz(timeZone).toDate(),
+                      {
+                        month: 'short',
+                        day: 'numeric',
+                        hour: 'numeric',
+                        minute: '2-digit',
+                      }
+                    )}
                     ~
-                    {format.dateTime(dayjs(applyDeadline).toDate(), {
-                      month: 'short',
-                      day: 'numeric',
-                      hour: 'numeric',
-                      minute: '2-digit',
-                    })}
+                    {format.dateTime(
+                      dayjs(applyDeadline).tz(timeZone).toDate(),
+                      {
+                        month: 'short',
+                        day: 'numeric',
+                        hour: 'numeric',
+                        minute: '2-digit',
+                      }
+                    )}
                   </p>
                 </div>
               </div>
@@ -288,12 +326,15 @@ export default function CampaignInfoPanel({
                     {t('resultAnnouncement')}
                   </p>
                   <p className="text-inter-body3 text-gray-700">
-                    {format.dateTime(dayjs(creatorAnnouncementDate).toDate(), {
-                      month: 'short',
-                      day: 'numeric',
-                      hour: 'numeric',
-                      minute: '2-digit',
-                    })}
+                    {format.dateTime(
+                      dayjs(creatorAnnouncementDate).tz(timeZone).toDate(),
+                      {
+                        month: 'short',
+                        day: 'numeric',
+                        hour: 'numeric',
+                        minute: '2-digit',
+                      }
+                    )}
                   </p>
                 </div>
               </div>
@@ -308,12 +349,15 @@ export default function CampaignInfoPanel({
                     {t('contentSubmissionPeriod')}
                   </p>
                   <p className="text-inter-body3 text-gray-700">
-                    {format.dateTime(dayjs(reviewSubmissionDeadline).toDate(), {
-                      month: 'short',
-                      day: 'numeric',
-                      hour: 'numeric',
-                      minute: '2-digit',
-                    })}
+                    {format.dateTime(
+                      dayjs(reviewSubmissionDeadline).tz(timeZone).toDate(),
+                      {
+                        month: 'short',
+                        day: 'numeric',
+                        hour: 'numeric',
+                        minute: '2-digit',
+                      }
+                    )}
                   </p>
                 </div>
               </div>
