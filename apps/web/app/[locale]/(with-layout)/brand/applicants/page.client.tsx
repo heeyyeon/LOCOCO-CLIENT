@@ -2,7 +2,12 @@
 
 import React, { useCallback, useEffect, useState } from 'react';
 
-import { useFormatter, useTranslations } from 'next-intl';
+import {
+  useFormatter,
+  useLocale,
+  useTimeZone,
+  useTranslations,
+} from 'next-intl';
 import Image from 'next/image';
 import { notFound, useSearchParams } from 'next/navigation';
 
@@ -42,6 +47,9 @@ export default function BrandApplicantsPageClient({
   campaignInfos,
 }: BrandApplicantsPageClientProps) {
   const format = useFormatter();
+  const locale = useLocale();
+  const timeZone = useTimeZone();
+
   const t = useTranslations('brandApplicants');
 
   const router = useRouter();
@@ -276,11 +284,31 @@ export default function BrandApplicantsPageClient({
             <SvgCalender className="size-[2rem] text-gray-600" />
             <p className="text-inter-body3 text-gray-600">
               {selectedCampaign?.startDate && selectedCampaign?.endDate
-                ? koDateRangeFormatter(
-                    selectedCampaign.startDate,
-                    selectedCampaign.endDate,
-                    format
-                  )
+                ? locale === 'ko'
+                  ? koDateRangeFormatter(
+                      selectedCampaign.startDate,
+                      selectedCampaign.endDate,
+                      format
+                    )
+                  : `${format.dateTime(
+                      dayjs(selectedCampaign.startDate).toDate(),
+                      {
+                        month: 'short',
+                        day: 'numeric',
+                        hour: 'numeric',
+                        minute: '2-digit',
+                        timeZone: timeZone,
+                      }
+                    )} ~ ${format.dateTime(
+                      dayjs(selectedCampaign.endDate).toDate(),
+                      {
+                        month: 'short',
+                        day: 'numeric',
+                        hour: 'numeric',
+                        minute: '2-digit',
+                        timeZone: timeZone,
+                      }
+                    )}`
                 : ''}
             </p>
           </div>
