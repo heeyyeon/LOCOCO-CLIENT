@@ -1,4 +1,4 @@
-import { apiRequest } from 'app/api/apiRequest';
+import { apiRequest } from '../app/api/apiRequest';
 
 interface MediaUrl {
   mediaUrl: string[];
