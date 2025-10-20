@@ -6,6 +6,7 @@ import localFont from 'next/font/local';
 import { notFound } from 'next/navigation';
 
 import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google';
+import TimezoneInjector from 'components/timezone-injector';
 
 import { Providers } from '../../components/providers';
 import { routing } from '../../i18n/routing';
@@ -115,6 +116,7 @@ export default async function RootLayout({
       <body
         className={`${notoSansJP.variable} ${pretendard.variable} ${inter.variable} ${notoSansKR.variable} w-full`}
       >
+        <TimezoneInjector />
         <NextIntlClientProvider
           locale={locale}
           messages={messages}
