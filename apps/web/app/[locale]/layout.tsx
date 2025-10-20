@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { NextIntlClientProvider, hasLocale } from 'next-intl';
-import { getTimeZone, setRequestLocale } from 'next-intl/server';
+import { setRequestLocale } from 'next-intl/server';
 import { Inter, Noto_Sans_JP, Noto_Sans_KR } from 'next/font/google';
 import localFont from 'next/font/local';
 import { notFound } from 'next/navigation';
@@ -100,7 +100,9 @@ export default async function RootLayout({
   params: Promise<{ locale: string }>;
 }>) {
   const { locale } = await params;
-  const timeZone = await getTimeZone();
+  const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+
+  console.log(timeZone);
 
   if (!hasLocale(routing.locales, locale)) {
     notFound();
