@@ -103,7 +103,7 @@ export default async function RootLayout({
   const { locale } = await params;
   const timeZone = await getTimeZone();
   const messages = await getMessages();
-  console.log(messages, 'messages');
+
   if (!hasLocale(routing.locales, locale)) {
     notFound();
   }

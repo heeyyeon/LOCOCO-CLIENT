@@ -31,12 +31,12 @@ export const CAMPAIGN_STATUS_CONFIG = {
   RECRUITING: {
     chipContent: 'Active',
     buttonLabelKey: 'viewApplicants',
-    routePath: (id: number) => `/brand/applicants/${id}`,
+    routePath: (id: number) => `/brand/applicants?campaignId=${id}`,
   },
   RECRUITMENT_CLOSED: {
     chipContent: 'Active',
     buttonLabelKey: 'viewApplicants',
-    routePath: (id: number) => `/brand/applicants/${id}`,
+    routePath: (id: number) => `/brand/applicants?campaignId=${id}`,
   },
   WAITING_APPROVAL: {
     chipContent: 'Pending',
