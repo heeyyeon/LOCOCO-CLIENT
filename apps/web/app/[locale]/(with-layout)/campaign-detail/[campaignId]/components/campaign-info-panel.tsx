@@ -222,7 +222,7 @@ export default function CampaignInfoPanel({
       dayjs(applyStartDate).tz(timeZone).toDate()
   );
   console.log(
-    'applyDeadline: tz timezone' +
+    'applyStartDate: tz timezone' +
       format.dateTime(dayjs(applyStartDate).tz(timeZone).toDate(), {
         month: 'short',
         day: 'numeric',
@@ -231,7 +231,7 @@ export default function CampaignInfoPanel({
       })
   );
   console.log(
-    'applyDeadline: formatted timezone tz(timeZone)' +
+    'applyStartDate: formatted timezone tz(timeZone)' +
       format.dateTime(dayjs(applyStartDate).tz(timeZone).toDate(), {
         month: 'short',
         day: 'numeric',
