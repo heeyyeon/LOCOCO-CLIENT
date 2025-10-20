@@ -55,6 +55,6 @@ export const submitSavedCampaignForm = async (
     method: 'PATCH',
     data: formData,
   });
-  console.log(response, 'response');
+
   return response;
 };
