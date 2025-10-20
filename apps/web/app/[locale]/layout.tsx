@@ -1,11 +1,12 @@
 import type { Metadata } from 'next';
-import { NextIntlClientProvider, hasLocale } from 'next-intl';
-import { getTimeZone, setRequestLocale } from 'next-intl/server';
+import { hasLocale } from 'next-intl';
+import { getMessages, setRequestLocale } from 'next-intl/server';
 import { Inter, Noto_Sans_JP, Noto_Sans_KR } from 'next/font/google';
 import localFont from 'next/font/local';
 import { notFound } from 'next/navigation';
 
 import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google';
+import NextIntlClientCustomizedProvider from 'components/next-intl-client-provider';
 
 import { Providers } from '../../components/providers';
 import { routing } from '../../i18n/routing';
@@ -100,8 +101,8 @@ export default async function RootLayout({
   params: Promise<{ locale: string }>;
 }>) {
   const { locale } = await params;
-  const timeZone = await getTimeZone();
-
+  const messages = await getMessages();
+  console.log(messages, 'messages');
   if (!hasLocale(routing.locales, locale)) {
     notFound();
   }
@@ -114,9 +115,9 @@ export default async function RootLayout({
       <body
         className={`${notoSansJP.variable} ${pretendard.variable} ${inter.variable} ${notoSansKR.variable} w-full`}
       >
-        <NextIntlClientProvider locale={locale} timeZone={timeZone}>
+        <NextIntlClientCustomizedProvider locale={locale} messages={messages}>
           <Providers>{children}</Providers>
-        </NextIntlClientProvider>
+        </NextIntlClientCustomizedProvider>
       </body>
     </html>
   );
