@@ -1237,6 +1237,24 @@ export interface TrendsYoutubeResponse {
   uploadedAt: string;
 }
 
+export interface AfterLoginUserNameResponse {
+  /** 로그인 후 표시되는 이름 */
+  displayName: string;
+  /**
+   * 해당 사용자 역할
+   * @example "BRAND"
+   */
+  role: "PENDING" | "CUSTOMER" | "CREATOR" | "BRAND" | "ADMIN";
+}
+
+export interface ApiResponseAfterLoginUserNameResponse {
+  success?: boolean;
+  /** @format int32 */
+  status?: number;
+  message?: string;
+  data?: AfterLoginUserNameResponse;
+}
+
 export interface UserIdCheckRequest {
   /**
    * @minLength 1
@@ -2823,24 +2841,6 @@ export interface BrandDashboardCampaignResponse {
    * @example 22
    */
   tiktokVideoCount: number;
-}
-
-export interface AfterLoginUserNameResponse {
-  /** 로그인 후 표시되는 이름 */
-  displayName: string;
-  /**
-   * 해당 사용자 역할
-   * @example "BRAND"
-   */
-  role: "PENDING" | "CUSTOMER" | "CREATOR" | "BRAND" | "ADMIN";
-}
-
-export interface ApiResponseAfterLoginUserNameResponse {
-  success?: boolean;
-  /** @format int32 */
-  status?: number;
-  message?: string;
-  data?: AfterLoginUserNameResponse;
 }
 
 export interface ApiResponseLineLoginResponse {
