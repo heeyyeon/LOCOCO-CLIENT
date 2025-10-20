@@ -1,4 +1,4 @@
-import { getServerCookie } from 'utils/action/cookie';
+import { getServerCookie } from '../../utils/action/cookie';
 
 type RequestMethod = 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH';
 
