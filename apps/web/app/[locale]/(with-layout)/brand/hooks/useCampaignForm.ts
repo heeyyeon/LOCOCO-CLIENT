@@ -1,4 +1,4 @@
-import { useMutation, useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import {
   ApiResponseCampaignBasicResponse,
   CampaignDraftRequest,
@@ -18,6 +18,7 @@ import {
 
 export const useCampaignFormAPI = () => {
   const router = useRouter();
+  const queryClient = useQueryClient();
 
   const useSavedCampaign = (id?: string) => {
     const { data, isLoading, isError } =
@@ -54,6 +55,7 @@ export const useCampaignFormAPI = () => {
       mutationFn: (formData: CampaignDraftRequest) =>
         saveCampaignForm(formData),
       onSuccess: () => {
+        queryClient.invalidateQueries({ queryKey: ['brand', 'campaigns'] });
         alert('임시저장 완료');
         router.push('/brand');
       },
@@ -69,6 +71,8 @@ export const useCampaignFormAPI = () => {
       mutationFn: (formData: CampaignDraftRequest) =>
         reSaveCampaignForm(formData, id),
       onSuccess: () => {
+        queryClient.invalidateQueries({ queryKey: ['brand', 'campaigns'] });
+        queryClient.invalidateQueries({ queryKey: ['saved-campaign', id] });
         alert('임시저장 완료');
         router.push('/brand');
       },
@@ -84,6 +88,7 @@ export const useCampaignFormAPI = () => {
       mutationFn: (formData: CampaignPublishRequest) =>
         submitCampaignForm(formData),
       onSuccess: () => {
+        queryClient.invalidateQueries({ queryKey: ['brand', 'campaigns'] });
         alert('캠페인 생성 완료');
         router.push('/brand');
       },
@@ -99,6 +104,11 @@ export const useCampaignFormAPI = () => {
       mutationFn: (formData: CampaignPublishRequest) =>
         submitSavedCampaignForm(formData, id),
       onSuccess: () => {
+        queryClient.invalidateQueries({ queryKey: ['brand', 'campaigns'] });
+        queryClient.invalidateQueries({ queryKey: ['saved-campaign', id] });
+        queryClient.invalidateQueries({
+          queryKey: ['waiting-approval-campaign', id],
+        });
         alert('캠페인 생성 완료');
         router.push('/brand');
       },
