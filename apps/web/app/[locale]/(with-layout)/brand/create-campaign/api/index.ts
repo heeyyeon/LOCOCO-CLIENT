@@ -52,8 +52,9 @@ export const submitSavedCampaignForm = async (
 ): Promise<ApiResponseCampaignBasicResponse> => {
   const response = await apiRequest<ApiResponseCampaignBasicResponse>({
     endPoint: `/api/brands/my/campaigns/${id}/publish`,
-    method: 'POST',
+    method: 'PATCH',
     data: formData,
   });
+
   return response;
 };

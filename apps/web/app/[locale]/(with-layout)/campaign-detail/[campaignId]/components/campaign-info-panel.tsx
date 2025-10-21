@@ -214,7 +214,7 @@ export default function CampaignInfoPanel({
     }
   };
 
-  // prod 환경에서의 timezone 확인 용도
+  // TODO: 추후삭제 - prod 환경에서의 timezone 확인 용도
   console.log(timeZone, 'timeZone');
   console.log('applyStartDate: toDate()' + dayjs(applyStartDate).toDate());
   console.log(
