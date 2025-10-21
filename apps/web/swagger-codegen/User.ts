@@ -10,12 +10,32 @@
  * ---------------------------------------------------------------
  */
 
-import { ApiResponseVoid, UserIdCheckRequest } from "./data-contracts";
+import {
+  ApiResponseAfterLoginUserNameResponse,
+  ApiResponseVoid,
+  UserIdCheckRequest,
+} from "./data-contracts";
 import { HttpClient, RequestParams } from "./http-client";
 
 export class User<
   SecurityDataType = unknown,
 > extends HttpClient<SecurityDataType> {
+  /**
+   * No description
+   *
+   * @tags USER
+   * @name GetUserDisplayName
+   * @summary 로그인한 사용자의 이름을 표시하는 API입니다.
+   * @request GET:/api/user/name
+   * @secure
+   */
+  getUserDisplayName = (params: RequestParams = {}) =>
+    this.request<ApiResponseAfterLoginUserNameResponse, any>({
+      path: `/api/user/name`,
+      method: "GET",
+      secure: true,
+      ...params,
+    });
   /**
    * No description
    *

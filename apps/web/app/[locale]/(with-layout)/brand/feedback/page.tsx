@@ -28,7 +28,7 @@ export default function Page() {
   const [error, setError] = useState('');
   const [isDeliveryModalOpen, setIsDeliveryModalOpen] = useState(false);
   const [isSaveFormModalOpen, setIsSaveFormModalOpen] = useState(false);
-  console.log(review);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setBrandNote(e.target.value);
   };

@@ -11,7 +11,6 @@
  */
 
 import {
-  ApiResponseAfterLoginUserNameResponse,
   ApiResponseGoogleLoginResponse,
   ApiResponseJwtLoginResponse,
   ApiResponseLineLoginResponse,
@@ -91,22 +90,6 @@ export class Auth<
       body: data,
       secure: true,
       type: ContentType.Json,
-      ...params,
-    });
-  /**
-   * No description
-   *
-   * @tags AUTH
-   * @name GetUserDisplayName
-   * @summary 로그인한 사용자의 이름을 표시하는 API입니다.
-   * @request GET:/api/auth/name
-   * @secure
-   */
-  getUserDisplayName = (params: RequestParams = {}) =>
-    this.request<ApiResponseAfterLoginUserNameResponse, any>({
-      path: `/api/auth/name`,
-      method: "GET",
-      secure: true,
       ...params,
     });
   /**
