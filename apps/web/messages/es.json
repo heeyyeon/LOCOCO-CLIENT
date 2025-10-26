@@ -322,11 +322,11 @@
   "card": {
     "campaignThumbnailImage": "Imagen en miniatura de la campaña",
     "card": "Tarjeta ",
-    "goToApply": "Aplica ahora",
     "editDraft": "Editar borrador",
-    "viewContent": "Ver contenido",
+    "goToApply": "Aplica ahora",
     "goToCampaign": "Ver campañas",
     "viewApplicants": "Ver solicitantes",
+    "viewContent": "Ver contenido",
     "waitingApproval": "Aprobación pendiente"
   },
   "confirmSignupModal": {
@@ -633,6 +633,26 @@
   "main": {
     "kBeautyCampaigns": "Campañas de K-Beauty",
     "openingSoon": "Próximamente"
+  },
+  "metadata": {
+    "description": "Conéctate con las mejores marcas de K-Beauty. Únete a la comunidad de creadores de Lococo y descubre oportunidades exclusivas para colaborar con las principales marcas de belleza coreana.",
+    "keywords": {
+      "anua": "anua",
+      "beautyCreator": "ugc creador",
+      "beautyOfJoseon": "beauty of joseon",
+      "biodance": "biodance",
+      "centella": "centella",
+      "giveaway": "gratis ",
+      "glassskin": "glassskin",
+      "Kbeauty": "Kbeauty",
+      "koreanSkincare": "korean skincare",
+      "laneige": "Laneige",
+      "medicube": "medicube",
+      "skin1004": "skin1004",
+      "stylekorean": "stylekorean",
+      "yesstyle": "yesstyle"
+    },
+    "title": "Lococo | Campañas y Tienda de K-Beauty"
   },
   "myPage": {
     "addressModal": {
