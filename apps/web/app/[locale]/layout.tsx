@@ -1,6 +1,11 @@
 import type { Metadata } from 'next';
 import { NextIntlClientProvider, hasLocale } from 'next-intl';
-import { getMessages, getTimeZone, setRequestLocale } from 'next-intl/server';
+import {
+  getMessages,
+  getTimeZone,
+  getTranslations,
+  setRequestLocale,
+} from 'next-intl/server';
 import { Inter, Noto_Sans_JP, Noto_Sans_KR } from 'next/font/google';
 import localFont from 'next/font/local';
 import { notFound } from 'next/navigation';
@@ -40,59 +45,6 @@ const notoSansKR = Noto_Sans_KR({
   display: 'swap',
 });
 
-export const metadata: Metadata = {
-  title: {
-    default: 'Lococo',
-    template: 'Lococo | %s',
-  },
-  description:
-    '日本最大級の韓国コスメレビューサイトLococo(ロココ)。話題のK-ビューティー商品をチェックして、Qoo10でそのまま購入可能!',
-  keywords: [
-    'Lococo',
-    'ロココ',
-    'Kビューティー',
-    'ダイソー',
-    'オリーブヤング',
-    "d'Alba",
-    'anua',
-    'medicube',
-    'VT cosmetics',
-    'rom&nd',
-    'round lab',
-    '韓国メイク',
-    'Lips',
-    '@cosme',
-  ],
-  verification: {
-    google: 'kSp4ZBLdAObw2vrbpzFmceC7CaPyk4m15BLxUpbu',
-  },
-  robots: {
-    index: true,
-    follow: true,
-    nocache: false,
-    googleBot: {
-      index: true,
-      follow: true,
-      noimageindex: false,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
-  },
-  openGraph: {
-    type: 'website',
-    title: {
-      default: 'Lococo',
-      template: ' %s | Lococo',
-    },
-    description: 'Kコスメと出会う 一番の近道',
-    images: '/images/home-banner.png',
-    url: 'https://lococo.beauty',
-    siteName: 'Lococo',
-    locale: 'ja_JP',
-  },
-};
-
 export default async function RootLayout({
   children,
   params,
@@ -127,4 +79,16 @@ export default async function RootLayout({
       </body>
     </html>
   );
+}
+
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations('metadata');
+  const messages = await getMessages();
+  const keywords = Object.values(messages.metadata.keywords) as string[];
+
+  return {
+    title: t('title'),
+    description: t('description'),
+    keywords: keywords,
+  };
 }

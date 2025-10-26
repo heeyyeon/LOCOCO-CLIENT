@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
 import { getCampaignDetail } from './apis';
@@ -38,4 +39,21 @@ export default async function CampaignDetail({
       creatorRoleInfo={data.creatorRoleInfo}
     />
   );
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ campaignId: string }>;
+}): Promise<Metadata> {
+  const campaignId = (await params).campaignId;
+  const campaignDetail = await getCampaignDetail(campaignId);
+  return {
+    title: `Lococo | ${campaignDetail.title}`,
+    openGraph: {
+      title: campaignDetail.title,
+      // TODO: 로코코 OG IMAGE 추가되면 빈문자열 교체
+      images: campaignDetail.thumbnailImages[0]?.url || '',
+    },
+  };
 }

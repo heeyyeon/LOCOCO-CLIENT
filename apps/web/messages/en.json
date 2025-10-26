@@ -322,11 +322,11 @@
   "card": {
     "campaignThumbnailImage": "campaign thumbnail image",
     "card": "Card",
-    "goToApply": "Apply Now ",
     "editDraft": "Edit Draft",
-    "viewContent": "View Content",
+    "goToApply": "Apply Now ",
     "goToCampaign": "View Campaigns",
     "viewApplicants": "View Applicants",
+    "viewContent": "View Content",
     "waitingApproval": "Pending Approval"
   },
   "confirmSignupModal": {
@@ -633,6 +633,26 @@
   "main": {
     "kBeautyCampaigns": "K-Beauty Campaigns",
     "openingSoon": "Opening Soon"
+  },
+  "metadata": {
+    "description": "Get Matched with Top K-Beauty Brands. Join Lococo creator community and discover exclusive opportunities to collaborate with top K-beauty brands. ",
+    "keywords": {
+      "anua": "anua",
+      "beautyCreator": "beauty creator",
+      "beautyOfJoseon": "beauty of joseon",
+      "biodance": "biodance",
+      "centella": "centella",
+      "giveaway": "giveaway",
+      "glassskin": "glassskin",
+      "Kbeauty": "Kbeauty",
+      "koreanSkincare": "korean skincare",
+      "laneige": "Laneige",
+      "medicube": "medicube",
+      "skin1004": "skin1004",
+      "stylekorean": "stylekorean",
+      "yesstyle": "yesstyle"
+    },
+    "title": "Lococo | K-Beauty Campaigns & K-Beauty Store"
   },
   "myPage": {
     "addressModal": {
