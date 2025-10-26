@@ -84,11 +84,11 @@ export default async function RootLayout({
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations('metadata');
   const messages = await getMessages();
-  const keywords = messages.metadata.keywords as string[];
+  const keywords = Object.values(messages.metadata.keywords) as string[];
 
   return {
     title: t('title'),
     description: t('description'),
-    keywords,
+    keywords: keywords,
   };
 }

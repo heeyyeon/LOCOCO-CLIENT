@@ -1,24 +1,6 @@
 {
-  "metadata": {
-    "title": "Lococo | K-뷰티와 해외 크리에이터가 만나는 공간, 로코코",
-    "description": "K-뷰티 브랜드의 글로벌 인큐베이터, 로코코. 로코코에서 가장 쉽고 효과적으로 브랜드를 알려보세요. 로코코는 K-뷰티 인디브랜드의 가장 든든한 해외 진출 파트너입니다. ",
-    "keywords": [
-      "Kbeauty",
-      "stylekorean",
-      "yesstyle",
-      "biodance",
-      "medicube",
-      "anua",
-      "beauty creator",
-      "giveaway",
-      "korean skincare",
-      "glassskin",
-      "Laneige",
-      "beauty of joseon",
-      "skin1004",
-      "centella"
-    ]
-  },
+  "aabc": "aabc",
+  "abc": "abc",
   "brandApplicants": {
     "allSelect": "전체 선택하기",
     "applicantsTable": {
@@ -340,11 +322,11 @@
   "card": {
     "campaignThumbnailImage": "캠페인 썸네일 이미지",
     "card": "카드",
-    "goToApply": "지원하기 ",
     "editDraft": "초안 편집하기",
-    "viewContent": "컨텐츠 보기",
+    "goToApply": "지원하기 ",
     "goToCampaign": "캠페인 보러가기",
     "viewApplicants": "지원자 보기",
+    "viewContent": "컨텐츠 보기",
     "waitingApproval": "승인 대기 중"
   },
   "confirmSignupModal": {
@@ -651,6 +633,26 @@
   "main": {
     "kBeautyCampaigns": "K-뷰티 캠페인",
     "openingSoon": "곧 오픈 예정"
+  },
+  "metadata": {
+    "description": "K-뷰티 브랜드의 글로벌 인큐베이터, 로코코. 로코코에서 가장 쉽고 효과적으로 브랜드를 알려보세요. 로코코는 K-뷰티 인디브랜드의 가장 든든한 해외 진출 파트너입니다. ",
+    "keywords": {
+      "anua": "anua",
+      "beautyCreator": "beauty creator",
+      "beautyOfJoseon": "beauty of joseon",
+      "biodance": "biodance",
+      "centella": "centella",
+      "giveaway": "giveaway",
+      "glassskin": "glassskin",
+      "Kbeauty": "Kbeauty",
+      "koreanSkincare": "korean skincare",
+      "laneige": "Laneige",
+      "medicube": "medicube",
+      "skin1004": "skin1004",
+      "stylekorean": "stylekorean",
+      "yesstyle": "yesstyle"
+    },
+    "title": "Lococo | K-뷰티와 해외 크리에이터가 만나는 공간, 로코코"
   },
   "myPage": {
     "addressModal": {
