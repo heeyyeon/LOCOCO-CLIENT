@@ -1095,6 +1095,7 @@
     },
     "connectedStatus": "Connected!",
     "errorMessage": "Please add your account link at least one.",
+    "invalidSnsUrl": "Please enter an account URL that starts with https://www.",
     "platforms": {
       "instagram": "Instagram",
       "tiktok": "Tiktok"

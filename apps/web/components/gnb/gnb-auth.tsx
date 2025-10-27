@@ -52,14 +52,17 @@ export default function GnbAuth() {
   };
 
   const handleRouteMyPage = () => {
+    if (!userInfo || userInfo?.role === 'PENDING') {
+      setIsRoleModalOpen(true);
+      return;
+    }
+
     if (userInfo?.role === 'BRAND') {
       router.push('/brand/campaign');
     } else if (userInfo?.role === 'CREATOR') {
       router.push('/my-page/my-campaign');
     } else if (userInfo?.role === 'CUSTOMER') {
       router.push('/my-page/my-campaign');
-    } else {
-      router.push('/login-google?mode=signup');
     }
   };
 

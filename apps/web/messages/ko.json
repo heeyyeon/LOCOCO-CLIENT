@@ -1095,6 +1095,7 @@
     },
     "connectedStatus": "연결 완료!",
     "errorMessage": "최소 하나 이상의 계정 링크를 추가해 주세요.",
+    "invalidSnsUrl": "https://www로 시작하는 계정 URL을 입력해주세요.",
     "platforms": {
       "instagram": "인스타그램",
       "tiktok": "틱톡"
