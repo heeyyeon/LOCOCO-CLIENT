@@ -4,6 +4,8 @@ import {
   CreatorInfoResponse,
   CreatorRegisterRequest,
   CreatorRegisterResponse,
+  CreatorSnsLinkRequest,
+  CreatorSnsLinkResponse,
   CreatorSnsStatusResponse,
 } from '../types/creator-form';
 
@@ -39,3 +41,13 @@ export const completeCreatorSignup =
       method: 'POST',
     });
   };
+
+export const registerCreatorSnsLink = async (
+  data: CreatorSnsLinkRequest
+): Promise<CreatorSnsLinkResponse> => {
+  return apiRequest<CreatorSnsLinkResponse>({
+    endPoint: '/api/creator/register/sns-link',
+    method: 'PATCH',
+    data,
+  });
+};
