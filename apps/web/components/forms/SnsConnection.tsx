@@ -1,15 +1,19 @@
+import { useState } from 'react';
+
 import { useTranslations } from 'next-intl';
 
-import LoadingSvg from 'components/loading/loading-svg';
-import {
-  useConnectInstagram,
-  useConnectSns,
-  useConnectTiktok,
-} from 'hooks/use-connect-sns';
+// import LoadingSvg from 'components/loading/loading-svg';
+// import {
+//   useConnectInstagram,
+//   useConnectSns,
+//   useConnectTiktok,
+// } from 'hooks/use-connect-sns';
 
-import { Button } from '@lococo/design-system/button';
+// import { Button } from '@lococo/design-system/button';
 import { ErrorNotice } from '@lococo/design-system/error-notice';
-import { SvgCheckBg, SvgCheckNonBg } from '@lococo/icons';
+import { Input } from '@lococo/design-system/input';
+
+// import { SvgCheckBg, SvgCheckNonBg } from '@lococo/icons';
 
 import { FormSection } from './FormSection';
 
@@ -34,31 +38,37 @@ export function SnsConnection({
 }: SnsConnectionSectionProps) {
   const t = useTranslations('snsConnection');
 
-  const { data: connectSnsData, isPending } = useConnectSns();
-  const { mutateAsync: connectTiktok } = useConnectTiktok();
-  const { mutateAsync: connectInstagram } = useConnectInstagram();
+  // TODO: 기존 인증 로직 주석 제거
+  // const { data: connectSnsData, isPending } = useConnectSns();
+  // const { mutateAsync: connectTiktok } = useConnectTiktok();
+  // const { mutateAsync: connectInstagram } = useConnectInstagram();
 
-  const connectedSns: SnsPlatform[] = [];
-  if (connectSnsData?.data?.isInstaConnected) {
-    connectedSns.push('instagram');
-  }
-  if (connectSnsData?.data?.isTiktokConnected) {
-    connectedSns.push('tiktok');
-  }
+  // const connectedSns: SnsPlatform[] = [];
+  // if (connectSnsData?.data?.isInstaConnected) {
+  //   connectedSns.push('instagram');
+  // }
+  // if (connectSnsData?.data?.isTiktokConnected) {
+  //   connectedSns.push('tiktok');
+  // }
 
-  const hasConnectedAccount = connectedSns.length > 0;
+  // const hasConnectedAccount = connectedSns.length > 0;
 
-  const handleConnectSns = async (sns: SnsPlatform) => {
-    try {
-      if (sns === 'tiktok') {
-        await connectTiktok();
-      } else if (sns === 'instagram') {
-        await connectInstagram();
-      }
-    } catch (error) {
-      console.error('SNS 연결 실패:', error);
-    }
-  };
+  // const handleConnectSns = async (sns: SnsPlatform) => {
+  //   try {
+  //     if (sns === 'tiktok') {
+  //       await connectTiktok();
+  //     } else if (sns === 'instagram') {
+  //       await connectInstagram();
+  //     }
+  //   } catch (error) {
+  //     console.error('SNS 연결 실패:', error);
+  //   }
+  // };
+
+  const [instagramUrl, setInstagramUrl] = useState('');
+  const [tiktokUrl, setTiktokUrl] = useState('');
+
+  const hasConnectedAccount = Boolean(instagramUrl || tiktokUrl);
 
   return (
     <div className={className}>
@@ -74,7 +84,9 @@ export function SnsConnection({
             }
           />
         </div>
-        {isPending ? (
+
+        {/* 기존 인증 버튼 로직 (주석 처리) */}
+        {/* {isPending ? (
           <div className="flex h-screen w-full items-center justify-center bg-white">
             <LoadingSvg />
           </div>
@@ -122,7 +134,30 @@ export function SnsConnection({
               </div>
             ))}
           </>
-        )}
+        )} */}
+
+        <div className="space-y-[2rem]">
+          {platforms.map((platform) => (
+            <div key={platform} className="flex items-center justify-between">
+              <label className="body1 flex items-center font-bold text-gray-700">
+                {t(`platforms.${platform}`)}
+              </label>
+              <Input
+                placeholder={
+                  platform === 'instagram'
+                    ? 'ex: https://www.instagram.com/lococo.official/'
+                    : 'ex: https://www.tiktok.com/@lococo.official'
+                }
+                value={platform === 'instagram' ? instagramUrl : tiktokUrl}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                  platform === 'instagram'
+                    ? setInstagramUrl(e.target.value)
+                    : setTiktokUrl(e.target.value)
+                }
+              />
+            </div>
+          ))}
+        </div>
       </FormSection>
     </div>
   );
