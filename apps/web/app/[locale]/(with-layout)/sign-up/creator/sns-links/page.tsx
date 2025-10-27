@@ -10,28 +10,34 @@ import LoadingSvg from 'components/loading/loading-svg';
 import { useConnectSns, useOAuthCallback } from 'hooks/use-connect-sns';
 
 import { ConfirmSignupModal } from '../../components/confirm-signup-modal';
-import { completeCreatorSignup } from '../apis/creator-form';
+import {
+  completeCreatorSignup,
+  registerCreatorSnsLink,
+} from '../apis/creator-form';
 
 export default function CreatorSnsLinksPage() {
   const router = useRouter();
   const t = useTranslations('creatorSnsLinksPage');
 
   const { isProcessingCallback } = useOAuthCallback();
-  const { data: snsData, isLoading } = useConnectSns();
-
+  const { isLoading } = useConnectSns();
+  const [instagramUrl, setInstagramUrl] = useState('');
+  const [tiktokUrl, setTiktokUrl] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isShowConfirmModal, setIsShowConfirmModal] = useState(false);
 
-  const connectedSns: ('instagram' | 'tiktok')[] = [];
-  if (snsData?.data?.isInstaConnected) connectedSns.push('instagram');
-  if (snsData?.data?.isTiktokConnected) connectedSns.push('tiktok');
-  const hasConnectedAccount = connectedSns.length > 0;
+  const hasConnectedAccount = Boolean(instagramUrl || tiktokUrl);
 
   const handleSubmit = async () => {
     if (!hasConnectedAccount) {
       setIsSubmitted(true);
       return;
     }
+
+    await registerCreatorSnsLink({
+      instaLink: instagramUrl ?? '',
+      tiktokLink: tiktokUrl ?? '',
+    });
 
     const response = await completeCreatorSignup();
 
@@ -69,6 +75,10 @@ export default function CreatorSnsLinksPage() {
         <SnsConnection
           description={t('snsDescription')}
           hasError={isSubmitted}
+          instagramUrl={instagramUrl}
+          tiktokUrl={tiktokUrl}
+          onInstagramChange={setInstagramUrl}
+          onTiktokChange={setTiktokUrl}
         />
       </SignupFormLayout>
 

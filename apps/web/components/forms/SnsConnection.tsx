@@ -26,6 +26,10 @@ interface SnsConnectionSectionProps {
   errorMessage?: string;
   platforms?: SnsPlatform[];
   className?: string;
+  onInstagramChange?: (value: string) => void;
+  onTiktokChange?: (value: string) => void;
+  instagramUrl?: string;
+  tiktokUrl?: string;
 }
 
 const DEFAULT_PLATFORMS: SnsPlatform[] = ['instagram', 'tiktok'];
@@ -35,6 +39,10 @@ export function SnsConnection({
   hasError = false,
   platforms = DEFAULT_PLATFORMS,
   className,
+  onInstagramChange,
+  onTiktokChange,
+  instagramUrl: externalInstagramUrl,
+  tiktokUrl: externalTiktokUrl,
 }: SnsConnectionSectionProps) {
   const t = useTranslations('snsConnection');
 
@@ -65,8 +73,21 @@ export function SnsConnection({
   //   }
   // };
 
-  const [instagramUrl, setInstagramUrl] = useState('');
-  const [tiktokUrl, setTiktokUrl] = useState('');
+  const [localInstagram, setLocalInstagram] = useState('');
+  const [localTiktok, setLocalTiktok] = useState('');
+
+  const instagramUrl = externalInstagramUrl ?? localInstagram;
+  const tiktokUrl = externalTiktokUrl ?? localTiktok;
+
+  const handleInstagramChange = (value: string) => {
+    setLocalInstagram(value);
+    onInstagramChange?.(value);
+  };
+
+  const handleTiktokChange = (value: string) => {
+    setLocalTiktok(value);
+    onTiktokChange?.(value);
+  };
 
   const hasConnectedAccount = Boolean(instagramUrl || tiktokUrl);
 
@@ -151,8 +172,8 @@ export function SnsConnection({
                 value={platform === 'instagram' ? instagramUrl : tiktokUrl}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                   platform === 'instagram'
-                    ? setInstagramUrl(e.target.value)
-                    : setTiktokUrl(e.target.value)
+                    ? handleInstagramChange(e.target.value)
+                    : handleTiktokChange(e.target.value)
                 }
               />
             </div>
