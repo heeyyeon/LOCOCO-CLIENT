@@ -1,10 +1,12 @@
 'use client';
 
 import { useState } from 'react';
+import { useForm } from 'react-hook-form';
 
 import { useTranslations } from 'next-intl';
 import { useRouter } from 'next/navigation';
 
+import { zodResolver } from '@hookform/resolvers/zod';
 import { SignupFormLayout, SnsConnection } from 'components/forms';
 import LoadingSvg from 'components/loading/loading-svg';
 import { useConnectSns, useOAuthCallback } from 'hooks/use-connect-sns';
@@ -14,23 +16,35 @@ import {
   completeCreatorSignup,
   registerCreatorSnsLink,
 } from '../apis/creator-form';
+import { snsLinksSchema } from '../utils/signup';
 
 export default function CreatorSnsLinksPage() {
   const router = useRouter();
   const t = useTranslations('creatorSnsLinksPage');
+  const tValidation = useTranslations('snsConnection');
 
   const { isProcessingCallback } = useOAuthCallback();
   const { isLoading } = useConnectSns();
-  const [instagramUrl, setInstagramUrl] = useState('');
-  const [tiktokUrl, setTiktokUrl] = useState('');
-  const [isSubmitted, setIsSubmitted] = useState(false);
   const [isShowConfirmModal, setIsShowConfirmModal] = useState(false);
 
+  const form = useForm({
+    resolver: zodResolver(snsLinksSchema(tValidation)),
+    mode: 'onSubmit',
+    defaultValues: {
+      instagramUrl: '',
+      tiktokUrl: '',
+    },
+  });
+
+  const instagramUrl = form.watch('instagramUrl');
+  const tiktokUrl = form.watch('tiktokUrl');
   const hasConnectedAccount = Boolean(instagramUrl || tiktokUrl);
 
-  const handleSubmit = async () => {
+  const handleSubmit = form.handleSubmit(async () => {
     if (!hasConnectedAccount) {
-      setIsSubmitted(true);
+      form.setError('root', {
+        message: tValidation('errorMessage'),
+      });
       return;
     }
 
@@ -44,7 +58,7 @@ export default function CreatorSnsLinksPage() {
     if (response.success) {
       setIsShowConfirmModal(true);
     }
-  };
+  });
 
   const handleConfirmModalConfirm = () => {
     router.push('/');
@@ -74,11 +88,26 @@ export default function CreatorSnsLinksPage() {
       >
         <SnsConnection
           description={t('snsDescription')}
-          hasError={isSubmitted}
+          hasError={
+            !!form.formState.errors.instagramUrl ||
+            !!form.formState.errors.tiktokUrl ||
+            !!form.formState.errors.root
+          }
+          customErrorMessage={
+            (form.formState.errors.root?.message ||
+              form.formState.errors.instagramUrl?.message ||
+              form.formState.errors.tiktokUrl?.message) as string | undefined
+          }
           instagramUrl={instagramUrl}
           tiktokUrl={tiktokUrl}
-          onInstagramChange={setInstagramUrl}
-          onTiktokChange={setTiktokUrl}
+          onInstagramChange={(value) => {
+            form.setValue('instagramUrl', value);
+            form.clearErrors('instagramUrl');
+          }}
+          onTiktokChange={(value) => {
+            form.setValue('tiktokUrl', value);
+            form.clearErrors('tiktokUrl');
+          }}
         />
       </SignupFormLayout>
 

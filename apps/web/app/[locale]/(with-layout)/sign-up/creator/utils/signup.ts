@@ -66,6 +66,19 @@ export const skinInfoSchema = (t: TranslationFunction) =>
     skinTone: z.string().min(1, t('skinToneRequired')),
   });
 
+export const snsLinksSchema = (t: TranslationFunction) => {
+  const snsUrlRefine = (url: string) => !url || url.startsWith('https://www.');
+
+  return z.object({
+    instagramUrl: z.string().refine(snsUrlRefine, {
+      message: t('invalidSnsUrl'),
+    }),
+    tiktokUrl: z.string().refine(snsUrlRefine, {
+      message: t('invalidSnsUrl'),
+    }),
+  });
+};
+
 export const creatorSignupSchema = (t: TranslationFunction) =>
   z
     .object({
@@ -77,3 +90,4 @@ export const creatorSignupSchema = (t: TranslationFunction) =>
     .strict();
 
 export type CreatorSignupForm = z.infer<ReturnType<typeof creatorSignupSchema>>;
+export type SnsLinksForm = z.infer<ReturnType<typeof snsLinksSchema>>;

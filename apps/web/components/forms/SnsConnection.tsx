@@ -24,6 +24,7 @@ interface SnsConnectionSectionProps {
   description?: string;
   hasError?: boolean;
   errorMessage?: string;
+  customErrorMessage?: string;
   platforms?: SnsPlatform[];
   className?: string;
   onInstagramChange?: (value: string) => void;
@@ -37,6 +38,7 @@ const DEFAULT_PLATFORMS: SnsPlatform[] = ['instagram', 'tiktok'];
 export function SnsConnection({
   description,
   hasError = false,
+  customErrorMessage,
   platforms = DEFAULT_PLATFORMS,
   className,
   onInstagramChange,
@@ -89,8 +91,6 @@ export function SnsConnection({
     onTiktokChange?.(value);
   };
 
-  const hasConnectedAccount = Boolean(instagramUrl || tiktokUrl);
-
   return (
     <div className={className}>
       <FormSection
@@ -99,10 +99,8 @@ export function SnsConnection({
       >
         <div className="mb-[1.6rem] mt-[-1.4rem]">
           <ErrorNotice
-            message={t('errorMessage')}
-            className={
-              hasConnectedAccount || !hasError ? 'text-gray-500' : undefined
-            }
+            message={customErrorMessage || t('errorMessage')}
+            className={!hasError ? 'text-gray-500' : undefined}
           />
         </div>
 
@@ -158,26 +156,34 @@ export function SnsConnection({
         )} */}
 
         <div className="space-y-[2rem]">
-          {platforms.map((platform) => (
-            <div key={platform} className="flex items-center justify-between">
-              <label className="body1 flex items-center font-bold text-gray-700">
-                {t(`platforms.${platform}`)}
-              </label>
-              <Input
-                placeholder={
-                  platform === 'instagram'
-                    ? 'ex: https://www.instagram.com/lococo.official/'
-                    : 'ex: https://www.tiktok.com/@lococo.official'
-                }
-                value={platform === 'instagram' ? instagramUrl : tiktokUrl}
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                  platform === 'instagram'
-                    ? handleInstagramChange(e.target.value)
-                    : handleTiktokChange(e.target.value)
-                }
-              />
-            </div>
-          ))}
+          {platforms.map((platform) => {
+            const isInstagram = platform === 'instagram';
+            const currentValue = isInstagram ? instagramUrl : tiktokUrl;
+            const handleChange = isInstagram
+              ? handleInstagramChange
+              : handleTiktokChange;
+
+            return (
+              <div key={platform} className="space-y-[0.8rem]">
+                <div className="flex items-center justify-between">
+                  <label className="body1 flex items-center font-bold text-gray-700">
+                    {t(`platforms.${platform}`)}
+                  </label>
+                  <Input
+                    placeholder={
+                      isInstagram
+                        ? 'ex: https://www.instagram.com/lococo.official/'
+                        : 'ex: https://www.tiktok.com/@lococo.official'
+                    }
+                    value={currentValue}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                      handleChange(e.target.value)
+                    }
+                  />
+                </div>
+              </div>
+            );
+          })}
         </div>
       </FormSection>
     </div>
