@@ -66,3 +66,15 @@ export interface CreatorCompleteResponse {
     loginStatus: string;
   };
 }
+
+export interface CreatorSnsLinkRequest {
+  instaLink: string;
+  tiktokLink: string;
+}
+
+export interface CreatorSnsLinkResponse {
+  success: boolean;
+  status: number;
+  message: string;
+  data: null;
+}
