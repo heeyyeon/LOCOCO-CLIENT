@@ -14,7 +14,7 @@ import {
 } from '../utils/role-storage';
 
 interface UseRoleSetupOptions {
-  onUserRoleSet?: () => void;
+  onUserRoleSet?: (role?: UserRole) => void;
 }
 
 export const useRoleSetup = (options?: UseRoleSetupOptions) => {
@@ -29,7 +29,7 @@ export const useRoleSetup = (options?: UseRoleSetupOptions) => {
       BRAND: () => router.replace(`/${locale}/sign-up/brand`),
       CUSTOMER: () => router.replace(`/${locale}`),
       ADMIN: () => router.replace(`/${locale}`),
-      PENDING: () => options?.onUserRoleSet?.(),
+      PENDING: () => options?.onUserRoleSet?.('PENDING'),
     }),
     [router, locale, options]
   );
@@ -117,7 +117,14 @@ export const useRoleSetup = (options?: UseRoleSetupOptions) => {
         if (storedRole) {
           await processRoleSetup(storedRole);
         } else {
-          options?.onUserRoleSet?.();
+          options?.onUserRoleSet?.('PENDING');
+        }
+      } else if (role === 'CUSTOMER') {
+        const storedRole = getRoleFromLocalStorage();
+        if (storedRole === 'CUSTOMER') {
+          options?.onUserRoleSet?.('CUSTOMER');
+        } else {
+          router.replace(`/${locale}`);
         }
       } else {
         router.replace(`/${locale}`);
