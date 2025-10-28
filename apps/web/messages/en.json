@@ -331,7 +331,7 @@
   },
   "confirmSignupModal": {
     "confirmButton": "Okay",
-    "message": "Your application was successfully submitted.\nWe'll email you the result within 24 hours.",
+    "message": "Your account has been created successfully!",
     "title": "Successfully Submitted!"
   },
   "creatorOptions": {

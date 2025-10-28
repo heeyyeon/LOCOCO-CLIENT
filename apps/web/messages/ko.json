@@ -331,7 +331,7 @@
   },
   "confirmSignupModal": {
     "confirmButton": "네",
-    "message": "신청이 성공적으로 제출되었습니다. \n결과는 24시간 이내에 이메일로 보내드리겠습니다.",
+    "message": "회원가입이 성공적으로 완료되었습니다!",
     "title": "성공적으로 제출되었습니다!"
   },
   "creatorOptions": {

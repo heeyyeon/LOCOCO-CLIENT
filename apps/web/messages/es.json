@@ -331,7 +331,7 @@
   },
   "confirmSignupModal": {
     "confirmButton": "Está bien",
-    "message": "Tu solicitud se ha enviado con éxito.\nTe enviaremos el resultado por correo electrónico en un plazo de 24 horas.",
+    "message": "¡Has creado tu cuenta con éxito!",
     "title": "¡Enviado con éxito!"
   },
   "creatorOptions": {
