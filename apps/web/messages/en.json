@@ -520,19 +520,19 @@
   "howItWork": {
     "brands": {
       "campaignApproval": {
-        "description": "Campaign approval results are provided within 48 hours of upload. From the brand dashboard, select applicants for your campaign. After the application deadline, announce selected creators within 24 hours.",
-        "title": "Campaign Approval"
+        "description": "Once the application period closes, approve the creators you’d love to collaborae with!",
+        "title": "Approve Campaign Applicants"
       },
       "checkPerformance": {
-        "description": "Check the content and campaign performance on your brand page.",
-        "title": "Check Performance"
+        "description": "Monitor the creators’ posts and performance anytime through your Brand My Page.",
+        "title": "Track Content Performance"
       },
       "provideFeedback": {
-        "description": "Provide revision requests within 48 hours after the creator uploads the first review. (Requests cannot be made after this period.)",
+        "description": "Within 48 hours of the first submission deadline, share your feedback. Your notes will help creators polish and improve their content.",
         "title": "Provide Feedback"
       },
       "shipProduct": {
-        "description": "Ship the product within 2 days once the creator confirms the shipping address.",
+        "description": "Send out your products so creators can receive them and get started right away!",
         "title": "Ship Product"
       },
       "title": "Brands"
@@ -559,12 +559,12 @@
         "title": "Maintenance Guidelines"
       },
       "receiveAndTryTheProducts": {
-        "description": "Receive and try the products!",
+        "description": "Shipping usually takes about 7 days. Once your package arrives, try out the products!",
         "title": "Receive & Try the Products"
       },
       "reviewBrand’sFeedbackAndUpload2ndReview": {
-        "description": "Review Brand’s Feedback & Upload 2nd review",
-        "title": "Take a look at the brand’s notes and submit your second review. Don’t forget to include the final Instagram/TikTok URL!"
+        "description": "Take a look at the brand’s notes and submit your second review. Don’t forget to include the final Instagram/TikTok URL!",
+        "title": "Review Brand’s Feedback & Upload 2nd review"
       },
       "reviewUploadSchedule": {
         "description": "Upload your first review within 7 days of receiving the product. After reviewing the brand’s feedback, upload your second review within 7 days. Attach the final SNS URL when posting the second review.",
@@ -580,8 +580,8 @@
         "title": "Upload Review"
       },
       "waitForResultAnnouncement": {
-        "description": "Wait for the result announcement!",
-        "title": "If you’re selected, confirm your shipping address in My Page within 24 hours."
+        "description": "If you’re selected, confirm your shipping address in My Page within 24 hours.",
+        "title": "Wait for the result announcement!"
       }
     },
     "FAQs": {
