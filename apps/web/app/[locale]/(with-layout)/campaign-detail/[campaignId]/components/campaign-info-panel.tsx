@@ -14,12 +14,7 @@ import { useRouter } from 'i18n/navigation';
 
 import { Button } from '@lococo/design-system/button';
 import { InfoChip } from '@lococo/design-system/info-chip';
-import {
-  SvgCheckNonBg,
-  SvgGift,
-  SvgLanguage,
-  SvgProfileIcon,
-} from '@lococo/icons';
+import { SvgCheckNonBg, SvgGift, SvgLanguage } from '@lococo/icons';
 
 import { applyCampaign } from '../apis';
 import CampaignInfoGrayBorderBox from './campaign-info-gray-border-box';
@@ -214,33 +209,6 @@ export default function CampaignInfoPanel({
     }
   };
 
-  // TODO: 추후삭제 - prod 환경에서의 timezone 확인 용도
-  console.log(timeZone, 'timeZone');
-  console.log('applyStartDate: toDate()' + dayjs(applyStartDate).toDate());
-  console.log(
-    'applyStartDate: tz(timeZone) toDate()' +
-      dayjs(applyStartDate).tz(timeZone).toDate()
-  );
-  console.log(
-    'applyStartDate: tz timezone' +
-      format.dateTime(dayjs(applyStartDate).tz(timeZone).toDate(), {
-        month: 'short',
-        day: 'numeric',
-        hour: 'numeric',
-        minute: '2-digit',
-      })
-  );
-  console.log(
-    'applyStartDate: formatted timezone tz(timeZone)' +
-      format.dateTime(dayjs(applyStartDate).tz(timeZone).toDate(), {
-        month: 'short',
-        day: 'numeric',
-        hour: 'numeric',
-        minute: '2-digit',
-        timeZone: timeZone,
-      })
-  );
-
   return (
     <div className="scrollbar-hide flex h-[636px] w-[45.6rem] overflow-x-hidden bg-white">
       <div className="flex flex-col gap-[12px] md:gap-[16px]">
@@ -376,7 +344,7 @@ export default function CampaignInfoPanel({
             <div className="flex flex-col gap-[8px]">
               {deliverableRequirements.map((requirement) => (
                 <div className="flex gap-[4px]" key={requirement}>
-                  <SvgCheckNonBg size={24} />
+                  <SvgCheckNonBg size={24} className="flex-shrink-0" />
                   <div className="flex gap-[8px]">
                     <div className="flex flex-col gap-[8px]">
                       <p
@@ -403,7 +371,7 @@ export default function CampaignInfoPanel({
             <div className="flex flex-col gap-[8px]">
               {participationRewards.map((reward, index) => (
                 <div key={index} className="flex items-center gap-[4px]">
-                  <SvgGift size={24} />
+                  <SvgGift size={24} className="flex-shrink-0" />
                   <p className="text-inter-body3 text-gray-700">{reward}</p>
                 </div>
               ))}
@@ -421,11 +389,7 @@ export default function CampaignInfoPanel({
             <div className="flex flex-col gap-[8px]">
               {eligibilityRequirements.map((requirement, index) => (
                 <div key={index} className="flex items-center gap-[4px]">
-                  {index === 0 ? (
-                    <SvgProfileIcon size={24} />
-                  ) : (
-                    <SvgLanguage size={24} />
-                  )}
+                  <SvgLanguage size={24} className="flex-shrink-0" />
                   <p className="text-inter-body3 text-gray-700">
                     {requirement}
                   </p>
