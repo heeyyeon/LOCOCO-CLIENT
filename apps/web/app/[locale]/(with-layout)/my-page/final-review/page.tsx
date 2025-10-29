@@ -6,7 +6,7 @@ import { useSearchParams } from 'next/navigation';
 import CampaignListEmpty from 'components/empty/campgin-list-empty';
 import LoadingSvg from 'components/loading/loading-svg';
 
-import { useReviewResult } from '../hooks/use-review-result';
+import { useReviewResult } from '../apis/use-review-api';
 import ContentType from './components/content-type';
 import FinalWrapper from './components/final-wrapper';
 import ImageBox from './components/image-box';

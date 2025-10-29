@@ -22,12 +22,12 @@ import {
   creatorSignupSchema,
 } from '../../sign-up/creator/utils/signup';
 import { SaveFormModal } from '../@modal/(.)save-form-modal/SaveFormModal';
-import ProfilePhoto from '../components/edit-profile/profile-photo';
 import {
   usePresignedUrl,
   useProfile,
   useUpdateProfile,
-} from '../hooks/use-profile-api';
+} from '../apis/profile-api';
+import ProfilePhoto from '../components/edit-profile/profile-photo';
 
 export default function EditProfile() {
   const [isSaveFormModalOpen, setIsSaveFormModalOpen] = useState(false);

@@ -10,7 +10,7 @@ import LoadingSvg from 'components/loading/loading-svg';
 
 import { SnsConnection } from '../../../../../components/forms/SnsConnection';
 import { useOAuthCallback } from '../../../../../hooks/use-connect-sns';
-import { useSnsConnection } from '../hooks/use-sns-connection';
+import { useSnsConnection } from '../apis/use-sns-connection';
 
 export default function ConnectSNS() {
   const t = useTranslations('creatorSnsLinksPage');

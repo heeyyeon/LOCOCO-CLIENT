@@ -18,10 +18,8 @@ import ContentTypeSelect from '../components/content-submissions/content-type-se
 import HashtagsInput from '../components/content-submissions/hashtags-input';
 import SubmitContentUrl from '../components/content-submissions/submit-content-url';
 import Empty from '../components/empty/Empty';
-import {
-  ContentSubmissionsFormData,
-  useContentSubmissions,
-} from '../hooks/use-content-submissions';
+import { useContentSubmissions } from '../hooks/use-content-submissions';
+import { ContentSubmissionsFormData } from '../types/content-submissions';
 
 interface ContentSubmissionsFormProps {
   formData: ContentSubmissionsFormData;
@@ -190,14 +188,12 @@ function ContentSubmissionsForm({
             fieldId={fieldId}
           />
 
-          {formData.nowReviewRound === 'SECOND' && (
-            <SubmitContentUrl
-              formData={formData}
-              errors={errors.postUrl}
-              updatePostUrl={updatePostUrl}
-              fieldId={fieldId}
-            />
-          )}
+          <SubmitContentUrl
+            formData={formData}
+            errors={errors.postUrl}
+            updatePostUrl={updatePostUrl}
+            fieldId={fieldId}
+          />
         </div>
       </div>
     </>
