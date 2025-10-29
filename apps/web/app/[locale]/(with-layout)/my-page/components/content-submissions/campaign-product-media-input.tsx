@@ -6,7 +6,7 @@ import DragDropArea from 'components/drag-drop/DargDropArea';
 
 import { ErrorNotice } from '@lococo/design-system/error-notice';
 
-import { ContentSubmissionsFormData } from '../../hooks/use-content-submissions';
+import { ContentSubmissionsFormData } from '../../types/content-submissions';
 
 interface CampaignProductMediaInputProps {
   formData: ContentSubmissionsFormData;

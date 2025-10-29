@@ -3,7 +3,7 @@ import { useTranslations } from 'next-intl';
 import { SvgInstagram, SvgTiktok } from '@lococo/icons';
 import { cn } from '@lococo/utils';
 
-import { ContentSubmissionsFormData } from '../../hooks/use-content-submissions';
+import { ContentSubmissionsFormData } from '../../types/content-submissions';
 
 interface ContentTypeSelectProps {
   formData: ContentSubmissionsFormData;

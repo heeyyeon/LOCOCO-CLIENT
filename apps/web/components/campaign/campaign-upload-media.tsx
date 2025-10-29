@@ -65,28 +65,6 @@ export default function CampaignUploadMedia({
     }
   }, [currentDetailUrls, detailPreviewFiles.length]);
 
-  const handleRemoveExistingThumbnail = (index: number) => {
-    if (isReadonly) return;
-
-    const updatedExisting = existingThumbnailUrls.filter((_, i) => i !== index);
-    setExistingThumbnailUrls(updatedExisting);
-
-    const updated = currentThumbnailUrls.filter((_, i) => i !== index);
-    setValue('thumbnailFiles', updated);
-    trigger('thumbnailFiles');
-  };
-
-  const handleRemoveExistingDetail = (index: number) => {
-    if (isReadonly) return;
-
-    const updatedExisting = existingDetailUrls.filter((_, i) => i !== index);
-    setExistingDetailUrls(updatedExisting);
-
-    const updated = currentDetailUrls.filter((_, i) => i !== index);
-    setValue('detailFiles', updated);
-    trigger('detailFiles');
-  };
-
   const handleThumbnailFilesChange = (files: File[]) => {
     if (isReadonly) return;
 
@@ -180,16 +158,14 @@ export default function CampaignUploadMedia({
         required
       >
         <DragDropArea
-          imageFiles={thumbnailPreviewFiles}
-          handleImageFilesChange={handleThumbnailFilesChange}
-          onRemoveExistingImage={handleRemoveExistingThumbnail}
+          files={thumbnailPreviewFiles}
+          handleFilesChange={handleThumbnailFilesChange}
           existingImageUrls={existingThumbnailUrls}
-          handleVideoFilesChange={() => {}}
+          fieldId="thumbnailFiles"
           maxFiles={5}
           className={
             isUploading || isReadonly ? 'pointer-events-none opacity-50' : ''
           }
-          disabled={isReadonly}
         />
         {!isReadonly && errors.thumbnailFiles && (
           <p className="text-red caption3 font-[400]">
@@ -203,16 +179,14 @@ export default function CampaignUploadMedia({
         description={t('media.detailDescription')}
       >
         <DragDropArea
-          imageFiles={detailPreviewFiles}
-          handleImageFilesChange={handleDetailFilesChange}
-          onRemoveExistingImage={handleRemoveExistingDetail}
+          files={detailPreviewFiles}
+          handleFilesChange={handleDetailFilesChange}
           existingImageUrls={existingDetailUrls}
-          handleVideoFilesChange={() => {}}
+          fieldId="detailFiles"
           maxFiles={15}
           className={
             isUploading || isReadonly ? 'pointer-events-none opacity-50' : ''
           }
-          disabled={isReadonly}
         />
         {!isReadonly && errors.detailFiles && (
           <p className="text-red caption3 font-[400]">
