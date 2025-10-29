@@ -10,10 +10,13 @@ import LoadingSvg from 'components/loading/loading-svg';
 
 import { SnsConnection } from '../../../../../components/forms/SnsConnection';
 import { useOAuthCallback } from '../../../../../hooks/use-connect-sns';
+import { useSnsConnection } from '../hooks/use-sns-connection';
 
 export default function ConnectSNS() {
   const t = useTranslations('creatorSnsLinksPage');
   const searchParams = useSearchParams();
+  const { data: snsConnectionData } = useSnsConnection();
+  console.log(snsConnectionData);
 
   // OAuth 콜백 처리
   const { isProcessingCallback } = useOAuthCallback();
@@ -34,6 +37,8 @@ export default function ConnectSNS() {
         <SnsConnection
           description={t('snsDescription')}
           className="w-[84rem]"
+          instagramUrl={snsConnectionData?.data?.instaLink}
+          tiktokUrl={snsConnectionData?.data?.tiktokLink}
         />
       </div>
     </div>
