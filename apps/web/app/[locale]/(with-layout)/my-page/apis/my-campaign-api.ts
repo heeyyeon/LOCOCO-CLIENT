@@ -7,7 +7,6 @@ import { apiRequest } from 'app/api/apiRequest';
 
 import { CAMPAIGN_REVIEW_KEYS } from '../constant/queryKey';
 
-const API_SERVER_URL = process.env.NEXT_PUBLIC_AUTH_TOKEN;
 interface UseMyCampaignParams {
   page?: number;
   size?: number;
@@ -25,9 +24,6 @@ const fetchMyCampaigns = async (
   const response = await apiRequest<ApiResponseCreatorMyCampaignListResponse>({
     endPoint: `/api/creator/profile/campaigns?page=${page}&size=${size}`,
     method: 'GET',
-    headers: {
-      Authorization: `Bearer ${API_SERVER_URL}`,
-    },
   });
 
   if (!response.success) {

@@ -7,14 +7,10 @@ import { type ApiResponseCreatorMyPageResponse } from '../../../../../swagger-co
 import { type CreatorSignupForm } from '../../sign-up/creator/utils/signup';
 import { PROFILE_KEYS } from '../constant/queryKey';
 
-const API_SERVER_URL = process.env.NEXT_PUBLIC_AUTH_TOKEN;
 export const useProfile = () => {
   const fetchProfile = async (): Promise<ApiResponseCreatorMyPageResponse> => {
     const response = await apiRequest<ApiResponseCreatorMyPageResponse>({
       endPoint: '/api/creator/profile',
-      headers: {
-        Authorization: `Bearer ${API_SERVER_URL}`,
-      },
     });
 
     if (!response.success) {

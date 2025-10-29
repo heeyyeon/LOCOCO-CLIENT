@@ -166,8 +166,9 @@ export const useContentSubmissions = (
 
   const onSubmit = async (
     data: ContentSubmissionsForm,
-    onSuccess?: () => void
+    onSuccess: () => void
   ) => {
+    console.log('data', data);
     try {
       for (const submission of data.submissions) {
         if (submission.campaignProductMedia.length > 0) {
@@ -186,29 +187,30 @@ export const useContentSubmissions = (
           );
         }
       }
-
-      for (const submission of data.submissions) {
+      if (data.submissions[0] && data.submissions[1]) {
         const reviewData = {
-          firstMediaUrls: submission.campaignProductMedia.map(
+          firstMediaUrls: data.submissions[0].campaignProductMedia.map(
             (file) => file.name
           ),
-          firstCaptionWithHashtags: submission.captionAndHashtags,
-          secondMediaUrls: submission.campaignProductMedia.map(
+          firstCaptionWithHashtags: data.submissions[0].captionAndHashtags,
+          secondMediaUrls: data.submissions[1].campaignProductMedia.map(
             (file) => file.name
           ),
-          secondCaptionWithHashtags: submission.captionAndHashtags,
-          firstPostUrl: submission.postUrl,
-          secondPostUrl: submission.postUrl,
+          secondCaptionWithHashtags: data.submissions[1].captionAndHashtags,
+          firstPostUrl: data.submissions[0].postUrl,
+          secondPostUrl: data.submissions[1].postUrl,
         };
 
         await submitReviewApi(
-          submission.campaignId,
+          data.submissions[0].campaignId || 0,
           reviewData,
-          submission.nowReviewRound || 'FIRST'
+          data.submissions[0].nowReviewRound || 'FIRST'
         );
-      }
 
-      onSuccess && onSuccess();
+        onSuccess();
+      } else {
+        throw new Error('리뷰 제출에 실패했습니다.');
+      }
     } catch (error) {
       console.error('Review submission failed:', error);
       throw error;

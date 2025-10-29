@@ -4,7 +4,6 @@ import { apiRequest } from 'app/api/apiRequest';
 
 import { CAMPAIGN_REVIEW_KEYS } from '../constant/queryKey';
 
-const API_SERVER_URL = process.env.NEXT_PUBLIC_AUTH_TOKEN;
 const fetchCampaignReview = async (
   campaignId: number,
   round?: string
@@ -15,9 +14,6 @@ const fetchCampaignReview = async (
     params: {
       campaignId: campaignId.toString(),
       round: round || '',
-    },
-    headers: {
-      Authorization: `Bearer ${API_SERVER_URL}`,
     },
   });
 

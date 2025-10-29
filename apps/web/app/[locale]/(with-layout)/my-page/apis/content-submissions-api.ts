@@ -12,7 +12,6 @@ export interface CombinedReviewData {
   secondPostUrl?: string;
 }
 
-const token = process.env.NEXT_PUBLIC_AUTH_TOKEN;
 export const getMediaPresignedUrls = async (
   file: File[]
 ): Promise<string[]> => {
@@ -21,9 +20,6 @@ export const getMediaPresignedUrls = async (
     method: 'POST',
     data: {
       mediaType: file.map((file) => file.type),
-    },
-    headers: {
-      Authorization: `Bearer ${token}`,
     },
   });
 
@@ -66,9 +62,6 @@ export const submitReviewApi = async (
     endPoint,
     method: 'POST',
     data,
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
   });
 
   if (!response.success) {
