@@ -89,6 +89,7 @@ export const useContentSubmissions = (
     formState: { errors },
     watch,
     trigger,
+    setError,
   } = useForm<ContentSubmissionsForm>({
     resolver: zodResolver(contentSubmissionsSchema),
     defaultValues: {
@@ -155,6 +156,9 @@ export const useContentSubmissions = (
         `submissions.${fieldIndex}.campaignProductMedia`,
         campaignProductMedia
       );
+      setError(`submissions.${fieldIndex}.campaignProductMedia`, {
+        message: '',
+      });
     }
   };
 
@@ -168,6 +172,9 @@ export const useContentSubmissions = (
         `submissions.${fieldIndex}.captionAndHashtags`,
         captionAndHashtags
       );
+      setError(`submissions.${fieldIndex}.captionAndHashtags`, {
+        message: '',
+      });
     }
   };
 
@@ -202,7 +209,6 @@ export const useContentSubmissions = (
     data: ContentSubmissionsForm,
     onSuccess?: () => void
   ) => {
-    console.log(data);
     try {
       for (const submission of data.submissions) {
         if (submission.campaignProductMedia.length > 0) {
