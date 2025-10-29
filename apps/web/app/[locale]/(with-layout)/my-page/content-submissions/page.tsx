@@ -55,9 +55,7 @@ export default function ContentSubmissions() {
     fields,
     getFormData,
     getErrors,
-    handleSubmitAll,
-    validateAllForms,
-    isAllFormsValid,
+    handleSubmit,
     updateCampaign,
     updateCampaignProductMedia,
     updateCaptionAndHashtags,
@@ -67,14 +65,11 @@ export default function ContentSubmissions() {
     trigger,
     watchData,
   } = useContentSubmissions(Number(campaignId), round as string);
-  console.log(fields);
   const router = useRouter();
   const handleSubmitForm = async () => {
-    trigger();
-    const isValid = await validateAllForms();
-    if (isAllFormsValid && isValid) {
-      handleSubmitAll();
-      setIsSaveSubmitModalOpen(true);
+    const isValid = await trigger();
+    if (isValid) {
+      handleSubmit(watchData, () => setIsSaveSubmitModalOpen(true));
     }
   };
   if (isPending) {
@@ -108,7 +103,6 @@ export default function ContentSubmissions() {
             const formDataForComponent = getFormData(field.id);
             const errors = getErrors(field.id);
             if (!formDataForComponent) return null;
-
             return (
               <div key={field.id} className="flex w-full flex-col gap-[1.6rem]">
                 <ContentSubmissionsForm
@@ -185,9 +179,9 @@ function ContentSubmissionsForm({
           <ContentTypeSelect formData={formData} errors={undefined} />
           <CampaignProductMediaInput
             formData={formData}
-            errors={errors.campaignProductMedia}
             updateCampaignProductMedia={updateCampaignProductMedia}
             fieldId={fieldId}
+            errors={errors.campaignProductMedia}
           />
           <HashtagsInput
             formData={formData}

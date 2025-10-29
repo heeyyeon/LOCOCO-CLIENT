@@ -48,8 +48,7 @@ interface CombinedReviewData {
 
 export const useContentSubmissions = (
   campaignId?: number,
-  reviewRound?: string,
-  onSuccess?: () => void
+  reviewRound?: string
 ) => {
   const t = useTranslations('fileUploader');
 
@@ -87,10 +86,9 @@ export const useContentSubmissions = (
     control,
     setValue,
     reset,
-    formState: { errors, isValid },
+    formState: { errors },
     watch,
     trigger,
-    handleSubmit,
   } = useForm<ContentSubmissionsForm>({
     resolver: zodResolver(contentSubmissionsSchema),
     defaultValues: {
@@ -152,7 +150,6 @@ export const useContentSubmissions = (
     campaignProductMedia: File[]
   ) => {
     const fieldIndex = fields.findIndex((field) => field.id === fieldId);
-    console.log(fieldIndex, campaignProductMedia);
     if (fieldIndex !== -1) {
       setValue(
         `submissions.${fieldIndex}.campaignProductMedia`,
@@ -166,7 +163,6 @@ export const useContentSubmissions = (
     captionAndHashtags: string
   ) => {
     const fieldIndex = fields.findIndex((field) => field.id === fieldId);
-    console.log(fieldIndex, captionAndHashtags);
     if (fieldIndex !== -1) {
       setValue(
         `submissions.${fieldIndex}.captionAndHashtags`,
@@ -202,7 +198,11 @@ export const useContentSubmissions = (
     };
   };
 
-  const onSubmit = async (data: ContentSubmissionsForm) => {
+  const onSubmit = async (
+    data: ContentSubmissionsForm,
+    onSuccess?: () => void
+  ) => {
+    console.log(data);
     try {
       for (const submission of data.submissions) {
         if (submission.campaignProductMedia.length > 0) {
@@ -242,20 +242,12 @@ export const useContentSubmissions = (
         );
       }
 
-      onSuccess?.();
+      onSuccess && onSuccess();
     } catch (error) {
       console.error('Review submission failed:', error);
       throw error;
     }
   };
-
-  const handleSubmitAll = handleSubmit(onSubmit);
-
-  const validateAllForms = async () => {
-    return await trigger();
-  };
-
-  const isAllFormsValid = isValid;
 
   return {
     fields,
@@ -264,9 +256,7 @@ export const useContentSubmissions = (
     getFormData,
     getErrors,
     reset,
-    handleSubmitAll,
-    validateAllForms,
-    isAllFormsValid,
+    handleSubmit: onSubmit,
     updateCampaign,
     updateCampaignProductMedia,
     updateCaptionAndHashtags,

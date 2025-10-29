@@ -15,7 +15,7 @@ export default function ContentTypeSelect({
 }: ContentTypeSelectProps) {
   const t = useTranslations('myPage.contentSubmissions.contentTypeSelect');
   const currentContentType = formData.contentPlatform;
-  console.log(currentContentType);
+
   const CONTENT_TYPES = [
     {
       label: t('instagramPost'),
