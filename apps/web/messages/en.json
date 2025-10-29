@@ -486,7 +486,7 @@
     "emptyFile": "Empty file",
     "fileTooLarge": "File too large",
     "notAllowedFileType": "Not allowed file type",
-    "selectFile": "Choose File"
+    "selectFile": "Select File"
   },
   "footer": {
     "copyright": "Lococo. All rights reserved.",
@@ -680,7 +680,7 @@
       "campaignProductMediaInput": {
         "description": "Drag and drop or click to upload the file.",
         "selectFile": "Select File",
-        "title": "Campaign Product Media"
+        "title": "Social Media Contents"
       },
       "campaignSelect": {
         "description": "Please select a campaign",
@@ -715,6 +715,13 @@
       "submitContentUrl": {
         "description": "Submit the URL of your uploaded review content for confirmation and tracking.",
         "title": "Submit Content URL"
+      },
+      "emptyForm": {
+        "campaign": "Select a campaign is required",
+        "contentType": "Content type is required",
+        "campaignProductMedia": "Campaign product media is required",
+        "captionAndHashtags": "Caption and hashtags is required",
+        "postUrl": "Post URL is required"
       }
     },
     "editProfile": {
