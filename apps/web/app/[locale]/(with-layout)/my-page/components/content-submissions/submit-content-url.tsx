@@ -3,7 +3,7 @@ import { useTranslations } from 'next-intl';
 import { ErrorNotice } from '@lococo/design-system/error-notice';
 import { Input } from '@lococo/design-system/input-field';
 
-import { ContentSubmissionsFormData } from '../../hooks/use-content-submissions';
+import { ContentSubmissionsFormData } from '../../types/content-submissions';
 
 interface SubmitContentUrlProps {
   formData: ContentSubmissionsFormData;

@@ -14,130 +14,85 @@ import {
 } from '../../hooks/useFileUploader';
 
 interface DragDropAreaProps {
-  imageFiles: File[];
-  videoFiles?: File[];
+  files: File[];
   existingImageUrls?: string[];
-  handleImageFilesChange: (files: File[]) => void;
-  handleVideoFilesChange: (files: File[]) => void;
-  onRemoveExistingImage?: (index: number) => void;
+  handleFilesChange: (files: File[]) => void;
   maxFiles?: number;
   className?: string;
-  disabled?: boolean;
+  onTriggerFileInput?: () => void;
+  fieldId: string;
 }
 
 export default function DragDropArea({
-  imageFiles,
-  videoFiles = [],
+  files,
   existingImageUrls,
-  handleImageFilesChange,
-  handleVideoFilesChange,
-  onRemoveExistingImage,
+  handleFilesChange,
   maxFiles = 10,
   className,
-  disabled = false,
+  onTriggerFileInput,
+  fieldId,
 }: DragDropAreaProps) {
   const t = useTranslations('fileUploader');
   const [isDragOver, setIsDragOver] = useState(false);
-  const [errorMessage, setErrorMessage] = useState('');
+  const [error, setError] = useState('');
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    const urls = imageFiles.map((file) => URL.createObjectURL(file));
-    const videoUrls = videoFiles.map((file) => URL.createObjectURL(file));
+    const urls = files.map((file) => URL.createObjectURL(file));
     return () => {
       urls.forEach((url) => URL.revokeObjectURL(url));
-      videoUrls.forEach((url) => URL.revokeObjectURL(url));
     };
-  }, [imageFiles, videoFiles]);
+  }, [files]);
 
   useEffect(() => {
-    if (
-      scrollContainerRef.current &&
-      imageFiles.length > 0 &&
-      videoFiles.length > 0
-    ) {
+    if (scrollContainerRef.current && files.length > 0) {
       scrollContainerRef.current.scrollLeft =
         scrollContainerRef.current.scrollWidth;
     }
-  }, [imageFiles.length, videoFiles.length]);
+  }, [files.length]);
 
   const addFiles = (newFiles: File[]) => {
-    if (disabled) return;
-
-    const validImageFiles: File[] = [];
-    const validVideoFiles: File[] = [];
+    const validFiles: File[] = [];
     const invalidFiles: string[] = [];
 
     // 파일 타입별로 분류
     newFiles.forEach((file) => {
       if (isImageFile(file)) {
-        validImageFiles.push(file);
+        validFiles.push(file);
       } else if (isVideoFile(file)) {
-        validVideoFiles.push(file);
+        validFiles.push(file);
       } else {
         invalidFiles.push(file.name);
       }
     });
-
-    if (validImageFiles.length === 0 && validVideoFiles.length === 0) {
-      setErrorMessage(t(FILE_ERROR_MESSAGE_KEYS.EMPTY_FILE));
+    // 지원하지 않는 파일이 있으면 에러 메시지 표시
+    if (invalidFiles.length > 0) {
+      setError(t(FILE_ERROR_MESSAGE_KEYS.NOT_ALLOWED_FILE_TYPE));
       return;
     }
 
-    // 지원하지 않는 파일이 있으면 에러 메시지 표시
-    if (invalidFiles.length > 0) {
-      setErrorMessage(t(FILE_ERROR_MESSAGE_KEYS.NOT_ALLOWED_FILE_TYPE));
+    if (validFiles.length === 0) {
+      setError(t(FILE_ERROR_MESSAGE_KEYS.EMPTY_FILE));
       return;
     }
 
     // 파일 개수 제한 확인
-    const totalFiles =
-      imageFiles.length +
-      videoFiles.length +
-      validImageFiles.length +
-      validVideoFiles.length;
+    const totalFiles = files.length + validFiles.length;
+
     if (totalFiles > maxFiles) {
-      setErrorMessage(t(FILE_ERROR_MESSAGE_KEYS.CANNOT_UPLOAD_FILE));
+      setError(t(FILE_ERROR_MESSAGE_KEYS.CANNOT_UPLOAD_FILE));
       return;
     }
 
     // 유효한 파일들만 추가
-    if (validImageFiles.length > 0) {
-      handleImageFilesChange([...imageFiles, ...validImageFiles]);
+    if (validFiles.length > 0) {
+      handleFilesChange([...files, ...validFiles]);
     }
-    if (validVideoFiles.length > 0) {
-      handleVideoFilesChange([...videoFiles, ...validVideoFiles]);
-    }
-    setErrorMessage('');
-  };
-
-  const removeImageFile = (index: number) => {
-    if (disabled) return;
-    const updatedFiles = imageFiles.filter((_, i) => i !== index);
-    handleImageFilesChange(updatedFiles);
-  };
-
-  const removeVideoFile = (index: number) => {
-    if (disabled) return;
-    const updatedFiles = videoFiles.filter((_, i) => i !== index);
-    handleVideoFilesChange(updatedFiles);
-  };
-
-  const replaceFile = (indexToReplace: number, newFile: File) => {
-    if (disabled) return;
-    const updatedFiles = imageFiles.map((file, index) =>
-      index === indexToReplace ? newFile : file
-    );
-    const updatedVideoFiles = videoFiles.map((file, index) =>
-      index === indexToReplace ? newFile : file
-    );
-    handleImageFilesChange(updatedFiles);
-    handleVideoFilesChange(updatedVideoFiles);
+    setError('');
   };
 
   const handleFileInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    if (disabled) return;
     const selectedFiles = Array.from(e.target.files || []);
     if (selectedFiles.length > 0) {
       addFiles(selectedFiles);
@@ -145,58 +100,43 @@ export default function DragDropArea({
     e.target.value = '';
   };
 
-  const handleRemoveExistingImageFile =
-    (index: number) => (e: React.MouseEvent) => {
-      if (disabled) return;
-      e.stopPropagation();
-      e.preventDefault();
-      if (onRemoveExistingImage) {
-        onRemoveExistingImage(index);
-      }
-    };
-
-  const handleRemoveImageFile = (index: number) => (e: React.MouseEvent) => {
-    if (disabled) return;
+  const handleRemoveFile = (index: number) => (e: React.MouseEvent) => {
     e.stopPropagation();
-    e.preventDefault();
-    removeImageFile(index);
+
+    const updatedFiles = files.filter((_, i) => i !== index);
+    handleFilesChange(updatedFiles);
   };
 
-  const handleRemoveVideoFile = (index: number) => (e: React.MouseEvent) => {
-    if (disabled) return;
-    e.stopPropagation();
-    e.preventDefault();
-    removeVideoFile(index);
-  };
-
-  const handleChangeFile =
+  const handleReplaceFile =
     (indexToReplace: number) => (e: ChangeEvent<HTMLInputElement>) => {
-      if (disabled) return;
       e.stopPropagation();
       e.preventDefault();
+
       const newFiles = Array.from(e.target.files || []);
       if (newFiles.length > 0) {
         const newFile = newFiles[0];
-        if (newFile) {
-          replaceFile(indexToReplace, newFile);
+        if (newFile && isImageFile(newFile)) {
+          const updatedFiles = files.map((file, index) =>
+            index === indexToReplace ? newFile : file
+          );
+          handleFilesChange(updatedFiles);
         }
       }
+      // Reset input value to allow selecting the same file again
+      e.target.value = '';
     };
 
   const handleDragOver = (e: React.DragEvent) => {
-    if (disabled) return;
     e.preventDefault();
     setIsDragOver(true);
   };
 
   const handleDragLeave = (e: React.DragEvent) => {
-    if (disabled) return;
     e.preventDefault();
     setIsDragOver(false);
   };
 
   const handleDrop = (e: React.DragEvent) => {
-    if (disabled) return;
     e.preventDefault();
     setIsDragOver(false);
     const droppedFiles = Array.from(e.dataTransfer.files);
@@ -204,12 +144,14 @@ export default function DragDropArea({
   };
 
   const triggerFileInput = () => {
-    if (disabled) return;
-    fileInputRef.current?.click();
+    if (onTriggerFileInput) {
+      onTriggerFileInput();
+    } else {
+      fileInputRef.current?.click();
+    }
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (disabled) return;
     if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault();
       triggerFileInput();
@@ -217,38 +159,20 @@ export default function DragDropArea({
   };
 
   const hasFiles =
-    imageFiles.length > 0 ||
-    videoFiles.length > 0 ||
-    (existingImageUrls && existingImageUrls.length > 0);
+    files.length > 0 || (existingImageUrls && existingImageUrls.length > 0);
+
   const canAddMoreFiles =
-    !disabled &&
-    imageFiles.length + videoFiles.length + (existingImageUrls?.length || 0) <
-      maxFiles;
+    files.length + (existingImageUrls?.length || 0) < maxFiles;
   return (
     <>
-      {!disabled && errorMessage && <ErrorNotice message={errorMessage} />}
-      {!disabled && (
-        <div className="flex gap-[0.8rem]">
-          <p className="body4 font-[500] text-gray-500">
-            {t('dragDropDescription')}
-          </p>
-          <button
-            className="body4 border-none border-pink-500 border-b-gray-100 font-[500] text-pink-500 underline"
-            onClick={triggerFileInput}
-            disabled={disabled}
-          >
-            {t('selectFile')}
-          </button>
-        </div>
-      )}
+      {error && <ErrorNotice message={error} />}
       <div
         className={cn(
           'flex h-[22rem] w-full items-center rounded-lg border border-solid bg-pink-100 p-[1.2rem] transition-all duration-200',
-          !disabled && isDragOver
+          isDragOver
             ? 'border-dashed border-pink-500 bg-pink-200'
             : 'border-pink-300',
           hasFiles && 'border-pink-300',
-          disabled && 'cursor-default',
           className
         )}
         onDragOver={handleDragOver}
@@ -256,7 +180,7 @@ export default function DragDropArea({
         onDrop={handleDrop}
         onClick={canAddMoreFiles ? triggerFileInput : undefined}
         role="button"
-        tabIndex={disabled ? -1 : 0}
+        tabIndex={0}
         onKeyDown={handleKeyDown}
       >
         {/* File Grid */}
@@ -266,63 +190,31 @@ export default function DragDropArea({
             className="scrollbar-hide grid auto-cols-max grid-rows-2 gap-x-[1.2rem] gap-y-[1.5rem] overflow-x-scroll"
             style={{ gridAutoFlow: 'column' }}
           >
-            {existingImageUrls?.map((file, index) => (
-              <ImagePreview
-                key={`image-${index}`}
-                src={file}
-                alt="saved image"
-                handleRemoveFile={
-                  disabled ? undefined : handleRemoveExistingImageFile(index)
-                }
-                handleFileChange={
-                  disabled ? undefined : handleChangeFile(index)
-                }
-                className="h-[9.2rem] w-[9.2rem]"
-              />
-            ))}
-
-            {/* Image Files */}
-            {imageFiles.map((file, index) => (
-              <ImagePreview
+            {files.map((file, index) => (
+              <div
                 key={`image-${file.name}-${index}`}
-                src={URL.createObjectURL(file)}
-                alt={`Upload ${index + 1}: ${file.name}`}
-                handleRemoveFile={
-                  disabled ? undefined : handleRemoveImageFile(index)
-                }
-                handleFileChange={
-                  disabled ? undefined : handleChangeFile(index)
-                }
-                className="h-[9.2rem] w-[9.2rem]"
-              />
-            ))}
-
-            {/* Video Files */}
-            {videoFiles.map((file, index) => (
-              <ImagePreview
-                key={`video-${file.name}-${index}`}
-                src={URL.createObjectURL(file)}
-                className="h-[9.2rem] w-[9.2rem]"
-                alt={`Upload ${index + 1}: ${file.name}`}
-                handleRemoveFile={
-                  disabled ? undefined : handleRemoveVideoFile(index)
-                }
-                handleFileChange={
-                  disabled ? undefined : handleChangeFile(index)
-                }
-              />
+                onClick={(e) => e.stopPropagation()}
+              >
+                <ImagePreview
+                  src={URL.createObjectURL(file)}
+                  alt={`Upload ${index + 1}: ${file.name}`}
+                  handleRemoveFile={handleRemoveFile(index)}
+                  handleFileChange={handleReplaceFile(index)}
+                  className="h-[9.2rem] w-[9.2rem]"
+                />
+              </div>
             ))}
           </div>
         )}
 
         <input
           ref={fileInputRef}
+          id={fieldId}
           type="file"
           multiple={true}
           accept={ALLOWED_MEDIA_TYPES.join(',')}
           className="hidden"
           onChange={handleFileInputChange}
-          disabled={disabled}
         />
       </div>
     </>

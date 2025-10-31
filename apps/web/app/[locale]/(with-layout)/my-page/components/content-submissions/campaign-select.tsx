@@ -2,7 +2,7 @@ import { useTranslations } from 'next-intl';
 
 import { Select } from '@lococo/design-system/select';
 
-import { ContentSubmissionsFormData } from '../../hooks/use-content-submissions';
+import { ContentSubmissionsFormData } from '../../types/content-submissions';
 
 interface CampaignSelectProps {
   formData: ContentSubmissionsFormData;

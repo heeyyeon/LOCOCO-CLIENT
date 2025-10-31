@@ -18,10 +18,12 @@ import {
   ApiResponseCreatorProfileImageResponse,
   ApiResponseCreatorRegisterCompleteResponse,
   ApiResponseCreatorSnsConnectedResponse,
+  ApiResponseCreatorSnsLinkResponse,
   ApiResponseVoid,
   CreatorInfoUpdateRequest,
   CreatorMyPageUpdateRequest,
   CreatorProfileImageRequest,
+  CreatorSnsLinkRequest,
 } from "./data-contracts";
 import { ContentType, HttpClient, RequestParams } from "./http-client";
 
@@ -76,6 +78,27 @@ export class Creator<
     this.request<ApiResponseCreatorProfileImageResponse, any>({
       path: `/api/creator/profile/image`,
       method: "POST",
+      body: data,
+      secure: true,
+      type: ContentType.Json,
+      ...params,
+    });
+  /**
+   * No description
+   *
+   * @tags CREATOR
+   * @name UpdateCreatorSnsLink
+   * @summary 크리에이터가 직접 SNS 링크를 입력하는 API입니다
+   * @request PATCH:/api/creator/register/sns-link
+   * @secure
+   */
+  updateCreatorSnsLink = (
+    data: CreatorSnsLinkRequest,
+    params: RequestParams = {},
+  ) =>
+    this.request<ApiResponseCreatorSnsLinkResponse, any>({
+      path: `/api/creator/register/sns-link`,
+      method: "PATCH",
       body: data,
       secure: true,
       type: ContentType.Json,
@@ -153,6 +176,22 @@ export class Creator<
       body: data,
       secure: true,
       type: ContentType.Json,
+      ...params,
+    });
+  /**
+   * No description
+   *
+   * @tags CREATOR
+   * @name GetCreatorSnsUrls
+   * @summary 크리에이터 SNS URL 을 조회하는 API입니다
+   * @request GET:/api/creator/sns-link
+   * @secure
+   */
+  getCreatorSnsUrls = (params: RequestParams = {}) =>
+    this.request<ApiResponseCreatorSnsLinkResponse, any>({
+      path: `/api/creator/sns-link`,
+      method: "GET",
+      secure: true,
       ...params,
     });
   /**

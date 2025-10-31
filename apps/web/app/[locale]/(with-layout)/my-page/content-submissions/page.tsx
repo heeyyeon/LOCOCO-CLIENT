@@ -18,10 +18,8 @@ import ContentTypeSelect from '../components/content-submissions/content-type-se
 import HashtagsInput from '../components/content-submissions/hashtags-input';
 import SubmitContentUrl from '../components/content-submissions/submit-content-url';
 import Empty from '../components/empty/Empty';
-import {
-  ContentSubmissionsFormData,
-  useContentSubmissions,
-} from '../hooks/use-content-submissions';
+import { useContentSubmissions } from '../hooks/use-content-submissions';
+import { ContentSubmissionsFormData } from '../types/content-submissions';
 
 interface ContentSubmissionsFormProps {
   formData: ContentSubmissionsFormData;
@@ -55,9 +53,7 @@ export default function ContentSubmissions() {
     fields,
     getFormData,
     getErrors,
-    handleSubmitAll,
-    validateAllForms,
-    isAllFormsValid,
+    handleSubmit,
     updateCampaign,
     updateCampaignProductMedia,
     updateCaptionAndHashtags,
@@ -67,14 +63,11 @@ export default function ContentSubmissions() {
     trigger,
     watchData,
   } = useContentSubmissions(Number(campaignId), round as string);
-  console.log(fields);
   const router = useRouter();
   const handleSubmitForm = async () => {
-    trigger();
-    const isValid = await validateAllForms();
-    if (isAllFormsValid && isValid) {
-      handleSubmitAll();
-      setIsSaveSubmitModalOpen(true);
+    const isValid = await trigger();
+    if (isValid) {
+      handleSubmit(watchData, () => setIsSaveSubmitModalOpen(true));
     }
   };
   if (isPending) {
@@ -108,7 +101,6 @@ export default function ContentSubmissions() {
             const formDataForComponent = getFormData(field.id);
             const errors = getErrors(field.id);
             if (!formDataForComponent) return null;
-
             return (
               <div key={field.id} className="flex w-full flex-col gap-[1.6rem]">
                 <ContentSubmissionsForm
@@ -185,9 +177,9 @@ function ContentSubmissionsForm({
           <ContentTypeSelect formData={formData} errors={undefined} />
           <CampaignProductMediaInput
             formData={formData}
-            errors={errors.campaignProductMedia}
             updateCampaignProductMedia={updateCampaignProductMedia}
             fieldId={fieldId}
+            errors={errors.campaignProductMedia}
           />
           <HashtagsInput
             formData={formData}
@@ -196,14 +188,12 @@ function ContentSubmissionsForm({
             fieldId={fieldId}
           />
 
-          {formData.nowReviewRound === 'SECOND' && (
-            <SubmitContentUrl
-              formData={formData}
-              errors={errors.postUrl}
-              updatePostUrl={updatePostUrl}
-              fieldId={fieldId}
-            />
-          )}
+          <SubmitContentUrl
+            formData={formData}
+            errors={errors.postUrl}
+            updatePostUrl={updatePostUrl}
+            fieldId={fieldId}
+          />
         </div>
       </div>
     </>

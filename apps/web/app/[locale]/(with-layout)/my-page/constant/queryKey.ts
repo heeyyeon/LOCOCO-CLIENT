@@ -14,3 +14,7 @@ export const CAMPAIGN_REVIEW_KEYS = {
   reviewResult: (campaignId: number) =>
     [...CAMPAIGN_REVIEW_KEYS.all, 'reviewResult', campaignId] as const,
 };
+
+export const SNS_CONNECTION_KEYS = {
+  ALL: ['snsConnection'],
+} as const;

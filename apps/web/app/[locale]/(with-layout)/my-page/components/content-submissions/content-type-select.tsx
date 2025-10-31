@@ -3,7 +3,7 @@ import { useTranslations } from 'next-intl';
 import { SvgInstagram, SvgTiktok } from '@lococo/icons';
 import { cn } from '@lococo/utils';
 
-import { ContentSubmissionsFormData } from '../../hooks/use-content-submissions';
+import { ContentSubmissionsFormData } from '../../types/content-submissions';
 
 interface ContentTypeSelectProps {
   formData: ContentSubmissionsFormData;
@@ -15,7 +15,7 @@ export default function ContentTypeSelect({
 }: ContentTypeSelectProps) {
   const t = useTranslations('myPage.contentSubmissions.contentTypeSelect');
   const currentContentType = formData.contentPlatform;
-  console.log(currentContentType);
+
   const CONTENT_TYPES = [
     {
       label: t('instagramPost'),
