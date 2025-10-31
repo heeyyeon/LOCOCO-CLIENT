@@ -1,8 +1,9 @@
 {
-  "aabc": "aabc",
-  "abc": "abc",
+  "aabc": "Content type is required",
+  "abc": "Campaign product media is required",
   "brandApplicants": {
-    "allSelect": "Select All",
+    "AddTest": "Caption and hashtags is required",
+    "allSelect": "Post URL is required",
     "applicantsTable": {
       "headers": {
         "appliedDate": "Applied Date (KST)",
@@ -331,7 +332,7 @@
   },
   "confirmSignupModal": {
     "confirmButton": "Okay",
-    "message": "Your application was successfully submitted.\nWe'll email you the result within 24 hours.",
+    "message": "Your account has been created successfully!",
     "title": "Successfully Submitted!"
   },
   "creatorOptions": {
@@ -486,7 +487,7 @@
     "emptyFile": "Empty file",
     "fileTooLarge": "File too large",
     "notAllowedFileType": "Not allowed file type",
-    "selectFile": "Select File"
+    "selectFile": "Choose File"
   },
   "footer": {
     "copyright": "Lococo. All rights reserved.",
@@ -680,7 +681,7 @@
       "campaignProductMediaInput": {
         "description": "Drag and drop or click to upload the file.",
         "selectFile": "Select File",
-        "title": "Social Media Contents"
+        "title": "Campaign Product Media"
       },
       "campaignSelect": {
         "description": "Please select a campaign",
@@ -715,13 +716,6 @@
       "submitContentUrl": {
         "description": "Submit the URL of your uploaded review content for confirmation and tracking.",
         "title": "Submit Content URL"
-      },
-      "emptyForm": {
-        "campaign": "Select a campaign is required",
-        "contentType": "Content type is required",
-        "campaignProductMedia": "Campaign product media is required",
-        "captionAndHashtags": "Caption and hashtags is required",
-        "postUrl": "Post URL is required"
       }
     },
     "editProfile": {
