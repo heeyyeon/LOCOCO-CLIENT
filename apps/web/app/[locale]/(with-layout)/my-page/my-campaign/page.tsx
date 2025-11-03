@@ -17,7 +17,7 @@ import LoadingSvg from 'components/loading/loading-svg';
 import { Pagenation } from '@lococo/design-system/pagenation';
 
 import { AddressModal } from '../@modal/(.)address-modal/AddressModal';
-import useMyCampaign from '../hooks/use-my-campaign';
+import useMyCampaign from '../apis/my-campaign-api';
 
 const isValidCreatorAction = (action?: string): action is CreatorAction => {
   return !!action && Object.keys(CREATOR_ACTION_CONFIG).includes(action);

@@ -1,8 +1,9 @@
 {
-  "aabc": "aabc",
-  "abc": "abc",
+  "aabc": "El tipo de contenido es obligatorio.",
+  "abc": "El medio del producto de la campaña es obligatorio.",
   "brandApplicants": {
-    "allSelect": "Seleccionar todo",
+    "AddTest": "El pie de foto y los hashtags son obligatorios.",
+    "allSelect": "La URL de la publicación es obligatoria.",
     "applicantsTable": {
       "headers": {
         "appliedDate": "Fecha de solicitud (KST)",
@@ -331,7 +332,7 @@
   },
   "confirmSignupModal": {
     "confirmButton": "Está bien",
-    "message": "Tu solicitud se ha enviado con éxito.\nTe enviaremos el resultado por correo electrónico en un plazo de 24 horas.",
+    "message": "¡Has creado tu cuenta con éxito!",
     "title": "¡Enviado con éxito!"
   },
   "creatorOptions": {

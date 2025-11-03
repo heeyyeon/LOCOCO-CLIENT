@@ -39,7 +39,7 @@ export default function info({
         </div>
         <div
           className={cn(
-            'flex max-w-[30rem] flex-col justify-center',
+            'flex max-w-[36rem] flex-col justify-center',
             direction === 'left' && 'items-end text-right',
             direction === 'right' && 'items-start text-left'
           )}

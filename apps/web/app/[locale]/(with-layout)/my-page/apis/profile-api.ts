@@ -3,8 +3,8 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { apiRequest } from 'app/api/apiRequest';
 
-import { type CreatorSignupForm } from '../../../(with-layout)/sign-up/creator/utils/signup';
 import { type ApiResponseCreatorMyPageResponse } from '../../../../../swagger-codegen/data-contracts';
+import { type CreatorSignupForm } from '../../sign-up/creator/utils/signup';
 import { PROFILE_KEYS } from '../constant/queryKey';
 
 export const useProfile = () => {

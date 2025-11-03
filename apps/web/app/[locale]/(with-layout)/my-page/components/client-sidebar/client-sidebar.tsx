@@ -2,7 +2,7 @@
 
 import SideBar from '../../../../../../components/side-bar/side-bar';
 import SideBarSkeleton from '../../../../../../components/side-bar/side-bar-skeleton';
-import { useProfile } from '../../hooks/use-profile-api';
+import { useProfile } from '../../apis/profile-api';
 
 interface ClientSideBarProps {
   menus: Array<{ label: string; value: string }>;

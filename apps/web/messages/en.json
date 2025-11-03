@@ -1,8 +1,9 @@
 {
-  "aabc": "aabc",
-  "abc": "abc",
+  "aabc": "Content type is required",
+  "abc": "Campaign product media is required",
   "brandApplicants": {
-    "allSelect": "Select All",
+    "AddTest": "Caption and hashtags is required",
+    "allSelect": "Post URL is required",
     "applicantsTable": {
       "headers": {
         "appliedDate": "Applied Date (KST)",
@@ -331,7 +332,7 @@
   },
   "confirmSignupModal": {
     "confirmButton": "Okay",
-    "message": "Your application was successfully submitted.\nWe'll email you the result within 24 hours.",
+    "message": "Your account has been created successfully!",
     "title": "Successfully Submitted!"
   },
   "creatorOptions": {

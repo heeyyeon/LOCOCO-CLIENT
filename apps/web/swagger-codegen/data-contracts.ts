@@ -395,6 +395,16 @@ export interface FirstReviewUploadRequest {
    * @example "Hydrating mask review 💧 #hydration #mask #skincare"
    */
   secondCaptionWithHashtags?: string;
+  /**
+   * 첫번째 포스트 URL (베타 기능, 선택)
+   * @example "https://www.instagram.com/p/ABC123/"
+   */
+  firstPostUrl?: string;
+  /**
+   * 두번째 포스트 URL (베타 기능, 선택)
+   * @example "https://www.tiktok.com/@user/video/123456"
+   */
+  secondPostUrl?: string;
 }
 
 export interface BrandProfileImageRequest {
@@ -700,6 +710,24 @@ export interface CustomerMyPageRequest {
     | "SHADE_18"
     | "SHADE_19"
     | "SHADE_20";
+}
+
+export interface CreatorSnsLinkRequest {
+  instaLink?: string;
+  tiktokLink?: string;
+}
+
+export interface ApiResponseCreatorSnsLinkResponse {
+  success?: boolean;
+  /** @format int32 */
+  status?: number;
+  message?: string;
+  data?: CreatorSnsLinkResponse;
+}
+
+export interface CreatorSnsLinkResponse {
+  instaLink: string;
+  tiktokLink: string;
 }
 
 export interface CreatorInfoUpdateRequest {
@@ -2489,6 +2517,16 @@ export interface CreatorInfo {
    * @example "https://s3.example.com/profile/creator-10.jpg"
    */
   profileImageUrl?: string;
+  /**
+   * 인스타그램 계정 링크
+   * @example "https://www.instagram.com/_hyon.8x21?igsh=MWU4cTI5aw=="
+   */
+  instaLink?: string;
+  /**
+   * 틱톡 계정 링크
+   * @example "https://www.tiktok.com/@hyoeun"
+   */
+  tiktokLink?: string;
 }
 
 /** 캠페인별 크리에이터 성과 응답 */
@@ -2553,14 +2591,14 @@ export interface ReviewPerformance {
     | "FINAL_UPLOADED"
     | "UNKNOWN";
   /**
-   * 게시물 URL (2차 리뷰만)
+   * 게시물 URL
    * @example "https://www.instagram.com/p/ABC123/"
    */
   postUrl?: string;
-  /** 콘텐츠 정보 (2차 리뷰만) */
+  /** 콘텐츠 정보 */
   contents?: ContentMetrics;
   /**
-   * 업로드 시간 (2차 리뷰만)
+   * 업로드 시간
    * @format date-time
    * @example "2024-01-15T10:30:00Z"
    */
