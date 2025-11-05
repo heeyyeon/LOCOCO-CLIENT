@@ -370,7 +370,7 @@ export default function CampaignInfoPanel({
 
             <div className="flex flex-col gap-[8px]">
               {participationRewards.map((reward, index) => (
-                <div key={index} className="flex items-center gap-[4px]">
+                <div key={index} className="flex gap-[4px]">
                   <SvgGift size={24} className="flex-shrink-0" />
                   <p className="text-inter-body3 text-gray-700">{reward}</p>
                 </div>
@@ -388,7 +388,7 @@ export default function CampaignInfoPanel({
 
             <div className="flex flex-col gap-[8px]">
               {eligibilityRequirements.map((requirement, index) => (
-                <div key={index} className="flex items-center gap-[4px]">
+                <div key={index} className="flex gap-[4px]">
                   <SvgLanguage size={24} className="flex-shrink-0" />
                   <p className="text-inter-body3 text-gray-700">
                     {requirement}
