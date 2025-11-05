@@ -4,6 +4,7 @@
   "brandApplicants": {
     "AddTest": "캡션과 해시태그는 필수입니다.",
     "allSelect": "게시물 URL은 필수입니다.",
+    "allSelectApplicants": "전체선택하기",
     "applicantsTable": {
       "headers": {
         "appliedDate": "지원 날짜(한국기준)",

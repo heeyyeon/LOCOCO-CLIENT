@@ -351,7 +351,7 @@ export default function BrandApplicantsPageClient({
                 htmlFor="all-select"
                 className="text-inter-body1 cursor-pointer font-bold text-gray-600"
               >
-                {t('allSelect')}(
+                {t('allSelectApplicants')}(
                 {data?.data?.applicants?.filter(
                   (applicant) =>
                     rowSelection[applicant.creatorCampaignId.toString()] &&
