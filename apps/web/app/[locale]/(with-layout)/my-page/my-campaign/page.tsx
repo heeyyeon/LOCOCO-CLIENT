@@ -27,6 +27,7 @@ export default function MyCampaign() {
   const t = useTranslations('myPage.myCampaign');
   const searchParams = useSearchParams();
   const [isAddressModalOpen, setIsAddressModalOpen] = useState(false);
+  const [campaignId, setCampaignId] = useState<number>(0);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
 
@@ -115,13 +116,19 @@ export default function MyCampaign() {
                     undefined
               }
               onButtonClick={
-                isAddressAction ? () => setIsAddressModalOpen(true) : undefined
+                isAddressAction
+                  ? () => {
+                      setIsAddressModalOpen(true);
+                      setCampaignId(campaign.campaignId || 0);
+                    }
+                  : undefined
               }
             />
           );
         })}
       </div>
       <AddressModal
+        campaignId={campaignId}
         open={isAddressModalOpen}
         onOpenChange={setIsAddressModalOpen}
       />

@@ -93,7 +93,7 @@ export default function CampaignInfoPanel({
       setIsConfirmCampaignSignUpModalOpen(false);
       router.refresh();
       queryClient.invalidateQueries({
-        queryKey: CAMPAIGN_REVIEW_KEYS.all,
+        queryKey: CAMPAIGN_REVIEW_KEYS.ALL,
       });
     },
   });
