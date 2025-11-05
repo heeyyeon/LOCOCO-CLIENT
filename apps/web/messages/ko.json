@@ -12,7 +12,11 @@
         "followerCount": "팔로워 숫자",
         "participationCount": "참여 캠페인 수"
       },
-      "noApplicants": "지원자가 없습니다."
+      "noApplicants": "지원자가 없습니다.",
+      "SNS": {
+        "noInstagramLink": "연결된 인스타그램 링크가 없습니다.",
+        "noTiktokLink": "연결된 틱톡 링크가 없습니다."
+      }
     },
     "approve": "승인하기",
     "approveStatus": "승인현황",

@@ -1,22 +1,23 @@
 import { Avatar } from '@lococo/design-system/avatar';
 
+import { ApplicantData } from '../../types';
+
 export default function CreatorProfileColumn({
-  creatorProfileImageUrl,
+  profileImageUrl,
   creatorFullName,
-  creatorNickName,
-}: {
-  creatorProfileImageUrl: string;
-  creatorFullName: string;
-  creatorNickName: string;
-}) {
+  creatorNickname,
+}: Pick<
+  ApplicantData['creator'],
+  'profileImageUrl' | 'creatorFullName' | 'creatorNickname'
+>) {
   return (
     <div className="flex w-[24.4rem] items-center gap-[2.4rem]">
-      <Avatar src={creatorProfileImageUrl} />
+      <Avatar src={profileImageUrl} />
       <div className="flex flex-col">
         <p className="text-inter-body1 font-bold text-gray-800">
           {creatorFullName}
         </p>
-        <p className="text-inter-body3 text-gray-600">@{creatorNickName}</p>
+        <p className="text-inter-body3 text-gray-600">@{creatorNickname}</p>
       </div>
     </div>
   );

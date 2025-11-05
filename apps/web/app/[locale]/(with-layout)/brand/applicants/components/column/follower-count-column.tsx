@@ -1,33 +1,61 @@
+import { useTranslations } from 'next-intl';
 import Image from 'next/image';
+import Link from 'next/link';
 
 import { followerCountFormatter } from '../../utils/follower-count-formatter';
 
 export default function FollowerCountColumn({
   instagramFollower,
   tiktokFollower,
+  instaLink,
+  tiktokLink,
 }: {
   instagramFollower: number;
   tiktokFollower: number;
+  instaLink?: string;
+  tiktokLink?: string;
 }) {
+  const t = useTranslations('brandApplicants.applicantsTable.SNS');
+  const handleSNSLinkClick = (e: React.MouseEvent) => {
+    if (!instaLink) {
+      e.preventDefault();
+      alert(t('noInstagramLink'));
+      return;
+    }
+    if (!tiktokLink) {
+      e.preventDefault();
+      alert(t('noTiktokLink'));
+      return;
+    }
+  };
+
   return (
     <div className="flex w-[14.8rem] flex-col gap-[0.4rem]">
-      <div className="flex items-center gap-[0.8rem]">
-        <Image
-          src="/instagram.svg"
-          alt="instagram logo"
-          width={20}
-          height={20}
-        />
-        <p className="text-inter-body3 text-gray-800">
-          {followerCountFormatter(instagramFollower)}
-        </p>
-      </div>
-      <div className="flex items-center gap-[0.8rem]">
-        <Image src="/tiktok.svg" alt="tiktok logo" width={20} height={20} />
-        <p className="text-inter-body3 text-gray-800">
-          {followerCountFormatter(tiktokFollower)}
-        </p>
-      </div>
+      <Link href={instaLink ?? ''} target="_blank" onClick={handleSNSLinkClick}>
+        <div className="flex items-center gap-[0.8rem]">
+          <Image
+            src="/instagram.svg"
+            alt="instagram logo"
+            width={20}
+            height={20}
+          />
+          <p className="text-inter-body3 text-gray-800">
+            {followerCountFormatter(instagramFollower)}
+          </p>
+        </div>
+      </Link>
+      <Link
+        href={tiktokLink ?? ''}
+        target="_blank"
+        onClick={handleSNSLinkClick}
+      >
+        <div className="flex items-center gap-[0.8rem]">
+          <Image src="/tiktok.svg" alt="tiktok logo" width={20} height={20} />
+          <p className="text-inter-body3 text-gray-800">
+            {followerCountFormatter(tiktokFollower)}
+          </p>
+        </div>
+      </Link>
     </div>
   );
 }

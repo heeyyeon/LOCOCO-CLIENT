@@ -15,7 +15,7 @@ import {
 import { Checkbox } from '@lococo/design-system/checkbox';
 import { cn } from '@lococo/utils';
 
-import { ApplicantData, ApproveStatus } from '../types';
+import { ApplicantTableData, ApproveStatus } from '../types';
 import AppliedDateColumn from './column/applied-date-column';
 import ApproveStatusColumn from './column/approve-status-column';
 import CampaignCountColumn from './column/campaign-count-column';
@@ -35,14 +35,14 @@ const getWidthClass = (size: number) => {
 
 const createColumns = (
   t: (key: string) => string
-): ColumnDef<ApplicantData>[] => [
+): ColumnDef<ApplicantTableData>[] => [
   {
     id: 'select',
     size: 50,
     meta: {
       style: { textAlign: 'left' },
     },
-    cell: ({ row }: { row: Row<ApplicantData> }) => {
+    cell: ({ row }: { row: Row<ApplicantTableData> }) => {
       return (
         <>
           <div className="flex items-center justify-center">
@@ -71,13 +71,13 @@ const createColumns = (
     size: 244, // 컬럼 너비 설정
     cell: ({
       getValue,
-    }: CellContext<ApplicantData, ApplicantData['creator']>) => {
+    }: CellContext<ApplicantTableData, ApplicantTableData['creator']>) => {
       const row = getValue();
       return (
         <CreatorProfileColumn
-          creatorProfileImageUrl={row.creatorProfileImageUrl}
+          profileImageUrl={row.profileImageUrl}
           creatorFullName={row.creatorFullName}
-          creatorNickName={row.creatorNickName}
+          creatorNickname={row.creatorNickname}
         />
       );
     },
@@ -91,12 +91,18 @@ const createColumns = (
     size: 148,
     cell: ({
       getValue,
-    }: CellContext<ApplicantData, ApplicantData['followerCount']>) => {
+    }: CellContext<
+      ApplicantTableData,
+      ApplicantTableData['followerCount']
+    >) => {
       const row = getValue();
+
       return (
         <FollowerCountColumn
           instagramFollower={row.instagramFollower}
           tiktokFollower={row.tiktokFollower}
+          instaLink={row.instaLink}
+          tiktokLink={row.tiktokLink}
         />
       );
     },
@@ -108,7 +114,7 @@ const createColumns = (
     meta: {
       style: { textAlign: 'left' },
     },
-    cell: ({ getValue }: CellContext<ApplicantData, number>) => {
+    cell: ({ getValue }: CellContext<ApplicantTableData, number>) => {
       const row = getValue();
       return <CampaignCountColumn campaignCount={row} />;
     },
@@ -120,7 +126,7 @@ const createColumns = (
       style: { textAlign: 'left' },
     },
     size: 148,
-    cell: ({ getValue }: CellContext<ApplicantData, string>) => {
+    cell: ({ getValue }: CellContext<ApplicantTableData, string>) => {
       const row = getValue();
       return <AppliedDateColumn appliedDate={row} />;
     },
@@ -132,7 +138,7 @@ const createColumns = (
     meta: {
       style: { textAlign: 'center' },
     },
-    cell: ({ getValue }: CellContext<ApplicantData, ApproveStatus>) => {
+    cell: ({ getValue }: CellContext<ApplicantTableData, ApproveStatus>) => {
       const row = getValue();
       return <ApproveStatusColumn approvalStatus={row} />;
     },
@@ -144,7 +150,7 @@ interface ApplicantsTableProps {
   onRowSelectionChange: OnChangeFn<RowSelectionState>;
   columnFilters: ColumnFiltersState;
   onColumnFiltersChange: OnChangeFn<ColumnFiltersState>;
-  data: ApplicantData[];
+  data: ApplicantTableData[];
 }
 
 export default function ApplicantsTable({
@@ -156,6 +162,7 @@ export default function ApplicantsTable({
 }: ApplicantsTableProps) {
   const t = useTranslations('brandApplicants.applicantsTable');
   const columns = createColumns(t);
+  console.log(data);
   const table = useReactTable({
     data,
     columns,
