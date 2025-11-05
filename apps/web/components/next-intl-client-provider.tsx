@@ -19,7 +19,7 @@ export default function NextIntlClientCustomizedProvider({
 
   useEffect(() => {
     const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-    console.log('client timeZone', timeZone);
+
     setTimeZone(timeZone);
   }, []);
 

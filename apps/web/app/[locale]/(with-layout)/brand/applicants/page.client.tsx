@@ -87,6 +87,21 @@ export default function BrandApplicantsPageClient({
     !!campaignIdQueryString
   );
 
+  const applicantsTableData = data?.data?.applicants.map((applicant) => {
+    const { instaLink, tiktokLink, ...creator } = applicant.creator;
+
+    return {
+      ...applicant,
+      creator,
+      followerCount: {
+        instaLink,
+        tiktokLink,
+        instagramFollower: applicant.followerCount.instagramFollower,
+        tiktokFollower: applicant.followerCount.tiktokFollower,
+      },
+    };
+  });
+
   const approveApplicantsMutation = useApproveApplicantsMutation(
     Object.keys(rowSelection)
       .map((key) => parseInt(key, 10))
@@ -336,7 +351,7 @@ export default function BrandApplicantsPageClient({
                 htmlFor="all-select"
                 className="text-inter-body1 cursor-pointer font-bold text-gray-600"
               >
-                {t('allSelect')}(
+                {t('allSelectApplicants')}(
                 {data?.data?.applicants?.filter(
                   (applicant) =>
                     rowSelection[applicant.creatorCampaignId.toString()] &&
@@ -373,7 +388,7 @@ export default function BrandApplicantsPageClient({
             onRowSelectionChange={setRowSelection}
             columnFilters={columnFilters}
             onColumnFiltersChange={setColumnFilters}
-            data={data.data.applicants}
+            data={applicantsTableData ?? []}
           />
 
           <div className="my-[6.4rem] flex w-full items-center justify-center">

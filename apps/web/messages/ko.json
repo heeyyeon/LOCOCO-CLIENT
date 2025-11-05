@@ -1,9 +1,8 @@
 {
-  "aabc": "콘텐츠 유형은 필수입니다.",
-  "abc": "캠페인 제품 미디어는 필수입니다.",
   "brandApplicants": {
     "AddTest": "캡션과 해시태그는 필수입니다.",
     "allSelect": "게시물 URL은 필수입니다.",
+    "allSelectApplicants": "전체선택하기",
     "applicantsTable": {
       "headers": {
         "appliedDate": "지원 날짜(한국기준)",
@@ -12,7 +11,11 @@
         "followerCount": "팔로워 숫자",
         "participationCount": "참여 캠페인 수"
       },
-      "noApplicants": "지원자가 없습니다."
+      "noApplicants": "지원자가 없습니다.",
+      "SNS": {
+        "noInstagramLink": "연결된 인스타그램 링크가 없습니다.",
+        "noTiktokLink": "연결된 틱톡 링크가 없습니다."
+      }
     },
     "approve": "승인하기",
     "approveStatus": "승인현황",
@@ -25,7 +28,7 @@
     },
     "campaignSelect": {
       "noCampaign": "생성한 캠페인이 없습니다.",
-      "selectCampaign": "캠페인을 선택하세요."
+      "selectCampaign": "brandApplicants.campaignSelect.selectCampaign"
     },
     "comingSoon": "준비중인 기능입니다.",
     "excelExport": "Export",
@@ -540,49 +543,49 @@
     },
     "creators": {
       "applyForCampaign": {
-        "description": "마음에 드는 캠페인을 찾아 참여 신청하세요!",
+        "description": "마음에 드는 캠페인을 찾아 참여를 신청하세요!",
         "title": "캠페인 신청하기"
       },
       "confimAddress": {
-        "description": "캠페인 선정 후 24시간 이내에 배송지를 확인해 주세요.",
-        "title": "주소 확인"
+        "description": "선정되면, 24시간 이내에 마이페이지에서 배송 주소를 확인해주세요.",
+        "title": "결과 발표를 기다려주세요."
       },
       "confirmAddress": {
-        "description": "캠페인 선정 후 24시간 이내에 배송지를 확인해 주세요.",
-        "title": "주소 확인"
+        "description": "배송은 보통 약 7일 정도 소요됩니다. 패키지를 받으면 제품을 사용해보세요!",
+        "title": "제품 수령 및 체험하기"
       },
       "keepYourReviewLive": {
-        "description": "콘텐츠는 최소 6개월 동안 SNS에 유지해 주세요.",
+        "description": "콘텐츠는 최소 6개월 동안 SNS에 게시된 상태로 유지해야 합니다.",
         "title": "리뷰 유지하기"
       },
       "maintenanceGuidelines": {
-        "description": "리뷰는 최소 6개월 동안 게시 상태를 유지해 주세요.",
+        "description": "리뷰를 최소 6개월간 게시 상태로 유지하세요.",
         "title": "유지 가이드라인"
       },
       "receiveAndTryTheProducts": {
-        "description": "제품을 받아보고 사용해 보세요!",
-        "title": "제품 수령 & 체험하기"
+        "description": "제품을 수령하고 체험하세요!",
+        "title": "제품 수령 및 체험하기"
       },
       "reviewBrand’sFeedbackAndUpload2ndReview": {
-        "description": "브랜드의 피드백을 확인하고 2차 리뷰를 업로드하세요. 최종 Instagram/TikTok URL 첨부를 잊지 마세요!",
-        "title": "제품 수령 후 7일 이내에 첫 번째 리뷰를 업로드하세요. 브랜드 피드백 확인 후, 7일 이내에 두 번째 리뷰를 업로드하고 최종 SNS URL을 첨부하세요."
+        "description": "브랜드의 피드백을 확인하고 두 번째 리뷰를 업로드하세요. 마지막 Instagram/TikTok URL 첨부를 잊지 마세요!",
+        "title": "브랜드 피드백 확인 및 두 번째 리뷰 업로드"
       },
       "reviewUploadSchedule": {
-        "description": "제품을 받은 후 7일 이내에 첫 번째 리뷰를 업로드하세요.\n브랜드의 피드백을 확인한 뒤, 7일 이내에 두 번째 리뷰를 업로드하고 두 번째 리뷰를 게시할 때 최종 SNS URL을 첨부해 주세요.",
+        "description": "제품 수령 후 7일 이내에 첫 번째 리뷰를 업로드하세요. 브랜드 피드백을 확인한 뒤, 7일 이내에 두 번째 리뷰를 업로드하고 최종 SNS URL을 첨부하세요.",
         "title": "리뷰 업로드 일정"
       },
       "title": "크리에이터",
       "upload1stReview": {
         "description": "제품 수령 후 7일 이내에 첫 번째 리뷰를 게시하세요. 브랜드가 확인 후 피드백을 남깁니다.",
-        "title": "1차 리뷰 업로드"
+        "title": "첫 번째 리뷰 업로드"
       },
       "uploadReview": {
         "description": "제품 수령 후 7일 이내에 첫 번째 리뷰를 업로드하세요.",
         "title": "리뷰 업로드"
       },
       "waitForResultAnnouncement": {
-        "description": "결과 발표를 기다려 주세요!",
-        "title": "선정되면, 마이페이지에서 24시간 이내에 배송지를 확인해 주세요."
+        "description": "선정되면, 24시간 이내에 마이페이지에서 배송 주소를 확인해주세요.",
+        "title": "결과 발표를 기다려주세요."
       }
     },
     "FAQs": {
