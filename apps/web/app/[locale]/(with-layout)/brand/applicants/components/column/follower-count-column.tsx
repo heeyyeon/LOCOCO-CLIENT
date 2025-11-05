@@ -16,12 +16,16 @@ export default function FollowerCountColumn({
   tiktokLink?: string;
 }) {
   const t = useTranslations('brandApplicants.applicantsTable.SNS');
-  const handleSNSLinkClick = (e: React.MouseEvent) => {
+
+  const handleInstagramClick = (e: React.MouseEvent) => {
     if (!instaLink) {
       e.preventDefault();
       alert(t('noInstagramLink'));
       return;
     }
+  };
+
+  const handleTiktokClick = (e: React.MouseEvent) => {
     if (!tiktokLink) {
       e.preventDefault();
       alert(t('noTiktokLink'));
@@ -31,7 +35,11 @@ export default function FollowerCountColumn({
 
   return (
     <div className="flex w-[14.8rem] flex-col gap-[0.4rem]">
-      <Link href={instaLink ?? ''} target="_blank" onClick={handleSNSLinkClick}>
+      <Link
+        href={instaLink ?? ''}
+        target="_blank"
+        onClick={handleInstagramClick}
+      >
         <div className="flex items-center gap-[0.8rem]">
           <Image
             src="/instagram.svg"
@@ -44,11 +52,7 @@ export default function FollowerCountColumn({
           </p>
         </div>
       </Link>
-      <Link
-        href={tiktokLink ?? ''}
-        target="_blank"
-        onClick={handleSNSLinkClick}
-      >
+      <Link href={tiktokLink ?? ''} target="_blank" onClick={handleTiktokClick}>
         <div className="flex items-center gap-[0.8rem]">
           <Image src="/tiktok.svg" alt="tiktok logo" width={20} height={20} />
           <p className="text-inter-body3 text-gray-800">
