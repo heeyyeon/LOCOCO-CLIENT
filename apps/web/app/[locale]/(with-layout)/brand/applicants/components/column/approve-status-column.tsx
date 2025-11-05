@@ -1,3 +1,5 @@
+import { useTranslations } from 'next-intl';
+
 import { InfoChip } from '@lococo/design-system/info-chip';
 
 export default function ApproveStatusColumn({
@@ -5,6 +7,7 @@ export default function ApproveStatusColumn({
 }: {
   approvalStatus: 'PENDING' | 'APPROVED' | 'REJECTED';
 }) {
+  const t = useTranslations('brandApplicants.approveStatusSelect');
   const getApprovalStatusStyle = (
     status: string
   ): { text: string; color: 'default' | 'green' | 'red' } => {
@@ -12,9 +15,9 @@ export default function ApproveStatusColumn({
       string,
       { text: string; color: 'default' | 'green' | 'red' }
     > = {
-      PENDING: { text: '대기중', color: 'default' },
-      APPROVED: { text: '승인됨', color: 'green' },
-      REJECTED: { text: '거절됨', color: 'red' },
+      PENDING: { text: t('pending'), color: 'default' },
+      APPROVED: { text: t('approved'), color: 'green' },
+      REJECTED: { text: t('rejected'), color: 'red' },
     };
 
     return statusMap[status] || { text: status, color: 'default' };

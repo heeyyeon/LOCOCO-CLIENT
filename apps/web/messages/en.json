@@ -1,9 +1,8 @@
 {
-  "aabc": "Content type is required",
-  "abc": "Campaign product media is required",
   "brandApplicants": {
     "AddTest": "Caption and hashtags is required",
     "allSelect": "Post URL is required",
+    "allSelectApplicants": "Select All",
     "applicantsTable": {
       "headers": {
         "appliedDate": "Applied Date (KST)",
@@ -12,7 +11,11 @@
         "followerCount": "Follower Count",
         "participationCount": "Participation Count"
       },
-      "noApplicants": "No applicants."
+      "noApplicants": "No applicants.",
+      "SNS": {
+        "noInstagramLink": "No connected Instagram link.",
+        "noTiktokLink": "No connected TikTok link."
+      }
     },
     "approve": "Approve",
     "approveStatus": "Approval Status",
@@ -544,12 +547,12 @@
         "title": "Apply for a campaign"
       },
       "confimAddress": {
-        "description": "Confirm your shipping address within 24 hours after campaign selection.",
-        "title": "Confim Address"
+        "description": "If you’re selected, confirm your shipping address in My Page within 24 hours.",
+        "title": "Wait for the Result Announcement"
       },
       "confirmAddress": {
-        "description": "Confirm your shipping address within 24 hours after campaign selection.",
-        "title": "Confirm Address"
+        "description": "Shipping usually takes about 7 days. Once your package arrives, try out the products!",
+        "title": "Receive & Try the Products"
       },
       "keepYourReviewLive": {
         "description": "Please make sure your content stays up on your social media for at least 6 months.",
@@ -564,8 +567,8 @@
         "title": "Receive & Try the Products"
       },
       "reviewBrand’sFeedbackAndUpload2ndReview": {
-        "description": "Review Brand’s Feedback & Upload 2nd review",
-        "title": "Take a look at the brand’s notes and submit your second review. Don’t forget to include the final Instagram/TikTok URL!"
+        "description": "Take a look at the brand’s notes and submit your second review. Don’t forget to include the final Instagram/TikTok URL!",
+        "title": "Review Brand’s Feedback & Upload 2nd review"
       },
       "reviewUploadSchedule": {
         "description": "Upload your first review within 7 days of receiving the product. After reviewing the brand’s feedback, upload your second review within 7 days. Attach the final SNS URL when posting the second review.",
@@ -581,8 +584,8 @@
         "title": "Upload Review"
       },
       "waitForResultAnnouncement": {
-        "description": "Wait for the result announcement!",
-        "title": "If you’re selected, confirm your shipping address in My Page within 24 hours."
+        "description": "If you’re selected, confirm your shipping address in My Page within 24 hours.",
+        "title": "Wait for the Result Announcement"
       }
     },
     "FAQs": {

@@ -4,12 +4,35 @@ export interface ApplicantData {
   creatorId: number;
   creator: {
     creatorFullName: string;
-    creatorNickName: string;
-    creatorProfileImageUrl: string;
+    creatorNickname: string;
+    profileImageUrl: string;
+    instaLink: string;
+    tiktokLink: string;
+    creatorId: number;
   };
   followerCount: {
     instagramFollower: number;
     tiktokFollower: number;
+  };
+  participationCount: number;
+  appliedDate: string;
+  approveStatus: ApproveStatus;
+}
+
+export interface ApplicantTableData {
+  creatorCampaignId: number;
+  creatorId: number;
+  creator: {
+    creatorFullName: string;
+    creatorNickname: string;
+    profileImageUrl: string;
+    creatorId: number;
+  };
+  followerCount: {
+    instagramFollower: number;
+    tiktokFollower: number;
+    instaLink: string;
+    tiktokLink: string;
   };
   participationCount: number;
   appliedDate: string;

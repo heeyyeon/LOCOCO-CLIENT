@@ -1,9 +1,8 @@
 {
-  "aabc": "El tipo de contenido es obligatorio.",
-  "abc": "El medio del producto de la campaña es obligatorio.",
   "brandApplicants": {
     "AddTest": "El pie de foto y los hashtags son obligatorios.",
     "allSelect": "La URL de la publicación es obligatoria.",
+    "allSelectApplicants": "Seleccionar todo",
     "applicantsTable": {
       "headers": {
         "appliedDate": "Fecha de solicitud (KST)",
@@ -12,7 +11,11 @@
         "followerCount": "Cantidad de seguidores",
         "participationCount": "Número de participaciones"
       },
-      "noApplicants": "No hay solicitantes."
+      "noApplicants": "No hay solicitantes.",
+      "SNS": {
+        "noInstagramLink": "No hay enlace de Instagram conectado.",
+        "noTiktokLink": "No hay enlace de TikTok conectado."
+      }
     },
     "approve": "Aprobar",
     "approveStatus": "Estado de aprobación",
@@ -541,48 +544,48 @@
     "creators": {
       "applyForCampaign": {
         "description": "¡Encuentra una campaña que te guste y solicita unirte!",
-        "title": "Solicitar una campaña"
+        "title": "Solicitar participación en la campaña"
       },
       "confimAddress": {
-        "description": "Confirma tu dirección de envío dentro de las 24 horas después de ser seleccionado para la campaña.",
-        "title": "Confirmar dirección"
+        "description": "Si eres seleccionada, confirma tu dirección de envío en “Mi página” dentro de las 24 horas.",
+        "title": "Espera el anuncio de resultados."
       },
       "confirmAddress": {
-        "description": "Confirma tu dirección de envío dentro de las 24 horas después de ser seleccionado para la campaña.",
-        "title": "Confirmar dirección"
+        "description": "El envío suele tardar unos 7 días. ¡Cuando recibas tu paquete, prueba los productos!",
+        "title": "Recibir y probar los productos"
       },
       "keepYourReviewLive": {
-        "description": "Asegúrate de que tu contenido permanezca en tus redes sociales por al menos 6 meses.",
-        "title": "Mantener tu reseña activa"
+        "description": "Asegúrate de que tu contenido permanezca publicado en tus redes sociales durante al menos 6 meses.",
+        "title": "Mantén tu reseña publicada"
       },
       "maintenanceGuidelines": {
-        "description": "Mantén la reseña publicada durante al menos 6 meses.",
-        "title": "Guías de mantenimiento"
+        "description": "Mantén la reseña activa durante al menos 6 meses.",
+        "title": "Guía de mantenimiento"
       },
       "receiveAndTryTheProducts": {
         "description": "¡Recibe y prueba los productos!",
         "title": "Recibir y probar los productos"
       },
       "reviewBrand’sFeedbackAndUpload2ndReview": {
-        "description": "Revisar los comentarios de la marca y subir la 2ª reseña",
-        "title": "Revisa las notas de la marca y envía tu segunda reseña. ¡No olvides incluir la URL final de Instagram/TikTok!"
+        "description": "Revisa las observaciones de la marca y sube tu segunda reseña. ¡No olvides incluir la URL final de Instagram o TikTok!",
+        "title": "Revisar los comentarios de la marca y subir la segunda reseña"
       },
       "reviewUploadSchedule": {
-        "description": "Suba su primera reseña dentro de los 7 días posteriores a recibir el producto. Después de revisar los comentarios de la marca, suba su segunda reseña dentro de los 7 días. Adjunte la URL final de la red social al publicar la segunda reseña.",
-        "title": "Cronograma de carga de reseñas"
+        "description": "Sube tu primera reseña dentro de los 7 días posteriores a recibir el producto. Después de revisar los comentarios de la marca, sube la segunda reseña en los siguientes 7 días e incluye la URL final de tu publicación.",
+        "title": "Cronograma de subida de reseñas"
       },
       "title": "Creadores",
       "upload1stReview": {
         "description": "Publica tu primera reseña dentro de los 7 días posteriores a recibir el producto. La marca la revisará y te dejará comentarios.",
-        "title": "Subir la 1ª reseña"
+        "title": "Subir la primera reseña"
       },
       "uploadReview": {
         "description": "Sube tu primera reseña dentro de los 7 días posteriores a recibir el producto.",
         "title": "Subir reseña"
       },
       "waitForResultAnnouncement": {
-        "description": "¡Espera el anuncio de resultados!",
-        "title": "Si eres seleccionado, confirma tu dirección de envío en Mi Página dentro de las 24 horas."
+        "description": "Si eres seleccionada, confirma tu dirección de envío en “Mi página” dentro de las 24 horas.",
+        "title": "Espera el anuncio de resultados."
       }
     },
     "FAQs": {
