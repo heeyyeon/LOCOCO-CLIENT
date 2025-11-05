@@ -11,17 +11,23 @@ import {
 import { ModalButton } from '@lococo/design-system/modal-button';
 import { ModalHeader } from '@lococo/design-system/modal-header';
 
-import { useFetchAddress } from './hooks/fetch-address';
+import { useFetchAddress, usePostAddress } from './apis/address-api';
 
 interface AddressModalProps {
+  campaignId: number;
   open: boolean;
   onOpenChange: (open: boolean) => void;
 }
 
-export function AddressModal({ open, onOpenChange }: AddressModalProps) {
+export function AddressModal({
+  campaignId,
+  open,
+  onOpenChange,
+}: AddressModalProps) {
   const router = useRouter();
   const t = useTranslations('myPage.addressModal');
   const { data: address } = useFetchAddress();
+  const { mutate: postAddressMutation } = usePostAddress();
 
   const handleEditModal = () => {
     onOpenChange(false);
@@ -30,7 +36,7 @@ export function AddressModal({ open, onOpenChange }: AddressModalProps) {
 
   const handleGetDeliveryModal = () => {
     onOpenChange(false);
-    // TODO: 모달 닫히고 마이페이지의 캠페인 카드 버튼이 confirm address에서 upload 1st review로 바뀜
+    postAddressMutation(campaignId);
   };
 
   return (
