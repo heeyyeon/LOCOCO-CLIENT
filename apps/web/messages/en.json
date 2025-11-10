@@ -460,7 +460,7 @@
       "firstNameRequired": "First name is required.",
       "genderRequired": "Gender is required.",
       "idAvailabilityCheck": "Please check the ID availability.",
-      "idInvalidFormat": "This ID is unavailable. Please check the ID form.",
+      "idInvalidFormat": "Your username must be up to 15 characters and can only contain smallcase English letters, numbers, periods (.), and underscores (_).",
       "idMaxLength": "Use up to 15 characters.",
       "idRequired": "ID is required.",
       "lastNameMaxLength": "Use up to 20 characters.",
