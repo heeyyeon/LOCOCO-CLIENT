@@ -460,7 +460,7 @@
       "firstNameRequired": "El nombre es obligatorio.",
       "genderRequired": "El género es obligatorio.",
       "idAvailabilityCheck": "Por favor, verifique la disponibilidad del ID.",
-      "idInvalidFormat": "Este ID no está disponible. Por favor, revisa el formato del ID.",
+      "idInvalidFormat": "Su nombre de usuario debe tener un máximo de 15 caracteres y solo puede contener letras minúsculas en inglés, números, puntos (.), y guiones bajos (_).",
       "idMaxLength": "Puede utilizar hasta 15 caracteres.",
       "idRequired": "El ID es obligatorio.",
       "lastNameMaxLength": "Puedes usar hasta 20 caracteres.",
