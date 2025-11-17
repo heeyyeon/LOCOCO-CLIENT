@@ -27,23 +27,19 @@
     "./image-upload": "./src/components/image-upload/index.ts",
     "./image-preview": "./src/components/image-preview/index.ts",
     "./input-field": "./src/components/input-field/index.ts",
-    "./styles.css": "./dist/index.css"
+    "./styles.css": "./styles.css"
   },
   "scripts": {
     "lint": "eslint .",
     "generate:component": "turbo gen react-component",
     "check-types": "tsc --noEmit",
-    "build:styles": "tailwindcss -i ./styles.css -o ./dist/index.css",
-    "build:components": "tsc",
     "dev:styles": "tailwindcss -i ./styles.css -o ./dist/index.css --watch",
     "dev:components": "tsc --watch",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build",
-    "build:icons:fill": "svgr --config-file src/icons/svgr.fill.js src/icons/fill/svg --out-dir src/icons/fill/components --typescript --ext tsx --no-prettier",
-    "build:icons:line": "svgr --config-file src/icons/svgr.line.js src/icons/line/svg --out-dir src/icons/line/components --typescript --ext tsx --no-prettier",
+    "icons:fill": "svgr --config-file src/icons/svgr.fill.js src/icons/fill/svg --out-dir src/icons/fill/components --typescript --ext tsx --no-prettier",
+    "icons:line": "svgr --config-file src/icons/svgr.line.js src/icons/line/svg --out-dir src/icons/line/components --typescript --ext tsx --no-prettier",
     "icons:watch": "svgr src/icons/svg --out-dir src/icons/components --typescript --ext tsx --no-prettier --watch",
-    "icons:clean": "rm -rf src/icons/components && mkdir -p src/icons/components",
-    "build": "pnpm build:icons:fill && pnpm build:icons:line && pnpm build:styles && pnpm build:components"
+    "icons:clean": "rm -rf src/icons/components && mkdir -p src/icons/components"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^4.0.1",
