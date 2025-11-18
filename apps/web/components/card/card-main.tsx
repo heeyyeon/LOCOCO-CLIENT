@@ -1,6 +1,7 @@
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 import { InfoChip } from '@lococo/design-system/info-chip';
 import { cn } from '@lococo/utils';
@@ -37,7 +38,7 @@ export default function CardMain({
 }: CardMainProps) {
   const card = useTranslations('card');
   const fallbackImage = '/logo.svg';
-
+  const router = useRouter();
   const renderCampaignType = (type: string) => {
     if (!type) return '';
     if (type == 'GIVEAWAY') return 'Give away';
@@ -46,9 +47,10 @@ export default function CardMain({
   return (
     <div
       className={cn(
-        'group relative flex h-[33.1rem] w-[36rem] flex-col overflow-hidden rounded-[2.4rem] border border-gray-200',
+        'group relative flex h-[33.1rem] w-[36rem] cursor-pointer flex-col overflow-hidden rounded-[2.4rem] border border-gray-200',
         className
       )}
+      onClick={() => router.push(`/campaign-detail/${campaignId}`)}
     >
       <div className="relative flex-1">
         <Image
