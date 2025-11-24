@@ -101,6 +101,9 @@ export const useRoleSetup = (options?: UseRoleSetupOptions) => {
     const hasAccessToken = document.cookie.includes('AccessToken=');
     if (!hasAccessToken) return false;
 
+    const mode = searchParams.get('mode');
+    if (mode === 'signup') return false;
+
     try {
       const userInfo = await apiRequest<{
         data?: { role?: string };
@@ -127,20 +130,15 @@ export const useRoleSetup = (options?: UseRoleSetupOptions) => {
           router.replace(`/${locale}`);
         }
       } else {
-        const storedRole = getRoleFromLocalStorage();
-        if (!storedRole) {
-          router.replace(`/${locale}`);
-        } else {
-          const roleAsUserRole = role as UserRole;
-          try {
-            await processRoleSetup(roleAsUserRole);
-          } catch (error) {
-            if (error instanceof Error && error.message.includes('400')) {
-              router.replace(`/${locale}`);
-            } else {
-              clearRoleFromLocalStorage();
-              router.replace(`/${locale}`);
-            }
+        const roleAsUserRole = role as UserRole;
+        try {
+          await processRoleSetup(roleAsUserRole);
+        } catch (error) {
+          if (error instanceof Error && error.message.includes('400')) {
+            router.replace(`/${locale}`);
+          } else {
+            clearRoleFromLocalStorage();
+            router.replace(`/${locale}`);
           }
         }
       }
@@ -153,14 +151,17 @@ export const useRoleSetup = (options?: UseRoleSetupOptions) => {
       }
     }
     return true;
-  }, [options, router, locale, processRoleSetup]);
+  }, [options, router, locale, processRoleSetup, searchParams]);
 
   const handleSignupMode = useCallback(async () => {
+    const mode = searchParams.get('mode');
+    if (mode !== 'signup') return;
+
     const storedRole = getRoleFromLocalStorage();
     if (storedRole) {
       await processRoleSetup(storedRole);
     }
-  }, [processRoleSetup]);
+  }, [processRoleSetup, searchParams]);
 
   useEffect(() => {
     if (isSetupCompleted.current) return;
