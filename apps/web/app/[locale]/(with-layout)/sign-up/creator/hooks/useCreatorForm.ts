@@ -75,12 +75,19 @@ export const useCreatorForm = () => {
 
   useEffect(() => {
     const fetchUserData = async () => {
-      const response = await getCreatorInfo();
+      try {
+        const response = await getCreatorInfo();
 
-      if (response.success && response.data) {
-        const formData = transformApiToForm(response.data);
-        const cleanedFormData = cleanFormData(formData);
-        form.reset(cleanedFormData);
+        if (response.success && response.data) {
+          const formData = transformApiToForm(response.data);
+          const cleanedFormData = cleanFormData(formData);
+          form.reset(cleanedFormData);
+        }
+      } catch (error) {
+        if (error instanceof Error && error.message.includes('403')) {
+          return;
+        }
+        throw error;
       }
     };
 

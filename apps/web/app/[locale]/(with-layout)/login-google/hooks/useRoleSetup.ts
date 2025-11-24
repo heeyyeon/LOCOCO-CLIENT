@@ -51,7 +51,7 @@ export const useRoleSetup = (options?: UseRoleSetupOptions) => {
           }
           break;
         case 'SNS_REQUIRED':
-          router.replace(`/${locale}/my-page/connect-sns`);
+          router.replace(`/${locale}/sign-up/creator/sns-links`);
           break;
         case 'REGISTER': {
           const signupRoute = roleRoutes[role];
@@ -101,6 +101,9 @@ export const useRoleSetup = (options?: UseRoleSetupOptions) => {
     const hasAccessToken = document.cookie.includes('AccessToken=');
     if (!hasAccessToken) return false;
 
+    const mode = searchParams.get('mode');
+    if (mode === 'signup') return false;
+
     try {
       const userInfo = await apiRequest<{
         data?: { role?: string };
@@ -127,7 +130,17 @@ export const useRoleSetup = (options?: UseRoleSetupOptions) => {
           router.replace(`/${locale}`);
         }
       } else {
-        router.replace(`/${locale}`);
+        const roleAsUserRole = role as UserRole;
+        try {
+          await processRoleSetup(roleAsUserRole);
+        } catch (error) {
+          if (error instanceof Error && error.message.includes('400')) {
+            router.replace(`/${locale}`);
+          } else {
+            clearRoleFromLocalStorage();
+            router.replace(`/${locale}`);
+          }
+        }
       }
     } catch {
       const storedRole = getRoleFromLocalStorage();
@@ -138,14 +151,17 @@ export const useRoleSetup = (options?: UseRoleSetupOptions) => {
       }
     }
     return true;
-  }, [options, router, locale, processRoleSetup]);
+  }, [options, router, locale, processRoleSetup, searchParams]);
 
   const handleSignupMode = useCallback(async () => {
+    const mode = searchParams.get('mode');
+    if (mode !== 'signup') return;
+
     const storedRole = getRoleFromLocalStorage();
     if (storedRole) {
       await processRoleSetup(storedRole);
     }
-  }, [processRoleSetup]);
+  }, [processRoleSetup, searchParams]);
 
   useEffect(() => {
     if (isSetupCompleted.current) return;
