@@ -51,7 +51,7 @@ export const useRoleSetup = (options?: UseRoleSetupOptions) => {
           }
           break;
         case 'SNS_REQUIRED':
-          router.replace(`/${locale}/my-page/connect-sns`);
+          router.replace(`/${locale}/sign-up/creator/sns-links`);
           break;
         case 'REGISTER': {
           const signupRoute = roleRoutes[role];
@@ -127,7 +127,8 @@ export const useRoleSetup = (options?: UseRoleSetupOptions) => {
           router.replace(`/${locale}`);
         }
       } else {
-        router.replace(`/${locale}`);
+        const roleAsUserRole = role as UserRole;
+        await processRoleSetup(roleAsUserRole);
       }
     } catch {
       const storedRole = getRoleFromLocalStorage();
