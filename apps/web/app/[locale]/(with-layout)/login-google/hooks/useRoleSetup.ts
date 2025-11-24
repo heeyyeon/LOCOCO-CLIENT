@@ -127,8 +127,22 @@ export const useRoleSetup = (options?: UseRoleSetupOptions) => {
           router.replace(`/${locale}`);
         }
       } else {
-        const roleAsUserRole = role as UserRole;
-        await processRoleSetup(roleAsUserRole);
+        const storedRole = getRoleFromLocalStorage();
+        if (!storedRole) {
+          router.replace(`/${locale}`);
+        } else {
+          const roleAsUserRole = role as UserRole;
+          try {
+            await processRoleSetup(roleAsUserRole);
+          } catch (error) {
+            if (error instanceof Error && error.message.includes('400')) {
+              router.replace(`/${locale}`);
+            } else {
+              clearRoleFromLocalStorage();
+              router.replace(`/${locale}`);
+            }
+          }
+        }
       }
     } catch {
       const storedRole = getRoleFromLocalStorage();
