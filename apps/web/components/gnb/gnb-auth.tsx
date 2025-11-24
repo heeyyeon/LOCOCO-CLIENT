@@ -3,6 +3,7 @@
 import { useState } from 'react';
 
 import { useTranslations } from 'next-intl';
+import { usePathname } from 'next/navigation';
 
 import { useAuth } from 'hooks/use-auth';
 import { Link, useRouter } from 'i18n/navigation';
@@ -22,14 +23,31 @@ import {
 } from '../ui/dropdown-menu';
 import { useAuthInfo } from './hooks/useAuthInfo';
 
+/**
+ * 현재 경로가 회원가입 관련 페이지인지 확인
+ */
+const isSignupPage = (pathname: string): boolean => {
+  const signupPaths = [
+    '/sign-up/creator',
+    '/sign-up/brand',
+    '/sign-up/creator/sns-links',
+    '/login-google',
+  ];
+
+  return signupPaths.some((path) => pathname.includes(path));
+};
+
 export default function GnbAuth() {
   const [isRoleModalOpen, setIsRoleModalOpen] = useState(false);
   const { isLoggedIn, logout } = useAuth();
   const router = useRouter();
+  const pathname = usePathname();
   const t = useTranslations('gnb');
 
+  const isUserInfoEnabled = isLoggedIn === true && !isSignupPage(pathname);
+
   const { data: userInfo } = useAuthInfo({
-    enabled: isLoggedIn === true,
+    enabled: isUserInfoEnabled,
   });
 
   const handleSignup = () => {
