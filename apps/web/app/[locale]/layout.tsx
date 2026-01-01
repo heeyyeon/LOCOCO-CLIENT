@@ -62,6 +62,9 @@ export default async function RootLayout({
   setRequestLocale(locale);
   return (
     <html lang={locale} suppressHydrationWarning>
+      <head>
+        <link rel="icon" href="/icon.svg" sizes="any" />
+      </head>
       <GoogleAnalytics gaId="G-GT92YY193R" />
       <GoogleTagManager gtmId="GTM-5QMBC6SP" />
 
