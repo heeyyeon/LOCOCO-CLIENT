@@ -1,0 +1,31 @@
+{
+  "extends": "@lococo/typescript-config/nextjs.json",
+  "compilerOptions": {
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "jsx": "preserve",
+    "baseUrl": ".",
+    "paths": {
+      "@lococo/icons": ["../../packages/design-system/src/icons"],
+      "@lococo/utils": ["../../packages/design-system/src/lib/utils"],
+
+      "@lococo/design-system/styles.css": [
+        "../../packages/design-system/styles.css"
+      ],
+      "@typescript-swagger/*": ["swagger-codegen/*"]
+    }
+  },
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    ".eslint.config.js",
+    ".next/types/**/*.ts",
+    "next-env.d.ts",
+    "next.config.js",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": ["node_modules"]
+}

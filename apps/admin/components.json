@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema.json",
+  "style": "new-york",
+  "rsc": true,
+  "tsx": true,
+  "tailwind": {
+    "config": "",
+    "css": "../../packages/design-system/styles.css",
+    "baseColor": "zinc",
+    "cssVariables": true
+  },
+  "iconLibrary": "lucide",
+  "aliases": {
+    "hooks": "@/hooks",
+    "lib": "@/lib",
+    "utils": "@lococo/design-system/lib/utils",
+    "design-system": "@lococo/design-system/src/components"
+  }
+}
