@@ -61,7 +61,7 @@ export default function HomePage() {
         setClientCookie('AccessToken', data.data.accessToken, {
           maxAge: 604800, // 7일
           path: '/',
-          domain: 'localhost', // 개발 환경
+          domain: 'lococo.beauty', // 개발 환경
           secure: false, // 개발 환경에서는 false (HTTP)
           sameSite: 'Lax', // 개발 환경에서는 Lax
         });
@@ -71,7 +71,7 @@ export default function HomePage() {
         setClientCookie('RefreshToken', data.data.refreshToken, {
           maxAge: 604800 * 2, // 14일
           path: '/',
-          domain: 'localhost',
+          domain: 'lococo.beauty',
           secure: false,
           sameSite: 'Lax',
         });
