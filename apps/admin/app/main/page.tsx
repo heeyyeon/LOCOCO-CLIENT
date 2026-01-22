@@ -1,0 +1,51 @@
+'use client';
+
+import { Button } from '@lococo/design-system/button';
+
+export default function AdminMainPage() {
+  const handleGoLococoSite = () => {
+    window.open('https://www.lococo.beauty/ko', '_blank', 'noopener,noreferrer');
+  };
+
+  const handleStartAdmin = () => {
+    // TODO: 여기에서 실제 어드민 대시보드 경로로 라우팅 로직을 연결하세요.
+    alert('Admin 시작하기 버튼이 클릭되었습니다. 이후 원하는 경로로 이동 로직을 추가하세요.');
+  };
+
+  return (
+    <main className="min-h-screen flex flex-col items-center justify-center gap-8 bg-gray-100">
+      <div className="flex flex-col items-center gap-4">
+        <h1 className="text-4xl font-semibold">LOCOCO Admin 메인</h1>
+        <p className="text-gray-600 text-center">
+          로그인 후 보이는 관리자 메인 화면입니다.
+        </p>
+
+        <div className="flex gap-4 mt-6">
+          <Button
+            color="primary"
+            variant="outline"
+            size="md"
+            rounded="md"
+            fontType="InterBody1"
+            onClick={handleGoLococoSite}
+          >
+            Lococo 서비스 페이지로 이동
+          </Button>
+
+          <Button
+            color="primary"
+            variant="filled"
+            size="md"
+            rounded="md"
+            fontType="InterBody1"
+            onClick={handleStartAdmin}
+          >
+            Admin 시작하기
+          </Button>
+        </div>
+      </div>
+    </main>
+  );
+}
+
+
