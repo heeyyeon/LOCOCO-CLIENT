@@ -1,0 +1,6 @@
+@import '@lococo/design-system/styles.css';
+
+@source "../../../packages/design-system/**/*.{ts,tsx}";
+
+
+
