@@ -46,7 +46,7 @@ export default function GnbAuth() {
 
   const isUserInfoEnabled = isLoggedIn === true && !isSignupPage(pathname);
 
-  const { data: userInfo } = useAuthInfo({
+  const { data: userInfo, refetch: refetchUserInfo } = useAuthInfo({
     enabled: isUserInfoEnabled,
   });
 
@@ -69,17 +69,19 @@ export default function GnbAuth() {
     }
   };
 
-  const handleRouteMyPage = () => {
-    if (!userInfo || userInfo?.role === 'PENDING') {
+  const handleRouteMyPage = async () => {
+    const freshUserInfo = userInfo ?? (await refetchUserInfo()).data;
+
+    if (!freshUserInfo || freshUserInfo?.role === 'PENDING') {
       setIsRoleModalOpen(true);
       return;
     }
 
-    if (userInfo?.role === 'BRAND') {
+    if (freshUserInfo?.role === 'BRAND') {
       router.push('/brand/campaign');
-    } else if (userInfo?.role === 'CREATOR') {
+    } else if (freshUserInfo?.role === 'CREATOR') {
       router.push('/my-page/my-campaign');
-    } else if (userInfo?.role === 'CUSTOMER') {
+    } else if (freshUserInfo?.role === 'CUSTOMER') {
       router.push('/my-page/my-campaign');
     }
   };
