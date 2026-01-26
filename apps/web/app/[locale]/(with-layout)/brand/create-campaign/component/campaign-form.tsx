@@ -2,6 +2,7 @@
 
 import { useEffect } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
+import { useSearchParams } from 'next/navigation';
 
 import { useTranslations } from 'next-intl';
 
@@ -37,12 +38,18 @@ import {
 
 export default function CampaignForm({
   campaignId,
+  role,
   isReadonly = false,
 }: {
   campaignId?: string;
   isReadonly?: boolean;
+  role?: "PENDING" | "CUSTOMER" | "CREATOR" | "BRAND" | "ADMIN" | undefined;
 }) {
   const router = useRouter();
+  console.log(role)
+  // const role = 'ADMIN';
+  const searchParams = useSearchParams();
+  const isAdmin = searchParams.get('role') === 'admin';
 
   const {
     useSavedCampaign,
@@ -51,12 +58,18 @@ export default function CampaignForm({
     useReSaveCampaign,
     usePublishNewCampaign,
     usePublishSavedCampaign,
+    usePublishAdminCampaign,
+    usePublishAdminSavedCampaign,
   } = useCampaignFormAPI();
 
   const saveCampaignMutation = useSaveCampaign();
   const reSaveCampaignMutation = useReSaveCampaign(campaignId || '');
   const publishNewCampaignMutation = usePublishNewCampaign();
   const publishSavedCampaignMutation = usePublishSavedCampaign(
+    campaignId || ''
+  );
+  const publishAdminCampaignMutation = usePublishAdminCampaign();
+  const publishAdminSavedCampaignMutation = usePublishAdminSavedCampaign(
     campaignId || ''
   );
 
@@ -73,6 +86,7 @@ export default function CampaignForm({
     mode: 'onChange',
     shouldFocusError: false,
     defaultValues: {
+      brandName: '',
       title: '',
       language: '',
       type: '',
@@ -145,10 +159,21 @@ export default function CampaignForm({
       data
     ) as CampaignPublishRequest;
 
-    if (campaignId) {
-      publishSavedCampaignMutation.mutate(requestData);
+    if (isAdmin) {
+      // Admin일 때는 /api/admin/campaigns로 요청하고 brandName 포함
+      const adminRequestData: CampaignPublishRequest = {
+        ...requestData,
+        brandName: data.brandName || undefined,
+      };
+      publishAdminCampaignMutation.mutate(adminRequestData);
+
     } else {
-      publishNewCampaignMutation.mutate(requestData);
+      // 일반 사용자는 기존 API 사용
+      if (campaignId) {
+        publishSavedCampaignMutation.mutate(requestData);
+      } else {
+        publishNewCampaignMutation.mutate(requestData);
+      }
     }
   };
 
@@ -157,7 +182,9 @@ export default function CampaignForm({
     saveCampaignMutation.isPending ||
     reSaveCampaignMutation.isPending ||
     publishNewCampaignMutation.isPending ||
-    publishSavedCampaignMutation.isPending;
+    publishSavedCampaignMutation.isPending ||
+    publishAdminCampaignMutation.isPending ||
+    publishAdminSavedCampaignMutation.isPending;
 
   if (isLoading) {
     return (
@@ -178,7 +205,7 @@ export default function CampaignForm({
               <h3 className="title2 font-[700] text-gray-800">
                 {t('pageTitle')}
               </h3>
-              <CampaignInfo isReadonly={isReadonly} />
+              <CampaignInfo isReadonly={isReadonly} role={role} />
               <CampaignStartInfo isReadonly={isReadonly} />
               <CampaignEndInfo isReadonly={isReadonly} />
               <CampaignWinnerAnnounce isReadonly={isReadonly} />

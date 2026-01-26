@@ -12,6 +12,8 @@ import {
   getSavedCampaignForm,
   reSaveCampaignForm,
   saveCampaignForm,
+  submitAdminCampaignForm,
+  submitAdminSavedCampaignForm,
   submitCampaignForm,
   submitSavedCampaignForm,
 } from '../create-campaign/api';
@@ -119,6 +121,42 @@ export const useCampaignFormAPI = () => {
     });
   };
 
+  const usePublishAdminCampaign = () => {
+    return useMutation({
+      mutationFn: (formData: CampaignPublishRequest) =>
+        submitAdminCampaignForm(formData),
+      onSuccess: () => {
+        queryClient.invalidateQueries({ queryKey: ['brand', 'campaigns'] });
+        alert('캠페인 생성 완료');
+        router.push('/brand');
+      },
+      onError: (error) => {
+        const errorMessage = getErrorMessage(error);
+        alert(errorMessage);
+      },
+    });
+  };
+
+  const usePublishAdminSavedCampaign = (id: string) => {
+    return useMutation({
+      mutationFn: (formData: CampaignPublishRequest) =>
+        submitAdminSavedCampaignForm(formData, id),
+      onSuccess: () => {
+        queryClient.invalidateQueries({ queryKey: ['brand', 'campaigns'] });
+        queryClient.invalidateQueries({ queryKey: ['saved-campaign', id] });
+        queryClient.invalidateQueries({
+          queryKey: ['waiting-approval-campaign', id],
+        });
+        alert('캠페인 생성 완료');
+        router.push('/brand');
+      },
+      onError: (error) => {
+        const errorMessage = getErrorMessage(error);
+        alert(errorMessage);
+      },
+    });
+  };
+
   return {
     useSavedCampaign,
     useWaitingApprovalCampaign,
@@ -126,5 +164,7 @@ export const useCampaignFormAPI = () => {
     useReSaveCampaign,
     usePublishNewCampaign,
     usePublishSavedCampaign,
+    usePublishAdminCampaign,
+    usePublishAdminSavedCampaign,
   };
 };

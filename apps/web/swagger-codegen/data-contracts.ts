@@ -450,10 +450,12 @@ export interface BrandNoteRevisionResponse {
 
 export interface CampaignPublishRequest {
   /**
+   
    * 캠페인 제목
    * @minLength 1
    * @example "로코코 신제품"
    */
+  brandName?: string;
   campaignTitle: string;
   /**
    * 캠페인 언어 설정

@@ -62,7 +62,7 @@ export default function HomePage() {
           maxAge: 604800, // 7일
           path: '/',
           domain: 'lococo.beauty', // 개발 환경
-          secure: false, // 개발 환경에서는 false (HTTP)
+          secure: true, // 개발 환경에서는 false (HTTP)
           sameSite: 'Lax', // 개발 환경에서는 Lax
         });
       }
@@ -72,7 +72,7 @@ export default function HomePage() {
           maxAge: 604800 * 2, // 14일
           path: '/',
           domain: 'lococo.beauty',
-          secure: false,
+          secure: true,
           sameSite: 'Lax',
         });
       }

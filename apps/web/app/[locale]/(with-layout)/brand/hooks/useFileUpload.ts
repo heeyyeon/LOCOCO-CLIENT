@@ -1,4 +1,5 @@
 import { useMutation } from '@tanstack/react-query';
+import { apiRequest } from 'app/api/apiRequest';
 import { getPresignedUrl } from 'api/getPresignedUrl';
 
 export interface UploadedFile {
@@ -13,13 +14,35 @@ interface UploadFilesParams {
   onError?: (error: string) => void;
 }
 
-export const useFileUpload = () => {
+interface MediaUrl {
+  mediaUrl: string[];
+}
+
+interface ApiResponseCampaignMediaResponse {
+  data: MediaUrl;
+}
+
+export const useFileUpload = (isAdmin = false) => {
   const uploadMutation = useMutation({
     mutationFn: async (files: File[]): Promise<UploadedFile[]> => {
       if (files.length === 0) return [];
 
       const fileTypes = files.map((file) => file.type);
-      const presignedData = await getPresignedUrl(fileTypes);
+      
+      let presignedData: MediaUrl;
+      
+      if (isAdmin) {
+        // Admin일 때는 /api/admin/products/images로 요청
+        const response = await apiRequest<ApiResponseCampaignMediaResponse>({
+          endPoint: '/api/admin/products/images',
+          method: 'POST',
+          data: { mediaType: fileTypes },
+        });
+        presignedData = response.data;
+      } else {
+        // 일반 사용자는 기존 로직 사용
+        presignedData = await getPresignedUrl(fileTypes);
+      }
 
       if (!presignedData || !presignedData.mediaUrl) {
         throw new Error('Failed to get presigned URLs');
