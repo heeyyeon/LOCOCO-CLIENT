@@ -1,5 +1,8 @@
 import CampaignForm from './component/campaign-form';
 
-export default function NewCampaign() {
-  return <CampaignForm />;
+import { getUserInfoForHeader } from 'components/gnb/api';
+export default async function NewCampaign() {
+   const userInfo = await getUserInfoForHeader();
+  
+  return <CampaignForm role={userInfo?.role}/>;
 }

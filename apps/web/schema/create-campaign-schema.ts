@@ -9,6 +9,20 @@ const campaignImageRequestSchema = z.object({
 
 export const createCampaignSchema = z
   .object({
+    brandName: z
+      .string()
+      .optional()
+      .refine(
+        (val) => {
+          // 값이 없거나 빈 문자열이면 통과 (admin이 아닐 때)
+          if (!val || val.trim() === '') return true;
+          // 값이 있으면 1자 이상 19자 이하여야 함
+          return val.length >= 1 
+        },
+        {
+          message: 'brandNameValidation',
+        }
+      ),
     title: z.string().min(1, 'campaignTitle'),
     language: z.enum(['EN', 'ES', '']).refine((val) => val !== '', {
       message: 'campaignLanguage',

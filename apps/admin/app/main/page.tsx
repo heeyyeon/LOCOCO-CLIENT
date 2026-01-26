@@ -3,8 +3,13 @@
 import { Button } from '@lococo/design-system/button';
 
 export default function AdminMainPage() {
+  const MAIN_URL = process.env.NEXT_PUBLIC_MAIN_URL;
   const handleGoLococoSite = () => {
-    window.open('https://www.lococo.beauty/ko', '_blank', 'noopener,noreferrer');
+    window.open(`${MAIN_URL}/ko`, '_blank', 'noopener,noreferrer');
+  };
+
+  const handleStartProductRegistration = () => {
+    window.open(`${MAIN_URL}/ko/brand/create-campaign?role=admin`, '_blank', 'noopener,noreferrer');
   };
 
   const handleStartAdmin = () => {
@@ -30,6 +35,16 @@ export default function AdminMainPage() {
             onClick={handleGoLococoSite}
           >
             Lococo 서비스 페이지로 이동
+          </Button>
+          <Button
+            color="primary"
+            variant="filled"
+            size="md"
+            rounded="md"
+            fontType="InterBody1"
+            onClick={handleStartProductRegistration}
+          >
+            상품등록 페이지로 이동
           </Button>
 
           <Button

@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from 'react';
 import { useFormContext } from 'react-hook-form';
+import { useSearchParams } from 'next/navigation';
 
 import { useTranslations } from 'next-intl';
 
@@ -20,6 +21,10 @@ interface CampaignUploadMediaProps {
 export default function CampaignUploadMedia({
   isReadonly = false,
 }: CampaignUploadMediaProps) {
+  const searchParams = useSearchParams();
+  const isAdmin = searchParams.get('role') === 'admin';
+
+  
   const {
     watch,
     setValue,
@@ -27,7 +32,7 @@ export default function CampaignUploadMedia({
     formState: { errors },
   } = useFormContext<CampaignFormData>();
 
-  const { uploadImageFiles, isUploading } = useFileUpload();
+  const { uploadImageFiles, isUploading } = useFileUpload(isAdmin);
 
   const [thumbnailPreviewFiles, setThumbnailPreviewFiles] = useState<File[]>(
     []

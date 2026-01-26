@@ -95,6 +95,8 @@
   },
   "brandMyPageCreateCampaign": {
     "basicInfo": {
+      "brandName": "브랜드 이름",
+      "brandNamePlaceholder": "브랜드 이름을 입력하세요",
       "category": "카테고리",
       "creatorCount": "모집 예정 크리에이터 수",
       "creatorCountPlaceholder": "숫자를 입력하세요",
@@ -117,6 +119,8 @@
       "submitConditionTitle": "크리에이터 제출 컨텐츠 조건"
     },
     "errorMessage": {
+      "brandNameMinLength": "브랜드 이름은 최소 1자 이상 입력해 주세요.",
+      "brandNameRequired": "브랜드 이름을 입력해 주세요.",
       "campaignAnnounceDay": "캠페인 당첨자 발표일을 입력해 주세요.",
       "campaignAnnounceTime": "캠페인 당첨자 시각을 입력해 주세요.",
       "campaignCategory": "캠페인 카테고리를 입력해 주세요.",
