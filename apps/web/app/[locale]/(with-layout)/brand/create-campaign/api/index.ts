@@ -58,3 +58,26 @@ export const submitSavedCampaignForm = async (
 
   return response;
 };
+
+export const submitAdminCampaignForm = async (
+  formData: CampaignPublishRequest
+): Promise<ApiResponseCampaignBasicResponse> => {
+  const response = await apiRequest<ApiResponseCampaignBasicResponse>({
+    endPoint: '/api/admin/campaigns',
+    method: 'POST',
+    data: formData,
+  });
+  return response;
+};
+
+export const submitAdminSavedCampaignForm = async (
+  formData: CampaignPublishRequest,
+  id: string
+): Promise<ApiResponseCampaignBasicResponse> => {
+  const response = await apiRequest<ApiResponseCampaignBasicResponse>({
+    endPoint: `/api/admin/product/${id}`,
+    method: 'PATCH',
+    data: formData,
+  });
+  return response;
+};

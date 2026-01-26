@@ -9,8 +9,10 @@ import { CampaignFormData } from 'schema/create-campaign-schema';
 
 export default function CampaignInfo({
   isReadonly = false,
+  role,
 }: {
   isReadonly?: boolean;
+  role?: "PENDING" | "CUSTOMER" | "CREATOR" | "BRAND" | "ADMIN" | undefined;
 }) {
   const {
     control,
@@ -22,6 +24,26 @@ export default function CampaignInfo({
 
   return (
     <section className="flex w-[64.8rem] flex-col gap-[1.6rem]">
+      {role === 'ADMIN' && (
+        <TextFormField
+          isReadonly={isReadonly}
+          label={t('basicInfo.brandName')}
+          required
+          placeholder={t('basicInfo.brandNamePlaceholder')}
+          register={register('brandName', {
+            required: role === 'ADMIN' ? 'brandNameRequired' : false,
+            minLength: {
+              value: 1,
+              message: 'brandNameMinLength',
+            }
+          })}
+          error={
+            errors.brandName?.message
+              ? t(`errorMessage.${errors.brandName.message}`)
+              : undefined
+          }
+        />
+      )}
       <TextFormField
         isReadonly={isReadonly}
         label={t('basicInfo.title')}
