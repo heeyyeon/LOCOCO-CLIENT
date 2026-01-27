@@ -384,7 +384,7 @@ export default function AdminCampaignPage() {
             variant={selectedStatus === undefined ? 'filled' : 'outline'}
             color="primary"
             size="sm"
-            rounded="md"
+            rounded="sm"
             onClick={() => setSelectedStatus(undefined)}
           >
             전체
@@ -393,7 +393,7 @@ export default function AdminCampaignPage() {
             variant={selectedStatus === 'PENDING' ? 'filled' : 'outline'}
             color="primary"
             size="sm"
-            rounded="md"
+            rounded="sm"
             onClick={() => setSelectedStatus('PENDING')}
           >
             대기중
@@ -402,7 +402,7 @@ export default function AdminCampaignPage() {
             variant={selectedStatus === 'APPROVED' ? 'filled' : 'outline'}
             color="primary"
             size="sm"
-            rounded="md"
+            rounded="sm"
             onClick={() => setSelectedStatus('APPROVED')}
           >
             승인됨
