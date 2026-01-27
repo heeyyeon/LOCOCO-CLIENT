@@ -205,7 +205,7 @@ async function getAllCampaigns(params: {
 
   const response = await apiRequest<ApiResponseAdminCampaignListResponse>({
     endPoint: '/api/admin/campaigns',
-    method: 'GET',  
+    method: 'GET',
     params: queryParams,
   });
   return response;
@@ -215,6 +215,15 @@ async function approveCampaigns(campaignIds: number[]) {
   const response = await apiRequest<void>({
     endPoint: '/api/admin/campaigns/approval',
     method: 'POST',
+    data: { campaignIds } as ApproveCampaignIdsRequest,
+  });
+  return response;
+}
+
+async function deleteCampaigns(campaignIds: number[]) {
+  const response = await apiRequest<void>({
+    endPoint: '/api/admin/campaigns',
+    method: 'DELETE',
     data: { campaignIds } as ApproveCampaignIdsRequest,
   });
   return response;
@@ -262,6 +271,18 @@ export default function AdminCampaignPage() {
     },
   });
 
+  const deleteCampaignsMutation = useMutation({
+    mutationFn: (campaignIds: number[]) => deleteCampaigns(campaignIds),
+    onSuccess: () => {
+      alert('캠페인 삭제가 완료되었습니다.');
+      setRowSelection({});
+      refetch();
+    },
+    onError: (error) => {
+      alert(`삭제 실패: ${error instanceof Error ? error.message : '알 수 없는 오류'}`);
+    },
+  });
+
   const handleApprove = (campaignId: number) => {
     approveCampaignsMutation.mutate([campaignId]);
   };
@@ -277,6 +298,23 @@ export default function AdminCampaignPage() {
     }
 
     approveCampaignsMutation.mutate(selectedIds);
+  };
+
+  const handleDeleteSelected = () => {
+    const selectedIds = Object.keys(rowSelection)
+      .filter((key) => rowSelection[key])
+      .map((key) => parseInt(key, 10));
+
+    if (selectedIds.length === 0) {
+      alert('삭제할 캠페인을 선택해주세요.');
+      return;
+    }
+
+    if (!confirm('선택한 캠페인을 삭제하시겠습니까?')) {
+      return;
+    }
+
+    deleteCampaignsMutation.mutate(selectedIds);
   };
 
   const handleAllSelectChange = (checked: boolean) => {
@@ -395,21 +433,37 @@ export default function AdminCampaignPage() {
                 / {pendingCampaigns.length})
               </label>
             </div>
-            <Button
-              onClick={handleApproveSelected}
-              variant="outline"
-              color="primary"
-              size="sm"
-              rounded="md"
-              className="grow-0"
-              disabled={
-                Object.keys(rowSelection).filter((key) => rowSelection[key])
-                  .length === 0 || approveCampaignsMutation.isPending
-              }
-            >
-              <SvgCheck size={20} />
-              <span className="text-[1.4rem]">승인하기</span>
-            </Button>
+            <div className="flex gap-[0.8rem]">
+              <Button
+                onClick={handleApproveSelected}
+                variant="outline"
+                color="primary"
+                size="sm"
+                rounded="md"
+                className="grow-0"
+                disabled={
+                  Object.keys(rowSelection).filter((key) => rowSelection[key])
+                    .length === 0 || approveCampaignsMutation.isPending
+                }
+              >
+                <SvgCheck size={20} />
+                <span className="text-[1.4rem]">승인하기</span>
+              </Button>
+              <Button
+                onClick={handleDeleteSelected}
+                variant="outline"
+                color="primary"
+                size="sm"
+                rounded="md"
+                className="grow-0"
+                disabled={
+                  Object.keys(rowSelection).filter((key) => rowSelection[key])
+                    .length === 0 || deleteCampaignsMutation.isPending
+                }
+              >
+                <span className="text-[1.4rem]">삭제하기</span>
+              </Button>
+            </div>
           </div>
 
           <div className="relative max-h-[123.5rem]">
@@ -443,7 +497,7 @@ export default function AdminCampaignPage() {
                   table.getFilteredRowModel().rows.map((row: Row<CampaignTableData>) => (
                     <tr
                       key={row.original.campaignId}
-                      className={`h-[12rem] w-full border-b border-gray-400 px-[1.6rem] py-[2.4rem] ${
+                      className={`h-[8rem] w-full border-b border-gray-400 px-[1.6rem] py-[2.4rem] ${
                         row.getIsSelected() &&
                         row.original.approvedStatus !== 'APPROVED'
                           ? 'bg-pink-100'
