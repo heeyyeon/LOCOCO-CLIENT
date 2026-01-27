@@ -1,9 +1,11 @@
 'use client';
 
 import { Button } from '@lococo/design-system/button';
+import { useRouter } from 'next/navigation';
 
 export default function AdminMainPage() {
   const MAIN_URL = process.env.NEXT_PUBLIC_MAIN_URL;
+  const router = useRouter();
   const handleGoLococoSite = () => {
     window.open(`${MAIN_URL}/ko`, '_blank', 'noopener,noreferrer');
   };
@@ -13,8 +15,7 @@ export default function AdminMainPage() {
   };
 
   const handleStartAdmin = () => {
-    // TODO: 여기에서 실제 어드민 대시보드 경로로 라우팅 로직을 연결하세요.
-    alert('Admin 시작하기 버튼이 클릭되었습니다. 이후 원하는 경로로 이동 로직을 추가하세요.');
+    router.push('/campaign');
   };
 
   return (
@@ -34,7 +35,7 @@ export default function AdminMainPage() {
             fontType="InterBody1"
             onClick={handleGoLococoSite}
           >
-            Lococo 서비스 페이지로 이동
+            Lococo 서비스
           </Button>
           <Button
             color="primary"
@@ -44,7 +45,7 @@ export default function AdminMainPage() {
             fontType="InterBody1"
             onClick={handleStartProductRegistration}
           >
-            상품등록 페이지로 이동
+            캠페인 등록
           </Button>
 
           <Button
@@ -55,7 +56,7 @@ export default function AdminMainPage() {
             fontType="InterBody1"
             onClick={handleStartAdmin}
           >
-            Admin 시작하기
+            캠페인 관리
           </Button>
         </div>
       </div>
