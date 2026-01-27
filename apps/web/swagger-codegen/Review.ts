@@ -11,11 +11,14 @@
  */
 
 import {
+  ApiResponseBrandImageReviewListResponse,
+  ApiResponseBrandVideoReviewListResponse,
   ApiResponseImageReviewDetailResponse,
   ApiResponseImageReviewsProductDetailResponse,
   ApiResponseMainImageReviewResponse,
   ApiResponseMainVideoReviewResponse,
   ApiResponseMediaPresignedUrlResponse,
+  ApiResponseProductAndReviewCountResponse,
   ApiResponseReviewReceiptResponse,
   ApiResponseReviewResponse,
   ApiResponseVideoReviewDetailResponse,
@@ -209,6 +212,92 @@ export class Review<
   ) =>
     this.request<ApiResponseImageReviewsProductDetailResponse, any>({
       path: `/api/reviews/details/image`,
+      method: "GET",
+      query: query,
+      secure: true,
+      ...params,
+    });
+  /**
+   * No description
+   *
+   * @tags REVIEW
+   * @name SearchVideoReviewsByBrandName
+   * @summary 브랜드명 기준 영상 리뷰 검색 (brandName 없으면 전체 조회)
+   * @request GET:/api/reviews/brands/videos
+   * @secure
+   */
+  searchVideoReviewsByBrandName = (
+    query?: {
+      brandName?: string;
+      /**
+       * @format int32
+       * @default 0
+       */
+      page?: number;
+      /**
+       * @format int32
+       * @default 8
+       */
+      size?: number;
+    },
+    params: RequestParams = {},
+  ) =>
+    this.request<ApiResponseBrandVideoReviewListResponse, any>({
+      path: `/api/reviews/brands/videos`,
+      method: "GET",
+      query: query,
+      secure: true,
+      ...params,
+    });
+  /**
+   * No description
+   *
+   * @tags REVIEW
+   * @name GetProductAndReviewCount
+   * @summary 브랜드명 기준 상품 수 및 리뷰 수 조회 (brandName 없으면 전체 조회)
+   * @request GET:/api/reviews/brands/summary
+   * @secure
+   */
+  getProductAndReviewCount = (
+    query?: {
+      brandName?: string;
+    },
+    params: RequestParams = {},
+  ) =>
+    this.request<ApiResponseProductAndReviewCountResponse, any>({
+      path: `/api/reviews/brands/summary`,
+      method: "GET",
+      query: query,
+      secure: true,
+      ...params,
+    });
+  /**
+   * No description
+   *
+   * @tags REVIEW
+   * @name SearchImageReviewsByBrandName
+   * @summary 브랜드명 기준 사진 리뷰 검색 (brandName 없으면 전체 조회)
+   * @request GET:/api/reviews/brands/images
+   * @secure
+   */
+  searchImageReviewsByBrandName = (
+    query?: {
+      brandName?: string;
+      /**
+       * @format int32
+       * @default 0
+       */
+      page?: number;
+      /**
+       * @format int32
+       * @default 8
+       */
+      size?: number;
+    },
+    params: RequestParams = {},
+  ) =>
+    this.request<ApiResponseBrandImageReviewListResponse, any>({
+      path: `/api/reviews/brands/images`,
       method: "GET",
       query: query,
       secure: true,

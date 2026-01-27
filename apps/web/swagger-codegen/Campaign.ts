@@ -80,12 +80,12 @@ export class Campaign<
    * No description
    *
    * @tags CAMPAIGN
-   * @name GetCampaignDetail
+   * @name GetCampaignDetail1
    * @summary 캠페인 상세 조회
    * @request GET:/api/campaigns/{campaignId}
    * @secure
    */
-  getCampaignDetail = (campaignId: number, params: RequestParams = {}) =>
+  getCampaignDetail1 = (campaignId: number, params: RequestParams = {}) =>
     this.request<ApiResponseCampaignDetailResponse, any>({
       path: `/api/campaigns/${campaignId}`,
       method: "GET",

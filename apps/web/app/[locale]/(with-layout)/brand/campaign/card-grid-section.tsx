@@ -14,6 +14,7 @@ export default function CardGridSection() {
   const { campaigns, isLoading, isError } = useBrandCampaigns();
   const t = useTranslations('card');
 
+  console.log(campaigns);
   if (isLoading) {
     return (
       <div className="flex h-[50rem] w-full items-center justify-center">
