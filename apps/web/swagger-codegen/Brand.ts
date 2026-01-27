@@ -129,27 +129,6 @@ export class Brand<
       ...params,
     });
   /**
-   * @description 브랜드 마이페이지 - 브랜드가 캠페인을 발행 상태로 생성하는 API 입니다.
-   *
-   * @tags BRAND
-   * @name CreateAndPublishCampaignForAdmin
-   * @summary 캠페인 생성 - 발행
-   * @request POST:/api/brands/my/campaigns/publish/admin
-   * @secure
-   */
-  createAndPublishCampaignForAdmin = (
-    data: CampaignPublishRequest,
-    params: RequestParams = {},
-  ) =>
-    this.request<ApiResponseCampaignBasicResponse, any>({
-      path: `/api/brands/my/campaigns/publish/admin`,
-      method: "POST",
-      body: data,
-      secure: true,
-      type: ContentType.Json,
-      ...params,
-    });
-  /**
    * No description
    *
    * @tags BRAND

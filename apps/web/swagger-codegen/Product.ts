@@ -15,7 +15,6 @@ import {
   ApiResponsePopularProductsByCategoryResponse,
   ApiResponseProductDetailResponse,
   ApiResponseProductYoutubeResponse,
-  ApiResponseString,
   ImageReviewListResponse,
   KeywordImageReviewListResponse,
   KeywordVideoReviewListResponse,
@@ -28,22 +27,6 @@ import { HttpClient, RequestParams } from "./http-client";
 export class Product<
   SecurityDataType = unknown,
 > extends HttpClient<SecurityDataType> {
-  /**
-   * @description 서버 전용 API 입니다. PRODUCT 테이블의 search_token 필드를 업데이트 하는 기능
-   *
-   * @tags PRODUCT
-   * @name UpdateSearchFields
-   * @summary 상품 엔티티의 search_token 필드 갱신
-   * @request POST:/api/products/search-fields/migrate
-   * @secure
-   */
-  updateSearchFields = (params: RequestParams = {}) =>
-    this.request<ApiResponseString, any>({
-      path: `/api/products/search-fields/migrate`,
-      method: "POST",
-      secure: true,
-      ...params,
-    });
   /**
    * No description
    *

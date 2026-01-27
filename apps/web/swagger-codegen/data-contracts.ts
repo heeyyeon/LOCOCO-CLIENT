@@ -95,25 +95,25 @@ export interface CampaignBasicResponse {
   /**
    * 크리에이터 지원 시작 일시
    * @format date-time
-   * @example "2025-09-17T시7:32:08.995Z"
+   * @example "2024-12-15T23:59:59Z"
    */
   applyStartDate: string;
   /**
    * 크리에이터 지원 마감 일
    * @format date-time
-   * @example "2025-09-17T시7:32:08.995Z"
+   * @example "2024-12-15T23:59:59Z"
    */
   applyDeadline: string;
   /**
    * 크리에이터 발표 일시
    * @format date-time
-   * @example "2025-09-17T07:32:08.995Z"
+   * @example "2024-12-15T23:59:59Z"
    */
   creatorAnnouncementDate: string;
   /**
    * 리뷰 제출 마감일
    * @format date-time
-   * @example "2025-09-17T07:32:08.995Z"
+   * @example "2024-12-15T23:59:59Z"
    */
   reviewSubmissionDeadline: string;
   /**
@@ -226,22 +226,6 @@ export interface MediaPresignedUrlResponse {
   mediaUrl: string[];
 }
 
-export interface ApiResponseString {
-  success?: boolean;
-  /** @format int32 */
-  status?: number;
-  message?: string;
-  data?: string;
-}
-
-export interface ApiResponseVoid {
-  success?: boolean;
-  /** @format int32 */
-  status?: number;
-  message?: string;
-  data?: any;
-}
-
 export interface ApiResponseReviewLikeResponse {
   success?: boolean;
   /** @format int32 */
@@ -297,6 +281,14 @@ export interface CreatorRegisterCompleteResponse {
    * @example "LOGIN"
    */
   loginStatus: "LOGIN" | "INFO_REQUIRED" | "SNS_REQUIRED" | "REGISTER";
+}
+
+export interface ApiResponseVoid {
+  success?: boolean;
+  /** @format int32 */
+  status?: number;
+  message?: string;
+  data?: any;
 }
 
 export interface CreatorProfileImageRequest {
@@ -372,17 +364,14 @@ export interface ReviewUploadResponse {
 export interface FirstReviewUploadRequest {
   /**
    * 첫번째 1차 미디어 URL 리스트(이미지 또는 영상)
-   * @minItems 1
    * @example ["https://s3.example.com/review/2025/09/.../img1.jpg"]
    */
-  firstMediaUrls: string[];
+  firstMediaUrls?: string[];
   /**
    * 첫번째 캡션 + 해시태그 (최대 2200자)
-   * @minLength 0
-   * @maxLength 2200
    * @example "Hydrating mask review 💧 #hydration #mask #skincare"
    */
-  firstCaptionWithHashtags: string;
+  firstCaptionWithHashtags?: string;
   /**
    * 두번째 1차 미디어 URL 리스트(선택)
    * @example ["https://s3.example.com/review/2025/09/.../img1.jpg"]
@@ -390,8 +379,6 @@ export interface FirstReviewUploadRequest {
   secondMediaUrls?: string[];
   /**
    * 두번째 1차 캡션+해시태그(선택)
-   * @minLength 0
-   * @maxLength 2200
    * @example "Hydrating mask review 💧 #hydration #mask #skincare"
    */
   secondCaptionWithHashtags?: string;
@@ -450,7 +437,6 @@ export interface BrandNoteRevisionResponse {
 
 export interface CampaignPublishRequest {
   /**
-   
    * 캠페인 제목
    * @minLength 1
    * @example "로코코 신제품"
@@ -565,22 +551,183 @@ export interface RoleUpdateResponse {
   loginStatus?: "LOGIN" | "INFO_REQUIRED" | "SNS_REQUIRED" | "REGISTER";
 }
 
-export interface TestLoginRequest {
-  /** @format int64 */
-  userId: number;
+export interface ProductImagePresignedUrlRequest {
+  /**
+   * @maxItems 5
+   * @minItems 1
+   */
+  mediaType: string[];
 }
 
-export interface ApiResponseJwtLoginResponse {
+export interface ApiResponseProductImageResponse {
   success?: boolean;
   /** @format int32 */
   status?: number;
   message?: string;
-  data?: JwtLoginResponse;
+  data?: ProductImageResponse;
 }
 
-export interface JwtLoginResponse {
-  accessToken?: string;
-  refreshToken?: string;
+export interface ProductImageResponse {
+  /**
+   * presignedUrl 리스트
+   * @example "https://s3.ap-northeast-2.amazonaws.com/..."
+   */
+  mediaUrl: string[];
+}
+
+export interface AdminProductCreateRequest {
+  /**
+   * 상품명 (최대 30자)
+   * @minLength 0
+   * @maxLength 30
+   * @example "비타C 브라이트닝 세럼"
+   */
+  productName: string;
+  /**
+   * 상품 브랜드 id
+   * @format int64
+   * @example 1
+   */
+  productBrandId: number;
+  /**
+   * 가격
+   * @format int64
+   * @example 19900
+   */
+  normalPrice: number;
+  /**
+   * 용량 (최대 20자)
+   * @minLength 0
+   * @maxLength 20
+   * @example "30ml"
+   */
+  unit: string;
+  /**
+   * 카테고리
+   * @example "SERUM_AMPOULE"
+   */
+  category:
+    | "ESSENCE_TONER"
+    | "SERUM_AMPOULE"
+    | "CREAM_LOTION"
+    | "CLEANSER"
+    | "SUNCARE"
+    | "ETC";
+  /**
+   * 제품 제조 날짜
+   * @format date-time
+   */
+  manufacturedAt: string;
+  /**
+   * 상품 상세 설명 (최대 5000자)
+   * @minLength 0
+   * @maxLength 5000
+   */
+  productDetail?: string;
+  /**
+   * 상품 성분 (최대 5000자)
+   * @minLength 0
+   * @maxLength 5000
+   */
+  ingredients?: string;
+  /**
+   * 상품 이미지 목록 (최소 1개, 최대 5개)
+   * @maxItems 5
+   * @minItems 0
+   */
+  images: ProductImageRequest[];
+}
+
+export interface ProductImageRequest {
+  /** @minLength 1 */
+  url: string;
+  /**
+   * @format int32
+   * @min 0
+   */
+  displayOrder?: number;
+}
+
+export interface AdminProductCreateResponse {
+  /**
+   * 생성된 상품 id
+   * @format int64
+   */
+  productId: number;
+}
+
+export interface ApiResponseAdminProductCreateResponse {
+  success?: boolean;
+  /** @format int32 */
+  status?: number;
+  message?: string;
+  data?: AdminProductCreateResponse;
+}
+
+export interface AdminLoginRequest {
+  /** @minLength 1 */
+  loginId: string;
+  /** @minLength 1 */
+  password: string;
+}
+
+export interface AdminLoginResponse {
+  accessToken: string;
+  refreshToken: string;
+  /** @format int64 */
+  userId: number;
+  role: string;
+}
+
+export interface ApiResponseAdminLoginResponse {
+  success?: boolean;
+  /** @format int32 */
+  status?: number;
+  message?: string;
+  data?: AdminLoginResponse;
+}
+
+export interface ApproveCreatorsRequest {
+  /** @minItems 1 */
+  creatorIds: number[];
+}
+
+export interface AdminCampaignCreateRequest {
+  brandName?: string;
+  campaignTitle?: string;
+  language?: "EN" | "ES";
+  campaignType?: "GIVEAWAY" | "CONTENTS" | "EXCLUSIVE";
+  campaignProductType?: "SKINCARE" | "SUNCARE" | "MAKEUP";
+  /**
+   * @maxItems 5
+   * @minItems 0
+   */
+  thumbnailImages?: CampaignImageRequest[];
+  /**
+   * @maxItems 15
+   * @minItems 0
+   */
+  detailImages?: CampaignImageRequest[];
+  /** @format date-time */
+  applyStartDate?: string;
+  /** @format date-time */
+  applyDeadline?: string;
+  /** @format date-time */
+  creatorAnnouncementDate?: string;
+  /** @format date-time */
+  reviewSubmissionDeadline?: string;
+  /** @format int32 */
+  recruitmentNumber?: number;
+  participationRewards?: string[];
+  deliverableRequirements?: string[];
+  eligibilityRequirements?: string[];
+  firstContentType?: "INSTA_REELS" | "TIKTOK_VIDEO" | "INSTA_POST";
+  secondContentType?: "INSTA_REELS" | "TIKTOK_VIDEO" | "INSTA_POST";
+}
+
+export interface ApproveCampaignIdsRequest {
+  /** @minItems 1 */
+  campaignIds: number[];
 }
 
 export interface CustomerMyPageRequest {
@@ -1245,6 +1392,39 @@ export interface CreatorApprovedResponse {
   recruitmentNumber: number;
 }
 
+export interface CampaignModifyRequest {
+  brandName?: string;
+  campaignTitle?: string;
+  language?: "EN" | "ES";
+  campaignType?: "GIVEAWAY" | "CONTENTS" | "EXCLUSIVE";
+  campaignProductType?: "SKINCARE" | "SUNCARE" | "MAKEUP";
+  /**
+   * @maxItems 5
+   * @minItems 0
+   */
+  thumbnailImages?: CampaignImageRequest[];
+  /**
+   * @maxItems 15
+   * @minItems 0
+   */
+  detailImages?: CampaignImageRequest[];
+  /** @format date-time */
+  applyStartDate?: string;
+  /** @format date-time */
+  applyDeadline?: string;
+  /** @format date-time */
+  creatorAnnouncementDate?: string;
+  /** @format date-time */
+  reviewSubmissionDeadline?: string;
+  /** @format int32 */
+  recruitmentNumber?: number;
+  participationRewards?: string[];
+  deliverableRequirements?: string[];
+  eligibilityRequirements?: string[];
+  firstContentType?: "INSTA_REELS" | "TIKTOK_VIDEO" | "INSTA_POST";
+  secondContentType?: "INSTA_REELS" | "TIKTOK_VIDEO" | "INSTA_POST";
+}
+
 export interface ApiResponseListTrendsYoutubeResponse {
   success?: boolean;
   /** @format int32 */
@@ -1309,7 +1489,7 @@ export interface MainVideoReview {
   productId: number;
   brandName: string;
   productName: string;
-  /** @format int32 */
+  /** @format int64 */
   likeCount: number;
   /** @format int32 */
   rank: number;
@@ -1335,7 +1515,7 @@ export interface MainImageReview {
   productId: number;
   brandName: string;
   productName: string;
-  /** @format int32 */
+  /** @format int64 */
   likeCount: number;
   /** @format int32 */
   rank: number;
@@ -1485,6 +1665,77 @@ export interface PageableResponse {
   totalPages?: number;
 }
 
+export interface ApiResponseBrandVideoReviewListResponse {
+  success?: boolean;
+  /** @format int32 */
+  status?: number;
+  message?: string;
+  data?: BrandVideoReviewListResponse;
+}
+
+export interface BrandVideoReviewListResponse {
+  brandName: string;
+  reviews: VideoReviewResponse[];
+  pageInfo: PageableResponse;
+}
+
+export interface VideoReviewResponse {
+  /** @format int64 */
+  reviewId: number;
+  brandName: string;
+  productName: string;
+  /** @format int64 */
+  likeCount: number;
+  url: string;
+}
+
+export interface ApiResponseProductAndReviewCountResponse {
+  success?: boolean;
+  /** @format int32 */
+  status?: number;
+  message?: string;
+  data?: ProductAndReviewCountResponse;
+}
+
+export interface ProductAndReviewCountResponse {
+  /** 브랜드명 (null이면 전체 조회) */
+  brandName?: string;
+  /**
+   * 해당 브랜드의 상품 수
+   * @format int32
+   */
+  productCount: number;
+  /**
+   * 해당 브랜드의 전체 리뷰 수
+   * @format int32
+   */
+  reviewCount: number;
+}
+
+export interface ApiResponseBrandImageReviewListResponse {
+  success?: boolean;
+  /** @format int32 */
+  status?: number;
+  message?: string;
+  data?: BrandImageReviewListResponse;
+}
+
+export interface BrandImageReviewListResponse {
+  brandName: string;
+  reviews: ImageReviewResponse[];
+  pageInfo: PageableResponse;
+}
+
+export interface ImageReviewResponse {
+  /** @format int64 */
+  reviewId: number;
+  brandName: string;
+  productName: string;
+  /** @format int64 */
+  likeCount: number;
+  url: string;
+}
+
 export interface ProductListItemResponse {
   /** @format int64 */
   productId: number;
@@ -1509,26 +1760,6 @@ export interface KeywordVideoReviewListResponse {
   searchQuery: string;
   reviews: VideoReviewResponse[];
   pageInfo: PageableResponse;
-}
-
-export interface VideoReviewResponse {
-  /** @format int64 */
-  reviewId: number;
-  brandName: string;
-  productName: string;
-  /** @format int32 */
-  likeCount: number;
-  url: string;
-}
-
-export interface ImageReviewResponse {
-  /** @format int64 */
-  reviewId: number;
-  brandName: string;
-  productName: string;
-  /** @format int32 */
-  likeCount: number;
-  url: string;
 }
 
 export interface KeywordImageReviewListResponse {
@@ -1563,8 +1794,6 @@ export interface ProductDetailResponse {
   normalPrice: number;
   productDetail: string;
   ingredients: string;
-  oliveYoungUrl: string;
-  q10Url: string;
   middleCategory: "FACIAL_CARE" | "FACE_MAKEUP" | "EYE_MAKEUP" | "LIP_MAKEUP";
   subCategory:
     | "TONER"
@@ -1668,6 +1897,29 @@ export interface NewProductsByCategoryResponse {
   searchQuery: string;
   products: ProductBasicResponse[];
   pageInfo: PageableResponse;
+}
+
+export interface ApiResponseProductBrandNameListResponse {
+  success?: boolean;
+  /** @format int32 */
+  status?: number;
+  message?: string;
+  data?: ProductBrandNameListResponse;
+}
+
+export interface ProductBrandName {
+  /**
+   * 상품 브랜드 id
+   * @format int64
+   */
+  productBrandId: number;
+  /** 상품 브랜드명 */
+  productBrandName: string;
+}
+
+export interface ProductBrandNameListResponse {
+  /** 상품 브랜드 이름 리스트 */
+  brandNames: ProductBrandName[];
 }
 
 export interface ApiResponseCustomerSnsConnectedResponse {
@@ -2518,7 +2770,7 @@ export interface CreatorInfo {
    * 프로필 이미지 URL
    * @example "https://s3.example.com/profile/creator-10.jpg"
    */
-  profileImageUrl?: string;
+  profileImageUrl: string;
   /**
    * 인스타그램 계정 링크
    * @example "https://www.instagram.com/_hyon.8x21?igsh=MWU4cTI5aw=="
@@ -2910,4 +3162,223 @@ export interface GoogleLoginResponse {
   refreshToken: string;
   loginStatus: "LOGIN" | "INFO_REQUIRED" | "SNS_REQUIRED" | "REGISTER";
   role: "PENDING" | "CUSTOMER" | "CREATOR" | "BRAND" | "ADMIN";
+}
+
+export interface AdminCreator {
+  /** 크리에이터 기본 정보 */
+  creator: CreatorInfo;
+  /** 팔로워 수 정보 */
+  followerCount: FollowerCount;
+  /**
+   * 크리에이터가 참여한 총 캠페인 수
+   * @format int32
+   * @example 10
+   */
+  participationCount: number;
+  /**
+   * 크리에이터가 가입 완료한 시간
+   * @format date-time
+   * @example "2025-09-27T12:45:01.455391"
+   */
+  signupCompletedDate: string;
+  /**
+   * 승인 상태
+   * @example "PENDING"
+   */
+  approveStatus: string;
+}
+
+export interface AdminCreatorListResponse {
+  /** 전체 크리에이터 목록 */
+  creators: AdminCreator[];
+  /**
+   * 총 크리에이터 수
+   * @format int64
+   */
+  totalCreatorCount: number;
+  /** 페이징 정보 */
+  pageInfo: PageableResponse;
+}
+
+export interface ApiResponseAdminCreatorListResponse {
+  success?: boolean;
+  /** @format int32 */
+  status?: number;
+  message?: string;
+  data?: AdminCreatorListResponse;
+}
+
+export interface AdminCampaignInfoResponse {
+  /**
+   * 캠페인 ID
+   * @format int64
+   * @example 1
+   */
+  campaignId: number;
+  /**
+   * 브랜드명
+   * @example "로코코"
+   */
+  brandName: string;
+  /**
+   * 캠페인명
+   * @example "신제품 체험단"
+   */
+  campaignName: string;
+  /** 모집 현황 */
+  recruitmentStatus: RecruitmentStatus;
+  /**
+   * 신청 시작일
+   * @format date-time
+   * @example "2024-12-01T00:00:00Z"
+   */
+  applyStartDate: string;
+  /**
+   * 신청 마감일
+   * @format date-time
+   * @example "2024-12-15T23:59:59Z"
+   */
+  applyDeadline: string;
+  /**
+   * 승인 상태
+   * @example "PENDING 또는 APPROVED"
+   */
+  approvedStatus: string;
+}
+
+export interface AdminCampaignListResponse {
+  /** 캠페인 목록 */
+  campaigns: AdminCampaignInfoResponse[];
+  /**
+   * 총 캠페인 개수
+   * @format int64
+   */
+  totalCampaignCount: number;
+  /** 페이징 정보 */
+  pageInfo: PageableResponse;
+}
+
+export interface ApiResponseAdminCampaignListResponse {
+  success?: boolean;
+  /** @format int32 */
+  status?: number;
+  message?: string;
+  data?: AdminCampaignListResponse;
+}
+
+export interface RecruitmentStatus {
+  /**
+   * 모집 인원
+   * @format int32
+   * @example 10
+   */
+  recruitmentNumber: number;
+  /**
+   * 신청자 수
+   * @format int32
+   * @example 5
+   */
+  applicantNumber: number;
+}
+
+export interface AdminCampaignBasicResponse {
+  /**
+   * 브랜드 이름
+   * @example "LOCOCO"
+   */
+  brandName: string;
+  /**
+   * 캠페인 id
+   * @format int64
+   * @example 1
+   */
+  campaignId: number;
+  /**
+   * 캠페인 제목
+   * @example "나는야 캠페인"
+   */
+  campaignTitle: string;
+  /**
+   * 캠페인 진행 언어
+   * @example "ENG"
+   */
+  language: "EN" | "ES";
+  /**
+   * 캠페인 종류
+   * @example "GIVEAWAY"
+   */
+  campaignType: "GIVEAWAY" | "CONTENTS" | "EXCLUSIVE";
+  /**
+   * 캠페인 상품 카테고리
+   * @example "SKINCARE"
+   */
+  campaignProductType: "SKINCARE" | "SUNCARE" | "MAKEUP";
+  /** 상단 이미지 리스트 */
+  thumbnailImages: CampaignImageResponse[];
+  /** 하단 이미지 리스트 */
+  detailImages: CampaignImageResponse[];
+  /**
+   * 크리에이터 지원 시작 일시
+   * @format date-time
+   * @example "2025-09-17T시7:32:08.995Z"
+   */
+  applyStartDate: string;
+  /**
+   * 크리에이터 지원 마감 일
+   * @format date-time
+   * @example "2025-09-17T시7:32:08.995Z"
+   */
+  applyDeadline: string;
+  /**
+   * 크리에이터 발표 일시
+   * @format date-time
+   * @example "2025-09-17T07:32:08.995Z"
+   */
+  creatorAnnouncementDate: string;
+  /**
+   * 리뷰 제출 마감일
+   * @format date-time
+   * @example "2025-09-17T07:32:08.995Z"
+   */
+  reviewSubmissionDeadline: string;
+  /**
+   * 모집 인원 수
+   * @format int32
+   * @example 20
+   */
+  recruitmentNumber: number;
+  /** 캠페인 참여 보상 리스트 */
+  participationRewards: string[];
+  /** 컨텐츠 제출 요구사항 리스트 */
+  deliverableRequirements: string[];
+  /** 크리에이터 자격 요건 리스트 */
+  eligibilityRequirements: string[];
+  /**
+   * 첫 번째 제출 컨텐츠
+   * @example "INSTA_REELS"
+   */
+  firstContentType: "INSTA_REELS" | "TIKTOK_VIDEO" | "INSTA_POST";
+  /**
+   * 두 번째 제출 컨텐츠
+   * @example "TIKTOK_VIDEO"
+   */
+  secondContentType: "INSTA_REELS" | "TIKTOK_VIDEO" | "INSTA_POST";
+}
+
+export interface ApiResponseAdminCampaignBasicResponse {
+  success?: boolean;
+  /** @format int32 */
+  status?: number;
+  message?: string;
+  data?: AdminCampaignBasicResponse;
+}
+
+export interface DeleteCreatorsRequest {
+  /** @minItems 1 */
+  creatorIds: number[];
+}
+
+export interface DeleteCampaignIdsRequest {
+  /** @minItems 1 */
+  campaignIds: number[];
 }
