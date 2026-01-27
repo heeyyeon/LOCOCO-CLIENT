@@ -412,7 +412,7 @@ export default function AdminCampaignPage() {
 
       {data?.data?.campaigns && data.data.campaigns.length > 0 ? (
         <>
-          <div className="flex justify-between bg-gray-100 px-[1.6rem] py-[0.8rem]">
+          <div className="sticky top-0 z-10 flex justify-between bg-gray-100 px-[1.6rem] py-[0.8rem]">
             <div className="flex items-center gap-[0.8rem]">
               <Checkbox
                 id="all-select"
