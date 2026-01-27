@@ -1,16 +1,18 @@
 'use client';
 
-import { useState  } from 'react';
-import { useSearchParams } from 'next/navigation';
+import { useState } from 'react';
+
+import { useRouter, useSearchParams } from 'next/navigation';
+
 import { useMutation, useQuery } from '@tanstack/react-query';
 import {
+  type Cell,
+  type CellContext,
   type ColumnDef,
   type ColumnFiltersState,
-  type RowSelectionState,
   type HeaderGroup,
   type Row,
-  type CellContext,
-  type Cell,
+  type RowSelectionState,
   flexRender,
   getCoreRowModel,
   useReactTable,
@@ -24,8 +26,8 @@ import { SvgCheck } from '@lococo/icons';
 
 import { apiRequest } from '../../../web/app/api/apiRequest';
 import {
-  ApiResponseAdminCampaignListResponse,
   AdminCampaignInfoResponse,
+  ApiResponseAdminCampaignListResponse,
   ApproveCampaignIdsRequest,
 } from '../../../web/swagger-codegen/data-contracts';
 
@@ -67,8 +69,8 @@ const createColumns = (
     meta: {
       style: { textAlign: 'center' },
     },
-    cell: ({ getValue }: CellContext<CampaignTableData, number>) => {
-      const value = getValue();
+    cell: ({ getValue }) => {
+      const value = getValue() as number;
       return <div className="text-inter-body1">{value}</div>;
     },
   },
@@ -79,8 +81,8 @@ const createColumns = (
     meta: {
       style: { textAlign: 'center' },
     },
-    cell: ({ getValue }: CellContext<CampaignTableData, string>) => {
-      const value = getValue();
+    cell: ({ getValue }) => {
+      const value = getValue() as string;
       return <div className="text-inter-body1">{value}</div>;
     },
   },
@@ -91,8 +93,8 @@ const createColumns = (
     meta: {
       style: { textAlign: 'center' },
     },
-    cell: ({ getValue }: CellContext<CampaignTableData, string>) => {
-      const value = getValue();
+    cell: ({ getValue }) => {
+      const value = getValue() as string;
       return <div className="text-inter-body1">{value}</div>;
     },
   },
@@ -103,10 +105,8 @@ const createColumns = (
       style: { textAlign: 'center' },
     },
     size: 150,
-    cell: ({
-      getValue,
-    }: CellContext<CampaignTableData, CampaignTableData['recruitmentStatus']>) => {
-      const status = getValue();
+    cell: ({ getValue }) => {
+      const status = getValue() as CampaignTableData['recruitmentStatus'];
       return (
         <div className="text-inter-body1">
           {status.applicantNumber} / {status.recruitmentNumber}
@@ -121,8 +121,8 @@ const createColumns = (
       style: { textAlign: 'center' },
     },
     size: 180,
-    cell: ({ getValue }: CellContext<CampaignTableData, string>) => {
-      const date = getValue();
+    cell: ({ getValue }) => {
+      const date = getValue() as string;
       return (
         <div className="text-inter-body1">
           {dayjs(date).format('YYYY-MM-DD HH:mm')}
@@ -137,8 +137,8 @@ const createColumns = (
     meta: {
       style: { textAlign: 'center' },
     },
-    cell: ({ getValue }: CellContext<CampaignTableData, string>) => {
-      const date = getValue();
+    cell: ({ getValue }) => {
+      const date = getValue() as string;
       return (
         <div className="text-inter-body1">
           {dayjs(date).format('YYYY-MM-DD HH:mm')}
@@ -153,8 +153,8 @@ const createColumns = (
     meta: {
       style: { textAlign: 'center' },
     },
-    cell: ({ getValue }: CellContext<CampaignTableData, string>) => {
-      const status = getValue();
+    cell: ({ getValue }) => {
+      const status = getValue() as string;
       return (
         <div
           className={`text-inter-body1 ${
@@ -249,6 +249,7 @@ export default function AdminCampaignPage() {
   const [rowSelection, setRowSelection] = useState<RowSelectionState>({});
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
 
+  const router = useRouter();
   const { data, isLoading, isError, refetch } = useQuery({
     queryKey: ['admin-campaigns', selectedStatus, page],
     queryFn: () =>
@@ -267,7 +268,9 @@ export default function AdminCampaignPage() {
       refetch();
     },
     onError: (error) => {
-      alert(`승인 실패: ${error instanceof Error ? error.message : '알 수 없는 오류'}`);
+      alert(
+        `승인 실패: ${error instanceof Error ? error.message : '알 수 없는 오류'}`
+      );
     },
   });
 
@@ -279,7 +282,9 @@ export default function AdminCampaignPage() {
       refetch();
     },
     onError: (error) => {
-      alert(`삭제 실패: ${error instanceof Error ? error.message : '알 수 없는 오류'}`);
+      alert(
+        `삭제 실패: ${error instanceof Error ? error.message : '알 수 없는 오류'}`
+      );
     },
   });
 
@@ -370,9 +375,10 @@ export default function AdminCampaignPage() {
     );
   }
 
-    const pendingCampaigns =
+  const pendingCampaigns =
     data?.data?.campaigns?.filter(
-      (campaign: AdminCampaignInfoResponse) => campaign.approvedStatus === 'PENDING'
+      (campaign: AdminCampaignInfoResponse) =>
+        campaign.approvedStatus === 'PENDING'
     ) || [];
 
   return (
@@ -417,7 +423,8 @@ export default function AdminCampaignPage() {
               <Checkbox
                 id="all-select"
                 checked={
-                  Object.keys(rowSelection).length === pendingCampaigns.length &&
+                  Object.keys(rowSelection).length ===
+                    pendingCampaigns.length &&
                   Object.keys(rowSelection).length > 0
                 }
                 onCheckedChange={handleAllSelectChange}
@@ -427,9 +434,8 @@ export default function AdminCampaignPage() {
                 className="text-inter-body1 cursor-pointer font-bold text-gray-600"
               >
                 전체선택하기 (
-                {Object.keys(rowSelection).filter(
-                  (key) => rowSelection[key]
-                ).length || 0}
+                {Object.keys(rowSelection).filter((key) => rowSelection[key])
+                  .length || 0}
                 / {pendingCampaigns.length})
               </label>
             </div>
@@ -469,22 +475,24 @@ export default function AdminCampaignPage() {
           <div className="relative max-h-[123.5rem]">
             <table className="w-full">
               <thead className="border-b border-gray-400">
-                {table.getHeaderGroups().map((hg: HeaderGroup<CampaignTableData>) => (
-                  <tr key={hg.id} className="border-b border-gray-400">
-                    {hg.headers.map((header) => (
-                      <th
-                        key={header.id}
-                        className="truncate py-[0.8rem] pr-[1.6rem] text-[1.2rem] font-bold text-gray-600"
-                        style={{ width: header.getSize() }}
-                      >
-                        {flexRender(
-                          header.column.columnDef.header,
-                          header.getContext()
-                        )}
-                      </th>
-                    ))}
-                  </tr>
-                ))}
+                {table
+                  .getHeaderGroups()
+                  .map((hg: HeaderGroup<CampaignTableData>) => (
+                    <tr key={hg.id} className="border-b border-gray-400">
+                      {hg.headers.map((header) => (
+                        <th
+                          key={header.id}
+                          className="truncate py-[0.8rem] pr-[1.6rem] text-[1.2rem] font-bold text-gray-600"
+                          style={{ width: header.getSize() }}
+                        >
+                          {flexRender(
+                            header.column.columnDef.header,
+                            header.getContext()
+                          )}
+                        </th>
+                      ))}
+                    </tr>
+                  ))}
               </thead>
               <tbody>
                 {table.getFilteredRowModel().rows.length === 0 ? (
@@ -494,26 +502,38 @@ export default function AdminCampaignPage() {
                     </td>
                   </tr>
                 ) : (
-                  table.getFilteredRowModel().rows.map((row: Row<CampaignTableData>) => (
-                    <tr
-                      key={row.original.campaignId}
-                      className={`h-[8rem] w-full border-b border-gray-400 px-[1.6rem] py-[2.4rem] ${
-                        row.getIsSelected() &&
-                        row.original.approvedStatus !== 'APPROVED'
-                          ? 'bg-pink-100'
-                          : ''
-                      }`}
-                    >
-                      {row.getVisibleCells().map((cell: Cell<CampaignTableData, unknown>) => (
-                        <td key={cell.id} className="text-center">
-                          {flexRender(
-                            cell.column.columnDef.cell,
-                            cell.getContext()
-                          )}
-                        </td>
-                      ))}
-                    </tr>
-                  ))
+                  table
+                    .getFilteredRowModel()
+                    .rows.map((row: Row<CampaignTableData>) => (
+                      <tr
+                        key={row.original.campaignId}
+                        className={`h-[8rem] w-full cursor-pointer border-b border-gray-400 px-[1.6rem] py-[2.4rem] hover:bg-gray-100 ${
+                          row.getIsSelected() &&
+                          row.original.approvedStatus !== 'APPROVED'
+                            ? 'bg-pink-100'
+                            : ''
+                        }`}
+                      >
+                        {row
+                          .getVisibleCells()
+                          .map((cell: Cell<CampaignTableData, unknown>) => (
+                            <td
+                              key={cell.id}
+                              className="text-center"
+                              onClick={() => {
+                                router.push(
+                                  `/campaign/${row.original.campaignId}`
+                                );
+                              }}
+                            >
+                              {flexRender(
+                                cell.column.columnDef.cell,
+                                cell.getContext()
+                              )}
+                            </td>
+                          ))}
+                      </tr>
+                    ))
                 )}
               </tbody>
             </table>
@@ -537,4 +557,3 @@ export default function AdminCampaignPage() {
     </div>
   );
 }
-
