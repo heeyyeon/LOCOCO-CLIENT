@@ -101,7 +101,7 @@ export default function Profile() {
     <FormProvider {...methods}>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="flex flex-1 justify-center bg-gray-200 py-[6.4rem]"
+        className="flex flex-1 justify-center bg-gray-100 py-[6.4rem]"
       >
         <main className="flex flex-col gap-[3.2rem]">
           <AddressSearchModal
