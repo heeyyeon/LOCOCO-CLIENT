@@ -95,7 +95,7 @@ export const useProductImageUpload = (isAdmin = false) => {
           }
 
           return {
-            url: presignedUrl?.split('?')[0] || '',
+            url: presignedUrl,
             displayOrder: index,
           };
         })

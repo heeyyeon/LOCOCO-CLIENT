@@ -1,5 +1,9 @@
 import { apiRequest } from 'app/api/apiRequest';
-import { ApiResponseProductBrandNameListResponse } from 'swagger-codegen/data-contracts';
+import { 
+  ApiResponseProductBrandNameListResponse,
+  ApiResponseAdminProductCreateResponse,
+  AdminProductCreateRequest
+} from 'swagger-codegen/data-contracts';
 
 export const getProductBrandNames = async (
   startsWith?: string
@@ -9,6 +13,17 @@ export const getProductBrandNames = async (
     endPoint: '/api/product-brand',
     method: 'GET',
     params,
+  });
+  return response;
+};
+
+export const createProduct = async (
+  data: AdminProductCreateRequest
+): Promise<ApiResponseAdminProductCreateResponse> => {
+  const response = await apiRequest<ApiResponseAdminProductCreateResponse>({
+    endPoint: '/api/admin/product',
+    method: 'POST',
+    data,
   });
   return response;
 };

@@ -10,6 +10,8 @@ import {
   createProductRegistrationSchema,
   type ProductRegistrationFormData,
 } from '../schema/product-registration-schema';
+import { transformFormDataToApiData } from '../utils/api-transformers';
+import { useProductRegistration } from '../hooks/useProductRegistration';
 
 export default function RegistrationForm() {
   const t = useTranslations('brandProductRegistration');
@@ -32,9 +34,11 @@ export default function RegistrationForm() {
     },
   });
 
+  const productRegistrationMutation = useProductRegistration();
+
   const handleSubmitForm = (data: ProductRegistrationFormData) => {
-    // TODO: 우선 유효성 체크만
-    void data;
+    const requestData = transformFormDataToApiData(data);
+    productRegistrationMutation.mutate(requestData);
   };
 
   return (
@@ -71,6 +75,5 @@ export default function RegistrationForm() {
         </div>
       </form>
     </FormProvider>
-
   );
 }
