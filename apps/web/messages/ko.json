@@ -271,7 +271,7 @@
     },
     "errorMessage": {
       "productNameRequired": "상품 이름을 입력해주세요",
-      "productNameMaxLength": "상품 이름은 최대 15자까지 입력 가능합니다",
+      "productNameMaxLength": "상품 이름은 최대 30자까지 입력 가능합니다",
       "brandRequired": "브랜드를 입력해주세요",
       "brandMaxLength": "브랜드는 최대 15자까지 입력 가능합니다",
       "priceRequired": "상품 가격을 입력해주세요",
