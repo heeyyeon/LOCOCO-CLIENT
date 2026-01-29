@@ -52,22 +52,13 @@ export default function RegistrationForm() {
             <ProductInfo />
             <ProductImageUpload />
           </div>
-          <div className="mt-[3.2rem] flex gap-[1.6rem]">
-            <Button
-              type="button"
-              variant="outline"
-              size="lg"
-              color="secondary"
-              className="w-[41.2rem]"
-            >
-              {t('buttons.save')}
-            </Button>
+          <div className="mt-[3.2rem] w-[84rem] flex justify-center">
             <Button
               type="submit"
               variant="filled"
               size="lg"
               color="primary"
-              className="w-[41.2rem]"
+              className="max-w-[41.2rem]"
             >
               {t('buttons.register')}
             </Button>
