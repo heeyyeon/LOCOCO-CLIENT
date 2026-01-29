@@ -2,13 +2,10 @@
 
 import { useEffect, useMemo, useState } from 'react';
 import { useFormContext } from 'react-hook-form';
-import { useSearchParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';
+import { useSearchParams } from 'next/navigation';
 
-import {
-  UploadedFile,
-  useFileUpload,
-} from 'app/[locale]/(with-layout)/brand/hooks/useFileUpload';
+import { useProductImageUpload, ProductUploadedFile } from '../hooks/useProductImageUpload';
 import DragDropArea from 'components/drag-drop/DargDropArea';
 import { FormSection } from 'components/forms';
 import { ProductRegistrationFormData } from '../schema/product-registration-schema';
@@ -31,10 +28,9 @@ export default function ProductImageUpload({
     formState: { errors },
   } = useFormContext<ProductRegistrationFormData>();
 
-  const { uploadImageFiles, isUploading } = useFileUpload(isAdmin);
+  const { uploadImageFiles, isUploading } = useProductImageUpload(isAdmin);
 
   const [previewFiles, setPreviewFiles] = useState<File[]>([]);
-  
   const [existingUrls, setExistingUrls] = useState<string[]>([]);
 
   const productImageFiles = watch('productImageFiles'); 
@@ -61,7 +57,7 @@ export default function ProductImageUpload({
 
       uploadImageFiles({
         files: newFiles,
-        onSuccess: (uploadedFiles: UploadedFile[]) => {
+        onSuccess: (uploadedFiles: ProductUploadedFile[]) => {
           const newImageObjects = uploadedFiles.map((file, index) => ({
             url: file.url,
             displayOrder: currentUrls.length + index,
