@@ -230,8 +230,58 @@
     "checkContents": "View Contents",
     "dashboard": "Dashboard ",
     "editProfile": "Edit Profile ",
+    "productRegistration": "Product Registration",
     "makeNewCampaign": "Create a new campaign  ",
     "myCampaign": "My Campaigns"
+  },
+  "brandProductRegistration": {
+    "productInfo": {
+      "title": "Product Information",
+      "productName": "Product Name",
+      "brand": "Brand",
+      "price": "Price",
+      "capacity": "Capacity",
+      "category": "Category",
+      "mftDate": "Manufacturing Date",
+      "mftDatePlaceholder": {
+        "month": "Month",
+        "day": "Day",
+        "year": "Year"
+      },
+      "description": {
+        "title": "Product Description",
+        "description": "Please enter the product description."
+      },
+      "composition": {
+        "title": "Product Ingredients",
+        "description": "Please provide information about the product ingredients."
+      }
+    },
+    "productImage": {
+      "title": "Product Images",
+      "description": "Images to be displayed on the product detail page. Please attach high-quality images.\nYou can upload up to 5 images.\n\nDrag and drop or click to upload files."
+    },
+    "buttons": {
+      "register": "Register Product"
+    },
+    "errorMessage": {
+      "productNameRequired": "Please enter the product name",
+      "productNameMaxLength": "Product name can be up to 30 characters",
+      "brandRequired": "Please select the brand",
+      "priceRequired": "Please enter the product price",
+      "priceMaxLength": "Please enter within 10 characters",
+      "capacityRequired": "Please enter the product capacity",
+      "capacityMaxLength": "Please enter within 20 characters",
+      "categoryRequired": "Please select a category",
+      "mftDateRequired": "Please select the manufacturing date",
+      "descriptionRequired": "Please enter the product description",
+      "descriptionMaxLength": "Please enter within 5000 characters",
+      "compositionRequired": "Please enter the product ingredients",
+      "compositionMaxLength": "Please enter within 5000 characters",
+      "imageRequired": "Please upload at least 1 product image",
+      "imageMaxFiles": "You can upload up to 5 detail images",
+      "imageUploadRequired": "Please upload product images"
+    }
   },
   "brandSignup": {
     "brandInfo": {

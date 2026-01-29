@@ -16,8 +16,7 @@ export const createProductRegistrationSchema = (t: TranslationFunction) => {
       .min(1, t('errorMessage.productNameRequired'))
       .max(30, t('errorMessage.productNameMaxLength')),
     brand: z.string()
-      .min(1, t('errorMessage.brandRequired'))
-      .max(15, t('errorMessage.brandMaxLength')),
+      .min(1, t('errorMessage.brandRequired')),
     price: z.string()
       .min(1, t('errorMessage.priceRequired'))
       .max(10, t('errorMessage.priceMaxLength')),

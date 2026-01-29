@@ -230,8 +230,58 @@
     "checkContents": "Revisar Contenidos",
     "dashboard": "Tablero de campañas",
     "editProfile": "Editar perfil",
+    "productRegistration": "Registro de Producto",
     "makeNewCampaign": "Crear una nueva campaña",
     "myCampaign": "Mis Campañas"
+  },
+  "brandProductRegistration": {
+    "productInfo": {
+      "title": "Información del Producto",
+      "productName": "Nombre del Producto",
+      "brand": "Marca",
+      "price": "Precio",
+      "capacity": "Capacidad",
+      "category": "Categoría",
+      "mftDate": "Fecha de Fabricación",
+      "mftDatePlaceholder": {
+        "month": "Mes",
+        "day": "Día",
+        "year": "Año"
+      },
+      "description": {
+        "title": "Descripción del Producto",
+        "description": "Por favor ingrese la descripción del producto."
+      },
+      "composition": {
+        "title": "Ingredientes del Producto",
+        "description": "Por favor proporcione información sobre los ingredientes del producto."
+      }
+    },
+    "productImage": {
+      "title": "Imágenes del Producto",
+      "description": "Imágenes que se mostrarán en la página de detalles del producto. Por favor adjunte imágenes de alta calidad.\nPuede subir hasta 5 imágenes.\n\nArrastre y suelte o haga clic para subir archivos."
+    },
+    "buttons": {
+      "register": "Registrar Producto"
+    },
+    "errorMessage": {
+      "productNameRequired": "Por favor ingrese el nombre del producto",
+      "productNameMaxLength": "El nombre del producto puede tener hasta 30 caracteres",
+      "brandRequired": "Por favor seleccione la marca",
+      "priceRequired": "Por favor ingrese el precio del producto",
+      "priceMaxLength": "Por favor ingrese dentro de 10 caracteres",
+      "capacityRequired": "Por favor ingrese la capacidad del producto",
+      "capacityMaxLength": "Por favor ingrese dentro de 20 caracteres",
+      "categoryRequired": "Por favor seleccione una categoría",
+      "mftDateRequired": "Por favor seleccione la fecha de fabricación",
+      "descriptionRequired": "Por favor ingrese la descripción del producto",
+      "descriptionMaxLength": "Por favor ingrese dentro de 5000 caracteres",
+      "compositionRequired": "Por favor ingrese los ingredientes del producto",
+      "compositionMaxLength": "Por favor ingrese dentro de 5000 caracteres",
+      "imageRequired": "Por favor suba al menos 1 imagen del producto",
+      "imageMaxFiles": "Puede subir hasta 5 imágenes de detalle",
+      "imageUploadRequired": "Por favor suba imágenes del producto"
+    }
   },
   "brandSignup": {
     "brandInfo": {
