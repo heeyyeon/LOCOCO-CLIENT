@@ -10,6 +10,7 @@ import { useFormContext } from 'react-hook-form';
 import { dateOptions } from 'utils';
 
 import { ProductRegistrationFormData } from '../schema/product-registration-schema';
+import { useProductBrandNames } from '../hooks/useProductBrandNames';
 
 export function ProductInfo() {
   const t = useTranslations('brandProductRegistration');
@@ -20,6 +21,13 @@ export function ProductInfo() {
     formState: { errors },
   } = useFormContext<ProductRegistrationFormData>();
   const { months, days, years } = dateOptions();
+
+  const { data: brandNamesData, isLoading: isLoadingBrands } = useProductBrandNames();
+
+  const brandOptions = brandNamesData?.data?.brandNames?.map((brand) => ({
+    label: brand.productBrandName,
+    value: String(brand.productBrandId),
+  })) || [];
 
   return (
     <div className="w-full">
@@ -36,7 +44,15 @@ export function ProductInfo() {
           <SelectFormField
             label={t('productInfo.brand')}
             required
+            options={brandOptions}
+            value={watch('brand')}
+            onValueChange={(value) => {
+              setValue('brand', value, {
+                shouldValidate: true,
+              });
+            }}
             error={errors.brand?.message}
+            isReadonly={isLoadingBrands}
           />
           <TextFormField
             label={t('productInfo.price')}
