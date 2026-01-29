@@ -12,12 +12,10 @@
 
 import {
   ApiResponseGoogleLoginResponse,
-  ApiResponseJwtLoginResponse,
   ApiResponseLineLoginResponse,
   ApiResponseRoleUpdateResponse,
   ApiResponseVoid,
   RoleUpdateRequest,
-  TestLoginRequest,
 } from "./data-contracts";
 import { ContentType, HttpClient, RequestParams } from "./http-client";
 
@@ -72,24 +70,6 @@ export class Auth<
       path: `/api/auth/logout`,
       method: "POST",
       secure: true,
-      ...params,
-    });
-  /**
-   * No description
-   *
-   * @tags AUTH
-   * @name Login
-   * @summary 테스트용 JWT 토큰 발급
-   * @request POST:/api/auth/login
-   * @secure
-   */
-  login = (data: TestLoginRequest, params: RequestParams = {}) =>
-    this.request<ApiResponseJwtLoginResponse, any>({
-      path: `/api/auth/login`,
-      method: "POST",
-      body: data,
-      secure: true,
-      type: ContentType.Json,
       ...params,
     });
   /**
