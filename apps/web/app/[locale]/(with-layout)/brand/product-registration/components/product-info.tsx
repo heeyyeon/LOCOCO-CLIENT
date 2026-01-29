@@ -29,6 +29,15 @@ export function ProductInfo() {
     value: String(brand.productBrandId),
   })) || [];
 
+  const categoryOptions = [
+    { label: '에센스/토너', value: 'ESSENCE_TONER' },
+    { label: '세럼/앰플', value: 'SERUM_AMPOULE' },
+    { label: '크림/로션', value: 'CREAM_LOTION' },
+    { label: '클렌저', value: 'CLEANSER' },
+    { label: '선케어', value: 'SUNCARE' },
+    { label: '기타', value: 'ETC' },
+  ];
+
   return (
     <div className="w-full">
       <FormSection title={t('productInfo.title')}>
@@ -72,6 +81,13 @@ export function ProductInfo() {
           <SelectFormField
             label={t('productInfo.category')}
             required
+            options={categoryOptions}
+            value={watch('category')}
+            onValueChange={(value) => {
+              setValue('category', value, {
+                shouldValidate: true,
+              });
+            }}
             error={errors.category?.message}
           />
           <SelectFormField label={t('productInfo.mftDate')} required>
