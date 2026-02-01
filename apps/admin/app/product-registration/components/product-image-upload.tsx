@@ -21,7 +21,7 @@ export default function ProductImageUpload({
     formState: { errors },
   } = useFormContext<ProductRegistrationFormData>();
 
-  const { uploadImageFiles, isUploading } = useProductImageUpload();
+  const { uploadImageFiles, isUploading } = useProductImageUpload(true);
 
   const [previewFiles, setPreviewFiles] = useState<File[]>([]);
   const productImageFiles = watch('productImageFiles') || [];

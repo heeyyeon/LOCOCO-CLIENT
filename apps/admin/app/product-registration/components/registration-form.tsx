@@ -1,7 +1,8 @@
 'use client';
 
 import { Button } from '@lococo/design-system/button';
-import { FormProvider, useForm, type Path } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { FormProvider, useForm } from 'react-hook-form';
 
 import { ProductInfo } from './product-info';
 import ProductImageUpload from './product-image-upload';
@@ -13,7 +14,11 @@ import { transformFormDataToApiData } from '../utils/api-transformers';
 import { useProductRegistration } from '../hooks/useProductRegistration';
 
 export default function RegistrationForm() {
+  const schema = createProductRegistrationSchema();
   const form = useForm<ProductRegistrationFormData>({
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    resolver: zodResolver(schema) as any,
+    mode: 'onChange',
     defaultValues: {
       productName: '',
       brand: '',
@@ -34,16 +39,6 @@ export default function RegistrationForm() {
   const productRegistrationMutation = useProductRegistration();
 
   const handleSubmitForm = (data: ProductRegistrationFormData) => {
-    const schema = createProductRegistrationSchema();
-    const result = schema.safeParse(data);
-    if (!result.success) {
-      result.error.issues.forEach((issue) => {
-        const path = issue.path.join('.') as Path<ProductRegistrationFormData>;
-        form.setError(path, { message: issue.message });
-      });
-      return;
-    }
-
     const requestData = transformFormDataToApiData(data);
     productRegistrationMutation.mutate(requestData);
   };

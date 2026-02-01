@@ -25,8 +25,8 @@ export const transformFormDataToApiData = (
     unit: formData.capacity,
     category: formData.category as AdminProductCreateRequest['category'],
     manufacturedAt,
-    productDetail: formData.productDescription || undefined,
-    ingredients: formData.productComposition || undefined,
+    productDetail: formData.productDescription || '',
+    ingredients: formData.productComposition || '',
     images: images as ProductImageRequest[],
   };
 };
