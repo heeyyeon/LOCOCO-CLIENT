@@ -35,7 +35,6 @@ export const useProductImageUpload = (isAdmin = false) => {
       let presignedData: MediaUrl;
       
       if (isAdmin) {
-        // Admin일 때는 상품 이미지용 presignedUrl API 사용
         const requestData: ProductImagePresignedUrlRequest = {
           mediaType: fileTypes,
         };
@@ -67,7 +66,6 @@ export const useProductImageUpload = (isAdmin = false) => {
         
         presignedData = responseData.data;
       } else {
-        // 일반 사용자는 캠페인 미디어 API 사용 (또는 상품용 일반 API가 있다면 그것 사용)
         presignedData = await getPresignedUrl(fileTypes);
       }
 
