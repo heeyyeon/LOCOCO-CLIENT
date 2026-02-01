@@ -25,7 +25,7 @@ export const useCampaignsBase = ({
   enablePagination = false,
 }: UseCampaignsBaseProps) => {
   const [campaignCategory, setCampaignCategory] = useState<CategoryKey>('ALL');
-  const [campaignLanguage, setCampaignLanguage] = useState<LanguageKey>('EN');
+  const [campaignLanguage, setCampaignLanguage] = useState<LanguageKey>('ALL');
 
   const router = useRouter();
   const params = useParams();
