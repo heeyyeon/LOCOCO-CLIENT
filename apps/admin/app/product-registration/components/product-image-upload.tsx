@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useFormContext } from 'react-hook-form';
 
 import { useProductImageUpload, ProductUploadedFile } from '../hooks/useProductImageUpload';
@@ -25,6 +25,12 @@ export default function ProductImageUpload({
 
   const [previewFiles, setPreviewFiles] = useState<File[]>([]);
   const productImageFiles = watch('productImageFiles') || [];
+
+  useEffect(() => {
+    if (productImageFiles.length === 0) {
+      setPreviewFiles([]);
+    }
+  }, [productImageFiles.length]);
 
   const handleFilesChange = (files: File[]) => {
     if (isReadonly) return;
