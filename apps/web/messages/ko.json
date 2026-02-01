@@ -234,58 +234,8 @@
     "checkContents": "컨텐츠 확인",
     "dashboard": "대시보드",
     "editProfile": "프로필 편집",
-    "productRegistration": "상품 등록",
     "makeNewCampaign": "새 캠페인 만들기",
     "myCampaign": "나의 캠페인"
-  },
-  "brandProductRegistration": {
-    "productInfo": {
-      "title": "상품 정보",
-      "productName": "상품 이름",
-      "brand": "브랜드",
-      "price": "가격",
-      "capacity": "용량",
-      "category": "카테고리",
-      "mftDate": "제품 제조 날짜",
-      "mftDatePlaceholder": {
-        "month": "Month",
-        "day": "Day",
-        "year": "Year"
-      },
-      "description": {
-        "title": "상품 상세 설명",
-        "description": "상품 상세 설명을 입력해주세요."
-      },
-      "composition": {
-        "title": "상품 성분",
-        "description": "상품 성분에 대해 알려주세요."
-      }
-    },
-    "productImage": {
-      "title": "상품 사진",
-      "description": "상품 상세페이지에 보여줄 사진입니다. 고화질 사진을 첨부해주세요.\n사진은 최대 5장까지 업로드 가능합니다.\n\n드래그 앤 드롭 또는 클릭하여 파일을 업로드하세요."
-    },
-    "buttons": {
-      "register": "상품 등록하기"
-    },
-    "errorMessage": {
-      "productNameRequired": "상품 이름을 입력해주세요",
-      "productNameMaxLength": "상품 이름은 최대 30자까지 입력 가능합니다",
-      "brandRequired": "브랜드를 선택해주세요",
-      "priceRequired": "상품 가격을 입력해주세요",
-      "priceMaxLength": "최대 10자 이내로 입력해주세요",
-      "capacityRequired": "상품 용량을 입력해주세요",
-      "capacityMaxLength": "최대 20자 이내로 입력해주세요",
-      "categoryRequired": "카테고리를 선택해주세요",
-      "mftDateRequired": "상품 제조 날짜를 선택해주세요",
-      "descriptionRequired": "상품 상세 설명을 입력해주세요",
-      "descriptionMaxLength": "최대 5000자 이내로 입력해주세요",
-      "compositionRequired": "상품 성분을 입력해주세요",
-      "compositionMaxLength": "최대 5000자 이내로 입력해주세요",
-      "imageRequired": "상품 사진을 1장 이상 업로드해주세요",
-      "imageMaxFiles": "상세 사진은 최대 5장까지 업로드 가능합니다",
-      "imageUploadRequired": "상품 사진을 업로드해주세요"
-    }
   },
   "brandSignup": {
     "brandInfo": {
