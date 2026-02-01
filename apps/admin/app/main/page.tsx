@@ -14,6 +14,10 @@ export default function AdminMainPage() {
     window.open(`${MAIN_URL}/ko/brand/create-campaign?role=admin`, '_blank', 'noopener,noreferrer');
   };
 
+  const handleOpenProductRegistration = () => {
+    router.push('/product-registration');
+  };
+
   const handleStartAdmin = () => {
     router.push('/campaign');
   };
@@ -47,7 +51,6 @@ export default function AdminMainPage() {
           >
             캠페인 등록
           </Button>
-
           <Button
             color="primary"
             variant="filled"
@@ -57,6 +60,16 @@ export default function AdminMainPage() {
             onClick={handleStartAdmin}
           >
             캠페인 관리
+          </Button>
+          <Button
+            color="primary"
+            variant="filled"
+            size="md"
+            rounded="md"
+            fontType="InterBody1"
+            onClick={handleOpenProductRegistration}
+          >
+            상품 등록
           </Button>
         </div>
       </div>
