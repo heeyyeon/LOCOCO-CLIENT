@@ -18,7 +18,6 @@ export default async function layout({
   const menuItems: MenuItem[] = [
     { label: t('myCampaign'), value: 'campaign' },
     { label: t('editProfile'), value: 'profile' },
-    { label: t('productRegistration'), value: 'product-registration' },
     { label: t('makeNewCampaign'), value: 'create-campaign' },
     { label: t('checkApplicants'), value: 'applicants' },
     { label: t('checkContents'), value: 'contents-performance' },
