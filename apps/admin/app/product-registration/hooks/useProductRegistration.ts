@@ -7,7 +7,13 @@ import {
   ApiResponseAdminProductCreateResponse,
 } from '../../../../web/swagger-codegen/data-contracts';
 
-export const useProductRegistration = (): UseMutationResult<
+interface UseProductRegistrationOptions {
+  onSuccess?: () => void;
+}
+
+export const useProductRegistration = (
+  options?: UseProductRegistrationOptions
+): UseMutationResult<
   ApiResponseAdminProductCreateResponse,
   Error,
   AdminProductCreateRequest
@@ -22,6 +28,7 @@ export const useProductRegistration = (): UseMutationResult<
     mutationFn: (data: AdminProductCreateRequest) => createProduct(data),
     onSuccess: (response) => {
       if (response.success) {
+        options?.onSuccess?.();
         router.push('/product-registration');
       }
     },
