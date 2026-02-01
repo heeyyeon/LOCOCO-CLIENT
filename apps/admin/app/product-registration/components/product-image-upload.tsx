@@ -109,7 +109,7 @@ export default function ProductImageUpload({
                   {!isReadonly && (
                     <button
                       type="button"
-                      className="body3 text-red-500 cursor-pointer text-pink-500 "
+                      className="body3 cursor-pointer text-pink-500 "
                       onClick={() => handleRemoveFile(index)}
                     >
                       삭제
