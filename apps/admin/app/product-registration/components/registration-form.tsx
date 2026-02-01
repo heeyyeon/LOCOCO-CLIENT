@@ -23,6 +23,7 @@ import { useProductRegistration } from '../hooks/useProductRegistration';
 
 export default function RegistrationForm() {
   const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
+  const [formKey, setFormKey] = useState(0);
   const schema = createProductRegistrationSchema();
   const form = useForm<ProductRegistrationFormData>({
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -58,7 +59,11 @@ export default function RegistrationForm() {
 
   const handleCloseModal = () => {
     setIsSuccessModalOpen(false);
-    form.reset();
+    form.reset({
+      brand: '',
+      category: '',
+    });
+    setFormKey((prev) => prev + 1);
   };
 
   return (
@@ -70,7 +75,7 @@ export default function RegistrationForm() {
         >
           <div className="bg-gray-100">
             <div className="flex min-h-[117.5rem] w-[84rem] flex-col bg-white px-[9.6rem] py-[4.8rem]">
-              <ProductInfo />
+              <ProductInfo key={formKey} />
               <ProductImageUpload />
             </div>
             <div className="mt-[3.2rem] flex w-[84rem] justify-center">

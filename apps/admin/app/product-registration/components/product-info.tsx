@@ -84,8 +84,7 @@ export function ProductInfo() {
               options={brandOptions}
               value={
                 watch('brand')
-                  ? brandOptions.find((option) => option.value === watch('brand'))
-                      ?.label
+                  ? brandOptions.find((option) => option.value === watch('brand'))?.label
                   : undefined
               }
               onValueChange={(selectedLabel) => {
@@ -127,7 +126,7 @@ export function ProductInfo() {
                   shouldValidate: true,
                 });
               }}
-       />
+            />
           </FieldRow>
 
           <div className="flex items-center justify-between">
