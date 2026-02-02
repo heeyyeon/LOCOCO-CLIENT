@@ -1,11 +1,7 @@
 
 import { useMutation } from '@tanstack/react-query';
-import { getClientCookie } from '../../../utils/client-cookie';
 import { getPresignedUrl } from '../../../../web/api/getPresignedUrl';
-import { 
-  ApiResponseProductImageResponse,
-  ProductImagePresignedUrlRequest 
-} from '../../../../web/swagger-codegen/data-contracts';
+import { getProductImagePresignedUrls } from '../api';
 
 export interface ProductUploadedFile {
   url: string;
@@ -23,8 +19,6 @@ interface MediaUrl {
   mediaUrl: string[];
 }
 
-const SERVER_API_BASE_URL = process.env.NEXT_PUBLIC_API_SERVER_URL;
-
 export const useProductImageUpload = (isAdmin = false) => {
   const uploadMutation = useMutation({
     mutationFn: async (files: File[]): Promise<ProductUploadedFile[]> => {
@@ -35,36 +29,15 @@ export const useProductImageUpload = (isAdmin = false) => {
       let presignedData: MediaUrl;
       
       if (isAdmin) {
-        const requestData: ProductImagePresignedUrlRequest = {
+        const response = await getProductImagePresignedUrls({
           mediaType: fileTypes,
-        };
-        
-        const accessToken = getClientCookie('AccessToken');
-        
-        const response = await fetch(`${SERVER_API_BASE_URL}/api/admin/products/images`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${accessToken}`,
-          },
-          credentials: 'include',
-          body: JSON.stringify(requestData),
         });
-
-        if (!response.ok) {
-          if (response.status === 403) {
-            throw new Error('권한이 없습니다. Admin 권한이 필요합니다.');
-          }
-          throw new Error(`Failed to get presigned URLs: ${response.status}`);
-        }
-
-        const responseData: ApiResponseProductImageResponse = await response.json();
         
-        if (!responseData.data || !responseData.data.mediaUrl) {
+        if (!response.data || !response.data.mediaUrl) {
           throw new Error('Failed to get presigned URLs');
         }
         
-        presignedData = responseData.data;
+        presignedData = response.data;
       } else {
         presignedData = await getPresignedUrl(fileTypes);
       }

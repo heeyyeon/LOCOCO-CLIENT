@@ -3,6 +3,8 @@ import {
   ApiResponseProductBrandNameListResponse,
   ApiResponseAdminProductCreateResponse,
   AdminProductCreateRequest,
+  ApiResponseProductImageResponse,
+  ProductImagePresignedUrlRequest,
 } from '../../../../web/swagger-codegen/data-contracts';
 
 export const getProductBrandNames = async (
@@ -13,6 +15,17 @@ export const getProductBrandNames = async (
     endPoint: '/api/product-brand',
     method: 'GET',
     params,
+  });
+  return response;
+};
+
+export const getProductImagePresignedUrls = async (
+  data: ProductImagePresignedUrlRequest
+): Promise<ApiResponseProductImageResponse> => {
+  const response = await apiRequest<ApiResponseProductImageResponse>({
+    endPoint: '/api/admin/products/images',
+    method: 'POST',
+    data,
   });
   return response;
 };
