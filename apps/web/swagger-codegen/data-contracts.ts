@@ -441,7 +441,6 @@ export interface CampaignPublishRequest {
    * @minLength 1
    * @example "로코코 신제품"
    */
-  brandName?: string;
   campaignTitle: string;
   /**
    * 캠페인 언어 설정
@@ -1548,13 +1547,9 @@ export interface VideoReviewDetailResponse {
   authorName: string;
   /** @format double */
   rating: number;
-  option?: string;
   /** @format date-time */
   uploadAt: string;
   productImageUrl: string;
-  receiptImageUrl?: string;
-  receiptUploaded: boolean;
-  isLiked: boolean;
   /** @format int64 */
   productId: number;
 }
@@ -1572,22 +1567,18 @@ export interface ImageReviewDetailResponse {
   reviewId: number;
   /** @format date-time */
   writtenTime: string;
-  receiptUploaded: boolean;
   positiveComment: string;
   negativeComment: string;
   authorName: string;
   profileImageUrl?: string;
   /** @format double */
   rating: number;
-  option?: string;
   /** @format int64 */
   likeCount: number;
   images: string[];
   brandName: string;
   productName: string;
   productImageUrl: string;
-  receiptImageUrl?: string;
-  isLiked: boolean;
   /** @format int64 */
   productId: number;
 }
@@ -1627,7 +1618,6 @@ export interface ImageReviewProductDetailResponse {
   reviewId: number;
   /** @format date-time */
   writtenTime: string;
-  receiptUploaded: boolean;
   positiveComment: string;
   negativeComment: string;
   profileImageUrl: string;
@@ -1636,7 +1626,6 @@ export interface ImageReviewProductDetailResponse {
   authorId: number;
   /** @format double */
   rating: number;
-  option: string;
   /** @format int32 */
   likeCount: number;
   images: string[];
@@ -1780,7 +1769,6 @@ export interface ProductDetailResponse {
   /** @format int64 */
   productId: number;
   imageUrls: string[];
-  productOptions: ProductOptionResponse[];
   productName: string;
   brandName: string;
   unit: string;
@@ -1789,32 +1777,10 @@ export interface ProductDetailResponse {
   /** @format double */
   rating: number;
   starPercent: RatingPercentResponse[];
-  isLiked: boolean;
   /** @format int64 */
   normalPrice: number;
   productDetail: string;
   ingredients: string;
-  middleCategory: "FACIAL_CARE" | "FACE_MAKEUP" | "EYE_MAKEUP" | "LIP_MAKEUP";
-  subCategory:
-    | "TONER"
-    | "MOISTURIZER"
-    | "ESSENCE_SERUM"
-    | "CREAM"
-    | "FOUNDATION"
-    | "POWDER_COMPACT"
-    | "CONCEALER"
-    | "BLUSHER"
-    | "EYEBROW"
-    | "EYESHADOW"
-    | "EYELINER"
-    | "LIPSTICK"
-    | "LIP_TINT";
-}
-
-export interface ProductOptionResponse {
-  /** @format int64 */
-  id: number;
-  optionName: string;
 }
 
 export interface RatingPercentResponse {
@@ -1866,23 +1832,20 @@ export interface ApiResponsePopularProductsByCategoryResponse {
 }
 
 export interface PopularProductsByCategoryResponse {
-  searchQuery: string;
-  products: ProductBasicResponse[];
-  pageInfo: PageableResponse;
+  products: SimpleProductResponse[];
 }
 
-export interface ProductBasicResponse {
+export interface SimpleProductResponse {
   /** @format int64 */
   productId: number;
-  imageUrls: string[];
+  imageUrl: string;
   productName: string;
   brandName: string;
   unit: string;
   /** @format int64 */
   reviewCount: number;
   /** @format double */
-  rating: number;
-  isLiked: boolean;
+  avgRating: number;
 }
 
 export interface ApiResponseNewProductsByCategoryResponse {
@@ -1894,9 +1857,7 @@ export interface ApiResponseNewProductsByCategoryResponse {
 }
 
 export interface NewProductsByCategoryResponse {
-  searchQuery: string;
-  products: ProductBasicResponse[];
-  pageInfo: PageableResponse;
+  products: SimpleProductResponse[];
 }
 
 export interface ApiResponseProductBrandNameListResponse {
@@ -1920,6 +1881,47 @@ export interface ProductBrandName {
 export interface ProductBrandNameListResponse {
   /** 상품 브랜드 이름 리스트 */
   brandNames: ProductBrandName[];
+}
+
+export interface ApiResponseProductBrandInfoListResponse {
+  success?: boolean;
+  /** @format int32 */
+  status?: number;
+  message?: string;
+  data?: ProductBrandInfoListResponse;
+}
+
+export interface ProductBrandInfoListResponse {
+  /** 상품 목록 */
+  products: ProductBrandInfoResponse[];
+  /** 페이지 정보 */
+  pageInfo: PageableResponse;
+}
+
+export interface ProductBrandInfoResponse {
+  /**
+   * 상품 id
+   * @format int64
+   */
+  productId: number;
+  /** 상품 브랜드명 */
+  productBrandName: string;
+  /** 상품명 */
+  productName: string;
+  /** 용량 */
+  unit: string;
+  /**
+   * 평균 별점
+   * @format double
+   */
+  rating: number;
+  /** 대표 이미지 URL */
+  imageUrl: string;
+  /**
+   * 리뷰 수
+   * @format int64
+   */
+  reviewCount: number;
 }
 
 export interface ApiResponseCustomerSnsConnectedResponse {

@@ -8,6 +8,9 @@ export default function GnbMenu() {
   const t = useTranslations('gnb');
   return (
     <nav className="flex items-center">
+      <Link href={'/reviews'} className="whitespace-nowrap p-[1.6rem]">
+        {t('reviews')}
+      </Link>
       <Link href={'/all/1'} className="whitespace-nowrap p-[1.6rem]">
         {t('campaigns')}
       </Link>

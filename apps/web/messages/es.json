@@ -505,6 +505,7 @@
     "slogan": "Donde los Creadores se Encuentran con la Verdadera K-Beauty"
   },
   "gnb": {
+    "reviews": "Reseñas",
     "campaigns": "Campañas",
     "howItWorks": "Cómo funciona",
     "login": "Iniciar sesión",
@@ -636,7 +637,12 @@
   },
   "main": {
     "kBeautyCampaigns": "Campañas de K-Beauty",
-    "openingSoon": "Próximamente"
+    "openingSoon": "Próximamente",
+    "bestProducts": "Mejores productos",
+    "newProducts": "Nuevos productos",
+    "bestReviews": "Mejores reseñas",
+    "videoReviews": "Reseñas de video",
+    "imageReviews": "Reseñas de imagen"
   },
   "metadata": {
     "description": "Conéctate con las mejores marcas de K-Beauty. Únete a la comunidad de creadores de Lococo y descubre oportunidades exclusivas para colaborar con las principales marcas de belleza coreana.",
@@ -1176,5 +1182,14 @@
     "confirmButton": "Sí",
     "message": "Las solicitudes de campaña solo están disponibles para miembros creadores. ¿Desea registrarse como creador?",
     "title": "Sugerencia de creador"
+  },
+  "reviews": {
+    "products": "Productos",
+    "reviews": "Reseñas",
+    "videoReviews": "Reseñas de video",
+    "photoReviews": "Reseñas de foto",
+    "seeMore": "Ver más",
+    "noProducts": "No se encontraron productos.",
+    "noReviews": "No se encontraron reseñas."
   }
 }

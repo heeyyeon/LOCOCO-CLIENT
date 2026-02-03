@@ -164,27 +164,19 @@ export class Product<
    *
    * @tags PRODUCT
    * @name SearchPopularProductsByCategory
-   * @summary 인기상품 카테고리별 조회 (메인 페이지 + 더보기)
+   * @summary 인기상품 카테고리별 조회
    * @request GET:/api/products/categories/popular
    * @secure
    */
   searchPopularProductsByCategory = (
-    query: {
-      middleCategory:
-        | "FACIAL_CARE"
-        | "FACE_MAKEUP"
-        | "EYE_MAKEUP"
-        | "LIP_MAKEUP";
-      /**
-       * @format int32
-       * @default 0
-       */
-      page?: number;
-      /**
-       * @format int32
-       * @default 4
-       */
-      size?: number;
+    query?: {
+      productCategory?:
+        | "ESSENCE_TONER"
+        | "SERUM_AMPOULE"
+        | "CREAM_LOTION"
+        | "CLEANSER"
+        | "SUNCARE"
+        | "ETC";
     },
     params: RequestParams = {},
   ) =>
@@ -200,27 +192,19 @@ export class Product<
    *
    * @tags PRODUCT
    * @name SearchNewProductsByCategory
-   * @summary 신상품 카테고리별 조회 (메인 페이지 + 더보기)
+   * @summary 신상품 카테고리별 조회
    * @request GET:/api/products/categories/new
    * @secure
    */
   searchNewProductsByCategory = (
-    query: {
-      middleCategory:
-        | "FACIAL_CARE"
-        | "FACE_MAKEUP"
-        | "EYE_MAKEUP"
-        | "LIP_MAKEUP";
-      /**
-       * @format int32
-       * @default 0
-       */
-      page?: number;
-      /**
-       * @format int32
-       * @default 4
-       */
-      size?: number;
+    query?: {
+      productCategory?:
+        | "ESSENCE_TONER"
+        | "SERUM_AMPOULE"
+        | "CREAM_LOTION"
+        | "CLEANSER"
+        | "SUNCARE"
+        | "ETC";
     },
     params: RequestParams = {},
   ) =>
