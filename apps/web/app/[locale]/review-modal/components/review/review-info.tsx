@@ -3,7 +3,6 @@ import { useRouter } from 'next/navigation';
 
 import { IconButton } from '@lococo/design-system/icon-button';
 import { Star } from '@lococo/design-system/star';
-import { Tag } from '@lococo/design-system/tag';
 import { SvgArrowOutward, SvgClose } from '@lococo/icons';
 
 import { ReviewDetail } from '../../types';
@@ -14,12 +13,10 @@ type ReviewInfoProps = Pick<
   | 'reviewId'
   | 'productId'
   | 'rating'
-  | 'option'
   | 'positiveComment'
   | 'negativeComment'
   | 'productName'
   | 'brandName'
-  | 'receiptUploaded'
 > & {
   productImageUrl: string;
   onClose?: () => void;
@@ -28,13 +25,11 @@ type ReviewInfoProps = Pick<
 export default function ReviewInfo({
   productId,
   rating,
-  option: productOption,
   positiveComment,
   negativeComment,
   productName,
   productImageUrl,
   brandName,
-  receiptUploaded: isReceipt = false,
   onClose,
 }: ReviewInfoProps) {
   const router = useRouter();
@@ -58,9 +53,7 @@ export default function ReviewInfo({
         <Star rating={rating} size="sm" color="yellow" />
         <div className="caption1 mt-[1.2rem] flex gap-[0.6rem] font-medium text-gray-600">
           <span className="flex-shrink-0">オプション :</span>
-          <span className="line-clamp-2 flex-1">{productOption}</span>
         </div>
-        {isReceipt && <Tag text="レシート" className="mt-[1.2rem]" />}
         <div className="mt-[1.6rem]">
           <Comment type="positive">{positiveComment}</Comment>
         </div>

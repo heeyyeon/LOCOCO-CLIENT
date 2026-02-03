@@ -2,15 +2,12 @@ export interface ReviewDetailBase {
   reviewId: number;
   productId: number;
   writtenTime: string;
-  receiptUploaded: boolean;
   positiveComment: string;
   negativeComment: string;
   authorName: string;
   profileImageUrl: string | null;
   rating: number;
-  option: string;
   likeCount: number;
-  isLiked: boolean;
   brandName: string;
   productName: string;
   productImageUrl: string;
