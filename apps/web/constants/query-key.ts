@@ -5,6 +5,17 @@ export const PRODUCT_KEYS = {
     return [...PRODUCT_KEYS.PRODUCT_LISTS(), 'list', page, size];
   },
   PRODUCT_DETAILS: (id: number) => [...PRODUCT_KEYS.ALL, 'detail', id],
+  BRAND_LIST: ({
+    productBrandName,
+    page,
+    size,
+  }: {
+    productBrandName?: string;
+    page?: number;
+    size?: number;
+  }) => [...PRODUCT_KEYS.ALL, 'brand', productBrandName, page, size],
+  BEST_PRODUCTS: () => [...PRODUCT_KEYS.ALL, 'best'],
+  NEW_PRODUCTS: () => [...PRODUCT_KEYS.ALL, 'new'],
 } as const;
 
 export const REVIEW_KEYS = {
@@ -28,6 +39,33 @@ export const REVIEW_KEYS = {
   ],
   IMAGE_DETAILS: () => [...REVIEW_KEYS.IMAGE(), 'detail'],
   IMAGE_DETAIL: (id: number) => [...REVIEW_KEYS.IMAGE_DETAILS(), id],
+
+  BRAND_VIDEO_LIST: ({
+    brandName,
+    page,
+    size,
+  }: {
+    brandName?: string;
+    page?: number;
+    size?: number;
+  }) => [...REVIEW_KEYS.VIDEO_LISTS(), 'brand', brandName, page, size],
+
+  BRAND_IMAGE_LIST: ({
+    brandName,
+    page,
+    size,
+  }: {
+    brandName?: string;
+    page?: number;
+    size?: number;
+  }) => [...REVIEW_KEYS.IMAGE_LISTS(), 'brand', brandName, page, size],
+
+  BRAND_SUMMARY: (brandName?: string) => [
+    ...REVIEW_KEYS.ALL,
+    'brand',
+    'summary',
+    brandName,
+  ],
 } as const;
 
 export const CONNECT_SNS_KEYS = {
