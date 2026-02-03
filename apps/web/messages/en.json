@@ -505,6 +505,7 @@
     "slogan": "Where Creators Meet Real K-Beauty"
   },
   "gnb": {
+    "reviews": "Reviews",
     "campaigns": "Campaigns",
     "howItWorks": "How It Works",
     "login": "Log in",
@@ -636,7 +637,12 @@
   },
   "main": {
     "kBeautyCampaigns": "K-Beauty Campaigns",
-    "openingSoon": "Opening Soon"
+    "openingSoon": "Opening Soon",
+    "bestProducts": "Best Products",
+    "newProducts": "New Products",
+    "bestReviews": "Best Reviews",
+    "videoReviews": "Video Reviews",
+    "imageReviews": "Image Reviews"
   },
   "metadata": {
     "description": "Get Matched with Top K-Beauty Brands. Join Lococo creator community and discover exclusive opportunities to collaborate with top K-beauty brands. ",
@@ -1176,5 +1182,14 @@
     "confirmButton": "Yes",
     "message": "Campaign applications are only available to creator members.\nWould you like to sign up as a creator?",
     "title": "Creator Suggestion"
+  },
+  "reviews": {
+    "products": "Products",
+    "reviews": "Reviews",
+    "videoReviews": "Video Reviews",
+    "photoReviews": "Photo Reviews",
+    "seeMore": "See More",
+    "noProducts": "No products found.",
+    "noReviews": "No reviews found."
   }
 }

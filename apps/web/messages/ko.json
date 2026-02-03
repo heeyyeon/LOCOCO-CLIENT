@@ -509,6 +509,7 @@
     "slogan": "Where Creators Meet Real K-Beauty"
   },
   "gnb": {
+    "reviews": "리뷰",
     "campaigns": "캠페인",
     "howItWorks": "이용 방법",
     "login": "로그인",
@@ -640,7 +641,12 @@
   },
   "main": {
     "kBeautyCampaigns": "K-뷰티 캠페인",
-    "openingSoon": "곧 오픈 예정"
+    "openingSoon": "곧 오픈 예정",
+    "bestProducts": "인기 제품",
+    "newProducts": "신규 제품",
+    "bestReviews": "인기 리뷰",
+    "videoReviews": "비디오 리뷰",
+    "imageReviews": "이미지 리뷰"
   },
   "metadata": {
     "description": "K-뷰티 브랜드의 글로벌 인큐베이터, 로코코. 로코코에서 가장 쉽고 효과적으로 브랜드를 알려보세요. 로코코는 K-뷰티 인디브랜드의 가장 든든한 해외 진출 파트너입니다. ",
@@ -1180,5 +1186,14 @@
     "confirmButton": "예",
     "message": "캠페인 신청은 크리에이터 회원만 가능합니다. \n크리에이터로 가입하시겠습니까?",
     "title": "크리에이터 제안"
+  },
+  "reviews": {
+    "products": "제품",
+    "reviews": "리뷰",
+    "videoReviews": "영상 리뷰",
+    "photoReviews": "사진 리뷰",
+    "seeMore": "더 보기",
+    "noProducts": "제품을 찾을 수 없습니다.",
+    "noReviews": "리뷰를 찾을 수 없습니다."
   }
 }
