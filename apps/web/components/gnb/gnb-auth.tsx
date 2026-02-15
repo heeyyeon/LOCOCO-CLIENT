@@ -29,6 +29,7 @@ import { useAuthInfo } from './hooks/useAuthInfo';
 const isSignupPage = (pathname: string): boolean => {
   const signupPaths = [
     '/sign-up/creator',
+    '/sign-up/customer',
     '/sign-up/brand',
     '/sign-up/creator/sns-links',
     '/login-google',
