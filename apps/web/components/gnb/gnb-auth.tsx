@@ -83,7 +83,7 @@ export default function GnbAuth() {
     } else if (freshUserInfo?.role === 'CREATOR') {
       router.push('/my-page/my-campaign');
     } else if (freshUserInfo?.role === 'CUSTOMER') {
-      router.push('/my-page/my-campaign');
+      router.push('/my-page/edit-profile');
     }
   };
 

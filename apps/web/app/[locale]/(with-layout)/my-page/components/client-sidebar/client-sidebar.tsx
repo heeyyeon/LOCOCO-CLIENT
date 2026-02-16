@@ -1,8 +1,11 @@
 'use client';
 
+import { useQuery } from '@tanstack/react-query';
+
 import SideBar from '../../../../../../components/side-bar/side-bar';
 import SideBarSkeleton from '../../../../../../components/side-bar/side-bar-skeleton';
 import { useProfile } from '../../apis/profile-api';
+import { getMyPageUserRole } from '../../apis/user-role';
 
 interface ClientSideBarProps {
   menus: Array<{ label: string; value: string }>;
@@ -14,6 +17,10 @@ export default function ClientSideBar({
   defaultActiveMenu,
 }: ClientSideBarProps) {
   const profileQuery = useProfile();
+  const roleQuery = useQuery({
+    queryKey: ['my-page', 'role'],
+    queryFn: getMyPageUserRole,
+  });
 
   // 프로필 데이터가 있으면 사용, 없으면 기본값 사용
   const profileData = profileQuery.data?.data?.creatorBasicInfo;
@@ -24,8 +31,16 @@ export default function ClientSideBar({
   const userEmail = profileData?.email || '';
 
   const creatorType = profileQuery.data?.data?.creatorType || '';
+  const isCustomer = roleQuery.data === 'CUSTOMER';
+  const filteredMenus = isCustomer
+    ? menus.filter((menu) => menu.value !== 'my-campaign')
+    : menus;
+  const resolvedDefaultActiveMenu =
+    isCustomer && defaultActiveMenu === 'my-campaign'
+      ? 'edit-profile'
+      : defaultActiveMenu;
 
-  if (profileQuery.isLoading) {
+  if (profileQuery.isLoading || roleQuery.isLoading) {
     return <SideBarSkeleton />;
   }
 
@@ -36,8 +51,8 @@ export default function ClientSideBar({
       userType={creatorType}
       profileImage={userProfileImage}
       instagram={''}
-      menus={menus}
-      defaultActiveMenu={defaultActiveMenu}
+      menus={filteredMenus}
+      defaultActiveMenu={resolvedDefaultActiveMenu}
     />
   );
 }
