@@ -734,6 +734,8 @@
       }
     },
     "editProfile": {
+      "idInUse": "This ID is already in use.",
+      "loadError": "Failed to load profile data.",
       "addressLine1Required": "Address line 1 is required",
       "basicInformation": {
         "id": "ID",

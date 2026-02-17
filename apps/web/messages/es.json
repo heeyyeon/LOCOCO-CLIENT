@@ -734,6 +734,8 @@
       }
     },
     "editProfile": {
+      "idInUse": "Este ID ya está en uso.",
+      "loadError": "Error al cargar los datos del perfil.",
       "addressLine1Required": "La línea de dirección 1 es obligatoria.",
       "basicInformation": {
         "id": "ID",

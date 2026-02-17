@@ -738,6 +738,8 @@
       }
     },
     "editProfile": {
+      "idInUse": "이미 사용 중인 ID입니다.",
+      "loadError": "프로필 데이터를 불러오는데 실패했습니다.",
       "addressLine1Required": "주소 1은 필수 입력 항목입니다.",
       "basicInformation": {
         "id": "ID",
