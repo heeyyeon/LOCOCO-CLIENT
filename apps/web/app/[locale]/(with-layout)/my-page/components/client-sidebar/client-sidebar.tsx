@@ -6,6 +6,7 @@ import SideBar from '../../../../../../components/side-bar/side-bar';
 import SideBarSkeleton from '../../../../../../components/side-bar/side-bar-skeleton';
 import { useProfile } from '../../apis/profile-api';
 import { getMyPageUserRole } from '../../apis/user-role';
+import { MY_PAGE_ROLE_KEY } from '../../constant/queryKey';
 
 interface ClientSideBarProps {
   menus: Array<{ label: string; value: string }>;
@@ -18,7 +19,7 @@ export default function ClientSideBar({
 }: ClientSideBarProps) {
   const profileQuery = useProfile();
   const roleQuery = useQuery({
-    queryKey: ['my-page', 'role'],
+    queryKey: MY_PAGE_ROLE_KEY,
     queryFn: getMyPageUserRole,
   });
 
