@@ -6,7 +6,7 @@ import {
 import { apiRequest } from 'app/api/apiRequest';
 
 import { CAMPAIGN_REVIEW_KEYS } from '../constant/queryKey';
-import { getMyPageUserRole } from './user-role';
+import { getMyPageUserRoleOrThrow } from './user-role';
 
 interface UseMyCampaignParams {
   page?: number;
@@ -21,7 +21,7 @@ const fetchMyCampaigns = async (
   totalElements: number;
 }> => {
   const { page = 0, size = 9 } = params;
-  const role = await getMyPageUserRole();
+  const role = await getMyPageUserRoleOrThrow();
 
   if (role === 'CUSTOMER') {
     return {
