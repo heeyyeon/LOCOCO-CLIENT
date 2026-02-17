@@ -3,6 +3,10 @@ export const ID_ERROR_MESSAGE_KEYS = {
   NEGATIVE: 'idTaken',
 } as const;
 
+export const EDIT_PROFILE_MESSAGE_KEYS = {
+  LOAD_ERROR: 'loadError',
+} as const;
+
 export const PROFILE_TEXT_ERROR_MESSAGE_KEYS = {
   ID: 'idRequired',
   BIRTH: {
