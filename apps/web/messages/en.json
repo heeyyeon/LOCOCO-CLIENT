@@ -474,6 +474,12 @@
       "zipCodeMaxLength": "Use up to 100 characters."
     }
   },
+  "customerSignup": {
+    "layout": {
+      "signup": "Sign up",
+      "title": "Join Lococo Community!"
+    }
+  },
   "creatorSnsLinksPage": {
     "error": "Failed to load SNS connection",
     "snsDescription": "We will go through your SNS account, and let you know if you are verified.",
