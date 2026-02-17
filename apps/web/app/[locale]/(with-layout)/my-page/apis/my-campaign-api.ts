@@ -1,4 +1,4 @@
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, UseQueryResult } from '@tanstack/react-query';
 import {
   ApiResponseCreatorMyCampaignListResponse,
   CreatorMyCampaignResponse,
@@ -6,6 +6,7 @@ import {
 import { apiRequest } from 'app/api/apiRequest';
 
 import { CAMPAIGN_REVIEW_KEYS } from '../constant/queryKey';
+import { getMyPageUserRole } from './user-role';
 
 interface UseMyCampaignParams {
   page?: number;
@@ -20,6 +21,15 @@ const fetchMyCampaigns = async (
   totalElements: number;
 }> => {
   const { page = 0, size = 9 } = params;
+  const role = await getMyPageUserRole();
+
+  if (role === 'CUSTOMER') {
+    return {
+      campaigns: [],
+      totalPages: 0,
+      totalElements: 0,
+    };
+  }
 
   const response = await apiRequest<ApiResponseCreatorMyCampaignListResponse>({
     endPoint: `/api/creator/profile/campaigns?page=${page}&size=${size}`,
@@ -43,7 +53,16 @@ const fetchMyCampaigns = async (
   };
 };
 
-const useMyCampaign = (params: UseMyCampaignParams = {}) => {
+const useMyCampaign = (
+  params: UseMyCampaignParams = {}
+): UseQueryResult<
+  {
+    campaigns: CreatorMyCampaignResponse[];
+    totalPages: number;
+    totalElements: number;
+  },
+  Error
+> => {
   return useQuery({
     queryKey: CAMPAIGN_REVIEW_KEYS.myCampaigns(params),
     queryFn: () => fetchMyCampaigns(params),
