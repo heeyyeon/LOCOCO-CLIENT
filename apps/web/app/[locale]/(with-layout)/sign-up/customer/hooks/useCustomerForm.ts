@@ -112,11 +112,10 @@ export const useCustomerForm = () => {
 
     if (response.success) {
       clearRoleFromLocalStorage();
-      router.push('/');
     }
 
     setIsSubmitting(false);
-    return true;
+    return response.success;
   };
 
   const handleIdCheckResult = useCallback(
