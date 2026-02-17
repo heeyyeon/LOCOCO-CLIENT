@@ -1,45 +1,56 @@
 'use client';
 
+import { useState } from 'react';
+
 import { useLocale, useTranslations } from 'next-intl';
+import { useRouter } from 'next/navigation';
 
 import {
   CustomerFormSections,
   SignupFormLayout,
 } from '../../../../../components/forms';
+import { ConfirmSignupModal } from '../components/confirm-signup-modal';
 import { useCustomerForm } from './hooks/useCustomerForm';
 
-const CUSTOMER_SIGNUP_TITLES = {
-  ko: '로코코 커뮤니티에 가입하세요!',
-  en: 'Join Lococo Community!',
-  es: '¡Únete a la comunidad de Lococo!',
-} as const;
-
 export default function CustomerSignupPage() {
+  const router = useRouter();
   const locale = useLocale();
-  const t = useTranslations('creatorSignup.layout');
+  const t = useTranslations('customerSignup.layout');
+  const [isShowConfirmModal, setIsShowConfirmModal] = useState(false);
   const { form, handleBack, handleNext, handleIdCheckResult } =
     useCustomerForm();
 
-  const handleSubmit = form.handleSubmit((data) => {
-    handleNext(data);
+  const handleSubmit = form.handleSubmit(async (data) => {
+    const isSuccess = await handleNext(data);
+    if (isSuccess) {
+      setIsShowConfirmModal(true);
+    }
   });
-  const normalizedLocale = locale as keyof typeof CUSTOMER_SIGNUP_TITLES;
-  const signupTitle =
-    CUSTOMER_SIGNUP_TITLES[normalizedLocale] ?? CUSTOMER_SIGNUP_TITLES.en;
+  const handleConfirmModalConfirm = () => {
+    router.push('/');
+  };
 
   return (
-    <SignupFormLayout
-      title={signupTitle}
-      onBack={handleBack}
-      onSubmit={handleSubmit}
-      isValid={form.formState.isValid}
-      submitLabel={t('next')}
-    >
-      <CustomerFormSections
-        form={form}
-        locale={locale}
-        onIdCheckResult={handleIdCheckResult}
+    <>
+      <SignupFormLayout
+        title={t('title')}
+        onBack={handleBack}
+        onSubmit={handleSubmit}
+        isValid={form.formState.isValid}
+        submitLabel={t('signup')}
+      >
+        <CustomerFormSections
+          form={form}
+          locale={locale}
+          onIdCheckResult={handleIdCheckResult}
+        />
+      </SignupFormLayout>
+
+      <ConfirmSignupModal
+        open={isShowConfirmModal}
+        onOpenChange={setIsShowConfirmModal}
+        onConfirm={handleConfirmModalConfirm}
       />
-    </SignupFormLayout>
+    </>
   );
 }
