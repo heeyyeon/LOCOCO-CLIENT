@@ -32,11 +32,12 @@ export default function ClientSideBar({
 
   const creatorType = profileQuery.data?.data?.creatorType || '';
   const isCustomer = roleQuery.data === 'CUSTOMER';
+  const customerHiddenValues = ['my-campaign', 'connect-sns'];
   const filteredMenus = isCustomer
-    ? menus.filter((menu) => menu.value !== 'my-campaign')
+    ? menus.filter((menu) => !customerHiddenValues.includes(menu.value))
     : menus;
   const resolvedDefaultActiveMenu =
-    isCustomer && defaultActiveMenu === 'my-campaign'
+    isCustomer && customerHiddenValues.includes(defaultActiveMenu)
       ? 'edit-profile'
       : defaultActiveMenu;
 
