@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 import { useParams } from 'next/navigation';
 
 import { useAuth } from 'hooks/use-auth';
@@ -6,7 +7,7 @@ import { useAuth } from 'hooks/use-auth';
 import { Button } from '@lococo/design-system/button';
 import { Progress } from '@lococo/design-system/progress';
 import { Star } from '@lococo/design-system/star';
-import { SvgJapaneseReview, SvgWrite } from '@lococo/icons';
+import { SvgNewLogo, SvgWrite } from '@lococo/icons';
 
 import { ScorePercentData } from '../types';
 
@@ -21,12 +22,13 @@ export default function StarRating({
   rating,
   starPercent,
 }: StarRatingProps) {
+  const t = useTranslations('reviews');
   const params = useParams();
   const { isLoggedIn } = useAuth();
   return (
     <div className="flex flex-col gap-[3.2rem]">
       <h2 className="head2 inline-flex items-center gap-[1.2rem] font-bold">
-        <SvgJapaneseReview size={24} className="fill-red" /> 日本人レビュー
+        <SvgNewLogo size={24} className="fill-pink-500" /> {t('reviews')}
       </h2>
 
       <div className="flex h-[25.6rem] w-full items-center justify-between rounded-[1.2rem] bg-gray-100 px-[8rem] py-[4rem]">
@@ -38,7 +40,9 @@ export default function StarRating({
               <span className="title3 font-bold text-gray-600">
                 {reviewCount}
               </span>
-              <span className="title3 font-bold text-gray-600">レビュー</span>
+              <span className="title3 font-bold text-gray-600">
+                {t('reviews')}
+              </span>
             </div>
           </div>
         </div>
@@ -64,7 +68,7 @@ export default function StarRating({
         >
           <span className="title2 inline-flex items-center gap-[0.8rem]">
             <SvgWrite />
-            レビューを書く
+            {t('writeReview')}
           </span>
         </Link>
       </Button>

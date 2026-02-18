@@ -1,7 +1,7 @@
 import {
-  KeywordImageReviewListResponse,
-  KeywordVideoReviewListResponse,
-  SearchProductsResponse,
+  BrandImageReviewListResponse,
+  BrandVideoReviewListResponse,
+  SimpleProductResponse,
 } from '@typescript-swagger/data-contracts';
 
 export interface ApiResponse<T> {
@@ -11,9 +11,13 @@ export interface ApiResponse<T> {
   message?: string;
 }
 
+export interface SearchProductsResponse {
+  products: SimpleProductResponse[];
+}
+
 export type ApiResponseSearchProductsResponse =
   ApiResponse<SearchProductsResponse>;
 export type ApiKeywordVideoReviewListResponse =
-  ApiResponse<KeywordVideoReviewListResponse>;
+  ApiResponse<BrandVideoReviewListResponse>;
 export type ApiKeywordImageReviewListResponse =
-  ApiResponse<KeywordImageReviewListResponse>;
+  ApiResponse<BrandImageReviewListResponse>;

@@ -95,6 +95,8 @@
   },
   "brandMyPageCreateCampaign": {
     "basicInfo": {
+      "brandName": "Brand Name",
+      "brandNamePlaceholder": "Enter the brand name",
       "category": "Category",
       "creatorCount": "Number of Creators Required",
       "creatorCountPlaceholder": "Enter a number",
@@ -117,19 +119,25 @@
       "submitConditionTitle": "Creator Content Submission Requirements"
     },
     "errorMessage": {
+      "brandNameMinLength": "Brand name must be at least 1 character.",
+      "brandNameRequired": "Please enter the brand name.",
       "campaignAnnounceDay": "Please enter the campaign winner announcement date.",
+      "campaignAnnounceDayAfterToday": "The announce date cannot be today or a past date.",
       "campaignAnnounceTime": "Please enter the campaign winner announcement time.",
       "campaignCategory": "Please enter the campaign category.",
       "campaignCreatorCount": "Please enter the number of creators to recruit.",
       "campaignDueDay": "Please enter the campaign title.",
+      "campaignDueDayAfterToday": "The due date cannot be today or a past date.",
       "campaignDueTime": "Please enter the campaign title.",
       "campaignEndDay": "Please enter the campaign application deadline date.",
+      "campaignEndDayAfterToday": "The end date cannot be today or a past date.",
       "campaignEndTime": "Please enter the campaign application deadline time.",
       "campaignLanguage": "Please enter the campaign language.",
       "campaignMediaDetail": "Please upload content detail page images.",
       "campaignMediaThumbnail": "Please upload content thumbnail images.",
       "campaignPlatformSelect": "Please select the content platform.",
       "campaignStartDay": "Please enter the campaign application start date.",
+      "campaignStartDayAfterToday": "The start date cannot be today or a past date.",
       "campaignStartTime": "Please enter the campaign application start time.",
       "campaignTitle": "Please enter the campaign title.",
       "campaignType": "Please enter the campaign type.",
@@ -231,7 +239,57 @@
     "dashboard": "Dashboard ",
     "editProfile": "Edit Profile ",
     "makeNewCampaign": "Create a new campaign  ",
-    "myCampaign": "My Campaigns"
+    "myCampaign": "My Campaigns",
+    "productRegistration": "Product Registration"
+  },
+  "brandProductRegistration": {
+    "buttons": {
+      "register": "Register Product"
+    },
+    "errorMessage": {
+      "brandRequired": "Please select the brand",
+      "capacityMaxLength": "Please enter within 20 characters",
+      "capacityRequired": "Please enter the product capacity",
+      "categoryRequired": "Please select a category",
+      "compositionMaxLength": "Please enter within 5000 characters",
+      "compositionRequired": "Please enter the product ingredients",
+      "descriptionMaxLength": "Please enter within 5000 characters",
+      "descriptionRequired": "Please enter the product description",
+      "imageMaxFiles": "You can upload up to 5 detail images",
+      "imageRequired": "Please upload at least 1 product image",
+      "imageUploadRequired": "Please upload product images",
+      "mftDateRequired": "Please select the manufacturing date",
+      "priceMaxLength": "Please enter within 10 characters",
+      "priceRequired": "Please enter the product price",
+      "productNameMaxLength": "Product name can be up to 30 characters",
+      "productNameRequired": "Please enter the product name"
+    },
+    "productImage": {
+      "description": "Images to be displayed on the product detail page. Please attach high-quality images.\nYou can upload up to 5 images.\n\nDrag and drop or click to upload files.",
+      "title": "Product Images"
+    },
+    "productInfo": {
+      "brand": "Brand",
+      "capacity": "Capacity",
+      "category": "Category",
+      "composition": {
+        "description": "Please provide information about the product ingredients.",
+        "title": "Product Ingredients"
+      },
+      "description": {
+        "description": "Please enter the product description.",
+        "title": "Product Description"
+      },
+      "mftDate": "Manufacturing Date",
+      "mftDatePlaceholder": {
+        "day": "Day",
+        "month": "Month",
+        "year": "Year"
+      },
+      "price": "Price",
+      "productName": "Product Name",
+      "title": "Product Information"
+    }
   },
   "brandSignup": {
     "brandInfo": {
@@ -505,14 +563,14 @@
     "slogan": "Where Creators Meet Real K-Beauty"
   },
   "gnb": {
-    "reviews": "Reviews",
     "campaigns": "Campaigns",
     "howItWorks": "How It Works",
     "login": "Log in",
     "logIn": "Log in",
     "logOut": "Log Out",
     "myPage": "My Page",
-    "signUp": "Sign up"
+    "signUp": "Sign up",
+    "reviews": "Reviews"
   },
   "home": {
     "description": "productDescription",
@@ -1189,6 +1247,33 @@
     "videoReviews": "Video Reviews",
     "photoReviews": "Photo Reviews",
     "seeMore": "See More",
+    "close": "Close",
+    "good": "Good",
+    "bad": "Bad",
+    "helpful": "It was helpful.",
+    "writeReview": "Write a Review",
+    "reviewTitle": "Review",
+    "volume": "Volume",
+    "details": "Details",
+    "ingredients": "Ingredients",
+    "openReviewImageModal": "Open review image modal",
+    "reviewImageAlt": "Review image",
+    "noPhotoReviews": "There are no registered photo reviews.",
+    "noVideoReviews": "There are no registered video reviews.",
+    "unableToLoadReviewList": "Unable to load review list.",
+    "reviewNotFound": "Review not found.",
+    "onboardingPrefix": "Use your touchpad to ",
+    "onboardingSwipe": "swipe",
+    "onboardingMiddle": ", or use your mouse to ",
+    "onboardingScroll": "scroll",
+    "onboardingSuffix": " to see more video reviews.",
+    "deleteReviewModal": {
+      "title": "Delete Review",
+      "description": "Are you sure you want to delete this review?",
+      "warning": "Once deleted, this review cannot be restored.",
+      "cancel": "Cancel",
+      "delete": "Delete"
+    },
     "noProducts": "No products found.",
     "noReviews": "No reviews found."
   }
