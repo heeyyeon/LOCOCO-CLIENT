@@ -95,8 +95,8 @@
   },
   "brandMyPageCreateCampaign": {
     "basicInfo": {
-      "brandName": "",
-      "brandNamePlaceholder": "",
+      "brandName": "Nombre de la marca",
+      "brandNamePlaceholder": "Ingrese el nombre de la marca",
       "category": "Categoría",
       "creatorCount": "Número de creadores a reclutar",
       "creatorCountPlaceholder": "Ingrese un número",
@@ -119,8 +119,8 @@
       "submitConditionTitle": "Requisitos de contenido de los creadores"
     },
     "errorMessage": {
-      "brandNameMinLength": "",
-      "brandNameRequired": "",
+      "brandNameMinLength": "El nombre de la marca debe tener al menos 1 carácter.",
+      "brandNameRequired": "Por favor ingrese el nombre de la marca.",
       "campaignAnnounceDay": "Ingrese la fecha de anuncio de los ganadores de la campaña.",
       "campaignAnnounceDayAfterToday": "La fecha de anuncio no puede ser hoy ni una fecha pasada.",
       "campaignAnnounceTime": "Ingrese la hora de anuncio de los ganadores de la campaña.",

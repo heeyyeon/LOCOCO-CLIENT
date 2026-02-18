@@ -95,8 +95,8 @@
   },
   "brandMyPageCreateCampaign": {
     "basicInfo": {
-      "brandName": "",
-      "brandNamePlaceholder": "",
+      "brandName": "Brand Name",
+      "brandNamePlaceholder": "Enter the brand name",
       "category": "Category",
       "creatorCount": "Number of Creators Required",
       "creatorCountPlaceholder": "Enter a number",
@@ -119,8 +119,8 @@
       "submitConditionTitle": "Creator Content Submission Requirements"
     },
     "errorMessage": {
-      "brandNameMinLength": "",
-      "brandNameRequired": "",
+      "brandNameMinLength": "Brand name must be at least 1 character.",
+      "brandNameRequired": "Please enter the brand name.",
       "campaignAnnounceDay": "Please enter the campaign winner announcement date.",
       "campaignAnnounceDayAfterToday": "The announce date cannot be today or a past date.",
       "campaignAnnounceTime": "Please enter the campaign winner announcement time.",
