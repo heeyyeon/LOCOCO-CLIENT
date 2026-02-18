@@ -95,6 +95,8 @@
   },
   "brandMyPageCreateCampaign": {
     "basicInfo": {
+      "brandName": "",
+      "brandNamePlaceholder": "",
       "category": "Categoría",
       "creatorCount": "Número de creadores a reclutar",
       "creatorCountPlaceholder": "Ingrese un número",
@@ -117,19 +119,25 @@
       "submitConditionTitle": "Requisitos de contenido de los creadores"
     },
     "errorMessage": {
+      "brandNameMinLength": "",
+      "brandNameRequired": "",
       "campaignAnnounceDay": "Ingrese la fecha de anuncio de los ganadores de la campaña.",
+      "campaignAnnounceDayAfterToday": "La fecha de anuncio no puede ser hoy ni una fecha pasada.",
       "campaignAnnounceTime": "Ingrese la hora de anuncio de los ganadores de la campaña.",
       "campaignCategory": "Ingrese la categoría de la campaña.",
       "campaignCreatorCount": "Ingrese el número de creadores a reclutar.",
       "campaignDueDay": "Ingrese el título de la campaña.",
+      "campaignDueDayAfterToday": "La fecha de vencimiento no puede ser hoy ni una fecha pasada.",
       "campaignDueTime": "Ingrese el título de la campaña.",
       "campaignEndDay": "Ingrese la fecha de cierre de postulaciones de la campaña.",
+      "campaignEndDayAfterToday": "La fecha de finalización no puede ser hoy ni una fecha pasada.",
       "campaignEndTime": "Ingrese la hora de cierre de postulaciones de la campaña.",
       "campaignLanguage": "Ingrese el idioma de la campaña.",
       "campaignMediaDetail": "Suba las fotos para la página de detalles del contenido.",
       "campaignMediaThumbnail": "Suba las fotos en miniatura del contenido.",
       "campaignPlatformSelect": "Seleccione la plataforma de contenido.",
       "campaignStartDay": "Ingrese la fecha de inicio de postulaciones de la campaña.",
+      "campaignStartDayAfterToday": "La fecha de inicio no puede ser hoy ni una fecha pasada.",
       "campaignStartTime": "Ingrese la hora de inicio de postulaciones de la campaña.",
       "campaignTitle": "Ingrese el título de la campaña.",
       "campaignType": "Ingrese el tipo de campaña.",
@@ -231,7 +239,57 @@
     "dashboard": "Tablero de campañas",
     "editProfile": "Editar perfil",
     "makeNewCampaign": "Crear una nueva campaña",
-    "myCampaign": "Mis Campañas"
+    "myCampaign": "Mis Campañas",
+    "productRegistration": "Registro de Producto"
+  },
+  "brandProductRegistration": {
+    "buttons": {
+      "register": "Registrar Producto"
+    },
+    "errorMessage": {
+      "brandRequired": "Por favor seleccione la marca",
+      "capacityMaxLength": "Por favor ingrese dentro de 20 caracteres",
+      "capacityRequired": "Por favor ingrese la capacidad del producto",
+      "categoryRequired": "Por favor seleccione una categoría",
+      "compositionMaxLength": "Por favor ingrese dentro de 5000 caracteres",
+      "compositionRequired": "Por favor ingrese los ingredientes del producto",
+      "descriptionMaxLength": "Por favor ingrese dentro de 5000 caracteres",
+      "descriptionRequired": "Por favor ingrese la descripción del producto",
+      "imageMaxFiles": "Puede subir hasta 5 imágenes de detalle",
+      "imageRequired": "Por favor suba al menos 1 imagen del producto",
+      "imageUploadRequired": "Por favor suba imágenes del producto",
+      "mftDateRequired": "Por favor seleccione la fecha de fabricación",
+      "priceMaxLength": "Por favor ingrese dentro de 10 caracteres",
+      "priceRequired": "Por favor ingrese el precio del producto",
+      "productNameMaxLength": "El nombre del producto puede tener hasta 30 caracteres",
+      "productNameRequired": "Por favor ingrese el nombre del producto"
+    },
+    "productImage": {
+      "description": "Imágenes que se mostrarán en la página de detalles del producto. Por favor adjunte imágenes de alta calidad.\nPuede subir hasta 5 imágenes.\n\nArrastre y suelte o haga clic para subir archivos.",
+      "title": "Imágenes del Producto"
+    },
+    "productInfo": {
+      "brand": "Marca",
+      "capacity": "Capacidad",
+      "category": "Categoría",
+      "composition": {
+        "description": "Por favor proporcione información sobre los ingredientes del producto.",
+        "title": "Ingredientes del Producto"
+      },
+      "description": {
+        "description": "Por favor ingrese la descripción del producto.",
+        "title": "Descripción del Producto"
+      },
+      "mftDate": "Fecha de Fabricación",
+      "mftDatePlaceholder": {
+        "day": "Día",
+        "month": "Mes",
+        "year": "Año"
+      },
+      "price": "Precio",
+      "productName": "Nombre del Producto",
+      "title": "Información del Producto"
+    }
   },
   "brandSignup": {
     "brandInfo": {
@@ -474,12 +532,6 @@
       "zipCodeMaxLength": "Puede utilizar hasta 100 caracteres."
     }
   },
-  "customerSignup": {
-    "layout": {
-      "signup": "Registrarse",
-      "title": "¡Únete a la comunidad de Lococo!"
-    }
-  },
   "creatorSnsLinksPage": {
     "error": "No se pudo cargar la conexión de SNS",
     "snsDescription": "Revisaremos su cuenta de redes sociales y le informaremos si está verificada.",
@@ -511,13 +563,13 @@
     "slogan": "Donde los Creadores se Encuentran con la Verdadera K-Beauty"
   },
   "gnb": {
-    "reviews": "Reseñas",
     "campaigns": "Campañas",
     "howItWorks": "Cómo funciona",
     "login": "Iniciar sesión",
     "logIn": "Iniciar sesión",
     "logOut": "Cerrar sesión",
     "myPage": "Mi página",
+    "reviews": "Reseñas",
     "signUp": "Registrarse"
   },
   "home": {
@@ -642,13 +694,13 @@
     "title": "¡Bienvenido a Lococo!"
   },
   "main": {
-    "kBeautyCampaigns": "Campañas de K-Beauty",
-    "openingSoon": "Próximamente",
     "bestProducts": "Mejores productos",
-    "newProducts": "Nuevos productos",
     "bestReviews": "Mejores reseñas",
-    "videoReviews": "Reseñas de video",
-    "imageReviews": "Reseñas de imagen"
+    "imageReviews": "Reseñas de imagen",
+    "kBeautyCampaigns": "Campañas de K-Beauty",
+    "newProducts": "Nuevos productos",
+    "openingSoon": "Próximamente",
+    "videoReviews": "Reseñas de video"
   },
   "metadata": {
     "description": "Conéctate con las mejores marcas de K-Beauty. Únete a la comunidad de creadores de Lococo y descubre oportunidades exclusivas para colaborar con las principales marcas de belleza coreana.",
@@ -734,8 +786,6 @@
       }
     },
     "editProfile": {
-      "idInUse": "Este ID ya está en uso.",
-      "loadError": "Error al cargar los datos del perfil.",
       "addressLine1Required": "La línea de dirección 1 es obligatoria.",
       "basicInformation": {
         "id": "ID",
@@ -1095,6 +1145,42 @@
       "title": "Sus derechos"
     }
   },
+  "reviews": {
+    "bad": "Malo",
+    "close": "Cerrar",
+    "deleteReviewModal": {
+      "cancel": "Cancelar",
+      "delete": "Eliminar",
+      "description": "¿Seguro que quieres eliminar esta reseña?",
+      "title": "Eliminar reseña",
+      "warning": "Una vez eliminada, esta reseña no se puede restaurar."
+    },
+    "details": "Detalles",
+    "good": "Bueno",
+    "helpful": "Fue útil.",
+    "ingredients": "Ingredientes",
+    "noPhotoReviews": "No hay reseñas de foto registradas.",
+    "noProducts": "No se encontraron productos.",
+    "noReviews": "No se encontraron reseñas.",
+    "noVideoReviews": "No hay reseñas de video registradas.",
+    "onboardingMiddle": " o usa el mouse para ",
+    "onboardingPrefix": "Usa el panel táctil para ",
+    "onboardingScroll": "desplazarte",
+    "onboardingSuffix": " y ver más reseñas de video.",
+    "onboardingSwipe": "deslizar",
+    "openReviewImageModal": "Abrir modal de imagen de reseña",
+    "photoReviews": "Reseñas de foto",
+    "products": "Productos",
+    "reviewImageAlt": "Imagen de reseña",
+    "reviewNotFound": "No se encontró la reseña.",
+    "reviews": "Reseñas",
+    "reviewTitle": "Reseña",
+    "seeMore": "Ver más",
+    "unableToLoadReviewList": "No se pudo cargar la lista de reseñas.",
+    "videoReviews": "Reseñas de video",
+    "volume": "Volumen",
+    "writeReview": "Escribir una reseña"
+  },
   "selectRoleModal": {
     "description": "Seleccione su rol para iniciar sesión. No podrá cambiarlo más tarde.",
     "loginAs": "Iniciar sesión como:",
@@ -1190,14 +1276,5 @@
     "confirmButton": "Sí",
     "message": "Las solicitudes de campaña solo están disponibles para miembros creadores. ¿Desea registrarse como creador?",
     "title": "Sugerencia de creador"
-  },
-  "reviews": {
-    "products": "Productos",
-    "reviews": "Reseñas",
-    "videoReviews": "Reseñas de video",
-    "photoReviews": "Reseñas de foto",
-    "seeMore": "Ver más",
-    "noProducts": "No se encontraron productos.",
-    "noReviews": "No se encontraron reseñas."
   }
 }

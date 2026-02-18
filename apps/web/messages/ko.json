@@ -122,18 +122,22 @@
       "brandNameMinLength": "브랜드 이름은 최소 1자 이상 입력해 주세요.",
       "brandNameRequired": "브랜드 이름을 입력해 주세요.",
       "campaignAnnounceDay": "캠페인 당첨자 발표일을 입력해 주세요.",
+      "campaignAnnounceDayAfterToday": "공지 날짜는 오늘 또는 과거 날짜일 수 없습니다.",
       "campaignAnnounceTime": "캠페인 당첨자 시각을 입력해 주세요.",
       "campaignCategory": "캠페인 카테고리를 입력해 주세요.",
       "campaignCreatorCount": "모집 예정 크리에이터 수를 입력해 주세요.",
       "campaignDueDay": "캠페인 제목을 입력해주세요.",
+      "campaignDueDayAfterToday": "마감 날짜는 오늘 또는 과거 날짜일 수 없습니다.",
       "campaignDueTime": "캠페인 제목을 입력해주세요.",
       "campaignEndDay": "캠페인 지원 종료일을 입력해 주세요.",
+      "campaignEndDayAfterToday": "종료 날짜는 오늘 또는 과거 날짜일 수 없습니다.",
       "campaignEndTime": "캠페인 지원 종료 시각을 입력해 주세요.",
       "campaignLanguage": "캠페인 진행 언어를 입력해 주세요.",
       "campaignMediaDetail": "컨텐츠 상세페이지 사진을 업로드해 주세요.",
       "campaignMediaThumbnail": "컨텐츠 썸네일 사진을 업로드해 주세요.",
       "campaignPlatformSelect": "컨텐츠 플랫폼을 선택해 주세요.",
       "campaignStartDay": "캠페인 지원 시작일을 입력해 주세요.",
+      "campaignStartDayAfterToday": "시작 날짜는 오늘 또는 과거 날짜일 수 없습니다.",
       "campaignStartTime": "캠페인 지원 시작 시각을 입력해 주세요.",
       "campaignTitle": "캠페인 제목을 입력해주세요.",
       "campaignType": "캠페인 종류를 입력해 주세요.",
@@ -235,7 +239,57 @@
     "dashboard": "대시보드",
     "editProfile": "프로필 편집",
     "makeNewCampaign": "새 캠페인 만들기",
-    "myCampaign": "나의 캠페인"
+    "myCampaign": "나의 캠페인",
+    "productRegistration": "상품 등록"
+  },
+  "brandProductRegistration": {
+    "buttons": {
+      "register": "상품 등록하기"
+    },
+    "errorMessage": {
+      "brandRequired": "브랜드를 선택해주세요",
+      "capacityMaxLength": "최대 20자 이내로 입력해주세요",
+      "capacityRequired": "상품 용량을 입력해주세요",
+      "categoryRequired": "카테고리를 선택해주세요",
+      "compositionMaxLength": "최대 5000자 이내로 입력해주세요",
+      "compositionRequired": "상품 성분을 입력해주세요",
+      "descriptionMaxLength": "최대 5000자 이내로 입력해주세요",
+      "descriptionRequired": "상품 상세 설명을 입력해주세요",
+      "imageMaxFiles": "상세 사진은 최대 5장까지 업로드 가능합니다",
+      "imageRequired": "상품 사진을 1장 이상 업로드해주세요",
+      "imageUploadRequired": "상품 사진을 업로드해주세요",
+      "mftDateRequired": "상품 제조 날짜를 선택해주세요",
+      "priceMaxLength": "최대 10자 이내로 입력해주세요",
+      "priceRequired": "상품 가격을 입력해주세요",
+      "productNameMaxLength": "상품 이름은 최대 30자까지 입력 가능합니다",
+      "productNameRequired": "상품 이름을 입력해주세요"
+    },
+    "productImage": {
+      "description": "상품 상세페이지에 보여줄 사진입니다. 고화질 사진을 첨부해주세요.\n사진은 최대 5장까지 업로드 가능합니다.\n\n드래그 앤 드롭 또는 클릭하여 파일을 업로드하세요.",
+      "title": "상품 사진"
+    },
+    "productInfo": {
+      "brand": "브랜드",
+      "capacity": "용량",
+      "category": "카테고리",
+      "composition": {
+        "description": "상품 성분에 대해 알려주세요.",
+        "title": "상품 성분"
+      },
+      "description": {
+        "description": "상품 상세 설명을 입력해주세요.",
+        "title": "상품 상세 설명"
+      },
+      "mftDate": "제품 제조 날짜",
+      "mftDatePlaceholder": {
+        "day": "Day",
+        "month": "Month",
+        "year": "Year"
+      },
+      "price": "가격",
+      "productName": "상품 이름",
+      "title": "상품 정보"
+    }
   },
   "brandSignup": {
     "brandInfo": {
@@ -478,12 +532,6 @@
       "zipCodeMaxLength": "최대 100자까지 입력할 수 있습니다."
     }
   },
-  "customerSignup": {
-    "layout": {
-      "signup": "가입하기",
-      "title": "로코코 커뮤니티에 가입하세요!"
-    }
-  },
   "creatorSnsLinksPage": {
     "error": "SNS 연결을 불러오지 못했습니다",
     "snsDescription": "SNS 계정을 검토한 후, 인증 여부를 알려드리겠습니다.",
@@ -515,13 +563,13 @@
     "slogan": "Where Creators Meet Real K-Beauty"
   },
   "gnb": {
-    "reviews": "리뷰",
     "campaigns": "캠페인",
     "howItWorks": "이용 방법",
     "login": "로그인",
     "logIn": "로그인",
     "logOut": "로그아웃",
     "myPage": "마이페이지",
+    "reviews": "리뷰",
     "signUp": "회원가입"
   },
   "home": {
@@ -646,13 +694,13 @@
     "title": "Lococo에 오신 것을 환영합니다!"
   },
   "main": {
-    "kBeautyCampaigns": "K-뷰티 캠페인",
-    "openingSoon": "곧 오픈 예정",
     "bestProducts": "인기 제품",
-    "newProducts": "신규 제품",
     "bestReviews": "인기 리뷰",
-    "videoReviews": "비디오 리뷰",
-    "imageReviews": "이미지 리뷰"
+    "imageReviews": "이미지 리뷰",
+    "kBeautyCampaigns": "K-뷰티 캠페인",
+    "newProducts": "신규 제품",
+    "openingSoon": "곧 오픈 예정",
+    "videoReviews": "비디오 리뷰"
   },
   "metadata": {
     "description": "K-뷰티 브랜드의 글로벌 인큐베이터, 로코코. 로코코에서 가장 쉽고 효과적으로 브랜드를 알려보세요. 로코코는 K-뷰티 인디브랜드의 가장 든든한 해외 진출 파트너입니다. ",
@@ -738,8 +786,6 @@
       }
     },
     "editProfile": {
-      "idInUse": "이미 사용 중인 ID입니다.",
-      "loadError": "프로필 데이터를 불러오는데 실패했습니다.",
       "addressLine1Required": "주소 1은 필수 입력 항목입니다.",
       "basicInformation": {
         "id": "ID",
@@ -1099,6 +1145,42 @@
       "title": "귀하의 권리"
     }
   },
+  "reviews": {
+    "bad": "아쉬워요",
+    "close": "닫기",
+    "deleteReviewModal": {
+      "cancel": "취소",
+      "delete": "삭제",
+      "description": "이 리뷰를 삭제하시겠어요?",
+      "title": "리뷰 삭제",
+      "warning": "삭제하면 이 리뷰는 복구할 수 없습니다."
+    },
+    "details": "상세 정보",
+    "good": "좋아요",
+    "helpful": "도움이 됐어요.",
+    "ingredients": "전성분",
+    "noPhotoReviews": "등록된 사진 리뷰가 없습니다.",
+    "noProducts": "제품을 찾을 수 없습니다.",
+    "noReviews": "리뷰를 찾을 수 없습니다.",
+    "noVideoReviews": "등록된 영상 리뷰가 없습니다.",
+    "onboardingMiddle": " 하거나 마우스를 ",
+    "onboardingPrefix": "터치패드를 ",
+    "onboardingScroll": "스크롤",
+    "onboardingSuffix": " 해서 더 많은 비디오 리뷰를 확인하세요.",
+    "onboardingSwipe": "스와이프",
+    "openReviewImageModal": "리뷰 이미지 모달 열기",
+    "photoReviews": "사진 리뷰",
+    "products": "제품",
+    "reviewImageAlt": "리뷰 이미지",
+    "reviewNotFound": "리뷰를 찾을 수 없습니다.",
+    "reviews": "리뷰",
+    "reviewTitle": "리뷰",
+    "seeMore": "더 보기",
+    "unableToLoadReviewList": "리뷰 목록을 불러올 수 없습니다.",
+    "videoReviews": "영상 리뷰",
+    "volume": "용량",
+    "writeReview": "리뷰 작성하기"
+  },
   "selectRoleModal": {
     "description": "로그인할 역할을 선택하세요. 나중에 변경할 수 없습니다.",
     "loginAs": "다음으로 로그인:",
@@ -1194,14 +1276,5 @@
     "confirmButton": "예",
     "message": "캠페인 신청은 크리에이터 회원만 가능합니다. \n크리에이터로 가입하시겠습니까?",
     "title": "크리에이터 제안"
-  },
-  "reviews": {
-    "products": "제품",
-    "reviews": "리뷰",
-    "videoReviews": "영상 리뷰",
-    "photoReviews": "사진 리뷰",
-    "seeMore": "더 보기",
-    "noProducts": "제품을 찾을 수 없습니다.",
-    "noReviews": "리뷰를 찾을 수 없습니다."
   }
 }

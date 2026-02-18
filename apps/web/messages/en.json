@@ -95,6 +95,8 @@
   },
   "brandMyPageCreateCampaign": {
     "basicInfo": {
+      "brandName": "",
+      "brandNamePlaceholder": "",
       "category": "Category",
       "creatorCount": "Number of Creators Required",
       "creatorCountPlaceholder": "Enter a number",
@@ -117,19 +119,25 @@
       "submitConditionTitle": "Creator Content Submission Requirements"
     },
     "errorMessage": {
+      "brandNameMinLength": "",
+      "brandNameRequired": "",
       "campaignAnnounceDay": "Please enter the campaign winner announcement date.",
+      "campaignAnnounceDayAfterToday": "The announce date cannot be today or a past date.",
       "campaignAnnounceTime": "Please enter the campaign winner announcement time.",
       "campaignCategory": "Please enter the campaign category.",
       "campaignCreatorCount": "Please enter the number of creators to recruit.",
       "campaignDueDay": "Please enter the campaign title.",
+      "campaignDueDayAfterToday": "The due date cannot be today or a past date.",
       "campaignDueTime": "Please enter the campaign title.",
       "campaignEndDay": "Please enter the campaign application deadline date.",
+      "campaignEndDayAfterToday": "The end date cannot be today or a past date.",
       "campaignEndTime": "Please enter the campaign application deadline time.",
       "campaignLanguage": "Please enter the campaign language.",
       "campaignMediaDetail": "Please upload content detail page images.",
       "campaignMediaThumbnail": "Please upload content thumbnail images.",
       "campaignPlatformSelect": "Please select the content platform.",
       "campaignStartDay": "Please enter the campaign application start date.",
+      "campaignStartDayAfterToday": "The start date cannot be today or a past date.",
       "campaignStartTime": "Please enter the campaign application start time.",
       "campaignTitle": "Please enter the campaign title.",
       "campaignType": "Please enter the campaign type.",
@@ -231,7 +239,57 @@
     "dashboard": "Dashboard ",
     "editProfile": "Edit Profile ",
     "makeNewCampaign": "Create a new campaign  ",
-    "myCampaign": "My Campaigns"
+    "myCampaign": "My Campaigns",
+    "productRegistration": "Product Registration"
+  },
+  "brandProductRegistration": {
+    "buttons": {
+      "register": "Register Product"
+    },
+    "errorMessage": {
+      "brandRequired": "Please select the brand",
+      "capacityMaxLength": "Please enter within 20 characters",
+      "capacityRequired": "Please enter the product capacity",
+      "categoryRequired": "Please select a category",
+      "compositionMaxLength": "Please enter within 5000 characters",
+      "compositionRequired": "Please enter the product ingredients",
+      "descriptionMaxLength": "Please enter within 5000 characters",
+      "descriptionRequired": "Please enter the product description",
+      "imageMaxFiles": "You can upload up to 5 detail images",
+      "imageRequired": "Please upload at least 1 product image",
+      "imageUploadRequired": "Please upload product images",
+      "mftDateRequired": "Please select the manufacturing date",
+      "priceMaxLength": "Please enter within 10 characters",
+      "priceRequired": "Please enter the product price",
+      "productNameMaxLength": "Product name can be up to 30 characters",
+      "productNameRequired": "Please enter the product name"
+    },
+    "productImage": {
+      "description": "Images to be displayed on the product detail page. Please attach high-quality images.\nYou can upload up to 5 images.\n\nDrag and drop or click to upload files.",
+      "title": "Product Images"
+    },
+    "productInfo": {
+      "brand": "Brand",
+      "capacity": "Capacity",
+      "category": "Category",
+      "composition": {
+        "description": "Please provide information about the product ingredients.",
+        "title": "Product Ingredients"
+      },
+      "description": {
+        "description": "Please enter the product description.",
+        "title": "Product Description"
+      },
+      "mftDate": "Manufacturing Date",
+      "mftDatePlaceholder": {
+        "day": "Day",
+        "month": "Month",
+        "year": "Year"
+      },
+      "price": "Price",
+      "productName": "Product Name",
+      "title": "Product Information"
+    }
   },
   "brandSignup": {
     "brandInfo": {
@@ -474,12 +532,6 @@
       "zipCodeMaxLength": "Use up to 100 characters."
     }
   },
-  "customerSignup": {
-    "layout": {
-      "signup": "Sign up",
-      "title": "Join Lococo Community!"
-    }
-  },
   "creatorSnsLinksPage": {
     "error": "Failed to load SNS connection",
     "snsDescription": "We will go through your SNS account, and let you know if you are verified.",
@@ -511,13 +563,13 @@
     "slogan": "Where Creators Meet Real K-Beauty"
   },
   "gnb": {
-    "reviews": "Reviews",
     "campaigns": "Campaigns",
     "howItWorks": "How It Works",
     "login": "Log in",
     "logIn": "Log in",
     "logOut": "Log Out",
     "myPage": "My Page",
+    "reviews": "Reviews",
     "signUp": "Sign up"
   },
   "home": {
@@ -642,13 +694,13 @@
     "title": "Welcome to Lococo!"
   },
   "main": {
-    "kBeautyCampaigns": "K-Beauty Campaigns",
-    "openingSoon": "Opening Soon",
     "bestProducts": "Best Products",
-    "newProducts": "New Products",
     "bestReviews": "Best Reviews",
-    "videoReviews": "Video Reviews",
-    "imageReviews": "Image Reviews"
+    "imageReviews": "Image Reviews",
+    "kBeautyCampaigns": "K-Beauty Campaigns",
+    "newProducts": "New Products",
+    "openingSoon": "Opening Soon",
+    "videoReviews": "Video Reviews"
   },
   "metadata": {
     "description": "Get Matched with Top K-Beauty Brands. Join Lococo creator community and discover exclusive opportunities to collaborate with top K-beauty brands. ",
@@ -734,8 +786,6 @@
       }
     },
     "editProfile": {
-      "idInUse": "This ID is already in use.",
-      "loadError": "Failed to load profile data.",
       "addressLine1Required": "Address line 1 is required",
       "basicInformation": {
         "id": "ID",
@@ -1095,6 +1145,42 @@
       "title": "Your Rights"
     }
   },
+  "reviews": {
+    "bad": "Bad",
+    "close": "Close",
+    "deleteReviewModal": {
+      "cancel": "Cancel",
+      "delete": "Delete",
+      "description": "Are you sure you want to delete this review?",
+      "title": "Delete Review",
+      "warning": "Once deleted, this review cannot be restored."
+    },
+    "details": "Details",
+    "good": "Good",
+    "helpful": "It was helpful.",
+    "ingredients": "Ingredients",
+    "noPhotoReviews": "There are no registered photo reviews.",
+    "noProducts": "No products found.",
+    "noReviews": "No reviews found.",
+    "noVideoReviews": "There are no registered video reviews.",
+    "onboardingMiddle": ", or use your mouse to ",
+    "onboardingPrefix": "Use your touchpad to ",
+    "onboardingScroll": "scroll",
+    "onboardingSuffix": " to see more video reviews.",
+    "onboardingSwipe": "swipe",
+    "openReviewImageModal": "Open review image modal",
+    "photoReviews": "Photo Reviews",
+    "products": "Products",
+    "reviewImageAlt": "Review image",
+    "reviewNotFound": "Review not found.",
+    "reviews": "Reviews",
+    "reviewTitle": "Review",
+    "seeMore": "See More",
+    "unableToLoadReviewList": "Unable to load review list.",
+    "videoReviews": "Video Reviews",
+    "volume": "Volume",
+    "writeReview": "Write a Review"
+  },
   "selectRoleModal": {
     "description": "Select your role to sign in.\nYou won't be able to change this later.",
     "loginAs": "Log in as a",
@@ -1190,14 +1276,5 @@
     "confirmButton": "Yes",
     "message": "Campaign applications are only available to creator members.\nWould you like to sign up as a creator?",
     "title": "Creator Suggestion"
-  },
-  "reviews": {
-    "products": "Products",
-    "reviews": "Reviews",
-    "videoReviews": "Video Reviews",
-    "photoReviews": "Photo Reviews",
-    "seeMore": "See More",
-    "noProducts": "No products found.",
-    "noReviews": "No reviews found."
   }
 }
