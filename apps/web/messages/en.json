@@ -95,8 +95,8 @@
   },
   "brandMyPageCreateCampaign": {
     "basicInfo": {
-      "brandName": "",
-      "brandNamePlaceholder": "",
+      "brandName": "Brand Name",
+      "brandNamePlaceholder": "Enter the brand name",
       "category": "Category",
       "creatorCount": "Number of Creators Required",
       "creatorCountPlaceholder": "Enter a number",
@@ -119,8 +119,8 @@
       "submitConditionTitle": "Creator Content Submission Requirements"
     },
     "errorMessage": {
-      "brandNameMinLength": "",
-      "brandNameRequired": "",
+      "brandNameMinLength": "Brand name must be at least 1 character.",
+      "brandNameRequired": "Please enter the brand name.",
       "campaignAnnounceDay": "Please enter the campaign winner announcement date.",
       "campaignAnnounceDayAfterToday": "The announce date cannot be today or a past date.",
       "campaignAnnounceTime": "Please enter the campaign winner announcement time.",
@@ -569,8 +569,8 @@
     "logIn": "Log in",
     "logOut": "Log Out",
     "myPage": "My Page",
-    "reviews": "Reviews",
-    "signUp": "Sign up"
+    "signUp": "Sign up",
+    "reviews": "Reviews"
   },
   "home": {
     "description": "productDescription",
@@ -1276,5 +1276,41 @@
     "confirmButton": "Yes",
     "message": "Campaign applications are only available to creator members.\nWould you like to sign up as a creator?",
     "title": "Creator Suggestion"
+  },
+  "reviews": {
+    "products": "Products",
+    "reviews": "Reviews",
+    "videoReviews": "Video Reviews",
+    "photoReviews": "Photo Reviews",
+    "seeMore": "See More",
+    "close": "Close",
+    "good": "Good",
+    "bad": "Bad",
+    "helpful": "It was helpful.",
+    "writeReview": "Write a Review",
+    "reviewTitle": "Review",
+    "volume": "Volume",
+    "details": "Details",
+    "ingredients": "Ingredients",
+    "openReviewImageModal": "Open review image modal",
+    "reviewImageAlt": "Review image",
+    "noPhotoReviews": "There are no registered photo reviews.",
+    "noVideoReviews": "There are no registered video reviews.",
+    "unableToLoadReviewList": "Unable to load review list.",
+    "reviewNotFound": "Review not found.",
+    "onboardingPrefix": "Use your touchpad to ",
+    "onboardingSwipe": "swipe",
+    "onboardingMiddle": ", or use your mouse to ",
+    "onboardingScroll": "scroll",
+    "onboardingSuffix": " to see more video reviews.",
+    "deleteReviewModal": {
+      "title": "Delete Review",
+      "description": "Are you sure you want to delete this review?",
+      "warning": "Once deleted, this review cannot be restored.",
+      "cancel": "Cancel",
+      "delete": "Delete"
+    },
+    "noProducts": "No products found.",
+    "noReviews": "No reviews found."
   }
 }

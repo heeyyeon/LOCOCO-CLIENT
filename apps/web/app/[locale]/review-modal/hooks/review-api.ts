@@ -18,7 +18,7 @@ import {
 export const useImageReviews = (productId?: number) => {
   return useQuery({
     queryKey: productId
-      ? REVIEW_KEYS.IMAGE_DETAIL(productId)
+      ? [...REVIEW_KEYS.IMAGE_LISTS(), 'product-detail', productId]
       : REVIEW_KEYS.IMAGE_LISTS(),
     queryFn: async (): Promise<ApiResponseMainImageReviewResponse> => {
       if (productId) {
@@ -58,7 +58,7 @@ export const useAllImageReviewDetails = (
 export const useVideoReviews = (productId?: number) => {
   return useQuery({
     queryKey: productId
-      ? REVIEW_KEYS.VIDEO_DETAIL(productId)
+      ? [...REVIEW_KEYS.VIDEO_LISTS(), 'product-detail', productId]
       : REVIEW_KEYS.VIDEO_LISTS(),
     queryFn: async (): Promise<ApiResponseMainVideoReviewResponse> => {
       if (productId) {
@@ -116,22 +116,38 @@ export const useReviewLikeToggle = (
       });
     },
 
-    onMutate: () => {
-      const isPreviousLiked = isLiked;
-      const previousLikeCount = likeCount;
-      setIsLiked((prev) => !prev);
-      setLikeCount((prev) => (isLiked ? prev - 1 : prev + 1));
-      return { isPreviousLiked, previousLikeCount };
+    onMutate: async () => {
+      const previousState = {
+        isLiked,
+        likeCount,
+      };
+
+      setIsLiked(!previousState.isLiked);
+      setLikeCount(
+        previousState.isLiked
+          ? previousState.likeCount - 1
+          : previousState.likeCount + 1
+      );
+
+      return previousState;
     },
 
     onError: (_error, _variables, context) => {
-      setIsLiked(context?.isPreviousLiked || false);
-      setLikeCount(context?.previousLikeCount || 0);
+      if (!context) return;
+
+      setIsLiked(context.isLiked);
+      setLikeCount(context.likeCount);
     },
 
     onSettled: () => {
       queryClient.invalidateQueries({
         queryKey: REVIEW_KEYS.ALL,
+      });
+      queryClient.invalidateQueries({
+        queryKey: ['REVIEW_LIST'],
+      });
+      queryClient.invalidateQueries({
+        queryKey: ['USER_VIDEO_REVIEW_LIST'],
       });
     },
   });

@@ -95,8 +95,8 @@
   },
   "brandMyPageCreateCampaign": {
     "basicInfo": {
-      "brandName": "",
-      "brandNamePlaceholder": "",
+      "brandName": "Nombre de la marca",
+      "brandNamePlaceholder": "Ingrese el nombre de la marca",
       "category": "Categoría",
       "creatorCount": "Número de creadores a reclutar",
       "creatorCountPlaceholder": "Ingrese un número",
@@ -119,8 +119,8 @@
       "submitConditionTitle": "Requisitos de contenido de los creadores"
     },
     "errorMessage": {
-      "brandNameMinLength": "",
-      "brandNameRequired": "",
+      "brandNameMinLength": "El nombre de la marca debe tener al menos 1 carácter.",
+      "brandNameRequired": "Por favor ingrese el nombre de la marca.",
       "campaignAnnounceDay": "Ingrese la fecha de anuncio de los ganadores de la campaña.",
       "campaignAnnounceDayAfterToday": "La fecha de anuncio no puede ser hoy ni una fecha pasada.",
       "campaignAnnounceTime": "Ingrese la hora de anuncio de los ganadores de la campaña.",
@@ -569,8 +569,8 @@
     "logIn": "Iniciar sesión",
     "logOut": "Cerrar sesión",
     "myPage": "Mi página",
-    "reviews": "Reseñas",
-    "signUp": "Registrarse"
+    "signUp": "Registrarse",
+    "reviews": "Reseñas"
   },
   "home": {
     "description": "Descripción del producto",
@@ -1276,5 +1276,41 @@
     "confirmButton": "Sí",
     "message": "Las solicitudes de campaña solo están disponibles para miembros creadores. ¿Desea registrarse como creador?",
     "title": "Sugerencia de creador"
+  },
+  "reviews": {
+    "products": "Productos",
+    "reviews": "Reseñas",
+    "videoReviews": "Reseñas de video",
+    "photoReviews": "Reseñas de foto",
+    "seeMore": "Ver más",
+    "close": "Cerrar",
+    "good": "Bueno",
+    "bad": "Malo",
+    "helpful": "Fue útil.",
+    "writeReview": "Escribir una reseña",
+    "reviewTitle": "Reseña",
+    "volume": "Volumen",
+    "details": "Detalles",
+    "ingredients": "Ingredientes",
+    "openReviewImageModal": "Abrir modal de imagen de reseña",
+    "reviewImageAlt": "Imagen de reseña",
+    "noPhotoReviews": "No hay reseñas de foto registradas.",
+    "noVideoReviews": "No hay reseñas de video registradas.",
+    "unableToLoadReviewList": "No se pudo cargar la lista de reseñas.",
+    "reviewNotFound": "No se encontró la reseña.",
+    "onboardingPrefix": "Usa el panel táctil para ",
+    "onboardingSwipe": "deslizar",
+    "onboardingMiddle": " o usa el mouse para ",
+    "onboardingScroll": "desplazarte",
+    "onboardingSuffix": " y ver más reseñas de video.",
+    "deleteReviewModal": {
+      "title": "Eliminar reseña",
+      "description": "¿Seguro que quieres eliminar esta reseña?",
+      "warning": "Una vez eliminada, esta reseña no se puede restaurar.",
+      "cancel": "Cancelar",
+      "delete": "Eliminar"
+    },
+    "noProducts": "No se encontraron productos.",
+    "noReviews": "No se encontraron reseñas."
   }
 }

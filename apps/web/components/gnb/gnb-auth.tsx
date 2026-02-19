@@ -1,12 +1,12 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { useTranslations } from 'next-intl';
-import { usePathname } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
 
 import { useAuth } from 'hooks/use-auth';
-import { Link, useRouter } from 'i18n/navigation';
+import { Link, usePathname, useRouter } from 'i18n/navigation';
 
 import { SvgProfileIcon } from '@lococo/icons';
 
@@ -43,6 +43,7 @@ export default function GnbAuth() {
   const { isLoggedIn, logout } = useAuth();
   const router = useRouter();
   const pathname = usePathname();
+  const searchParams = useSearchParams();
   const t = useTranslations('gnb');
 
   const isUserInfoEnabled = isLoggedIn === true && !isSignupPage(pathname);
@@ -50,6 +51,14 @@ export default function GnbAuth() {
   const { data: userInfo, refetch: refetchUserInfo } = useAuthInfo({
     enabled: isUserInfoEnabled,
   });
+
+  useEffect(() => {
+    const isRoleModalRequested = searchParams.get('roleModal') === 'show';
+    if (isRoleModalRequested && !isLoggedIn) {
+      setIsRoleModalOpen(true);
+      router.replace(pathname || '/');
+    }
+  }, [searchParams, isLoggedIn, router, pathname]);
 
   const handleSignup = () => {
     setIsRoleModalOpen(true);
