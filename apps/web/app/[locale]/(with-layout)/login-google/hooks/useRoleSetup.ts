@@ -6,6 +6,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { apiRequest } from 'app/api/apiRequest';
 
 import { setUserRole } from '../utils/role-api';
+import { fetchCustomerProfileCheck } from '../utils/customer-profile';
 import {
   UserRole,
   clearRoleFromLocalStorage,
@@ -27,23 +28,45 @@ export const useRoleSetup = (options?: UseRoleSetupOptions) => {
     () => ({
       CREATOR: () => router.replace(`/${locale}/sign-up/creator`),
       BRAND: () => router.replace(`/${locale}/sign-up/brand`),
-      CUSTOMER: () => router.replace(`/${locale}`),
+      CUSTOMER: () => router.replace(`/${locale}/sign-up/customer`),
       ADMIN: () => router.replace(`/${locale}`),
       PENDING: () => options?.onUserRoleSet?.('PENDING'),
     }),
     [router, locale, options]
   );
 
+  const handleCustomerRoute = useCallback(async () => {
+    const { isCompleted } = await fetchCustomerProfileCheck();
+    const storedRole = getRoleFromLocalStorage();
+
+    if (!isCompleted) {
+      router.replace(`/${locale}/sign-up/customer`);
+      return;
+    }
+
+    if (storedRole === 'CUSTOMER') {
+      clearRoleFromLocalStorage();
+    }
+
+    router.replace(`/${locale}`);
+  }, [router, locale]);
+
   const handleLoginStatus = useCallback(
-    (loginStatus: string, role: UserRole) => {
+    async (loginStatus: string, role: UserRole) => {
       const roleRoutes = getRoleRoutes();
 
       switch (loginStatus) {
-        case 'LOGIN':
+        case 'LOGIN': {
+          if (role === 'CUSTOMER' && getRoleFromLocalStorage() === 'CUSTOMER') {
+            await handleCustomerRoute();
+            break;
+          }
+
           router.replace(`/${locale}`);
           break;
+        }
         case 'INFO_REQUIRED':
-          if (role === 'CUSTOMER' || role === 'ADMIN') {
+          if (role === 'ADMIN') {
             router.replace(`/${locale}`);
           } else {
             const routeHandler = roleRoutes[role];
@@ -63,14 +86,14 @@ export const useRoleSetup = (options?: UseRoleSetupOptions) => {
           break;
       }
     },
-    [router, locale, getRoleRoutes]
+    [router, locale, getRoleRoutes, handleCustomerRoute]
   );
 
   const processRoleSetup = useCallback(
     async (role: UserRole) => {
       try {
         const roleResponse = await setUserRole(role);
-        handleLoginStatus(roleResponse.loginStatus, role);
+        await handleLoginStatus(roleResponse.loginStatus, role);
       } catch {
         clearRoleFromLocalStorage();
         router.replace(`/${locale}`);
@@ -123,35 +146,25 @@ export const useRoleSetup = (options?: UseRoleSetupOptions) => {
           options?.onUserRoleSet?.('PENDING');
         }
       } else if (role === 'CUSTOMER') {
-        const storedRole = getRoleFromLocalStorage();
-        if (storedRole === 'CUSTOMER') {
-          options?.onUserRoleSet?.('CUSTOMER');
-        } else {
-          router.replace(`/${locale}`);
-        }
+        await handleCustomerRoute();
       } else {
-        const roleAsUserRole = role as UserRole;
-        try {
-          await processRoleSetup(roleAsUserRole);
-        } catch (error) {
-          if (error instanceof Error && error.message.includes('400')) {
-            router.replace(`/${locale}`);
-          } else {
-            clearRoleFromLocalStorage();
-            router.replace(`/${locale}`);
-          }
+        if (getRoleFromLocalStorage() !== null) {
+          clearRoleFromLocalStorage();
         }
-      }
-    } catch {
-      const storedRole = getRoleFromLocalStorage();
-      if (storedRole) {
-        await processRoleSetup(storedRole);
-      } else {
         router.replace(`/${locale}`);
       }
+    } catch {
+      router.replace(`/${locale}`);
     }
     return true;
-  }, [options, router, locale, processRoleSetup, searchParams]);
+  }, [
+    options,
+    router,
+    locale,
+    processRoleSetup,
+    searchParams,
+    handleCustomerRoute,
+  ]);
 
   const handleSignupMode = useCallback(async () => {
     const mode = searchParams.get('mode');

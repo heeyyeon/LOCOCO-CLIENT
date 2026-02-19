@@ -1,3 +1,5 @@
+export const MY_PAGE_ROLE_KEY = ['my-page', 'role'] as const;
+
 export const PROFILE_KEYS = {
   ALL: ['profile'] as const,
   profile: () => [...PROFILE_KEYS.ALL, 'profile'] as const,
