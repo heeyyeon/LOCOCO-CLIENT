@@ -1,11 +1,11 @@
 'use client';
 
 import {
+  UseMutationResult,
+  UseQueryResult,
   useMutation,
   useQuery,
   useQueryClient,
-  UseMutationResult,
-  UseQueryResult,
 } from '@tanstack/react-query';
 import { apiRequest } from 'app/api/apiRequest';
 
@@ -63,10 +63,26 @@ const SKIN_TYPE_VALUES = [
   'OTHER',
 ] as const;
 const SKIN_TONE_VALUES = [
-  'SHADE_1', 'SHADE_2', 'SHADE_3', 'SHADE_4', 'SHADE_5',
-  'SHADE_6', 'SHADE_7', 'SHADE_8', 'SHADE_9', 'SHADE_10',
-  'SHADE_11', 'SHADE_12', 'SHADE_13', 'SHADE_14', 'SHADE_15',
-  'SHADE_16', 'SHADE_17', 'SHADE_18', 'SHADE_19', 'SHADE_20',
+  'SHADE_1',
+  'SHADE_2',
+  'SHADE_3',
+  'SHADE_4',
+  'SHADE_5',
+  'SHADE_6',
+  'SHADE_7',
+  'SHADE_8',
+  'SHADE_9',
+  'SHADE_10',
+  'SHADE_11',
+  'SHADE_12',
+  'SHADE_13',
+  'SHADE_14',
+  'SHADE_15',
+  'SHADE_16',
+  'SHADE_17',
+  'SHADE_18',
+  'SHADE_19',
+  'SHADE_20',
 ] as const;
 
 const asText = (value: unknown): string =>
@@ -81,8 +97,7 @@ const asOptionalText = (value?: string | null): string | undefined => {
 const isOneOf = <T extends readonly string[]>(
   values: T,
   value: unknown
-): value is T[number] =>
-  typeof value === 'string' && values.includes(value);
+): value is T[number] => typeof value === 'string' && values.includes(value);
 
 const toBirthDate = (formData: MyPageProfileForm): string | undefined => {
   const year = formData.birthYear?.trim();
@@ -103,7 +118,9 @@ const toCreatorUpdatePayload = (
     firstName: asOptionalText(formData.firstName),
     lastName: asOptionalText(formData.lastName),
     birthDate,
-    gender: isOneOf(GENDER_VALUES, formData.gender) ? formData.gender : undefined,
+    gender: isOneOf(GENDER_VALUES, formData.gender)
+      ? formData.gender
+      : undefined,
     countryCode: asOptionalText(formData.phoneCountryCode),
     phoneNumber: asOptionalText(formData.phoneNumber),
     contentLanguage: isOneOf(CONTENT_LANGUAGE_VALUES, formData.contentLanguage)
@@ -115,8 +132,12 @@ const toCreatorUpdatePayload = (
     addressLine1: asOptionalText(formData.addressLine1),
     addressLine2: asOptionalText(formData.addressLine2),
     postalCode: asOptionalText(formData.zipCode),
-    skinType: isOneOf(SKIN_TYPE_VALUES, formData.skinType) ? formData.skinType : undefined,
-    skinTone: isOneOf(SKIN_TONE_VALUES, formData.skinTone) ? formData.skinTone : undefined,
+    skinType: isOneOf(SKIN_TYPE_VALUES, formData.skinType)
+      ? formData.skinType
+      : undefined,
+    skinTone: isOneOf(SKIN_TONE_VALUES, formData.skinTone)
+      ? formData.skinTone
+      : undefined,
   };
 };
 
@@ -131,7 +152,9 @@ const toCustomerUpdatePayload = (
     firstName: asText(formData.firstName).trim(),
     lastName: asText(formData.lastName).trim(),
     birthDate,
-    gender: isOneOf(GENDER_VALUES, formData.gender) ? formData.gender : undefined,
+    gender: isOneOf(GENDER_VALUES, formData.gender)
+      ? formData.gender
+      : undefined,
     countryCode: asOptionalText(formData.phoneCountryCode),
     phoneNumber: asOptionalText(formData.phoneNumber),
     contentLanguage: isOneOf(CONTENT_LANGUAGE_VALUES, formData.contentLanguage)
@@ -143,8 +166,12 @@ const toCustomerUpdatePayload = (
     addressLine1: asOptionalText(formData.addressLine1),
     addressLine2: asOptionalText(formData.addressLine2),
     postalCode: asOptionalText(formData.zipCode),
-    skinType: isOneOf(SKIN_TYPE_VALUES, formData.skinType) ? formData.skinType : undefined,
-    skinTone: isOneOf(SKIN_TONE_VALUES, formData.skinTone) ? formData.skinTone : undefined,
+    skinType: isOneOf(SKIN_TYPE_VALUES, formData.skinType)
+      ? formData.skinType
+      : undefined,
+    skinTone: isOneOf(SKIN_TONE_VALUES, formData.skinTone)
+      ? formData.skinTone
+      : undefined,
   };
 };
 
@@ -182,11 +209,11 @@ const normalizeCustomerProfileResponse = (
     },
     creatorAddressInfo: {
       country: asText(customerProfile.country),
-      stateOrProvince: asText(customerProfile.stateOrProvince),
-      cityOrTown: asText(customerProfile.cityOrTown),
-      addressLine1: asText(customerProfile.addressLine1),
-      addressLine2: asText(customerProfile.addressLine2),
-      postalCode: asText(customerProfile.postalCode),
+      stateOrProvince: '',
+      cityOrTown: '',
+      addressLine1: '',
+      addressLine2: '',
+      postalCode: '',
     },
     creatorFaceInfo: {
       skinType: isOneOf(SKIN_TYPE_VALUES, customerProfile.skinType)
@@ -198,7 +225,10 @@ const normalizeCustomerProfileResponse = (
     },
     creatorType: 'NORMAL',
     creatorStatus: 'NOT_APPROVED',
-    contentLanguage: isOneOf(CONTENT_LANGUAGE_VALUES, customerProfile.contentLanguage)
+    contentLanguage: isOneOf(
+      CONTENT_LANGUAGE_VALUES,
+      customerProfile.contentLanguage
+    )
       ? customerProfile.contentLanguage
       : 'ENGLISH',
   };
@@ -241,7 +271,10 @@ export const useProfile = (): UseQueryResult<
 export const useUpdateProfile = (): UseMutationResult<
   ApiResponseCreatorMyPageResponse | ApiResponseVoid,
   Error,
-  { formData: CreatorSignupForm | CustomerSignupForm; profileImageUrl?: string | null }
+  {
+    formData: CreatorSignupForm | CustomerSignupForm;
+    profileImageUrl?: string | null;
+  }
 > => {
   const queryClient = useQueryClient();
 
