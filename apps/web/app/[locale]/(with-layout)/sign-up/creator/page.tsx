@@ -21,6 +21,7 @@ export default function CreatorSignupPage() {
   return (
     <SignupFormLayout
       title={t('title')}
+      backLabel={t('back')}
       onBack={handleBack}
       onSubmit={handleSubmit}
       isValid={form.formState.isValid}

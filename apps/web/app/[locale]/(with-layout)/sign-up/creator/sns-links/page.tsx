@@ -21,6 +21,7 @@ import { snsLinksSchema } from '../utils/signup';
 export default function CreatorSnsLinksPage() {
   const router = useRouter();
   const t = useTranslations('creatorSnsLinksPage');
+  const tLayout = useTranslations('creatorSignup.layout');
   const tValidation = useTranslations('snsConnection');
 
   const { isProcessingCallback } = useOAuthCallback();
@@ -80,6 +81,7 @@ export default function CreatorSnsLinksPage() {
     <>
       <SignupFormLayout
         title={t('title')}
+        backLabel={tLayout('back')}
         onBack={handleBack}
         onSubmit={handleSubmit}
         isValid={true}

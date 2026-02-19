@@ -29,6 +29,7 @@ import { useAuthInfo } from './hooks/useAuthInfo';
 const isSignupPage = (pathname: string): boolean => {
   const signupPaths = [
     '/sign-up/creator',
+    '/sign-up/customer',
     '/sign-up/brand',
     '/sign-up/creator/sns-links',
     '/login-google',
@@ -91,7 +92,7 @@ export default function GnbAuth() {
     } else if (freshUserInfo?.role === 'CREATOR') {
       router.push('/my-page/my-campaign');
     } else if (freshUserInfo?.role === 'CUSTOMER') {
-      router.push('/my-page/my-campaign');
+      router.push('/my-page/edit-profile');
     }
   };
 

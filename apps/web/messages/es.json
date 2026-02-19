@@ -532,6 +532,66 @@
       "zipCodeMaxLength": "Puede utilizar hasta 100 caracteres."
     }
   },
+  "customerSignup": {
+    "layout": {
+      "back": "Atrás",
+      "signup": "Registrarse",
+      "title": "¡Únete a la comunidad de Lococo!"
+    },
+    "communityName": {
+      "checkAvailabilityButton": "Comprobar disponibilidad",
+      "description": "(La ID debe tener entre 1 y 15 caracteres y solo puede contener letras, números, puntos (.) y guiones bajos (_)).",
+      "idAvailable": "¡Genial! Este ID está disponible.",
+      "idLabel": "ID",
+      "idPlaceholder": "ej: ilovelococo",
+      "idRequired": "Por favor, verifique la disponibilidad del ID.",
+      "idTaken": "Lo siento, este ID ya está en uso.",
+      "title": "Nombre de la comunidad"
+    },
+    "homeAddress": {
+      "addressLine1Label": "Línea de dirección 1",
+      "addressLine1Placeholder": "ej: 233 S Wacker Dr",
+      "addressLine2Label": "Línea de dirección 2",
+      "addressLine2Placeholder": "ej: Apt 25B",
+      "cityLabel": "Ciudad / Pueblo",
+      "cityPlaceholder": "ej: Chicago",
+      "countryLabel": "País",
+      "countryPlaceholder": "País",
+      "description": "Por favor, proporcione su dirección para la entrega del producto.",
+      "stateLabel": "Estado/Región/Provincia",
+      "statePlaceholder": "ej: Illinois",
+      "title": "Dirección de domicilio",
+      "zipCodeLabel": "Código postal",
+      "zipCodePlaceholder": "ej: 60606"
+    },
+    "personalDetails": {
+      "birthLabel": "Fecha de nacimiento",
+      "contentLanguageLabel": "Idioma del contenido",
+      "contentLanguagePlaceholder": "Idioma del contenido",
+      "dayPlaceholder": "Día",
+      "description": "Por favor, escriba su fecha de nacimiento sin información adicional.",
+      "firstNameLabel": "Nombre",
+      "firstNamePlaceholder": "ej: John",
+      "genderLabel": "Género",
+      "genderPlaceholder": "Género",
+      "lastNameLabel": "Apellido",
+      "lastNamePlaceholder": "ej: Doe",
+      "monthPlaceholder": "Mes",
+      "phoneCountryPlaceholder": "+XX",
+      "phoneNumberLabel": "Número de teléfono",
+      "phoneNumberPlaceholder": "ej: XXXXXXXXXX",
+      "title": "Detalles personales",
+      "yearPlaceholder": "Año"
+    },
+    "skinInfo": {
+      "description": "¡Cuéntanos más sobre ti!",
+      "skinToneLabel": "Tono de piel",
+      "skinTonePlaceholder": "Tono de piel",
+      "skinTypeLabel": "Tipo de piel",
+      "skinTypePlaceholder": "Tipo de piel",
+      "title": "Información adicional"
+    }
+  },
   "creatorSnsLinksPage": {
     "error": "No se pudo cargar la conexión de SNS",
     "snsDescription": "Revisaremos su cuenta de redes sociales y le informaremos si está verificada.",
@@ -694,13 +754,13 @@
     "title": "¡Bienvenido a Lococo!"
   },
   "main": {
-    "kBeautyCampaigns": "Campañas de K-Beauty",
-    "openingSoon": "Próximamente",
     "bestProducts": "Mejores productos",
-    "newProducts": "Nuevos productos",
     "bestReviews": "Mejores reseñas",
-    "videoReviews": "Reseñas de video",
-    "imageReviews": "Reseñas de imagen"
+    "imageReviews": "Reseñas de imagen",
+    "kBeautyCampaigns": "Campañas de K-Beauty",
+    "newProducts": "Nuevos productos",
+    "openingSoon": "Próximamente",
+    "videoReviews": "Reseñas de video"
   },
   "metadata": {
     "description": "Conéctate con las mejores marcas de K-Beauty. Únete a la comunidad de creadores de Lococo y descubre oportunidades exclusivas para colaborar con las principales marcas de belleza coreana.",
@@ -877,7 +937,8 @@
       "skinToneRequired": "El tono de piel es obligatorio.",
       "skinTypeRequired": "El tipo de piel es obligatorio.",
       "stateRequired": "El estado es obligatorio.",
-      "yearRequired": "El año es obligatorio."
+      "yearRequired": "El año es obligatorio.",
+      "loadError": "No se pudo cargar el perfil."
     },
     "finalReview": {
       "1stContent": "1er contenido",
@@ -1145,6 +1206,42 @@
       "title": "Sus derechos"
     }
   },
+  "reviews": {
+    "bad": "Malo",
+    "close": "Cerrar",
+    "deleteReviewModal": {
+      "cancel": "Cancelar",
+      "delete": "Eliminar",
+      "description": "¿Seguro que quieres eliminar esta reseña?",
+      "title": "Eliminar reseña",
+      "warning": "Una vez eliminada, esta reseña no se puede restaurar."
+    },
+    "details": "Detalles",
+    "good": "Bueno",
+    "helpful": "Fue útil.",
+    "ingredients": "Ingredientes",
+    "noPhotoReviews": "No hay reseñas de foto registradas.",
+    "noProducts": "No se encontraron productos.",
+    "noReviews": "No se encontraron reseñas.",
+    "noVideoReviews": "No hay reseñas de video registradas.",
+    "onboardingMiddle": " o usa el mouse para ",
+    "onboardingPrefix": "Usa el panel táctil para ",
+    "onboardingScroll": "desplazarte",
+    "onboardingSuffix": " y ver más reseñas de video.",
+    "onboardingSwipe": "deslizar",
+    "openReviewImageModal": "Abrir modal de imagen de reseña",
+    "photoReviews": "Reseñas de foto",
+    "products": "Productos",
+    "reviewImageAlt": "Imagen de reseña",
+    "reviewNotFound": "No se encontró la reseña.",
+    "reviews": "Reseñas",
+    "reviewTitle": "Reseña",
+    "seeMore": "Ver más",
+    "unableToLoadReviewList": "No se pudo cargar la lista de reseñas.",
+    "videoReviews": "Reseñas de video",
+    "volume": "Volumen",
+    "writeReview": "Escribir una reseña"
+  },
   "selectRoleModal": {
     "description": "Seleccione su rol para iniciar sesión. No podrá cambiarlo más tarde.",
     "loginAs": "Iniciar sesión como:",
@@ -1240,41 +1337,5 @@
     "confirmButton": "Sí",
     "message": "Las solicitudes de campaña solo están disponibles para miembros creadores. ¿Desea registrarse como creador?",
     "title": "Sugerencia de creador"
-  },
-  "reviews": {
-    "products": "Productos",
-    "reviews": "Reseñas",
-    "videoReviews": "Reseñas de video",
-    "photoReviews": "Reseñas de foto",
-    "seeMore": "Ver más",
-    "close": "Cerrar",
-    "good": "Bueno",
-    "bad": "Malo",
-    "helpful": "Fue útil.",
-    "writeReview": "Escribir una reseña",
-    "reviewTitle": "Reseña",
-    "volume": "Volumen",
-    "details": "Detalles",
-    "ingredients": "Ingredientes",
-    "openReviewImageModal": "Abrir modal de imagen de reseña",
-    "reviewImageAlt": "Imagen de reseña",
-    "noPhotoReviews": "No hay reseñas de foto registradas.",
-    "noVideoReviews": "No hay reseñas de video registradas.",
-    "unableToLoadReviewList": "No se pudo cargar la lista de reseñas.",
-    "reviewNotFound": "No se encontró la reseña.",
-    "onboardingPrefix": "Usa el panel táctil para ",
-    "onboardingSwipe": "deslizar",
-    "onboardingMiddle": " o usa el mouse para ",
-    "onboardingScroll": "desplazarte",
-    "onboardingSuffix": " y ver más reseñas de video.",
-    "deleteReviewModal": {
-      "title": "Eliminar reseña",
-      "description": "¿Seguro que quieres eliminar esta reseña?",
-      "warning": "Una vez eliminada, esta reseña no se puede restaurar.",
-      "cancel": "Cancelar",
-      "delete": "Eliminar"
-    },
-    "noProducts": "No se encontraron productos.",
-    "noReviews": "No se encontraron reseñas."
   }
 }
