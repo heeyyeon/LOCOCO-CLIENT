@@ -2,6 +2,7 @@
 
 import { ChangeEvent, useEffect, useState } from 'react';
 
+import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 
 import ContentWithLabel from 'components/input/content-with-label';
@@ -37,7 +38,7 @@ export default function MediaUpload({
   error,
 }: MediaUploadProps) {
   const [objectUrls, setObjectUrls] = useState<string[]>([]);
-
+  const t = useTranslations('reviews');
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
     const selectedFile = e.target.files?.[0];
     if (selectedFile) {
@@ -81,11 +82,13 @@ export default function MediaUpload({
 
   return (
     <ContentWithLabel
-      label="写真または動画をアップロードしてください"
+      label={t('pleaseUploadPhotosOrVideos')}
       className="flex-col border-b border-gray-400"
     >
       <p className="caption3 text-blue mt-[0.8rem] pb-[2.4rem]">
-        写真（最大5枚）または動画（1件）のみアップできます。
+        {t('pleaseUploadPhotosOrVideosMaxCount', {
+          count: REVIEW_MEDIA_MAX_COUNT.IMAGE,
+        })}
       </p>
 
       <div className="flex flex-wrap gap-4">

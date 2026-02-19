@@ -1,6 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
+
 import { useAuth } from 'hooks/use-auth';
 import { useRouter } from 'i18n/navigation';
 import { formatJPY } from 'utils/formatJPY';
@@ -40,7 +41,7 @@ export default function ProductInfo({
         scroll: false,
       });
     } else {
-      router.push('/login');
+      router.push('/login-google');
     }
   };
 

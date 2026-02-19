@@ -2,6 +2,8 @@
 
 import { useState } from 'react';
 
+import { useRouter } from 'next/navigation';
+
 import { useQuery } from '@tanstack/react-query';
 import CardProduct from 'components/card/card-product';
 import CardSkeletonWrapper from 'components/card/card-skeleton';
@@ -16,6 +18,7 @@ import ProductNotFoundSection from '../../search/components/product-not-found';
 import { getPopularProductsByCategory } from '../utils/get-product-Item';
 
 export default function HomeSectionBestProducts() {
+  const router = useRouter();
   const [selectedTab, setSelectedTab] = useState<
     MainProductsCategoryKey | undefined
   >(undefined);
@@ -28,9 +31,8 @@ export default function HomeSectionBestProducts() {
 
   const products = data?.data?.products ?? [];
 
-  const handleCardClick = () => {
-    // TODO
-    return null;
+  const handleCardClick = (productId: number) => {
+    router.push(`/product-detail/${productId}`);
   };
 
   return (
@@ -63,7 +65,6 @@ export default function HomeSectionBestProducts() {
               productName={product.productName}
               unit={product.unit}
               productId={product.productId}
-              isLiked={false}
               rating={product.avgRating}
               reviewCount={product.reviewCount}
               imageUrl={product.imageUrl}

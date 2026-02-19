@@ -1,5 +1,5 @@
-import Link from 'next/link';
 import { useTranslations } from 'next-intl';
+import Link from 'next/link';
 import { useParams } from 'next/navigation';
 
 import { useAuth } from 'hooks/use-auth';
@@ -63,7 +63,7 @@ export default function StarRating({
           href={
             isLoggedIn
               ? `/product-detail/${params.productId}/write-review`
-              : '/login'
+              : '/login-google'
           }
         >
           <span className="title2 inline-flex items-center gap-[0.8rem]">

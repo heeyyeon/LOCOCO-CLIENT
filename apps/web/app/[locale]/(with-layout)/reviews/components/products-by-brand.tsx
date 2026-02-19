@@ -2,6 +2,8 @@
 
 import { useState } from 'react';
 
+import { useRouter } from 'next/navigation';
+
 import { useQuery } from '@tanstack/react-query';
 import { ProductBrandInfoResponse } from '@typescript-swagger/data-contracts';
 import CardProduct from 'components/card/card-product';
@@ -17,6 +19,7 @@ export default function ProductsByBrand({
 }: {
   productBrandName: string;
 }) {
+  const router = useRouter();
   const [pagination, setPagination] = useState({
     page: 0,
     size: 12,
@@ -31,9 +34,8 @@ export default function ProductsByBrand({
 
   const products = data?.data?.products ?? [];
 
-  const handleCardClick = () => {
-    // TODO
-    return null;
+  const handleCardClick = (productId: number) => {
+    router.push(`/product-detail/${productId}`);
   };
 
   return (
@@ -49,6 +51,7 @@ export default function ProductsByBrand({
           {products.map(
             (
               {
+                productId,
                 productBrandName,
                 productName,
                 unit,
@@ -62,8 +65,7 @@ export default function ProductsByBrand({
                 brandName={productBrandName}
                 productName={productName}
                 unit={unit}
-                productId={0}
-                isLiked={false}
+                productId={productId}
                 rating={rating}
                 reviewCount={0}
                 imageUrl={imageUrl}

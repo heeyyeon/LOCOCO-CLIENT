@@ -6,7 +6,6 @@ export const productMock: ProductItem[] = [
     productName: '아이템명',
     unit: '50ml, 100ml',
     productId: 1,
-    isLiked: true,
     rating: 4.2,
     reviewCount: 123,
     imageUrl:
@@ -18,7 +17,6 @@ export const productMock: ProductItem[] = [
     productName: '아이템명',
     unit: '50ml, 100ml',
     productId: 2,
-    isLiked: true,
     rating: 4.2,
     reviewCount: 123,
     imageUrl:
@@ -30,7 +28,6 @@ export const productMock: ProductItem[] = [
     productName: '아이템명',
     unit: '50ml, 100ml',
     productId: 3,
-    isLiked: true,
     rating: 4.2,
     reviewCount: 123,
     imageUrl:
@@ -42,7 +39,6 @@ export const productMock: ProductItem[] = [
     productName: '아이템명',
     unit: '50ml, 100ml',
     productId: 4,
-    isLiked: true,
     rating: 4.2,
     reviewCount: 123,
     imageUrl:

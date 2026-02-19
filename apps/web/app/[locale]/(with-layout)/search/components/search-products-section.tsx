@@ -54,9 +54,9 @@ export default function SearchProductsSection({
               brandName,
               productName,
               unit,
+              avgRating,
               reviewCount,
               imageUrl,
-              avgRating,
             }: SimpleProductResponse) => (
               <CardProduct
                 key={productId}
@@ -64,7 +64,6 @@ export default function SearchProductsSection({
                 productName={productName}
                 unit={unit}
                 productId={productId}
-                isLiked={false}
                 rating={avgRating}
                 reviewCount={reviewCount}
                 imageUrl={imageUrl}
