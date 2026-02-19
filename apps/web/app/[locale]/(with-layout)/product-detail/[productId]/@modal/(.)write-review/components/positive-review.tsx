@@ -3,7 +3,7 @@
 import { useTranslations } from 'next-intl';
 
 import ContentWithLabel from 'components/input/content-with-label';
-import { REVIEW_TEXT, REVIEW_TEXT_PLACEHOLDER } from 'constants/review';
+import { REVIEW_TEXT } from 'constants/review';
 import type { ReviewFormData } from 'types/review';
 
 import { ErrorNotice } from '@lococo/design-system/error-notice';
