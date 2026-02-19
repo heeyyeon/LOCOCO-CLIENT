@@ -17,7 +17,7 @@ interface SkinInfoProps {
 }
 
 export function SkinInfo({ form }: SkinInfoProps) {
-  const t = useTranslations('creatorSignup.skinInfo');
+  const t = useTranslations('customerSignup.skinInfo');
   const skinTypes = useSkinTypeOptions();
   const skinTones = useSkinToneOptions();
 

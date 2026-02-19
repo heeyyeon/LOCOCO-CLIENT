@@ -34,6 +34,7 @@ export default function CustomerSignupPage() {
     <>
       <SignupFormLayout
         title={t('title')}
+        backLabel={t('back')}
         onBack={handleBack}
         onSubmit={handleSubmit}
         isValid={form.formState.isValid}

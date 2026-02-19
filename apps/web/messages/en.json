@@ -532,6 +532,66 @@
       "zipCodeMaxLength": "Use up to 100 characters."
     }
   },
+  "customerSignup": {
+    "layout": {
+      "signup": "Sign up",
+      "back": "Back",
+      "title": "Join Lococo Community!"
+    },
+    "communityName": {
+      "checkAvailabilityButton": "Check availability",
+      "description": "(ID must be between 1 and 15 characters long and can only contain letters, numbers, periods (.), and underscores (_)).",
+      "idAvailable": "Great! This ID is available.",
+      "idLabel": "ID",
+      "idPlaceholder": "ex: ilovelococo",
+      "idRequired": "Please check the ID availability.",
+      "idTaken": "Sorry, this ID is already taken.",
+      "title": "Community Name"
+    },
+    "homeAddress": {
+      "addressLine1Label": "Address Line 1",
+      "addressLine1Placeholder": "ex: 233 S Wacker Dr",
+      "addressLine2Label": "Address Line 2",
+      "addressLine2Placeholder": "ex: Apt 25B",
+      "cityLabel": "City / Town",
+      "cityPlaceholder": "ex: Chicago",
+      "countryLabel": "Country",
+      "countryPlaceholder": "Country",
+      "description": "Please provide your home address for product delivery.",
+      "stateLabel": "State/Region/Province",
+      "statePlaceholder": "ex: Illinois",
+      "title": "Home Address",
+      "zipCodeLabel": "Zip/Post Code",
+      "zipCodePlaceholder": "ex: 60606"
+    },
+    "personalDetails": {
+      "birthLabel": "Birth",
+      "contentLanguageLabel": "Content Language",
+      "contentLanguagePlaceholder": "Content Language",
+      "dayPlaceholder": "Day",
+      "description": "Please write your date of birth without any additional information.",
+      "firstNameLabel": "First name",
+      "firstNamePlaceholder": "ex: John",
+      "genderLabel": "Gender",
+      "genderPlaceholder": "Gender",
+      "lastNameLabel": "Last name",
+      "lastNamePlaceholder": "ex: Doe",
+      "monthPlaceholder": "Month",
+      "phoneCountryPlaceholder": "+XX",
+      "phoneNumberLabel": "Phone Number",
+      "phoneNumberPlaceholder": "ex: XXXXXXXXXX",
+      "title": "Personal Details",
+      "yearPlaceholder": "Year"
+    },
+    "skinInfo": {
+      "description": "Tell us about you more!",
+      "skinToneLabel": "Skin Tone",
+      "skinTonePlaceholder": "Skin Tone",
+      "skinTypeLabel": "Skin Type",
+      "skinTypePlaceholder": "Skin Type",
+      "title": "Additional Information"
+    }
+  },
   "creatorSnsLinksPage": {
     "error": "Failed to load SNS connection",
     "snsDescription": "We will go through your SNS account, and let you know if you are verified.",
@@ -877,7 +937,8 @@
       "skinToneRequired": "Skin tone is required",
       "skinTypeRequired": "Skin type is required",
       "stateRequired": "State is required",
-      "yearRequired": "Year is required"
+      "yearRequired": "Year is required",
+      "loadError": "Failed to load profile."
     },
     "finalReview": {
       "1stContent": "1st Content",
@@ -1276,41 +1337,5 @@
     "confirmButton": "Yes",
     "message": "Campaign applications are only available to creator members.\nWould you like to sign up as a creator?",
     "title": "Creator Suggestion"
-  },
-  "reviews": {
-    "products": "Products",
-    "reviews": "Reviews",
-    "videoReviews": "Video Reviews",
-    "photoReviews": "Photo Reviews",
-    "seeMore": "See More",
-    "close": "Close",
-    "good": "Good",
-    "bad": "Bad",
-    "helpful": "It was helpful.",
-    "writeReview": "Write a Review",
-    "reviewTitle": "Review",
-    "volume": "Volume",
-    "details": "Details",
-    "ingredients": "Ingredients",
-    "openReviewImageModal": "Open review image modal",
-    "reviewImageAlt": "Review image",
-    "noPhotoReviews": "There are no registered photo reviews.",
-    "noVideoReviews": "There are no registered video reviews.",
-    "unableToLoadReviewList": "Unable to load review list.",
-    "reviewNotFound": "Review not found.",
-    "onboardingPrefix": "Use your touchpad to ",
-    "onboardingSwipe": "swipe",
-    "onboardingMiddle": ", or use your mouse to ",
-    "onboardingScroll": "scroll",
-    "onboardingSuffix": " to see more video reviews.",
-    "deleteReviewModal": {
-      "title": "Delete Review",
-      "description": "Are you sure you want to delete this review?",
-      "warning": "Once deleted, this review cannot be restored.",
-      "cancel": "Cancel",
-      "delete": "Delete"
-    },
-    "noProducts": "No products found.",
-    "noReviews": "No reviews found."
   }
 }

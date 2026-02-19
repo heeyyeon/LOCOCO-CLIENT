@@ -532,6 +532,66 @@
       "zipCodeMaxLength": "최대 100자까지 입력할 수 있습니다."
     }
   },
+  "customerSignup": {
+    "layout": {
+      "back": "뒤로",
+      "signup": "가입",
+      "title": "로코코 커뮤니티에 가입하세요!"
+    },
+    "communityName": {
+      "checkAvailabilityButton": "중복 확인 ",
+      "description": "(ID는 1자에서 15자 사이여야 하며, 문자, 숫자, 마침표(.), 밑줄(_)만 사용할 수 있습니다.)",
+      "idAvailable": "좋습니다! 이 ID는 사용 가능합니다.",
+      "idLabel": "ID",
+      "idPlaceholder": "ex: ilovelococo",
+      "idRequired": "ID 사용 가능 여부를 확인해주세요.",
+      "idTaken": "죄송합니다. 이 ID는 이미 사용 중입니다.",
+      "title": "커뮤니티 이름"
+    },
+    "homeAddress": {
+      "addressLine1Label": "주소 1",
+      "addressLine1Placeholder": "ex: 233 S Wacker Dr",
+      "addressLine2Label": "주소 2",
+      "addressLine2Placeholder": "ex: Apt 25B",
+      "cityLabel": "도시/ 타운 ",
+      "cityPlaceholder": "ex: Chicago",
+      "countryLabel": "국가",
+      "countryPlaceholder": "국가",
+      "description": "제품 배송을 위해 집 주소를 입력해 주세요.",
+      "stateLabel": "주/지역/도",
+      "statePlaceholder": "예: 일리노이",
+      "title": "집 주소",
+      "zipCodeLabel": "우편 번호 ",
+      "zipCodePlaceholder": "ex: 60606"
+    },
+    "personalDetails": {
+      "birthLabel": "생년월일",
+      "contentLanguageLabel": "콘텐츠 언어",
+      "contentLanguagePlaceholder": "콘텐츠 언어",
+      "dayPlaceholder": "일",
+      "description": "추가 정보 없이 생년월일을 입력해 주세요.",
+      "firstNameLabel": "이름",
+      "firstNamePlaceholder": "예: John",
+      "genderLabel": "성별",
+      "genderPlaceholder": "성별",
+      "lastNameLabel": "성",
+      "lastNamePlaceholder": "예: Doe",
+      "monthPlaceholder": "월",
+      "phoneCountryPlaceholder": "+XX",
+      "phoneNumberLabel": "전화번호",
+      "phoneNumberPlaceholder": "예: XXXXXXXXXX",
+      "title": "개인 정보",
+      "yearPlaceholder": "연도"
+    },
+    "skinInfo": {
+      "description": "자기소개를 더 해주세요!",
+      "skinToneLabel": "피부 톤",
+      "skinTonePlaceholder": "피부 톤",
+      "skinTypeLabel": "피부 타입",
+      "skinTypePlaceholder": "피부 타입",
+      "title": "추가 정보 "
+    }
+  },
   "creatorSnsLinksPage": {
     "error": "SNS 연결을 불러오지 못했습니다",
     "snsDescription": "SNS 계정을 검토한 후, 인증 여부를 알려드리겠습니다.",
@@ -877,7 +937,8 @@
       "skinToneRequired": "피부 톤은 필수 입력 항목입니다.",
       "skinTypeRequired": "피부 타입은 필수 입력 항목입니다.",
       "stateRequired": "주는 필수 입력 항목입니다.",
-      "yearRequired": "연도는 필수 입력 항목입니다."
+      "yearRequired": "연도는 필수 입력 항목입니다.",
+      "loadError": "프로필을 불러오지 못했습니다."
     },
     "finalReview": {
       "1stContent": "1차 콘텐츠",
@@ -1276,41 +1337,5 @@
     "confirmButton": "예",
     "message": "캠페인 신청은 크리에이터 회원만 가능합니다. \n크리에이터로 가입하시겠습니까?",
     "title": "크리에이터 제안"
-  },
-  "reviews": {
-    "products": "제품",
-    "reviews": "리뷰",
-    "videoReviews": "영상 리뷰",
-    "photoReviews": "사진 리뷰",
-    "seeMore": "더 보기",
-    "close": "닫기",
-    "good": "좋아요",
-    "bad": "아쉬워요",
-    "helpful": "도움이 됐어요.",
-    "writeReview": "리뷰 작성하기",
-    "reviewTitle": "리뷰",
-    "volume": "용량",
-    "details": "상세 정보",
-    "ingredients": "전성분",
-    "openReviewImageModal": "리뷰 이미지 모달 열기",
-    "reviewImageAlt": "리뷰 이미지",
-    "noPhotoReviews": "등록된 사진 리뷰가 없습니다.",
-    "noVideoReviews": "등록된 영상 리뷰가 없습니다.",
-    "unableToLoadReviewList": "리뷰 목록을 불러올 수 없습니다.",
-    "reviewNotFound": "리뷰를 찾을 수 없습니다.",
-    "onboardingPrefix": "터치패드를 ",
-    "onboardingSwipe": "스와이프",
-    "onboardingMiddle": " 하거나 마우스를 ",
-    "onboardingScroll": "스크롤",
-    "onboardingSuffix": " 해서 더 많은 비디오 리뷰를 확인하세요.",
-    "deleteReviewModal": {
-      "title": "리뷰 삭제",
-      "description": "이 리뷰를 삭제하시겠어요?",
-      "warning": "삭제하면 이 리뷰는 복구할 수 없습니다.",
-      "cancel": "취소",
-      "delete": "삭제"
-    },
-    "noProducts": "제품을 찾을 수 없습니다.",
-    "noReviews": "리뷰를 찾을 수 없습니다."
   }
 }

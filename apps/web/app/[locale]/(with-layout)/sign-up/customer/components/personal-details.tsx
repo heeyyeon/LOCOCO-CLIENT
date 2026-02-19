@@ -25,8 +25,8 @@ interface PersonalDetailsProps {
 }
 
 export function PersonalDetails({ form, locale }: PersonalDetailsProps) {
-  const t = useTranslations('creatorSignup.personalDetails');
-  const tAddress = useTranslations('creatorSignup.homeAddress');
+  const t = useTranslations('customerSignup.personalDetails');
+  const tAddress = useTranslations('customerSignup.homeAddress');
   const { months, days, years } = dateOptions();
   const countries = countryNameOptions(locale);
   const countryCodes = countryPhoneCodeOptions();

@@ -15,7 +15,7 @@ interface CommunityNameProps {
 }
 
 export function CommunityName({ form, onIdCheckResult }: CommunityNameProps) {
-  const t = useTranslations('creatorSignup.communityName');
+  const t = useTranslations('customerSignup.communityName');
   const [isCheckingEnabled, setIsCheckingEnabled] = useState(false);
   const [hasCheckedCurrentId, setHasCheckedCurrentId] = useState(false);
   const id = form.watch('id');
