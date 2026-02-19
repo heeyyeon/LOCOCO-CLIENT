@@ -1275,6 +1275,16 @@
       "delete": "Eliminar"
     },
     "noProducts": "No se encontraron productos.",
-    "noReviews": "No se encontraron reseñas."
+    "noReviews": "No se encontraron reseñas.",
+    "writeAReview": "Escribir una reseña",
+    "howWareTheProduct": "¿Cómo fue el producto?",
+    "good": "Me gusta",
+    "bad": "No me gusta",
+    "pleaseTellUsWhatYouLikedAboutUsingIt": "Por favor, cuéntenos lo que le gustó al usarlo.",
+    "pleaseTellUsWhatYouFoundDisappointingWhileUsingTheProduct": "Por favor, cuéntenos lo que le decepcionó al usarlo.",
+    "pleaseEnterAtLeastNCharacters": "Por favor ingrese al menos {count} caracteres.",
+    "pleaseEnterWithinNCharacters": "Por favor ingrese dentro de {count} caracteres.",
+    "pleaseUploadPhotosOrVideos": "Por favor suba fotos o videos.",
+    "pleaseUploadPhotosOrVideosMaxCount": "Por favor suba hasta {count} fotos o videos."
   }
 }

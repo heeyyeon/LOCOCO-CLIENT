@@ -1275,6 +1275,17 @@
       "delete": "Delete"
     },
     "noProducts": "No products found.",
-    "noReviews": "No reviews found."
+    "noReviews": "No reviews found.",
+    "writeAReview": "Write a Review",
+    "howWareTheProduct": "How Was the Product?",
+    "good": "Good",
+    "bad": "Bad",
+    "pleaseTellUsWhatYouLikedAboutUsingIt": "Please tell us what you liked about using it.",
+    "pleaseTellUsWhatYouFoundDisappointingWhileUsingTheProduct": "Please tell us what you found disappointing while using the product.",
+    "pleaseEnterAtLeastNCharacters": "Please enter at least {count} characters.",
+    "register": "Register",
+    "pleaseEnterWithinNCharacters": "Please enter within {count} characters.",
+    "pleaseUploadPhotosOrVideos": "Please upload photos or videos.",
+    "pleaseUploadPhotosOrVideosMaxCount": "Please upload up to {count} photos or videos."
   }
 }

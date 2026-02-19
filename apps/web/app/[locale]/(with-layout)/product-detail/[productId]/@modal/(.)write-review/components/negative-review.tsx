@@ -1,5 +1,7 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
+
 import ContentWithLabel from 'components/input/content-with-label';
 import { REVIEW_TEXT, REVIEW_TEXT_PLACEHOLDER } from 'constants/review';
 import type { ReviewFormData } from 'types/review';
@@ -14,17 +16,20 @@ interface Props {
 }
 
 export default function NegativeReview({ value, onChange, error }: Props) {
+  const t = useTranslations('reviews');
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     onChange(e.target.value);
   };
 
   return (
-    <ContentWithLabel label="気になる点" className="flex-col" required>
+    <ContentWithLabel label={t('bad')} className="flex-col" required>
       <Textarea.Container>
         <Textarea
           value={value}
           onChange={handleChange}
-          placeholder={REVIEW_TEXT_PLACEHOLDER.NEGATIVE}
+          placeholder={t(
+            'pleaseTellUsWhatYouFoundDisappointingWhileUsingTheProduct'
+          )}
           maxLength={REVIEW_TEXT.MAX_LENGTH}
           className="h-[6.6rem]"
         />
