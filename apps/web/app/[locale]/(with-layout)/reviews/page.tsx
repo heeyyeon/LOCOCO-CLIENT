@@ -29,9 +29,19 @@ function Reviews() {
   const renderContent = () => {
     switch (activeTab) {
       case 'products':
-        return <ProductsByBrand productBrandName={selectedBrandName} />;
+        return (
+          <ProductsByBrand
+            key={selectedBrandName}
+            productBrandName={selectedBrandName}
+          />
+        );
       case 'reviews':
-        return <ReviewsByBrand productBrandName={selectedBrandName} />;
+        return (
+          <ReviewsByBrand
+            key={selectedBrandName}
+            productBrandName={selectedBrandName}
+          />
+        );
       default:
         return null;
     }
