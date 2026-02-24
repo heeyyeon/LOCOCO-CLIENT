@@ -27,12 +27,12 @@ export default function CardProduct({
       className="flex w-[26.4rem] cursor-pointer flex-col"
       onClick={() => handleCardClick(productId)}
     >
-      <div className="relative border-[0.1rem] border-gray-200">
+      <div className="relative rounded-[1.6rem] border-[0.1rem] border-gray-200">
         {imageUrl ? (
           <Image
             height={264}
             width={264}
-            className="h-[26.4rem] w-[26.4rem] object-cover"
+            className="h-[26.4rem] w-[26.4rem] rounded-[1.6rem] object-cover"
             src={imageUrl}
             alt={productName}
           />

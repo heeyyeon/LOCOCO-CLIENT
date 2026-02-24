@@ -17,15 +17,21 @@ import { Tab, TabContainer } from '@lococo/design-system/tab';
 import ProductNotFoundSection from '../../search/components/product-not-found';
 import { getPopularProductsByCategory } from '../utils/get-product-Item';
 
+const tabItems = (
+  Object.keys(MAIN_PRODUCTS_CATEGORY_KEYS) as MainProductsCategoryKey[]
+).map((key) => ({
+  key,
+  label: key === 'ALL' ? 'ALL' : formatCategoryName(key),
+}));
+
 export default function HomeSectionBestProducts() {
   const router = useRouter();
-  const [selectedTab, setSelectedTab] = useState<
-    MainProductsCategoryKey | undefined
-  >(undefined);
+  const [selectedTab, setSelectedTab] =
+    useState<MainProductsCategoryKey>('ALL');
 
   const { data, isPending } = useQuery(
     getPopularProductsByCategory({
-      productCategory: selectedTab ?? undefined,
+      productCategory: selectedTab === 'ALL' ? undefined : selectedTab,
     })
   );
 
@@ -37,21 +43,21 @@ export default function HomeSectionBestProducts() {
 
   return (
     <div className="flex flex-col items-start gap-[2.4rem]">
-      <TabContainer>
-        <Tab
-          label="ALL"
-          value="ALL"
-          selected={selectedTab === undefined}
-          onClick={() => setSelectedTab(undefined)}
-        />
-        {Object.entries(MAIN_PRODUCTS_CATEGORY_KEYS).map(([key, value]) => (
-          <Tab
-            key={key}
-            label={formatCategoryName(value)}
-            value={key}
-            selected={selectedTab === key}
-            onClick={() => setSelectedTab(key as MainProductsCategoryKey)}
-          />
+      <TabContainer className="flex items-center">
+        {tabItems.map((item, index) => (
+          <div key={String(item.key)} className="flex items-center">
+            {index !== 0 && (
+              <span className="title2 mx-[1.2rem] font-[700] text-gray-300">
+                /
+              </span>
+            )}
+            <Tab
+              value={item.key}
+              label={item.label}
+              selected={selectedTab === item.key}
+              onClick={() => setSelectedTab(item.key)}
+            />
+          </div>
         ))}
       </TabContainer>
       <div className="flex w-full flex-wrap items-center gap-[2.4rem]">

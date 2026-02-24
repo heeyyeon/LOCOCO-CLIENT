@@ -76,9 +76,11 @@ export default function ProductsByBrand({
         </section>
       )}
       <Pagenation
-        currentPage={pagination.page}
+        currentPage={pagination.page + 1}
         totalPages={data?.data?.pageInfo.totalPages ?? 0}
-        handlePageChange={(page) => setPagination({ ...pagination, page })}
+        handlePageChange={(page) =>
+          setPagination({ ...pagination, page: page - 1 })
+        }
       />
     </div>
   );
