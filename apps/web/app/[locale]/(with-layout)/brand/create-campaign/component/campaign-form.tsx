@@ -2,9 +2,9 @@
 
 import { useEffect } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
-import { useSearchParams } from 'next/navigation';
 
 import { useTranslations } from 'next-intl';
+import { useSearchParams } from 'next/navigation';
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { CampaignPublishRequest } from '@typescript-swagger/data-contracts';
@@ -43,10 +43,10 @@ export default function CampaignForm({
 }: {
   campaignId?: string;
   isReadonly?: boolean;
-  role?: "PENDING" | "CUSTOMER" | "CREATOR" | "BRAND" | "ADMIN" | undefined;
+  role?: 'PENDING' | 'CUSTOMER' | 'CREATOR' | 'BRAND' | 'ADMIN' | undefined;
 }) {
   const router = useRouter();
-  console.log(role)
+  console.log(role);
   // const role = 'ADMIN';
   const searchParams = useSearchParams();
   const isAdmin = searchParams.get('role') === 'admin';
@@ -163,10 +163,9 @@ export default function CampaignForm({
       // Admin일 때는 /api/admin/campaigns로 요청하고 brandName 포함
       const adminRequestData: CampaignPublishRequest = {
         ...requestData,
-        brandName: data.brandName || undefined,
+        ...(data.brandName && { brandName: data.brandName }),
       };
       publishAdminCampaignMutation.mutate(adminRequestData);
-
     } else {
       // 일반 사용자는 기존 API 사용
       if (campaignId) {

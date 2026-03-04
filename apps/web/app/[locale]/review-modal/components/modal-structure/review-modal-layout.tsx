@@ -19,9 +19,7 @@ export interface ReviewModallayoutProps {
   isLiked: boolean;
   brandName: string;
   productName: string;
-  productOption: string;
   rating: number;
-  isReceipt?: boolean;
   positiveComment: string;
   negativeComment: string;
   productImageUrl: string;
@@ -38,12 +36,10 @@ export default function ReviewModallayout({
   isLiked,
   brandName,
   productName,
-  productOption,
   rating,
   positiveComment,
   negativeComment,
   productImageUrl,
-  isReceipt,
   onClose,
   children,
 }: ReviewModallayoutProps) {
@@ -68,12 +64,10 @@ export default function ReviewModallayout({
             productId={productId}
             brandName={brandName}
             productName={productName}
-            option={productOption}
             rating={rating}
             positiveComment={positiveComment}
             negativeComment={negativeComment}
             productImageUrl={productImageUrl}
-            receiptUploaded={isReceipt || false}
             onClose={onClose}
           />
         </div>

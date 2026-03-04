@@ -71,9 +71,7 @@ export default function ReviewModalSwiper({
             isLiked={review.isLiked}
             brandName={review.brandName}
             productName={review.productName}
-            productOption={review.option}
             rating={review.rating}
-            isReceipt={review.receiptUploaded}
             positiveComment={review.positiveComment}
             negativeComment={review.negativeComment}
             productImageUrl={review.productImageUrl}

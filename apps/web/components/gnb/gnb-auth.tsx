@@ -1,12 +1,12 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { useTranslations } from 'next-intl';
-import { usePathname } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
 
 import { useAuth } from 'hooks/use-auth';
-import { Link, useRouter } from 'i18n/navigation';
+import { Link, usePathname, useRouter } from 'i18n/navigation';
 
 import { SvgProfileIcon } from '@lococo/icons';
 
@@ -29,6 +29,7 @@ import { useAuthInfo } from './hooks/useAuthInfo';
 const isSignupPage = (pathname: string): boolean => {
   const signupPaths = [
     '/sign-up/creator',
+    '/sign-up/customer',
     '/sign-up/brand',
     '/sign-up/creator/sns-links',
     '/login-google',
@@ -42,6 +43,7 @@ export default function GnbAuth() {
   const { isLoggedIn, logout } = useAuth();
   const router = useRouter();
   const pathname = usePathname();
+  const searchParams = useSearchParams();
   const t = useTranslations('gnb');
 
   const isUserInfoEnabled = isLoggedIn === true && !isSignupPage(pathname);
@@ -49,6 +51,14 @@ export default function GnbAuth() {
   const { data: userInfo, refetch: refetchUserInfo } = useAuthInfo({
     enabled: isUserInfoEnabled,
   });
+
+  useEffect(() => {
+    const isRoleModalRequested = searchParams.get('roleModal') === 'show';
+    if (isRoleModalRequested && !isLoggedIn) {
+      setIsRoleModalOpen(true);
+      router.replace(pathname || '/');
+    }
+  }, [searchParams, isLoggedIn, router, pathname]);
 
   const handleSignup = () => {
     setIsRoleModalOpen(true);
@@ -82,7 +92,7 @@ export default function GnbAuth() {
     } else if (freshUserInfo?.role === 'CREATOR') {
       router.push('/my-page/my-campaign');
     } else if (freshUserInfo?.role === 'CUSTOMER') {
-      router.push('/my-page/my-campaign');
+      router.push('/my-page/edit-profile');
     }
   };
 

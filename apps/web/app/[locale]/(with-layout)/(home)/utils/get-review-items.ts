@@ -1,32 +1,31 @@
+import { queryOptions } from '@tanstack/react-query';
 import { apiRequest } from 'app/api/apiRequest';
+import { REVIEW_KEYS } from 'constants/query-key';
 import {
   ApiResponseMainImageReviewResponse,
   ApiResponseMainVideoReviewResponse,
   MainImageReviewResponse,
 } from 'swagger-codegen/data-contracts';
 
-export const getVideoReviews = async () => {
-  try {
-    const reviewVideoResponse =
-      await apiRequest<ApiResponseMainVideoReviewResponse>({
+export function getVideoReviews() {
+  return queryOptions<ApiResponseMainVideoReviewResponse | null>({
+    queryKey: [...REVIEW_KEYS.VIDEO_LISTS(), 'main'],
+    queryFn: () =>
+      apiRequest<ApiResponseMainVideoReviewResponse>({
         endPoint: '/api/reviews/video',
-      });
-    return reviewVideoResponse;
-  } catch {
-    return null;
-  }
-};
-export const getImageReviews = async () => {
-  try {
-    const reviewImageResponse =
-      await apiRequest<ApiResponseMainImageReviewResponse>({
+      }),
+  });
+}
+
+export function getImageReviews() {
+  return queryOptions<ApiResponseMainImageReviewResponse | null>({
+    queryKey: [...REVIEW_KEYS.IMAGE_LISTS(), 'main'],
+    queryFn: () =>
+      apiRequest<ApiResponseMainImageReviewResponse>({
         endPoint: '/api/reviews/image',
-      });
-    return reviewImageResponse;
-  } catch {
-    return null;
-  }
-};
+      }),
+  });
+}
 
 export const emptyReviewData: MainImageReviewResponse = {
   imageReviews: Array.from({ length: 4 }, (_, index) => ({

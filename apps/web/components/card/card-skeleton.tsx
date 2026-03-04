@@ -21,11 +21,11 @@ export function CardSkeleton({ type }: CardSkeletonProps) {
   const skeletonItems = SKELETON_CONFIG[type];
 
   return (
-    <div className="flex w-[26.4rem] flex-col items-start gap-[0.6rem]">
+    <div className="flex w-[26.4rem] flex-col items-start gap-[0.6rem] rounded-[1.6rem]">
       {skeletonItems.map((item, index) => (
         <div
           key={index}
-          className="w-full bg-gray-200"
+          className="w-full rounded-[1.6rem] bg-gray-200"
           style={{ height: item.height }}
         />
       ))}

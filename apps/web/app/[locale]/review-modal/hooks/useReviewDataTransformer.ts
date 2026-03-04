@@ -1,9 +1,13 @@
+import { useTimeZone } from 'next-intl';
+
 import {
   ApiReviewItem,
   ImageReviewResponse,
   VideoReviewResponse,
 } from 'app/api/review-response';
 import dayjs from 'dayjs';
+import timezone from 'dayjs/plugin/timezone';
+import utc from 'dayjs/plugin/utc';
 import {
   ApiResponseImageReviewDetailResponse,
   ApiResponseVideoReviewDetailResponse,
@@ -29,6 +33,10 @@ export function useReviewDataTransformer({
   reviews,
   detailQueries,
 }: UseReviewDataTransformerProps) {
+  dayjs.extend(utc);
+  dayjs.extend(timezone);
+  const timeZone = useTimeZone() || 'UTC';
+
   const findCurrentIndex = (currentReviewId: number) => {
     return reviews.findIndex((review) => review.reviewId === currentReviewId);
   };
@@ -83,18 +91,16 @@ export function useReviewDataTransformer({
           return {
             reviewId: imageDetail.reviewId,
             productId: imageDetail.productId,
-            writtenTime: dayjs(imageDetail.writtenTime).format(
-              'YYYY年MM月DD日'
-            ),
-            receiptUploaded: imageDetail.receiptUploaded,
+            writtenTime: dayjs(imageDetail.writtenTime)
+              .tz(timeZone)
+              .format('YYYY.MM.DD'),
             positiveComment: imageDetail.positiveComment,
             negativeComment: imageDetail.negativeComment,
             authorName: imageDetail.authorName,
             profileImageUrl: imageDetail.profileImageUrl ?? null,
             rating: imageDetail.rating,
-            option: imageDetail.option || '',
             likeCount: imageDetail.likeCount,
-            isLiked: imageDetail.isLiked,
+            isLiked: review.isLiked ?? false,
             brandName: imageDetail.brandName,
             productName: imageDetail.productName,
             productImageUrl: imageDetail.productImageUrl,
@@ -109,16 +115,16 @@ export function useReviewDataTransformer({
           return {
             reviewId: videoDetail.reviewId,
             productId: videoDetail.productId,
-            writtenTime: dayjs(videoDetail.uploadAt).format('YYYY年MM月DD日'),
-            receiptUploaded: !!videoDetail.receiptImageUrl,
+            writtenTime: dayjs(videoDetail.uploadAt)
+              .tz(timeZone)
+              .format('YYYY.MM.DD'),
             positiveComment: videoDetail.positiveContent,
             negativeComment: videoDetail.negativeContent,
             authorName: videoDetail.authorName,
             profileImageUrl: videoDetail.profileImageUrl ?? null,
             rating: videoDetail.rating,
-            option: videoDetail.option || '',
             likeCount: videoDetail.likeCount,
-            isLiked: videoDetail.isLiked,
+            isLiked: review.isLiked ?? false,
             brandName: videoDetail.brandName,
             productName: videoDetail.productName,
             productImageUrl: videoDetail.productImageUrl,

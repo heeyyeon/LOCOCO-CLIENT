@@ -16,7 +16,6 @@ export default function ConnectSNS() {
   const t = useTranslations('creatorSnsLinksPage');
   const searchParams = useSearchParams();
   const { data: snsConnectionData } = useSnsConnection();
-  console.log(snsConnectionData);
 
   // OAuth 콜백 처리
   const { isProcessingCallback } = useOAuthCallback();

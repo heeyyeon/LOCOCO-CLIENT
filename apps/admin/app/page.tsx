@@ -1,11 +1,14 @@
 'use client';
 
 import { useState } from 'react';
+
+import { useRouter } from 'next/navigation';
+
 import { useMutation } from '@tanstack/react-query';
 
 import { Button } from '@lococo/design-system/button';
 import { Input } from '@lococo/design-system/input';
-import { useRouter } from 'next/navigation';
+
 import { setClientCookie } from '../utils/client-cookie';
 
 type LoginRequest = {
@@ -89,11 +92,11 @@ export default function HomePage() {
   };
 
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center gap-9 bg-gray-100">
+    <main className="flex min-h-screen flex-col items-center justify-center gap-9 bg-gray-100">
       <div className="flex flex-col items-center gap-4">
         <h1 className="text-6xl font-semibold">LOCOCO Admin</h1>
 
-        <div className="flex gap-4 items-center">
+        <div className="flex items-center gap-4">
           <div className="flex flex-col gap-2">
             <Input
               placeholder="ID"
@@ -123,6 +126,3 @@ export default function HomePage() {
     </main>
   );
 }
-
-
-

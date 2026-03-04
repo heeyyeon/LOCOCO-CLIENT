@@ -1,4 +1,5 @@
 export { CreatorFormSections } from './CreatorFormSections';
+export { CustomerFormSections } from './CustomerFormSections';
 export { SignupFormLayout } from './SignupFormLayout';
 export { FormSection } from './FormSection';
 export { TextFormField } from './TextFormField';

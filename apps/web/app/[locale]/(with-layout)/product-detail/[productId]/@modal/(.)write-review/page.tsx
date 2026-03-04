@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 
+import { useTranslations } from 'next-intl';
 import { useParams, useRouter } from 'next/navigation';
 
 import Modal from 'components/modal/modal';
@@ -11,15 +12,12 @@ import { IconButton } from '@lococo/design-system/icon-button';
 import { SvgClose } from '@lococo/icons';
 
 import { getProductDetail } from '../../apis';
-import { ProductOptionData } from '../../types';
 import {
   MediaUpload,
   NegativeReview,
   PositiveReview,
   ProductInfo,
-  ProductOption,
   ProductRating,
-  ReceiptCertification,
 } from './components';
 import { useReviewInput } from './hooks';
 
@@ -31,31 +29,33 @@ export default function WriteReviewModal() {
     formData,
     errors,
     reset,
-    updateProductOption,
     updateRating,
     updatePositiveComment,
     updateNegativeComment,
     updateMediaFiles,
-    updateReceiptFile,
     handleSubmit,
     isFormValid,
   } = useReviewInput(Number(productId), () => {
     reset();
     router.back();
   });
-  const [productName, setProductName] = useState('');
-  const [imageUrl, setImageUrl] = useState('');
-  const [brandName, setBrandName] = useState('');
-  const [productOptions, setProductOptions] = useState<ProductOptionData[]>([]);
+  const t = useTranslations('reviews');
+  const [productInfo, setProductInfo] = useState({
+    productName: '',
+    imageUrl: '',
+    brandName: '',
+  });
 
   useEffect(() => {
     const fetchProductDetail = async () => {
-      const { productName, imageUrls, brandName, productOptions } =
-        await getProductDetail(Number(productId));
-      setProductName(productName);
-      setImageUrl(imageUrls[0] || '');
-      setBrandName(brandName);
-      setProductOptions(productOptions);
+      const { productName, imageUrls, brandName } = await getProductDetail(
+        Number(productId)
+      );
+      setProductInfo({
+        productName,
+        imageUrl: imageUrls[0] || '',
+        brandName,
+      });
     };
     fetchProductDetail();
   }, [productId]);
@@ -71,7 +71,7 @@ export default function WriteReviewModal() {
   return (
     <Modal className="size-[70rem] rounded-[0.8rem]" onClose={handleClose}>
       <Modal.Header className="sticky top-0 flex justify-between">
-        <h2 className="body1 font-bold text-gray-800">レビューを書く</h2>
+        <h2 className="body1 font-bold text-gray-800">{t('writeAReview')}</h2>
         <IconButton
           icon={<SvgClose />}
           size="sm"
@@ -81,20 +81,8 @@ export default function WriteReviewModal() {
       </Modal.Header>
 
       <Modal.Body className="scrollbar-hide overflow-y-scroll">
-        <ProductInfo
-          productName={productName}
-          imageUrl={imageUrl}
-          brandName={brandName}
-        />
+        <ProductInfo {...productInfo} />
         <div className="flex flex-col gap-[1.2rem] p-[2rem]">
-          {productOptions.length > 0 && (
-            <ProductOption
-              value={formData.productOptionId}
-              onChange={updateProductOption}
-              error={errors.productOptionId}
-              options={productOptions}
-            />
-          )}
           <ProductRating
             value={formData.rating}
             onChange={updateRating}
@@ -109,11 +97,6 @@ export default function WriteReviewModal() {
             value={formData.negativeComment}
             onChange={updateNegativeComment}
             error={errors.negativeComment}
-          />
-          <ReceiptCertification
-            file={formData.receiptFile}
-            onChange={updateReceiptFile}
-            error={errors.receiptFile}
           />
           <MediaUpload
             files={formData.mediaFiles}
@@ -133,7 +116,7 @@ export default function WriteReviewModal() {
           onClick={onSubmit}
           disabled={!isFormValid}
         >
-          送信する
+          {t('register')}
         </Button>
       </Modal.Footer>
     </Modal>

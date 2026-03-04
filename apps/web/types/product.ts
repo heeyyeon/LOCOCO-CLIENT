@@ -8,7 +8,6 @@ export interface ProductItem {
   productName: string;
   unit: string;
   productId: number;
-  isLiked: boolean;
   rating: number;
   reviewCount: number;
   imageUrl?: string;

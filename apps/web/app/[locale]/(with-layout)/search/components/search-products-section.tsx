@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 
-import type { ProductListItemResponse } from '@typescript-swagger/data-contracts';
+import type { SimpleProductResponse } from '@typescript-swagger/data-contracts';
 import CardProduct from 'components/card/card-product';
 import CardSkeletonWrapper from 'components/card/card-skeleton';
 import { CategoryNameEng, CategoryOptionEng } from 'types/category';
@@ -54,21 +54,19 @@ export default function SearchProductsSection({
               brandName,
               productName,
               unit,
-              isLiked,
-              rating,
+              avgRating,
               reviewCount,
-              url,
-            }: ProductListItemResponse) => (
+              imageUrl,
+            }: SimpleProductResponse) => (
               <CardProduct
                 key={productId}
                 brandName={brandName}
                 productName={productName}
                 unit={unit}
                 productId={productId}
-                isLiked={isLiked}
-                rating={rating}
+                rating={avgRating}
                 reviewCount={reviewCount}
-                imageUrl={url}
+                imageUrl={imageUrl}
                 handleCardClick={handleCardClick}
               />
             )
